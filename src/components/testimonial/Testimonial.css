@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
+
+.testimonia-main-container {
+  background-color: rgb(241, 238, 238);
+  padding: 45px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.users-rate-wrapper {
+  width: 55%;
+  padding: 0 5%;
+}
+.happy-user-image {
+  width: 500px;
+}
+.users-rate-wrapper h3 {
+  font-size: 3em;
+  margin-bottom: 35px;
+  line-height: 30px;
+}
+.users-rate-wrapper p {
+  font-family: "Josefin Slab", serif;
+  font-size: 1.8em;
+  margin-bottom: 25px;
+}
+.download-text {
+  font-size: 1.8em;
+}
+.test-store-logo-wrapper {
+  height: 40px;
+  background-color: rgb(241, 238, 238);
+  margin-left: -15px;
+  cursor: pointer;
+}
+.test-apple-logo-wrapper {
+  height: 40px;
+  background-color: rgb(241, 238, 238);
+  cursor: pointer;
+}

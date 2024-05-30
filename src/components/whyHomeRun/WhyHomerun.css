@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
+
+.why-container {
+  text-align: center;
+  padding: 30px 5%;
+}
+.why-header {
+  padding: 25px 20%;
+  font-size: 2em;
+  line-height: 1.8em;
+}
+.inner-list-wrapper {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+}
+.inner-nav-container {
+  align-items: center;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.inner-list-wrapper button {
+  font-size: 1.5em;
+  cursor: pointer;
+  width: 230px;
+  padding: 8px 0;
+  border-radius: 15px;
+  border: 0.2px rgb(177, 174, 174) solid;
+}
+.inner-details-container {
+  padding: 3%;
+}
+.details-list-wrapper {
+  list-style: none;
+  text-align: left;
+}
+.details-list-wrapper li {
+  font-size: 1.65em;
+  margin-top: 20px;
+  font-family: "Josefin Slab", serif;
+}
+.inner-what-we-do-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.details-inner-works {
+  text-align: center;
+  width: 60%;
+  padding: 25px 0;
+}
+.main-card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card-wrapper {
+  background-color: rgb(136, 133, 133);
+  border-radius: 20px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+.card-image {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.what-we-do-img {
+  width: 600px;
+  height: 400px;
+}
+.inner-header h3 {
+  font-size: 2.3em;
+}
+/* .card-wrapper h3 {
+  margin-top: 10px;
+  font-size: 1.6em;
+} */

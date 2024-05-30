@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
+
+.hero-container {
+  padding: 2px 5%;
+  display: flex;
+  justify-content: space-between;
+}
+.header-wrapper {
+  width: 48%;
+}
+.hero-img {
+  width: 700px;
+}
+.heading-txt {
+  font-size: 4.5em;
+  margin-bottom: 35px;
+  margin-top: 25px;
+  line-height: 1.2em;
+}
+.heading-para {
+  font-size: 2em;
+  font-family: "Josefin Slab", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin-bottom: 35px;
+}
+
+.howitworks-text {
+  font-size: 2em;
+}
+.playstore-icons-wrapper {
+  display: flex;
+}
+.google-icon {
+  width: 130px;
+  height: 55px;
+  margin-top: 10px;
+}
+.iphone-icon {
+  width: 130px;
+  height: 130px;
+}
+.store-logo-wrapper {
+  height: 40px;
+  background-color: #fff;
+  margin-left: -15px;
+  cursor: pointer;
+}
+.apple-logo-wrapper {
+  height: 40px;
+  background-color: #fff;
+  cursor: pointer;
+}

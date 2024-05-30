@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
+
+.footer-main-container {
+  text-align: center;
+  background-color: rgb(229, 229, 232);
+  padding: 45px 5%;
+}
+.logo-wrapper {
+}
+.footer-menu-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
+}
+.address-wrapper {
+  width: 35%;
+}
+.footer-logo {
+  width: 150px;
+}
+.list-header {
+  font-size: 1.6em;
+  margin-bottom: 15px;
+}
+.company-wrapper ul,
+.address-wrapper ul {
+  list-style: none;
+}
+.address-wrapper ul {
+}
+.company-wrapper li,
+.address-wrapper li {
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  font-family: "Josefin Slab", serif;
+}
+.address-wrapper li {
+  text-align: right;
+  margin-bottom: 10px;
+}
+.inner-footer-wrapper {
+  background-color: rgb(247, 244, 244);
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 25px;
+}
+.policy-btn,
+.privacy-btn {
+  background-color: rgb(247, 244, 244);
+}

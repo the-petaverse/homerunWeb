@@ -1,0 +1,18 @@
+.evrything-container {
+  padding: 20px 5%;
+  text-align: center;
+  background-color: aliceblue;
+  margin-top: 20px;
+}
+.everything-header-wrapper {
+  padding: 20px 20%;
+  font-size: 1.3em;
+  line-height: 1.8em;
+}
+.everything-icons-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.howitworks-wrapper {
+  margin-top: 25px;
+}

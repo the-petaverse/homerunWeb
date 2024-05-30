@@ -1,0 +1,32 @@
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  width: 100%;
+  height: 90%;
+  margin-left: 20%;
+  margin-top: 80px;
+}
+.modalContainer {
+  max-width: 1200px;
+  width: 80%;
+  position: fixed;
+  background-color: #ded9d9;
+  left: 25%;
+  top: 15%;
+  height: 650px;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
+  padding: 20px 3%;
+}
+.inner-modal-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.close-modar-wrapper {
+  text-align: right;
+  margin-bottom: 15px;
+}
+.modalLeftside,
+.modalRightside {
+  padding: 0 20px;
+  text-align: left;
+}

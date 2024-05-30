@@ -1,0 +1,37 @@
+.nav-container {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 5%;
+}
+
+.image-wrapper {
+  width: 135px;
+}
+.menu-list-wrapper {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  width: 40%;
+}
+.list-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 12%;
+  list-style: none;
+}
+.list-wrapper li {
+  font-size: 1.2em;
+  color: #0d2137;
+  cursor: pointer;
+}
+.menu-list-wrapper li {
+  font-size: 1.5em;
+  color: #0d2137;
+  cursor: pointer;
+}
+.nav-links {
+  text-decoration: none;
+  cursor: pointer;
+}

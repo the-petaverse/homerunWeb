@@ -1,0 +1,85 @@
+.dashboard-container {
+  display: flex;
+}
+.left-side-container {
+  padding: 20px 4%;
+  background-color: rgb(25, 3, 103);
+  width: 20%;
+  height: 100vh;
+  color: #fff;
+  text-align: center;
+}
+.right-side-container {
+  padding: 20px 0;
+  width: 80%;
+  height: 100vh;
+}
+.right-side-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 3%;
+}
+.name-email-holder {
+  margin-top: 15px;
+}
+.right-menu-list-wrapper {
+  margin-top: 25px;
+}
+.right-menu-list-wrapper ul {
+  list-style: none;
+  text-align: left;
+}
+.right-main-list li {
+  margin-top: 35px;
+  font-size: 1.3em;
+}
+.request-main-containerr {
+  background-color: rgb(240, 235, 235);
+  margin-top: 30px;
+  height: 85.5vh;
+  padding: 15px 25px;
+}
+.request-wrapper {
+  border: 0.5px solid rgb(206, 203, 203);
+  display: flex;
+  justify-content: space-between;
+  height: 65px;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.avarta-wrapper {
+  width: 150px;
+}
+.details-request {
+}
+.title-request {
+  font-size: 1.4em;
+}
+.inner-menu-list {
+  background-color: rgb(25, 3, 103);
+  font-size: 1.1em;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+.user-name {
+  font-size: 1.6em;
+  margin-bottom: 5px;
+}
+.slate-header-wrapper {
+  margin-bottom: 25px;
+  margin-top: 10px;
+  text-align: center;
+}
+.icon-image {
+  width: 50px;
+  height: 50px;
+}
+.bin-icon {
+  width: 60px;
+  height: 40px;
+}
