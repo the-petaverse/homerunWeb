@@ -2,33 +2,39 @@ import React from "react";
 import LoginImage from "../../assets/feedback.png";
 import { useForm } from "react-hook-form";
 
-const Verify = () => {
+const VerificationCode = () => {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({ mode: "all" });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    setFormStage((cur) => cur + 1);
+    console.log("Data: ", data);
+  };
+
   return (
     <div>
+      <div className="slate-header-wrapper">
+        <h2>Verification code</h2>
+      </div>
       <div className="login-main-container">
         <div className="login-iamge-wrapper">
           <img src={LoginImage} alt="" className="login-image" />
         </div>
         <div className="inner-form-wrapper">
           <h3>Hey, </h3>
-          <h3>You are alomst done</h3>
-          <p>Please enter the code received to continue</p>
+          <p>Please enter your code received to continue</p>
           <form onSubmit={handleSubmit(onSubmit)} className="form-wrapper">
             <label>
-              Verification:
+              Verification code:
               <input
                 type="text"
                 maxLength={6}
                 className="main-text-input"
-                {...register("verification_code")}
+                {...register("verification")}
               />
             </label>
             <input type="submit" className="main-form-btn" />
@@ -39,4 +45,4 @@ const Verify = () => {
   );
 };
 
-export default Verify;
+export default VerificationCode;

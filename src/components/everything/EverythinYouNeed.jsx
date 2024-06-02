@@ -8,8 +8,7 @@ const EverythinYouNeed = () => {
     <div className="evrything-container">
       <div className="everything-header-wrapper">
         <h2>
-          Everything you need with ease. Arrange in order: Passport collection,
-          Clearing of goods, Other errands
+          Everything you need you need to know on how to use our platforms.
         </h2>
       </div>
       <div>

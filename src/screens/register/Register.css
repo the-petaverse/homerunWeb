@@ -51,3 +51,8 @@
   font-size: 1.6em;
   cursor: pointer;
 }
+.register-form-wrapper label p {
+  color: red;
+  font-size: 20px;
+  font-family: "Josefin Slab", serif;
+}

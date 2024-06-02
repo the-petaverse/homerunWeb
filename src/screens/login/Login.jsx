@@ -18,13 +18,9 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-  };
-
-  const handleLogin = () => {
-    // Perform authentication logic here
-    // setIsLoggedIn(true);
     navigate("/dashboard", { replace: true });
   };
+
   return (
     <div>
       <Navbar />
@@ -43,22 +39,31 @@ const Login = () => {
                 type="text"
                 placeholder="example@example.com"
                 className="main-text-input"
-                {...register("email")}
+                style={{ borderColor: errors.email ? "red" : "blue" }}
+                {...register("email", {
+                  required: "Email Address is required",
+                })}
+                aria-invalid={errors.email ? "true" : "false"}
               />
+              {errors.email && (
+                <p className="input-error-message">{errors.email.message}</p>
+              )}
             </label>
             <label>
               Password:
               <input
                 type="password"
+                style={{ borderColor: errors.password ? "red" : "blue" }}
                 className="main-text-input"
-                {...register("password")}
+                {...register("password", {
+                  required: "password is required",
+                })}
               />
+              {errors.password && (
+                <p className="input-error-message">{errors.password.message}</p>
+              )}
             </label>
-            <input
-              type="submit"
-              className="main-form-btn"
-              onClick={handleLogin}
-            />
+            <input type="submit" className="main-form-btn" />
           </form>
         </div>
       </div>

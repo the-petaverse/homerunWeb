@@ -3,6 +3,7 @@ import "./Services.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import AboutImg from "../../assets/about.png";
+import EverythinYouNeed from "../../components/everything/EverythinYouNeed";
 
 const Services = () => {
   return (
@@ -20,6 +21,7 @@ const Services = () => {
           <img src={AboutImg} alt="" className="service-image" />
         </div>
       </div> */}
+      <EverythinYouNeed />
       <div className="main-service-card-container">
         <h2>Our services</h2>
         <div className="service-card-holder">

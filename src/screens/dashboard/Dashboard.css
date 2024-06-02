@@ -83,3 +83,37 @@
   width: 60px;
   height: 40px;
 }
+.three-input-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.checkboxes-container {
+  margin-top: 20px;
+}
+.main-success-image-container {
+  align-items: center;
+  text-align: center;
+}
+.success-image {
+  width: 150px;
+}
+.final-submit-btn-wrapper {
+  text-align: center;
+  align-items: center;
+  width: 450px;
+  background-color: rgb(25, 3, 103);
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.final-submit-btn {
+  text-align: center;
+  background-color: rgb(25, 3, 103);
+  color: #fff;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+.checkbox-label input {
+  margin-right: 10px;
+}

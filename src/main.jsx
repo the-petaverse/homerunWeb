@@ -10,9 +10,10 @@ import Login from "./screens/login/Login";
 import Register from "./screens/register/Register";
 import Dashboard from "./screens/dashboard/Dashboard.jsx";
 import PrivateRoute from "./screens/private/PrivateRoutes.jsx";
-import { store } from "./app/store.js";
-import { Provider } from "react-redux";
+// import { store } from "./app/store.js";
+// import { Provider } from "react-redux";
 import Verify from "./screens/verification/Verify.jsx";
+import ContactUs from "./screens/contactUs/ContactUs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/services",
     element: <Services />,
+  },
+  {
+    path: "/contact",
+    element: <ContactUs />,
   },
   {
     path: "/login",
@@ -54,8 +59,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    {/* <Provider store={store}> */}
+    <RouterProvider router={router} />
+    {/* </Provider> */}
   </React.StrictMode>
 );
