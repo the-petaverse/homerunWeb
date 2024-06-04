@@ -1,16 +1,21 @@
 import React from "react";
 import LoginImage from "../../assets/feedback.png";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Verify = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    navigate("/dashboard", { replace: true });
+  };
   return (
     <div>
       <div className="login-main-container">
@@ -27,11 +32,25 @@ const Verify = () => {
               <input
                 type="text"
                 maxLength={6}
+                style={{
+                  borderColor: errors.verification_code ? "red" : "blue",
+                }}
                 className="main-text-input"
-                {...register("verification_code")}
+                {...register("verification_code", {
+                  required: "Please enter your verification code",
+                })}
               />
+              {errors.verification_code && (
+                <p className="input-error-message">
+                  {errors.verification_code.message}
+                </p>
+              )}
             </label>
-            <input type="submit" className="main-form-btn" />
+            <input
+              type="submit"
+              className="main-form-btn"
+              disabled={!isValid}
+            />
           </form>
         </div>
       </div>

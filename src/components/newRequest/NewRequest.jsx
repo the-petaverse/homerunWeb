@@ -14,7 +14,7 @@ const NewRequest = ({
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({ mode: "all" });
   const componentProps = {
     email: "test@example.com",
@@ -47,6 +47,7 @@ const NewRequest = ({
             // type="Submit"
             className="final-button-wrapper final-submit-btn"
             onClick={handleCompleteForm}
+            disabled={!isValid}
           >
             Next Step
           </button>
@@ -54,7 +55,11 @@ const NewRequest = ({
       );
     } else {
       return (
-        <button className="register-main-form-btn" onClick={handleCompleteForm}>
+        <button
+          disabled={!isValid}
+          className="register-main-form-btn"
+          onClick={handleCompleteForm}
+        >
           Next Step
         </button>
       );
@@ -86,40 +91,60 @@ const NewRequest = ({
                     type="text"
                     className="register-main-text-input"
                     placeholder="Request Title (Passport Collection)"
-                    {...register("request_title")}
+                    {...register("request_title", {
+                      required: "Title is required",
+                    })}
                   />
+                  {errors.request_title && (
+                    <p className="input-error-message">
+                      {errors.request_title.message}
+                    </p>
+                  )}
                 </label>
                 <label>
                   <input
                     type="text"
                     className="register-main-text-input"
                     placeholder="Please enter more information as possible here"
-                    {...register("request_details")}
+                    {...register("request_details", {
+                      required: "Request details are required",
+                    })}
                   />
+                  {errors.request_details && (
+                    <p className="input-error-message">
+                      {errors.request_details.message}
+                    </p>
+                  )}
                 </label>
                 <label>
                   <input
                     type="text"
                     className="register-main-text-input"
                     placeholder="Contact Person"
-                    {...register("contact_name")}
+                    {...register("contact_name", {
+                      required: "Contact name is required",
+                    })}
                   />
+                  {errors.contact_name && (
+                    <p className="input-error-message">
+                      {errors.contact_name.message}
+                    </p>
+                  )}
                 </label>
                 <label>
                   <input
                     type="text"
                     className="register-main-text-input"
                     placeholder="Contact Telephone Number"
-                    {...register("contact_number")}
+                    {...register("contact_number", {
+                      required: "Contact number is required",
+                    })}
                   />
-                </label>
-                <label>
-                  <input
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="Contact Address"
-                    {...register("contact_address")}
-                  />
+                  {errors.contact_number && (
+                    <p className="input-error-message">
+                      {errors.contact_number.message}
+                    </p>
+                  )}
                 </label>
               </div>
             )}
@@ -129,29 +154,72 @@ const NewRequest = ({
                   <input
                     type="text"
                     className="register-main-text-input"
-                    placeholder="Country Name"
-                    {...register("country")}
+                    placeholder="Contact Address"
+                    {...register("contact_address", {
+                      required: "Contact address is required",
+                    })}
                   />
+                  {errors.contact_address && (
+                    <p className="input-error-message">
+                      {errors.contact_address.message}
+                    </p>
+                  )}
+                </label>
+                <label>
+                  <input
+                    type="text"
+                    className="register-main-text-input"
+                    placeholder="Country Name"
+                    {...register("country", {
+                      required: "Country name is required",
+                    })}
+                  />
+                  {errors.country && (
+                    <p className="input-error-message">
+                      {errors.country.message}
+                    </p>
+                  )}
                   <input
                     type="text"
                     className="register-main-text-input"
                     placeholder="State Name"
-                    {...register("stateName")}
+                    {...register("stateName", {
+                      required: "State name is required",
+                    })}
                   />
+                  {errors.stateName && (
+                    <p className="input-error-message">
+                      {errors.stateName.message}
+                    </p>
+                  )}
                   <input
                     type="text"
                     className="register-main-text-input"
                     placeholder="City Name"
-                    {...register("cityName")}
+                    {...register("cityName", {
+                      required: "City name is required",
+                    })}
                   />
+                  {errors.cityName && (
+                    <p className="input-error-message">
+                      {errors.cityName.message}
+                    </p>
+                  )}
                   <section className="checkboxes-container">
                     <label className="checkbox-label">
                       <input
                         type="checkbox"
-                        {...register("terms")}
+                        {...register("terms", {
+                          required: "Please accept the terms & Condition",
+                        })}
                         onClick={() => setModalOpen(true)}
                       />
                       I agree to Terms & Conditions
+                      {errors.terms && (
+                        <p className="input-error-message">
+                          {errors.terms.message}
+                        </p>
+                      )}
                     </label>
                   </section>
                 </label>
