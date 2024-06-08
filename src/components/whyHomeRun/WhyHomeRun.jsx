@@ -30,6 +30,7 @@ const WhyHomeRun = () => {
           </button>
         </ul>
       </div>
+
       <div className="inner-details-container">
         {innerPageNumber === 1 && (
           <div className="inner-what-we-do-wrapper">
