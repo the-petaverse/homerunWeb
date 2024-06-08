@@ -33,17 +33,22 @@
   font-size: 2em;
   margin-bottom: 8px;
 }
+/* Work on the playstore icons alighment */
 .playstore-icons-wrapper {
   display: flex;
+  align-items: center;
+  height: auto;
+  margin-bottom: 15px;
 }
 .google-icon {
   width: 130px;
-  height: 55px;
+  height: auto;
   /* margin-top: 10px; */
 }
 .iphone-icon {
   width: 130px;
   height: 130px;
+  margin-top: -15px;
 }
 .store-logo-wrapper {
   /* height: 30px; */

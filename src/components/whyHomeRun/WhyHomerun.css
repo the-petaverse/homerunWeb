@@ -27,9 +27,9 @@
   width: 100%;
 }
 .inner-list-wrapper button {
-  font-size: 1.5em;
+  font-size: 1.25em;
   cursor: pointer;
-  width: 230px;
+  width: 100%;
   padding: 8px 0;
   border-radius: 15px;
   border: 0.2px rgb(177, 174, 174) solid;
@@ -99,9 +99,15 @@
 } */
 
 @media (min-width: 475px) {
+  .inner-list-wrapper button {
+    width: 50%;
+  }
 }
 
 @media (min-width: 640px) {
+  .inner-list-wrapper button {
+    width: 35%;
+  }
 }
 @media (min-width: 768px) {
 }

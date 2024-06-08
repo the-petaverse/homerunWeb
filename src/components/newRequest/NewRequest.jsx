@@ -1,8 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LoginImage from "../../assets/feedback.png";
 import SuccessImage from "../../assets/green.png";
 import { useForm } from "react-hook-form";
 import { PaystackButton } from "react-paystack";
+
+const countries = [
+  { id: "1", title: "Nigeria" },
+  { id: "2", title: "Ghana" },
+  { id: "3", title: "Kenya" },
+];
+const myState = [
+  { id: "1", title: "Lagos" },
+  { id: "2", title: "Ondo" },
+  { id: "3", title: "Ekiti" },
+];
+const city = [
+  { id: "1", title: "Akure" },
+  { id: "2", title: "Owo" },
+  { id: "3", title: "Ibadan" },
+];
 
 const NewRequest = ({
   setFormStage,
@@ -10,6 +26,7 @@ const NewRequest = ({
   setShowDashboard,
   setModalOpen,
 }) => {
+  const [country, setCountry] = useState([]);
   const {
     register,
     handleSubmit,
@@ -36,7 +53,7 @@ const NewRequest = ({
   const handleCompleteForm = () => {
     setFormStage((cur) => cur + 1);
   };
-  console.log(formStage);
+  // console.log(formStage);
   const renderButton = () => {
     if (formStage > 1) {
       return undefined;
@@ -65,6 +82,15 @@ const NewRequest = ({
       );
     }
   };
+
+  // const handleCountry = () => {
+  //
+  // };
+
+  useEffect(() => {
+    setCountry(countries);
+  }, []);
+
   return (
     <div>
       <div className="slate-header-wrapper">
@@ -166,40 +192,77 @@ const NewRequest = ({
                   )}
                 </label>
                 <label>
-                  <input
+                  <select
                     type="text"
                     className="register-main-text-input"
                     placeholder="Country Name"
                     {...register("country", {
                       required: "Country name is required",
                     })}
-                  />
+                  >
+                    <option value="0">Select country</option>
+                    {country && country !== undefined ? (
+                      country.map((countryData, index) => {
+                        return (
+                          <option value={countryData.id} key={index}>
+                            {countryData.title}
+                          </option>
+                        );
+                      })
+                    ) : (
+                      <option>Select country</option>
+                    )}
+                  </select>
                   {errors.country && (
                     <p className="input-error-message">
                       {errors.country.message}
                     </p>
                   )}
-                  <input
+                  <select
                     type="text"
                     className="register-main-text-input"
                     placeholder="State Name"
                     {...register("stateName", {
                       required: "State name is required",
                     })}
-                  />
+                  >
+                    {myState && myState !== undefined ? (
+                      myState.map((stateData, index) => {
+                        return (
+                          <option value={stateData.id} key={index}>
+                            {stateData.title}
+                          </option>
+                        );
+                      })
+                    ) : (
+                      <option>Select state</option>
+                    )}
+                  </select>
                   {errors.stateName && (
                     <p className="input-error-message">
                       {errors.stateName.message}
                     </p>
                   )}
-                  <input
+                  <select
                     type="text"
                     className="register-main-text-input"
                     placeholder="City Name"
                     {...register("cityName", {
                       required: "City name is required",
                     })}
-                  />
+                  >
+                    {city && city !== undefined ? (
+                      city.map((cityData, index) => {
+                        return (
+                          <option value={cityData.id} key={index}>
+                            {cityData.title}
+                          </option>
+                        );
+                      })
+                    ) : (
+                      <option>Select state</option>
+                    )}
+                  </select>
                   {errors.cityName && (
                     <p className="input-error-message">
                       {errors.cityName.message}
