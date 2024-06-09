@@ -1,13 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import LoginImage from "../../assets/feedback.png";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import "./Register.css";
 
+const countries = [
+  { id: "1", title: "Nigeria" },
+  { id: "2", title: "USA" },
+  { id: "3", title: "Kenya" },
+];
+const staties = [
+  { id: "1", countryid: "1", title: "Lagos" },
+  { id: "2", countryid: "1", title: "Ondo" },
+  { id: "3", countryid: "2", title: "Texas" },
+  { id: "4", countryid: "2", title: "Califonia" },
+];
+const cities = [
+  { id: "1", stateId: "1", title: "Ikeja" },
+  { id: "2", stateId: "1", title: "Mushin" },
+  { id: "3", stateId: "2", title: "Akure" },
+  { id: "4", stateId: "2", title: "Owo" },
+];
+
 const Register = () => {
   const navigate = useNavigate();
   const [formStep, setFormStep] = useState(0);
+  const [country, setCountry] = useState([]);
+  const [myState, setMyState] = useState([]);
+  const [citiesList, setCitiesList] = useState([]);
 
   const {
     register,
@@ -15,6 +36,9 @@ const Register = () => {
     watch,
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
+
+  const watchCountry = watch("country");
+  const watchState = watch("stateName");
 
   const onSubmit = (data) => {
     console.log(data);
@@ -50,6 +74,25 @@ const Register = () => {
       );
     }
   };
+
+  const handleState = () => {
+    const filteredStates = staties.filter(
+      (statesData) => statesData.countryid === watchCountry
+    );
+    setMyState(filteredStates);
+  };
+  const handleCities = () => {
+    console.log(watchState);
+    const filteredCities = cities.filter(
+      (citiesData) => citiesData.stateId === watchState
+    );
+    setCitiesList(filteredCities);
+  };
+
+  useEffect(() => {
+    handleState();
+    handleCities();
+  }, [watchCountry, watchState]);
   return (
     <div>
       <Navbar />
@@ -134,16 +177,25 @@ const Register = () => {
             {formStep === 1 && (
               <>
                 <label>
-                  <input
-                    // Turned to dropdownmenu
+                  <select
                     type="text"
-                    style={{ borderColor: errors.country ? "red" : "blue" }}
                     className="register-main-text-input"
-                    placeholder="Country (Nigeria, etc.)"
+                    placeholder="Country Name"
                     {...register("country", {
-                      required: "Country is required",
+                      required: "Country name is required",
                     })}
-                  />
+                  >
+                    <option value="0">Select country</option>
+                    {countries && countries !== undefined
+                      ? countries.map((countryData, index) => {
+                          return (
+                            <option value={countryData.id} key={index}>
+                              {countryData.title}
+                            </option>
+                          );
+                        })
+                      : "No country selected"}
+                  </select>
                   {errors.country && (
                     <p className="input-error-message">
                       {errors.country.message}
@@ -151,14 +203,25 @@ const Register = () => {
                   )}
                 </label>
                 <label>
-                  <input
-                    // Turned to dropdownmenu
+                  <select
                     type="text"
-                    style={{ borderColor: errors.homeSate ? "red" : "blue" }}
                     className="register-main-text-input"
-                    placeholder="homeSate (Lagos, etc.)"
-                    {...register("homeSate", { required: "State is required" })}
-                  />
+                    placeholder="State Name"
+                    {...register("homeSate", {
+                      required: "State name is required",
+                    })}
+                  >
+                    <option value="0">Select State</option>
+                    {myState && myState !== undefined
+                      ? myState.map((stateData, index) => {
+                          return (
+                            <option value={stateData.id} key={index}>
+                              {stateData.title}
+                            </option>
+                          );
+                        })
+                      : "No state selected"}
+                  </select>
                   {errors.homeSate && (
                     <p className="input-error-message">
                       {errors.homeSate.message}
@@ -166,14 +229,25 @@ const Register = () => {
                   )}
                 </label>
                 <label>
-                  <input
-                    // Turned to dropdownmenu
+                  <select
                     type="text"
-                    style={{ borderColor: errors.homeCity ? "red" : "blue" }}
                     className="register-main-text-input"
-                    placeholder="City (Nigeria, etc.)"
-                    {...register("homeCity", { required: "City is required" })}
-                  />
+                    placeholder="City Name"
+                    {...register("homeCity", {
+                      required: "City name is required",
+                    })}
+                  >
+                    <option value="0">Select City</option>
+                    {citiesList && citiesList !== undefined
+                      ? citiesList.map((cityData, index) => {
+                          return (
+                            <option value={cityData.id} key={index}>
+                              {cityData.title}
+                            </option>
+                          );
+                        })
+                      : "No city selected"}
+                  </select>
                   {errors.homeCity && (
                     <p className="input-error-message">
                       {errors.homeCity.message}

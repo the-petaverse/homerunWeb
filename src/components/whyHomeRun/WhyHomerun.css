@@ -143,13 +143,20 @@
   }
 }
 @media (min-width: 1280px) {
+  .inner-details-container {
+    /* width: 80%; */
+
+    margin-left: auto;
+    margin-left: auto;
+  }
   .what-we-do-img {
-    width: 550px;
+    width: 400px;
     height: auto;
+    margin-left: 60px;
   }
   .details-list-wrapper {
     text-align: left;
-    width: 600px;
+    width: 750px;
     height: auto;
     padding: 10px 15px;
   }

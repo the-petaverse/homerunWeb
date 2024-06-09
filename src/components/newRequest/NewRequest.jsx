@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LoginImage from "../../assets/feedback.png";
 import SuccessImage from "../../assets/green.png";
 import { useForm } from "react-hook-form";
@@ -6,18 +6,20 @@ import { PaystackButton } from "react-paystack";
 
 const countries = [
   { id: "1", title: "Nigeria" },
-  { id: "2", title: "Ghana" },
+  { id: "2", title: "USA" },
   { id: "3", title: "Kenya" },
 ];
-const myState = [
-  { id: "1", title: "Lagos" },
-  { id: "2", title: "Ondo" },
-  { id: "3", title: "Ekiti" },
+const staties = [
+  { id: "1", countryid: "1", title: "Lagos" },
+  { id: "2", countryid: "1", title: "Ondo" },
+  { id: "3", countryid: "2", title: "Texas" },
+  { id: "4", countryid: "2", title: "Califonia" },
 ];
-const city = [
-  { id: "1", title: "Akure" },
-  { id: "2", title: "Owo" },
-  { id: "3", title: "Ibadan" },
+const cities = [
+  { id: "1", stateId: "1", title: "Ikeja" },
+  { id: "2", stateId: "1", title: "Mushin" },
+  { id: "3", stateId: "2", title: "Akure" },
+  { id: "4", stateId: "2", title: "Owo" },
 ];
 
 const NewRequest = ({
@@ -27,12 +29,20 @@ const NewRequest = ({
   setModalOpen,
 }) => {
   const [country, setCountry] = useState([]);
+  const [myState, setMyState] = useState([]);
+  const [citiesList, setCitiesList] = useState([]);
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
+
+  const watchCountry = watch("country");
+  const watchState = watch("stateName");
+
+  // Payment implementation
   const componentProps = {
     email: "test@example.com",
     amount: 100,
@@ -46,14 +56,16 @@ const NewRequest = ({
     // alert("Thanks for doing business with us! Come back soon!!"),
     onClose: () => alert("Wait! Don't leave :("),
   };
+
   const onSubmit = (data) => {
     setFormStage((cur) => cur + 1);
-    console.log("Data: ", data);
+    // Implement API call here
+    console.log(data);
   };
   const handleCompleteForm = () => {
     setFormStage((cur) => cur + 1);
   };
-  // console.log(formStage);
+
   const renderButton = () => {
     if (formStage > 1) {
       return undefined;
@@ -83,13 +95,24 @@ const NewRequest = ({
     }
   };
 
-  // const handleCountry = () => {
-  //
-  // };
+  const handleState = () => {
+    const filteredStates = staties.filter(
+      (statesData) => statesData.countryid === watchCountry
+    );
+    setMyState(filteredStates);
+  };
+  const handleCities = () => {
+    console.log(watchState);
+    const filteredCities = cities.filter(
+      (citiesData) => citiesData.stateId === watchState
+    );
+    setCitiesList(filteredCities);
+  };
 
   useEffect(() => {
-    setCountry(countries);
-  }, []);
+    handleState();
+    handleCities();
+  }, [watchCountry, watchState]);
 
   return (
     <div>
@@ -201,17 +224,15 @@ const NewRequest = ({
                     })}
                   >
                     <option value="0">Select country</option>
-                    {country && country !== undefined ? (
-                      country.map((countryData, index) => {
-                        return (
-                          <option value={countryData.id} key={index}>
-                            {countryData.title}
-                          </option>
-                        );
-                      })
-                    ) : (
-                      <option>Select country</option>
-                    )}
+                    {countries && countries !== undefined
+                      ? countries.map((countryData, index) => {
+                          return (
+                            <option value={countryData.id} key={index}>
+                              {countryData.title}
+                            </option>
+                          );
+                        })
+                      : "No country selected"}
                   </select>
                   {errors.country && (
                     <p className="input-error-message">
@@ -226,17 +247,16 @@ const NewRequest = ({
                       required: "State name is required",
                     })}
                   >
-                    {myState && myState !== undefined ? (
-                      myState.map((stateData, index) => {
-                        return (
-                          <option value={stateData.id} key={index}>
-                            {stateData.title}
-                          </option>
-                        );
-                      })
-                    ) : (
-                      <option>Select state</option>
-                    )}
+                    <option value="0">Select State</option>
+                    {myState && myState !== undefined
+                      ? myState.map((stateData, index) => {
+                          return (
+                            <option value={stateData.id} key={index}>
+                              {stateData.title}
+                            </option>
+                          );
+                        })
+                      : "No state selected"}
                   </select>
                   {errors.stateName && (
                     <p className="input-error-message">
@@ -251,17 +271,16 @@ const NewRequest = ({
                       required: "City name is required",
                     })}
                   >
-                    {city && city !== undefined ? (
-                      city.map((cityData, index) => {
-                        return (
-                          <option value={cityData.id} key={index}>
-                            {cityData.title}
-                          </option>
-                        );
-                      })
-                    ) : (
-                      <option>Select state</option>
-                    )}
+                    <option value="0">Select City</option>
+                    {citiesList && citiesList !== undefined
+                      ? citiesList.map((cityData, index) => {
+                          return (
+                            <option value={cityData.id} key={index}>
+                              {cityData.title}
+                            </option>
+                          );
+                        })
+                      : "No city selected"}
                   </select>
                   {errors.cityName && (
                     <p className="input-error-message">
