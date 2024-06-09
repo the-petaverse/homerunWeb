@@ -11,8 +11,8 @@ const EverythinYouNeed = () => {
           Everything you need you need to know on how to use our platforms.
         </h2>
       </div>
-      <div>
-        <video width="950" height="500" controls>
+      <div className="video-main-container">
+        <video className="vedio-player-wrapper" controls>
           <source src="./Videos/video1.mp4" type="video/mp4" />
         </video>
       </div>
