@@ -5,17 +5,20 @@
 .register-main-container {
   padding: 25px 5%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 .register-iamge-wrapper {
-  width: 40%;
+  width: 100%;
 }
 .register-image {
-  width: 550px;
+  width: 100%;
+  height: auto;
 }
 .register-inner-form-wrapper {
-  width: 50%;
+  width: 100%;
+  text-align: center;
 }
 .register-inner-form-wrapper p {
   font-size: 1.6em;
@@ -26,7 +29,7 @@
 .register-form-wrapper {
   display: flex;
   flex-direction: column;
-  width: 450px;
+  width: 100%;
   margin-top: 15px;
 }
 .register-main-text-input {
@@ -55,4 +58,59 @@
   color: red;
   font-size: 20px;
   font-family: "Josefin Slab", serif;
+}
+
+@media (min-width: 475px) {
+  .register-inner-form-wrapper {
+    width: 80%;
+    text-align: center;
+  }
+}
+@media (min-width: 640px) {
+  .register-inner-form-wrapper {
+    width: 80%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .register-inner-form-wrapper {
+    width: 60%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .register-inner-form-wrapper {
+    width: 60%;
+    text-align: center;
+  }
+  .register-main-container {
+    padding: 25px 5%;
+    display: flex;
+    flex-direction: row;
+  }
+  .register-image {
+    width: 80%;
+    height: auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .register-iamge-wrapper {
+    width: 80%;
+  }
+  .register-inner-form-wrapper {
+    width: 60%;
+    text-align: left;
+  }
+  .register-form-wrapper {
+    width: 65%;
+  }
+  .register-image {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1536px) {
 }

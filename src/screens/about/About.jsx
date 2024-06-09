@@ -10,12 +10,21 @@ const About = () => {
       <div className="about-header-wrapper">
         <div className="about-details-wrapper">
           <h2 className="about-header">About Us</h2>
+          <br />
           <p>
             homerun is beyond errand service platform that helps the diaspora
             (Africans living abroad) and very busy locally-based clients who
             need to get some errand tasks done without affecting their daily
             schedule.
           </p>
+          <br />
+          <p>
+            homerun is beyond errand service platform that helps the diaspora
+            (Africans living abroad) and very busy locally-based clients who
+            need to get some errand tasks done without affecting their daily
+            schedule.
+          </p>
+          <br />
           <p>
             homerun is beyond errand service platform that helps the diaspora
             (Africans living abroad) and very busy locally-based clients who

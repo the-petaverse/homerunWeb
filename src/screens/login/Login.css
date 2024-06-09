@@ -5,20 +5,23 @@
 .login-main-container {
   padding: 25px 5%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 .login-iamge-wrapper {
-  width: 40%;
+  width: 100%;
 }
 .login-image {
-  width: 550px;
+  width: 100%;
+  height: auto;
 }
 .inner-form-wrapper {
-  width: 50%;
+  width: 100%;
+  text-align: center;
 }
 .inner-form-wrapper h3 {
-  font-size: 2.5em;
+  font-size: 2em;
   margin-bottom: 10px;
 }
 .inner-form-wrapper p {
@@ -29,7 +32,7 @@
 .form-wrapper {
   display: flex;
   flex-direction: column;
-  width: 450px;
+  width: 100%;
   margin-top: 15px;
 }
 .form-wrapper label {
@@ -37,10 +40,12 @@
   margin: 20px 0;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 .main-text-input {
   background-color: rgb(245, 243, 243);
   height: 50px;
+  width: 100%;
   margin-top: 10px;
   border-radius: 10px;
   font-family: "Josefin Slab", serif;
@@ -63,4 +68,61 @@
   color: red;
   font-size: 20px;
   font-family: "Josefin Slab", serif;
+}
+
+@media (min-width: 475px) {
+  .login-iamge-wrapper {
+    width: 80%;
+  }
+  .inner-form-wrapper {
+    width: 80%;
+    text-align: center;
+  }
+}
+@media (min-width: 640px) {
+}
+
+@media (min-width: 768px) {
+  .login-iamge-wrapper {
+    width: 60%;
+  }
+  .inner-form-wrapper {
+    width: 60%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login-iamge-wrapper {
+    width: 50%;
+  }
+  .inner-form-wrapper {
+    width: 40%;
+    text-align: center;
+  }
+  .login-main-container {
+    flex-direction: row;
+  }
+  .inner-form-wrapper {
+    text-align: left;
+  }
+}
+
+@media (min-width: 1280px) {
+  .login-iamge-wrapper {
+    width: 50%;
+  }
+  .inner-form-wrapper {
+    width: 60%;
+    text-align: left;
+  }
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-top: 15px;
+  }
+}
+
+@media (min-width: 1536px) {
 }
