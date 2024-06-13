@@ -37,7 +37,7 @@
 .request-main-containerr {
   background-color: rgb(240, 235, 235);
   margin-top: 30px;
-  height: auto;
+  height: 85%;
   padding: 15px 5%;
   align-items: center;
 }
@@ -92,6 +92,7 @@
 .bin-icon {
   width: 60px;
   height: 40px;
+  cursor: pointer;
 }
 .three-input-wrapper {
   display: flex;
@@ -158,6 +159,7 @@
 @media (min-width: 1280px) {
   .left-side-container {
     display: block;
+    width: 25%;
   }
   .dashboard-container {
     display: flex;
@@ -168,4 +170,7 @@
 }
 
 @media (min-width: 1536px) {
+  .left-side-container {
+    width: 20%;
+  }
 }
