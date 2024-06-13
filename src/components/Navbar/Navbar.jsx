@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
 import MenuIcon from "../../assets/menu.png";
 import { Link } from "react-router-dom";
-const Navbar = () => {
+import SideBar from "../sideBar/SideBar";
+const Navbar = ({ handleOpenSideBar }) => {
   return (
     <div className="nav-container">
       <img src={logo} alt="" className="image-wrapper" />
@@ -31,7 +32,12 @@ const Navbar = () => {
           </Link>
         </ul>
       </section>
-      <img src={MenuIcon} alt="" className="icon-image-nav" />
+      <img
+        src={MenuIcon}
+        alt=""
+        className="icon-image-nav"
+        onClick={() => handleOpenSideBar()}
+      />
     </div>
   );
 };

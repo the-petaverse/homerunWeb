@@ -91,6 +91,9 @@
   }
 }
 @media (min-width: 1280px) {
+  .company-wrapper {
+    width: 500px;
+  }
 }
 @media (min-width: 1536px) {
 }

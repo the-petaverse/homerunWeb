@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import LoginImage from "../../assets/feedback.png";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import "./ContactUs.css";
+import MainSideBar from "../../components/mainSideBar/MainSideBar";
 
 const ContactUs = () => {
+  const [openSideBar, setOpenSideBar] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -20,9 +22,16 @@ const ContactUs = () => {
     navigate("/verify", { replace: true });
   };
   const onSubmit = (data) => console.log(data);
+  const handleOpenSideBar = () => {
+    setOpenSideBar(true);
+  };
+
+  const handleCloseSideBar = () => {
+    setOpenSideBar(false);
+  };
   return (
     <div>
-      <Navbar />
+      <Navbar handleOpenSideBar={handleOpenSideBar} />
       <div className="register-main-container">
         <div className="register-iamge-wrapper">
           <img src={LoginImage} alt="" className="register-image" />
@@ -81,6 +90,11 @@ const ContactUs = () => {
           </form>
         </div>
       </div>
+      <MainSideBar
+        handleOpenSideBar={handleOpenSideBar}
+        handleCloseSideBar={handleCloseSideBar}
+        openSideBar={openSideBar}
+      />
       <Footer />
     </div>
   );

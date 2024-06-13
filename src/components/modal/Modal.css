@@ -8,10 +8,10 @@
 }
 .modalContainer {
   max-width: 1200px;
-  width: 80%;
+  width: 100%;
   position: fixed;
   background-color: #ded9d9;
-  left: 25%;
+  left: 2%;
   top: 15%;
   height: 660px;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
@@ -24,6 +24,8 @@
 .close-modar-wrapper {
   text-align: right;
   margin-bottom: 15px;
+  padding-right: 25px;
+  cursor: pointer;
 }
 .modalRightside {
   width: 800px;
@@ -58,4 +60,54 @@
 .milestone-table tr td {
   background-color: rgb(172, 166, 166);
   padding: 10px;
+}
+
+@media (min-width: 475px) {
+}
+@media (min-width: 640px) {
+  .require-list {
+    margin-top: 5px;
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 768px) {
+  .require-list {
+    margin-top: 5px;
+    max-width: 500px;
+  }
+  .modalLeftside,
+  .modalRightside {
+    padding: 0 20px;
+    text-align: left;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1280px) {
+  .modalContainer {
+    max-width: 1200px;
+    width: 60%;
+    left: 35%;
+  }
+  .modal-overlay {
+    margin-left: 22%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .modal-overlay {
+    max-width: 1800px;
+    width: 80%;
+    margin-left: 19.9%;
+  }
+  .modalContainer {
+    max-width: 1200px;
+    width: 50%;
+    left: 35%;
+  }
 }

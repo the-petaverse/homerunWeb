@@ -111,12 +111,13 @@
 .final-submit-btn-wrapper {
   text-align: center;
   align-items: center;
-  width: 450px;
+  /* width: 350px; */
   background-color: rgb(25, 3, 103);
   padding: 15px;
   margin-top: 10px;
   border-radius: 10px;
   cursor: pointer;
+  margin-top: 25px;
 }
 .final-submit-btn {
   text-align: center;

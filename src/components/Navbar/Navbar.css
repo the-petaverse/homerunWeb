@@ -28,6 +28,7 @@
 .icon-image-nav {
   width: 50px;
   display: block;
+  cursor: pointer;
 }
 .list-wrapper li {
   font-size: 1.2rem;

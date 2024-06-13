@@ -9,7 +9,7 @@ const Modal = ({ open, closeModal }) => {
           <p>X</p>
         </div>
         <div className="inner-modal-wrapper">
-          <div className="modalRightside">
+          {/* <div className="modalRightside">
             <p>
               It is called legalization or authentication or certification. An
               officer of the ministry certifies the genuineness of the document.
@@ -54,7 +54,7 @@ const Modal = ({ open, closeModal }) => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
           <div className="modalLeftside">
             <h3>Cost breakdown</h3>
             <ul className="require-list">

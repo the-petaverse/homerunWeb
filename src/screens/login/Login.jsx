@@ -4,9 +4,13 @@ import { useNavigate, Outlet } from "react-router-dom";
 import "./Login.css";
 import LoginImage from "../../assets/feedback.png";
 import Navbar from "../../components/Navbar/Navbar";
+import SideBar from "../../components/sideBar/SideBar";
+import MainSideBar from "../../components/mainSideBar/MainSideBar";
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [showSideBar, setShowSideBar] = useState(true);
+  const [openSideBar, setOpenSideBar] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -21,9 +25,17 @@ const Login = () => {
     navigate("/dashboard", { replace: true });
   };
 
+  const handleOpenSideBar = () => {
+    setOpenSideBar(true);
+  };
+
+  const handleCloseSideBar = () => {
+    setOpenSideBar(false);
+  };
+
   return (
     <div>
-      <Navbar />
+      <Navbar handleOpenSideBar={handleOpenSideBar} />
       <div className="login-main-container">
         <div className="login-iamge-wrapper">
           <img src={LoginImage} alt="" className="login-image" />
@@ -67,6 +79,11 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <MainSideBar
+        handleOpenSideBar={handleOpenSideBar}
+        handleCloseSideBar={handleCloseSideBar}
+        openSideBar={openSideBar}
+      />
     </div>
   );
 };

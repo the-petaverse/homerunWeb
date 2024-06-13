@@ -4,6 +4,25 @@ import SuccessImage from "../../assets/green.png";
 import { useForm } from "react-hook-form";
 import { PaystackButton } from "react-paystack";
 
+const requestList = [
+  { id: "1", category: "Property" },
+  { id: "2", category: "Documents" },
+  { id: "3", category: "Hospitalities" },
+  { id: "4", category: "Groceries Shopping" },
+  { id: "5", category: "Elderly care" },
+  { id: "6", category: "Postal Service" },
+  { id: "7", category: "Custom Errands" },
+];
+const subRequestData = [
+  { id: "1", categoryId: "1", title: "verification and inspection" },
+  { id: "2", categoryId: "1", title: "Post-purchase renovation" },
+  { id: "3", categoryId: "2", title: "Transcripts" },
+  { id: "4", categoryId: "2", title: "official documents" },
+  { id: "5", categoryId: "3", title: "official documents" },
+  { id: "6", categoryId: "4", title: "official documents" },
+  { id: "7", categoryId: "4", title: "official documents" },
+];
+
 const countries = [
   { id: "1", title: "Nigeria" },
   { id: "2", title: "USA" },
@@ -31,6 +50,7 @@ const NewRequest = ({
   const [country, setCountry] = useState([]);
   const [myState, setMyState] = useState([]);
   const [citiesList, setCitiesList] = useState([]);
+  const [subRequestList, setSubRequestList] = useState([]);
 
   const {
     register,
@@ -41,6 +61,7 @@ const NewRequest = ({
 
   const watchCountry = watch("country");
   const watchState = watch("stateName");
+  const watchRequest = watch("request_title");
 
   // Payment implementation
   const componentProps = {
@@ -95,6 +116,12 @@ const NewRequest = ({
     }
   };
 
+  const handleSubRequests = () => {
+    const filteredSubRequest = subRequestData.filter(
+      (subData) => subData.categoryId === watchRequest
+    );
+    setSubRequestList(filteredSubRequest);
+  };
   const handleState = () => {
     const filteredStates = staties.filter(
       (statesData) => statesData.countryid === watchCountry
@@ -102,7 +129,6 @@ const NewRequest = ({
     setMyState(filteredStates);
   };
   const handleCities = () => {
-    console.log(watchState);
     const filteredCities = cities.filter(
       (citiesData) => citiesData.stateId === watchState
     );
@@ -112,7 +138,8 @@ const NewRequest = ({
   useEffect(() => {
     handleState();
     handleCities();
-  }, [watchCountry, watchState]);
+    handleSubRequests();
+  }, [watchCountry, watchState, watchRequest]);
 
   return (
     <div>
@@ -136,17 +163,54 @@ const NewRequest = ({
                 }}
               >
                 <label>
-                  <input
+                  <select
                     type="text"
                     className="register-main-text-input"
-                    placeholder="Request Title (Passport Collection)"
+                    placeholder="Request Title"
                     {...register("request_title", {
                       required: "Title is required",
                     })}
-                  />
+                  >
+                    <option value="0">Select Request</option>
+                    {requestList && requestList !== undefined
+                      ? requestList.map((requestData, index) => {
+                          return (
+                            <option value={requestData.id} key={index}>
+                              {requestData.category}
+                            </option>
+                          );
+                        })
+                      : "No request selected"}
+                  </select>
                   {errors.request_title && (
                     <p className="input-error-message">
                       {errors.request_title.message}
+                    </p>
+                  )}
+                </label>
+                <label>
+                  <select
+                    type="text"
+                    className="register-main-text-input"
+                    placeholder="Sub Request"
+                    {...register("sub_request", {
+                      required: "Sub Request is required",
+                    })}
+                  >
+                    <option value="0">Select Sub-request</option>
+                    {subRequestList && subRequestList !== undefined
+                      ? subRequestList.map((subReqData, index) => {
+                          return (
+                            <option value={subReqData.id} key={index}>
+                              {subReqData.title}
+                            </option>
+                          );
+                        })
+                      : "No request selected"}
+                  </select>
+                  {errors.request_title && (
+                    <p className="input-error-message">
+                      {errors.sub_request.message}
                     </p>
                   )}
                 </label>

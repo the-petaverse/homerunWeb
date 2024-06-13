@@ -4,6 +4,7 @@ import LoginImage from "../../assets/feedback.png";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import "./Register.css";
+import MainSideBar from "../../components/mainSideBar/MainSideBar";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -25,6 +26,7 @@ const cities = [
 
 const Register = () => {
   const navigate = useNavigate();
+  const [openSideBar, setOpenSideBar] = useState(false);
   const [formStep, setFormStep] = useState(0);
   const [country, setCountry] = useState([]);
   const [myState, setMyState] = useState([]);
@@ -43,6 +45,13 @@ const Register = () => {
   const onSubmit = (data) => {
     console.log(data);
     navigate("/verify", { replace: true });
+  };
+  const handleOpenSideBar = () => {
+    setOpenSideBar(true);
+  };
+
+  const handleCloseSideBar = () => {
+    setOpenSideBar(false);
   };
 
   const handleCompleteForm = () => {
@@ -82,7 +91,6 @@ const Register = () => {
     setMyState(filteredStates);
   };
   const handleCities = () => {
-    console.log(watchState);
     const filteredCities = cities.filter(
       (citiesData) => citiesData.stateId === watchState
     );
@@ -95,7 +103,7 @@ const Register = () => {
   }, [watchCountry, watchState]);
   return (
     <div>
-      <Navbar />
+      <Navbar handleOpenSideBar={handleOpenSideBar} />
       <div className="register-main-container">
         <div className="register-iamge-wrapper">
           <img src={LoginImage} alt="" className="register-image" />
@@ -276,6 +284,11 @@ const Register = () => {
           </form>
         </div>
       </div>
+      <MainSideBar
+        handleOpenSideBar={handleOpenSideBar}
+        handleCloseSideBar={handleCloseSideBar}
+        openSideBar={openSideBar}
+      />
     </div>
   );
 };

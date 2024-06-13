@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Services.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import AboutImg from "../../assets/about.png";
 import EverythinYouNeed from "../../components/everything/EverythinYouNeed";
+import MainSideBar from "../../components/mainSideBar/MainSideBar";
 
 const Services = () => {
+  const [openSideBar, setOpenSideBar] = useState(false);
+  const handleOpenSideBar = () => {
+    setOpenSideBar(true);
+  };
+
+  const handleCloseSideBar = () => {
+    setOpenSideBar(false);
+  };
   return (
     <div>
-      <Navbar />
+      <Navbar handleOpenSideBar={handleOpenSideBar} />
       {/* <div className="services-main-container">
         <div className="header-title-wrapper">
           <h2>Why we are the preffered</h2>
@@ -72,6 +81,11 @@ const Services = () => {
           </div>
         </div>
       </div>
+      <MainSideBar
+        handleOpenSideBar={handleOpenSideBar}
+        handleCloseSideBar={handleCloseSideBar}
+        openSideBar={openSideBar}
+      />
       <Footer />
     </div>
   );

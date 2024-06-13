@@ -14,7 +14,7 @@ const Footer = () => {
               <li>Contact</li>
             </ul>
           </div>
-          <div className="company-wrapper">
+          <div className="company-wrapper ">
             <ul>
               <li>About</li>
               <li>Services</li>
