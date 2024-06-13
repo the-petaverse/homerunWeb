@@ -1,5 +1,5 @@
 .dashboard-container {
-  display: flex;
+  /* display: flex; */
 }
 .left-side-container {
   padding: 20px 4%;
@@ -8,11 +8,11 @@
   height: 100vh;
   color: #fff;
   text-align: center;
+  display: none;
 }
 .right-side-container {
   padding: 20px 0;
-  width: 80%;
-  height: 100vh;
+  width: 100%;
 }
 .right-side-header {
   display: flex;
@@ -37,18 +37,23 @@
 .request-main-containerr {
   background-color: rgb(240, 235, 235);
   margin-top: 30px;
-  height: 85.5vh;
-  padding: 15px 25px;
+  height: auto;
+  padding: 15px 5%;
+  align-items: center;
 }
 .request-wrapper {
   border: 0.5px solid rgb(206, 203, 203);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  height: 65px;
+  height: auto;
   align-items: center;
   padding: 15px 20px;
   border-radius: 8px;
   margin-top: 15px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .avarta-wrapper {
@@ -58,6 +63,10 @@
 }
 .title-request {
   font-size: 1.4em;
+  margin: 10px 0;
+}
+.request-status {
+  margin: 20px 0;
 }
 .inner-menu-list {
   background-color: rgb(25, 3, 103);
@@ -76,8 +85,9 @@
   text-align: center;
 }
 .icon-image {
-  width: 50px;
+  width: 55px;
   height: 50px;
+  cursor: pointer;
 }
 .bin-icon {
   width: 60px;
@@ -116,4 +126,46 @@
 }
 .checkbox-label input {
   margin-right: 10px;
+}
+
+@media (min-width: 475px) {
+  .request-wrapper {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media (min-width: 640px) {
+  .request-wrapper {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .request-wrapper {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1280px) {
+  .left-side-container {
+    display: block;
+  }
+  .dashboard-container {
+    display: flex;
+  }
+  .icon-image {
+    /* display: none; */
+  }
+}
+
+@media (min-width: 1536px) {
 }

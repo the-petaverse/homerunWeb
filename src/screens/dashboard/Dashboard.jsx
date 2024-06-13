@@ -11,11 +11,13 @@ import ResetPassword from "../../components/resetPassword/ResetPassword";
 import NewRequest from "../../components/newRequest/NewRequest";
 import AllRequest from "../../components/allRequest/AllRequest";
 import VerificationCode from "../../components/verificationCode/VerificationCode";
+import SideBar from "../../components/sideBar/SideBar";
 
 const Dashboard = () => {
   const [openModal, setModalOpen] = useState(false);
   const [formStage, setFormStage] = useState(0);
   const [showDashboard, setShowDashboard] = useState(1);
+  const [openSideBar, setOpenSideBar] = useState(false);
 
   const navigate = useNavigate();
 
@@ -29,6 +31,13 @@ const Dashboard = () => {
 
   const handleCloseModal = () => {
     setModalOpen(false);
+  };
+  const handleOpenSideBar = () => {
+    setOpenSideBar(true);
+  };
+
+  const handleCloseSideBar = () => {
+    setOpenSideBar(false);
   };
 
   return (
@@ -81,7 +90,12 @@ const Dashboard = () => {
       <div className="right-side-container">
         <div className="right-side-header">
           <h2>User's Dashboard</h2>
-          <img src={MenuIcon} alt="" className="icon-image" />
+          <img
+            src={MenuIcon}
+            alt=""
+            className="icon-image"
+            onClick={handleOpenSideBar}
+          />
         </div>
         <div className="request-main-containerr">
           <div>{showDashboard === 1 && <AllRequest />}</div>
@@ -122,6 +136,14 @@ const Dashboard = () => {
           <div>{showDashboard === 5 && <VerificationCode />}</div>
         </div>
       </div>
+      <SideBar
+        setShowDashboard={setShowDashboard}
+        handleShowDashboard={handleShowDashboard}
+        handleLogout={handleLogout}
+        setFormStage={setFormStage}
+        openSideBar={openSideBar}
+        handleCloseSideBar={handleCloseSideBar}
+      />
       <Modal open={openModal} closeModal={handleCloseModal} />
     </div>
   );

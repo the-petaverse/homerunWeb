@@ -12,7 +12,7 @@ const AllRequest = () => {
         <p className="details-request">
           Request details to go insiode here Request details to go insiode here
         </p>
-        <p>Request status</p>
+        <p className="request-status">Request status</p>
         <img src={BinIcon} alt="" className="bin-icon" />
       </div>
       <div className="request-wrapper">
@@ -20,7 +20,7 @@ const AllRequest = () => {
         <p className="details-request">
           Request details to go insiode here Request details to go insiode here
         </p>
-        <p>Request status</p>
+        <p className="request-status">Request status</p>
         <img src={BinIcon} alt="" className="bin-icon" />
       </div>
       <div className="request-wrapper">
@@ -28,7 +28,7 @@ const AllRequest = () => {
         <p className="details-request">
           Request details to go insiode here Request details to go insiode here
         </p>
-        <p>Request status</p>
+        <p className="request-status">Request status</p>
         <img src={BinIcon} alt="" className="bin-icon" />
       </div>
       <div className="request-wrapper">
@@ -36,7 +36,7 @@ const AllRequest = () => {
         <p className="details-request">
           Request details to go insiode here Request details to go insiode here
         </p>
-        <p>Request status</p>
+        <p className="request-status">Request status</p>
         <img src={BinIcon} alt="" className="bin-icon" />
       </div>
     </div>
