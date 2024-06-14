@@ -64,7 +64,7 @@
     font-size: 1.2rem;
   }
   .menu-list-wrapper {
-    width: 60%;
+    width: 50%;
   }
   .list-wrapper {
     width: 25%;
@@ -79,7 +79,7 @@
     font-size: 1.5rem;
   }
   .menu-list-wrapper {
-    width: 60%;
+    width: 50%;
   }
   .list-wrapper {
     width: 25%;
@@ -91,7 +91,7 @@
 
 @media (min-width: 1536px) {
   .menu-list-wrapper {
-    width: 50%;
+    width: 40%;
   }
   .list-wrapper {
     width: 20%;

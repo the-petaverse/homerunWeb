@@ -1,14 +1,17 @@
 import React from "react";
 import HeroPage from "../../components/heropage/HeroPage";
 import Testimonial from "../../components/testimonial/Testimonial";
-import WhyHomeRun from "../../components/whyHomeRun/WhyHomeRun";
+import Services from "../services/Services";
+import ClientTestimonials from "../../components/clientTestimonials/ClientTestimonials";
 
 const Home = () => {
   return (
     <>
       <HeroPage />
       <Testimonial />
-      <WhyHomeRun />
+      <Services />
+      <ClientTestimonials />
+      {/* <WhyHomeRun /> */}
     </>
   );
 };

@@ -27,13 +27,13 @@ const MainSideBar = ({ handleCloseSideBar, openSideBar }) => {
             >
               <li>Home</li>
             </Link>
-            <Link
+            {/* <Link
               to="/services"
               className="inner-menu-list"
               onClick={handleCloseSideBar}
             >
               <li>Services</li>
-            </Link>
+            </Link> */}
             <Link
               to="/about"
               className="inner-menu-list"

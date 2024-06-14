@@ -17,7 +17,7 @@ const Services = () => {
   };
   return (
     <div>
-      <Navbar handleOpenSideBar={handleOpenSideBar} />
+      {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
       {/* <div className="services-main-container">
         <div className="header-title-wrapper">
           <h2>Why we are the preffered</h2>
@@ -30,9 +30,18 @@ const Services = () => {
           <img src={AboutImg} alt="" className="service-image" />
         </div>
       </div> */}
-      <EverythinYouNeed />
+
       <div className="main-service-card-container">
-        <h2>Our services</h2>
+        <div className="services-summary-wrapper">
+          <h2>Our services</h2>
+          <p>
+            Share your services or product offerings here. Present them as
+            simple headers that can lead out to their pages where you can
+            expound on them further. You can also use this space for other
+            purposes where the information is best presented as mere teasers to
+            other individualized pages.
+          </p>
+        </div>
         <div className="service-card-holder">
           <div className="inner-card-wrapper">
             <div>
@@ -86,7 +95,8 @@ const Services = () => {
         handleCloseSideBar={handleCloseSideBar}
         openSideBar={openSideBar}
       />
-      <Footer />
+      {/* <Footer /> */}
+      <EverythinYouNeed />
     </div>
   );
 };
