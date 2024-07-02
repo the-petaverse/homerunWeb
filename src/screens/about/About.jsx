@@ -18,36 +18,52 @@ const About = () => {
       <Navbar handleOpenSideBar={handleOpenSideBar} />
       <div className="about-header-wrapper">
         <div className="about-details-wrapper">
-          <h2 className="about-header">About Us</h2>
-          <br />
+          <h2 className="about-header">
+            Our goal is to redifined errand for africans in diaspora
+          </h2>
+
           <p>
-            Homerun is a mobile application developed to serve the needs of
-            diasporians and busy local clients who need tasks completed
-            efficiently and sustainably. homerun mobile application is the
-            reliable, and efficient partner that bridge the gap between home and
-            abroad, to many Nigerians resident abroad and to busy professionals
-            resident in Nigeria.
+            Homerun is a web and mobile application developed to serve the needs
+            of diasporians and busy local clients who need tasks completed
+            efficiently and sustainably.
           </p>
-          <br />
+          <div className="about-btn-container">
+            <button className="about-btn">Let's talk</button>
+          </div>
+        </div>
+        <div className="about-image-wrapper">
+          {/* <img src={AboutImg} alt="" className="about-img" /> */}
+        </div>
+      </div>
+      <div className="statistic-wrapper">
+        <div className="statistic-content-wrapper">
           <p>
-            Data recently released by the Immigration Department indicates that
-            passport issuance increased by 38% in 2021 mostly as a result of
-            more Nigerians seeking to relocate from the country. With the
-            prevalence of migration, now commonly termed ‘japa’ comes the need
-            for abroad based Nigerians to have a trusted partner through whom
-            they can get tasks done back home.
-          </p>
-          <br />
-          <p>
-            Our services range from property verification and inspection before
-            and after purchase, obtaining transcripts and official documents to
-            grocery shopping, postal services, house sitting, bill payments, and
-            other personal tasks that clients cannot manage due to their busy
-            schedules or geographical distance.
+            Homerun is a web and mobile application developed to serve the needs
+            of diasporians and busy local clients who need tasks completed
+            efficiently and sustainably.
           </p>
         </div>
-        <div>
-          <img src={AboutImg} alt="" className="about-img" />
+        <div className="statistic-boxes-wrapper">
+          <div className="stat-inner-box-container">
+            <div className="stat-box">
+              <h3>300k</h3>
+              <p>busy local clients</p>
+            </div>
+            <div className="stat-box">
+              <h3>300k</h3>
+              <p>busy local clients</p>
+            </div>
+          </div>
+          <div className="stat-inner-box-container">
+            <div className="stat-box">
+              <h3>300k</h3>
+              <p>busy local clients</p>
+            </div>
+            <div className="stat-box">
+              <h3>300k</h3>
+              <p>busy local clients</p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="our-team-container">
@@ -86,22 +102,6 @@ const About = () => {
           </p>
         </div>
       </div>
-      {/* <div className="core-values-container">
-        <div className="core-card-wrapper">
-          <div className="core-card">
-            <img src={AboutImg} alt="" className="team-img" />
-            <h4 className="team-name">Michael Oladele</h4>
-          </div>
-          <div className="core-card">
-            <img src={AboutImg} alt="" className="team-img" />
-            <h4 className="team-name">Michael Oladele</h4>
-          </div>
-          <div className="core-card">
-            <img src={AboutImg} alt="" className="team-img" />
-            <h4 className="team-name">Michael Oladele</h4>
-          </div>
-        </div>
-      </div> */}
       <MainSideBar
         handleOpenSideBar={handleOpenSideBar}
         handleCloseSideBar={handleCloseSideBar}

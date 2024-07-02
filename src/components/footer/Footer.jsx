@@ -6,21 +6,8 @@ const Footer = () => {
     <div className="footer-main-container">
       <div className="main-level-wrapper">
         <div className="footer-menu-wrapper">
-          <div className="company-wrapper">
-            <ul>
-              <li>About</li>
-              <li>Services</li>
-              <li>Team</li>
-              <li>Contact</li>
-            </ul>
-          </div>
           <div className="company-wrapper ">
-            <ul>
-              <li>About</li>
-              <li>Services</li>
-              <li>Team</li>
-              <li>Contact</li>
-            </ul>
+            <img src={Logo} alt="logo" className="footer-logo" />
           </div>
         </div>
         <div className="footer-address">

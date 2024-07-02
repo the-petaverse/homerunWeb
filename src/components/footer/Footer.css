@@ -5,8 +5,7 @@
   background-color: rgb(229, 229, 232);
   padding: 45px 0;
 }
-.logo-wrapper {
-}
+
 .footer-menu-wrapper {
   display: flex;
   justify-content: space-between;
@@ -15,22 +14,28 @@
   padding: 0 5%;
 }
 .footer-address {
-  width: 100%;
+  width: 60%;
   text-align: left;
   padding: 0 5%;
   margin-bottom: 15px;
+}
+.footer-address p {
+  font-size: 1.5em;
+  font-family: "Josefin Slab", serif;
+  font-weight: 450;
 }
 .address-wrapper {
   width: 35%;
 }
 .footer-logo {
-  width: 150px;
+  width: 180px;
 }
 .list-header {
   font-size: 1.6em;
   margin-bottom: 15px;
   text-align: left;
 }
+
 .company-wrapper ul,
 .address-wrapper ul {
   list-style: none;
