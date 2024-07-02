@@ -6,3 +6,13 @@
 .main-side-wrapper {
   margin-top: 60px;
 }
+
+.blink-text {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  10% {
+    opacity: 0;
+  }
+}

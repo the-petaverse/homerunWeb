@@ -14,6 +14,9 @@ import PrivateRoute from "./screens/private/PrivateRoutes.jsx";
 // import { Provider } from "react-redux";
 import Verify from "./screens/verification/Verify.jsx";
 import ContactUs from "./screens/contactUs/ContactUs.jsx";
+import ErrandLists from "./screens/errandList/ErrandLists.jsx";
+import ServiceDetailPage from "./screens/serviceDetailPage/ServiceDetailPage.jsx";
+import CategoriesDetailPage from "./screens/categoriesDetailPage/CategoriesDetailPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +29,16 @@ const router = createBrowserRouter([
     element: <About />,
   },
   {
-    path: "/services",
-    element: <Services />,
+    path: "/requests-list",
+    element: <ErrandLists />,
+  },
+  {
+    path: "/request/:id",
+    element: <ServiceDetailPage />,
+  },
+  {
+    path: "/request-category/:category",
+    element: <CategoriesDetailPage />,
   },
   {
     path: "/contact",

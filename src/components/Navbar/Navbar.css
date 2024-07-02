@@ -10,6 +10,9 @@
   width: 65dvw;
   justify-content: space-between;
 }
+.blink-text {
+  animation: blinker 1s linear infinite;
+}
 .image-wrapper {
   width: 100px;
 }
@@ -64,7 +67,7 @@
     font-size: 1.2rem;
   }
   .menu-list-wrapper {
-    width: 50%;
+    width: 70%;
   }
   .list-wrapper {
     width: 25%;
@@ -79,7 +82,7 @@
     font-size: 1.5rem;
   }
   .menu-list-wrapper {
-    width: 50%;
+    width: 70%;
   }
   .list-wrapper {
     width: 25%;
@@ -91,7 +94,7 @@
 
 @media (min-width: 1536px) {
   .menu-list-wrapper {
-    width: 40%;
+    width: 50%;
   }
   .list-wrapper {
     width: 20%;

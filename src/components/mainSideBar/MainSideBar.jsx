@@ -27,13 +27,9 @@ const MainSideBar = ({ handleCloseSideBar, openSideBar }) => {
             >
               <li>Home</li>
             </Link>
-            {/* <Link
-              to="/services"
-              className="inner-menu-list"
-              onClick={handleCloseSideBar}
-            >
-              <li>Services</li>
-            </Link> */}
+            <Link to="/requests-list" className="inner-menu-list blink-text">
+              <li>Post a Request</li>
+            </Link>
             <Link
               to="/about"
               className="inner-menu-list"

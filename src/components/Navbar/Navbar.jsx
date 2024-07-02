@@ -13,9 +13,9 @@ const Navbar = ({ handleOpenSideBar }) => {
           <Link to="/" className="nav-links">
             <li>Home</li>
           </Link>
-          {/* <Link to="/services" className="nav-links">
-            <li>Services</li>
-          </Link> */}
+          <Link to="/requests-list" className="nav-links blink-text">
+            <li>Post a Request</li>
+          </Link>
           <Link to="/about" className="nav-links">
             <li>About us</li>
           </Link>
