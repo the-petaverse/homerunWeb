@@ -118,17 +118,8 @@ const Services = () => {
         </div>
       </div> */}
 
+      <EverythinYouNeed />
       <div className="main-service-card-container">
-        <div className="services-summary-wrapper">
-          <h2>Our services</h2>
-          <p>
-            Share your services or product offerings here. Present them as
-            simple headers that can lead out to their pages where you can
-            expound on them further. You can also use this space for other
-            purposes where the information is best presented as mere teasers to
-            other individualized pages.
-          </p>
-        </div>
         <div className="service-card-holder">
           {servicesList.map((serviceData, index) => {
             return (
