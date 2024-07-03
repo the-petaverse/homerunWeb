@@ -39,8 +39,9 @@
   margin-top: 15px;
   border-radius: 10px;
   font-family: "Josefin Slab", serif;
-  font-size: 1.3em;
-  font-weight: lighter;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: black;
   padding: 0 15px;
   border: solid 0.5px rgb(218, 206, 206);
 }
