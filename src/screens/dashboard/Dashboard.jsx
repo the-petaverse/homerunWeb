@@ -56,15 +56,16 @@ const Dashboard = () => {
             >
               <li>All request</li>
             </button>
-            <button
+            <Link
+              to="/requests-list"
               className="inner-menu-list"
-              onClick={() => {
-                handleShowDashboard(2);
-                setFormStage(0);
-              }}
+              // onClick={() => {
+              //   handleShowDashboard(2);
+              //   setFormStage(0);
+              // }}
             >
               <li>New Request</li>
-            </button>
+            </Link>
             <button
               className="inner-menu-list"
               onClick={() => handleShowDashboard(3)}

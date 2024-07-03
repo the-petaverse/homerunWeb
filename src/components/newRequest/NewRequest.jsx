@@ -1,8 +1,42 @@
 import React, { useEffect, useRef, useState } from "react";
-import LoginImage from "../../assets/feedback.png";
 import SuccessImage from "../../assets/green.png";
 import { useForm } from "react-hook-form";
 import { PaystackButton } from "react-paystack";
+import "./NewRequest.css";
+import { useNavigate, useHistory } from "react-router-dom";
+
+const accordionData = [
+  {
+    id: "1",
+    title: "Requirements",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Eveniet velit sequi similique consequuntur voluptatum quas cumnisi expedita perferendis debitis. Enim voluptas quaerat consequuntur reiciendis perspiciatis repellendus excepturi quidem voluptatem.",
+  },
+  {
+    id: "2",
+    title: "NOTE",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Eveniet velit sequi similique consequuntur voluptatum quas cumnisi expedita perferendis debitis. Enim voluptas quaerat consequuntur reiciendis perspiciatis repellendus excepturi quidem voluptatem.",
+  },
+  {
+    id: "3",
+    title: "Processes",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Eveniet velit sequi similique consequuntur voluptatum quas cumnisi expedita perferendis debitis. Enim voluptas quaerat consequuntur reiciendis perspiciatis repellendus excepturi quidem voluptatem.",
+  },
+  {
+    id: "4",
+    title: "Cost Break down (Estimates)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Eveniet velit sequi similique consequuntur voluptatum quas cumnisi expedita perferendis debitis. Enim voluptas quaerat consequuntur reiciendis perspiciatis repellendus excepturi quidem voluptatem.",
+  },
+  {
+    id: "5",
+    title: "Payment milestones",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Eveniet velit sequi similique consequuntur voluptatum quas cumnisi expedita perferendis debitis. Enim voluptas quaerat consequuntur reiciendis perspiciatis repellendus excepturi quidem voluptatem.",
+  },
+];
 
 const requestList = [
   { id: "1", category: "Property" },
@@ -47,10 +81,11 @@ const NewRequest = ({
   setShowDashboard,
   setModalOpen,
 }) => {
-  const [country, setCountry] = useState([]);
   const [myState, setMyState] = useState([]);
   const [citiesList, setCitiesList] = useState([]);
   const [subRequestList, setSubRequestList] = useState([]);
+  const [openAccordion, setOpenAccordion] = useState(1);
+  const navigate = useHistory();
 
   const {
     register,
@@ -63,6 +98,9 @@ const NewRequest = ({
   const watchState = watch("stateName");
   const watchRequest = watch("request_title");
 
+  const openCloseAccordion = (data) => {
+    setOpenAccordion(parseInt(data));
+  };
   // Payment implementation
   const componentProps = {
     email: "test@example.com",
@@ -73,7 +111,11 @@ const NewRequest = ({
     },
     publicKey: "pk_test_727e5faf342cc97164c860a5e08e7920dcae6c78",
     text: "Pay Now",
-    onSuccess: () => setShowDashboard(1),
+    onSuccess: (data) => {
+      if (data.status === "success") {
+        navigate.replace("/dashboard");
+      }
+    },
     // alert("Thanks for doing business with us! Come back soon!!"),
     onClose: () => alert("Wait! Don't leave :("),
   };
@@ -148,7 +190,26 @@ const NewRequest = ({
       </div>
       <div className="register-main-container">
         <div className="register-iamge-wrapper">
-          <img src={LoginImage} alt="" className="register-image" />
+          {accordionData &&
+            accordionData.map((accordData, index) => {
+              return (
+                <>
+                  <div className="accordion-main-container">
+                    <div className="accordion-title">
+                      <h4>{accordData.title}</h4>
+                      <h4 onClick={() => openCloseAccordion(accordData.id)}>
+                        +
+                      </h4>
+                    </div>
+                    {openAccordion === parseInt(accordData.id) && (
+                      <div className="accordion-content">
+                        <p>{accordData.description}</p>
+                      </div>
+                    )}
+                  </div>
+                </>
+              );
+            })}
         </div>
         <div className="register-inner-form-wrapper new-request-form-side">
           {formStage < 1 && <p>We will be glad to have you onboard</p>}
@@ -358,7 +419,7 @@ const NewRequest = ({
                         {...register("terms", {
                           required: "Please accept the terms & Condition",
                         })}
-                        onClick={() => setModalOpen(true)}
+                        // onClick={() => setModalOpen(true)}
                       />
                       I agree to Terms & Conditions
                       {errors.terms && (

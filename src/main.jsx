@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     element: <ErrandLists />,
   },
   {
-    path: "/request/:id",
+    path: "/sub-category/:subcategory",
     element: <ServiceDetailPage />,
   },
   {

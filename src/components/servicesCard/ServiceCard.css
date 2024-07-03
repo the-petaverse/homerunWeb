@@ -1,15 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
-.category-detail-main-container {
-  padding: 15px 5%;
-  margin-bottom: 50px;
-  height: 80dvh;
-}
-.category-header-wrapper {
-  text-align: center;
-  margin-bottom: 25px;
-}
+
 .cat-card-parent-wrapper {
   display: flex;
   flex-direction: column;

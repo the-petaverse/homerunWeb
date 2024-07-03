@@ -47,8 +47,9 @@ const ServicesSummary = () => {
               <Link
                 to={"/request-category/" + serviceData.category}
                 className="inner-card-wrapper"
+                key={index}
               >
-                <div key={index}>
+                <div>
                   <div>
                     <img src={AboutImg} alt="" className="service-card-image" />
                   </div>
