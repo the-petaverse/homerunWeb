@@ -3,7 +3,7 @@ import SuccessImage from "../../assets/green.png";
 import { useForm } from "react-hook-form";
 import { PaystackButton } from "react-paystack";
 import "./NewRequest.css";
-import { useNavigate, useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const accordionData = [
   {
@@ -85,7 +85,7 @@ const NewRequest = ({
   const [citiesList, setCitiesList] = useState([]);
   const [subRequestList, setSubRequestList] = useState([]);
   const [openAccordion, setOpenAccordion] = useState(1);
-  const navigate = useHistory();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -113,7 +113,7 @@ const NewRequest = ({
     text: "Pay Now",
     onSuccess: (data) => {
       if (data.status === "success") {
-        navigate.replace("/dashboard");
+        navigate("/dashboard", { replace: true });
       }
     },
     // alert("Thanks for doing business with us! Come back soon!!"),
