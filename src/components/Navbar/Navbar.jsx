@@ -3,8 +3,15 @@ import "./Navbar.css";
 import logo from "../../assets/logo.png";
 import MenuIcon from "../../assets/menu.png";
 import { Link } from "react-router-dom";
-import SideBar from "../sideBar/SideBar";
+import Cookies from "universal-cookie";
 const Navbar = ({ handleOpenSideBar }) => {
+  const cookies = new Cookies();
+  const receivedCookies = cookies.get("auth_token");
+
+  const handleLogout = () => {
+    cookies.remove("auth_token");
+  };
+
   return (
     <div className="nav-container">
       <img src={logo} alt="" className="image-wrapper" />
@@ -24,11 +31,20 @@ const Navbar = ({ handleOpenSideBar }) => {
           </Link>
         </ul>
         <ul className="list-wrapper">
-          <Link to="/login" className="nav-links">
-            <li>Login</li>
-          </Link>
+          {!receivedCookies && (
+            <Link to="/login" className="nav-links">
+              <li>Login</li>
+            </Link>
+          )}
+
+          {receivedCookies && (
+            <Link to="/login" className="nav-links" onClick={handleLogout}>
+              <li> Logout</li>
+            </Link>
+          )}
+
           <Link to="/register" className="nav-links">
-            <li>Register</li>
+            {!receivedCookies && <li>Register</li>}
           </Link>
         </ul>
       </section>
