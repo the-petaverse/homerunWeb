@@ -4,9 +4,13 @@ import { useNavigate, Outlet } from "react-router-dom";
 import "./Login.css";
 import LoginImage from "../../assets/feedback.png";
 import Navbar from "../../components/Navbar/Navbar";
+import SideBar from "../../components/sideBar/SideBar";
+import MainSideBar from "../../components/mainSideBar/MainSideBar";
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [showSideBar, setShowSideBar] = useState(true);
+  const [openSideBar, setOpenSideBar] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -18,16 +22,20 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-  };
-
-  const handleLogin = () => {
-    // Perform authentication logic here
-    // setIsLoggedIn(true);
     navigate("/dashboard", { replace: true });
   };
+
+  const handleOpenSideBar = () => {
+    setOpenSideBar(true);
+  };
+
+  const handleCloseSideBar = () => {
+    setOpenSideBar(false);
+  };
+
   return (
     <div>
-      <Navbar />
+      <Navbar handleOpenSideBar={handleOpenSideBar} />
       <div className="login-main-container">
         <div className="login-iamge-wrapper">
           <img src={LoginImage} alt="" className="login-image" />
@@ -43,25 +51,39 @@ const Login = () => {
                 type="text"
                 placeholder="example@example.com"
                 className="main-text-input"
-                {...register("email")}
+                style={{ borderColor: errors.email ? "red" : "blue" }}
+                {...register("email", {
+                  required: "Email Address is required",
+                })}
+                aria-invalid={errors.email ? "true" : "false"}
               />
+              {errors.email && (
+                <p className="input-error-message">{errors.email.message}</p>
+              )}
             </label>
             <label>
               Password:
               <input
                 type="password"
+                style={{ borderColor: errors.password ? "red" : "blue" }}
                 className="main-text-input"
-                {...register("password")}
+                {...register("password", {
+                  required: "password is required",
+                })}
               />
+              {errors.password && (
+                <p className="input-error-message">{errors.password.message}</p>
+              )}
             </label>
-            <input
-              type="submit"
-              className="main-form-btn"
-              onClick={handleLogin}
-            />
+            <input type="submit" className="main-form-btn" />
           </form>
         </div>
       </div>
+      <MainSideBar
+        handleOpenSideBar={handleOpenSideBar}
+        handleCloseSideBar={handleCloseSideBar}
+        openSideBar={openSideBar}
+      />
     </div>
   );
 };

@@ -1,13 +1,24 @@
 .evrything-container {
   padding: 20px 5%;
   text-align: center;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   margin-top: 20px;
 }
 .everything-header-wrapper {
   padding: 20px 20%;
-  font-size: 1.3em;
+}
+
+.everything-header-wrapper h2 {
+  font-size: 1.5em;
   line-height: 1.8em;
+}
+.video-main-container {
+  width: 100%;
+  height: auto;
+}
+.vedio-player-wrapper {
+  width: 100%;
+  height: auto;
 }
 .everything-icons-wrapper {
   display: flex;
@@ -15,4 +26,33 @@
 }
 .howitworks-wrapper {
   margin-top: 25px;
+}
+
+@media (min-width: 475px) {
+}
+@media (min-width: 640px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+  .everything-header-wrapper h2 {
+    font-size: 2em;
+    line-height: 1.8em;
+  }
+}
+
+@media (min-width: 1280px) {
+  .everything-header-wrapper h2 {
+    font-size: 2.5em;
+    line-height: 1.8em;
+  }
+  .vedio-player-wrapper {
+    width: 65%;
+    height: auto;
+  }
+}
+
+@media (min-width: 1536px) {
 }

@@ -4,18 +4,25 @@
   background-color: rgb(241, 238, 238);
   padding: 45px 5%;
   display: flex;
+  flex-direction: column-reverse;
   justify-content: space-between;
   align-items: center;
+  height: auto;
 }
 .users-rate-wrapper {
-  width: 55%;
+  width: 100%;
+  /* 55% */
   padding: 0 5%;
+  height: auto;
 }
 .happy-user-image {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
 }
 .users-rate-wrapper h3 {
-  font-size: 3em;
+  font-size: 1.8em;
+  /* 3em */
   margin-bottom: 35px;
   line-height: 30px;
 }
@@ -37,4 +44,49 @@
   height: 40px;
   background-color: rgb(241, 238, 238);
   cursor: pointer;
+}
+.another-color-for-wrapper {
+  background-color: rgb(241, 238, 238);
+}
+
+@media (min-width: 475px) {
+}
+@media (min-width: 640px) {
+  .users-rate-wrapper h3 {
+    font-size: 2.2em;
+    /* 3em */
+  }
+}
+
+@media (min-width: 768px) {
+  .users-rate-wrapper h3 {
+    font-size: 2.5em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .users-rate-wrapper h3 {
+    font-size: 2em;
+    /* 3em */
+  }
+  .testimonia-main-container {
+    flex-direction: row;
+  }
+  .users-rate-wrapper {
+    width: 55%;
+    /* 55% */
+    padding: 0 5%;
+    height: auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .users-rate-wrapper h3 {
+    font-size: 3em;
+    line-height: 50px;
+    /* 3em */
+  }
+}
+
+@media (min-width: 1536px) {
 }

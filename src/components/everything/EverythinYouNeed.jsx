@@ -8,12 +8,11 @@ const EverythinYouNeed = () => {
     <div className="evrything-container">
       <div className="everything-header-wrapper">
         <h2>
-          Everything you need with ease. Arrange in order: Passport collection,
-          Clearing of goods, Other errands
+          Everything you need you need to know on how to use our platforms.
         </h2>
       </div>
-      <div>
-        <video width="950" height="500" controls>
+      <div className="video-main-container">
+        <video className="vedio-player-wrapper" controls>
           <source src="./Videos/video1.mp4" type="video/mp4" />
         </video>
       </div>

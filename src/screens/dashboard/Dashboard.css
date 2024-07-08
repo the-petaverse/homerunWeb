@@ -1,5 +1,5 @@
 .dashboard-container {
-  display: flex;
+  /* display: flex; */
 }
 .left-side-container {
   padding: 20px 4%;
@@ -8,11 +8,11 @@
   height: 100vh;
   color: #fff;
   text-align: center;
+  display: none;
 }
 .right-side-container {
   padding: 20px 0;
-  width: 80%;
-  height: 100vh;
+  width: 100%;
 }
 .right-side-header {
   display: flex;
@@ -37,18 +37,23 @@
 .request-main-containerr {
   background-color: rgb(240, 235, 235);
   margin-top: 30px;
-  height: 85.5vh;
-  padding: 15px 25px;
+  height: 85%;
+  padding: 15px 5%;
+  align-items: center;
 }
 .request-wrapper {
   border: 0.5px solid rgb(206, 203, 203);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  height: 65px;
+  height: auto;
   align-items: center;
   padding: 15px 20px;
   border-radius: 8px;
   margin-top: 15px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .avarta-wrapper {
@@ -58,6 +63,10 @@
 }
 .title-request {
   font-size: 1.4em;
+  margin: 10px 0;
+}
+.request-status {
+  margin: 20px 0;
 }
 .inner-menu-list {
   background-color: rgb(25, 3, 103);
@@ -76,10 +85,93 @@
   text-align: center;
 }
 .icon-image {
-  width: 50px;
+  width: 55px;
   height: 50px;
+  cursor: pointer;
 }
 .bin-icon {
   width: 60px;
   height: 40px;
+  cursor: pointer;
+}
+.three-input-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.checkboxes-container {
+  margin-top: 20px;
+}
+.main-success-image-container {
+  align-items: center;
+  text-align: center;
+}
+.success-image {
+  width: 150px;
+}
+.final-submit-btn-wrapper {
+  text-align: center;
+  align-items: center;
+  /* width: 350px; */
+  background-color: rgb(25, 3, 103);
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 25px;
+}
+.final-submit-btn {
+  text-align: center;
+  background-color: rgb(25, 3, 103);
+  color: #fff;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+.checkbox-label input {
+  margin-right: 10px;
+}
+
+@media (min-width: 475px) {
+  .request-wrapper {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media (min-width: 640px) {
+  .request-wrapper {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .request-wrapper {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1280px) {
+  .left-side-container {
+    display: block;
+    width: 25%;
+  }
+  .dashboard-container {
+    display: flex;
+  }
+  .icon-image {
+    /* display: none; */
+  }
+}
+
+@media (min-width: 1536px) {
+  .left-side-container {
+    width: 20%;
+  }
 }

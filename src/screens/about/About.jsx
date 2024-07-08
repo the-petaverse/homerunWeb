@@ -1,30 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import "./About.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import AboutImg from "../../assets/about.png";
+import MainSideBar from "../../components/mainSideBar/MainSideBar";
 const About = () => {
+  const [openSideBar, setOpenSideBar] = useState(false);
+
+  const handleOpenSideBar = () => {
+    setOpenSideBar(true);
+  };
+  const handleCloseSideBar = () => {
+    setOpenSideBar(false);
+  };
   return (
     <div>
-      <Navbar />
+      <Navbar handleOpenSideBar={handleOpenSideBar} />
       <div className="about-header-wrapper">
         <div className="about-details-wrapper">
-          <h2 className="about-header">About Us</h2>
+          <h2 className="about-header">
+            Our goal is to redifined errand for africans in diaspora
+          </h2>
+
           <p>
-            homerun is beyond errand service platform that helps the diaspora
-            (Africans living abroad) and very busy locally-based clients who
-            need to get some errand tasks done without affecting their daily
-            schedule.
+            Homerun is a web and mobile application developed to serve the needs
+            of diasporians and busy local clients who need tasks completed
+            efficiently and sustainably.
           </p>
+          <div className="about-btn-container">
+            <button className="about-btn">Let's talk</button>
+          </div>
+        </div>
+        <div className="about-image-wrapper">
+          {/* <img src={AboutImg} alt="" className="about-img" /> */}
+        </div>
+      </div>
+      <div className="statistic-wrapper">
+        <div className="statistic-content-wrapper">
           <p>
-            homerun is beyond errand service platform that helps the diaspora
-            (Africans living abroad) and very busy locally-based clients who
-            need to get some errand tasks done without affecting their daily
-            schedule.
+            Homerun is a web and mobile application developed to serve the needs
+            of diasporians and busy local clients who need tasks completed
+            efficiently and sustainably.
           </p>
         </div>
-        <div>
-          <img src={AboutImg} alt="" className="about-img" />
+        <div className="statistic-boxes-wrapper">
+          <div className="stat-inner-box-container">
+            <div className="stat-box">
+              <h3>300k</h3>
+              <p>busy local clients</p>
+            </div>
+            <div className="stat-box">
+              <h3>300k</h3>
+              <p>busy local clients</p>
+            </div>
+          </div>
+          <div className="stat-inner-box-container">
+            <div className="stat-box">
+              <h3>300k</h3>
+              <p>busy local clients</p>
+            </div>
+            <div className="stat-box">
+              <h3>300k</h3>
+              <p>busy local clients</p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="our-team-container">
@@ -51,38 +90,24 @@ const About = () => {
         <div className="mission-wrapper">
           <h3>Our Mission</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi nemo,
-            tenetur explicabo amet quibusdam necessitatibus voluptatem
-            consectetur. Numquam molestias sunt optio aut atque nihil sed,
-            exercitationem neque cumque et officia.
+            Service delivery executed efficiently and sustainably, giving you
+            peace of mind both home and abroad.
           </p>
         </div>
         <div className="vission-wrapper">
           <h3>Our Vision</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi nemo,
-            tenetur explicabo amet quibusdam necessitatibus voluptatem
-            consectetur. Numquam molestias sunt optio aut atque nihil sed,
-            exercitationem neque cumque et officia.
+            Service delivery executed efficiently and sustainably, giving you
+            peace of mind both home and abroad.
           </p>
         </div>
       </div>
-      {/* <div className="core-values-container">
-        <div className="core-card-wrapper">
-          <div className="core-card">
-            <img src={AboutImg} alt="" className="team-img" />
-            <h4 className="team-name">Michael Oladele</h4>
-          </div>
-          <div className="core-card">
-            <img src={AboutImg} alt="" className="team-img" />
-            <h4 className="team-name">Michael Oladele</h4>
-          </div>
-          <div className="core-card">
-            <img src={AboutImg} alt="" className="team-img" />
-            <h4 className="team-name">Michael Oladele</h4>
-          </div>
-        </div>
-      </div> */}
+      <MainSideBar
+        handleOpenSideBar={handleOpenSideBar}
+        handleCloseSideBar={handleCloseSideBar}
+        openSideBar={openSideBar}
+      />
+
       <Footer />
     </div>
   );

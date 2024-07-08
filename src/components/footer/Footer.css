@@ -3,25 +3,39 @@
 .footer-main-container {
   text-align: center;
   background-color: rgb(229, 229, 232);
-  padding: 45px 5%;
+  padding: 45px 0;
 }
-.logo-wrapper {
-}
+
 .footer-menu-wrapper {
   display: flex;
   justify-content: space-between;
   margin-bottom: 3%;
+  width: 100%;
+  padding: 0 5%;
+}
+.footer-address {
+  width: 60%;
+  text-align: left;
+  padding: 0 5%;
+  margin-bottom: 15px;
+}
+.footer-address p {
+  font-size: 1.5em;
+  font-family: "Josefin Slab", serif;
+  font-weight: 450;
 }
 .address-wrapper {
   width: 35%;
 }
 .footer-logo {
-  width: 150px;
+  width: 180px;
 }
 .list-header {
   font-size: 1.6em;
   margin-bottom: 15px;
+  text-align: left;
 }
+
 .company-wrapper ul,
 .address-wrapper ul {
   list-style: none;
@@ -41,7 +55,7 @@
 }
 .inner-footer-wrapper {
   background-color: rgb(247, 244, 244);
-  width: 40%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 20px 3%;
@@ -53,4 +67,38 @@
 .policy-btn,
 .privacy-btn {
   background-color: rgb(247, 244, 244);
+}
+
+@media (min-width: 475px) {
+}
+
+@media (min-width: 640px) {
+}
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+  .main-level-wrapper {
+    display: flex;
+  }
+  .footer-address {
+    text-align: right;
+    padding: 0 5%;
+  }
+  .list-header {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    text-align: right;
+    padding: 0 2%;
+  }
+  .inner-footer-wrapper {
+    width: 50%;
+  }
+}
+@media (min-width: 1280px) {
+  .company-wrapper {
+    width: 500px;
+  }
+}
+@media (min-width: 1536px) {
 }

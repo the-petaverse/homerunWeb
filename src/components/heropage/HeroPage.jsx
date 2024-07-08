@@ -3,6 +3,7 @@ import "./HeroPage.css";
 import HeroImage from "../../assets/hero.png";
 import GooglePlay from "../../assets/google.png";
 import AppleStore from "../../assets/apple.png";
+import { Link } from "react-router-dom";
 
 const HeroPage = () => {
   return (
@@ -18,12 +19,12 @@ const HeroPage = () => {
         <div className="howitworks-wrapper">
           <h3 className="howitworks-text">How it works</h3>
           <div className="playstore-icons-wrapper">
-            <button className="store-logo-wrapper">
+            <Link className="store-logo-wrapper">
               <img src={GooglePlay} alt="" className="google-icon" />
-            </button>
-            <button className="apple-logo-wrapper">
+            </Link>
+            <Link className="apple-logo-wrapper">
               <img src={AppleStore} alt="" className="iphone-icon" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,0 +1,14 @@
+.accordion-main-container {
+  padding: 15px 3%;
+  margin-right: 25px;
+  border: solid 1px rgb(221, 216, 216);
+  margin-bottom: 15px;
+}
+.accordion-title {
+  display: flex;
+  justify-content: space-between;
+}
+.accordion-content {
+  text-align: left;
+  margin-top: 5px;
+}

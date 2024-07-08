@@ -5,8 +5,8 @@
   padding: 30px 5%;
 }
 .why-header {
-  padding: 25px 20%;
-  font-size: 2em;
+  font-size: 1.8em;
+  margin-bottom: 25px;
   line-height: 1.8em;
 }
 .inner-list-wrapper {
@@ -18,24 +18,35 @@
 }
 .inner-nav-container {
   align-items: center;
-  display: flex;
   text-align: center;
-  justify-content: center;
+}
+.inner-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 .inner-list-wrapper button {
-  font-size: 1.5em;
+  font-size: 1.25em;
   cursor: pointer;
-  width: 230px;
+  width: 100%;
   padding: 8px 0;
   border-radius: 15px;
   border: 0.2px rgb(177, 174, 174) solid;
+
+  margin-bottom: 15px;
 }
 .inner-details-container {
   padding: 3%;
 }
 .details-list-wrapper {
   list-style: none;
-  text-align: left;
+  text-align: center;
+  /* text-align: left; */
+
+  width: 165%;
+  height: auto;
+  padding: 10px 15px;
 }
 .details-list-wrapper li {
   font-size: 1.65em;
@@ -45,6 +56,8 @@
 .inner-what-we-do-wrapper {
   display: flex;
   justify-content: space-between;
+  flex-direction: column-reverse;
+  height: auto;
 }
 .details-inner-works {
   text-align: center;
@@ -69,8 +82,13 @@
   border-top-right-radius: 20px;
 }
 .what-we-do-img {
-  width: 600px;
-  height: 400px;
+  width: 100%;
+  /* width: 600px; */
+  height: auto;
+}
+.inner-header {
+  width: 160%;
+  text-align: center;
 }
 .inner-header h3 {
   font-size: 2.3em;
@@ -79,3 +97,73 @@
   margin-top: 10px;
   font-size: 1.6em;
 } */
+
+@media (min-width: 475px) {
+  .inner-list-wrapper button {
+    width: 50%;
+  }
+}
+
+@media (min-width: 640px) {
+  .inner-list-wrapper button {
+    width: 35%;
+  }
+}
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+  .inner-what-we-do-wrapper {
+    flex-direction: row;
+    height: auto;
+  }
+  .inner-list-wrapper {
+    flex-direction: row;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .inner-list-wrapper button {
+    margin-right: 15px;
+  }
+  .details-list-wrapper {
+    text-align: left;
+    width: 450px;
+    height: auto;
+    padding: 10px 15px;
+  }
+  .what-we-do-img {
+    width: 450px;
+    height: auto;
+    margin-top: 25px;
+  }
+  .inner-header {
+    width: 70%;
+    text-align: center;
+  }
+}
+@media (min-width: 1280px) {
+  .inner-details-container {
+    /* width: 80%; */
+
+    margin-left: auto;
+    margin-left: auto;
+  }
+  .what-we-do-img {
+    width: 400px;
+    height: auto;
+    margin-left: 60px;
+  }
+  .details-list-wrapper {
+    text-align: left;
+    width: 750px;
+    height: auto;
+    padding: 10px 15px;
+  }
+  .inner-header {
+    width: 65%;
+    text-align: center;
+  }
+}
+@media (min-width: 1536px) {
+}

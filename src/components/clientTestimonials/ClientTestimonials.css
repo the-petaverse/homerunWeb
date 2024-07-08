@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
+
+.client-test-container {
+  padding: 45px 5%;
+}
+.testimonial-header {
+  text-align: center;
+}
+.testimonial-header p {
+  font-size: 1.5em;
+  font-family: "Josefin Slab", serif;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+.testimonial-card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: auto;
+  padding: 5%;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+}
+.testinonia-img {
+  display: block;
+  max-width: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  /* width: 60px; */
+}
+.testimonial-card p {
+  font-size: 1.5em;
+  font-family: "Josefin Slab", serif;
+  margin-top: 20px;
+}
+
+@media (min-width: 475px) {
+  .testimonial-card {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media (min-width: 640px) {
+  .testimonial-card {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .testimonial-card {
+    width: 48%;
+  }
+  .testimonia-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonia-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1280px) {
+}
+
+@media (min-width: 1536px) {
+}
