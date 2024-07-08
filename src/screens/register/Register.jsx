@@ -188,12 +188,12 @@ const Register = () => {
                   <select
                     type="text"
                     className="register-main-text-input"
-                    placeholder="Country Name"
+                    placeholder="Country Name(Resident country)"
                     {...register("country", {
                       required: "Country name is required",
                     })}
                   >
-                    <option value="0">Select country</option>
+                    <option value="0">Select your resident country</option>
                     {countries && countries !== undefined
                       ? countries.map((countryData, index) => {
                           return (
