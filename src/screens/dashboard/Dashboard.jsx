@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
-import { useForm } from "react-hook-form";
+
 import Avatar from "../../assets/avarta.png";
 import MenuIcon from "../../assets/menu.png";
 import BinIcon from "../../assets/bin.png";
@@ -13,7 +13,29 @@ import AllRequest from "../../components/allRequest/AllRequest";
 import VerificationCode from "../../components/verificationCode/VerificationCode";
 import SideBar from "../../components/sideBar/SideBar";
 
+import {
+  useGetUsersQuery,
+  useLoginUserMutation,
+} from "../../services/auth/authApi";
+import Cookies from "universal-cookie";
+
 const Dashboard = () => {
+  const cookies = new Cookies();
+  const [{ data: loginData }] = useLoginUserMutation();
+
+  let getCookies = cookies.get("auth_token");
+  // const {
+  //   data: userData,
+  //   error,
+  //   isLoading,
+  //   isFetching,
+  //   isSuccess,
+  // } = useGetUsersQuery();
+
+  // if (isSuccess) {
+  //   console.log(userData, "Dashboard");
+  // }
+  // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [openModal, setModalOpen] = useState(false);
   const [formStage, setFormStage] = useState(0);
   const [showDashboard, setShowDashboard] = useState(1);
@@ -26,7 +48,7 @@ const Dashboard = () => {
   };
 
   const handleLogout = () => {
-    navigate("/login", { replace: true });
+    cookies.remove("auth_token");
   };
 
   const handleCloseModal = () => {
@@ -39,6 +61,13 @@ const Dashboard = () => {
   const handleCloseSideBar = () => {
     setOpenSideBar(false);
   };
+
+  // useEffect(() => {
+  //   if (cookies === undefined) {
+  //     setIsLoggedIn(!isLoggedIn);
+  //   }
+  //   console.log(isLoggedIn);
+  // }, [isLoggedIn]);
 
   return (
     <div className="dashboard-container">

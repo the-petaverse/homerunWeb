@@ -8,7 +8,7 @@ const MainSideBar = ({ handleCloseSideBar, openSideBar }) => {
   if (!openSideBar) return null;
   return (
     <div className="side-bar-container">
-      <div class="inner-side-bar">
+      <div className="inner-side-bar">
         <div className="close-icon-container">
           <img
             src={CloseIcon}

@@ -1,16 +1,21 @@
 import { useEffect } from "react";
-import { useNavigate, Outlet } from "react-router-dom";
+import { useNavigate, Outlet, Navigate } from "react-router-dom";
+import Login from "../login/Login";
+import Cookies from "universal-cookie";
 
-const PrivateRoute = ({ element: Element, isAuth, ...rest }) => {
+const PrivateRoute = () => {
+  const cookies = new Cookies();
+
+  let getCookies = cookies.get("auth_token");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAuth) {
+    if (getCookies === undefined) {
       navigate("/login", { replace: true });
     }
-  }, [isAuth, navigate]);
+  }, [getCookies, navigate]);
 
-  return isAuth ? <Outlet /> : <h1>Authenticated</h1>;
+  return getCookies !== undefined ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;

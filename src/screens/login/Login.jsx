@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Outlet } from "react-router-dom";
 import "./Login.css";
 import LoginImage from "../../assets/feedback.png";
 import Navbar from "../../components/Navbar/Navbar";
-import SideBar from "../../components/sideBar/SideBar";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
+import Cookies from "universal-cookie";
+
+import { useLoginUserMutation } from "../../services/auth/authApi";
 
 const Login = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [showSideBar, setShowSideBar] = useState(true);
+  const cookies = new Cookies();
+  const [loginUser, { data: loginData, isLoading, isSuccess, error }] =
+    useLoginUserMutation();
+
+  const receivedCookies = cookies.get("auth_token");
   const [openSideBar, setOpenSideBar] = useState(false);
   const navigate = useNavigate();
 
@@ -17,12 +22,11 @@ const Login = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
-  } = useForm();
+    formState: { errors, isValid },
+  } = useForm({ mode: "all" });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    navigate("/dashboard", { replace: true });
+  const onSubmit = async (data) => {
+    await loginUser(data);
   };
 
   const handleOpenSideBar = () => {
@@ -32,6 +36,14 @@ const Login = () => {
   const handleCloseSideBar = () => {
     setOpenSideBar(false);
   };
+  if (isSuccess) {
+    cookies.set("auth_token", loginData.data);
+  }
+  useEffect(() => {
+    if (receivedCookies) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, [receivedCookies]);
 
   return (
     <div>
@@ -44,11 +56,12 @@ const Login = () => {
           <h3>Hey, </h3>
           <h3>We are glad to see back</h3>
           <p>Please login with your details to continue</p>
+          {error && <p className="login-error-style">{error.data.error}</p>}
           <form onSubmit={handleSubmit(onSubmit)} className="form-wrapper">
             <label>
               Email:
               <input
-                type="text"
+                type="email"
                 placeholder="example@example.com"
                 className="main-text-input"
                 style={{ borderColor: errors.email ? "red" : "blue" }}
@@ -75,7 +88,11 @@ const Login = () => {
                 <p className="input-error-message">{errors.password.message}</p>
               )}
             </label>
-            <input type="submit" className="main-form-btn" />
+            <input
+              type="submit"
+              className="main-form-btn"
+              disabled={!isValid || isLoading}
+            />
           </form>
         </div>
       </div>
