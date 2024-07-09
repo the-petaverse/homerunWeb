@@ -38,6 +38,13 @@ export const authApi = createApi({
         body: data,
       }),
     }),
+    verifyUser: builder.mutation({
+      query: (data) => ({
+        url: "auth/verify_otp",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -46,4 +53,5 @@ export const {
   useLoginUserMutation,
   useGetUserQuery,
   useRegisterUserMutation,
+  useVerifyUserMutation,
 } = authApi;

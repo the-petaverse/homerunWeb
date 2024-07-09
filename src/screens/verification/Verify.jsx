@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LoginImage from "../../assets/feedback.png";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useVerifyUserMutation } from "../../services/auth/authApi";
 
 const Verify = () => {
+  const [verifyUser, { data: verifyData, isSuccess, error }] =
+    useVerifyUserMutation();
   const navigate = useNavigate();
   const {
     register,
@@ -13,9 +16,16 @@ const Verify = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    navigate("/dashboard", { replace: true });
+    verifyUser(data);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      // console.log(verifyData);
+      navigate("/login", { replace: true });
+    }
+  }, [isSuccess]);
+
   return (
     <div>
       <div className="login-main-container">
@@ -25,7 +35,11 @@ const Verify = () => {
         <div className="inner-form-wrapper">
           <h3>Hey, </h3>
           <h3>You are alomst done</h3>
-          <p>Please enter the code received to continue</p>
+          {error ? (
+            <p>{error?.data?.error}</p>
+          ) : (
+            <p>Please enter the code received to continue</p>
+          )}
           <form onSubmit={handleSubmit(onSubmit)} className="form-wrapper">
             <label>
               Verification:

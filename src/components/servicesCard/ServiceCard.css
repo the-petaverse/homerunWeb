@@ -33,6 +33,7 @@ a {
   font-size: 1.3em;
   font-family: "Josefin Slab", serif;
 }
+
 .category-image {
   width: 100px;
 }
@@ -58,6 +59,7 @@ a {
     flex-direction: row;
     margin-top: 55px;
   }
+
   .main-category-card-container {
     width: 95%;
   }

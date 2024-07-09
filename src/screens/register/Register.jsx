@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import LoginImage from "../../assets/feedback.png";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
+import { useRegisterUserMutation } from "../../services/auth/authApi";
 import "./Register.css";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
 
@@ -25,6 +26,8 @@ const cities = [
 ];
 
 const Register = () => {
+  const [registerUser, { data: registerData, isSuccess, error }] =
+    useRegisterUserMutation();
   const navigate = useNavigate();
   const [openSideBar, setOpenSideBar] = useState(false);
   const [formStep, setFormStep] = useState(0);
@@ -39,13 +42,16 @@ const Register = () => {
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
 
-  const watchCountry = watch("country");
-  const watchState = watch("stateName");
+  const watchCountry = watch("resident_country");
+  const watchState = watch("resident_state");
 
   const onSubmit = (data) => {
-    console.log(data);
-    navigate("/verify", { replace: true });
+    registerUser(data);
   };
+
+  if (isSuccess) {
+    navigate("/verify", { replace: true });
+  }
   const handleOpenSideBar = () => {
     setOpenSideBar(true);
   };
@@ -109,7 +115,11 @@ const Register = () => {
           <img src={LoginImage} alt="" className="register-image" />
         </div>
         <div className="register-inner-form-wrapper">
-          <p>We will be glad to have you onboard</p>
+          {error ? (
+            <p>{error?.data?.error}</p>
+          ) : (
+            <p>We will be glad to have you onboard</p>
+          )}
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="register-form-wrapper"
@@ -122,13 +132,13 @@ const Register = () => {
                     className="register-main-text-input"
                     style={{ borderColor: errors.firstName ? "red" : "blue" }}
                     placeholder="First name"
-                    {...register("firstName", {
+                    {...register("first_name", {
                       required: "First name is required",
                     })}
                   />
-                  {errors.firstName && (
+                  {errors.first_name && (
                     <p className="input-error-message">
-                      {errors.firstName.message}
+                      {errors.first_name.message}
                     </p>
                   )}
                 </label>
@@ -138,13 +148,13 @@ const Register = () => {
                     style={{ borderColor: errors.lastName ? "red" : "blue" }}
                     className="register-main-text-input"
                     placeholder="Last name"
-                    {...register("lastName", {
+                    {...register("last_name", {
                       required: "Last name is required",
                     })}
                   />
-                  {errors.lastName && (
+                  {errors.last_name && (
                     <p className="input-error-message">
-                      {errors.lastName.message}
+                      {errors.last_name.message}
                     </p>
                   )}
                 </label>
@@ -170,13 +180,13 @@ const Register = () => {
                     style={{ borderColor: errors.phoneNumber ? "red" : "blue" }}
                     className="register-main-text-input"
                     placeholder="Phone number"
-                    {...register("phoneNumber", {
+                    {...register("phone_number", {
                       required: "Valid phone number is required",
                     })}
                   />
-                  {errors.phoneNumber && (
+                  {errors.phone_number && (
                     <p className="input-error-message">
-                      {errors.phoneNumber.message}
+                      {errors.phone_number.message}
                     </p>
                   )}
                 </label>
@@ -189,7 +199,7 @@ const Register = () => {
                     type="text"
                     className="register-main-text-input"
                     placeholder="Country Name(Resident country)"
-                    {...register("country", {
+                    {...register("resident_country", {
                       required: "Country name is required",
                     })}
                   >
@@ -204,9 +214,9 @@ const Register = () => {
                         })
                       : "No country selected"}
                   </select>
-                  {errors.country && (
+                  {errors.resident_country && (
                     <p className="input-error-message">
-                      {errors.country.message}
+                      {errors.resident_country.message}
                     </p>
                   )}
                 </label>
@@ -215,7 +225,7 @@ const Register = () => {
                     type="text"
                     className="register-main-text-input"
                     placeholder="State Name"
-                    {...register("homeSate", {
+                    {...register("resident_state", {
                       required: "State name is required",
                     })}
                   >
@@ -230,9 +240,9 @@ const Register = () => {
                         })
                       : "No state selected"}
                   </select>
-                  {errors.homeSate && (
+                  {errors.resident_state && (
                     <p className="input-error-message">
-                      {errors.homeSate.message}
+                      {errors.resident_state.message}
                     </p>
                   )}
                 </label>
@@ -241,7 +251,7 @@ const Register = () => {
                     type="text"
                     className="register-main-text-input"
                     placeholder="City Name"
-                    {...register("homeCity", {
+                    {...register("resident_city", {
                       required: "City name is required",
                     })}
                   >
@@ -256,9 +266,9 @@ const Register = () => {
                         })
                       : "No city selected"}
                   </select>
-                  {errors.homeCity && (
+                  {errors.resident_city && (
                     <p className="input-error-message">
-                      {errors.homeCity.message}
+                      {errors.resident_city.message}
                     </p>
                   )}
                 </label>
