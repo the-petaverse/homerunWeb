@@ -5,39 +5,7 @@ import { PaystackButton } from "react-paystack";
 import "./NewRequest.css";
 import { useNavigate } from "react-router-dom";
 import { useGetRequestSubCategoryQuery } from "../../services/requestsCategory/requestApi";
-
-const accordionData = [
-  {
-    id: "1",
-    title: "Requirements",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Eveniet velit sequi similique consequuntur voluptatum quas cumnisi expedita perferendis debitis. Enim voluptas quaerat consequuntur reiciendis perspiciatis repellendus excepturi quidem voluptatem.",
-  },
-  {
-    id: "2",
-    title: "NOTE",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Eveniet velit sequi similique consequuntur voluptatum quas cumnisi expedita perferendis debitis. Enim voluptas quaerat consequuntur reiciendis perspiciatis repellendus excepturi quidem voluptatem.",
-  },
-  {
-    id: "3",
-    title: "Processes",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Eveniet velit sequi similique consequuntur voluptatum quas cumnisi expedita perferendis debitis. Enim voluptas quaerat consequuntur reiciendis perspiciatis repellendus excepturi quidem voluptatem.",
-  },
-  {
-    id: "4",
-    title: "Cost Break down (Estimates)",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Eveniet velit sequi similique consequuntur voluptatum quas cumnisi expedita perferendis debitis. Enim voluptas quaerat consequuntur reiciendis perspiciatis repellendus excepturi quidem voluptatem.",
-  },
-  {
-    id: "5",
-    title: "Payment milestones",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Eveniet velit sequi similique consequuntur voluptatum quas cumnisi expedita perferendis debitis. Enim voluptas quaerat consequuntur reiciendis perspiciatis repellendus excepturi quidem voluptatem.",
-  },
-];
+import Cookies from "universal-cookie";
 
 const requestList = [
   { id: "1", category: "Property" },
@@ -88,10 +56,10 @@ const NewRequest = ({ setFormStage, formStage, subcategory }) => {
   const [citiesList, setCitiesList] = useState([]);
   const [subRequestList, setSubRequestList] = useState([]);
   const [serviceData, setServiceData] = useState([]);
-
   const [openAccordion, setOpenAccordion] = useState(1);
   const navigate = useNavigate();
-
+  const cookies = new Cookies();
+  const receivedCookies = cookies.get("auth_token");
   const {
     register,
     handleSubmit,
@@ -144,7 +112,7 @@ const NewRequest = ({ setFormStage, formStage, subcategory }) => {
             // type="Submit"
             className="final-button-wrapper final-submit-btn"
             onClick={handleCompleteForm}
-            disabled={!isValid}
+            disabled={!isValid && !receivedCookies}
           >
             Next Step
           </button>
@@ -153,7 +121,7 @@ const NewRequest = ({ setFormStage, formStage, subcategory }) => {
     } else {
       return (
         <button
-          disabled={!isValid}
+          disabled={!isValid || !receivedCookies}
           className="register-main-form-btn"
           onClick={handleCompleteForm}
         >
@@ -333,7 +301,13 @@ const NewRequest = ({ setFormStage, formStage, subcategory }) => {
           </div>
         </div>
         <div className="register-inner-form-wrapper new-request-form-side">
-          {formStage < 1 && <p>We will be glad to have you onboard</p>}
+          {formStage < 1 && (
+            <p className={!receivedCookies ? "not-login-style" : ""}>
+              {!receivedCookies
+                ? "Please login or register to continue"
+                : "We will be glad to have you onboard"}
+            </p>
+          )}
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="register-form-wrapper new-request-form-wrapper"
