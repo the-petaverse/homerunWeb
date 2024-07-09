@@ -6,94 +6,12 @@ import AboutImg from "../../assets/about.png";
 import EverythinYouNeed from "../../components/everything/EverythinYouNeed";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import { Link } from "react-router-dom";
+import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
 
-const servicesList = [
-  {
-    id: "1",
-    category: "documents",
-    title: "Passport Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "2",
-    category: "documents",
-    title: "Transcript Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "3",
-    category: "hospitality",
-    title: "Groceries Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "4",
-    category: "hospitality",
-    title: "Groceries Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "5",
-    category: "hospitality",
-    title: "Groceries Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "6",
-    category: "documents",
-    title: "Certificates Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "7",
-    category: "documents",
-    title: "Certificates Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "8",
-    category: "documents",
-    title: "Certificates Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "9",
-    category: "documents",
-    title: "Certificates Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "10",
-    category: "documents",
-    title: "Certificates Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "11",
-    category: "documents",
-    title: "Certificates Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "12",
-    category: "documents",
-    title: "Certificates Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-];
 const Services = () => {
+  const { data, isLoading, isFetching, error, isSuccess } =
+    useGetRequestCategoriesQuery();
+
   const [openSideBar, setOpenSideBar] = useState(false);
   const handleOpenSideBar = () => {
     setOpenSideBar(true);
@@ -121,25 +39,30 @@ const Services = () => {
       <EverythinYouNeed />
       <div className="main-service-card-container">
         <div className="service-card-holder">
-          {servicesList.map((serviceData, index) => {
-            return (
-              <Link
-                to={"/request-category/" + serviceData.category}
-                className="inner-card-wrapper"
-                key={index}
-              >
-                <div>
+          {data?.requestsCategory &&
+            data?.requestsCategory.map((serviceData, index) => {
+              return (
+                <Link
+                  to={"/request-category/" + serviceData.slug_name}
+                  className="inner-card-wrapper"
+                  key={index}
+                >
                   <div>
-                    <img src={AboutImg} alt="" className="service-card-image" />
+                    <div>
+                      <img
+                        src={AboutImg}
+                        alt=""
+                        className="service-card-image"
+                      />
+                    </div>
+                    <div>
+                      <h3>{serviceData.category_name}</h3>
+                      <p>{serviceData.category_details}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3>{serviceData.title}</h3>
-                    <p>{serviceData.description}</p>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+                </Link>
+              );
+            })}
         </div>
       </div>
       <MainSideBar

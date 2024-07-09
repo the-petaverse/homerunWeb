@@ -3,6 +3,7 @@
   margin-right: 25px;
   border: solid 1px rgb(221, 216, 216);
   margin-bottom: 15px;
+  cursor: pointer;
 }
 .accordion-title {
   display: flex;

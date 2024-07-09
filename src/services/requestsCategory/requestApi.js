@@ -7,7 +7,7 @@ export const requestsApi = createApi({
     baseUrl: "http://localhost:4200/api/v1/",
     prepareHeaders: (headers, { getState }) => {
       const cookies = new Cookies();
-      const token = cookies.get("auth_token");
+      const token = cookies?.get("auth_token");
 
       //If the token is available
       if (token) {
@@ -20,7 +20,11 @@ export const requestsApi = createApi({
     getRequestCategories: builder.query({
       query: () => "request/categories",
     }),
+    getRequestSubCategory: builder.query({
+      query: () => "request/sub-categories",
+    }),
   }),
 });
 
-export const { useGetRequestCategoriesQuery } = requestsApi;
+export const { useGetRequestCategoriesQuery, useGetRequestSubCategoryQuery } =
+  requestsApi;

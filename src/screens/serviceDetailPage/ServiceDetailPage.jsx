@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import "./ServiceDetailPage.css";
 import NewRequest from "../../components/newRequest/NewRequest";
+import { useGetRequestSubCategoryQuery } from "../../services/requestsCategory/requestApi";
 
 const servicesList = [
   {
@@ -53,33 +54,44 @@ const ServiceDetailPage = () => {
   const [serviceData, setServiceData] = useState([]);
   const [formStage, setFormStage] = useState(0);
   const { subcategory } = useParams();
+  const {
+    data: subData,
+    isLoading,
+    isFetching,
+    isSuccess,
+    error,
+  } = useGetRequestSubCategoryQuery();
 
   const filterServcies = () => {
-    let filteredService = servicesList.filter(
-      (service) => service.title === subcategory
-    );
-    setServiceData(filteredService);
+    if (isSuccess) {
+      let filteredService = subData?.subRequestsCategory.filter(
+        (subservice) => subservice.sub_category_slug === subcategory
+      );
+      setServiceData(filteredService);
+    }
   };
 
   useEffect(() => {
     filterServcies();
-  }, []);
+  }, [isSuccess]);
 
   return (
     <div>
       <Navbar />
       <div className="main-service-detail-page-container">
-        {serviceData.map((data, index) => {
-          return (
-            <div key={index} className="service-detail-header">
-              <h1>{data.title}</h1>
-            </div>
-          );
-        })}
+        {serviceData &&
+          serviceData.map((data, index) => {
+            return (
+              <div key={index} className="service-detail-header">
+                <h1>{data.sub_category_title}</h1>
+              </div>
+            );
+          })}
         <div className="detail-form-main-container">
           <NewRequest
             formStage={formStage}
             setFormStage={setFormStage}
+            subcategory={subcategory}
             // setShowDashboard={setShowDashboard}
             // setModalOpen={setModalOpen}
           />

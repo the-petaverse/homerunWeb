@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { PaystackButton } from "react-paystack";
 import "./NewRequest.css";
 import { useNavigate } from "react-router-dom";
+import { useGetRequestSubCategoryQuery } from "../../services/requestsCategory/requestApi";
 
 const accordionData = [
   {
@@ -75,15 +76,19 @@ const cities = [
   { id: "4", stateId: "2", title: "Owo" },
 ];
 
-const NewRequest = ({
-  setFormStage,
-  formStage,
-  setShowDashboard,
-  setModalOpen,
-}) => {
+const NewRequest = ({ setFormStage, formStage, subcategory }) => {
+  const {
+    data: subData,
+    isLoading,
+    isFetching,
+    isSuccess,
+    error,
+  } = useGetRequestSubCategoryQuery();
   const [myState, setMyState] = useState([]);
   const [citiesList, setCitiesList] = useState([]);
   const [subRequestList, setSubRequestList] = useState([]);
+  const [serviceData, setServiceData] = useState([]);
+
   const [openAccordion, setOpenAccordion] = useState(1);
   const navigate = useNavigate();
 
@@ -177,11 +182,21 @@ const NewRequest = ({
     setCitiesList(filteredCities);
   };
 
+  const filterServcies = () => {
+    if (isSuccess) {
+      let filteredService = subData?.subRequestsCategory.filter(
+        (subservice) => subservice.sub_category_slug === subcategory
+      );
+      setServiceData(filteredService);
+    }
+  };
+
   useEffect(() => {
     handleState();
     handleCities();
     handleSubRequests();
-  }, [watchCountry, watchState, watchRequest]);
+    filterServcies();
+  }, [watchCountry, watchState, watchRequest, isSuccess]);
 
   return (
     <div>
@@ -190,26 +205,132 @@ const NewRequest = ({
       </div>
       <div className="register-main-container">
         <div className="register-iamge-wrapper">
-          {accordionData &&
-            accordionData.map((accordData, index) => {
-              return (
-                <>
-                  <div className="accordion-main-container">
-                    <div className="accordion-title">
-                      <h4>{accordData.title}</h4>
-                      <h4 onClick={() => openCloseAccordion(accordData.id)}>
-                        +
-                      </h4>
-                    </div>
-                    {openAccordion === parseInt(accordData.id) && (
-                      <div className="accordion-content">
-                        <p>{accordData.description}</p>
+          <div>
+            {serviceData &&
+              serviceData.map((accordData, index) => {
+                return (
+                  <>
+                    <div
+                      className="accordion-main-container"
+                      onClick={() => openCloseAccordion(1)}
+                    >
+                      <div className="accordion-title">
+                        <h4>Note</h4>
+                        <h4 onClick={() => openCloseAccordion(1)}>
+                          {openAccordion !== parseInt(1) ? "+" : "-"}
+                        </h4>
                       </div>
-                    )}
-                  </div>
-                </>
-              );
-            })}
+
+                      {openAccordion === parseInt(1) && (
+                        <div className="accordion-content">
+                          <p>{accordData.sub_request_note}</p>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                );
+              })}
+          </div>
+          <div>
+            {serviceData &&
+              serviceData.map((accordData, index) => {
+                return (
+                  <>
+                    <div
+                      className="accordion-main-container"
+                      onClick={() => openCloseAccordion(2)}
+                    >
+                      <div className="accordion-title">
+                        <h4>Requirements</h4>
+                        <h4 onClick={() => openCloseAccordion(2)}>
+                          {openAccordion !== parseInt(2) ? "+" : "-"}
+                        </h4>
+                      </div>
+                      {openAccordion === parseInt(2) && (
+                        <div className="accordion-content">
+                          <p>{accordData.request_requirements}</p>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                );
+              })}
+          </div>
+          <div>
+            {serviceData &&
+              serviceData.map((accordData, index) => {
+                return (
+                  <>
+                    <div
+                      className="accordion-main-container"
+                      onClick={() => openCloseAccordion(3)}
+                    >
+                      <div className="accordion-title">
+                        <h4>Process</h4>
+                        <h4 onClick={() => openCloseAccordion(3)}>
+                          {openAccordion !== parseInt(3) ? "+" : "-"}
+                        </h4>
+                      </div>
+                      {openAccordion === parseInt(3) && (
+                        <div className="accordion-content">
+                          <p>{accordData.request_process}</p>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                );
+              })}
+          </div>
+          <div>
+            {serviceData &&
+              serviceData.map((accordData, index) => {
+                return (
+                  <>
+                    <div
+                      className="accordion-main-container"
+                      onClick={() => openCloseAccordion(4)}
+                    >
+                      <div className="accordion-title">
+                        <h4>Cost break down</h4>
+                        <h4 onClick={() => openCloseAccordion(4)}>
+                          {openAccordion !== parseInt(4) ? "+" : "-"}
+                        </h4>
+                      </div>
+                      {openAccordion === parseInt(4) && (
+                        <div className="accordion-content">
+                          <p>{accordData.cost_break_down}</p>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                );
+              })}
+          </div>
+          <div>
+            {serviceData &&
+              serviceData.map((accordData, index) => {
+                return (
+                  <>
+                    <div
+                      className="accordion-main-container"
+                      onClick={() => openCloseAccordion(5)}
+                    >
+                      <div className="accordion-title">
+                        <h4>Payment milestone</h4>
+                        <h4 onClick={() => openCloseAccordion(5)}>
+                          {openAccordion !== parseInt(5) ? "+" : "-"}
+                        </h4>
+                      </div>
+                      {openAccordion === parseInt(5) && (
+                        <div className="accordion-content">
+                          <p>{accordData.payment_milestone}</p>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                );
+              })}
+          </div>
         </div>
         <div className="register-inner-form-wrapper new-request-form-side">
           {formStage < 1 && <p>We will be glad to have you onboard</p>}

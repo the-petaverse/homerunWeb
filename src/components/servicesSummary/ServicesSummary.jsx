@@ -39,7 +39,6 @@ const ServicesSummary = () => {
   const { data, isLoading, isFetching, error, isSuccess } =
     useGetRequestCategoriesQuery();
 
-  console.log(data?.requestsCategory);
   return (
     <div>
       <div className="main-service-card-container">
@@ -51,7 +50,7 @@ const ServicesSummary = () => {
             data?.requestsCategory.map((serviceData, index) => {
               return (
                 <Link
-                  to={"/request-category/" + serviceData.category}
+                  to={"/request-category/" + serviceData.slug_name}
                   className="inner-card-wrapper"
                   key={index}
                 >
