@@ -8,6 +8,7 @@ import {
   useGetRequestSubCategoryQuery,
   useGetRequestCategoriesQuery,
 } from "../../services/requestsCategory/requestApi";
+import { useCreateErrandMutation } from "../../services/errands/errandsApi";
 import Cookies from "universal-cookie";
 
 const requestList = [
@@ -61,6 +62,16 @@ const NewRequest = ({
     isSuccess,
     error,
   } = useGetRequestSubCategoryQuery();
+
+  const [
+    createErrand,
+    {
+      data: errandData,
+      isLoading: errandLoading,
+      error: errandError,
+      isSuccess: errandSuccess,
+    },
+  ] = useCreateErrandMutation();
   const {
     data: categoryData,
     isLoading: categoryIsLoading,
@@ -87,7 +98,7 @@ const NewRequest = ({
   });
 
   const watchCountry = watch("country");
-  const watchState = watch("stateName");
+  const watchState = watch("state_name");
   const watchRequest = watch("request_name");
 
   const openCloseAccordion = (data) => {
@@ -115,12 +126,20 @@ const NewRequest = ({
   const onSubmit = (data) => {
     setFormStage((cur) => cur + 1);
     // Implement API call here
-    console.log(data);
+    createErrand(data);
+    // console.log(data);
   };
   const handleCompleteForm = () => {
     setFormStage((cur) => cur + 1);
   };
 
+  if (errandError) {
+    console.log(errandError);
+  }
+
+  if (errandSuccess) {
+    console.log(errandData);
+  }
   const renderButton = () => {
     if (formStage > 1) {
       return undefined;
@@ -378,7 +397,10 @@ const NewRequest = ({
                     {subRequestList && subRequestList !== undefined
                       ? subRequestList.map((subReqData, index) => {
                           return (
-                            <option value={subReqData._id} key={index}>
+                            <option
+                              value={subReqData.sub_category_title}
+                              key={index}
+                            >
                               {subReqData.sub_category_title}
                             </option>
                           );
@@ -397,13 +419,13 @@ const NewRequest = ({
                     type="text"
                     className="register-main-text-input"
                     placeholder="Please enter more information as possible here"
-                    {...register("request_details", {
+                    {...register("more_info", {
                       required: "Request details are required",
                     })}
                   />
-                  {errors.request_details && (
+                  {errors.more_info && (
                     <p className="input-error-message">
-                      {errors.request_details.message}
+                      {errors.more_info.message}
                     </p>
                   )}
                 </label>
@@ -412,13 +434,13 @@ const NewRequest = ({
                     type="text"
                     className="register-main-text-input"
                     placeholder="Contact Person"
-                    {...register("contact_name", {
+                    {...register("contact_person", {
                       required: "Contact name is required",
                     })}
                   />
-                  {errors.contact_name && (
+                  {errors.contact_person && (
                     <p className="input-error-message">
-                      {errors.contact_name.message}
+                      {errors.contact_person.message}
                     </p>
                   )}
                 </label>
@@ -427,13 +449,13 @@ const NewRequest = ({
                     type="text"
                     className="register-main-text-input"
                     placeholder="Contact Telephone Number"
-                    {...register("contact_number", {
+                    {...register("contact_telephone_number", {
                       required: "Contact number is required",
                     })}
                   />
-                  {errors.contact_number && (
+                  {errors.contact_telephone_number && (
                     <p className="input-error-message">
-                      {errors.contact_number.message}
+                      {errors.contact_telephone_number.message}
                     </p>
                   )}
                 </label>
@@ -485,7 +507,7 @@ const NewRequest = ({
                     type="text"
                     className="register-main-text-input"
                     placeholder="State Name"
-                    {...register("stateName", {
+                    {...register("state_name", {
                       required: "State name is required",
                     })}
                   >
@@ -500,16 +522,16 @@ const NewRequest = ({
                         })
                       : "No state selected"}
                   </select>
-                  {errors.stateName && (
+                  {errors.state_name && (
                     <p className="input-error-message">
-                      {errors.stateName.message}
+                      {errors.state_name.message}
                     </p>
                   )}
                   <select
                     type="text"
                     className="register-main-text-input"
                     placeholder="City Name"
-                    {...register("cityName", {
+                    {...register("city_name", {
                       required: "City name is required",
                     })}
                   >
@@ -524,24 +546,24 @@ const NewRequest = ({
                         })
                       : "No city selected"}
                   </select>
-                  {errors.cityName && (
+                  {errors.city_name && (
                     <p className="input-error-message">
-                      {errors.cityName.message}
+                      {errors.city_name.message}
                     </p>
                   )}
                   <section className="checkboxes-container">
                     <label className="checkbox-label">
                       <input
                         type="checkbox"
-                        {...register("terms", {
+                        {...register("terms_conditions", {
                           required: "Please accept the terms & Condition",
                         })}
                         // onClick={() => setModalOpen(true)}
                       />
                       I agree to Terms & Conditions
-                      {errors.terms && (
+                      {errors.terms_conditions && (
                         <p className="input-error-message">
-                          {errors.terms.message}
+                          {errors.terms_conditions.message}
                         </p>
                       )}
                     </label>

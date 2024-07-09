@@ -3,15 +3,21 @@
 import { authApi } from "./services/auth/authApi";
 import { configureStore } from "@reduxjs/toolkit";
 import { requestsApi } from "./services/requestsCategory/requestApi";
+import { errandApi } from "./services/errands/errandsApi";
 
 export const store = configureStore({
   reducer: {
     [authApi.reducerPath]: authApi.reducer,
     [requestsApi.reducerPath]: requestsApi.reducer,
+    [errandApi.reducerPath]: errandApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware, requestsApi.middleware),
+    getDefaultMiddleware().concat(
+      authApi.middleware,
+      requestsApi.middleware,
+      errandApi.middleware
+    ),
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors

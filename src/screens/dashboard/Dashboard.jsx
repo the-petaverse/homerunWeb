@@ -12,7 +12,7 @@ import NewRequest from "../../components/newRequest/NewRequest";
 import AllRequest from "../../components/allRequest/AllRequest";
 import VerificationCode from "../../components/verificationCode/VerificationCode";
 import SideBar from "../../components/sideBar/SideBar";
-
+import { useGetUserErransQuery } from "../../services/errands/errandsApi";
 import {
   useGetUserQuery,
   useGetUsersQuery,
@@ -24,10 +24,6 @@ const Dashboard = () => {
   const cookies = new Cookies();
   // const [{ data: loginData }] = useLoginUserMutation();
   const { data: userData, isLoading, isFetching, errors } = useGetUserQuery();
-
-  if (errors) {
-    console.log(errors);
-  }
 
   // const { first_name, last_name, email } = userData?.user;
 
@@ -71,11 +67,10 @@ const Dashboard = () => {
   };
 
   // useEffect(() => {
-  //   if (cookies === undefined) {
-  //     setIsLoggedIn(!isLoggedIn);
+  //   if (errandSuccess) {
+  //     console.log(errandSuccess);
   //   }
-  //   console.log(isLoggedIn);
-  // }, [isLoggedIn]);
+  // }, [errandSuccess]);
 
   return (
     <div className="dashboard-container">

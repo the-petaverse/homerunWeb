@@ -3,9 +3,16 @@ import CloseIcon from "../../assets/close.png";
 import { Link } from "react-router-dom";
 
 import "./MainSideBar.css";
+import Cookies from "universal-cookie";
 
 const MainSideBar = ({ handleCloseSideBar, openSideBar }) => {
+  const cookies = new Cookies();
+  const receivedCookies = cookies.get("auth_token");
   if (!openSideBar) return null;
+
+  const handleLogout = () => {
+    cookies.remove("auth_token");
+  };
   return (
     <div className="side-bar-container">
       <div className="inner-side-bar">
@@ -45,19 +52,29 @@ const MainSideBar = ({ handleCloseSideBar, openSideBar }) => {
               <li>Contact Us</li>
             </Link>
             <section className="auth-wrapper">
-              <Link
-                to="/login"
-                className="inner-menu-list"
-                onClick={handleCloseSideBar}
-              >
-                <li>Login</li>
-              </Link>
-              <Link
-                to="/register"
-                className="inner-menu-list"
-                onClick={handleCloseSideBar}
-              >
-                <li>Register</li>
+              {!receivedCookies && (
+                <Link to="/login" className="inner-menu-list">
+                  <li>Login</li>
+                </Link>
+              )}
+
+              {receivedCookies && (
+                <Link
+                  to="/login"
+                  className="inner-menu-list"
+                  onClick={handleLogout}
+                >
+                  <li> Logout</li>
+                </Link>
+              )}
+              {receivedCookies && (
+                <Link to="/dashboard" className="inner-menu-list">
+                  <li> profile</li>
+                </Link>
+              )}
+
+              <Link to="/register" className="inner-menu-list">
+                {!receivedCookies && <li>Register</li>}
               </Link>
             </section>
           </ul>

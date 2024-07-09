@@ -24,5 +24,10 @@ export const errandApi = createApi({
         body: data,
       }),
     }),
+    getUserErrans: builder.query({
+      query: () => "user/errand",
+    }),
   }),
 });
+
+export const { useCreateErrandMutation, useGetUserErransQuery } = errandApi;
