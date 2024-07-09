@@ -4,7 +4,10 @@ import { useForm } from "react-hook-form";
 import { PaystackButton } from "react-paystack";
 import "./NewRequest.css";
 import { useNavigate } from "react-router-dom";
-import { useGetRequestSubCategoryQuery } from "../../services/requestsCategory/requestApi";
+import {
+  useGetRequestSubCategoryQuery,
+  useGetRequestCategoriesQuery,
+} from "../../services/requestsCategory/requestApi";
 import Cookies from "universal-cookie";
 
 const requestList = [
@@ -44,7 +47,13 @@ const cities = [
   { id: "4", stateId: "2", title: "Owo" },
 ];
 
-const NewRequest = ({ setFormStage, formStage, subcategory }) => {
+const NewRequest = ({
+  setFormStage,
+  formStage,
+  subcategory,
+  subCategoryName,
+  categoryName,
+}) => {
   const {
     data: subData,
     isLoading,
@@ -52,6 +61,13 @@ const NewRequest = ({ setFormStage, formStage, subcategory }) => {
     isSuccess,
     error,
   } = useGetRequestSubCategoryQuery();
+  const {
+    data: categoryData,
+    isLoading: categoryIsLoading,
+    isSuccess: categoryIsSuccess,
+    isFetching: categoryIsFetching,
+    error: categoryError,
+  } = useGetRequestCategoriesQuery();
   const [myState, setMyState] = useState([]);
   const [citiesList, setCitiesList] = useState([]);
   const [subRequestList, setSubRequestList] = useState([]);
@@ -60,16 +76,19 @@ const NewRequest = ({ setFormStage, formStage, subcategory }) => {
   const navigate = useNavigate();
   const cookies = new Cookies();
   const receivedCookies = cookies.get("auth_token");
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors, isValid },
-  } = useForm({ mode: "all" });
+  } = useForm({
+    mode: "all",
+  });
 
   const watchCountry = watch("country");
   const watchState = watch("stateName");
-  const watchRequest = watch("request_title");
+  const watchRequest = watch("request_name");
 
   const openCloseAccordion = (data) => {
     setOpenAccordion(parseInt(data));
@@ -132,8 +151,8 @@ const NewRequest = ({ setFormStage, formStage, subcategory }) => {
   };
 
   const handleSubRequests = () => {
-    const filteredSubRequest = subRequestData.filter(
-      (subData) => subData.categoryId === watchRequest
+    const filteredSubRequest = subData?.subRequestsCategory.filter(
+      (subData) => subData.category_id === watchRequest
     );
     setSubRequestList(filteredSubRequest);
   };
@@ -164,8 +183,7 @@ const NewRequest = ({ setFormStage, formStage, subcategory }) => {
     handleCities();
     handleSubRequests();
     filterServcies();
-  }, [watchCountry, watchState, watchRequest, isSuccess]);
-
+  }, [watchCountry, watchState, watchRequest, isSuccess, categoryIsSuccess]);
   return (
     <div>
       <div className="slate-header-wrapper">
@@ -323,24 +341,27 @@ const NewRequest = ({ setFormStage, formStage, subcategory }) => {
                     type="text"
                     className="register-main-text-input"
                     placeholder="Request Title"
-                    {...register("request_title", {
+                    {...register("request_name", {
                       required: "Title is required",
                     })}
                   >
                     <option value="0">Select Request</option>
-                    {requestList && requestList !== undefined
-                      ? requestList.map((requestData, index) => {
-                          return (
-                            <option value={requestData.id} key={index}>
-                              {requestData.category}
-                            </option>
-                          );
-                        })
+                    {categoryData?.requestsCategory &&
+                    categoryData?.requestsCategory !== undefined
+                      ? categoryData?.requestsCategory.map(
+                          (requestData, index) => {
+                            return (
+                              <option value={requestData?._id} key={index}>
+                                {requestData?.category_name}
+                              </option>
+                            );
+                          }
+                        )
                       : "No request selected"}
                   </select>
-                  {errors.request_title && (
+                  {errors.request_nane && (
                     <p className="input-error-message">
-                      {errors.request_title.message}
+                      {errors.request_nane.message}
                     </p>
                   )}
                 </label>
@@ -349,7 +370,7 @@ const NewRequest = ({ setFormStage, formStage, subcategory }) => {
                     type="text"
                     className="register-main-text-input"
                     placeholder="Sub Request"
-                    {...register("sub_request", {
+                    {...register("sub_request_name", {
                       required: "Sub Request is required",
                     })}
                   >
@@ -357,19 +378,20 @@ const NewRequest = ({ setFormStage, formStage, subcategory }) => {
                     {subRequestList && subRequestList !== undefined
                       ? subRequestList.map((subReqData, index) => {
                           return (
-                            <option value={subReqData.id} key={index}>
-                              {subReqData.title}
+                            <option value={subReqData._id} key={index}>
+                              {subReqData.sub_category_title}
                             </option>
                           );
                         })
                       : "No request selected"}
                   </select>
-                  {errors.request_title && (
+                  {errors.sub_request_name && (
                     <p className="input-error-message">
-                      {errors.sub_request.message}
+                      {errors.sub_request_name.message}
                     </p>
                   )}
                 </label>
+
                 <label>
                   <input
                     type="text"
