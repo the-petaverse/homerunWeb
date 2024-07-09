@@ -42,6 +42,11 @@ const Navbar = ({ handleOpenSideBar }) => {
               <li> Logout</li>
             </Link>
           )}
+          {receivedCookies && (
+            <Link to="/dashboard" className="nav-links">
+              <li> profile</li>
+            </Link>
+          )}
 
           <Link to="/register" className="nav-links">
             {!receivedCookies && <li>Register</li>}

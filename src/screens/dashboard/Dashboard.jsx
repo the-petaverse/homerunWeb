@@ -14,6 +14,7 @@ import VerificationCode from "../../components/verificationCode/VerificationCode
 import SideBar from "../../components/sideBar/SideBar";
 
 import {
+  useGetUserQuery,
   useGetUsersQuery,
   useLoginUserMutation,
 } from "../../services/auth/authApi";
@@ -21,9 +22,16 @@ import Cookies from "universal-cookie";
 
 const Dashboard = () => {
   const cookies = new Cookies();
-  const [{ data: loginData }] = useLoginUserMutation();
+  // const [{ data: loginData }] = useLoginUserMutation();
+  const { data: userData, isLoading, isFetching, errors } = useGetUserQuery();
 
-  let getCookies = cookies.get("auth_token");
+  if (errors) {
+    console.log(errors);
+  }
+
+  // const { first_name, last_name, email } = userData?.user;
+
+  // let getCookies = cookies.get("auth_token");
   // const {
   //   data: userData,
   //   error,
@@ -74,8 +82,12 @@ const Dashboard = () => {
       <div className="left-side-container">
         <div className="name-email-holder">
           <img src={Avatar} alt="" className="avarta-wrapper" />
-          <h3 className="user-name">Michael Oladele</h3>
-          <h3>micheaol80@gmail.com</h3>
+          {userData && (
+            <h3 className="user-name">
+              {userData.user.first_name} {userData.user.last_name}
+            </h3>
+          )}
+          {userData && <h3>{userData.user.email}</h3>}
         </div>
         <div className="right-menu-list-wrapper">
           <ul className="right-main-list">
