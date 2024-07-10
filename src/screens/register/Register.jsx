@@ -4,6 +4,7 @@ import LoginImage from "../../assets/feedback.png";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link, Navigate } from "react-router-dom";
 import { useRegisterUserMutation } from "../../services/auth/authApi";
+import backButton from "../../assets/form-back.png";
 import "./Register.css";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import Cookies from "universal-cookie";
@@ -29,7 +30,7 @@ const cities = [
 const Register = () => {
   const cookies = new Cookies();
   const registeredCookies = cookies.get("resgitered");
-  const [registerUser, { data: registerData, isSuccess, error }] =
+  const [registerUser, { data: registerData, isSuccess, error, isLoading }] =
     useRegisterUserMutation();
   const navigate = useNavigate();
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -55,7 +56,6 @@ const Register = () => {
   if (isSuccess) {
     cookies.set("resgitered", registerData.message);
   }
-
   const handleOpenSideBar = () => {
     setOpenSideBar(true);
   };
@@ -67,6 +67,9 @@ const Register = () => {
   const handleCompleteForm = () => {
     setFormStep((cur) => cur + 1);
   };
+  const handleFormGoBack = () => {
+    setFormStep((cur) => cur - 1);
+  };
 
   const renderButton = () => {
     if (formStep > 1) {
@@ -74,7 +77,7 @@ const Register = () => {
     } else if (formStep === 1) {
       return (
         <input
-          disabled={!isValid}
+          disabled={!isValid || isLoading}
           type="submit"
           className="register-main-form-btn"
         />
@@ -94,26 +97,11 @@ const Register = () => {
     }
   };
 
-  const handleState = () => {
-    const filteredStates = staties.filter(
-      (statesData) => statesData.countryid === watchCountry
-    );
-    setMyState(filteredStates);
-  };
-  const handleCities = () => {
-    const filteredCities = cities.filter(
-      (citiesData) => citiesData.stateId === watchState
-    );
-    setCitiesList(filteredCities);
-  };
-
   useEffect(() => {
-    // if (registeredCookies) {
-    //   <Navigate to="/verify" />;
-    // }
-    handleState();
-    handleCities();
-  }, [watchCountry, watchState, registeredCookies]);
+    if (registeredCookies) {
+      navigate("/verify", { replace: true });
+    }
+  }, [registeredCookies]);
   return (
     <div>
       <Navbar handleOpenSideBar={handleOpenSideBar} />
@@ -132,6 +120,16 @@ const Register = () => {
           )}
           {error?.error?.message && (
             <p className="register-error">Some went wrong....</p>
+          )}
+          {isLoading && (
+            <p className="register-error">
+              We are sending your data, please wait.....
+            </p>
+          )}
+          {formStep === 1 && (
+            <div className="back-button-wrapper" onClick={handleFormGoBack}>
+              <img src={backButton} alt="back-button" className="back-button" />
+            </div>
           )}
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -208,6 +206,54 @@ const Register = () => {
             {formStep === 1 && (
               <>
                 <label>
+                  <input
+                    type="text"
+                    style={{ borderColor: errors.phoneNumber ? "red" : "blue" }}
+                    className="register-main-text-input"
+                    placeholder="Phone number"
+                    {...register("resident_country", {
+                      required: "Valid phone number is required",
+                    })}
+                  />
+                  {errors.resident_country && (
+                    <p className="input-error-message">
+                      {errors.resident_country.message}
+                    </p>
+                  )}
+                </label>
+                <label>
+                  <input
+                    type="text"
+                    style={{ borderColor: errors.phoneNumber ? "red" : "blue" }}
+                    className="register-main-text-input"
+                    placeholder="Phone number"
+                    {...register("resident_state", {
+                      required: "Valid phone number is required",
+                    })}
+                  />
+                  {errors.resident_state && (
+                    <p className="input-error-message">
+                      {errors.resident_state.message}
+                    </p>
+                  )}
+                </label>
+                <label>
+                  <input
+                    type="text"
+                    style={{ borderColor: errors.phoneNumber ? "red" : "blue" }}
+                    className="register-main-text-input"
+                    placeholder="Phone number"
+                    {...register("resident_city", {
+                      required: "Valid phone number is required",
+                    })}
+                  />
+                  {errors.resident_city && (
+                    <p className="input-error-message">
+                      {errors.resident_city.message}
+                    </p>
+                  )}
+                </label>
+                {/* <label>
                   <select
                     type="text"
                     className="register-main-text-input"
@@ -284,7 +330,7 @@ const Register = () => {
                       {errors.resident_city.message}
                     </p>
                   )}
-                </label>
+                </label> */}
                 <label>
                   <input
                     type="password"

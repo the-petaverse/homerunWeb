@@ -63,7 +63,15 @@
   font-size: 20px;
   font-family: "Josefin Slab", serif;
 }
-
+.back-button-wrapper {
+  width: 60px;
+  margin-left: -5px;
+}
+.back-button {
+  width: 60px;
+  margin-bottom: -25px;
+  cursor: pointer;
+}
 @media (min-width: 475px) {
   .register-inner-form-wrapper {
     width: 80%;

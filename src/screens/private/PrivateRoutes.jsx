@@ -7,6 +7,7 @@ const PrivateRoute = () => {
   const cookies = new Cookies();
 
   let getCookies = cookies.get("auth_token");
+  let registeredCookies = cookies.get("resgitered");
   const navigate = useNavigate();
 
   useEffect(() => {

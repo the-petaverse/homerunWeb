@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import logo from "../../assets/logo.png";
 import MenuIcon from "../../assets/menu.png";
@@ -11,6 +11,8 @@ const Navbar = ({ handleOpenSideBar }) => {
   const handleLogout = () => {
     cookies.remove("auth_token");
   };
+
+  useEffect(() => {}, [receivedCookies]);
 
   return (
     <div className="nav-container">

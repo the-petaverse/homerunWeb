@@ -20,10 +20,8 @@ import ServiceDetailPage from "./screens/serviceDetailPage/ServiceDetailPage.jsx
 import CategoriesDetailPage from "./screens/categoriesDetailPage/CategoriesDetailPage.jsx";
 import { Provider } from "react-redux";
 import { store } from "./store.js";
-import Cookies from "universal-cookie";
+import ProtectedRoutes from "./screens/private/ProtectedRoutes.jsx";
 
-const cookies = new Cookies();
-const registeredCookies = cookies.get("resgitered");
 const router = createBrowserRouter([
   {
     path: "/",
@@ -56,11 +54,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/register",
-    element: !registeredCookies ? <Register /> : <Navigate to="/verify" />,
+    element: <Register />,
   },
   {
-    path: "/verify",
-    element: registeredCookies ? <Verify /> : <Navigate to="/register" />,
+    path: "/",
+    element: <ProtectedRoutes />,
+    children: [
+      {
+        path: "/verify",
+        element: <Verify />,
+      },
+    ],
   },
   {
     path: "/",

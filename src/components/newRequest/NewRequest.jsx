@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import SuccessImage from "../../assets/green.png";
 import { useForm } from "react-hook-form";
 import { PaystackButton } from "react-paystack";
+import backButton from "../../assets/form-back.png";
 import "./NewRequest.css";
 import { useNavigate } from "react-router-dom";
 import {
@@ -87,6 +88,7 @@ const NewRequest = ({
   const navigate = useNavigate();
   const cookies = new Cookies();
   const receivedCookies = cookies.get("auth_token");
+  const paymentPending = cookies.get("paid_false");
 
   const {
     register,
@@ -116,6 +118,7 @@ const NewRequest = ({
     text: "Pay Now",
     onSuccess: (data) => {
       if (data.status === "success") {
+        cookies.remove("paid_false");
         navigate("/dashboard", { replace: true });
       }
     },
@@ -132,13 +135,16 @@ const NewRequest = ({
   const handleCompleteForm = () => {
     setFormStage((cur) => cur + 1);
   };
+  const handleFormGoBack = () => {
+    setFormStage((cur) => cur - 1);
+  };
 
   if (errandError) {
     console.log(errandError);
   }
 
   if (errandSuccess) {
-    console.log(errandData.message);
+    cookies.set("paid_false", errandData?.message);
   }
   const renderButton = () => {
     if (formStage > 1) {
@@ -146,14 +152,14 @@ const NewRequest = ({
     } else if (formStage === 1) {
       return (
         <label className="final-submit-btn-wrapper">
-          <button
-            // type="Submit"
+          <input
+            type="Submit"
             className="final-button-wrapper final-submit-btn"
-            onClick={handleCompleteForm}
+            // onClick={handleCompleteForm}
             disabled={!isValid && !receivedCookies}
           >
-            Next Step
-          </button>
+            {/* Next Step */}
+          </input>
         </label>
       );
     } else {
@@ -209,6 +215,7 @@ const NewRequest = ({
     isSuccess,
     categoryIsSuccess,
     errandSuccess,
+    errandData?.message,
   ]);
   return (
     <div>
@@ -352,252 +359,269 @@ const NewRequest = ({
                 : "We will be glad to have you onboard"}
             </p>
           )}
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="register-form-wrapper new-request-form-wrapper"
-          >
-            {formStage >= 0 && (
-              <div
-                style={{
-                  display: formStage === 0 ? "block" : "none",
-                }}
-              >
-                <label>
-                  <select
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="Request Title"
-                    {...register("request_name", {
-                      required: "Title is required",
-                    })}
-                  >
-                    <option value="0">Select Request</option>
-                    {categoryData?.requestsCategory &&
-                    categoryData?.requestsCategory !== undefined
-                      ? categoryData?.requestsCategory.map(
-                          (requestData, index) => {
+          {formStage === 1 && (
+            <div className="back-button-wrapper" onClick={handleFormGoBack}>
+              <img src={backButton} alt="back-button" className="back-button" />
+            </div>
+          )}
+          {errandError?.error && (
+            <p className={!receivedCookies ? "not-login-style" : ""}>
+              Error sending the data, please try again
+            </p>
+          )}
+          {errandError?.error?.message && (
+            <p className={!receivedCookies ? "not-login-style" : ""}>
+              {errandError?.error?.message}
+            </p>
+          )}
+          {!paymentPending && (
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="register-form-wrapper new-request-form-wrapper"
+            >
+              {formStage >= 0 && (
+                <div
+                  style={{
+                    display: formStage === 0 ? "block" : "none",
+                  }}
+                >
+                  <label>
+                    <select
+                      type="text"
+                      className="register-main-text-input"
+                      placeholder="Request Title"
+                      {...register("request_name", {
+                        required: "Title is required",
+                      })}
+                    >
+                      <option value="0">Select Request</option>
+                      {categoryData?.requestsCategory &&
+                      categoryData?.requestsCategory !== undefined
+                        ? categoryData?.requestsCategory.map(
+                            (requestData, index) => {
+                              return (
+                                <option value={requestData?._id} key={index}>
+                                  {requestData?.category_name}
+                                </option>
+                              );
+                            }
+                          )
+                        : "No request selected"}
+                    </select>
+                    {errors.request_nane && (
+                      <p className="input-error-message">
+                        {errors.request_nane.message}
+                      </p>
+                    )}
+                  </label>
+                  <label>
+                    <select
+                      type="text"
+                      className="register-main-text-input"
+                      placeholder="Sub Request"
+                      {...register("sub_request_name", {
+                        required: "Sub Request is required",
+                      })}
+                    >
+                      <option value="0">Select Sub-request</option>
+                      {subRequestList && subRequestList !== undefined
+                        ? subRequestList.map((subReqData, index) => {
                             return (
-                              <option value={requestData?._id} key={index}>
-                                {requestData?.category_name}
+                              <option
+                                value={subReqData.sub_category_title}
+                                key={index}
+                              >
+                                {subReqData.sub_category_title}
                               </option>
                             );
-                          }
-                        )
-                      : "No request selected"}
-                  </select>
-                  {errors.request_nane && (
-                    <p className="input-error-message">
-                      {errors.request_nane.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <select
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="Sub Request"
-                    {...register("sub_request_name", {
-                      required: "Sub Request is required",
-                    })}
-                  >
-                    <option value="0">Select Sub-request</option>
-                    {subRequestList && subRequestList !== undefined
-                      ? subRequestList.map((subReqData, index) => {
-                          return (
-                            <option
-                              value={subReqData.sub_category_title}
-                              key={index}
-                            >
-                              {subReqData.sub_category_title}
-                            </option>
-                          );
-                        })
-                      : "No request selected"}
-                  </select>
-                  {errors.sub_request_name && (
-                    <p className="input-error-message">
-                      {errors.sub_request_name.message}
-                    </p>
-                  )}
-                </label>
+                          })
+                        : "No request selected"}
+                    </select>
+                    {errors.sub_request_name && (
+                      <p className="input-error-message">
+                        {errors.sub_request_name.message}
+                      </p>
+                    )}
+                  </label>
 
-                <label>
-                  <input
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="Please enter more information as possible here"
-                    {...register("more_info", {
-                      required: "Request details are required",
-                    })}
-                  />
-                  {errors.more_info && (
-                    <p className="input-error-message">
-                      {errors.more_info.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <input
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="Contact Person"
-                    {...register("contact_person", {
-                      required: "Contact name is required",
-                    })}
-                  />
-                  {errors.contact_person && (
-                    <p className="input-error-message">
-                      {errors.contact_person.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <input
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="Contact Telephone Number"
-                    {...register("contact_telephone_number", {
-                      required: "Contact number is required",
-                    })}
-                  />
-                  {errors.contact_telephone_number && (
-                    <p className="input-error-message">
-                      {errors.contact_telephone_number.message}
-                    </p>
-                  )}
-                </label>
-              </div>
-            )}
-            {formStage === 1 && (
-              <>
-                <label>
-                  <input
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="Contact Address"
-                    {...register("contact_address", {
-                      required: "Contact address is required",
-                    })}
-                  />
-                  {errors.contact_address && (
-                    <p className="input-error-message">
-                      {errors.contact_address.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <select
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="Country Name"
-                    {...register("country", {
-                      required: "Country name is required",
-                    })}
-                  >
-                    <option value="0">Select country</option>
-                    {countries && countries !== undefined
-                      ? countries.map((countryData, index) => {
-                          return (
-                            <option value={countryData.id} key={index}>
-                              {countryData.title}
-                            </option>
-                          );
-                        })
-                      : "No country selected"}
-                  </select>
-                  {errors.country && (
-                    <p className="input-error-message">
-                      {errors.country.message}
-                    </p>
-                  )}
-                  <select
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="State Name"
-                    {...register("state_name", {
-                      required: "State name is required",
-                    })}
-                  >
-                    <option value="0">Select State</option>
-                    {myState && myState !== undefined
-                      ? myState.map((stateData, index) => {
-                          return (
-                            <option value={stateData.id} key={index}>
-                              {stateData.title}
-                            </option>
-                          );
-                        })
-                      : "No state selected"}
-                  </select>
-                  {errors.state_name && (
-                    <p className="input-error-message">
-                      {errors.state_name.message}
-                    </p>
-                  )}
-                  <select
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="City Name"
-                    {...register("city_name", {
-                      required: "City name is required",
-                    })}
-                  >
-                    <option value="0">Select City</option>
-                    {citiesList && citiesList !== undefined
-                      ? citiesList.map((cityData, index) => {
-                          return (
-                            <option value={cityData.id} key={index}>
-                              {cityData.title}
-                            </option>
-                          );
-                        })
-                      : "No city selected"}
-                  </select>
-                  {errors.city_name && (
-                    <p className="input-error-message">
-                      {errors.city_name.message}
-                    </p>
-                  )}
-                  <section className="checkboxes-container">
-                    <label className="checkbox-label">
-                      <input
-                        type="checkbox"
-                        {...register("terms_conditions", {
-                          required: "Please accept the terms & Condition",
-                        })}
-                        // onClick={() => setModalOpen(true)}
-                      />
-                      I agree to Terms & Conditions
-                      {errors.terms_conditions && (
-                        <p className="input-error-message">
-                          {errors.terms_conditions.message}
-                        </p>
-                      )}
-                    </label>
-                  </section>
-                </label>
-              </>
-            )}
-            {formStage === 2 && (
-              <>
-                <div className="checkboxes-container">
-                  <div className="main-success-image-container">
-                    <img src={SuccessImage} className="success-image" />
-                    <h3>Request has been created successfully</h3>
-                    <p>
-                      It is a pleasure taking your request. Your request is
-                      currently been attended to. Thank you for trusting us.
-                    </p>
-                  </div>
+                  <label>
+                    <input
+                      type="text"
+                      className="register-main-text-input"
+                      placeholder="Please enter more information as possible here"
+                      {...register("more_info", {
+                        required: "Request details are required",
+                      })}
+                    />
+                    {errors.more_info && (
+                      <p className="input-error-message">
+                        {errors.more_info.message}
+                      </p>
+                    )}
+                  </label>
+                  <label>
+                    <input
+                      type="text"
+                      className="register-main-text-input"
+                      placeholder="Contact Person"
+                      {...register("contact_person", {
+                        required: "Contact name is required",
+                      })}
+                    />
+                    {errors.contact_person && (
+                      <p className="input-error-message">
+                        {errors.contact_person.message}
+                      </p>
+                    )}
+                  </label>
+                  <label>
+                    <input
+                      type="number"
+                      className="register-main-text-input"
+                      placeholder="Contact Telephone Number"
+                      {...register("contact_telephone_number", {
+                        required: "Contact number is required",
+                      })}
+                    />
+                    {errors.contact_telephone_number && (
+                      <p className="input-error-message">
+                        {errors.contact_telephone_number.message}
+                      </p>
+                    )}
+                  </label>
                 </div>
-                <PaystackButton
-                  {...componentProps}
-                  className="register-main-form-btn"
-                />
-              </>
-            )}
-            {renderButton()}
-          </form>
+              )}
+              {formStage === 1 && (
+                <>
+                  <label>
+                    <input
+                      type="text"
+                      className="register-main-text-input"
+                      placeholder="Contact Address"
+                      {...register("contact_address", {
+                        required: "Contact address is required",
+                      })}
+                    />
+                    {errors.contact_address && (
+                      <p className="input-error-message">
+                        {errors.contact_address.message}
+                      </p>
+                    )}
+                  </label>
+                  <label>
+                    <select
+                      type="text"
+                      className="register-main-text-input"
+                      placeholder="Country Name"
+                      {...register("country", {
+                        required: "Country name is required",
+                      })}
+                    >
+                      <option value="0">Select country</option>
+                      {countries && countries !== undefined
+                        ? countries.map((countryData, index) => {
+                            return (
+                              <option value={countryData.id} key={index}>
+                                {countryData.title}
+                              </option>
+                            );
+                          })
+                        : "No country selected"}
+                    </select>
+                    {errors.country && (
+                      <p className="input-error-message">
+                        {errors.country.message}
+                      </p>
+                    )}
+                    <select
+                      type="text"
+                      className="register-main-text-input"
+                      placeholder="State Name"
+                      {...register("state_name", {
+                        required: "State name is required",
+                      })}
+                    >
+                      <option value="0">Select State</option>
+                      {myState && myState !== undefined
+                        ? myState.map((stateData, index) => {
+                            return (
+                              <option value={stateData.id} key={index}>
+                                {stateData.title}
+                              </option>
+                            );
+                          })
+                        : "No state selected"}
+                    </select>
+                    {errors.state_name && (
+                      <p className="input-error-message">
+                        {errors.state_name.message}
+                      </p>
+                    )}
+                    <select
+                      type="text"
+                      className="register-main-text-input"
+                      placeholder="City Name"
+                      {...register("city_name", {
+                        required: "City name is required",
+                      })}
+                    >
+                      <option value="0">Select City</option>
+                      {citiesList && citiesList !== undefined
+                        ? citiesList.map((cityData, index) => {
+                            return (
+                              <option value={cityData.id} key={index}>
+                                {cityData.title}
+                              </option>
+                            );
+                          })
+                        : "No city selected"}
+                    </select>
+                    {errors.city_name && (
+                      <p className="input-error-message">
+                        {errors.city_name.message}
+                      </p>
+                    )}
+                    <section className="checkboxes-container">
+                      <label className="checkbox-label">
+                        <input
+                          type="checkbox"
+                          {...register("terms_conditions", {
+                            required: "Please accept the terms & Condition",
+                          })}
+                          // onClick={() => setModalOpen(true)}
+                        />
+                        I agree to Terms & Conditions
+                        {errors.terms_conditions && (
+                          <p className="input-error-message">
+                            {errors.terms_conditions.message}
+                          </p>
+                        )}
+                      </label>
+                    </section>
+                  </label>
+                </>
+              )}
+              {renderButton()}
+            </form>
+          )}
+          {paymentPending && (
+            <div>
+              <div className="checkboxes-container">
+                <div className="main-success-image-container">
+                  <img src={SuccessImage} className="success-image" />
+                  <h3>Request has been created successfully</h3>
+                  <p>
+                    It is a pleasure taking your request. Your request is
+                    currently been attended to. Thank you for trusting us.
+                  </p>
+                </div>
+              </div>
+              <PaystackButton
+                {...componentProps}
+                className="register-main-form-btn payment-btn"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
