@@ -1,6 +1,7 @@
 import React from "react";
 import AboutImg from "../../assets/about.png";
 import { Link } from "react-router-dom";
+import "./ServicesSummary.css";
 import EverythinYouNeed from "../everything/EverythinYouNeed";
 import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
 
@@ -39,12 +40,31 @@ const ServicesSummary = () => {
   const { data, isLoading, isFetching, error, isSuccess } =
     useGetRequestCategoriesQuery();
 
+  if (error) {
+    console.log(error);
+  }
+
   return (
     <div>
       <div className="main-service-card-container">
         <div className="services-summary-wrapper">
           <h2>Our services</h2>
         </div>
+        {isLoading && (
+          <div>
+            <p>Loading services....</p>
+          </div>
+        )}
+        {isFetching && (
+          <div>
+            <p>Fetching services....</p>
+          </div>
+        )}
+        {!data?.requestsCategory && (
+          <div className="loading-error">
+            <p>No services at the moment....</p>
+          </div>
+        )}
         <div className="service-card-holder">
           {data?.requestsCategory &&
             data?.requestsCategory.map((serviceData, index) => {

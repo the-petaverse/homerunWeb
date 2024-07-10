@@ -13,18 +13,17 @@ const AllRequest = () => {
     error: errandError,
   } = useGetUserErransQuery();
 
-  if (errandError) {
-    console.log(errandError);
-  }
+  // if (errandError) {
+  //   console.log(errandError);
+  // }
 
-  const deleteRequest = (id) => {
-    console.log("fliter_id", id);
-    let filterRequest = allRequests.filter(
-      (deletedRequest) => deletedRequest.id !== id
-    );
-    setAllRequests(filterRequest);
-    console.log(allRequests.length);
-  };
+  // const deleteRequest = (id) => {
+  //   console.log("fliter_id", id);
+  //   let filterRequest = allRequests.filter(
+  //     (deletedRequest) => deletedRequest.id !== id
+  //   );
+  //   setAllRequests(filterRequest);
+  // };
 
   useEffect(() => {
     // getAllRequests();

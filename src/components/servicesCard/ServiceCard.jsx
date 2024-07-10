@@ -21,23 +21,23 @@ const ServiceCard = ({ category }) => {
     isLoading: subSuccess,
   } = useGetRequestSubCategoryQuery();
 
-  if (isLoading) {
-    console.log("isLoading");
-  }
+  // if (isLoading) {
+  //   console.log("isLoading");
+  // }
 
-  if (subError) {
-    console.log(data);
-  }
+  // if (subError) {
+  //   console.log(data);
+  // }
 
-  if (subLoading) {
-    console.log("subLoading.....");
-  }
-  if (subFetching) {
-    console.log("subFetching.....");
-  }
-  if (subSuccess) {
-    console.log(subData);
-  }
+  // if (subLoading) {
+  //   console.log("subLoading.....");
+  // }
+  // if (subFetching) {
+  //   console.log("subFetching.....");
+  // }
+  // if (subSuccess) {
+  //   console.log(subData);
+  // }
 
   const filterSubCategory = () => {
     if (categoryId) {

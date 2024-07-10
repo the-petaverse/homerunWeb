@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import LoginImage from "../../assets/feedback.png";
 import { useForm } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { useRegisterUserMutation } from "../../services/auth/authApi";
 import "./Register.css";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
+import Cookies from "universal-cookie";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -26,6 +27,8 @@ const cities = [
 ];
 
 const Register = () => {
+  const cookies = new Cookies();
+  const registeredCookies = cookies.get("resgitered");
   const [registerUser, { data: registerData, isSuccess, error }] =
     useRegisterUserMutation();
   const navigate = useNavigate();
@@ -45,13 +48,14 @@ const Register = () => {
   const watchCountry = watch("resident_country");
   const watchState = watch("resident_state");
 
-  const onSubmit = (data) => {
-    registerUser(data);
+  const onSubmit = async (data) => {
+    await registerUser(data);
   };
 
   if (isSuccess) {
-    navigate("/verify", { replace: true });
+    cookies.set("resgitered", registerData.message);
   }
+
   const handleOpenSideBar = () => {
     setOpenSideBar(true);
   };
@@ -104,9 +108,12 @@ const Register = () => {
   };
 
   useEffect(() => {
+    // if (registeredCookies) {
+    //   <Navigate to="/verify" />;
+    // }
     handleState();
     handleCities();
-  }, [watchCountry, watchState]);
+  }, [watchCountry, watchState, registeredCookies]);
   return (
     <div>
       <Navbar handleOpenSideBar={handleOpenSideBar} />
@@ -115,10 +122,16 @@ const Register = () => {
           <img src={LoginImage} alt="" className="register-image" />
         </div>
         <div className="register-inner-form-wrapper">
-          {error ? (
-            <p>{error?.data?.error}</p>
+          {error?.data?.message ? (
+            <p className="register-error">{error?.data?.message}</p>
           ) : (
             <p>We will be glad to have you onboard</p>
+          )}
+          {error?.error && (
+            <p className="register-error">Some went wrong....</p>
+          )}
+          {error?.error?.message && (
+            <p className="register-error">Some went wrong....</p>
           )}
           <form
             onSubmit={handleSubmit(onSubmit)}

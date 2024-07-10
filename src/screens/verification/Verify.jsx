@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LoginImage from "../../assets/feedback.png";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useVerifyUserMutation } from "../../services/auth/authApi";
+import Cookies from "universal-cookie";
 
 const Verify = () => {
+  const cookies = new Cookies();
+  const [notRegistered, setNotRegistered] = useState(false);
   const [verifyUser, { data: verifyData, isSuccess, error }] =
     useVerifyUserMutation();
   const navigate = useNavigate();
@@ -21,7 +24,7 @@ const Verify = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      // console.log(verifyData);
+      cookies.remove("resgitered");
       navigate("/login", { replace: true });
     }
   }, [isSuccess]);

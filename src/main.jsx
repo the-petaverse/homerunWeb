@@ -23,8 +23,7 @@ import { store } from "./store.js";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
-
-let getCookies = cookies.get("auth_token");
+const registeredCookies = cookies.get("resgitered");
 const router = createBrowserRouter([
   {
     path: "/",
@@ -57,11 +56,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/register",
-    element: <Register />,
+    element: !registeredCookies ? <Register /> : <Navigate to="/verify" />,
   },
   {
     path: "/verify",
-    element: <Verify />,
+    element: registeredCookies ? <Verify /> : <Navigate to="/register" />,
   },
   {
     path: "/",

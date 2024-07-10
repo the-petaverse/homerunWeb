@@ -25,21 +25,6 @@ const Dashboard = () => {
   // const [{ data: loginData }] = useLoginUserMutation();
   const { data: userData, isLoading, isFetching, errors } = useGetUserQuery();
 
-  // const { first_name, last_name, email } = userData?.user;
-
-  // let getCookies = cookies.get("auth_token");
-  // const {
-  //   data: userData,
-  //   error,
-  //   isLoading,
-  //   isFetching,
-  //   isSuccess,
-  // } = useGetUsersQuery();
-
-  // if (isSuccess) {
-  //   console.log(userData, "Dashboard");
-  // }
-  // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [openModal, setModalOpen] = useState(false);
   const [formStage, setFormStage] = useState(0);
   const [showDashboard, setShowDashboard] = useState(1);

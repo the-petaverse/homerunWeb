@@ -3,6 +3,7 @@ import Avatar from "../../assets/avarta.png";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import CloseIcon from "../../assets/close.png";
+import { useGetUserQuery } from "../../services/auth/authApi";
 const SideBar = ({
   handleCloseSideBar,
   openSideBar,
@@ -10,6 +11,13 @@ const SideBar = ({
   handleLogout,
   setFormStage,
 }) => {
+  const {
+    data: userData,
+    isLoading,
+    isFetching,
+    errors,
+    isSuccess,
+  } = useGetUserQuery();
   if (!openSideBar) return null;
 
   return (
@@ -23,11 +31,15 @@ const SideBar = ({
             onClick={handleCloseSideBar}
           />
         </div>
-        <div className="name-email-holder">
-          <img src={Avatar} alt="" className="side-bar-avarta-wrapper" />
-          <h3 className="side-user-name">Michael Oladele</h3>
-          <h3 className="side-user-name">micheaol80@gmail.com</h3>
-        </div>
+        {userData && (
+          <div className="name-email-holder">
+            <img src={Avatar} alt="" className="side-bar-avarta-wrapper" />
+            <h3 className="side-user-name">
+              {userData.user?.first_name} {userData.user?.last_name}
+            </h3>
+            <h3 className="side-user-name">{userData.user?.email}</h3>
+          </div>
+        )}
         <div className="side-bar-menu-list-wrapper">
           <ul className="side-bar-right-main-list">
             <button

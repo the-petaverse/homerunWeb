@@ -138,7 +138,7 @@ const NewRequest = ({
   }
 
   if (errandSuccess) {
-    console.log(errandData);
+    console.log(errandData.message);
   }
   const renderButton = () => {
     if (formStage > 1) {
@@ -202,7 +202,14 @@ const NewRequest = ({
     handleCities();
     handleSubRequests();
     filterServcies();
-  }, [watchCountry, watchState, watchRequest, isSuccess, categoryIsSuccess]);
+  }, [
+    watchCountry,
+    watchState,
+    watchRequest,
+    isSuccess,
+    categoryIsSuccess,
+    errandSuccess,
+  ]);
   return (
     <div>
       <div className="slate-header-wrapper">
@@ -214,7 +221,7 @@ const NewRequest = ({
             {serviceData &&
               serviceData.map((accordData, index) => {
                 return (
-                  <>
+                  <div key={index}>
                     <div
                       className="accordion-main-container"
                       onClick={() => openCloseAccordion(1)}
@@ -232,7 +239,7 @@ const NewRequest = ({
                         </div>
                       )}
                     </div>
-                  </>
+                  </div>
                 );
               })}
           </div>
@@ -240,7 +247,7 @@ const NewRequest = ({
             {serviceData &&
               serviceData.map((accordData, index) => {
                 return (
-                  <>
+                  <div key={index}>
                     <div
                       className="accordion-main-container"
                       onClick={() => openCloseAccordion(2)}
@@ -257,7 +264,7 @@ const NewRequest = ({
                         </div>
                       )}
                     </div>
-                  </>
+                  </div>
                 );
               })}
           </div>
@@ -265,7 +272,7 @@ const NewRequest = ({
             {serviceData &&
               serviceData.map((accordData, index) => {
                 return (
-                  <>
+                  <div key={index}>
                     <div
                       className="accordion-main-container"
                       onClick={() => openCloseAccordion(3)}
@@ -282,7 +289,7 @@ const NewRequest = ({
                         </div>
                       )}
                     </div>
-                  </>
+                  </div>
                 );
               })}
           </div>
@@ -290,7 +297,7 @@ const NewRequest = ({
             {serviceData &&
               serviceData.map((accordData, index) => {
                 return (
-                  <>
+                  <div key={index}>
                     <div
                       className="accordion-main-container"
                       onClick={() => openCloseAccordion(4)}
@@ -307,7 +314,7 @@ const NewRequest = ({
                         </div>
                       )}
                     </div>
-                  </>
+                  </div>
                 );
               })}
           </div>
@@ -315,7 +322,7 @@ const NewRequest = ({
             {serviceData &&
               serviceData.map((accordData, index) => {
                 return (
-                  <>
+                  <div key={index}>
                     <div
                       className="accordion-main-container"
                       onClick={() => openCloseAccordion(5)}
@@ -332,7 +339,7 @@ const NewRequest = ({
                         </div>
                       )}
                     </div>
-                  </>
+                  </div>
                 );
               })}
           </div>
