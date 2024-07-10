@@ -3,6 +3,7 @@
   margin-right: 25px;
   border: solid 1px rgb(221, 216, 216);
   margin-bottom: 15px;
+  cursor: pointer;
 }
 .accordion-title {
   display: flex;
@@ -11,4 +12,45 @@
 .accordion-content {
   text-align: left;
   margin-top: 5px;
+}
+.not-login-style {
+  color: red;
+}
+.payment-btn {
+  width: 80%;
+}
+@media (max-width: 475px) {
+  .payment-btn {
+    width: 100%;
+    margin-right: 25px;
+  }
+}
+@media (max-width: 640px) {
+}
+
+@media (max-width: 768px) {
+  .payment-btn {
+    width: 80%;
+    margin-left: 50px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .payment-btn {
+    width: 80%;
+    margin-left: 10px;
+  }
+}
+@media (min-width: 1280px) {
+  .payment-btn {
+    width: 80%;
+    margin-left: 50px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .payment-btn {
+    width: 60%;
+    margin-left: 150px;
+  }
 }

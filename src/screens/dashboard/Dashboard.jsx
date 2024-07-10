@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
-import { useForm } from "react-hook-form";
+
 import Avatar from "../../assets/avarta.png";
 import MenuIcon from "../../assets/menu.png";
 import BinIcon from "../../assets/bin.png";
@@ -12,8 +12,26 @@ import NewRequest from "../../components/newRequest/NewRequest";
 import AllRequest from "../../components/allRequest/AllRequest";
 import VerificationCode from "../../components/verificationCode/VerificationCode";
 import SideBar from "../../components/sideBar/SideBar";
+import { useGetUserErransQuery } from "../../services/errands/errandsApi";
+import {
+  useGetUserQuery,
+  useGetUsersQuery,
+  useLoginUserMutation,
+} from "../../services/auth/authApi";
+import Cookies from "universal-cookie";
 
 const Dashboard = () => {
+  const cookies = new Cookies();
+  const reacivedToken = cookies.get("auth_token");
+  // const [{ data: loginData }] = useLoginUserMutation();
+  const {
+    data: userData,
+    isLoading,
+    isFetching,
+    errors,
+    isSuccess,
+  } = useGetUserQuery();
+
   const [openModal, setModalOpen] = useState(false);
   const [formStage, setFormStage] = useState(0);
   const [showDashboard, setShowDashboard] = useState(1);
@@ -26,7 +44,7 @@ const Dashboard = () => {
   };
 
   const handleLogout = () => {
-    navigate("/login", { replace: true });
+    cookies.remove("auth_token");
   };
 
   const handleCloseModal = () => {
@@ -40,13 +58,19 @@ const Dashboard = () => {
     setOpenSideBar(false);
   };
 
+  // useEffect(() => {}, [reacivedToken, isSuccess]);
+
   return (
     <div className="dashboard-container">
       <div className="left-side-container">
         <div className="name-email-holder">
           <img src={Avatar} alt="" className="avarta-wrapper" />
-          <h3 className="user-name">Michael Oladele</h3>
-          <h3>micheaol80@gmail.com</h3>
+          {userData && (
+            <h3 className="user-name">
+              {userData.user.first_name} {userData.user.last_name}
+            </h3>
+          )}
+          {userData && <h3>{userData.user.email}</h3>}
         </div>
         <div className="right-menu-list-wrapper">
           <ul className="right-main-list">
