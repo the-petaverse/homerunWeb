@@ -22,8 +22,15 @@ import Cookies from "universal-cookie";
 
 const Dashboard = () => {
   const cookies = new Cookies();
+  const reacivedToken = cookies.get("auth_token");
   // const [{ data: loginData }] = useLoginUserMutation();
-  const { data: userData, isLoading, isFetching, errors } = useGetUserQuery();
+  const {
+    data: userData,
+    isLoading,
+    isFetching,
+    errors,
+    isSuccess,
+  } = useGetUserQuery();
 
   const [openModal, setModalOpen] = useState(false);
   const [formStage, setFormStage] = useState(0);
@@ -51,11 +58,7 @@ const Dashboard = () => {
     setOpenSideBar(false);
   };
 
-  // useEffect(() => {
-  //   if (errandSuccess) {
-  //     console.log(errandSuccess);
-  //   }
-  // }, [errandSuccess]);
+  // useEffect(() => {}, [reacivedToken, isSuccess]);
 
   return (
     <div className="dashboard-container">

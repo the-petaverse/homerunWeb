@@ -5,7 +5,7 @@ import Cookies from "universal-cookie";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:4200/api/v1/",
+    baseUrl: "https://homerun-backend.onrender.com/api/v1/",
     prepareHeaders: (headers, { getState }) => {
       const cookies = new Cookies();
       const token = cookies.get("auth_token");

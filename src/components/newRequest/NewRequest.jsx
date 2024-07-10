@@ -103,14 +103,13 @@ const NewRequest = ({
     email: userData?.user?.email,
     amount: 100,
     metadata: {
-      name: userData.user.first_name,
-      phone: userData.user.phone_number,
+      name: userData?.user?.first_name,
+      phone: userData?.user?.phone_number,
     },
     publicKey: "pk_test_727e5faf342cc97164c860a5e08e7920dcae6c78",
     text: "Pay Now",
     onSuccess: (data) => {
       if (data.status === "success") {
-        console.log(data);
         cookies.remove("paid_false");
         navigate("/dashboard", { replace: true });
       }
@@ -596,6 +595,11 @@ const NewRequest = ({
               )}
               {renderButton()}
             </form>
+          )}
+          {categoryIsLoading && (
+            <div>
+              <h3>A moment, we are sending your request.....</h3>
+            </div>
           )}
           {paymentPending && (
             <div>

@@ -68,27 +68,34 @@ const ServiceCard = ({ category }) => {
       <div className="category-header-wrapper">
         <h1>{category}</h1>
       </div>
-      <div className="cat-card-parent-wrapper">
-        {subCategoryList &&
-          subCategoryList?.map((ctegoryData, index) => {
-            return (
-              <Link
-                to={"/sub-category/" + ctegoryData?.sub_category_slug}
-                key={index}
-              >
-                <div className="main-category-card-container">
-                  <img src={Logo} alt="category" className="category-image" />
-                  <div className="category-card-wrapper">
-                    <h4>{ctegoryData?.sub_category_title}</h4>
-                    <p>
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    </p>
+      {subLoading ? (
+        <div>
+          <h2>Please wait, data loading........</h2>
+        </div>
+      ) : (
+        <div className="cat-card-parent-wrapper">
+          {subCategoryList &&
+            subCategoryList?.map((ctegoryData, index) => {
+              return (
+                <Link
+                  to={"/sub-category/" + ctegoryData?.sub_category_slug}
+                  key={index}
+                >
+                  <div className="main-category-card-container">
+                    <img src={Logo} alt="category" className="category-image" />
+                    <div className="category-card-wrapper">
+                      <h4>{ctegoryData?.sub_category_title}</h4>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit.
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            );
-          })}
-      </div>
+                </Link>
+              );
+            })}
+        </div>
+      )}
     </div>
   );
 };
