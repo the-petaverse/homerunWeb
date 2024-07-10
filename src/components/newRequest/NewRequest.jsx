@@ -11,25 +11,7 @@ import {
 } from "../../services/requestsCategory/requestApi";
 import { useCreateErrandMutation } from "../../services/errands/errandsApi";
 import Cookies from "universal-cookie";
-
-const requestList = [
-  { id: "1", category: "Property" },
-  { id: "2", category: "Documents" },
-  { id: "3", category: "Hospitalities" },
-  { id: "4", category: "Groceries Shopping" },
-  { id: "5", category: "Elderly care" },
-  { id: "6", category: "Postal Service" },
-  { id: "7", category: "Custom Errands" },
-];
-const subRequestData = [
-  { id: "1", categoryId: "1", title: "verification and inspection" },
-  { id: "2", categoryId: "1", title: "Post-purchase renovation" },
-  { id: "3", categoryId: "2", title: "Transcripts" },
-  { id: "4", categoryId: "2", title: "official documents" },
-  { id: "5", categoryId: "3", title: "official documents" },
-  { id: "6", categoryId: "4", title: "official documents" },
-  { id: "7", categoryId: "4", title: "official documents" },
-];
+import { useGetUserQuery } from "../../services/auth/authApi";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -63,6 +45,13 @@ const NewRequest = ({
     isSuccess,
     error,
   } = useGetRequestSubCategoryQuery();
+  const {
+    data: userData,
+    isLoading: useIsLoading,
+    isFetching: userIsFetching,
+    errors: userError,
+    isSuccess: userIsSuccess,
+  } = useGetUserQuery();
 
   const [
     createErrand,
@@ -99,6 +88,9 @@ const NewRequest = ({
     mode: "all",
   });
 
+  // if (userIsSuccess) {
+  //   console.log(userData.user);
+  // }
   const watchCountry = watch("country");
   const watchState = watch("state_name");
   const watchRequest = watch("request_name");
@@ -108,16 +100,17 @@ const NewRequest = ({
   };
   // Payment implementation
   const componentProps = {
-    email: "test@example.com",
+    email: userData?.user?.email,
     amount: 100,
     metadata: {
-      name: "Michael",
-      phone: "12563255555",
+      name: userData.user.first_name,
+      phone: userData.user.phone_number,
     },
     publicKey: "pk_test_727e5faf342cc97164c860a5e08e7920dcae6c78",
     text: "Pay Now",
     onSuccess: (data) => {
       if (data.status === "success") {
+        console.log(data);
         cookies.remove("paid_false");
         navigate("/dashboard", { replace: true });
       }
