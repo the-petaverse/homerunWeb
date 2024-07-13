@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./ServiceCard.css";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
+import PropagateLoader from "react-spinners/PropagateLoader";
+
 import {
   useGetRequestCategoriesQuery,
   useGetRequestSubCategoryQuery,
@@ -68,9 +70,10 @@ const ServiceCard = ({ category }) => {
       <div className="category-header-wrapper">
         <h1>{category}</h1>
       </div>
-      {subLoading ? (
-        <div>
-          <h2>Please wait, data loading........</h2>
+      {subLoading || subFetching ? (
+        <div className="service-loader-holder">
+          <h2>Please wait........</h2>
+          <PropagateLoader color="#262262" size={30} />
         </div>
       ) : (
         <div className="cat-card-parent-wrapper">

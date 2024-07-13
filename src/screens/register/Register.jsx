@@ -48,14 +48,26 @@ const Register = () => {
 
   const watchCountry = watch("resident_country");
   const watchState = watch("resident_state");
+  const watchPassword = watch("password");
+  const confirmPassword = watch("confirm_password");
 
   const onSubmit = async (data) => {
     await registerUser(data);
   };
 
-  if (isSuccess) {
-    cookies.set("resgitered", registerData.message);
-  }
+  const handleSelectedState = () => {
+    const stateFiltered = staties.filter(
+      (statedata) => statedata.countryid === watchCountry
+    );
+    setMyState(stateFiltered);
+  };
+  const handleSelectedCities = () => {
+    const citiesFiltered = cities.filter(
+      (citydata) => citydata.stateId === watchState
+    );
+    setCitiesList(citiesFiltered);
+  };
+
   const handleOpenSideBar = () => {
     setOpenSideBar(true);
   };
@@ -101,7 +113,9 @@ const Register = () => {
     if (registeredCookies) {
       navigate("/verify", { replace: true });
     }
-  }, [registeredCookies]);
+    handleSelectedCities();
+    handleSelectedState();
+  }, [registeredCookies, watchCountry, watchState]);
   return (
     <div>
       <Navbar handleOpenSideBar={handleOpenSideBar} />
@@ -206,54 +220,6 @@ const Register = () => {
             {formStep === 1 && (
               <>
                 <label>
-                  <input
-                    type="text"
-                    style={{ borderColor: errors.phoneNumber ? "red" : "blue" }}
-                    className="register-main-text-input"
-                    placeholder="Phone number"
-                    {...register("resident_country", {
-                      required: "Valid phone number is required",
-                    })}
-                  />
-                  {errors.resident_country && (
-                    <p className="input-error-message">
-                      {errors.resident_country.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <input
-                    type="text"
-                    style={{ borderColor: errors.phoneNumber ? "red" : "blue" }}
-                    className="register-main-text-input"
-                    placeholder="Phone number"
-                    {...register("resident_state", {
-                      required: "Valid phone number is required",
-                    })}
-                  />
-                  {errors.resident_state && (
-                    <p className="input-error-message">
-                      {errors.resident_state.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <input
-                    type="text"
-                    style={{ borderColor: errors.phoneNumber ? "red" : "blue" }}
-                    className="register-main-text-input"
-                    placeholder="Phone number"
-                    {...register("resident_city", {
-                      required: "Valid phone number is required",
-                    })}
-                  />
-                  {errors.resident_city && (
-                    <p className="input-error-message">
-                      {errors.resident_city.message}
-                    </p>
-                  )}
-                </label>
-                {/* <label>
                   <select
                     type="text"
                     className="register-main-text-input"
@@ -330,7 +296,7 @@ const Register = () => {
                       {errors.resident_city.message}
                     </p>
                   )}
-                </label> */}
+                </label>
                 <label>
                   <input
                     type="password"
@@ -344,6 +310,29 @@ const Register = () => {
                   {errors.password && (
                     <p className="input-error-message">
                       {errors.password.message}
+                    </p>
+                  )}
+                </label>
+                <label>
+                  <input
+                    type="password"
+                    style={{
+                      borderColor: errors.confirm_password ? "red" : "blue",
+                    }}
+                    className="register-main-text-input"
+                    placeholder="Enter your password again"
+                    {...register("confirm_password", {
+                      required: true,
+                      validate: (val) => {
+                        if (watch("password") != val) {
+                          return "Your passwords do no match";
+                        }
+                      },
+                    })}
+                  />
+                  {errors.confirm_password && (
+                    <p className="input-error-message">
+                      {errors.confirm_password.message}
                     </p>
                   )}
                 </label>

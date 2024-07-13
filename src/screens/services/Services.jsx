@@ -39,7 +39,7 @@ const Services = () => {
 
       <div className="main-service-card-container">
         <div className="everything-header-wrapper">
-          <h2>Select of the services to continue.</h2>
+          <h2>Select one of the services to continue.</h2>
         </div>
         <div className="service-card-holder">
           {data?.requestsCategory &&
