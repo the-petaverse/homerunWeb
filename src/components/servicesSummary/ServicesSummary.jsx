@@ -1,42 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import AboutImg from "../../assets/about.png";
 import { Link } from "react-router-dom";
 import "./ServicesSummary.css";
 import EverythinYouNeed from "../everything/EverythinYouNeed";
 import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
-const servicesList = [
-  {
-    id: "1",
-    category: "documents",
-    title: "Passport Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "2",
-    category: "documents",
-    title: "Transcript Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "3",
-    category: "hospitality",
-    title: "Groceries Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-  {
-    id: "4",
-    category: "hospitality",
-    title: "Groceries Collection",
-    description:
-      "Share your services or product offerings here. Present them assimple headers that can lead",
-  },
-];
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "#262262",
+};
 
 const ServicesSummary = () => {
+  let [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#ffffff");
   const { data, isLoading, isFetching, error, isSuccess } =
     useGetRequestCategoriesQuery();
 
@@ -50,21 +28,14 @@ const ServicesSummary = () => {
         <div className="services-summary-wrapper">
           <h2>Our services</h2>
         </div>
-        {isLoading && (
-          <div>
-            <p>Loading services....</p>
-          </div>
-        )}
-        {isFetching && (
-          <div>
-            <p>Fetching services....</p>
-          </div>
-        )}
-        {!data?.requestsCategory && (
-          <div className="loading-error">
-            <p>No services at the moment....</p>
-          </div>
-        )}
+
+        {isLoading ||
+          (isFetching && (
+            <div className="service-loader-holder">
+              <h2>Please wait........</h2>
+              <PropagateLoader color="#262262" size={30} />
+            </div>
+          ))}
         <div className="service-card-holder">
           {data?.requestsCategory &&
             data?.requestsCategory.map((serviceData, index) => {

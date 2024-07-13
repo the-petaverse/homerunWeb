@@ -53,6 +53,9 @@
   flex-wrap: wrap;
   margin-top: 25px;
 }
+.inner-card-wrapper:hover {
+  background-color: #a3a0a0;
+}
 .inner-card-wrapper {
   text-align: center;
   width: 100%;

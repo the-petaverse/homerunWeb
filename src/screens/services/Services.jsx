@@ -6,6 +6,7 @@ import AboutImg from "../../assets/about.png";
 import EverythinYouNeed from "../../components/everything/EverythinYouNeed";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import { Link } from "react-router-dom";
+import PropagateLoader from "react-spinners/PropagateLoader";
 import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
 
 const Services = () => {
@@ -36,8 +37,10 @@ const Services = () => {
         </div>
       </div> */}
 
-      <EverythinYouNeed />
       <div className="main-service-card-container">
+        <div className="everything-header-wrapper">
+          <h2>Select of the services to continue.</h2>
+        </div>
         <div className="service-card-holder">
           {data?.requestsCategory &&
             data?.requestsCategory.map((serviceData, index) => {
@@ -64,7 +67,15 @@ const Services = () => {
               );
             })}
         </div>
+        {isLoading ||
+          (isFetching && (
+            <div className="service-loader-holder">
+              <h2>Please wait........</h2>
+              <PropagateLoader color="#262262" size={30} />
+            </div>
+          ))}
       </div>
+      <EverythinYouNeed />
       <MainSideBar
         handleOpenSideBar={handleOpenSideBar}
         handleCloseSideBar={handleCloseSideBar}
