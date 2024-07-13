@@ -55,6 +55,9 @@ const Register = () => {
     await registerUser(data);
   };
 
+  if (isSuccess) {
+    cookies.set("resgitered", registerData.message);
+  }
   const handleSelectedState = () => {
     const stateFiltered = staties.filter(
       (statedata) => statedata.countryid === watchCountry
@@ -108,6 +111,12 @@ const Register = () => {
       );
     }
   };
+
+  // useEffect(() => {
+  //   if (registeredCookies) {
+  //     navigate("/verify", { replace: true });
+  //   }
+  // }, [registeredCookies]);
 
   useEffect(() => {
     if (registeredCookies) {
