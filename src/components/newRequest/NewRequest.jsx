@@ -208,6 +208,7 @@ const NewRequest = ({
     categoryIsSuccess,
     errandSuccess,
     errandData?.message,
+    paymentPending,
   ]);
   return (
     <div>
