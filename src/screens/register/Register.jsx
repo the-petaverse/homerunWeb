@@ -112,12 +112,6 @@ const Register = () => {
     }
   };
 
-  // useEffect(() => {
-  //   if (registeredCookies) {
-  //     navigate("/verify", { replace: true });
-  //   }
-  // }, [registeredCookies]);
-
   useEffect(() => {
     if (registeredCookies) {
       navigate("/verify", { replace: true });

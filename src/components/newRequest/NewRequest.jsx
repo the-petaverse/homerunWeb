@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { PaystackButton } from "react-paystack";
 import backButton from "../../assets/form-back.png";
 import "./NewRequest.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetRequestSubCategoryQuery,
   useGetRequestCategoriesQuery,
@@ -12,6 +12,7 @@ import {
 import { useCreateErrandMutation } from "../../services/errands/errandsApi";
 import Cookies from "universal-cookie";
 import { useGetUserQuery } from "../../services/auth/authApi";
+import PayButton from "../payButton/PayButton";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -69,6 +70,7 @@ const NewRequest = ({
     isFetching: categoryIsFetching,
     error: categoryError,
   } = useGetRequestCategoriesQuery();
+  //const { subcategory } = useParams();
   const [myState, setMyState] = useState([]);
   const [citiesList, setCitiesList] = useState([]);
   const [subRequestList, setSubRequestList] = useState([]);
@@ -614,10 +616,7 @@ const NewRequest = ({
                   </p>
                 </div>
               </div>
-              <PaystackButton
-                {...componentProps}
-                className="register-main-form-btn payment-btn"
-              />
+              <PayButton userData={userData} params={subcategory} />
             </div>
           )}
         </div>
