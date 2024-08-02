@@ -19,23 +19,26 @@ const Navbar = ({ handleOpenSideBar }) => {
       <img src={logo} alt="" className="image-wrapper" />
       <section className="menu-list-sec-wrapper">
         <ul className="menu-list-wrapper">
-          <Link to="/" className="nav-links">
-            <li>Home</li>
-          </Link>
-          <Link to="/requests-list" className="nav-links blink-text">
-            <li>Post a Request</li>
-          </Link>
           <Link to="/about" className="nav-links">
-            <li>About us</li>
+            <li>About Us</li>
           </Link>
+          <Link to="/our-services" className="nav-links blink-text">
+            <li>Services</li>
+          </Link>
+          {/* <Link to="/about" className="nav-links">
+            <li>About us</li>
+          </Link> */}
           <Link to="/contact" className="nav-links">
             <li>Contact Us</li>
           </Link>
         </ul>
         <ul className="list-wrapper">
+          <Link to="/" className="nav-links post-request-wrapper">
+            <li className="post-request-wrapper-li">Post a Request</li>
+          </Link>
           {!receivedCookies && (
             <Link to="/login" className="nav-links">
-              <li>Login</li>
+              <li className="login-wrapper">Login</li>
             </Link>
           )}
 
@@ -44,15 +47,15 @@ const Navbar = ({ handleOpenSideBar }) => {
               <li> Logout</li>
             </Link>
           )}
-          {receivedCookies && (
-            <Link to="/dashboard" className="nav-links">
-              <li> profile</li>
-            </Link>
-          )}
+          {/* {receivedCookies && (
+              <Link to="/dashboard" className="nav-links">
+                <li> profile</li>
+              </Link>
+            )} */}
 
-          <Link to="/register" className="nav-links">
+          {/* <Link to="/register" className="nav-links">
             {!receivedCookies && <li>Register</li>}
-          </Link>
+          </Link> */}
         </ul>
       </section>
       <img

@@ -36,8 +36,8 @@ const NewRequest = ({
   setFormStage,
   formStage,
   subcategory,
-  subCategoryName,
-  categoryName,
+  requestId,
+  subRequestId,
 }) => {
   const {
     data: subData,
@@ -73,7 +73,6 @@ const NewRequest = ({
   //const { subcategory } = useParams();
   const [myState, setMyState] = useState([]);
   const [citiesList, setCitiesList] = useState([]);
-  const [subRequestList, setSubRequestList] = useState([]);
   const [serviceData, setServiceData] = useState([]);
   const [openAccordion, setOpenAccordion] = useState(1);
   const navigate = useNavigate();
@@ -87,42 +86,25 @@ const NewRequest = ({
     watch,
     formState: { errors, isValid },
   } = useForm({
+    defaultValues: {
+      request_name: requestId,
+      sub_request_name: subRequestId,
+    },
     mode: "all",
   });
 
-  // if (userIsSuccess) {
-  //   console.log(userData.user);
-  // }
   const watchCountry = watch("country");
   const watchState = watch("state_name");
-  const watchRequest = watch("request_name");
 
   const openCloseAccordion = (data) => {
     setOpenAccordion(parseInt(data));
-  };
-  // Payment implementation
-  const componentProps = {
-    email: userData?.user?.email,
-    amount: 100,
-    metadata: {
-      name: userData?.user?.first_name,
-      phone: userData?.user?.phone_number,
-    },
-    publicKey: "pk_test_727e5faf342cc97164c860a5e08e7920dcae6c78",
-    text: "Pay Now",
-    onSuccess: (data) => {
-      if (data.status === "success") {
-        cookies.remove("paid_false");
-        navigate("/dashboard", { replace: true });
-      }
-    },
-    // alert("Thanks for doing business with us! Come back soon!!"),
-    onClose: () => alert("Wait! Don't leave :("),
   };
 
   const onSubmit = (data) => {
     setFormStage((cur) => cur + 1);
     // Implement API call here
+    data.request_name = requestId;
+    data.sub_request_name = subRequestId;
     createErrand(data);
     // console.log(data);
   };
@@ -132,10 +114,6 @@ const NewRequest = ({
   const handleFormGoBack = () => {
     setFormStage((cur) => cur - 1);
   };
-
-  if (errandError) {
-    console.log(errandError);
-  }
 
   if (errandSuccess) {
     cookies.set("paid_false", errandData?.message);
@@ -169,12 +147,12 @@ const NewRequest = ({
     }
   };
 
-  const handleSubRequests = () => {
-    const filteredSubRequest = subData?.subRequestsCategory.filter(
-      (subData) => subData.category_id === watchRequest
-    );
-    setSubRequestList(filteredSubRequest);
-  };
+  // const handleSubRequests = () => {
+  //   const filteredSubRequest = subData?.subRequestsCategory.filter(
+  //     (subData) => subData.sub_category_slug === subcategory
+  //   );
+  //   setSubRequestList(filteredSubRequest);
+  // };
   const handleState = () => {
     const filteredStates = staties.filter(
       (statesData) => statesData.countryid === watchCountry
@@ -200,22 +178,23 @@ const NewRequest = ({
   useEffect(() => {
     handleState();
     handleCities();
-    handleSubRequests();
+    // handleSubRequests();
     filterServcies();
   }, [
     watchCountry,
     watchState,
-    watchRequest,
     isSuccess,
     categoryIsSuccess,
     errandSuccess,
     errandData?.message,
     paymentPending,
+    requestId,
+    subRequestId,
   ]);
   return (
     <div>
       <div className="slate-header-wrapper">
-        <h2>New Request</h2>
+        <h2>Create New Request</h2>
       </div>
       <div className="register-main-container">
         <div className="register-iamge-wrapper">
@@ -380,7 +359,7 @@ const NewRequest = ({
                     display: formStage === 0 ? "block" : "none",
                   }}
                 >
-                  <label>
+                  {/* <label>
                     <select
                       type="text"
                       className="register-main-text-input"
@@ -437,7 +416,7 @@ const NewRequest = ({
                         {errors.sub_request_name.message}
                       </p>
                     )}
-                  </label>
+                  </label> */}
 
                   <label>
                     <input

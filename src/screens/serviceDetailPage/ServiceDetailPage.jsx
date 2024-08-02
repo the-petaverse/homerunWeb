@@ -11,6 +11,8 @@ import {
 
 const ServiceDetailPage = () => {
   const [serviceData, setServiceData] = useState([]);
+  const [requestId, setRequestId] = useState();
+  const [subRequestId, setSubRequestId] = useState();
   const [formStage, setFormStage] = useState(0);
   const { subcategory } = useParams();
   const {
@@ -26,7 +28,8 @@ const ServiceDetailPage = () => {
       let filteredService = subData?.subRequestsCategory.filter(
         (subservice) => subservice?.sub_category_slug === subcategory
       );
-
+      setRequestId(filteredService[0].category_id);
+      setSubRequestId(filteredService[0]._id);
       setServiceData(filteredService);
     }
   };
@@ -52,6 +55,8 @@ const ServiceDetailPage = () => {
             formStage={formStage}
             setFormStage={setFormStage}
             subcategory={subcategory}
+            requestId={requestId}
+            subRequestId={subRequestId}
           />
         </div>
       </div>

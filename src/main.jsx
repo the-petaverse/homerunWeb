@@ -21,7 +21,6 @@ import CategoriesDetailPage from "./screens/categoriesDetailPage/CategoriesDetai
 import { Provider } from "react-redux";
 import { store } from "./store.js";
 import ProtectedRoutes from "./screens/private/ProtectedRoutes.jsx";
-import SuccessPage from "./screens/successPage/SuccessPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,10 +43,6 @@ const router = createBrowserRouter([
   {
     path: "/request-category/:category",
     element: <CategoriesDetailPage />,
-  },
-  {
-    path: "/checkout-success",
-    element: <SuccessPage />,
   },
   {
     path: "/contact",

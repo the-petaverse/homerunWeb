@@ -25,7 +25,7 @@
 .list-wrapper {
   display: flex;
   justify-content: space-between;
-  width: 18%;
+  width: 40%;
   list-style: none;
 }
 .icon-image-nav {
@@ -62,15 +62,33 @@
   }
   .menu-list-sec-wrapper {
     display: flex;
+    align-items: center;
   }
   .menu-list-wrapper li {
     font-size: 1.2rem;
   }
   .menu-list-wrapper {
-    width: 70%;
+    width: 50%;
+  }
+  .post-request-wrapper {
+    background-color: rgb(25, 3, 103);
+    padding: 12px 12px;
+    border-radius: 8px;
+    width: 150px;
+    text-align: center;
+  }
+  .post-request-wrapper-li {
+    color: #fff !important;
+  }
+  .login-wrapper {
+    border: solid 0.5px gray;
+    padding: 12px 12px;
+    border-radius: 10px;
   }
   .list-wrapper {
-    width: 25%;
+    width: 40%;
+    justify-self: space-between;
+    align-items: center;
   }
   .list-wrapper li {
     font-size: 1.1rem;
