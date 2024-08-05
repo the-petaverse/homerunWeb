@@ -1,37 +1,36 @@
 import React from "react";
 import "./HeroPage.css";
-import HeroImage from "../../assets/hero.png";
-import GooglePlay from "../../assets/google.png";
-import AppleStore from "../../assets/apple.png";
+import HeroImage from "../../assets/person.png";
 import { Link } from "react-router-dom";
+import ServiceCard from "../serviceCard/ServiceCard";
 
 const HeroPage = () => {
   return (
-    <div className="hero-container">
-      <div className="header-wrapper">
-        <h3 className="heading-txt">
-          The most effective homerun application for Africans in Diaspora
-        </h3>
-        <p className="heading-para">
-          Let homerun do the running arround for you while you spend your time
-          on other things.
-        </p>
-        <div className="howitworks-wrapper">
-          <h3 className="howitworks-text">How it works</h3>
-          <div className="playstore-icons-wrapper">
-            <Link className="store-logo-wrapper">
-              <img src={GooglePlay} alt="" className="google-icon" />
-            </Link>
-            <Link className="apple-logo-wrapper">
-              <img src={AppleStore} alt="" className="iphone-icon" />
+    <>
+      <div className="hero-container">
+        <div className="header-wrapper">
+          <div className="header-content-wrapper">
+            <h3 className="heading-txt-one">Relax and Enjoy Life While</h3>
+            <h3 className="heading-txt-two">Handle Your Errands</h3>
+            <p className="heading-para">
+              Whether you're abroad or at home, Homerun is here to take care of
+              your errands, so you can focus on what matters most.
+            </p>
+          </div>
+          <div className="howitworks-wrapper">
+            <Link to="../../assets/person.png" className="get-stated-btn">
+              Get Started For Free
             </Link>
           </div>
         </div>
+        <div className="banner-container">
+          <img src={HeroImage} alt="hero-iage" className="hero-img" />
+        </div>
       </div>
-      <div className="banner-container">
-        <img src={HeroImage} alt="hero-iage" className="hero-img" />
+      <div className="card-display-container">
+        <ServiceCard />;
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,9 @@
+.serviceCard-main-wrapper {
+  color: #fff;
+  margin-right: 30px;
+}
+.card-image-wrapper {
+  border: solid 10px gray;
+  width: 16.5dvw;
+  border-radius: 26px;
+}

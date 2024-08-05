@@ -1,0 +1,72 @@
+.sustainability-container {
+  padding: 10px 5%;
+}
+.inner-container {
+  background-image: url("../../assets/sus-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: auto;
+  margin-right: auto;
+  /* height: 45dvh; */
+  display: flex;
+  /* border-radius: 20px; */
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+}
+.sustainability-left-wrapper,
+.sustainability-right-wrapper {
+  background-color: #ff6600;
+  height: 45dvh;
+}
+.sustainability-left-wrapper {
+  text-align: right;
+  width: 50%;
+  top: 0;
+  left: 0;
+  /* transition */
+  transform-origin: left;
+  transition: transform 0.5s;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+}
+.sustainability-right-wrapper {
+  text-align: left;
+  width: 50%;
+  top: 0;
+  right: 0;
+  /* transition */
+  transform-origin: right;
+  transition: transform 0.5s;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+}
+.tester-text {
+  display: none;
+}
+.tester-text-two {
+  display: block;
+  position: absolute;
+  text-align: center;
+  padding: 5%;
+  color: #fff;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inner-container:hover .tester-text {
+  display: block;
+  position: absolute;
+  text-align: center;
+  padding: 5%;
+  color: #fff;
+  width: 80%;
+}
+.inner-container:hover .tester-text-two {
+  display: none;
+}
+.inner-container:hover .sustainability-left-wrapper {
+  transform: scaleX(0);
+}
+.inner-container:hover .sustainability-right-wrapper {
+  transform: scaleX(0);
+}

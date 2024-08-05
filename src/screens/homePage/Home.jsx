@@ -6,13 +6,19 @@ import ClientTestimonials from "../../components/clientTestimonials/ClientTestim
 import ServicesSummary from "../../components/servicesSummary/ServicesSummary";
 import { useGetUsersQuery } from "../../services/auth/authApi";
 import Cookies from "universal-cookie";
+import EverythinYouNeed from "../../components/everything/EverythinYouNeed";
+import Sustainability from "../../components/sustainability/Sustainability";
+import Modal from "../../components/modal/Modal";
 
 const Home = () => {
   return (
     <>
       <HeroPage />
       <Testimonial />
-      <ServicesSummary />
+      <EverythinYouNeed />
+      <Sustainability />
+      {/* <Modal /> */}
+      {/* <ServicesSummary /> */}
       <ClientTestimonials />
     </>
   );
