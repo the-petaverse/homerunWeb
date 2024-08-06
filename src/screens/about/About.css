@@ -2,25 +2,41 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
+.about-us-container {
+  padding: 15px 5%;
+  /* margin-top: 25px; */
+  background-color: rgb(202, 198, 198);
+  height: 110dvh;
+}
 .about-header-wrapper {
   display: flex;
   flex-direction: column;
-  padding: 15px 5%;
-  margin-top: 25px;
 }
 .about-img {
   width: 100%;
   height: auto;
 }
+.detail-wrapper {
+  width: 25dvw;
+  position: absolute;
+  right: 420px;
+  bottom: -100px;
+}
+.about-top-detail {
+  padding: 5%;
+  margin-bottom: 15px;
+  background-color: #ff9a57;
+  font-size: 1.25em;
+  text-align: justify;
+}
+.about-bottom-detail {
+  /* padding: 5%; */
+  font-size: 1em;
+  /* text-align: justify; */
+}
 .about-details-wrapper {
-  margin-bottom: 10px;
-  margin-top: 10px;
-  width: 100%;
-  text-align: left;
 }
 .about-details-wrapper p {
-  font-size: 1.65em;
-  font-family: "Josefin Slab", serif;
 }
 .about-btn {
   background-color: rgb(25, 3, 103);
@@ -137,123 +153,23 @@
   margin: 50px 0;
 }
 
-.core-card-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-  width: 100%;
-  text-align: center;
-}
-.core-card {
-  border: 1px solid rgb(231, 228, 228);
-  background-color: blue;
-  width: 32%;
-  height: 250px;
-  border-radius: 25px;
-}
-.mission-wrapper h3,
-.vission-wrapper h3 {
-  font-size: 2em;
-}
-
 @media (min-width: 475px) {
-  .first-role-team-card {
-    margin-left: auto;
-    margin-left: auto;
-  }
-  .about-btn {
-    width: 80%;
-  }
-
-  .stat-box {
-    width: 70%;
-  }
 }
 @media (min-width: 640px) {
-  .first-role-team-card {
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .about-btn {
-    width: 60%;
-  }
-  .stat-inner-box-container {
-    display: flex;
-    flex-direction: row;
-  }
-  .stat-box {
-    width: 48%;
-  }
 }
 
 @media (min-width: 768px) {
-  .team-card-wrapper {
-    display: flex;
-    flex-direction: row;
-    margin-top: 15px;
-  }
-  .first-role-team-card {
-    width: 32%;
-  }
-  .about-btn {
-    width: 50%;
-  }
 }
 
 @media (min-width: 1024px) {
   .about-header-wrapper {
     flex-direction: row;
     justify-content: space-between;
-    background-image: url("../../assets/about.png");
+    /* background-image: url("../../assets/about.png"); */
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 100% -50%;
     padding-top: 25px;
-  }
-  .statistic-wrapper {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 55px;
-  }
-
-  .statistic-content-wrapper {
-    width: 60%;
-  }
-  .about-header {
-    font-size: 4em;
-    line-height: 70px;
-  }
-  .about-img {
-    width: 380px;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .about-details-wrapper {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    width: 60%;
-    text-align: left;
-  }
-  .about-details-wrapper p {
-    font-size: 2em;
-    margin-top: 15px;
-  }
-  .first-role-team-card {
-    width: 30%;
-  }
-  .mission-vision-container {
-    flex-direction: row;
-    margin: 50px 0;
-  }
-  .mission-wrapper,
-  .vission-wrapper {
-    width: 45%;
-  }
-  .statistic-boxes-wrapper {
-    width: 45%;
   }
 }
 
@@ -261,7 +177,7 @@
   .about-header-wrapper {
     flex-direction: row;
     justify-content: space-between;
-    background-image: url("../../assets/about.png");
+    /* background-image: url("../../assets/about.png"); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% 85%;
@@ -269,29 +185,13 @@
     padding-top: 25px;
     margin-bottom: 25px;
   }
-  .about-details-wrapper {
-    width: 50%;
-  }
-  .about-header {
-    font-size: 4.5em;
-    line-height: 75px;
-  }
-  .about-btn-container {
-    margin-top: 25px;
-  }
-  .statistic-content-wrapper {
-    width: 50%;
-  }
-  .our-team-container {
-    padding: 85px 5%;
-  }
 }
 
 @media (min-width: 1536px) {
   .about-header-wrapper {
     flex-direction: row;
     justify-content: space-between;
-    background-image: url("../../assets/about.png");
+    /* background-image: url("../../assets/about.png"); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% 35%;

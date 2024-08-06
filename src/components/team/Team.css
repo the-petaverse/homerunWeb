@@ -1,0 +1,40 @@
+.team-main-container {
+  padding: 25px 5%;
+}
+.team-header-wrapper {
+  width: 50dvw;
+}
+.team-card-main-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.team-card-inner-wrapper {
+  border: solid 0.35px black;
+  border-radius: 8px;
+  width: 20%;
+  margin-top: 20px;
+}
+.team-image {
+  width: 290px;
+}
+.title-wrapper {
+  text-align: center;
+  background-color: rgb(203, 203, 198);
+  padding: 20px 3%;
+}
+.team-image-wrapper {
+  position: relative;
+}
+.plus-icon-wrapper {
+  position: absolute;
+  width: 14dvw;
+  top: 210px;
+  left: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plus-icon {
+  width: 40px;
+  margin-right: 5px;
+}

@@ -13,9 +13,7 @@
 .slick-arrow::before {
   color: #262262;
 }
-.slick-arrow {
-  height: 50px;
-}
+
 .slick-prev {
   top: 120px;
   left: -120px;

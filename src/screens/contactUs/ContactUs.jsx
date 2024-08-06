@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import "./ContactUs.css";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
+import ContactHeader from "../../components/contactHeader/ContactHeader";
 
 const ContactUs = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -32,6 +33,7 @@ const ContactUs = () => {
   return (
     <div>
       <Navbar handleOpenSideBar={handleOpenSideBar} />
+      <ContactHeader />
       <div className="register-main-container">
         <div className="register-iamge-wrapper">
           <img src={LoginImage} alt="" className="register-image" />
