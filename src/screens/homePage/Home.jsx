@@ -9,6 +9,7 @@ import Cookies from "universal-cookie";
 import EverythinYouNeed from "../../components/everything/EverythinYouNeed";
 import Sustainability from "../../components/sustainability/Sustainability";
 import Modal from "../../components/modal/Modal";
+import Faq from "../../components/faq/Faq";
 
 const Home = () => {
   return (
@@ -16,10 +17,9 @@ const Home = () => {
       <HeroPage />
       <Testimonial />
       <EverythinYouNeed />
-      <Sustainability />
-      {/* <Modal /> */}
-      {/* <ServicesSummary /> */}
       <ClientTestimonials />
+      <Sustainability />
+      <Faq />
     </>
   );
 };

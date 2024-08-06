@@ -1,67 +1,28 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./ClientTestimonials.css";
-import RightIcon from "../../assets/right.png";
+import Logo from "../../assets/homerun-logo.png";
+import TestimonialCard from "../testimonialCard/TestimonialCard";
 
-const accordionData = [
-  {
-    id: "1",
-    title: "What services does Homerun offer?",
-    desc: "What services does Homerun offer? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat. ui officia deserunt mollit anim id estlaborum. Sed ut perspiciatis unde omnis iste natus error sitvoluptatem accusantium doloremque laudantium",
-  },
-  {
-    id: "2",
-    title: "What services does Homerun offer?",
-    desc: "What services does Homerun offer? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat. ui officia deserunt mollit anim id estlaborum. Sed ut perspiciatis unde omnis iste natus error sitvoluptatem accusantium doloremque laudantium",
-  },
-  {
-    id: "3",
-    title: "What services does Homerun offer?",
-    desc: "What services does Homerun offer? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat. ui officia deserunt mollit anim id estlaborum. Sed ut perspiciatis unde omnis iste natus error sitvoluptatem accusantium doloremque laudantium",
-  },
-  {
-    id: "4",
-    title: "What services does Homerun offer?",
-    desc: "What services does Homerun offer? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat. ui officia deserunt mollit anim id estlaborum. Sed ut perspiciatis unde omnis iste natus error sitvoluptatem accusantium doloremque laudantium",
-  },
-];
+import { Link } from "react-router-dom";
 
 const ClientTestimonials = () => {
-  const [showAccordion, setShowAccordion] = useState("1");
-
-  const handleOpenAccordion = (id) => {
-    setShowAccordion(id);
-  };
   return (
-    <div className="client-test-container">
-      <div className="testimonial-header">
-        <h1>Frequently Asked Questions</h1>
-        <p>
-          Got questions? We've got answers. Browse our FAQs for quick insights
-          into how we work, what we offer, and how we can help your brand shine.
-        </p>
-      </div>
-      <div className="inner-border-wrapper">
-        <div className="testimonia-card-wrapper">
-          {accordionData &&
-            accordionData.map((accordion, index) => {
-              return (
-                <div className="accordion-main-wrapper" key={index}>
-                  <div
-                    className="accordion-header-wrapper"
-                    onClick={() => handleOpenAccordion(accordion.id)}
-                  >
-                    <p>{accordion.title}</p>
-                    <img src={RightIcon} className="" alt="icon" />
-                  </div>
-                  {showAccordion === accordion.id && (
-                    <div className="accordion-body">
-                      <p>{accordion.desc}</p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+    <div className="testimonial-main-container">
+      <div className="header-container">
+        <div className="testimonial-header-wrapper">
+          <h1>People Love #</h1>
+          <img src={Logo} alt="logo" className="terstimonial-logo" />
         </div>
+        <div>
+          <p>
+            At Homerun, our customer satisfaction is our ultimate measure of
+            success. Here's what some of our users have to say about their
+            experience with us:
+          </p>
+        </div>
+      </div>
+      <div className="slider-container">
+        <TestimonialCard />
       </div>
     </div>
   );

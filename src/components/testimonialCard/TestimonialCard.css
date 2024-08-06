@@ -1,0 +1,26 @@
+.testimonial-card-container {
+  /* display: flex !important; */
+  /* justify-content: space-between;
+  width: 70%; */
+  /* width: 50dvw; */
+}
+.testimonial-card {
+  background-color: #fff;
+  border: solid 0.5px gray;
+  width: 95% !important;
+  padding: 5%;
+}
+.slick-arrow::before {
+  color: #262262;
+}
+.slick-arrow {
+  height: 50px;
+}
+.slick-prev {
+  top: 120px;
+  left: -120px;
+}
+.slick-next {
+  top: 120px;
+  left: -90px;
+}

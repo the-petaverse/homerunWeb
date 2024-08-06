@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
+
+.client-test-container {
+  padding: 45px 5%;
+}
+.inner-border-wrapper {
+  border-left: solid 15px #ff6600;
+  padding: 0 2%;
+  margin-top: 3%;
+}
+.testimonial-header {
+  text-align: left;
+  width: 75dvw;
+}
+.testimonial-header p {
+  font-size: 1.8em;
+  /* font-family: "Josefin Slab", serif; */
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+.accordion-main-wrapper {
+  border-bottom: solid 0.5px #000;
+  padding-bottom: 10px;
+}
+.accordion-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.accordion-icon {
+  width: 30px;
+  height: 30px;
+}
+
+@media (min-width: 475px) {
+}
+@media (min-width: 640px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1280px) {
+}
+
+@media (min-width: 1536px) {
+}
