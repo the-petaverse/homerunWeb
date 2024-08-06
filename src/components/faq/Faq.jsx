@@ -27,10 +27,12 @@ const accordionData = [
   },
 ];
 const Faq = () => {
-  const [showAccordion, setShowAccordion] = useState("1");
+  const [showAccordion, setShowAccordion] = useState(false);
+  const [accordionId, setAccordionId] = useState("0");
 
   const handleOpenAccordion = (id) => {
-    setShowAccordion(id);
+    setAccordionId(id);
+    setShowAccordion((prev) => !prev);
   };
   return (
     <div className="client-test-container">
@@ -60,7 +62,7 @@ const Faq = () => {
                       alt="icon"
                     />
                   </div>
-                  {showAccordion === accordion.id && (
+                  {showAccordion && accordionId === accordion.id && (
                     <div className="accordion-body">
                       <p>{accordion.desc}</p>
                     </div>

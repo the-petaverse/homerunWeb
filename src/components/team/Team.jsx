@@ -2,14 +2,44 @@ import React, { useEffect, useState } from "react";
 import "./Team.css";
 import MikeImage from "../../assets/mike.png";
 import PlusIcon from "../../assets/plus.png";
+
+const teamList = [
+  {
+    id: "1",
+    name: "Michael Oladele",
+    title: "Tech Lead / Co-founder",
+    image: "../../assets/mike.png",
+  },
+  {
+    id: "2",
+    name: "Michael Oladele",
+    title: "Tech Lead / Co-founder",
+    image: "../../assets/mike.png",
+  },
+  {
+    id: "3",
+    name: "Michael Oladele",
+    title: "Tech Lead / Co-founder",
+    image: "../../assets/mike.png",
+  },
+  {
+    id: "4",
+    name: "Michael Oladele",
+    title: "Tech Lead / Co-founder",
+    image: "../../assets/mike.png",
+  },
+];
+
 const Team = () => {
   const [showSocialIcons, setShowSocialIcons] = useState(false);
-  const [iconId, setIconId] = useState(0);
+  const [iconId, setIconId] = useState("0");
 
-  const handleShowSocialIcons = () => {
+  const handleShowSocialIcons = (id) => {
+    setIconId(id);
     setShowSocialIcons((prev) => !prev);
   };
-  useEffect(() => {}, [showSocialIcons]);
+
+  useEffect(() => {}, [showSocialIcons, iconId]);
 
   return (
     <div className="team-main-container">
@@ -23,64 +53,41 @@ const Team = () => {
         </p>
       </div>
       <div className="team-card-main-wrapper">
-        <div className="team-card-inner-wrapper">
-          <div className="team-image-wrapper">
-            <img src={MikeImage} alt="team" className="team-image" />
-            <div className="plus-icon-wrapper">
-              {showSocialIcons && (
-                <>
-                  <img src={PlusIcon} alt="click" className="plus-icon" />
-                  <img src={PlusIcon} alt="click" className="plus-icon" />
-                </>
-              )}
-              <img
-                src={PlusIcon}
-                alt="click"
-                className="plus-icon center-icon"
-                onClick={() => handleShowSocialIcons(1)}
-              />
-              {showSocialIcons && (
-                <>
-                  <img src={PlusIcon} alt="click" className="plus-icon" />
-                  <img src={PlusIcon} alt="click" className="plus-icon" />
-                </>
-              )}
-            </div>
-          </div>
-          <div className="title-wrapper">
-            <h3>Michael Oladele</h3>
-            <p>Tech Lead / Co-founder</p>
-          </div>
-        </div>
-        <div className="team-card-inner-wrapper">
-          <div className="team-image-wrapper">
-            <img src={MikeImage} alt="team" className="team-image" />
-            <div className="plus-icon-wrapper">
-              {showSocialIcons && (
-                <>
-                  <img src={PlusIcon} alt="click" className="plus-icon" />
-                  <img src={PlusIcon} alt="click" className="plus-icon" />
-                </>
-              )}
-              <img
-                src={PlusIcon}
-                alt="click"
-                className="plus-icon center-icon"
-                onClick={() => handleShowSocialIcons(2)}
-              />
-              {showSocialIcons && (
-                <>
-                  <img src={PlusIcon} alt="click" className="plus-icon" />
-                  <img src={PlusIcon} alt="click" className="plus-icon" />
-                </>
-              )}
-            </div>
-          </div>
-          <div className="title-wrapper">
-            <h3>Michael Oladele</h3>
-            <p>Tech Lead / Co-founder</p>
-          </div>
-        </div>
+        {teamList &&
+          teamList.map((teamMemeber, index) => {
+            return (
+              <div className="team-card-inner-wrapper" key={index}>
+                <div className="team-image-wrapper">
+                  <img src={MikeImage} alt="team" className="team-image" />
+                  <div className="plus-icon-wrapper">
+                    {iconId === teamMemeber.id && showSocialIcons && (
+                      <>
+                        <img src={PlusIcon} alt="click" className="plus-icon" />
+                        <img src={PlusIcon} alt="click" className="plus-icon" />
+                      </>
+                    )}
+
+                    <img
+                      src={PlusIcon}
+                      alt="click"
+                      className="plus-icon center-icon"
+                      onClick={() => handleShowSocialIcons(teamMemeber.id)}
+                    />
+                    {iconId === teamMemeber.id && showSocialIcons && (
+                      <>
+                        <img src={PlusIcon} alt="click" className="plus-icon" />
+                        <img src={PlusIcon} alt="click" className="plus-icon" />
+                      </>
+                    )}
+                  </div>
+                </div>
+                <div className="title-wrapper">
+                  <h3>Michael Oladele</h3>
+                  <p>Tech Lead / Co-founder</p>
+                </div>
+              </div>
+            );
+          })}
       </div>
     </div>
   );
