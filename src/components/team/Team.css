@@ -1,5 +1,8 @@
 .team-main-container {
   padding: 25px 5%;
+  margin: 2%;
+  background-color: aliceblue;
+  border-radius: 25px;
 }
 .team-header-wrapper {
   width: 50dvw;

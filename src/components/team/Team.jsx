@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./Team.css";
 import MikeImage from "../../assets/mike.png";
 import PlusIcon from "../../assets/plus.png";
+import TwitterIcon from "../../assets/twitter.png";
+import FacebookIcon from "../../assets/facebook.png";
+import InstaIcon from "../../assets/insta.png";
+import LinkedinIcon from "../../assets/linkedin.png";
 
 const teamList = [
   {
@@ -62,8 +66,16 @@ const Team = () => {
                   <div className="plus-icon-wrapper">
                     {iconId === teamMemeber.id && showSocialIcons && (
                       <>
-                        <img src={PlusIcon} alt="click" className="plus-icon" />
-                        <img src={PlusIcon} alt="click" className="plus-icon" />
+                        <img
+                          src={TwitterIcon}
+                          alt="click"
+                          className="plus-icon"
+                        />
+                        <img
+                          src={FacebookIcon}
+                          alt="click"
+                          className="plus-icon"
+                        />
                       </>
                     )}
 
@@ -75,8 +87,16 @@ const Team = () => {
                     />
                     {iconId === teamMemeber.id && showSocialIcons && (
                       <>
-                        <img src={PlusIcon} alt="click" className="plus-icon" />
-                        <img src={PlusIcon} alt="click" className="plus-icon" />
+                        <img
+                          src={InstaIcon}
+                          alt="click"
+                          className="plus-icon"
+                        />
+                        <img
+                          src={LinkedinIcon}
+                          alt="linkedin-icon"
+                          className="plus-icon"
+                        />
                       </>
                     )}
                   </div>

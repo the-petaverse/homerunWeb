@@ -5,6 +5,7 @@ import Footer from "../../components/footer/Footer";
 import AboutUsImage from "../../assets/about-us.png";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import Team from "../../components/team/Team";
+import MissionVision from "../../components/missionVision/MissionVision";
 const About = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
 
@@ -53,6 +54,7 @@ const About = () => {
         />
       </div>
       <Team />
+      <MissionVision />
       <Footer />
     </>
   );

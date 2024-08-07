@@ -1,0 +1,33 @@
+.misson-main-container {
+  padding: 15px 3%;
+  display: flex;
+  justify-content: space-between;
+}
+.mission-wrapper {
+  background-color: #ff9a57;
+  color: #fff;
+}
+.vision-wrapper {
+  background-color: #4f48c5;
+  color: #fff;
+}
+
+.mission-wrapper,
+.vision-wrapper {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 45dvw;
+  padding: 25px 20px;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+.mission-wrapper p,
+.vision-wrapper p {
+  font-size: 1.5em;
+  font-family: "Josefin Slab", serif;
+  /* padding: 15px; */
+  /* text-align: center; */
+}
+.vision-icon {
+  margin-right: auto;
+  float: right;
+}
