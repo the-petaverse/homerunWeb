@@ -16,7 +16,9 @@ const Navbar = ({ handleOpenSideBar }) => {
 
   return (
     <div className="nav-container">
-      <img src={logo} alt="" className="image-wrapper" />
+      <Link to="/">
+        <img src={logo} alt="" className="image-wrapper" />
+      </Link>
       <section className="menu-list-sec-wrapper">
         <ul className="menu-list-wrapper">
           <Link to="/about" className="nav-links">

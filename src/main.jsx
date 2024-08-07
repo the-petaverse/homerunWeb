@@ -21,6 +21,7 @@ import CategoriesDetailPage from "./screens/categoriesDetailPage/CategoriesDetai
 import { Provider } from "react-redux";
 import { store } from "./store.js";
 import ProtectedRoutes from "./screens/private/ProtectedRoutes.jsx";
+import Services from "./screens/services/Services.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <ContactUs />,
+  },
+  {
+    path: "/our-services",
+    element: <Services />,
   },
   {
     path: "/login",

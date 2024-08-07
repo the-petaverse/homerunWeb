@@ -15,7 +15,11 @@ const ContactHeader = () => {
         </p>
       </div>
       <div className="header-right-wrapper">
-        <img src={ContactImage} alt="contact" />
+        <img
+          src={ContactImage}
+          alt="contact"
+          className="contact-header-image"
+        />
       </div>
     </div>
   );

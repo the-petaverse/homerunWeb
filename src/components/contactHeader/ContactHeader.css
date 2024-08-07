@@ -1,4 +1,21 @@
 .contact-header-container {
-  background-color: #d9d9d9;
   display: flex;
+  justify-content: space-between;
+  padding-top: 2.5%;
+}
+.header-left-wrapper {
+  width: 35dvw;
+}
+.header-left-wrapper h1 {
+  font-size: 3em;
+}
+.header-left-wrapper p {
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+.header-right-wrapper {
+  width: 50dvw;
+}
+.contact-header-image {
+  width: 100%;
 }
