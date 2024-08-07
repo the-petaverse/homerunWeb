@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Outlet } from "react-router-dom";
 import "./Login.css";
-import LoginImage from "../../assets/feedback.png";
+import LoginImage from "../../assets/login.png";
+import HomerunIcon from "../../assets/homerun-icon.png";
 import Navbar from "../../components/Navbar/Navbar";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import Cookies from "universal-cookie";
@@ -47,22 +48,21 @@ const Login = () => {
 
   return (
     <div>
-      <Navbar handleOpenSideBar={handleOpenSideBar} />
+      {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
       <div className="login-main-container">
         <div className="login-iamge-wrapper">
           <img src={LoginImage} alt="" className="login-image" />
         </div>
         <div className="inner-form-wrapper">
-          <h3>Hey, </h3>
-          <h3>We are glad to see back</h3>
-          <p>Please login with your details to continue</p>
+          <img src={HomerunIcon} alt="" className="homerun-icon" />
+          <h3>Welcome Back </h3>
+          <p>Please enter your email and password.</p>
           {error && <p className="login-error-style">{error.data.error}</p>}
           <form onSubmit={handleSubmit(onSubmit)} className="form-wrapper">
             <label>
-              Email:
               <input
                 type="email"
-                placeholder="example@example.com"
+                placeholder="Email"
                 className="main-text-input"
                 style={{ borderColor: errors.email ? "red" : "blue" }}
                 {...register("email", {
@@ -75,9 +75,9 @@ const Login = () => {
               )}
             </label>
             <label>
-              Password:
               <input
                 type="password"
+                placeholder="Password"
                 style={{ borderColor: errors.password ? "red" : "blue" }}
                 className="main-text-input"
                 {...register("password", {
@@ -88,11 +88,18 @@ const Login = () => {
                 <p className="input-error-message">{errors.password.message}</p>
               )}
             </label>
+            <div className="keep-loggin-wrapper">
+              <p>Keep me logged in</p>
+              <p>Reset Password</p>
+            </div>
             <input
               type="submit"
               className="main-form-btn"
               disabled={!isValid || isLoading}
             />
+            <p className="already-sign-in">
+              You don’t have an account? Sign up to Homerun
+            </p>
           </form>
         </div>
       </div>
