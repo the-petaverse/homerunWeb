@@ -9,8 +9,8 @@ import SurpriseImage from "../../assets/service-surprise.png";
 import HotelImage from "../../assets/service-hotel.png";
 import PropertyImage from "../../assets/service-property.png";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
-import { Link } from "react-router-dom";
-import PropagateLoader from "react-spinners/PropagateLoader";
+import Hq from "../../components/hq/Hq";
+
 import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
 
 const Services = () => {
@@ -55,8 +55,8 @@ const Services = () => {
               <h1>Transcript And Document Retrieval</h1>
               <p>
                 Need important documents from institutions back home? We obtain
-                credentials and other necessary documents on your behalf, saving
-                you time and hassle.
+                credeimport Hq from '../../components/hq/Hq'; ntials and other
+                necessary documents on your behalf, saving you time and hassle.
               </p>
               <button className="service-btn">Post this request</button>
             </div>
@@ -135,6 +135,7 @@ const Services = () => {
           </div>
         </div>
       </div>
+      <Hq />
       <Footer />
       <MainSideBar
         handleOpenSideBar={handleOpenSideBar}

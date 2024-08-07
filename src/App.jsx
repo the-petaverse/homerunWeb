@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Home from "./screens/homePage/Home";
 import MainSideBar from "./components/mainSideBar/MainSideBar";
+import Hq from "./components/hq/Hq";
 
 const App = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -21,6 +22,7 @@ const App = () => {
         handleCloseSideBar={handleCloseSideBar}
         openSideBar={openSideBar}
       />
+      <Hq />
       <Footer />
     </div>
   );

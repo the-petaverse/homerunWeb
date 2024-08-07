@@ -11,11 +11,13 @@
 }
 .inner-navigation-btn-wrapper {
   border: solid 0.25px gray;
-  width: 40%;
+  padding: 0.5%;
+  width: 55%;
   margin-right: auto;
   margin-left: auto;
   display: flex;
   justify-content: space-between;
+  border-radius: 10px;
 }
 .contact-inner-main-container {
   background-color: #fff;
@@ -24,35 +26,76 @@
   margin-left: auto;
   margin-top: 25px;
   padding-top: 25px;
+  padding-bottom: 55px;
   /* text-align: center; */
+}
+
+.inner-nav-btn {
+  width: 48.5%;
+  padding: 1.5%;
+  font-size: 1.3em;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.inner-nav-btn-active {
+  background-color: #262262;
+  color: #fff;
+  width: 48.5%;
+  padding: 1.5%;
+  border-radius: 8px;
+  font-size: 1.3em;
+  cursor: pointer;
 }
 .contact-inner-form-wrapper {
   text-align: center;
+  border: solid 1px rgb(214, 210, 210);
+  width: 100%;
+  border-radius: 15px;
+  padding: 3%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-inner-faq-wrapper {
+  border: solid 1px rgb(214, 210, 210);
+  width: 100%;
+  border-radius: 15px;
+  padding: 3%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-inner-faq-wrapper h2 {
+  font-size: 2.5em;
 }
 .contact-form-wrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin-top: 15px;
-  padding: 5% 10%;
-  border: solid 0.25px rgb(189, 186, 186);
+  border-radius: 10px;
+  width: 80%;
+  /* margin-top: 15px; */
+  margin-right: auto;
+  margin-left: auto;
+  /* padding: 2%; */
+  /* border: solid 0.15px rgb(189, 186, 186); */
 }
 .contact-main-text-input {
   height: 55px;
   width: 100%;
   margin-top: 15px;
-  border-radius: 10px;
   font-size: 1.5em;
   font-weight: bold;
+  border-radius: 10px;
   color: black;
   padding: 0 15px;
   border: solid 0.5px rgb(218, 206, 206);
+}
+.textarea-container {
+  height: 150px;
+  padding: 15px;
 }
 .contact-half-text-input {
   height: 55px;
   /* width: 140%; */
   margin-top: 15px;
-  border-radius: 10px;
   font-size: 1.5em;
   font-weight: bold;
   color: black;
@@ -62,8 +105,37 @@
 .lable-wrapper {
   display: flex;
   flex-direction: column;
+  text-align: start;
+  margin-top: 25px;
 }
 .group-label {
   display: flex;
   justify-content: space-between;
+}
+.contact-main-form-btn {
+  background-color: #262262;
+  color: #fff;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 22px;
+  padding: 2%;
+  border-radius: 20px;
+}
+.hq-wrapper {
+  background-color: #dfdfd5;
+  display: flex;
+  margin-top: 35px;
+  align-items: center;
+  padding: 3% 15px;
+  border-radius: 15px;
+}
+.hq-wrapper p {
+  margin-top: 5px;
+}
+.map-wrapper {
+  margin-top: 35px;
+}
+.location-map {
+  width: 100%;
 }

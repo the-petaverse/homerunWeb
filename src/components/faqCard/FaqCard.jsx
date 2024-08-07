@@ -43,7 +43,7 @@ const FaqCard = () => {
                   className="accordion-header-wrapper"
                   onClick={() => handleOpenAccordion(accordion.id)}
                 >
-                  <p>{accordion.title}</p>
+                  <h4>{accordion.title}</h4>
                   <img
                     src={
                       showAccordion === accordion.id ? ChevronIcon : RightIcon

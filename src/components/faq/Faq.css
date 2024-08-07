@@ -14,6 +14,7 @@
 }
 .testimonial-header p {
   font-size: 1.8em;
+  font-weight: lighter;
   /* font-family: "Josefin Slab", serif; */
   margin-top: 10px;
   margin-bottom: 25px;
@@ -21,12 +22,20 @@
 .accordion-main-wrapper {
   border-bottom: solid 0.5px #000;
   padding-bottom: 10px;
+  margin-bottom: 25px;
+  margin-top: 50px;
+}
+.accordion-body {
+  font-size: 1.3em;
 }
 .accordion-header-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+}
+.accordion-header-wrapper h4 {
+  font-size: 1.5em;
 }
 .accordion-icon {
   width: 30px;
