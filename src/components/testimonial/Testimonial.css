@@ -4,7 +4,7 @@
   background-color: #fff;
   padding: 45px 5%;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: auto;
@@ -14,6 +14,8 @@
   /* 55% */
   padding: 0 5%;
   height: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
 .happy-user-image {
   width: 100%;
@@ -34,11 +36,14 @@
 .download-text {
   font-size: 1.8em;
 }
-.test-store-logo-wrapper {
-  height: 40px;
+.store-logo-wrapper {
   background-color: rgb(241, 238, 238);
   margin-left: -15px;
   cursor: pointer;
+}
+.google-icon,
+.iphone-icon {
+  width: 90%;
 }
 .test-apple-logo-wrapper {
   height: 40px;
@@ -52,19 +57,55 @@
   width: 40px;
   margin-right: 10px;
 }
+.playstore-icons-wrapper {
+  background-color: #f2f2fb;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 2%;
+}
 
 @media (min-width: 475px) {
+  .playstore-icons-wrapper {
+    width: 80%;
+  }
 }
-@media (min-width: 640px) {
+@media (min-width: 545px) {
   .users-rate-wrapper h3 {
     font-size: 2.2em;
     /* 3em */
   }
+
+  .playstore-icons-wrapper {
+    width: 70%;
+  }
+}
+@media (min-width: 640px) {
+  .users-rate-wrapper {
+    width: 86%;
+    /* 55% */
+  }
+  .users-rate-wrapper h3 {
+    font-size: 2.2em;
+    /* 3em */
+  }
+
+  .playstore-icons-wrapper {
+    width: 60%;
+  }
 }
 
 @media (min-width: 768px) {
+  .users-rate-wrapper {
+    width: 70%;
+    /* 55% */
+  }
   .users-rate-wrapper h3 {
     font-size: 2.5em;
+  }
+  .playstore-icons-wrapper {
+    width: 50%;
   }
 }
 
@@ -82,6 +123,9 @@
     padding: 0 5%;
     height: auto;
   }
+  .playstore-icons-wrapper {
+    width: 80%;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -97,10 +141,5 @@
     display: flex;
   }
   .playstore-icons-wrapper {
-    background-color: #f2f2fb;
-    width: 23.5dvw;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 2%;
   }
 }

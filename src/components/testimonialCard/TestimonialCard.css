@@ -3,11 +3,12 @@
   /* justify-content: space-between;
   width: 70%; */
   /* width: 50dvw; */
+  /* width: 90  %; */
 }
 .testimonial-card {
   background-color: #fff;
   border: solid 0.5px gray;
-  width: 95% !important;
+  width: 94% !important;
   padding: 5%;
 }
 .slick-arrow::before {
@@ -21,4 +22,27 @@
 .slick-next {
   top: 120px;
   left: -90px;
+}
+@media (min-width: 475px) {
+  .testimonial-card {
+    background-color: #fff;
+    border: solid 0.5px gray;
+    width: 100% !important;
+    padding: 5%;
+    background-color: red !important;
+  }
+}
+@media (min-width: 640px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1280px) {
+}
+
+@media (min-width: 1536px) {
 }

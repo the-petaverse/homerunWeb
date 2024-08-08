@@ -1,12 +1,81 @@
 .serviceCard-main-wrapper {
   color: #fff;
-  width: 90% !important;
+  width: 42% !important;
+  margin-right: auto;
+  margin-left: auto;
   /* margin-right: -110px; */
   /* margin-right: -500px; */
 }
 .card-image-wrapper {
-  border: solid 10px gray;
-  width: 100% !important;
+  border: solid 0.5px gray;
+  width: 200% !important;
   /* height: 50dvh; */
   border-radius: 26px;
+}
+
+@media (min-width: 475px) {
+  .serviceCard-main-wrapper {
+    color: #fff;
+    width: 35% !important;
+    margin-right: auto;
+    margin-left: auto;
+    /* margin-right: -110px; */
+    /* margin-right: -500px; */
+  }
+  .card-image-wrapper {
+    border: solid 0.5px gray;
+    width: 100% !important;
+    /* height: 50dvh; */
+    border-radius: 26px;
+  }
+}
+
+@media (max-width: 640px) {
+}
+@media (max-width: 768px) {
+  .serviceCard-main-wrapper {
+    color: #fff;
+    width: 32% !important;
+    /* margin-right: -110px; */
+    /* margin-right: -500px; */
+  }
+  .card-image-wrapper {
+    border: solid 0.5px gray;
+    width: 282% !important;
+    /* height: 50dvh; */
+    border-radius: 26px;
+  }
+}
+
+@media (min-width: 769px) {
+  .serviceCard-main-wrapper {
+    color: #fff;
+    width: 32% !important;
+    /* margin-right: -110px; */
+    /* margin-right: -500px; */
+  }
+  .card-image-wrapper {
+    border: solid 0.5px gray;
+    width: 282% !important;
+    /* height: 50dvh; */
+    border-radius: 26px;
+  }
+}
+@media (min-width: 1024px) {
+  .serviceCard-main-wrapper {
+    color: #fff;
+    width: 32% !important;
+    /* margin-right: -110px; */
+    /* margin-right: -500px; */
+  }
+  .card-image-wrapper {
+    border: solid 0.5px gray;
+    width: 282% !important;
+    /* height: 50dvh; */
+    border-radius: 26px;
+  }
+}
+@media (min-width: 1280px) {
+}
+@media (min-width: 1536px) {
 }

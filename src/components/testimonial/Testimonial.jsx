@@ -45,18 +45,6 @@ const Testimonial = () => {
             </div>
           </div>
         </div>
-        {/* <div className="howitworks-wrapper">
-          <h4 className="download-text">How it works</h4>
-          <div className="playstore-icons-wrapper">
-            <button className="test-store-logo-wrapper">
-              <img src={GooglePlay} alt="" className="google-icon" />
-            </button>
-            <button className="test-apple-logo-wrapper">
-              <img src={AppleStore} alt="" className="iphone-icon" />
-            </button>
-          </div>
-        </div> */}
-        {/* <div className="howitworks-wrapper"> */}
         <div className="playstore-icons-wrapper">
           <Link className="store-logo-wrapper">
             <img src={GooglePlay} alt="" className="google-icon" />
