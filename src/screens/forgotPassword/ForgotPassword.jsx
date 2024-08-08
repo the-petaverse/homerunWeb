@@ -1,8 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import LoginImage from "../../assets/login.png";
-const ResetPassword = ({ setShowDashboard }) => {
-  //   const [showDashboard, setShowDashboard] = useState(1);
+import "./ForgotPassword.css";
+import BackIcon from "../../assets/back-arrow.png";
+
+const ForgotPassword = () => {
   const {
     register,
     handleSubmit,
@@ -11,10 +13,9 @@ const ResetPassword = ({ setShowDashboard }) => {
   } = useForm({ mode: "all" });
 
   const onPassSubmit = (data) => {
-    setShowDashboard(5);
+    // setShowDashboard(5);
     console.log("PassData: ", data);
   };
-
   return (
     <div>
       <div className="login-main-container">
@@ -22,8 +23,16 @@ const ResetPassword = ({ setShowDashboard }) => {
           <img src={LoginImage} alt="" className="login-image" />
         </div>
         <div className="inner-form-wrapper">
+          <div className="back-arrow-wrapper">
+            <img src={BackIcon} alt="" />
+            <span>Back</span>
+          </div>
+          <div>
+            <h1>Reset Password</h1>
+            <p>Please enter your email address</p>
+          </div>
           <form onSubmit={handleSubmit(onPassSubmit)} className="form-wrapper">
-            {/* <label>
+            <label>
               Email:
               <input
                 type="text"
@@ -34,37 +43,11 @@ const ResetPassword = ({ setShowDashboard }) => {
               {errors.email && (
                 <p className="input-error-message">{errors.email.message}</p>
               )}
-            </label> */}
-            <label>
-              Old Password:
-              <input
-                type="password"
-                className="main-text-input"
-                {...register("password", {
-                  required: "Password can't be empty",
-                })}
-              />
-              {errors.password && (
-                <p className="input-error-message">{errors.password.message}</p>
-              )}
             </label>
-            <label>
-              New Password:
-              <input
-                type="password"
-                className="main-text-input"
-                {...register("newPassword", {
-                  required: "New Password can't be empty",
-                })}
-              />
-              {errors.newPassword && (
-                <p className="input-error-message">
-                  {errors.newPassword.message}
-                </p>
-              )}
-            </label>
+
             <input
               type="submit"
+              value="Send OTP"
               className="main-form-btn"
               disabled={!isValid}
             />
@@ -75,4 +58,4 @@ const ResetPassword = ({ setShowDashboard }) => {
   );
 };
 
-export default ResetPassword;
+export default ForgotPassword;
