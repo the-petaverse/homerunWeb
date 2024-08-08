@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import LoginImage from "../../assets/feedback.png";
+import LoginImage from "../../assets/login.png";
+import HomerunIcon from "../../assets/homerun-icon.png";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link, Navigate } from "react-router-dom";
 import { useRegisterUserMutation } from "../../services/auth/authApi";
@@ -106,7 +107,7 @@ const Register = () => {
           className="register-main-form-btn"
           onClick={handleCompleteForm}
         >
-          Next Step
+          Continue
         </button>
       );
     }
@@ -121,16 +122,18 @@ const Register = () => {
   }, [registeredCookies, watchCountry, watchState]);
   return (
     <div>
-      <Navbar handleOpenSideBar={handleOpenSideBar} />
+      {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
       <div className="register-main-container">
         <div className="register-iamge-wrapper">
           <img src={LoginImage} alt="" className="register-image" />
         </div>
         <div className="register-inner-form-wrapper">
+          <img src={HomerunIcon} alt="homerun icon" className="homerun-icon" />
+          <h1>Welcome To Homerun</h1>
           {error?.data?.message ? (
             <p className="register-error">{error?.data?.message}</p>
           ) : (
-            <p>We will be glad to have you onboard</p>
+            <p>Please take a few moment to register. </p>
           )}
           {error?.error && (
             <p className="register-error">Some went wrong....</p>
@@ -343,6 +346,7 @@ const Register = () => {
             )}
             {renderButton()}
           </form>
+          <p>You already have an account? Login to Homerun</p>
         </div>
       </div>
       <MainSideBar
