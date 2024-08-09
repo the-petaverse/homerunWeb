@@ -44,13 +44,11 @@ const Services = () => {
         </div>
         <div className="service-cards-wrapper">
           <div className="services-card">
-            <div>
-              <img
-                src={TranscriptImage}
-                alt="transcript"
-                className="service-images"
-              />
-            </div>
+            <img
+              src={TranscriptImage}
+              alt="transcript"
+              className="service-images"
+            />
             <div className="card-right-holder">
               <h1>Transcript And Document Retrieval</h1>
               <p>
@@ -62,13 +60,7 @@ const Services = () => {
             </div>
           </div>
           <div className="services-card">
-            <div>
-              <img
-                src={GrocyImage}
-                alt="transcript"
-                className="service-images"
-              />
-            </div>
+            <img src={GrocyImage} alt="transcript" className="service-images" />
             <div className="card-right-holder">
               <h1>Grocery and Food Delivery</h1>
               <p>
@@ -80,13 +72,11 @@ const Services = () => {
             </div>
           </div>
           <div className="services-card">
-            <div>
-              <img
-                src={SurpriseImage}
-                alt="transcript"
-                className="service-images"
-              />
-            </div>
+            <img
+              src={SurpriseImage}
+              alt="transcript"
+              className="service-images"
+            />
             <div className="card-right-holder">
               <h1>Surprise Packages</h1>
               <p>
@@ -98,13 +88,7 @@ const Services = () => {
             </div>
           </div>
           <div className="services-card">
-            <div>
-              <img
-                src={HotelImage}
-                alt="transcript"
-                className="service-images"
-              />
-            </div>
+            <img src={HotelImage} alt="transcript" className="service-images" />
             <div className="card-right-holder">
               <h1>Hotel and Car Booking</h1>
               <p>
@@ -116,13 +100,11 @@ const Services = () => {
             </div>
           </div>
           <div className="services-card">
-            <div>
-              <img
-                src={PropertyImage}
-                alt="transcript"
-                className="service-images"
-              />
-            </div>
+            <img
+              src={PropertyImage}
+              alt="transcript"
+              className="service-images"
+            />
             <div className="card-right-holder">
               <h1>Property Inspection</h1>
               <p>
@@ -135,7 +117,6 @@ const Services = () => {
           </div>
         </div>
       </div>
-      {/* <Hq /> */}
       <Footer />
       <MainSideBar
         handleOpenSideBar={handleOpenSideBar}
