@@ -58,8 +58,8 @@ const ContactUs = () => {
               onClick={() => handleInnerNavigation(2)}
               className={
                 toggleInnerNavigation === 2
-                  ? "inner-nav-btn-active"
-                  : "inner-nav-btn"
+                  ? "frequent-inner-nav-btn-active"
+                  : "frequent-inner-nav-btn"
               }
             >
               Frequently Asked Questions
@@ -74,13 +74,13 @@ const ContactUs = () => {
             )}
             {toggleInnerNavigation === 1 && (
               <div className="contact-inner-form-wrapper">
-                <h2>Get in Touch</h2>
                 <form
                   onSubmit={handleSubmit(onSubmit)}
                   className="contact-form-wrapper"
                 >
+                  <h2>Get in Touch</h2>
                   <label className="lable-wrapper">
-                    Full name *
+                    <span> Full name *</span>
                     <input
                       type="text"
                       className="contact-main-text-input"
@@ -89,7 +89,7 @@ const ContactUs = () => {
                     />
                   </label>
                   <label className="lable-wrapper">
-                    Location *
+                    <span>Location *</span>
                     <input
                       type="text"
                       className="contact-main-text-input"
@@ -98,25 +98,23 @@ const ContactUs = () => {
                     />
                   </label>
 
-                  <label className="group-label">
-                    <label className="lable-wrapper">
-                      Email *
-                      <input
-                        type="email"
-                        className="contact-half-text-input"
-                        placeholder="Enter email address"
-                        {...register("email")}
-                      />
-                    </label>
-                    <label className="lable-wrapper">
-                      Phone number *
-                      <input
-                        type="text"
-                        className="contact-half-text-input"
-                        placeholder="Phone number"
-                        {...register("phoneNumber")}
-                      />
-                    </label>
+                  <label className="lable-wrapper">
+                    <span> Email *</span>
+                    <input
+                      type="email"
+                      className="contact-half-text-input"
+                      placeholder="Enter email address"
+                      {...register("email")}
+                    />
+                  </label>
+                  <label className="lable-wrapper">
+                    <span> Phone number *</span>
+                    <input
+                      type="text"
+                      className="contact-half-text-input"
+                      placeholder="Phone number"
+                      {...register("phoneNumber")}
+                    />
                   </label>
 
                   <label className="lable-wrapper">
@@ -154,7 +152,7 @@ const ContactUs = () => {
         handleCloseSideBar={handleCloseSideBar}
         openSideBar={openSideBar}
       />
-      <Hq />
+      {/* <Hq /> */}
       <Footer />
     </>
   );
