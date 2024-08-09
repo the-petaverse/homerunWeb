@@ -5,49 +5,71 @@
 .services-main-container {
   padding: 20px 5%;
   background-color: rgb(188, 186, 186);
+  /* width: 100dvw; */
   /* display: flex;
   justify-content: space-between; */
 }
+.service-cards-wrapper {
+  width: 100dvw;
+}
+.header-image-wrapper {
+  width: 100%;
+  position: relative;
+  margin-bottom: -10%;
+}
+.service-image {
+  width: 100%;
+}
 .serices-header-wrapper {
   display: flex;
+  flex-direction: column;
 }
 .service-image-container {
   background-color: #262262;
+  position: relative;
   color: #fff;
-  width: 22dvw;
-  margin-left: -180px;
-  margin-top: 50px;
-  height: 15dvw;
-  padding: 2%;
+  width: 98%;
+  /* margin-left: -180px; */
+  /* margin-top: 50px; */
+  /* height: 15dvw; */
+  padding: 5%;
+  border-radius: 15px;
 }
 .service-image-container p {
-  font-size: 1.4em;
+  font-size: 1.1em;
 }
 .services-card {
   display: flex;
-  width: 62.5dvw;
+  flex-direction: column;
+  width: 100%;
   margin-top: 20px;
 }
 .service-images {
   border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
+  width: 86%;
 }
 .card-right-holder {
   background-color: #fff;
-  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 3%;
+  width: 86%;
 }
 .card-right-holder p {
+  font-size: 1.25em;
+  margin-top: 10px;
+}
+.card-right-holder h1 {
   font-size: 1.5em;
-  margin-top: 15px;
+  line-height: 30px;
 }
 .service-btn {
   border: solid 0.5px gray;
   padding: 22px 5%;
   font-size: 1.2em;
   margin-top: 15px;
-  width: 15dvw;
+  width: 100%;
   border-radius: 20px;
   background-color: #fff;
 }
@@ -60,9 +82,34 @@
 }
 
 @media (min-width: 1024px) {
+  .serices-header-wrapper {
+    flex-direction: row;
+  }
+  .header-image-wrapper {
+    width: 80%;
+    margin-bottom: 1px;
+  }
+  .service-image-container {
+    width: 40%;
+    margin-left: -180px;
+    margin-top: 50px;
+    height: 15%;
+    padding: 2%;
+    border-radius: 15px;
+  }
+  .service-image-container p {
+    font-size: 1.35em;
+  }
 }
 
 @media (min-width: 1280px) {
+  .service-image-container {
+    width: 28%;
+  }
+  .header-image-wrapper {
+    width: 82%;
+    margin-bottom: 1px;
+  }
 }
 
 @media (min-width: 1536px) {

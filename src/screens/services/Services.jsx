@@ -55,8 +55,8 @@ const Services = () => {
               <h1>Transcript And Document Retrieval</h1>
               <p>
                 Need important documents from institutions back home? We obtain
-                credeimport Hq from '../../components/hq/Hq'; ntials and other
-                necessary documents on your behalf, saving you time and hassle.
+                credeimport Hq from; ntials and other necessary documents on
+                your behalf, saving you time and hassle.
               </p>
               <button className="service-btn">Post this request</button>
             </div>
@@ -135,7 +135,7 @@ const Services = () => {
           </div>
         </div>
       </div>
-      <Hq />
+      {/* <Hq /> */}
       <Footer />
       <MainSideBar
         handleOpenSideBar={handleOpenSideBar}
