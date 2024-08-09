@@ -9,9 +9,9 @@
   margin-right: auto;
   /* height: 45dvh; */
   display: flex;
-  /* border-radius: 20px; */
-  border-bottom-left-radius: 60px;
-  border-bottom-right-radius: 60px;
+  border-radius: 60px;
+  /* border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px; */
 }
 .sustainability-left-wrapper,
 .sustainability-right-wrapper {

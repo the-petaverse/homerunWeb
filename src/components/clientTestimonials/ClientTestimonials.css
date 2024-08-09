@@ -12,9 +12,15 @@
 .testimonial-header-wrapper {
   display: flex;
   align-items: center;
+  margin-bottom: 35px;
+}
+.testimonial-content-wrapper p {
+  font-size: 1.35em;
+  font-weight: lighter;
 }
 .testimonial-header-wrapper h1 {
   color: #ff6600;
+  font-size: 1.35em;
 }
 .tester {
   background-color: red;
@@ -33,7 +39,8 @@
   background-color: yellow; */
 }
 .header-container {
-  /* width: 35%; */
+  width: 100%;
+  padding: 15px 5%;
 }
 .client-card {
   /* background-color: red;
@@ -48,12 +55,21 @@
 }
 
 @media (min-width: 1024px) {
-  .testimonial-main-container {
-    flex-direction: row;
+  .header-container {
+    width: 80%;
   }
 }
 
 @media (min-width: 1280px) {
+  .testimonial-main-container {
+    flex-direction: row;
+  }
+  .slider-container {
+    width: 50dvw;
+  }
+  .header-container {
+    width: 50%;
+  }
 }
 
 @media (min-width: 1536px) {

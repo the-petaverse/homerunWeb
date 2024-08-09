@@ -21,11 +21,11 @@ const Footer = () => {
             <p>Privacy policy</p>
           </Link>
         </div>
-        <div>
+        {/* <div>
           <Link className="privacy-btn">
             <p>Privacy policy</p>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

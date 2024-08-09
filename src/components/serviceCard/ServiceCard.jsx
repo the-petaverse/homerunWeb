@@ -14,15 +14,16 @@ const ServiceCard = ({ cardImage }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
-    initialSlide: 0,
+    initialSlide: 1,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
           slidesToScroll: 2,
+          initialSlide: 1,
           infinite: true,
           dots: false,
         },
@@ -33,7 +34,7 @@ const ServiceCard = ({ cardImage }) => {
           infinite: true,
           slidesToShow: 3,
           slidesToScroll: 2,
-          initialSlide: 2,
+          initialSlide: 1,
         },
       },
       {
@@ -41,7 +42,8 @@ const ServiceCard = ({ cardImage }) => {
         settings: {
           infinite: true,
           slidesToShow: 2,
-          slidesToScroll: 0,
+          slidesToScroll: 1,
+          initialSlide: 1,
         },
       },
     ],

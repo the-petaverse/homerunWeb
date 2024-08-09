@@ -8,30 +8,15 @@
 .testimonial-card {
   background-color: #fff;
   border: solid 0.5px gray;
-  width: 94% !important;
-  padding: 5%;
-}
-.slick-arrow::before {
-  color: #262262;
+  width: 95% !important;
+  padding: 8%;
+  border-radius: 15px;
+  font-size: 1.3em;
 }
 
-.slick-prev {
-  top: 120px;
-  left: -120px;
-}
-.slick-next {
-  top: 120px;
-  left: -90px;
-}
 @media (min-width: 475px) {
-  .testimonial-card {
-    background-color: #fff;
-    border: solid 0.5px gray;
-    width: 100% !important;
-    padding: 5%;
-    background-color: red !important;
-  }
 }
+
 @media (min-width: 640px) {
 }
 
@@ -42,6 +27,24 @@
 }
 
 @media (min-width: 1280px) {
+  .testimonial-card {
+    width: 95% !important;
+  }
+  .slick-arrow::before {
+    color: #262262;
+    font-size: 50px;
+  }
+  .client-name {
+    margin-top: 20px;
+  }
+  .slick-prev {
+    top: 240px;
+    left: -145px;
+  }
+  .slick-next {
+    top: 240px;
+    left: -90px;
+  }
 }
 
 @media (min-width: 1536px) {

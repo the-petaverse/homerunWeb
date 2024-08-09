@@ -13,7 +13,7 @@ const ClientTestimonials = () => {
           <h1>People Love #</h1>
           <img src={Logo} alt="logo" className="terstimonial-logo" />
         </div>
-        <div>
+        <div className="testimonial-content-wrapper">
           <p>
             At Homerun, our customer satisfaction is our ultimate measure of
             success. Here's what some of our users have to say about their

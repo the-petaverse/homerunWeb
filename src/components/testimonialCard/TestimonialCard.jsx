@@ -23,16 +23,16 @@ const TestimonialCard = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 2.2,
     slidesToScroll: 1,
-    initialSlide: 0,
+    initialSlide: 1,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 2.2,
           slidesToScroll: 1,
-          initialSlide: 0,
+          initialSlide: 1,
           infinite: true,
           dots: true,
         },
@@ -42,9 +42,9 @@ const TestimonialCard = () => {
         settings: {
           dots: false,
           infinite: true,
-          slidesToShow: 1,
+          slidesToShow: 1.5,
           slidesToScroll: 1,
-          initialSlide: 0,
+          initialSlide: 1,
         },
       },
       {
@@ -67,7 +67,7 @@ const TestimonialCard = () => {
             return (
               <div className="testimonial-card" key={index}>
                 <p>{testimony.descrip}</p>
-                <p>{testimony.name}</p>
+                <p className="client-name">{testimony.name}</p>
               </div>
             );
           })}

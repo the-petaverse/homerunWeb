@@ -45,11 +45,7 @@
 .iphone-icon {
   width: 90%;
 }
-.test-apple-logo-wrapper {
-  height: 40px;
-  background-color: rgb(241, 238, 238);
-  cursor: pointer;
-}
+
 .another-color-for-wrapper {
   background-color: rgb(241, 238, 238);
 }
@@ -124,7 +120,7 @@
     height: auto;
   }
   .playstore-icons-wrapper {
-    width: 80%;
+    width: 50%;
   }
 }
 
