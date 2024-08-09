@@ -22,7 +22,7 @@ const App = () => {
         handleCloseSideBar={handleCloseSideBar}
         openSideBar={openSideBar}
       />
-      <Hq />
+      {/* <Hq /> */}
       <Footer />
     </div>
   );

@@ -24,7 +24,11 @@ const About = () => {
           <div className="about-details-wrapper">
             <h1>Who We Are</h1>
             <div className="about-details-wrapper">
-              <img src={AboutUsImage} alt="" />
+              <img
+                src={AboutUsImage}
+                alt="who we are"
+                className="who-we-are-image"
+              />
             </div>
           </div>
         </div>
@@ -56,7 +60,7 @@ const About = () => {
       </div>
       <Team />
       <MissionVision />
-      <Hq />
+      {/* <Hq /> */}
       <Footer />
     </>
   );
