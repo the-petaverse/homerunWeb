@@ -5,11 +5,18 @@ import MenuIcon from "../../assets/menu.png";
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 import RequestNavModal from "../requestNavModal/RequestNavModal";
-const Navbar = ({ handleOpenSideBar }) => {
+import MainSideBar from "../mainSideBar/MainSideBar";
+const Navbar = () => {
   const [openRequestNav, setOpenRequestNav] = useState(false);
+  const [openSideBar, setOpenSideBar] = useState(false);
+
   const cookies = new Cookies();
   const receivedCookies = cookies.get("auth_token");
 
+  const handleOpenSideBar = () => {
+    console.log("object");
+    setOpenSideBar((prev) => !prev);
+  };
   const handleOpenRequestNav = () => {
     setOpenRequestNav((prev) => !prev);
   };
@@ -17,7 +24,7 @@ const Navbar = ({ handleOpenSideBar }) => {
     cookies.remove("auth_token");
   };
 
-  useEffect(() => {}, [receivedCookies, openRequestNav]);
+  useEffect(() => {}, [receivedCookies, openRequestNav, openSideBar]);
 
   return (
     <>
@@ -65,7 +72,7 @@ const Navbar = ({ handleOpenSideBar }) => {
           src={MenuIcon}
           alt=""
           className="icon-image-nav"
-          onClick={() => handleOpenSideBar()}
+          onClick={handleOpenSideBar}
         />
       </div>
       {openRequestNav && (
@@ -73,6 +80,7 @@ const Navbar = ({ handleOpenSideBar }) => {
           <RequestNavModal />
         </section>
       )}
+      {openSideBar && <MainSideBar />}
     </>
   );
 };

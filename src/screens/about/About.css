@@ -4,6 +4,7 @@
 
 .about-us-container {
   padding: 15px 5%;
+  position: relative;
   /* margin-top: 25px; */
   background-color: rgb(202, 198, 198);
   /* padding-bottom: 100%; */
@@ -42,7 +43,7 @@
 .who-we-are-image {
   width: 100%;
   margin-bottom: -30px;
-  position: relative;
+  /* position: relative; */
   margin-top: 25px;
 }
 .about-details-wrapper p {
@@ -121,6 +122,10 @@
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
+span {
+  background-color: red;
+  width: 20dvw;
+}
 
 @media (min-width: 475px) {
 }
@@ -151,5 +156,9 @@
   }
   .who-we-are-image {
     margin-bottom: -100px;
+  }
+  span {
+    background-color: red;
+    width: 20dvw !important;
   }
 }

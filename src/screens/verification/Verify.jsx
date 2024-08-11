@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import LoginImage from "../../assets/feedback.png";
+import LoginImage from "../../assets/login.png";
 import { useForm } from "react-hook-form";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useVerifyUserMutation } from "../../services/auth/authApi";
+import BackIcon from "../../assets/back-arrow.png";
+import WavyCheckIcon from "../../assets/wavy-check.png";
 import "./Verify.css";
 import Cookies from "universal-cookie";
 
@@ -38,12 +40,24 @@ const Verify = () => {
           <img src={LoginImage} alt="" className="login-image" />
         </div>
         <div className="inner-form-wrapper">
-          <h3>Hey, </h3>
-          <h3>You are alomst done</h3>
+          <div>
+            <div className="back-arrow-wrapper">
+              <img src={BackIcon} alt="back button" />
+              <span>Back</span>
+            </div>
+          </div>
+          <div className="sent-otp-sent-wrapper">
+            <h3>OTP Sent To Mail</h3>
+            <img
+              src={WavyCheckIcon}
+              alt="check button"
+              className="check-mark-btn"
+            />
+          </div>
           {error?.data?.error ? (
             <p className="token-error-message">{error?.data?.error}</p>
           ) : (
-            <p>Please enter the code received to continue</p>
+            <p>Please input OTP sent to Wasiu@gmail.com</p>
           )}
           {error?.data?.message && (
             <p className="token-error-message">{error?.data?.message}</p>
@@ -58,7 +72,6 @@ const Verify = () => {
           )}
           <form onSubmit={handleSubmit(onSubmit)} className="form-wrapper">
             <label>
-              Verification:
               <input
                 type="text"
                 maxLength={8}
@@ -76,8 +89,25 @@ const Verify = () => {
                 </p>
               )}
             </label>
+            <div className="timer-main-container">
+              <div className="timer-inner-wrapper">
+                <div className="timer-wrapper">
+                  <p>2</p>
+                </div>
+                {/* <div className="timer-dot">
+                  <p>:</p>
+                </div> */}
+                <div className="timer-wrapper">
+                  <p>30</p>
+                </div>
+              </div>
+              <div>
+                <p>Resend OTP</p>
+              </div>
+            </div>
             <input
               type="submit"
+              value="Continue"
               className="main-form-btn"
               disabled={!isValid}
             />

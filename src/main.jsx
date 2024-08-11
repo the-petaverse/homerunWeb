@@ -67,6 +67,15 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
+  //This is placed outside of the authentication for design
+  //To be removed after the design is complete
+  {
+    path: "/verify",
+    element: <Verify />,
+  },
+
+  //This is placed outside of the authentication for design
+  //To be removed after the design is complete
   {
     path: "/register",
     element: <Register />,
@@ -75,10 +84,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <ProtectedRoutes />,
     children: [
-      {
-        path: "/verify",
-        element: <Verify />,
-      },
+      // {
+      //   path: "/verify",
+      //   element: <Verify />,
+      // },
     ],
   },
   {

@@ -1,14 +1,18 @@
 import React from "react";
+import PostErrandSideBar from "../postErrandSideBar/PostErrandSideBar";
 import CloseIcon from "../../assets/close.png";
+import LoginIcon from "../../assets/login-icon.png";
+import VerifyIcon from "../../assets/verify.png";
+import AboutIcon from "../../assets/emoji-happy.png";
 import { Link } from "react-router-dom";
 
 import "./MainSideBar.css";
 import Cookies from "universal-cookie";
 
-const MainSideBar = ({ handleCloseSideBar, openSideBar }) => {
+const MainSideBar = () => {
   const cookies = new Cookies();
   const receivedCookies = cookies.get("auth_token");
-  if (!openSideBar) return null;
+  // if (!openSideBar) return null;
 
   const handleLogout = () => {
     cookies.remove("auth_token");
@@ -16,45 +20,19 @@ const MainSideBar = ({ handleCloseSideBar, openSideBar }) => {
   return (
     <div className="side-bar-container">
       <div className="inner-side-bar">
-        <div className="close-icon-container">
-          <img
-            src={CloseIcon}
-            alt=""
-            className="mainside-bar-close-icon-wrapper"
-            onClick={handleCloseSideBar}
-          />
-        </div>
-
         <div className="side-bar-menu-list-wrapper">
           <ul className="side-bar-right-main-list main-side-wrapper">
-            <Link
-              to="/"
-              className="inner-menu-list"
-              onClick={handleCloseSideBar}
-            >
-              <li>Home</li>
-            </Link>
-            <Link to="/requests-list" className="inner-menu-list blink-text">
-              <li>Post a Request</li>
-            </Link>
-            <Link
-              to="/about"
-              className="inner-menu-list"
-              onClick={handleCloseSideBar}
-            >
-              <li>About Us</li>
-            </Link>
-            <Link
-              to="/contact"
-              className="inner-menu-list"
-              onClick={handleCloseSideBar}
-            >
-              <li>Contact Us</li>
-            </Link>
             <section className="auth-wrapper">
               {!receivedCookies && (
                 <Link to="/login" className="inner-menu-list">
-                  <li>Login</li>
+                  <li>
+                    <img
+                      src={LoginIcon}
+                      alt="login"
+                      className="side-bar-menu-icon"
+                    />
+                    Login
+                  </li>
                 </Link>
               )}
 
@@ -67,17 +45,48 @@ const MainSideBar = ({ handleCloseSideBar, openSideBar }) => {
                   <li> Logout</li>
                 </Link>
               )}
-              {receivedCookies && (
+              {/* {receivedCookies && (
                 <Link to="/dashboard" className="inner-menu-list">
                   <li> profile</li>
                 </Link>
-              )}
+              )} */}
 
-              <Link to="/register" className="inner-menu-list">
+              {/* <Link to="/register" className="inner-menu-list">
                 {!receivedCookies && <li>Register</li>}
-              </Link>
+              </Link> */}
             </section>
+            <Link to="/our-services" className="inner-menu-list">
+              <li>
+                <img
+                  src={VerifyIcon}
+                  alt="login"
+                  className="side-bar-menu-icon"
+                />
+                Services
+              </li>
+            </Link>
+            {/* <Link
+              to="/about"
+              className="inner-menu-list"
+              onClick={handleCloseSideBar}
+            >
+              <li>
+                <img
+                  src={AboutIcon}
+                  alt="login"
+                  className="side-bar-menu-icon"
+                />
+                About Us
+              </li>
+            </Link> */}
           </ul>
+          <section className="post-errand-sidebar-container">
+            <h3 className="post-errand-sidebar">Post Errand</h3>
+            <PostErrandSideBar />
+          </section>
+          <section className="side-menu-bar-btn-container">
+            <button className="side-menu-bar-btn">Contact Us</button>
+          </section>
         </div>
       </div>
     </div>

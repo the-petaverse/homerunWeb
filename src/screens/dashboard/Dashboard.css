@@ -68,13 +68,7 @@
 .request-status {
   margin: 20px 0;
 }
-.inner-menu-list {
-  background-color: rgb(25, 3, 103);
-  font-size: 1.1em;
-  color: #fff;
-  cursor: pointer;
-  text-decoration: none;
-}
+
 .user-name {
   font-size: 1.6em;
   margin-bottom: 5px;

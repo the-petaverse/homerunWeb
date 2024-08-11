@@ -8,17 +8,17 @@ import Team from "../../components/team/Team";
 import MissionVision from "../../components/missionVision/MissionVision";
 import Hq from "../../components/hq/Hq";
 const About = () => {
-  const [openSideBar, setOpenSideBar] = useState(false);
+  // const [openSideBar, setOpenSideBar] = useState(false);
 
-  const handleOpenSideBar = () => {
-    setOpenSideBar(true);
-  };
-  const handleCloseSideBar = () => {
-    setOpenSideBar(false);
-  };
+  // const handleOpenSideBar = () => {
+  //   setOpenSideBar(true);
+  // };
+  // const handleCloseSideBar = () => {
+  //   setOpenSideBar(false);
+  // };
   return (
     <>
-      <Navbar handleOpenSideBar={handleOpenSideBar} />
+      <Navbar />
       <div className="about-us-container">
         <div className="about-header-wrapper">
           <div className="about-details-wrapper">
@@ -52,13 +52,15 @@ const About = () => {
             </p>
           </div>
         </div>
-        <MainSideBar
+        {/* <MainSideBar
           handleOpenSideBar={handleOpenSideBar}
           handleCloseSideBar={handleCloseSideBar}
           openSideBar={openSideBar}
-        />
+        /> */}
       </div>
-      <Team />
+      <section>
+        <Team />
+      </section>
       <MissionVision />
       {/* <Hq /> */}
       <Footer />

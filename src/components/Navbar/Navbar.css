@@ -1,9 +1,13 @@
 .nav-container {
   background-color: #fff;
+  width: 100dvw;
+  /* height: 50px; */
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2px 5%;
+  z-index: 99999;
 }
 .menu-list-sec-wrapper {
   display: none;
@@ -43,6 +47,7 @@
   color: #0d2137;
   cursor: pointer;
 }
+
 .nav-links {
   text-decoration: none;
   cursor: pointer;
