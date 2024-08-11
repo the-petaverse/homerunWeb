@@ -122,10 +122,6 @@
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
-span {
-  background-color: red;
-  width: 20dvw;
-}
 
 @media (min-width: 475px) {
 }
@@ -156,9 +152,5 @@ span {
   }
   .who-we-are-image {
     margin-bottom: -100px;
-  }
-  span {
-    background-color: red;
-    width: 20dvw !important;
   }
 }

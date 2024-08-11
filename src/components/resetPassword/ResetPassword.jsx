@@ -1,7 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import LoginImage from "../../assets/login.png";
-const ResetPassword = ({ setShowDashboard }) => {
+const ResetPassword = ({
+  setShowDashboard,
+  userVerifiedOtp,
+  setUserverifiedOtp,
+}) => {
   //   const [showDashboard, setShowDashboard] = useState(1);
   const {
     register,
@@ -11,30 +15,16 @@ const ResetPassword = ({ setShowDashboard }) => {
   } = useForm({ mode: "all" });
 
   const onPassSubmit = (data) => {
-    setShowDashboard(5);
+    // setUserverifiedOtp("2");
+    // setShowDashboard(5);
     console.log("PassData: ", data);
   };
 
   return (
-    <div>
-      <div className="login-main-container">
-        <div className="login-iamge-wrapper">
-          <img src={LoginImage} alt="" className="login-image" />
-        </div>
+    <>
+      {userVerifiedOtp === "2" && (
         <div className="inner-form-wrapper">
           <form onSubmit={handleSubmit(onPassSubmit)} className="form-wrapper">
-            {/* <label>
-              Email:
-              <input
-                type="text"
-                placeholder="example@example.com"
-                className="main-text-input"
-                {...register("email", { required: "Email is required" })}
-              />
-              {errors.email && (
-                <p className="input-error-message">{errors.email.message}</p>
-              )}
-            </label> */}
             <label>
               Old Password:
               <input
@@ -70,8 +60,8 @@ const ResetPassword = ({ setShowDashboard }) => {
             />
           </form>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
