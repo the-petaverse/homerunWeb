@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, Outlet } from "react-router-dom";
+import { useNavigate, Outlet, Link } from "react-router-dom";
 import "./Login.css";
 import LoginImage from "../../assets/login.png";
+import LogoMark from "../../assets/logomark.png";
 import HomerunIcon from "../../assets/homerun-icon.png";
 import Navbar from "../../components/Navbar/Navbar";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
@@ -48,7 +49,11 @@ const Login = () => {
 
   return (
     <div>
-      {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
+      <div className="authentication-header">
+        <Link to="/">
+          <img src={LogoMark} alt="homerun icon" className="homerun-icon" />
+        </Link>
+      </div>
       <div className="login-main-container">
         <div className="login-iamge-wrapper">
           <img src={LoginImage} alt="" className="login-image" />
@@ -94,7 +99,7 @@ const Login = () => {
             </div>
             <input
               type="submit"
-              className="main-form-btn"
+              className={!isValid ? "main-form-btn-disabled" : "main-form-btn"}
               disabled={!isValid || isLoading}
             />
             <p className="already-sign-in">

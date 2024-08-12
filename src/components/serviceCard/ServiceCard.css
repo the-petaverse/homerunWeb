@@ -13,6 +13,9 @@
   border-radius: 26px;
 }
 
+.slick-arrow::before {
+  display: none;
+}
 @media (min-width: 475px) {
   .serviceCard-main-wrapper {
     color: #fff;
@@ -51,6 +54,7 @@
   .serviceCard-main-wrapper {
     color: #fff;
     width: 32% !important;
+    cursor: pointer;
     /* margin-right: -110px; */
     /* margin-right: -500px; */
   }

@@ -8,8 +8,12 @@ import GrocyImage from "../../assets/grocy.png";
 import SurpriseImage from "../../assets/surprise.png";
 import HotelImage from "../../assets/hotel.png";
 import PropertyImage from "../../assets/property.png";
+import { Link } from "react-router-dom";
 
 const ServiceCard = ({ cardImage }) => {
+  const handleServiceClick = (heading) => {
+    console.log(heading);
+  };
   var settings = {
     dots: false,
     infinite: true,
@@ -21,7 +25,7 @@ const ServiceCard = ({ cardImage }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3.095,
           slidesToScroll: 2,
           initialSlide: 1,
           infinite: true,
@@ -32,7 +36,7 @@ const ServiceCard = ({ cardImage }) => {
         breakpoint: 600,
         settings: {
           infinite: true,
-          slidesToShow: 3,
+          slidesToShow: 2.095,
           slidesToScroll: 2,
           initialSlide: 1,
         },
@@ -41,7 +45,7 @@ const ServiceCard = ({ cardImage }) => {
         breakpoint: 475,
         settings: {
           infinite: true,
-          slidesToShow: 2,
+          slidesToShow: 2.095,
           slidesToScroll: 1,
           initialSlide: 1,
         },
@@ -52,7 +56,9 @@ const ServiceCard = ({ cardImage }) => {
     <>
       <Slider {...settings}>
         <div className="serviceCard-main-wrapper">
-          <img src={TransImage} className="card-image-wrapper" />
+          <Link to="" onClick={() => handleServiceClick("transcript")}>
+            <img src={TransImage} className="card-image-wrapper" />
+          </Link>
         </div>
         <div className="serviceCard-main-wrapper">
           <img src={GrocyImage} className="card-image-wrapper" />

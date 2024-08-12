@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
 .hero-container {
-  padding: 15px 5%;
+  padding: 105px 5%;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -49,7 +49,7 @@
 }
 .card-display-container {
   margin-top: -100px;
-  width: 100dvw;
+  width: 85%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -101,6 +101,7 @@
 @media (min-width: 1024px) {
   .hero-container {
     flex-direction: row;
+    padding: 55px 5%;
   }
   .header-wrapper {
     width: 48%;
@@ -141,7 +142,7 @@
   }
   .card-display-container {
     margin-top: -400px;
-    width: 92%;
+
     margin-right: auto;
     margin-left: auto;
   }

@@ -75,11 +75,7 @@ const Navbar = () => {
           onClick={handleOpenSideBar}
         />
       </div>
-      {openRequestNav && (
-        <section>
-          <RequestNavModal />
-        </section>
-      )}
+      {openRequestNav && <RequestNavModal />}
       {openSideBar && <MainSideBar />}
     </>
   );

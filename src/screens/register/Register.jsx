@@ -4,6 +4,7 @@ import "react-phone-input-2/lib/style.css";
 import Navbar from "../../components/Navbar/Navbar";
 import LoginImage from "../../assets/login.png";
 import ProfileImage from "../../assets/profile.png";
+import LogoMark from "../../assets/logomark.png";
 import HomerunIcon from "../../assets/homerun-icon.png";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate, Link, Navigate } from "react-router-dom";
@@ -129,7 +130,11 @@ const Register = () => {
   }, [registeredCookies, watchCountry, watchState]);
   return (
     <div>
-      {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
+      <div className="authentication-header">
+        <Link to="/">
+          <img src={LogoMark} alt="homerun icon" className="homerun-icon" />
+        </Link>
+      </div>
       <div className="register-main-container">
         <div className="register-iamge-wrapper">
           <img src={LoginImage} alt="" className="register-image" />
@@ -242,7 +247,7 @@ const Register = () => {
                                 required: true,
                               }}
                               buttonStyle={{
-                                width: 70,
+                                width: "15%",
                                 borderTopLeftRadius: 12,
                                 borderBottomLeftRadius: 12,
                                 backgroundColor: "#fff",
@@ -251,7 +256,7 @@ const Register = () => {
                               inputStyle={{
                                 // backgroundColor: "gray",
                                 height: 55,
-                                width: 500,
+                                width: "100%",
                                 marginTop: 30,
                                 borderRadius: 12,
                                 paddingLeft: 80,
@@ -415,16 +420,18 @@ const Register = () => {
               )}
               {renderButton()}
             </form>
-            <p>You already have an account? Login to Homerun</p>
+            <p className="already-last-text">
+              You already have an account? Login to Homerun
+            </p>
           </div>
         )}
         {userVerifiedOtp !== "" && <OtpComponent />}
       </div>
-      <MainSideBar
+      {/* <MainSideBar
         handleOpenSideBar={handleOpenSideBar}
         handleCloseSideBar={handleCloseSideBar}
         openSideBar={openSideBar}
-      />
+      /> */}
     </div>
   );
 };

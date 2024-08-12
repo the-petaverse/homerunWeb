@@ -12,15 +12,10 @@
 .register-iamge-wrapper {
   display: none;
 }
-.form-input-label {
-  /* background-color: red; */
-  position: relative;
-}
-.form-input-inner-label {
-  display: flex;
+.authentication-header {
   position: absolute;
-  left: 3.5%;
-  top: 50%;
+  top: 2%;
+  left: 2.5%;
 }
 .register-inner-form-wrapper {
   width: 100%;
@@ -28,7 +23,7 @@
   /* text-align: center; */
 }
 .register-inner-form-wrapper p {
-  font-size: 1.6em;
+  font-size: 1.2em;
   margin-top: 15px;
   font-family: "Josefin Slab", serif;
 }
@@ -117,7 +112,7 @@
 
 @media (min-width: 1280px) {
   .register-iamge-wrapper {
-    width: 58.2%;
+    width: 65%;
     height: 100dvh;
     display: block;
   }
@@ -146,7 +141,7 @@
     height: 99.5%;
   }
   .register-iamge-wrapper {
-    width: 60%;
+    width: 80%;
     display: block;
   }
   .register-inner-form-wrapper {

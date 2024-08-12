@@ -18,7 +18,7 @@ const HeroPage = () => {
             </p>
           </div>
           <div className="howitworks-wrapper">
-            <Link to="../../assets/person.png" className="get-stated-btn">
+            <Link to="/register" className="get-stated-btn">
               Get Started For Free
             </Link>
           </div>

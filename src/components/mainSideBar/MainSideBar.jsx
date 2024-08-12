@@ -1,9 +1,13 @@
 import React from "react";
-import PostErrandSideBar from "../postErrandSideBar/PostErrandSideBar";
 import CloseIcon from "../../assets/close.png";
 import LoginIcon from "../../assets/login-icon.png";
 import VerifyIcon from "../../assets/verify.png";
 import AboutIcon from "../../assets/emoji-happy.png";
+import TransIcon from "../../assets/trans-icon.png";
+import GrocyIcon from "../../assets/grocy-icon.png";
+import SurpriseIcon from "../../assets/surprise-icon.png";
+import HotelIcon from "../../assets/hotel-icon.png";
+import PropertyIcon from "../../assets/property-icon.png";
 import { Link } from "react-router-dom";
 
 import "./MainSideBar.css";
@@ -45,15 +49,6 @@ const MainSideBar = () => {
                   <li> Logout</li>
                 </Link>
               )}
-              {/* {receivedCookies && (
-                <Link to="/dashboard" className="inner-menu-list">
-                  <li> profile</li>
-                </Link>
-              )} */}
-
-              {/* <Link to="/register" className="inner-menu-list">
-                {!receivedCookies && <li>Register</li>}
-              </Link> */}
             </section>
             <Link to="/our-services" className="inner-menu-list">
               <li>
@@ -65,10 +60,10 @@ const MainSideBar = () => {
                 Services
               </li>
             </Link>
-            {/* <Link
+            <Link
               to="/about"
               className="inner-menu-list"
-              onClick={handleCloseSideBar}
+              // onClick={handleCloseSideBar}
             >
               <li>
                 <img
@@ -78,15 +73,59 @@ const MainSideBar = () => {
                 />
                 About Us
               </li>
-            </Link> */}
+            </Link>
           </ul>
-          <section className="post-errand-sidebar-container">
-            <h3 className="post-errand-sidebar">Post Errand</h3>
-            <PostErrandSideBar />
-          </section>
-          <section className="side-menu-bar-btn-container">
-            <button className="side-menu-bar-btn">Contact Us</button>
-          </section>
+        </div>
+        <div className="post-request-nav-modal-container">
+          <h3 className="post-errand-sidebar">Post Errand</h3>
+          <div className="post-request-nav-card">
+            <div className="request-nav-image">
+              <img src={TransIcon} alt="transcript icon" />
+            </div>
+            <div className="request-nav-content">
+              <h1>Transcript & Doc...</h1>
+              <p>Obtain credentials and other necessary documents on...</p>
+            </div>
+          </div>
+          <div className="post-request-nav-card">
+            <div className="request-nav-image">
+              <img src={GrocyIcon} alt="transcript icon" />
+            </div>
+            <div className="request-nav-content">
+              <h1>Grocery & Food</h1>
+              <p>Groceries and food items delivered to your door...</p>
+            </div>
+          </div>
+          <div className="post-request-nav-card">
+            <div className="request-nav-image">
+              <img src={SurpriseIcon} alt="transcript icon" />
+            </div>
+            <div className="request-nav-content">
+              <h1>Surprise Packages</h1>
+              <p>We deliver delightful surprises that brighten your day.</p>
+            </div>
+          </div>
+          <div className="post-request-nav-card">
+            <div className="request-nav-image">
+              <img src={HotelIcon} alt="transcript icon" />
+            </div>
+            <div className="request-nav-content">
+              <h1>Hotel & Car Booking</h1>
+              <p>Secure accommodations, recreation centers and cars...</p>
+            </div>
+          </div>
+          <div className="post-request-nav-card">
+            <div className="request-nav-image">
+              <img src={PropertyIcon} alt="transcript icon" />
+            </div>
+            <div className="request-nav-content">
+              <h1>Property Inspection</h1>
+              <p>
+                Acquire property in your home country while you’re abroad...
+              </p>
+            </div>
+          </div>
+          <button className="side-menu-bar-btn">Contact Us</button>
         </div>
       </div>
     </div>

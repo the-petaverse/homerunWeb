@@ -77,6 +77,15 @@
   font-size: 1.6em;
   cursor: pointer;
 }
+.main-form-btn-disabled {
+  background-color: #686868;
+  height: 55px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: solid 0.5px rgb(18, 2, 86);
+  color: #fff;
+  font-size: 1.6em;
+}
 .form-wrapper label p {
   color: red;
   font-size: 20px;
