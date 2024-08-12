@@ -3,8 +3,9 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Navbar from "../../components/Navbar/Navbar";
 import LoginImage from "../../assets/login.png";
+import ProfileImage from "../../assets/profile.png";
 import HomerunIcon from "../../assets/homerun-icon.png";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useNavigate, Link, Navigate } from "react-router-dom";
 import { useRegisterUserMutation } from "../../services/auth/authApi";
 import backButton from "../../assets/form-back.png";
@@ -47,6 +48,7 @@ const Register = () => {
   const {
     register,
     handleSubmit,
+    control,
     watch,
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
@@ -57,7 +59,8 @@ const Register = () => {
   const confirmPassword = watch("confirm_password");
 
   const onSubmit = async (data) => {
-    await registerUser(data);
+    console.log(data);
+    // await registerUser(data);
   };
 
   if (isSuccess) {
@@ -97,7 +100,7 @@ const Register = () => {
     } else if (formStep === 1) {
       return (
         <input
-          disabled={!isValid || isLoading}
+          // disabled={!isValid || isLoading}
           type="submit"
           className="register-main-form-btn"
         />
@@ -106,7 +109,7 @@ const Register = () => {
     {
       return (
         <button
-          disabled={!isValid}
+          // disabled={!isValid}
           type="submit"
           className="register-main-form-btn"
           onClick={handleCompleteForm}
@@ -175,7 +178,7 @@ const Register = () => {
                       type="text"
                       className="register-main-text-input"
                       style={{ borderColor: errors.firstName ? "red" : "blue" }}
-                      placeholder="First name"
+                      // placeholder="First name"
                       {...register("first_name", {
                         required: "First name is required",
                       })}
@@ -212,6 +215,7 @@ const Register = () => {
                         required: "Valid email is required",
                       })}
                     />
+
                     {errors.email && (
                       <p className="input-error-message">
                         {errors.email.message}
@@ -219,29 +223,56 @@ const Register = () => {
                     )}
                   </label>
                   <label className="phone-input-wrapper">
-                    <PhoneInput
-                      buttonStyle={{
-                        width: 70,
-                        borderTopLeftRadius: 12,
-                        borderBottomLeftRadius: 12,
-                        backgroundColor: "#fff",
-                        paddingLeft: 15,
+                    <Controller
+                      name="phone_number"
+                      control={control}
+                      // rules={{
+                      //   validate: (value) => isValidPhoneNumber(value),
+                      // }}
+                      render={({ field: { ref, ...field } }) => {
+                        return (
+                          <>
+                            <PhoneInput
+                              {...field}
+                              isValid={false}
+                              // value={value}
+                              // onchange={onchange}
+                              inputProps={{
+                                ref,
+                                required: true,
+                              }}
+                              buttonStyle={{
+                                width: 70,
+                                borderTopLeftRadius: 12,
+                                borderBottomLeftRadius: 12,
+                                backgroundColor: "#fff",
+                                paddingLeft: 15,
+                              }}
+                              inputStyle={{
+                                // backgroundColor: "gray",
+                                height: 55,
+                                width: 500,
+                                marginTop: 30,
+                                borderRadius: 12,
+                                paddingLeft: 80,
+                                fontFamily: "Josefin Slab",
+                                fontSize: 18,
+                              }}
+                              inputClass="register-main-text-input"
+                              country={"us"}
+                              // value={this.state.phone}
+                              // onChange={(phone) => this.setState({ phone })}
+                            />
+                            {errors.phone_number && (
+                              <p className="input-error-message">
+                                {errors.phone_number.message}
+                              </p>
+                            )}
+                          </>
+                        );
                       }}
-                      inputStyle={{
-                        // backgroundColor: "gray",
-                        height: 55,
-                        width: 500,
-                        marginTop: 30,
-                        borderRadius: 12,
-                        paddingLeft: 80,
-                        fontFamily: "Josefin Slab",
-                        fontSize: 18,
-                      }}
-                      inputClass="register-main-text-input"
-                      country={"us"}
-                      // value={this.state.phone}
-                      // onChange={(phone) => this.setState({ phone })}
                     />
+
                     {/* <input
                       type="text"
                       style={{

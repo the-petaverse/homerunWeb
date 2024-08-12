@@ -12,7 +12,16 @@
 .register-iamge-wrapper {
   display: none;
 }
-
+.form-input-label {
+  /* background-color: red; */
+  position: relative;
+}
+.form-input-inner-label {
+  display: flex;
+  position: absolute;
+  left: 3.5%;
+  top: 50%;
+}
 .register-inner-form-wrapper {
   width: 100%;
   padding: 15px 5%;
