@@ -18,6 +18,7 @@ const Navbar = () => {
     setOpenSideBar((prev) => !prev);
   };
   const handleOpenRequestNav = () => {
+    console.log("object");
     setOpenRequestNav((prev) => !prev);
   };
   const handleLogout = () => {

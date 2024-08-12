@@ -29,6 +29,9 @@ const Services = () => {
     <>
       <Navbar handleOpenSideBar={handleOpenSideBar} />
       <div className="services-main-container">
+        <div>
+          <h1>What We Do</h1>
+        </div>
         <div className="serices-header-wrapper">
           <div className="header-image-wrapper">
             <img src={Service} alt="service-image" className="service-image" />

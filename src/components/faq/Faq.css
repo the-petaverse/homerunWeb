@@ -3,6 +3,7 @@
 .client-test-container {
   padding: 45px 5%;
 }
+
 .inner-border-wrapper {
   border-left: solid 15px #ff6600;
   padding: 0 2%;
@@ -10,11 +11,15 @@
 }
 .testimonial-header {
   text-align: left;
-  width: 75dvw;
+  width: 100%;
+}
+
+.testimonial-header h1 {
+  font-size: 1.5em;
 }
 
 .testimonial-header p {
-  font-size: 1.8em;
+  font-size: 1.2em;
   font-weight: lighter;
   /* font-family: "Josefin Slab", serif; */
   margin-top: 10px;
@@ -27,7 +32,9 @@
   margin-top: 50px;
 }
 .accordion-body {
-  font-size: 1.3em;
+  font-size: 1.2em;
+  margin-top: 15px;
+  font-weight: lighter;
 }
 .accordion-header-wrapper {
   display: flex;
@@ -36,7 +43,7 @@
   cursor: pointer;
 }
 .accordion-header-wrapper h4 {
-  font-size: 1.5em;
+  font-size: 1.35em;
 }
 
 .accordion-icon {
@@ -53,9 +60,35 @@
 }
 
 @media (min-width: 1024px) {
+  .testimonial-header {
+    width: 80%;
+  }
+  .testimonial-header h1 {
+    font-size: 2em;
+  }
+
+  .testimonial-header p {
+    font-size: 1.35em;
+  }
 }
 
 @media (min-width: 1280px) {
+  .testimonial-header {
+    width: 70%;
+  }
+  .testimonial-header h1 {
+    font-size: 2em;
+  }
+
+  .testimonial-header p {
+    font-size: 1.35em;
+  }
+  .accordion-body {
+    font-size: 1.2em;
+  }
+  .accordion-header-wrapper h4 {
+    font-size: 1.45em;
+  }
 }
 
 @media (min-width: 1536px) {

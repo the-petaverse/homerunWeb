@@ -4,6 +4,7 @@
 
 .services-main-container {
   padding: 20px 5%;
+  padding-top: 155px;
   background-color: rgb(188, 186, 186);
   width: 100dvw;
   /* display: flex;
@@ -23,6 +24,7 @@
 .serices-header-wrapper {
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
 }
 .service-image-container {
   background-color: #262262;
