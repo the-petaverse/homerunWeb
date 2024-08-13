@@ -12,6 +12,7 @@ import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import Hq from "../../components/hq/Hq";
 
 import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const { data, isLoading, isFetching, error, isSuccess } =
@@ -59,7 +60,11 @@ const Services = () => {
                 credeimport Hq from; ntials and other necessary documents on
                 your behalf, saving you time and hassle.
               </p>
-              <button className="service-btn">Post this request</button>
+              <div className="service-btn">
+                <Link to={"/request-category/transcript"}>
+                  Post this request
+                </Link>
+              </div>
             </div>
           </div>
           <div className="services-card">
@@ -71,7 +76,9 @@ const Services = () => {
                 delivered to your door, both locally and internationally.
                 Freshness and quality are guaranteed with every delivery.
               </p>
-              <button className="service-btn">Post this request</button>
+              <div className="service-btn">
+                <Link to={"/request-category/grocery"}>Post this request</Link>
+              </div>
             </div>
           </div>
           <div className="services-card">
@@ -87,7 +94,9 @@ const Services = () => {
                 Whether it's a gift for a loved one or a treat for yourself, we
                 deliver delightful surprises that brighten your day.
               </p>
-              <button className="service-btn">Post this request</button>
+              <div className="service-btn">
+                <Link to={"/request-category/surprise"}>Post this request</Link>
+              </div>
             </div>
           </div>
           <div className="services-card">
@@ -99,7 +108,9 @@ const Services = () => {
                 Whether for business or leisure, we ensure your stay is
                 comfortable and enjoyable.
               </p>
-              <button className="service-btn">Post this request</button>
+              <div className="service-btn">
+                <Link to={"/request-category/hotel"}>Post this request</Link>
+              </div>
             </div>
           </div>
           <div className="services-card">
@@ -115,7 +126,9 @@ const Services = () => {
                 abroad. Our expert team will handle every detail, ensuring a
                 smooth and stress-free process.
               </p>
-              <button className="service-btn">Post this request</button>
+              <div className="service-btn">
+                <Link to={"/request-category/property"}>Post this request</Link>
+              </div>
             </div>
           </div>
         </div>

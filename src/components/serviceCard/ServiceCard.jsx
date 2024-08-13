@@ -56,21 +56,32 @@ const ServiceCard = ({ cardImage }) => {
     <>
       <Slider {...settings}>
         <div className="serviceCard-main-wrapper">
-          <Link to="" onClick={() => handleServiceClick("transcript")}>
+          <Link
+            to={"/request-category/transcript"}
+            // onClick={() => handleServiceClick("transcript")}
+          >
             <img src={TransImage} className="card-image-wrapper" />
           </Link>
         </div>
         <div className="serviceCard-main-wrapper">
-          <img src={GrocyImage} className="card-image-wrapper" />
+          <Link to={"/request-category/grocery"}>
+            <img src={GrocyImage} className="card-image-wrapper" />
+          </Link>
         </div>
         <div className="serviceCard-main-wrapper">
-          <img src={SurpriseImage} className="card-image-wrapper" />
+          <Link to={"/request-category/surprise"}>
+            <img src={SurpriseImage} className="card-image-wrapper" />
+          </Link>
         </div>
         <div className="serviceCard-main-wrapper">
-          <img src={HotelImage} className="card-image-wrapper" />
+          <Link to={"/request-category/hotel"}>
+            <img src={HotelImage} className="card-image-wrapper" />
+          </Link>
         </div>
         <div className="serviceCard-main-wrapper">
-          <img src={PropertyImage} className="card-image-wrapper" />
+          <Link to={"/request-category/property"}>
+            <img src={PropertyImage} className="card-image-wrapper" />
+          </Link>
         </div>
       </Slider>
     </>

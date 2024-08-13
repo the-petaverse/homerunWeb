@@ -8,9 +8,15 @@
   background-color: #ff9a57;
   color: #fff;
 }
+.mission-wrapper h1 {
+  margin-bottom: 10px;
+}
 .vision-wrapper {
   background-color: #4f48c5;
   color: #fff;
+}
+.vision-wrapper h1 {
+  margin-bottom: 10px;
 }
 
 .mission-wrapper,

@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import "./CategoriesDetailPage.css";
-import ServiceCard from "../../components/servicesCard/ServiceCard";
+import SubServiceCard from "../../components/servicesCard/SubServiceCard";
 
 const CategoriesDetailPage = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -20,7 +20,7 @@ const CategoriesDetailPage = () => {
   return (
     <div>
       <Navbar handleOpenSideBar={handleOpenSideBar} />
-      <ServiceCard category={category} />
+      <SubServiceCard category={category} />
       <MainSideBar
         handleOpenSideBar={handleOpenSideBar}
         handleCloseSideBar={handleCloseSideBar}

@@ -25,6 +25,9 @@
     border-radius: 15px;
     z-index: 99;
   }
+  .request-nav-content a {
+    color: #000;
+  }
   .request-nav-card {
     width: 50%;
     display: flex;

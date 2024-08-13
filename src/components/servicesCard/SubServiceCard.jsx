@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ServiceCard.css";
+import "./SubServiceCard.css";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import PropagateLoader from "react-spinners/PropagateLoader";
@@ -9,7 +9,7 @@ import {
   useGetRequestSubCategoryQuery,
 } from "../../services/requestsCategory/requestApi";
 
-const ServiceCard = ({ category }) => {
+const SubServiceCard = ({ category }) => {
   const [categoryList, setCategoryList] = useState([]);
   const [subCategoryList, setSubCategoryList] = useState([]);
   const [categoryId, setCategoryId] = useState();
@@ -44,7 +44,7 @@ const ServiceCard = ({ category }) => {
   const filterSubCategory = () => {
     if (categoryId) {
       let filteredSubCategory = subData?.subRequestsCategory?.filter(
-        (subCategoryData) => subCategoryData.category_id === categoryId
+        (subCategoryData) => subCategoryData?.category_id === categoryId
       );
       setSubCategoryList(filteredSubCategory);
     }
@@ -56,7 +56,7 @@ const ServiceCard = ({ category }) => {
         (categoryData) => categoryData.slug_name === category
       );
 
-      setCategoryId(filteredCategory[0]._id);
+      setCategoryId(filteredCategory[0]?._id);
     }
   };
 
@@ -103,4 +103,4 @@ const ServiceCard = ({ category }) => {
   );
 };
 
-export default ServiceCard;
+export default SubServiceCard;

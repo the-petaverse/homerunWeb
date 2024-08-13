@@ -77,6 +77,11 @@
   width: 100%;
   border-radius: 20px;
   background-color: #fff;
+  text-align: center;
+}
+.service-btn a {
+  text-align: center;
+  color: #000;
 }
 @media (min-width: 475px) {
 }

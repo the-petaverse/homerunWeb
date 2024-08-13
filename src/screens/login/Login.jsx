@@ -64,7 +64,7 @@ const Login = () => {
           <p>Please enter your email and password.</p>
           {error && <p className="login-error-style">{error.data.error}</p>}
           <form onSubmit={handleSubmit(onSubmit)} className="form-wrapper">
-            <label>
+            <label htmlFor="">
               <input
                 type="email"
                 placeholder="Email"
@@ -79,6 +79,7 @@ const Login = () => {
                 <p className="input-error-message">{errors.email.message}</p>
               )}
             </label>
+
             <label>
               <input
                 type="password"

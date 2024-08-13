@@ -35,22 +35,38 @@
 }
 .form-wrapper label {
   font-size: 1.6em;
-  margin: 20px 0;
+  margin: 10px 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.form-input-group {
+  position: relative;
+  z-index: 66;
 }
 .main-text-input {
   background-color: rgb(245, 243, 243);
   height: 50px;
   width: 100%;
   margin-top: 10px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-family: "Josefin Slab", serif;
   font-size: 1.3em;
   font-weight: lighter;
   padding: 0 15px;
   border: solid 0.5px rgb(218, 206, 206);
+  outline: none;
+}
+.input-placeholder {
+  position: absolute;
+  left: 15px;
+  padding: 0 5px;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.main-text-input:focus .input-placeholder {
+  top: -50px;
 }
 .keep-loggin-wrapper {
   display: flex;
@@ -81,10 +97,14 @@
   background-color: #686868;
   height: 55px;
   margin-top: 10px;
-  border-radius: 10px;
+  border-radius: 8px;
   border: solid 0.5px rgb(18, 2, 86);
   color: #fff;
   font-size: 1.6em;
+}
+::placeholder {
+  color: rgb(131, 129, 129);
+  font-size: 0.5em;
 }
 .form-wrapper label p {
   color: red;

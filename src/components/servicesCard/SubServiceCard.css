@@ -65,6 +65,7 @@ a {
   }
   .category-detail-main-container {
     height: 50dvh;
+    padding-top: 115px;
   }
 }
 

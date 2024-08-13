@@ -14,11 +14,9 @@ const Navbar = () => {
   const receivedCookies = cookies.get("auth_token");
 
   const handleOpenSideBar = () => {
-    console.log("object");
     setOpenSideBar((prev) => !prev);
   };
   const handleOpenRequestNav = () => {
-    console.log("object");
     setOpenRequestNav((prev) => !prev);
   };
   const handleLogout = () => {
@@ -76,7 +74,9 @@ const Navbar = () => {
           onClick={handleOpenSideBar}
         />
       </div>
-      {openRequestNav && <RequestNavModal />}
+      {openRequestNav && (
+        <RequestNavModal handleOpenRequestNav={handleOpenRequestNav} />
+      )}
       {openSideBar && <MainSideBar />}
     </>
   );
