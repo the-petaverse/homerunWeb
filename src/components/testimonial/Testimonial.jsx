@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const Testimonial = () => {
   return (
     <div className="testimonia-main-container">
-      <div>
+      <div className="happy-user-image-container">
         <img src={HappyUsers} alt="" className="happy-user-image" />
       </div>
       <div className="users-rate-wrapper">

@@ -17,9 +17,12 @@
   margin-right: auto;
   margin-left: auto;
 }
+.happy-user-image-container {
+  width: 100%;
+}
 .happy-user-image {
   width: 100%;
-  max-width: 500px;
+  /* max-width: 500px; */
   height: auto;
 }
 .users-rate-wrapper h3 {
@@ -60,6 +63,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px 2%;
+}
+.happy-detail-wrapper {
+  display: flex;
 }
 
 @media (min-width: 475px) {
@@ -106,18 +112,31 @@
 }
 
 @media (min-width: 1024px) {
+  .happy-detail-wrapper {
+    display: flex;
+  }
+  .happy-detail-wrapper h2 {
+    font-size: 1.25em;
+  }
+  .happy-detail-wrapper p {
+    font-size: 1.1em;
+  }
   .users-rate-wrapper h3 {
-    font-size: 2em;
+    font-size: 1.5em;
+    line-height: 5px;
     /* 3em */
   }
   .testimonia-main-container {
     flex-direction: row;
   }
   .users-rate-wrapper {
-    width: 55%;
+    width: 45%;
     /* 55% */
     padding: 0 5%;
     height: auto;
+  }
+  .happy-user-image-container {
+    width: 50%;
   }
   .playstore-icons-wrapper {
     width: 50%;
@@ -126,9 +145,16 @@
 
 @media (min-width: 1280px) {
   .users-rate-wrapper h3 {
-    font-size: 3em;
-    line-height: 50px;
+    font-size: 1.85em;
+    line-height: 10px;
+
     /* 3em */
+  }
+  .happy-detail-wrapper h2 {
+    font-size: 1.65em;
+  }
+  .happy-detail-wrapper p {
+    font-size: 1.85em;
   }
 }
 
@@ -136,6 +162,10 @@
   .happy-detail-wrapper {
     display: flex;
   }
-  .playstore-icons-wrapper {
+  .users-rate-wrapper h3 {
+    font-size: 2em;
+    line-height: 10px;
+    /* background-color: red; */
+    /* 3em */
   }
 }

@@ -38,7 +38,7 @@ const Navbar = () => {
             <Link to="/about" className="nav-links">
               <li>About Us</li>
             </Link>
-            <Link to="/our-services" className="nav-links blink-text">
+            <Link to="/our-services" className="nav-links ">
               <li>Services</li>
             </Link>
             {/* <Link to="/about" className="nav-links">

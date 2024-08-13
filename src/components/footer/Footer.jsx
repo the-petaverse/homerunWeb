@@ -2,10 +2,12 @@ import React from "react";
 import "./Footer.css";
 import Logo from "../../assets/white-logo.png";
 import { Link } from "react-router-dom";
+import Hq from "../hq/Hq";
 const Footer = () => {
   return (
     <div className="footer-main-container">
       <div className="main-level-wrapper">
+        {/* <Hq /> */}
         <div className="footer-menu-wrapper">
           <div className="company-wrapper ">
             <img src={Logo} alt="logo" className="footer-logo" />
