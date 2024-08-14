@@ -5,8 +5,6 @@ import "./Login.css";
 import LoginImage from "../../assets/login.png";
 import LogoMark from "../../assets/logomark.png";
 import HomerunIcon from "../../assets/homerun-icon.png";
-import Navbar from "../../components/Navbar/Navbar";
-import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import Cookies from "universal-cookie";
 
 import { useLoginUserMutation } from "../../services/auth/authApi";
@@ -109,11 +107,6 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <MainSideBar
-        handleOpenSideBar={handleOpenSideBar}
-        handleCloseSideBar={handleCloseSideBar}
-        openSideBar={openSideBar}
-      />
     </div>
   );
 };
