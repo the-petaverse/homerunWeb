@@ -3,21 +3,15 @@
   margin-left: -205px;
   cursor: pointer;
 }
+
 .main-side-wrapper {
   margin-top: 100px;
   padding: 0;
 }
 .post-request-nav-modal-container {
-  /* background-color: #fff; */
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* width: 100%; */
-  /* border-radius: 15px; */
   margin-top: 20px;
-  /* padding: 0 20px; */
-  /* margin-left: -2.5%; */
-  /* padding-top: 5%; */
 }
 .side-bar-container {
   position: fixed;
@@ -53,10 +47,10 @@
 .side-bar-right-main-list li {
   list-style: none;
   margin-bottom: 15px;
-  font-size: 1.2em;
+  font-size: 0.85em;
 }
 .post-request-nav-card {
-  width: 80%;
+  width: 86%;
   display: flex;
   margin-top: 10px;
   /* justify-content: space-between; */
@@ -68,13 +62,19 @@
   margin-right: 10px;
 }
 .request-nav-content h1 {
+  font-size: 0.85em;
+}
+.top-request-nav-content h1 {
   font-size: 1.2em;
 }
 .request-nav-content p {
-  font-size: 1em;
+  font-size: 0.86em;
 }
-.post-errand-sidebar-container h3 {
-  padding: 3%;
+.request-nav-content a {
+  color: #000;
+}
+.post-errand-sidebar {
+  font-size: 1.1em;
 }
 .side-menu-bar-btn {
   background-color: #262262;
@@ -95,24 +95,78 @@
   }
 }
 
+/* @media (min-width: 390px) {
+  .side-bar-right-main-list li {
+    font-size: 1.3em;
+  }
+  .request-nav-content h1 {
+    font-size: 1.35em;
+  }
+  .request-nav-content p {
+    font-size: 1.3em;
+  }
+  .post-errand-sidebar {
+    font-size: 1.35em;
+  }
+  .post-request-nav-card {
+    width: 86%;
+  }
+} */
 @media (min-width: 475px) {
   /* .inner-side-bar {
     width: 100%;
     left: 40%;
   } */
 }
+@media (min-width: 540px) {
+  .side-bar-right-main-list li {
+    font-size: 1.2em;
+  }
+  .request-nav-content h1 {
+    font-size: 1.2em;
+  }
+  .request-nav-content p {
+    font-size: 1.1em;
+  }
+  .post-errand-sidebar {
+    font-size: 1.25em;
+  }
+  .post-request-nav-card {
+    width: 82%;
+  }
+}
 @media (min-width: 640px) {
   /* .inner-side-bar {
     width: 100%;
     left: 50%;
   } */
+  .side-menu-bar-btn {
+    width: 60%;
+    padding: 2.5%;
+  }
 }
 
 @media (min-width: 768px) {
-  /* .inner-side-bar {
-    width: 40dvw;
-    left: 60%;
-  } */
+  .side-bar-right-main-list li {
+    font-size: 1.65em;
+  }
+  .request-nav-content h1 {
+    font-size: 1.45em;
+  }
+  .request-nav-content p {
+    font-size: 1.25em;
+  }
+  .post-errand-sidebar {
+    font-size: 1.85em;
+  }
+  .post-request-nav-card {
+    width: 82%;
+  }
+}
+@media (min-width: 820px) {
+  .post-request-nav-card {
+    width: 70%;
+  }
 }
 
 @media (min-width: 1024px) {

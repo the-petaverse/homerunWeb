@@ -20,12 +20,13 @@
     width: 50%;
     position: absolute;
     right: 2%;
-    top: 13%;
+    top: 8%;
     padding: 1.5%;
+    padding-top: 5.85%;
     border-radius: 15px;
-    z-index: 99;
+    z-index: 999;
   }
-  .request-nav-content a {
+  .top-request-nav-content a {
     color: #000;
   }
   .request-nav-card {
@@ -39,7 +40,7 @@
   .request-nav-image {
     margin-right: 10px;
   }
-  .request-nav-content h1 {
+  .top-request-nav-content h1 {
     font-size: 1.35em;
   }
 }
@@ -50,5 +51,6 @@
 @media (min-width: 1536px) {
   .request-nav-modal-container {
     width: 34dvw;
+    padding-top: 2.85%;
   }
 }

@@ -46,6 +46,7 @@ const Navbar = () => {
               <li>Contact Us</li>
             </Link>
           </ul>
+
           <ul className="list-wrapper">
             <Link
               to=""
@@ -77,7 +78,7 @@ const Navbar = () => {
       {openRequestNav && (
         <RequestNavModal handleOpenRequestNav={handleOpenRequestNav} />
       )}
-      {openSideBar && <MainSideBar />}
+      {openSideBar && <MainSideBar handleOpenSideBar={handleOpenSideBar} />}
     </>
   );
 };

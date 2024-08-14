@@ -13,10 +13,9 @@ import { Link } from "react-router-dom";
 import "./MainSideBar.css";
 import Cookies from "universal-cookie";
 
-const MainSideBar = () => {
+const MainSideBar = ({ handleOpenSideBar }) => {
   const cookies = new Cookies();
   const receivedCookies = cookies.get("auth_token");
-  // if (!openSideBar) return null;
 
   const handleLogout = () => {
     cookies.remove("auth_token");
@@ -83,8 +82,13 @@ const MainSideBar = () => {
               <img src={TransIcon} alt="transcript icon" />
             </div>
             <div className="request-nav-content">
-              <h1>Transcript & Doc...</h1>
-              <p>Obtain credentials and other necessary documents on...</p>
+              <Link
+                to={"/request-category/transcript"}
+                onClick={handleOpenSideBar}
+              >
+                <h1>Transcript & Doc...</h1>
+                <p>Obtain credentials and other necessary documents on...</p>
+              </Link>
             </div>
           </div>
           <div className="post-request-nav-card">
@@ -92,8 +96,13 @@ const MainSideBar = () => {
               <img src={GrocyIcon} alt="transcript icon" />
             </div>
             <div className="request-nav-content">
-              <h1>Grocery & Food</h1>
-              <p>Groceries and food items delivered to your door...</p>
+              <Link
+                to={"/request-category/grocery"}
+                onClick={handleOpenSideBar}
+              >
+                <h1>Grocery & Food</h1>
+                <p>Groceries and food items delivered to your door...</p>
+              </Link>
             </div>
           </div>
           <div className="post-request-nav-card">
@@ -101,8 +110,13 @@ const MainSideBar = () => {
               <img src={SurpriseIcon} alt="transcript icon" />
             </div>
             <div className="request-nav-content">
-              <h1>Surprise Packages</h1>
-              <p>We deliver delightful surprises that brighten your day.</p>
+              <Link
+                to={"/request-category/surprise"}
+                onClick={handleOpenSideBar}
+              >
+                <h1>Surprise Packages</h1>
+                <p>We deliver delightful surprises that brighten your day.</p>
+              </Link>
             </div>
           </div>
           <div className="post-request-nav-card">
@@ -110,8 +124,10 @@ const MainSideBar = () => {
               <img src={HotelIcon} alt="transcript icon" />
             </div>
             <div className="request-nav-content">
-              <h1>Hotel & Car Booking</h1>
-              <p>Secure accommodations, recreation centers and cars...</p>
+              <Link to={"/request-category/hotel"} onClick={handleOpenSideBar}>
+                <h1>Hotel & Car Booking</h1>
+                <p>Secure accommodations, recreation centers and cars...</p>
+              </Link>
             </div>
           </div>
           <div className="post-request-nav-card">
@@ -119,10 +135,15 @@ const MainSideBar = () => {
               <img src={PropertyIcon} alt="transcript icon" />
             </div>
             <div className="request-nav-content">
-              <h1>Property Inspection</h1>
-              <p>
-                Acquire property in your home country while you’re abroad...
-              </p>
+              <Link
+                to={"/request-category/property"}
+                onClick={handleOpenSideBar}
+              >
+                <h1>Property Inspection</h1>
+                <p>
+                  Acquire property in your home country while you’re abroad...
+                </p>
+              </Link>
             </div>
           </div>
           <button className="side-menu-bar-btn">Contact Us</button>

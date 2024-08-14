@@ -14,7 +14,7 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
         <div className="request-nav-image">
           <img src={TransIcon} alt="transcript icon" />
         </div>
-        <div className="request-nav-content">
+        <div className="top-request-nav-content">
           <Link
             to={"/request-category/transcript"}
             onClick={handleOpenRequestNav}
@@ -28,7 +28,7 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
         <div className="request-nav-image">
           <img src={GrocyIcon} alt="transcript icon" />
         </div>
-        <div className="request-nav-content">
+        <div className="top-request-nav-content">
           <Link to={"/request-category/grocery"} onClick={handleOpenRequestNav}>
             <h1>Grocery & Food</h1>
             <p>Groceries and food items delivered to your door...</p>
@@ -39,7 +39,7 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
         <div className="request-nav-image">
           <img src={SurpriseIcon} alt="transcript icon" />
         </div>
-        <div className="request-nav-content">
+        <div className="top-request-nav-content">
           <Link
             to={"/request-category/surprise"}
             onClick={handleOpenRequestNav}
@@ -53,7 +53,7 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
         <div className="request-nav-image">
           <img src={HotelIcon} alt="transcript icon" />
         </div>
-        <div className="request-nav-content">
+        <div className="top-request-nav-content">
           <Link to={"/request-category/hotel"} onClick={handleOpenRequestNav}>
             <h1>Hotel & Car Booking</h1>
             <p>Secure accommodations, recreation centers and cars...</p>
@@ -64,7 +64,7 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
         <div className="request-nav-image">
           <img src={PropertyIcon} alt="transcript icon" />
         </div>
-        <div className="request-nav-content">
+        <div className="top-request-nav-content">
           <Link
             to={"/request-category/property"}
             onClick={handleOpenRequestNav}

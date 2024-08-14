@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
 .hero-container {
-  padding: 105px 5%;
+  padding: 135px 5%;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -101,7 +101,7 @@
 @media (min-width: 1024px) {
   .hero-container {
     flex-direction: row;
-    padding: 55px 5%;
+    padding: 105px 5%;
   }
   .header-wrapper {
     width: 48%;

@@ -20,6 +20,9 @@
 .main-category-card-container:hover {
   background-color: rgb(200, 194, 194);
 }
+.category-detail-main-container {
+  padding-top: 125px;
+}
 a {
   text-decoration: none;
 }
@@ -63,6 +66,7 @@ a {
   .main-category-card-container {
     width: 95%;
   }
+
   .category-detail-main-container {
     height: 50dvh;
     padding-top: 115px;

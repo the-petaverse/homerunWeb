@@ -21,11 +21,11 @@ const CategoriesDetailPage = () => {
     <div>
       <Navbar handleOpenSideBar={handleOpenSideBar} />
       <SubServiceCard category={category} />
-      <MainSideBar
+      {/* <MainSideBar
         handleOpenSideBar={handleOpenSideBar}
         handleCloseSideBar={handleCloseSideBar}
         openSideBar={openSideBar}
-      />
+      /> */}
       <Footer />
     </div>
   );
