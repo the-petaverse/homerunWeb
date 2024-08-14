@@ -4,11 +4,12 @@ import { useForm } from "react-hook-form";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useVerifyUserMutation } from "../../services/auth/authApi";
 // import BackIcon from "../../assets/back-arrow.png";
-import SuccessImage from "../../assets/success.png";
+
 // import WavyCheckIcon from "../../assets/wavy-check.png";
 import "./Verify.css";
 import Cookies from "universal-cookie";
 import OtpComponent from "../../components/otpComponent/OtpComponent";
+import CustomSuccessPage from "../../components/customSuccessPage/CustomSuccessPage";
 
 const Verify = () => {
   const cookies = new Cookies();
@@ -43,21 +44,7 @@ const Verify = () => {
           <img src={LoginImage} alt="" className="login-image" />
         </div>
         {!checkOtpSuccess && <OtpComponent />}
-        {checkOtpSuccess && (
-          <div className="success-screen-main-wrapper">
-            <div className="success-inner-container">
-              <p>Password change</p>
-              <h2>Successful</h2>
-              <img
-                src={SuccessImage}
-                alt="Success Image"
-                className="success-image"
-              />
-
-              <button className="success-btn">Proceed to Dashboard</button>
-            </div>
-          </div>
-        )}
+        {checkOtpSuccess && <CustomSuccessPage />}
       </div>
     </div>
   );

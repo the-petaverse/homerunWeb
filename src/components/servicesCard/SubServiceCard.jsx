@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./SubServiceCard.css";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
+import SubTranscriptIcon from "../../assets/sub-transcript.png";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 import {
@@ -9,6 +10,28 @@ import {
   useGetRequestSubCategoryQuery,
 } from "../../services/requestsCategory/requestApi";
 
+const subServiceData = [
+  {
+    id: "1",
+    name: "Transcript",
+    icons: "/images/sub-transcript.png",
+  },
+  {
+    id: "1",
+    name: "Transcript",
+    icons: "/images/sub-transcript.png",
+  },
+  {
+    id: "1",
+    name: "Transcript",
+    icons: "/images/sub-transcript.png",
+  },
+  {
+    id: "1",
+    name: "Transcript",
+    icons: "/images/sub-transcript.png",
+  },
+];
 const SubServiceCard = ({ category }) => {
   const [categoryList, setCategoryList] = useState([]);
   const [subCategoryList, setSubCategoryList] = useState([]);
@@ -68,13 +91,20 @@ const SubServiceCard = ({ category }) => {
   return (
     <div className="category-detail-main-container">
       <div className="category-header-wrapper">
-        <h1>{category}</h1>
+        {/* <h1>{category}</h1> */}
+        <h1>Transcript, Certificates & Official Documents Requests</h1>
+        <p>
+          Need important documents from institutions back home? We obtain
+          credentials and other necessary documents on your behalf, saving you
+          time and hassle.
+        </p>
       </div>
-      {subLoading || subFetching ? (
+      {/* {subLoading || subFetching ? (
         <div className="service-loader-holder">
           <h2>Please wait........</h2>
           <PropagateLoader color="#262262" size={30} />
         </div>
+        
       ) : (
         <div className="cat-card-parent-wrapper">
           {subCategoryList &&
@@ -98,7 +128,23 @@ const SubServiceCard = ({ category }) => {
               );
             })}
         </div>
-      )}
+      )} */}
+
+      <div className="subservices-card-wrapper">
+        {subServiceData &&
+          subServiceData.map((subService, index) => {
+            return (
+              <div className="subservices-card">
+                <img
+                  src={subService.icons}
+                  alt="transcript icon"
+                  className="subservices-icons"
+                />
+                <h2>{subService.name}</h2>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 };

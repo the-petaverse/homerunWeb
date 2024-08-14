@@ -39,9 +39,9 @@ const Register = () => {
   const [registerUser, { data: registerData, isSuccess, error, isLoading }] =
     useRegisterUserMutation();
   const navigate = useNavigate();
-  const [openSideBar, setOpenSideBar] = useState(false);
-  const [userVerifiedOtp, setUserverifiedOtp] = useState("");
+
   const [formStep, setFormStep] = useState(0);
+  const [formSubmitted, setFormSumitted] = useState(false);
   const [country, setCountry] = useState([]);
   const [myState, setMyState] = useState([]);
   const [citiesList, setCitiesList] = useState([]);
@@ -60,6 +60,7 @@ const Register = () => {
   const confirmPassword = watch("confirm_password");
 
   const onSubmit = async (data) => {
+    setFormSumitted(true);
     console.log(data);
     // await registerUser(data);
   };
@@ -78,14 +79,6 @@ const Register = () => {
       (citydata) => citydata.stateId === watchState
     );
     setCitiesList(citiesFiltered);
-  };
-
-  const handleOpenSideBar = () => {
-    setOpenSideBar(true);
-  };
-
-  const handleCloseSideBar = () => {
-    setOpenSideBar(false);
   };
 
   const handleCompleteForm = () => {
@@ -127,7 +120,7 @@ const Register = () => {
     }
     handleSelectedCities();
     handleSelectedState();
-  }, [registeredCookies, watchCountry, watchState]);
+  }, [registeredCookies, watchCountry, watchState, isSuccess]);
   return (
     <div>
       <div className="authentication-header">
@@ -139,7 +132,8 @@ const Register = () => {
         <div className="register-iamge-wrapper">
           <img src={LoginImage} alt="" className="register-image" />
         </div>
-        {userVerifiedOtp === "" && (
+
+        {!formSubmitted && (
           <div className="register-inner-form-wrapper">
             <img
               src={HomerunIcon}
@@ -183,7 +177,7 @@ const Register = () => {
                       type="text"
                       className="register-main-text-input"
                       style={{ borderColor: errors.firstName ? "red" : "blue" }}
-                      // placeholder="First name"
+                      placeholder="First name"
                       {...register("first_name", {
                         required: "First name is required",
                       })}
@@ -425,13 +419,9 @@ const Register = () => {
             </p>
           </div>
         )}
-        {userVerifiedOtp !== "" && <OtpComponent />}
+
+        {formSubmitted && <OtpComponent />}
       </div>
-      {/* <MainSideBar
-        handleOpenSideBar={handleOpenSideBar}
-        handleCloseSideBar={handleCloseSideBar}
-        openSideBar={openSideBar}
-      /> */}
     </div>
   );
 };

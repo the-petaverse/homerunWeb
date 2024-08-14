@@ -23,9 +23,35 @@
   margin-bottom: 10px;
 }
 .inner-form-wrapper p {
-  font-size: 1.6em;
+  font-size: 1.2em;
   margin-top: 15px;
-  font-family: "Josefin Slab", serif;
+  /* text-align: center; */
+}
+.already-sign-n-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+  /* margin-top: 15px; */
+}
+.inner-already-sign-in {
+  display: flex;
+  width: 39%;
+  justify-content: space-between;
+}
+.sign-up-span,
+.reset-para {
+  color: #ff6600;
+}
+.already-sign-n-wrapper p {
+  font-size: 1.2em;
+  margin-right: 5px;
+}
+
+.already-sign-in {
+  text-align: center;
 }
 .form-wrapper {
   display: flex;
@@ -50,7 +76,7 @@
   width: 100%;
   margin-top: 10px;
   border-radius: 8px;
-  font-family: "Josefin Slab", serif;
+  /* font-family: "Josefin Slab", serif; */
   font-size: 1.3em;
   font-weight: lighter;
   padding: 0 15px;
@@ -65,21 +91,20 @@
   pointer-events: none;
 }
 
-.main-text-input:focus .input-placeholder {
+/* .main-text-input:focus .input-placeholder {
   top: -50px;
-}
+} */
 .keep-loggin-wrapper {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  padding: 0 10px;
+  /* width: 88%; */
 }
 .keep-loggin-wrapper p {
-  font-size: 1.2em;
+  font-size: 1em;
 }
-.already-sign-in {
-  font-size: 10px;
-  color: red;
-}
+
 .homerun-icon {
   margin-bottom: 20px;
 }
@@ -102,14 +127,14 @@
   color: #fff;
   font-size: 1.6em;
 }
-::placeholder {
+/* ::placeholder {
   color: rgb(131, 129, 129);
   font-size: 0.5em;
-}
+} */
 .form-wrapper label p {
   color: red;
   font-size: 20px;
-  font-family: "Josefin Slab", serif;
+  /* font-family: "Josefin Slab", serif; */
 }
 .login-error-style {
   color: red;

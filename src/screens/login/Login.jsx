@@ -94,16 +94,22 @@ const Login = () => {
             </label>
             <div className="keep-loggin-wrapper">
               <p>Keep me logged in</p>
-              <p>Reset Password</p>
+              <Link to="/forgot-password">
+                <p className="reset-para">Reset Password</p>
+              </Link>
             </div>
             <input
               type="submit"
               className={!isValid ? "main-form-btn-disabled" : "main-form-btn"}
               disabled={!isValid || isLoading}
             />
-            <p className="already-sign-in">
-              You don’t have an account? Sign up to Homerun
-            </p>
+            <div className="already-sign-n-wrapper">
+              <p className="already-sign-in">You don’t have an account?</p>
+
+              <p>
+                <span className="sign-up-span">Sign up</span> to Homerun
+              </p>
+            </div>
           </form>
         </div>
       </div>
