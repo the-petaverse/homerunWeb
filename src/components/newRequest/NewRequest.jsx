@@ -15,6 +15,8 @@ import { useGetUserQuery } from "../../services/auth/authApi";
 import PayButton from "../payButton/PayButton";
 import CustomBackButton from "../customBackButton/CustomBackButton";
 import CustomImput from "../customImput/CustomImput";
+import CustomSelect from "../customSelect/CustomSelect";
+import CustomDoubleCheckBox from "../customCheckBox/CustomDoubleCheckBox";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -33,7 +35,20 @@ const cities = [
   { id: "3", stateId: "2", title: "Akure" },
   { id: "4", stateId: "2", title: "Owo" },
 ];
-
+const institutions = [
+  { id: "1", title: "OAU" },
+  { id: "2", title: "UNIBEN" },
+  { id: "3", title: "LASPOTECH" },
+  { id: "4", title: "UNILAG" },
+  { id: "5", title: "ABU" },
+];
+const yearofGraduation = [
+  { id: "1", title: "2020" },
+  { id: "2", title: "2022" },
+  { id: "3", title: "2019" },
+  { id: "4", title: "1985" },
+  { id: "5", title: "2004" },
+];
 const NewRequest = ({
   setFormStage,
   formStage,
@@ -246,48 +261,80 @@ const NewRequest = ({
               style={{ borderColor: errors.email ? "red" : "blue" }}
             />
           </div>
-          <div className="form-section-wrapper">
-            <CustomImput
-              name="email"
-              required="Email is required"
-              placeholder="Email"
-              className="main-text-input"
-              type="email"
-              error={errors?.email?.message}
+          <div className="form-section-wrapper align-select-input">
+            <CustomSelect
+              name="institution"
+              type="text"
+              className="main-text-input increase-width"
               register={register}
+              require="Institution is required"
+              placeholder="Institution name"
+              error={errors.institution?.message}
+              data={institutions}
               style={{ borderColor: errors.email ? "red" : "blue" }}
             />
-            <CustomImput
-              name="email"
-              required="Email is required"
-              placeholder="Email"
-              className="main-text-input"
-              type="email"
-              error={errors?.email?.message}
+            <CustomSelect
+              name="yearOfGraduation"
+              type="text"
+              className="main-text-input increase-width"
               register={register}
+              require="Year of Graduation is required"
+              placeholder="Year of graduation"
               style={{ borderColor: errors.email ? "red" : "blue" }}
+              error={errors.yearOfGraduation?.message}
+              data={yearofGraduation}
             />
           </div>
           <div className="form-section-wrapper">
             <CustomImput
-              name="email"
-              required="Email is required"
-              placeholder="Email"
+              name="graduatedDegree"
+              required="Graduated Degree is required"
+              placeholder="Graduated Degree/Course of Study"
               className="main-text-input"
-              type="email"
-              error={errors?.email?.message}
+              type="text"
+              error={errors?.graduatedDegree?.message}
               register={register}
-              style={{ borderColor: errors.email ? "red" : "blue" }}
+              style={{ borderColor: errors.graduatedDegree ? "red" : "blue" }}
             />
-            <CustomImput
-              name="email"
-              required="Email is required"
-              placeholder="Email"
-              className="main-text-input"
-              type="email"
-              error={errors?.email?.message}
+            <CustomSelect
+              name="yearOfEntry"
+              type="text"
+              className="main-text-input increase-width"
               register={register}
-              style={{ borderColor: errors.email ? "red" : "blue" }}
+              require="Year of Entry is required"
+              placeholder="Year of graduation"
+              style={{ borderColor: errors.yearOfEntry ? "red" : "blue" }}
+              error={errors.yearOfEntry?.message}
+              data={yearofGraduation}
+            />
+          </div>
+          <div className="form-section-wrapper">
+            <CustomDoubleCheckBox
+              name="firstCollection"
+              label="Is this your FIRST time collecting the transcript?"
+              register={register}
+              error={errors.firstCollection?.message}
+            />
+          </div>
+          <div className="form-section-wrapper">
+            <CustomDoubleCheckBox
+              label="Have you previously obtained a Notification of Result/Certificate?"
+              name="obtainedNotificationOfResult"
+              register={register}
+              error={errors.obtainedNotificationOfResult?.message}
+            />
+          </div>
+          <div className="final-section-wrapper">
+            <CustomSelect
+              name="yearOfEntry"
+              type="text"
+              className="main-text-input"
+              register={register}
+              require="Year of Entry is required"
+              placeholder="Year of graduation"
+              style={{ borderColor: errors.yearOfEntry ? "red" : "blue" }}
+              error={errors.yearOfEntry?.message}
+              data={yearofGraduation}
             />
           </div>
         </form>

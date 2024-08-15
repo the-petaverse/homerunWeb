@@ -20,21 +20,22 @@ const CustomImput = ({
 
   return (
     <>
-      <label htmlFor={name}></label>
-      <input
-        name={name}
-        id={id}
-        error={error}
-        type={type}
-        placeholder={placeholder}
-        style={style}
-        className={className}
-        {...register(name, {
-          required: required,
-        })}
-        {...rest}
-      />
-      {error && <p className="input-error-message">{error}</p>}
+      <div className="input-main-container">
+        <input
+          name={name}
+          id={id}
+          error={error}
+          type={type}
+          placeholder={placeholder}
+          style={style}
+          className={className}
+          {...register(name, {
+            required: required,
+          })}
+          {...rest}
+        />
+        {error && <p className="input-error-message">{error}</p>}
+      </div>
     </>
   );
 };

@@ -8,14 +8,16 @@ const CustomSelect = ({
   name,
   required,
   errors,
+  style,
   watch,
   data,
 }) => {
   return (
-    <label>
+    <div className="custom-select-container">
       <select
         type={type}
         error={errors}
+        style={style}
         // className="register-main-text-input"
         className={className}
         placeholder={placeholder}
@@ -35,7 +37,7 @@ const CustomSelect = ({
             })
           : "No country selected"}
       </select>
-    </label>
+    </div>
   );
 };
 

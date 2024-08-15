@@ -9,10 +9,23 @@
 }
 .new-request-form-container {
   /* background-color: red; */
+
+  width: 100%;
+}
+
+.increase-width {
+  width: 26.5dvw;
+  justify-content: space-between;
+}
+
+.final-section-wrapper {
   width: 100%;
 }
 .form-section-wrapper {
   display: flex;
+
+  /* align-items: center; */
+
   justify-content: space-between;
   gap: 10px;
   /* background-color: red; */
