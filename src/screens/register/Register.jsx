@@ -14,6 +14,8 @@ import "./Register.css";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import Cookies from "universal-cookie";
 import OtpComponent from "../../components/otpComponent/OtpComponent";
+import CustomSelect from "../../components/customSelect/CustomSelect";
+import CustomImput from "../../components/customImput/CustomImput";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -54,8 +56,8 @@ const Register = () => {
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
 
-  const watchCountry = watch("resident_country");
-  const watchState = watch("resident_state");
+  const watchCountry = watch("country");
+  const watchState = watch("state");
   const watchPassword = watch("password");
   const confirmPassword = watch("confirm_password");
 
@@ -172,55 +174,36 @@ const Register = () => {
             >
               {formStep === 0 && (
                 <>
-                  <label>
-                    <input
-                      type="text"
-                      className="register-main-text-input"
-                      style={{ borderColor: errors.firstName ? "red" : "blue" }}
-                      placeholder="First name"
-                      {...register("first_name", {
-                        required: "First name is required",
-                      })}
-                    />
-                    {errors.first_name && (
-                      <p className="input-error-message">
-                        {errors.first_name.message}
-                      </p>
-                    )}
-                  </label>
-                  <label>
-                    <input
-                      type="text"
-                      style={{ borderColor: errors.lastName ? "red" : "blue" }}
-                      className="register-main-text-input"
-                      placeholder="Last name"
-                      {...register("last_name", {
-                        required: "Last name is required",
-                      })}
-                    />
-                    {errors.last_name && (
-                      <p className="input-error-message">
-                        {errors.last_name.message}
-                      </p>
-                    )}
-                  </label>
-                  <label>
-                    <input
-                      type="email"
-                      style={{ borderColor: errors.email ? "red" : "blue" }}
-                      className="register-main-text-input"
-                      placeholder="Email(example@example.com)"
-                      {...register("email", {
-                        required: "Valid email is required",
-                      })}
-                    />
-
-                    {errors.email && (
-                      <p className="input-error-message">
-                        {errors.email.message}
-                      </p>
-                    )}
-                  </label>
+                  <CustomImput
+                    name="firstName"
+                    required="First name is required"
+                    placeholder="First name"
+                    className="main-text-input"
+                    type="text"
+                    error={errors?.firstName?.message}
+                    register={register}
+                    style={{ borderColor: errors.firstName ? "red" : "blue" }}
+                  />
+                  <CustomImput
+                    name="lastName"
+                    required="Last name is required"
+                    placeholder="Last name"
+                    className="main-text-input"
+                    type="text"
+                    error={errors?.lastName?.message}
+                    register={register}
+                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
+                  />
+                  <CustomImput
+                    name="email"
+                    required="Email is required"
+                    placeholder="Email"
+                    className="main-text-input"
+                    type="email"
+                    error={errors?.email?.message}
+                    register={register}
+                    style={{ borderColor: errors.email ? "red" : "blue" }}
+                  />
                   <label className="phone-input-wrapper">
                     <Controller
                       name="phone_number"
@@ -251,7 +234,7 @@ const Register = () => {
                                 // backgroundColor: "gray",
                                 height: 55,
                                 width: "100%",
-                                marginTop: 30,
+                                // marginTop: ,
                                 borderRadius: 12,
                                 paddingLeft: 80,
                                 fontFamily: "Josefin Slab",
@@ -271,145 +254,64 @@ const Register = () => {
                         );
                       }}
                     />
-
-                    {/* <input
-                      type="text"
-                      style={{
-                        borderColor: errors.phoneNumber ? "red" : "blue",
-                      }}
-                      className="register-main-text-input"
-                      placeholder="Phone number"
-                      {...register("phone_number", {
-                        required: "Valid phone number is required",
-                      })}
-                    />
-                    {errors.phone_number && (
-                      <p className="input-error-message">
-                        {errors.phone_number.message}
-                      </p>
-                    )} */}
                   </label>
                 </>
               )}
               {formStep === 1 && (
                 <>
-                  <label>
-                    <select
-                      type="text"
-                      className="register-main-text-input"
-                      placeholder="Country Name(Resident country)"
-                      {...register("resident_country", {
-                        required: "Country name is required",
-                      })}
-                    >
-                      <option value="0">Select your resident country</option>
-                      {countries && countries !== undefined
-                        ? countries.map((countryData, index) => {
-                            return (
-                              <option value={countryData.id} key={index}>
-                                {countryData.title}
-                              </option>
-                            );
-                          })
-                        : "No country selected"}
-                    </select>
-                    {errors.resident_country && (
-                      <p className="input-error-message">
-                        {errors.resident_country.message}
-                      </p>
-                    )}
-                  </label>
-                  <label>
-                    <select
-                      type="text"
-                      className="register-main-text-input"
-                      placeholder="State Name"
-                      {...register("resident_state", {
-                        required: "State name is required",
-                      })}
-                    >
-                      <option value="0">Select State</option>
-                      {myState && myState !== undefined
-                        ? myState.map((stateData, index) => {
-                            return (
-                              <option value={stateData.id} key={index}>
-                                {stateData.title}
-                              </option>
-                            );
-                          })
-                        : "No state selected"}
-                    </select>
-                    {errors.resident_state && (
-                      <p className="input-error-message">
-                        {errors.resident_state.message}
-                      </p>
-                    )}
-                  </label>
-                  <label>
-                    <select
-                      type="text"
-                      className="register-main-text-input"
-                      placeholder="City Name"
-                      {...register("resident_city", {
-                        required: "City name is required",
-                      })}
-                    >
-                      <option value="0">Select City</option>
-                      {citiesList && citiesList !== undefined
-                        ? citiesList.map((cityData, index) => {
-                            return (
-                              <option value={cityData.id} key={index}>
-                                {cityData.title}
-                              </option>
-                            );
-                          })
-                        : "No city selected"}
-                    </select>
-                    {errors.resident_city && (
-                      <p className="input-error-message">
-                        {errors.resident_city.message}
-                      </p>
-                    )}
-                  </label>
-                  <label>
-                    <input
-                      type="password"
-                      style={{ borderColor: errors.password ? "red" : "blue" }}
-                      className="register-main-text-input"
-                      placeholder="Enter your password"
-                      {...register("password", {
-                        required: "password is required",
-                      })}
-                    />
-                    {errors.password && (
-                      <p className="input-error-message">
-                        {errors.password.message}
-                      </p>
-                    )}
-                  </label>
-                  <label>
-                    <input
-                      type="password"
-                      style={{
-                        borderColor: errors.confirm_password ? "red" : "blue",
-                      }}
-                      className="register-main-text-input"
-                      placeholder="Enter your password again"
-                      {...register("confirm_password", {
-                        required: true,
-                        validate: (val) => {
-                          if (watch("password") != val) {
-                            return "Your passwords do no match";
-                          }
-                        },
-                      })}
-                    />
-                    {errors.confirm_password && (
-                      <p className="input-error-message">
-                        {errors.confirm_password.message}
-                      </p>
-                    )}
-                  </label>
+                  <CustomSelect
+                    name="country"
+                    type="text"
+                    className="register-main-text-input"
+                    register={register}
+                    require="Country is required"
+                    placeholder="Country name"
+                    error={errors.country?.message}
+                    data={countries}
+                  />
+                  <CustomSelect
+                    name="state"
+                    type="text"
+                    className="register-main-text-input"
+                    register={register}
+                    require="State is required"
+                    placeholder="State name"
+                    error={errors.state?.message}
+                    data={staties}
+                  />
+                  <CustomSelect
+                    name="city"
+                    type="text"
+                    className="register-main-text-input"
+                    register={register}
+                    require="City is required"
+                    placeholder="City name"
+                    error={errors.city?.message}
+                    data={cities}
+                  />
+                  <CustomImput
+                    name="password"
+                    required="Password is required"
+                    placeholder="Password"
+                    className="main-text-input"
+                    error={errors?.password?.message}
+                    type="password"
+                    register={register}
+                    style={{ borderColor: errors.password ? "red" : "blue" }}
+                  />
+
+                  <CustomImput
+                    name="confirm_password"
+                    required="Confirm Password is required"
+                    placeholder="Confirm Password"
+                    className="main-text-input"
+                    error={errors?.confirm_password?.message}
+                    type="password"
+                    register={register}
+                    style={{
+                      borderColor: errors.confirm_password ? "red" : "blue",
+                    }}
+                  />
                 </>
               )}
               {renderButton()}

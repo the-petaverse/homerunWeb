@@ -22,11 +22,7 @@
   font-size: 2em;
   margin-bottom: 10px;
 }
-.inner-form-wrapper p {
-  font-size: 1.2em;
-  margin-top: 15px;
-  /* text-align: center; */
-}
+
 .already-sign-n-wrapper {
   display: flex;
   align-items: center;
@@ -74,7 +70,7 @@
   background-color: rgb(245, 243, 243);
   height: 50px;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 18px;
   border-radius: 8px;
   /* font-family: "Josefin Slab", serif; */
   font-size: 1.3em;
@@ -98,6 +94,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  margin-top: 25px;
   padding: 0 10px;
   /* width: 88%; */
 }

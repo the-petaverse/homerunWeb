@@ -1,22 +1,35 @@
 import React from "react";
 
-const CustomSelect = () => {
+const CustomSelect = ({
+  type,
+  className,
+  placeholder,
+  register,
+  name,
+  required,
+  errors,
+  watch,
+  data,
+}) => {
   return (
     <label>
       <select
-        type="text"
-        className="register-main-text-input"
-        placeholder="Country Name"
-        {...register("country", {
-          required: "Country name is required",
+        type={type}
+        error={errors}
+        // className="register-main-text-input"
+        className={className}
+        placeholder={placeholder}
+        data={data}
+        {...register(name, {
+          required: required,
         })}
       >
-        <option value="0">Select country</option>
-        {countries && countries !== undefined
-          ? countries.map((countryData, index) => {
+        <option value="0">{`Select ${name}`}</option>
+        {data && data !== undefined
+          ? data.map((myData, index) => {
               return (
-                <option value={countryData.id} key={index}>
-                  {countryData.title}
+                <option value={myData.id} key={index}>
+                  {myData.title}
                 </option>
               );
             })

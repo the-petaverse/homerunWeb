@@ -8,6 +8,7 @@ import HomerunIcon from "../../assets/homerun-icon.png";
 import Cookies from "universal-cookie";
 
 import { useLoginUserMutation } from "../../services/auth/authApi";
+import CustomImput from "../../components/customImput/CustomImput";
 
 const Login = () => {
   const cookies = new Cookies();
@@ -15,7 +16,6 @@ const Login = () => {
     useLoginUserMutation();
 
   const receivedCookies = cookies.get("auth_token");
-  const [openSideBar, setOpenSideBar] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -26,16 +26,10 @@ const Login = () => {
   } = useForm({ mode: "all" });
 
   const onSubmit = async (data) => {
-    await loginUser(data);
+    console.log(data);
+    // await loginUser(data);
   };
 
-  const handleOpenSideBar = () => {
-    setOpenSideBar(true);
-  };
-
-  const handleCloseSideBar = () => {
-    setOpenSideBar(false);
-  };
   if (isSuccess) {
     cookies.set("auth_token", loginData.data);
   }
@@ -62,36 +56,28 @@ const Login = () => {
           <p>Please enter your email and password.</p>
           {error && <p className="login-error-style">{error.data.error}</p>}
           <form onSubmit={handleSubmit(onSubmit)} className="form-wrapper">
-            <label htmlFor="">
-              <input
-                type="email"
-                placeholder="Email"
-                className="main-text-input"
-                style={{ borderColor: errors.email ? "red" : "blue" }}
-                {...register("email", {
-                  required: "Email Address is required",
-                })}
-                aria-invalid={errors.email ? "true" : "false"}
-              />
-              {errors.email && (
-                <p className="input-error-message">{errors.email.message}</p>
-              )}
-            </label>
+            <CustomImput
+              name="email"
+              required="Email is required"
+              placeholder="Email"
+              className="main-text-input"
+              type="email"
+              error={errors?.email?.message}
+              register={register}
+              style={{ borderColor: errors.email ? "red" : "blue" }}
+            />
 
-            <label>
-              <input
-                type="password"
-                placeholder="Password"
-                style={{ borderColor: errors.password ? "red" : "blue" }}
-                className="main-text-input"
-                {...register("password", {
-                  required: "password is required",
-                })}
-              />
-              {errors.password && (
-                <p className="input-error-message">{errors.password.message}</p>
-              )}
-            </label>
+            <CustomImput
+              name="password"
+              required="Password is required"
+              placeholder="Password"
+              className="main-text-input"
+              error={errors?.password?.message}
+              type="password"
+              register={register}
+              style={{ borderColor: errors.password ? "red" : "blue" }}
+            />
+
             <div className="keep-loggin-wrapper">
               <p>Keep me logged in</p>
               <Link to="/forgot-password">

@@ -12,6 +12,9 @@
   flex-direction: column;
   margin-top: 45px;
 }
+.subservice-icon-wrapper {
+  /* background-color: red; */
+}
 .subservices-card {
   background-color: #eae8e8;
   width: 100%;
@@ -20,12 +23,42 @@
   align-items: center;
   flex-direction: column;
   padding: 2.5%;
+
   text-align: center;
   border-radius: 20px;
 }
+.subservices-card a {
+  color: #000;
+}
 .subservices-icons {
-  width: 30%;
+  width: 60px;
   margin: 10px 0;
+}
+.category-header-wrapper {
+  background-image: url("../../assets/transcript-header.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 25px;
+  /* width: 92dvw; */
+  height: 22dvh;
+  margin-right: auto;
+  margin-left: auto;
+  color: #fff;
+}
+.category-header-wrapper h1 {
+  width: 35%;
+  padding: 2.55% 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+.category-header-wrapper-para-wrapper {
+  width: 35%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.category-header-wrapper-para-wrapper p {
+  font-size: 1.1em;
+  text-align-last: center;
 }
 .main-category-card-container {
   display: flex;
@@ -106,7 +139,7 @@ a {
     align-items: center;
     flex-direction: column;
 
-    padding: 20px 1.85%;
+    padding: 45px 2%;
     text-align: center;
   }
 }

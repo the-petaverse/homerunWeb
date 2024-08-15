@@ -23,11 +23,11 @@
   /* text-align: center; */
 }
 
-.register-inner-form-wrapper p {
+/* .register-inner-form-wrapper p {
   font-size: 1.2em;
   margin-top: 15px;
   font-family: "Josefin Slab", serif;
-}
+} */
 
 .register-form-wrapper {
   display: flex;

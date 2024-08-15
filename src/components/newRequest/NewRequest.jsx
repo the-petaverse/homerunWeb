@@ -13,6 +13,8 @@ import { useCreateErrandMutation } from "../../services/errands/errandsApi";
 import Cookies from "universal-cookie";
 import { useGetUserQuery } from "../../services/auth/authApi";
 import PayButton from "../payButton/PayButton";
+import CustomBackButton from "../customBackButton/CustomBackButton";
+import CustomImput from "../customImput/CustomImput";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -192,12 +194,106 @@ const NewRequest = ({
     subRequestId,
   ]);
   return (
-    <div>
+    <div className="new-request-from-main-container">
+      <CustomBackButton />
       <div className="slate-header-wrapper">
-        <h2>Create New Request</h2>
+        <h2>Transcript Processing And Collection</h2>
+        <p>Please fill in the following details to make your request. </p>
+      </div>
+      <div className="new-request-form-container">
+        <form action="">
+          <div className="form-section-wrapper">
+            <CustomImput
+              name="email"
+              required="Email is required"
+              placeholder="Email"
+              className="main-text-input"
+              type="email"
+              error={errors?.email?.message}
+              register={register}
+              style={{ borderColor: errors.email ? "red" : "blue" }}
+            />
+            <CustomImput
+              name="email"
+              required="Email is required"
+              placeholder="Email"
+              className="main-text-input"
+              type="email"
+              error={errors?.email?.message}
+              register={register}
+              style={{ borderColor: errors.email ? "red" : "blue" }}
+            />
+          </div>
+          <div className="form-section-wrapper">
+            <CustomImput
+              name="email"
+              required="Email is required"
+              placeholder="Email"
+              className="main-text-input"
+              type="email"
+              error={errors?.email?.message}
+              register={register}
+              style={{ borderColor: errors.email ? "red" : "blue" }}
+            />
+            <CustomImput
+              name="email"
+              required="Email is required"
+              placeholder="Email"
+              className="main-text-input"
+              type="email"
+              error={errors?.email?.message}
+              register={register}
+              style={{ borderColor: errors.email ? "red" : "blue" }}
+            />
+          </div>
+          <div className="form-section-wrapper">
+            <CustomImput
+              name="email"
+              required="Email is required"
+              placeholder="Email"
+              className="main-text-input"
+              type="email"
+              error={errors?.email?.message}
+              register={register}
+              style={{ borderColor: errors.email ? "red" : "blue" }}
+            />
+            <CustomImput
+              name="email"
+              required="Email is required"
+              placeholder="Email"
+              className="main-text-input"
+              type="email"
+              error={errors?.email?.message}
+              register={register}
+              style={{ borderColor: errors.email ? "red" : "blue" }}
+            />
+          </div>
+          <div className="form-section-wrapper">
+            <CustomImput
+              name="email"
+              required="Email is required"
+              placeholder="Email"
+              className="main-text-input"
+              type="email"
+              error={errors?.email?.message}
+              register={register}
+              style={{ borderColor: errors.email ? "red" : "blue" }}
+            />
+            <CustomImput
+              name="email"
+              required="Email is required"
+              placeholder="Email"
+              className="main-text-input"
+              type="email"
+              error={errors?.email?.message}
+              register={register}
+              style={{ borderColor: errors.email ? "red" : "blue" }}
+            />
+          </div>
+        </form>
       </div>
       <div className="register-main-container">
-        <div className="register-iamge-wrapper">
+        {/* <div className="register-iamge-wrapper">
           <div>
             {serviceData &&
               serviceData.map((accordData, index) => {
@@ -324,8 +420,8 @@ const NewRequest = ({
                 );
               })}
           </div>
-        </div>
-        <div className="register-inner-form-wrapper new-request-form-side">
+        </div> */}
+        {/* <div className="register-inner-form-wrapper new-request-form-side">
           {formStage < 1 && (
             <p className={!receivedCookies ? "not-login-style" : ""}>
               {!receivedCookies
@@ -358,8 +454,8 @@ const NewRequest = ({
                   style={{
                     display: formStage === 0 ? "block" : "none",
                   }}
-                >
-                  {/* <label>
+                > */}
+        {/* <label>
                     <select
                       type="text"
                       className="register-main-text-input"
@@ -418,7 +514,7 @@ const NewRequest = ({
                     )}
                   </label> */}
 
-                  <label>
+        {/* <label>
                     <input
                       type="text"
                       className="register-main-text-input"
@@ -598,7 +694,7 @@ const NewRequest = ({
               <PayButton userData={userData} params={subcategory} />
             </div>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

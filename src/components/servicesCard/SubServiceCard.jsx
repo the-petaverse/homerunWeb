@@ -13,22 +13,22 @@ import {
 const subServiceData = [
   {
     id: "1",
-    name: "Transcript",
+    name: "Transcripts processing and collection",
     icons: "/images/sub-transcript.png",
   },
   {
     id: "1",
-    name: "Transcript",
+    name: "Higher education certificates processing and collection",
     icons: "/images/sub-transcript.png",
   },
   {
     id: "1",
-    name: "Transcript",
+    name: "Birth certificates",
     icons: "/images/sub-transcript.png",
   },
   {
     id: "1",
-    name: "Transcript",
+    name: "Sworn Affidavits",
     icons: "/images/sub-transcript.png",
   },
 ];
@@ -93,6 +93,8 @@ const SubServiceCard = ({ category }) => {
       <div className="category-header-wrapper">
         {/* <h1>{category}</h1> */}
         <h1>Transcript, Certificates & Official Documents Requests</h1>
+      </div>
+      <div className="category-header-wrapper-para-wrapper">
         <p>
           Need important documents from institutions back home? We obtain
           credentials and other necessary documents on your behalf, saving you
@@ -135,12 +137,16 @@ const SubServiceCard = ({ category }) => {
           subServiceData.map((subService, index) => {
             return (
               <div className="subservices-card">
-                <img
-                  src={subService.icons}
-                  alt="transcript icon"
-                  className="subservices-icons"
-                />
-                <h2>{subService.name}</h2>
+                <Link to={"/sub-category/" + subService.name}>
+                  <div className="subservice-icon-wrapper">
+                    <img
+                      src={subService.icons}
+                      alt="transcript icon"
+                      className="subservices-icons"
+                    />
+                  </div>
+                  <h2>{subService.name}</h2>
+                </Link>
               </div>
             );
           })}

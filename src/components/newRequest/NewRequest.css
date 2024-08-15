@@ -1,3 +1,22 @@
+.new-request-from-main-container {
+  padding: 20px 5%;
+}
+.slate-header-wrapper {
+  text-align: left;
+}
+.slate-header-wrapper h2 {
+  margin-bottom: 10px;
+}
+.new-request-form-container {
+  /* background-color: red; */
+  width: 100%;
+}
+.form-section-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  /* background-color: red; */
+}
 .accordion-main-container {
   padding: 15px 3%;
   margin-right: 25px;
