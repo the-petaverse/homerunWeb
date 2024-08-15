@@ -1,20 +1,23 @@
 import React from "react";
-import "./CustomDoubleCheckBox.css";
+import "./CustomDoubleRadioButton.css";
 
-const CustomDoubleCheckBox = ({ register, error, name, label }) => {
+const CustomDoubleRadioButton = ({ register, error, name, label, style }) => {
   return (
     <>
-      <div className="check-boxes-main-container">
+      <div className="check-boxes-main-container" style={style}>
         <div className="chaeck-boxes-detail-wrapper">
           <p>{label}</p>
         </div>
         <div className="check-boxes-main-wrapper">
           <div className="check-boxes-option">
-            <p className="checkbox-label">Yes</p>
+            <label for="Yes" className="checkbox-label">
+              Yes
+            </label>
             <input
+              id="Yes"
               name={name}
-              type="checkbox"
-              {...register("terms_conditions", {
+              type="radio"
+              {...register(name, {
                 required: "Please accept the terms & Condition",
               })}
               // onClick={() => setModalOpen(true)}
@@ -25,10 +28,15 @@ const CustomDoubleCheckBox = ({ register, error, name, label }) => {
       )} */}
           </div>
           <div className="check-boxes-option">
-            <p className="checkbox-label">Yes</p>
+            <label for="No" className="checkbox-label">
+              No
+            </label>
             <input
-              type="checkbox"
-              {...register("terms_conditions", {
+              name={name}
+              className="radio-style"
+              id="No"
+              type="radio"
+              {...register(name, {
                 required: "Please accept the terms & Condition",
               })}
               // onClick={() => setModalOpen(true)}
@@ -44,4 +52,4 @@ const CustomDoubleCheckBox = ({ register, error, name, label }) => {
   );
 };
 
-export default CustomDoubleCheckBox;
+export default CustomDoubleRadioButton;

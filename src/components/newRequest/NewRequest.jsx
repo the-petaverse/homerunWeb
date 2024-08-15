@@ -16,7 +16,7 @@ import PayButton from "../payButton/PayButton";
 import CustomBackButton from "../customBackButton/CustomBackButton";
 import CustomImput from "../customImput/CustomImput";
 import CustomSelect from "../customSelect/CustomSelect";
-import CustomDoubleCheckBox from "../customCheckBox/CustomDoubleCheckBox";
+import CustomDoubleRadioButton from "../customCheckBox/CustomDoubleRadioButton";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -219,36 +219,36 @@ const NewRequest = ({
         <form action="">
           <div className="form-section-wrapper">
             <CustomImput
-              name="email"
-              required="Email is required"
-              placeholder="Email"
+              name="firstName"
+              required="First name is required"
+              placeholder="First name"
               className="main-text-input"
-              type="email"
-              error={errors?.email?.message}
+              type="text"
+              error={errors?.firstName?.message}
               register={register}
-              style={{ borderColor: errors.email ? "red" : "blue" }}
+              style={{ borderColor: errors.firstName ? "red" : "blue" }}
             />
             <CustomImput
-              name="email"
-              required="Email is required"
-              placeholder="Email"
+              name="lastName"
+              required="Last name is required"
+              placeholder="Last name"
               className="main-text-input"
-              type="email"
-              error={errors?.email?.message}
+              type="text"
+              error={errors?.lastName?.message}
               register={register}
-              style={{ borderColor: errors.email ? "red" : "blue" }}
+              style={{ borderColor: errors.lastName ? "red" : "blue" }}
             />
           </div>
           <div className="form-section-wrapper">
             <CustomImput
-              name="email"
-              required="Email is required"
-              placeholder="Email"
+              name="middleName"
+              required="Middle name is required"
+              placeholder="Middle name"
               className="main-text-input"
-              type="email"
-              error={errors?.email?.message}
+              type="text"
+              error={errors?.middleName?.message}
               register={register}
-              style={{ borderColor: errors.email ? "red" : "blue" }}
+              style={{ borderColor: errors.middleName ? "red" : "blue" }}
             />
             <CustomImput
               name="email"
@@ -309,17 +309,19 @@ const NewRequest = ({
             />
           </div>
           <div className="form-section-wrapper">
-            <CustomDoubleCheckBox
+            <CustomDoubleRadioButton
               name="firstCollection"
               label="Is this your FIRST time collecting the transcript?"
+              style={{ borderColor: errors.firstName ? "red" : "blue" }}
               register={register}
               error={errors.firstCollection?.message}
             />
           </div>
           <div className="form-section-wrapper">
-            <CustomDoubleCheckBox
+            <CustomDoubleRadioButton
               label="Have you previously obtained a Notification of Result/Certificate?"
               name="obtainedNotificationOfResult"
+              style={{ borderColor: errors.firstName ? "red" : "blue" }}
               register={register}
               error={errors.obtainedNotificationOfResult?.message}
             />
