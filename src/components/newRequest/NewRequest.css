@@ -12,6 +12,16 @@
 
   width: 100%;
 }
+.button-wrapper {
+  text-align: end;
+  width: 80%;
+}
+
+.terms-note-wrapper {
+  display: flex;
+  margin-top: 20px;
+  /* align-items: center; */
+}
 
 .increase-width {
   width: 26.5dvw;

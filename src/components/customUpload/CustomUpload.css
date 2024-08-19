@@ -1,0 +1,18 @@
+.custom-upload-container {
+  margin-top: 25px;
+  width: 100%;
+}
+.custom-upload-header {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 1.55% 2%; */
+  border-radius: 10px;
+}
+.custom-header-btn {
+  background-color: #3cbce3;
+  border: dotted 0.56px #fff;
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 2%;
+}

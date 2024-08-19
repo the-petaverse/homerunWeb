@@ -17,6 +17,13 @@ import CustomBackButton from "../customBackButton/CustomBackButton";
 import CustomImput from "../customImput/CustomImput";
 import CustomSelect from "../customSelect/CustomSelect";
 import CustomDoubleRadioButton from "../customCheckBox/CustomDoubleRadioButton";
+import CustomUpload from "../customUpload/CustomUpload";
+import CustomInputUpload from "../customInputUpload/CustomInputUpload";
+import Requirement from "../requirement/Requirement";
+import ErrandProcesses from "../errandProcesses/ErrandProcesses";
+import CustomNote from "../customNote/CustomNote";
+import TermsAndConditionCheckBox from "../termsAndConditionCheckBox/TermsAndConditionCheckBox";
+import CustomButton from "../customButton/CustomButton";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -339,6 +346,29 @@ const NewRequest = ({
               data={yearofGraduation}
             />
           </div>
+          <div>
+            <CustomUpload />
+            <CustomImput
+              name="documentTitle"
+              required="Graduated Degree is required"
+              placeholder="Input Document Title"
+              className="main-text-input"
+              type="text"
+              error={errors?.documentTitle?.message}
+              register={register}
+              style={{ borderColor: errors.documentTitle ? "red" : "blue" }}
+            />
+            <CustomInputUpload />
+          </div>
+          <Requirement />
+          <ErrandProcesses />
+          <div className="terms-note-wrapper">
+            <CustomNote />
+            <TermsAndConditionCheckBox />
+          </div>
+          <section className="button-wrapper">
+            <CustomButton />
+          </section>
         </form>
       </div>
       <div className="register-main-container">

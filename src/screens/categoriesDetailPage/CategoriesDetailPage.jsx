@@ -5,6 +5,7 @@ import Footer from "../../components/footer/Footer";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import "./CategoriesDetailPage.css";
 import SubServiceCard from "../../components/servicesCard/SubServiceCard";
+import SurpriseSubServices from "../../components/surpriseSubServices/SurpriseSubServices";
 
 const CategoriesDetailPage = () => {
   const { category } = useParams();
@@ -12,7 +13,8 @@ const CategoriesDetailPage = () => {
   return (
     <div>
       <Navbar />
-      <SubServiceCard category={category} />
+      {category === "property" && <SubServiceCard category={category} />}
+      {category === "surprise" && <SurpriseSubServices category={category} />}
       <Footer />
     </div>
   );

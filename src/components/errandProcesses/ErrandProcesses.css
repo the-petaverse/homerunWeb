@@ -1,0 +1,12 @@
+.errand-process-header {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.errand-process-content-wrapper {
+  margin-top: 5px;
+  text-align: left;
+}
+.errand-process-content-wrapper h3 {
+  margin-top: 20px;
+}
