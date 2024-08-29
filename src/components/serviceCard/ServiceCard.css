@@ -80,6 +80,9 @@
   }
 }
 @media (min-width: 1280px) {
+  .slick-arrow::before {
+    display: block;
+  }
 }
 @media (min-width: 1536px) {
 }

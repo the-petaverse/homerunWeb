@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./SurpriseSubServices.css";
+import CustomStore from "../customStore/CustomStore";
 
 const innerNavData = [
   { id: "1", title: "Packages", image: "/images/diamond-gift-2.png" },
@@ -45,8 +46,13 @@ const innerCardData = [
     images: "/images/random.png",
   },
 ];
-const SurpriseSubServices = () => {
-  const [serviceSelected, setServiceSelected] = useState(1);
+const SurpriseSubServices = ({ category }) => {
+  const [serviceSelected, setServiceSelected] = useState("Packages");
+
+  const handleServiceSelection = (title) => {
+    // console.log(id);
+    setServiceSelected(title);
+  };
   return (
     <div className="surprise-main-container">
       <div className="surprise-header-wrapper">
@@ -57,14 +63,18 @@ const SurpriseSubServices = () => {
         {innerNavData &&
           innerNavData.map((innerNav, index) => {
             return (
-              <div className="surprise-inner-btn-card" key={index}>
+              <div
+                className="surprise-inner-btn-card"
+                key={index}
+                onClick={() => handleServiceSelection(innerNav.title)}
+              >
                 <img src={innerNav.image} alt="" />
                 <p>{innerNav.title}</p>
               </div>
             );
           })}
       </div>
-      {serviceSelected === 1 && (
+      {serviceSelected === "Packages" && (
         <div className="surprise-detail-card-wrapper">
           {innerCardData &&
             innerCardData.map((inerData, index) => {
@@ -105,6 +115,7 @@ const SurpriseSubServices = () => {
           </div>
         </div>
       )}
+      {serviceSelected === "Gifts" && <CustomStore />}
     </div>
   );
 };

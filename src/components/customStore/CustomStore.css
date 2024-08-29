@@ -1,0 +1,75 @@
+.gifts-container {
+  padding: 2% 0;
+  justify-content: space-between;
+  display: flex;
+}
+.gift-left-side-navigation {
+  background-color: rgb(236, 233, 233);
+  border-radius: 10px;
+  width: 18%;
+  padding: 2.5%;
+}
+.gift-right-container {
+  width: 78%;
+}
+.store-header-wrapper {
+  display: flex;
+}
+.request-personalized-store-card {
+  background-color: rgb(246, 244, 244);
+  padding: 3% 2.5%;
+  text-align: center;
+  border-radius: 15px;
+}
+.request-personalized-store-card h3 {
+  margin-top: 20px;
+}
+.personalized-btn {
+  background-color: rgb(148, 144, 144);
+  width: 60%;
+  border-radius: 10px;
+  padding: 5%;
+  color: #fff;
+  margin-top: 15px;
+}
+.person-header-image {
+  width: 94%;
+}
+.product-list-wrapper {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: 17% 17% 17% 17%;
+  gap: 30px;
+}
+.product-list-card {
+  /* width: 17%; */
+  border: 0.35px solid rgb(159, 157, 157);
+  border-radius: 15px;
+  position: relative;
+}
+.product-list-card > input[type="checkbox"] {
+  position: absolute;
+  right: 5%;
+  top: 2.5%;
+  width: 30px;
+  height: 25px;
+}
+.list-content-wrapper {
+  padding: 5px 15px;
+}
+.list-price-wrapper {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 10px 0; */
+}
+.list-price-wrapper > span {
+  font-size: 1.1em;
+}
+.gift-left-side-navigation ul {
+  padding-left: 1px;
+}
+.gift-left-side-navigation ul li {
+  list-style-type: none;
+  margin-top: 18px;
+  font-size: 1.1em;
+}
