@@ -1,0 +1,117 @@
+.sustainability-container {
+  padding: 10px 5%;
+}
+.inner-container {
+  background-image: url("../../assets/sus-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: auto;
+  margin-right: auto;
+  /* height: 45dvh; */
+  display: flex;
+  border-radius: 60px;
+  /* border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px; */
+}
+.sustainability-left-wrapper,
+.sustainability-right-wrapper {
+  background-color: #ff6600;
+  height: 45dvh;
+}
+.sustainability-left-wrapper {
+  text-align: right;
+  width: 50%;
+  top: 0;
+  left: 0;
+  /* transition */
+  transform-origin: left;
+  transition: transform 0.5s;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+}
+.sustainability-right-wrapper {
+  text-align: left;
+  width: 50%;
+  top: 0;
+  right: 0;
+  /* transition */
+  transform-origin: right;
+  transition: transform 0.5s;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+}
+.tester-text {
+  display: none;
+}
+.tester-text-two {
+  display: block;
+  position: absolute;
+  text-align: center;
+  padding: 5%;
+  color: #fff;
+  width: 90%;
+  padding-left: 8%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tester-text-two h1 {
+  font-size: 1.6em;
+  margin-top: 20px;
+}
+.inner-container:hover .tester-text {
+  display: block;
+  position: absolute;
+  text-align: center;
+  padding: 5%;
+  color: #fff;
+  width: 90%;
+  padding-left: 10%;
+}
+.tester-text p {
+  margin-bottom: 10px;
+}
+.tester-text h1 {
+  font-size: 1.6em;
+}
+.inner-container:hover .tester-text-two {
+  display: none;
+}
+.inner-container:hover .sustainability-left-wrapper {
+  transform: scaleX(0);
+}
+.inner-container:hover .sustainability-right-wrapper {
+  transform: scaleX(0);
+}
+
+@media (min-width: 475px) {
+}
+@media (min-width: 640px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+  .tester-text-two h1 {
+    font-size: 2.35em;
+    margin-bottom: 10px;
+    margin-top: 35px;
+  }
+  .tester-text h1 {
+    font-size: 2.35em;
+    margin-top: 35px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .tester-text-two h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+  }
+  .tester-text h1 {
+    font-size: 3em;
+  }
+}
+
+@media (min-width: 1536px) {
+}

@@ -1,13 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
 .hero-container {
-  padding: 2px 5%;
+  padding: 135px 5%;
+  color: #fff;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  background-image: url("../../assets/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.banner-container {
+  padding-top: 5%;
 }
 .header-wrapper {
   width: 100%;
+}
+.header-content-wrapper {
+  padding-bottom: 15px;
 }
 .hero-img {
   width: 100%;
@@ -15,7 +25,9 @@
   height: auto;
   margin-top: 10px;
 }
-.heading-txt {
+
+.heading-txt-one,
+.heading-txt-two {
   font-size: 2em;
   margin-bottom: 10px;
   margin-top: 25px;
@@ -26,42 +38,54 @@
   font-family: "Josefin Slab", serif;
   font-optical-sizing: auto;
   font-style: normal;
-  /* margin-bottom: 35px; */
 }
-
-.howitworks-text {
+.get-stated-btn {
+  color: #fff;
+  background-color: #ff6600;
+  padding: 15px 15px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  margin-top: 500px;
+}
+.card-display-container {
+  margin-top: -100px;
+  width: 85%;
+  margin-right: auto;
+  margin-left: auto;
+}
+/* .howitworks-text {
   font-size: 2em;
   margin-bottom: 8px;
-}
+} */
 /* Work on the playstore icons alighment */
-.playstore-icons-wrapper {
+/* .playstore-icons-wrapper {
   display: flex;
   align-items: center;
   height: auto;
   margin-bottom: 15px;
-}
-.google-icon {
+} */
+/* .google-icon {
   width: 130px;
   height: auto;
-  /* margin-top: 10px; */
-}
-.iphone-icon {
+  margin-top: 10px;
+} */
+/* .iphone-icon {
   width: 130px;
   height: 130px;
   margin-top: -15px;
-}
-.store-logo-wrapper {
-  /* height: 30px; */
-  /* background-color: #fff; */
-  margin-left: -15px;
+} */
+/* .store-logo-wrapper { */
+/* height: 30px; */
+/* background-color: #fff; */
+/* margin-left: -15px;
   cursor: pointer;
-}
-.apple-logo-wrapper {
+} */
+/* .apple-logo-wrapper {
   height: 40px;
   background-color: #fff;
   margin-top: -10px;
   cursor: pointer;
-}
+} */
 
 @media (min-width: 475px) {
   .heading-txt {
@@ -77,12 +101,14 @@
 @media (min-width: 1024px) {
   .hero-container {
     flex-direction: row;
+    padding: 105px 5%;
   }
   .header-wrapper {
     width: 48%;
     margin-top: 25px;
   }
-  .heading-txt {
+  .heading-txt-one,
+  .heading-txt-two {
     font-size: 2em;
   }
   .hero-img {
@@ -90,7 +116,8 @@
   }
 }
 @media (min-width: 1280px) {
-  .heading-txt {
+  .heading-txt-one,
+  .heading-txt-two {
     font-size: 3.2em;
   }
   .hero-img {
@@ -102,8 +129,9 @@
   }
 }
 @media (min-width: 1536px) {
-  .heading-txt {
-    font-size: 4.5em;
+  .heading-txt-one,
+  .heading-txt-two {
+    font-size: 3em;
   }
   .hero-img {
     max-width: 700px;
@@ -111,6 +139,12 @@
   .header-wrapper {
     width: 45%;
     margin-top: 65px;
+  }
+  .card-display-container {
+    margin-top: -400px;
+
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 /* 

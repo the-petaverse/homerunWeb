@@ -1,14 +1,21 @@
 import React from "react";
 import CloseIcon from "../../assets/close.png";
+import LoginIcon from "../../assets/login-icon.png";
+import VerifyIcon from "../../assets/verify.png";
+import AboutIcon from "../../assets/emoji-happy.png";
+import TransIcon from "../../assets/trans-icon.png";
+import GrocyIcon from "../../assets/grocy-icon.png";
+import SurpriseIcon from "../../assets/surprise-icon.png";
+import HotelIcon from "../../assets/hotel-icon.png";
+import PropertyIcon from "../../assets/property-icon.png";
 import { Link } from "react-router-dom";
 
 import "./MainSideBar.css";
 import Cookies from "universal-cookie";
 
-const MainSideBar = ({ handleCloseSideBar, openSideBar }) => {
+const MainSideBar = ({ handleOpenSideBar }) => {
   const cookies = new Cookies();
   const receivedCookies = cookies.get("auth_token");
-  if (!openSideBar) return null;
 
   const handleLogout = () => {
     cookies.remove("auth_token");
@@ -16,45 +23,19 @@ const MainSideBar = ({ handleCloseSideBar, openSideBar }) => {
   return (
     <div className="side-bar-container">
       <div className="inner-side-bar">
-        <div className="close-icon-container">
-          <img
-            src={CloseIcon}
-            alt=""
-            className="mainside-bar-close-icon-wrapper"
-            onClick={handleCloseSideBar}
-          />
-        </div>
-
         <div className="side-bar-menu-list-wrapper">
           <ul className="side-bar-right-main-list main-side-wrapper">
-            <Link
-              to="/"
-              className="inner-menu-list"
-              onClick={handleCloseSideBar}
-            >
-              <li>Home</li>
-            </Link>
-            <Link to="/requests-list" className="inner-menu-list blink-text">
-              <li>Post a Request</li>
-            </Link>
-            <Link
-              to="/about"
-              className="inner-menu-list"
-              onClick={handleCloseSideBar}
-            >
-              <li>About Us</li>
-            </Link>
-            <Link
-              to="/contact"
-              className="inner-menu-list"
-              onClick={handleCloseSideBar}
-            >
-              <li>Contact Us</li>
-            </Link>
             <section className="auth-wrapper">
               {!receivedCookies && (
                 <Link to="/login" className="inner-menu-list">
-                  <li>Login</li>
+                  <li>
+                    <img
+                      src={LoginIcon}
+                      alt="login"
+                      className="side-bar-menu-icon"
+                    />
+                    Login
+                  </li>
                 </Link>
               )}
 
@@ -67,17 +48,105 @@ const MainSideBar = ({ handleCloseSideBar, openSideBar }) => {
                   <li> Logout</li>
                 </Link>
               )}
-              {receivedCookies && (
-                <Link to="/dashboard" className="inner-menu-list">
-                  <li> profile</li>
-                </Link>
-              )}
-
-              <Link to="/register" className="inner-menu-list">
-                {!receivedCookies && <li>Register</li>}
-              </Link>
             </section>
+            <Link to="/our-services" className="inner-menu-list">
+              <li>
+                <img
+                  src={VerifyIcon}
+                  alt="login"
+                  className="side-bar-menu-icon"
+                />
+                Services
+              </li>
+            </Link>
+            <Link
+              to="/about"
+              className="inner-menu-list"
+              // onClick={handleCloseSideBar}
+            >
+              <li>
+                <img
+                  src={AboutIcon}
+                  alt="login"
+                  className="side-bar-menu-icon"
+                />
+                About Us
+              </li>
+            </Link>
           </ul>
+        </div>
+        <div className="post-request-nav-modal-container">
+          <h3 className="post-errand-sidebar">Post Errand</h3>
+          <div className="post-request-nav-card">
+            <div className="request-nav-image">
+              <img src={TransIcon} alt="transcript icon" />
+            </div>
+            <div className="request-nav-content">
+              <Link
+                to={"/request-category/transcript"}
+                onClick={handleOpenSideBar}
+              >
+                <h1>Transcript & Doc...</h1>
+                <p>Obtain credentials and other necessary documents on...</p>
+              </Link>
+            </div>
+          </div>
+          <div className="post-request-nav-card">
+            <div className="request-nav-image">
+              <img src={GrocyIcon} alt="transcript icon" />
+            </div>
+            <div className="request-nav-content">
+              <Link
+                to={"/request-category/grocery"}
+                onClick={handleOpenSideBar}
+              >
+                <h1>Grocery & Food</h1>
+                <p>Groceries and food items delivered to your door...</p>
+              </Link>
+            </div>
+          </div>
+          <div className="post-request-nav-card">
+            <div className="request-nav-image">
+              <img src={SurpriseIcon} alt="transcript icon" />
+            </div>
+            <div className="request-nav-content">
+              <Link
+                to={"/request-category/surprise"}
+                onClick={handleOpenSideBar}
+              >
+                <h1>Surprise Packages</h1>
+                <p>We deliver delightful surprises that brighten your day.</p>
+              </Link>
+            </div>
+          </div>
+          <div className="post-request-nav-card">
+            <div className="request-nav-image">
+              <img src={HotelIcon} alt="transcript icon" />
+            </div>
+            <div className="request-nav-content">
+              <Link to={"/request-category/hotel"} onClick={handleOpenSideBar}>
+                <h1>Hotel & Car Booking</h1>
+                <p>Secure accommodations, recreation centers and cars...</p>
+              </Link>
+            </div>
+          </div>
+          <div className="post-request-nav-card">
+            <div className="request-nav-image">
+              <img src={PropertyIcon} alt="transcript icon" />
+            </div>
+            <div className="request-nav-content">
+              <Link
+                to={"/request-category/property"}
+                onClick={handleOpenSideBar}
+              >
+                <h1>Property Inspection</h1>
+                <p>
+                  Acquire property in your home country while you’re abroad...
+                </p>
+              </Link>
+            </div>
+          </div>
+          <button className="side-menu-bar-btn">Contact Us</button>
         </div>
       </div>
     </div>

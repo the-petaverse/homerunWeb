@@ -1,3 +1,35 @@
 .token-error-message {
   color: red;
 }
+
+.sent-otp-sent-wrapper {
+  display: flex;
+  align-items: center;
+}
+.check-mark-btn {
+  margin-bottom: 11.5px;
+  margin-left: 5px;
+}
+.timer-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.timer-inner-wrapper {
+  display: flex;
+}
+
+.timer-wrapper {
+  padding: 0 10px;
+  background-color: rgb(240, 235, 235);
+  margin-right: 5px;
+  border-radius: 5px;
+  padding-bottom: 8px;
+  width: 2.4dvw;
+}
+
+.timer-wrapper p {
+  font-size: 1.2em;
+  text-align: center;
+}

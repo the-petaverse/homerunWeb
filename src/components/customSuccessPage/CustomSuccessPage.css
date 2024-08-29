@@ -1,0 +1,28 @@
+.success-screen-main-wrapper {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.success-inner-container {
+  width: 60%;
+  background-color: #f9f9f9;
+  padding: 10%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  border-radius: 15px;
+}
+.success-inner-container p {
+  margin-bottom: 20px;
+}
+.success-btn {
+  padding: 4%;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #262262;
+  color: #fff;
+  font-size: 1.25em;
+}
+.success-image {
+  margin: 5%;
+}

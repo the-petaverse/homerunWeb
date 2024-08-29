@@ -1,23 +1,17 @@
 import React from "react";
 import "./Footer.css";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/white-logo.png";
+import { Link } from "react-router-dom";
+import Hq from "../hq/Hq";
 const Footer = () => {
   return (
     <div className="footer-main-container">
       <div className="main-level-wrapper">
+        {/* <Hq /> */}
         <div className="footer-menu-wrapper">
           <div className="company-wrapper ">
             <img src={Logo} alt="logo" className="footer-logo" />
           </div>
-        </div>
-        <div className="footer-address">
-          <p className="list-header">Contact</p>
-          <p>
-            Process: Once payment is received, we assign the request to one of
-            our contractors and the work starts.
-          </p>
-          <p>info@homerun.com.ng</p>
-          <p>+234-9151555796</p>
         </div>
       </div>
       <div className="inner-footer-wrapper">
@@ -25,15 +19,15 @@ const Footer = () => {
           <p>© 2024 homerun. All rights reserved</p>
         </div>
         <div>
-          <button className="policy-btn">
+          <Link className="policy-btn">
             <p>Privacy policy</p>
-          </button>
+          </Link>
         </div>
-        <div>
-          <button className="privacy-btn">
+        {/* <div>
+          <Link className="privacy-btn">
             <p>Privacy policy</p>
-          </button>
-        </div>
+          </Link>
+        </div> */}
       </div>
     </div>
   );

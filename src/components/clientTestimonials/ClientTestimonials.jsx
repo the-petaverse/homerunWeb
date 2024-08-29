@@ -1,63 +1,28 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./ClientTestimonials.css";
-import AboutImg from "../../assets/about.png";
+import Logo from "../../assets/homerun-logo.png";
+import TestimonialCard from "../testimonialCard/TestimonialCard";
+
+import { Link } from "react-router-dom";
 
 const ClientTestimonials = () => {
   return (
-    <div className="client-test-container">
-      <div className="testimonial-header">
-        <h1>ClientTestimonials</h1>
-        <p>These are what our satisfied clients are saying about homerun</p>
+    <div className="testimonial-main-container">
+      <div className="header-container">
+        <div className="testimonial-header-wrapper">
+          <h1>People Love #</h1>
+          <img src={Logo} alt="logo" className="terstimonial-logo" />
+        </div>
+        <div className="testimonial-content-wrapper">
+          <p>
+            At Homerun, our customer satisfaction is our ultimate measure of
+            success. Here's what some of our users have to say about their
+            experience with us:
+          </p>
+        </div>
       </div>
-      <div className="testimonia-card-wrapper">
-        <div className="testimonial-card">
-          <div className="testimonial-img-wrapper">
-            <img src={AboutImg} alt="" className="testinonia-img" />
-          </div>
-          <p>
-            Boost your product and service's credibility by adding testimonials
-            from your clients.
-          </p>
-          <br />
-          <p>
-            Boost your product and service's credibility by adding testimonials
-            from your clients.
-          </p>
-          <br />
-          <p>Client's name</p>
-        </div>
-        <div className="testimonial-card">
-          <div className="testimonial-img-wrapper">
-            <img src={AboutImg} alt="" className="testinonia-img" />
-          </div>
-          <p>
-            Boost your product and service's credibility by adding testimonials
-            from your clients.
-          </p>
-          <br />
-          <p>
-            Boost your product and service's credibility by adding testimonials
-            from your clients.
-          </p>
-          <br />
-          <p>Client's name</p>
-        </div>
-        <div className="testimonial-card">
-          <div className="testimonial-img-wrapper">
-            <img src={AboutImg} alt="" className="testinonia-img" />
-          </div>
-          <p>
-            Boost your product and service's credibility by adding testimonials
-            from your clients.
-          </p>
-          <br />
-          <p>
-            Boost your product and service's credibility by adding testimonials
-            from your clients.
-          </p>
-          <br />
-          <p>Client's name</p>
-        </div>
+      <div className="slider-container">
+        <TestimonialCard />
       </div>
     </div>
   );

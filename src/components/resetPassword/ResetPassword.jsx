@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import LoginImage from "../../assets/feedback.png";
-const ResetPassword = ({ setShowDashboard }) => {
+import LoginImage from "../../assets/login.png";
+import BackIcon from "../../assets/back-arrow.png";
+const ResetPassword = ({ setShowDashboard, setPassworsResetSuccess }) => {
   //   const [showDashboard, setShowDashboard] = useState(1);
   const {
     register,
@@ -11,70 +12,62 @@ const ResetPassword = ({ setShowDashboard }) => {
   } = useForm({ mode: "all" });
 
   const onPassSubmit = (data) => {
-    setShowDashboard(5);
+    setPassworsResetSuccess(true);
+    // setUserverifiedOtp("2");
+    // setShowDashboard(5);
     console.log("PassData: ", data);
   };
 
   return (
-    <div>
-      <div className="slate-header-wrapper">
-        <h2>Reset Password</h2>
-      </div>
-      <div className="login-main-container">
-        <div className="login-iamge-wrapper">
-          <img src={LoginImage} alt="" className="login-image" />
+    <>
+      <div className="inner-form-wrapper">
+        <div>
+          <div className="back-arrow-wrapper">
+            <img src={BackIcon} alt="back button" />
+            <span>Back</span>
+          </div>
         </div>
-        <div className="inner-form-wrapper">
-          <form onSubmit={handleSubmit(onPassSubmit)} className="form-wrapper">
-            <label>
-              Email:
-              <input
-                type="text"
-                placeholder="example@example.com"
-                className="main-text-input"
-                {...register("email", { required: "Email is required" })}
-              />
-              {errors.email && (
-                <p className="input-error-message">{errors.email.message}</p>
-              )}
-            </label>
-            <label>
-              Old Password:
-              <input
-                type="password"
-                className="main-text-input"
-                {...register("password", {
-                  required: "Password can't be empty",
-                })}
-              />
-              {errors.password && (
-                <p className="input-error-message">{errors.password.message}</p>
-              )}
-            </label>
-            <label>
-              New Password:
-              <input
-                type="password"
-                className="main-text-input"
-                {...register("newPassword", {
-                  required: "New Password can't be empty",
-                })}
-              />
-              {errors.newPassword && (
-                <p className="input-error-message">
-                  {errors.newPassword.message}
-                </p>
-              )}
-            </label>
+        <div>
+          <h1>Change Password</h1>
+          <p>Please enter and confirm new password</p>
+        </div>
+        <form onSubmit={handleSubmit(onPassSubmit)} className="form-wrapper">
+          <label>
             <input
-              type="submit"
-              className="main-form-btn"
-              disabled={!isValid}
+              type="password"
+              placeholder="Password"
+              className="main-text-input"
+              {...register("password", {
+                required: "Password can't be empty",
+              })}
             />
-          </form>
-        </div>
+            {errors.password && (
+              <p className="input-error-message">{errors.password.message}</p>
+            )}
+          </label>
+          <label>
+            <input
+              type="password"
+              placeholder="Confirm password"
+              className="main-text-input"
+              {...register("newPassword", {
+                required: "New Password can't be empty",
+              })}
+            />
+            {errors.newPassword && (
+              <p className="input-error-message">
+                {errors.newPassword.message}
+              </p>
+            )}
+          </label>
+          <input
+            type="submit"
+            className={!isValid ? "main-form-btn-disabled" : "main-form-btn"}
+            disabled={!isValid}
+          />
+        </form>
       </div>
-    </div>
+    </>
   );
 };
 

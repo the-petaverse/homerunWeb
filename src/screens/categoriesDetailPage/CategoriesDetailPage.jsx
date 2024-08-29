@@ -4,28 +4,17 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import "./CategoriesDetailPage.css";
-import ServiceCard from "../../components/servicesCard/ServiceCard";
+import SubServiceCard from "../../components/servicesCard/SubServiceCard";
+import SurpriseSubServices from "../../components/surpriseSubServices/SurpriseSubServices";
 
 const CategoriesDetailPage = () => {
-  const [openSideBar, setOpenSideBar] = useState(false);
   const { category } = useParams();
-
-  const handleCloseSideBar = () => {
-    setOpenSideBar(false);
-  };
-  const handleOpenSideBar = () => {
-    setOpenSideBar(true);
-  };
 
   return (
     <div>
-      <Navbar handleOpenSideBar={handleOpenSideBar} />
-      <ServiceCard category={category} />
-      <MainSideBar
-        handleOpenSideBar={handleOpenSideBar}
-        handleCloseSideBar={handleCloseSideBar}
-        openSideBar={openSideBar}
-      />
+      <Navbar />
+      {category === "property" && <SubServiceCard category={category} />}
+      {category === "surprise" && <SurpriseSubServices category={category} />}
       <Footer />
     </div>
   );

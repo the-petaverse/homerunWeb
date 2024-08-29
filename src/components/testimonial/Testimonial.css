@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
 .testimonia-main-container {
-  background-color: rgb(241, 238, 238);
+  background-color: #fff;
   padding: 45px 5%;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: auto;
@@ -14,10 +14,15 @@
   /* 55% */
   padding: 0 5%;
   height: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+.happy-user-image-container {
+  width: 100%;
 }
 .happy-user-image {
   width: 100%;
-  max-width: 500px;
+  /* max-width: 500px; */
   height: auto;
 }
 .users-rate-wrapper h3 {
@@ -34,59 +39,133 @@
 .download-text {
   font-size: 1.8em;
 }
-.test-store-logo-wrapper {
-  height: 40px;
+.store-logo-wrapper {
   background-color: rgb(241, 238, 238);
   margin-left: -15px;
   cursor: pointer;
 }
-.test-apple-logo-wrapper {
-  height: 40px;
-  background-color: rgb(241, 238, 238);
-  cursor: pointer;
+.google-icon,
+.iphone-icon {
+  width: 90%;
 }
+
 .another-color-for-wrapper {
   background-color: rgb(241, 238, 238);
 }
+.sign-image {
+  width: 40px;
+  margin-right: 10px;
+}
+.playstore-icons-wrapper {
+  background-color: #f2f2fb;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 2%;
+}
+.happy-detail-wrapper {
+  display: flex;
+}
 
 @media (min-width: 475px) {
+  .playstore-icons-wrapper {
+    width: 80%;
+  }
 }
-@media (min-width: 640px) {
+@media (min-width: 545px) {
   .users-rate-wrapper h3 {
     font-size: 2.2em;
     /* 3em */
   }
+
+  .playstore-icons-wrapper {
+    width: 70%;
+  }
+}
+@media (min-width: 640px) {
+  .users-rate-wrapper {
+    width: 86%;
+    /* 55% */
+  }
+  .users-rate-wrapper h3 {
+    font-size: 2.2em;
+    /* 3em */
+  }
+
+  .playstore-icons-wrapper {
+    width: 60%;
+  }
 }
 
 @media (min-width: 768px) {
+  .users-rate-wrapper {
+    width: 70%;
+    /* 55% */
+  }
   .users-rate-wrapper h3 {
     font-size: 2.5em;
+  }
+  .playstore-icons-wrapper {
+    width: 50%;
   }
 }
 
 @media (min-width: 1024px) {
+  .happy-detail-wrapper {
+    display: flex;
+  }
+  .happy-detail-wrapper h2 {
+    font-size: 1.25em;
+  }
+  .happy-detail-wrapper p {
+    font-size: 1.1em;
+  }
   .users-rate-wrapper h3 {
-    font-size: 2em;
+    font-size: 1.5em;
+    line-height: 5px;
     /* 3em */
   }
   .testimonia-main-container {
     flex-direction: row;
   }
   .users-rate-wrapper {
-    width: 55%;
+    width: 45%;
     /* 55% */
     padding: 0 5%;
     height: auto;
+  }
+  .happy-user-image-container {
+    width: 50%;
+  }
+  .playstore-icons-wrapper {
+    width: 50%;
   }
 }
 
 @media (min-width: 1280px) {
   .users-rate-wrapper h3 {
-    font-size: 3em;
-    line-height: 50px;
+    font-size: 1.85em;
+    line-height: 10px;
+
     /* 3em */
+  }
+  .happy-detail-wrapper h2 {
+    font-size: 1.65em;
+  }
+  .happy-detail-wrapper p {
+    font-size: 1.85em;
   }
 }
 
 @media (min-width: 1536px) {
+  .happy-detail-wrapper {
+    display: flex;
+  }
+  .users-rate-wrapper h3 {
+    font-size: 2em;
+    line-height: 10px;
+    /* background-color: red; */
+    /* 3em */
+  }
 }

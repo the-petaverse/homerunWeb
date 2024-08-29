@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./ServiceCard.css";
+import "./SubServiceCard.css";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
+import SubTranscriptIcon from "../../assets/sub-transcript.png";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 import {
@@ -9,7 +10,29 @@ import {
   useGetRequestSubCategoryQuery,
 } from "../../services/requestsCategory/requestApi";
 
-const ServiceCard = ({ category }) => {
+const subServiceData = [
+  {
+    id: "1",
+    name: "Transcripts processing and collection",
+    icons: "/images/sub-transcript.png",
+  },
+  {
+    id: "1",
+    name: "Higher education certificates processing and collection",
+    icons: "/images/sub-transcript.png",
+  },
+  {
+    id: "1",
+    name: "Birth certificates",
+    icons: "/images/sub-transcript.png",
+  },
+  {
+    id: "1",
+    name: "Sworn Affidavits",
+    icons: "/images/sub-transcript.png",
+  },
+];
+const SubServiceCard = ({ category }) => {
   const [categoryList, setCategoryList] = useState([]);
   const [subCategoryList, setSubCategoryList] = useState([]);
   const [categoryId, setCategoryId] = useState();
@@ -44,7 +67,7 @@ const ServiceCard = ({ category }) => {
   const filterSubCategory = () => {
     if (categoryId) {
       let filteredSubCategory = subData?.subRequestsCategory?.filter(
-        (subCategoryData) => subCategoryData.category_id === categoryId
+        (subCategoryData) => subCategoryData?.category_id === categoryId
       );
       setSubCategoryList(filteredSubCategory);
     }
@@ -56,7 +79,7 @@ const ServiceCard = ({ category }) => {
         (categoryData) => categoryData.slug_name === category
       );
 
-      setCategoryId(filteredCategory[0]._id);
+      setCategoryId(filteredCategory[0]?._id);
     }
   };
 
@@ -68,13 +91,22 @@ const ServiceCard = ({ category }) => {
   return (
     <div className="category-detail-main-container">
       <div className="category-header-wrapper">
-        <h1>{category}</h1>
+        {/* <h1>{category}</h1> */}
+        <h1>Transcript, Certificates & Official Documents Requests</h1>
       </div>
-      {subLoading || subFetching ? (
+      <div className="category-header-wrapper-para-wrapper">
+        <p>
+          Need important documents from institutions back home? We obtain
+          credentials and other necessary documents on your behalf, saving you
+          time and hassle.
+        </p>
+      </div>
+      {/* {subLoading || subFetching ? (
         <div className="service-loader-holder">
           <h2>Please wait........</h2>
           <PropagateLoader color="#262262" size={30} />
         </div>
+        
       ) : (
         <div className="cat-card-parent-wrapper">
           {subCategoryList &&
@@ -98,9 +130,29 @@ const ServiceCard = ({ category }) => {
               );
             })}
         </div>
-      )}
+      )} */}
+
+      <div className="subservices-card-wrapper">
+        {subServiceData &&
+          subServiceData.map((subService, index) => {
+            return (
+              <div className="subservices-card">
+                <Link to={"/sub-category/" + subService.name}>
+                  <div className="subservice-icon-wrapper">
+                    <img
+                      src={subService.icons}
+                      alt="transcript icon"
+                      className="subservices-icons"
+                    />
+                  </div>
+                  <h2>{subService.name}</h2>
+                </Link>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 };
 
-export default ServiceCard;
+export default SubServiceCard;

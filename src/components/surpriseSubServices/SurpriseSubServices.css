@@ -1,0 +1,70 @@
+.surprise-main-container {
+  padding-top: 120px;
+  padding-bottom: 100px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.surprise-header-wrapper {
+  display: flex;
+}
+.surprise-inner-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.surprise-inner-btn-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(246, 246, 247);
+  border-radius: 15px;
+  margin-top: 15px;
+  width: 18%;
+  margin-bottom: 15px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.surprise-inner-btn-card p {
+  margin-left: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.surprise-detail-card-wrapper {
+  display: grid;
+  grid-template-columns: 23.25% 23.25% 23.25% 23.25%;
+  gap: 30px;
+  margin-top: 25px;
+}
+
+.surprise-detail-card {
+  border: 0.25px solid gray;
+  border-radius: 15px;
+}
+.surprise-customized-detail-card {
+  border: 0.25px solid gray;
+  border-radius: 15px;
+  text-align: center;
+  padding: 10% 0;
+}
+.surprise-customized-detail-card img {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.surprise-detail-content {
+  padding: 10px 5%;
+  padding-bottom: 50px;
+}
+.surprise-detail-content h3 {
+  margin-bottom: 5px;
+}
+.surprise-detail-image {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 100%;
+}
+.customized-btn {
+  background-color: #302c76;
+  font-size: 1.2em;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 10px;
+}

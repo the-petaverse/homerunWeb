@@ -21,6 +21,9 @@ import CategoriesDetailPage from "./screens/categoriesDetailPage/CategoriesDetai
 import { Provider } from "react-redux";
 import { store } from "./store.js";
 import ProtectedRoutes from "./screens/private/ProtectedRoutes.jsx";
+import Services from "./screens/services/Services.jsx";
+import ResetPassword from "./components/resetPassword/ResetPassword.jsx";
+import ForgotPassword from "./screens/forgotPassword/ForgotPassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +34,14 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
+  },
+  {
+    path: "/password-reset",
+    element: <ResetPassword />,
   },
   {
     path: "/requests-list",
@@ -47,6 +58,10 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <ContactUs />,
+  },
+  {
+    path: "/our-services",
+    element: <Services />,
   },
   {
     path: "/login",

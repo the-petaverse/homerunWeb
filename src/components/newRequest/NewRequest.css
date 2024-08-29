@@ -1,3 +1,45 @@
+.new-request-from-main-container {
+  padding: 20px 5%;
+}
+.slate-header-wrapper {
+  text-align: left;
+}
+.slate-header-wrapper h2 {
+  margin-bottom: 10px;
+}
+.new-request-form-container {
+  /* background-color: red; */
+
+  width: 100%;
+}
+.button-wrapper {
+  text-align: end;
+  width: 80%;
+}
+
+.terms-note-wrapper {
+  display: flex;
+  margin-top: 20px;
+  /* align-items: center; */
+}
+
+.increase-width {
+  width: 26.5dvw;
+  justify-content: space-between;
+}
+
+.final-section-wrapper {
+  width: 100%;
+}
+.form-section-wrapper {
+  display: flex;
+
+  /* align-items: center; */
+
+  justify-content: space-between;
+  gap: 10px;
+  /* background-color: red; */
+}
 .accordion-main-container {
   padding: 15px 3%;
   margin-right: 25px;

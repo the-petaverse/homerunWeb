@@ -2,114 +2,69 @@ import React, { useState } from "react";
 import "./About.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/footer/Footer";
-import AboutImg from "../../assets/about.png";
+import AboutUsImage from "../../assets/about-us.png";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
+import Team from "../../components/team/Team";
+import MissionVision from "../../components/missionVision/MissionVision";
+import Hq from "../../components/hq/Hq";
 const About = () => {
-  const [openSideBar, setOpenSideBar] = useState(false);
+  // const [openSideBar, setOpenSideBar] = useState(false);
 
-  const handleOpenSideBar = () => {
-    setOpenSideBar(true);
-  };
-  const handleCloseSideBar = () => {
-    setOpenSideBar(false);
-  };
+  // const handleOpenSideBar = () => {
+  //   setOpenSideBar(true);
+  // };
+  // const handleCloseSideBar = () => {
+  //   setOpenSideBar(false);
+  // };
   return (
-    <div>
-      <Navbar handleOpenSideBar={handleOpenSideBar} />
-      <div className="about-header-wrapper">
-        <div className="about-details-wrapper">
-          <h2 className="about-header">
-            Our goal is to redifined errand for africans in diaspora
-          </h2>
-
-          <p>
-            Homerun is a web and mobile application developed to serve the needs
-            of diasporians and busy local clients who need tasks completed
-            efficiently and sustainably.
-          </p>
-          <div className="about-btn-container">
-            <button className="about-btn">Let's talk</button>
-          </div>
-        </div>
-        <div className="about-image-wrapper">
-          {/* <img src={AboutImg} alt="" className="about-img" /> */}
-        </div>
-      </div>
-      <div className="statistic-wrapper">
-        <div className="statistic-content-wrapper">
-          <p>
-            Homerun is a web and mobile application developed to serve the needs
-            of diasporians and busy local clients who need tasks completed
-            efficiently and sustainably.
-          </p>
-        </div>
-        <div className="statistic-boxes-wrapper">
-          <div className="stat-inner-box-container">
-            <div className="stat-box">
-              <h3>300k</h3>
-              <p>busy local clients</p>
-            </div>
-            <div className="stat-box">
-              <h3>300k</h3>
-              <p>busy local clients</p>
-            </div>
-          </div>
-          <div className="stat-inner-box-container">
-            <div className="stat-box">
-              <h3>300k</h3>
-              <p>busy local clients</p>
-            </div>
-            <div className="stat-box">
-              <h3>300k</h3>
-              <p>busy local clients</p>
+    <>
+      <Navbar />
+      <div className="about-us-container">
+        <div className="about-header-wrapper">
+          <div className="about-details-wrapper">
+            <h1>Who We Are</h1>
+            <div className="about-details-wrapper">
+              <img
+                src={AboutUsImage}
+                alt="who we are"
+                className="who-we-are-image"
+              />
             </div>
           </div>
         </div>
-      </div>
-      <div className="our-team-container">
-        <h2 className="our-team-title">Our Team</h2>
-        <div className="team-card-wrapper">
-          <div className="first-role-team-card">
-            <img src={AboutImg} alt="" className="team-img" />
-            <h4 className="team-name">Michael Oladele</h4>
-            <h3 className="team-title">Tech Lead</h3>
+        <div className="detail-wrapper">
+          <div className="about-top-detail">
+            <p>
+              We are revolutionary web and mobile application dedicated to
+              redefining errands for Africans in the diaspora and busy local
+              clients.
+            </p>
           </div>
-          <div className="first-role-team-card">
-            <img src={AboutImg} alt="" className="team-img" />
-            <h4 className="team-name">Michael Oladele</h4>
-            <h3 className="team-title">Tech Lead</h3>
-          </div>
-          <div className="first-role-team-card">
-            <img src={AboutImg} alt="" className="team-img" />
-            <h4 className="team-name">Michael Oladele</h4>
-            <h3 className="team-title">Tech Lead</h3>
+          <div className="about-bottom-detail">
+            <h3> Our Commitment to Sustainability</h3>
+            <p>
+              We’re not just about convenience; we’re about making a positive
+              impact. Homerun is dedicated to promoting sustainability and
+              reducing our carbon footprint. We offer eco-friendly task options
+              and provide feedback on how your choices contribute to a healthier
+              planet and a stronger global economy. Every task completed through
+              Homerun is a step towards a better future.
+            </p>
           </div>
         </div>
+        {/* <MainSideBar
+          handleOpenSideBar={handleOpenSideBar}
+          handleCloseSideBar={handleCloseSideBar}
+          openSideBar={openSideBar}
+        /> */}
       </div>
-      <div className="mission-vision-container">
-        <div className="mission-wrapper">
-          <h3>Our Mission</h3>
-          <p>
-            Service delivery executed efficiently and sustainably, giving you
-            peace of mind both home and abroad.
-          </p>
-        </div>
-        <div className="vission-wrapper">
-          <h3>Our Vision</h3>
-          <p>
-            Service delivery executed efficiently and sustainably, giving you
-            peace of mind both home and abroad.
-          </p>
-        </div>
-      </div>
-      <MainSideBar
-        handleOpenSideBar={handleOpenSideBar}
-        handleCloseSideBar={handleCloseSideBar}
-        openSideBar={openSideBar}
-      />
-
+      <section>
+        <Team />
+      </section>
+      <MissionVision />
+      {/* <Hq /> */}
       <Footer />
-    </div>
+    </>
   );
 };
 

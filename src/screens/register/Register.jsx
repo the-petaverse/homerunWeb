@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import Navbar from "../../components/Navbar/Navbar";
-import LoginImage from "../../assets/feedback.png";
-import { useForm } from "react-hook-form";
+import LoginImage from "../../assets/login.png";
+import ProfileImage from "../../assets/profile.png";
+import LogoMark from "../../assets/logomark.png";
+import HomerunIcon from "../../assets/homerun-icon.png";
+import { useForm, Controller } from "react-hook-form";
 import { useNavigate, Link, Navigate } from "react-router-dom";
 import { useRegisterUserMutation } from "../../services/auth/authApi";
 import backButton from "../../assets/form-back.png";
 import "./Register.css";
 import MainSideBar from "../../components/mainSideBar/MainSideBar";
 import Cookies from "universal-cookie";
+import OtpComponent from "../../components/otpComponent/OtpComponent";
+import CustomSelect from "../../components/customSelect/CustomSelect";
+import CustomImput from "../../components/customImput/CustomImput";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -33,8 +41,9 @@ const Register = () => {
   const [registerUser, { data: registerData, isSuccess, error, isLoading }] =
     useRegisterUserMutation();
   const navigate = useNavigate();
-  const [openSideBar, setOpenSideBar] = useState(false);
+
   const [formStep, setFormStep] = useState(0);
+  const [formSubmitted, setFormSumitted] = useState(false);
   const [country, setCountry] = useState([]);
   const [myState, setMyState] = useState([]);
   const [citiesList, setCitiesList] = useState([]);
@@ -42,17 +51,20 @@ const Register = () => {
   const {
     register,
     handleSubmit,
+    control,
     watch,
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
 
-  const watchCountry = watch("resident_country");
-  const watchState = watch("resident_state");
+  const watchCountry = watch("country");
+  const watchState = watch("state");
   const watchPassword = watch("password");
   const confirmPassword = watch("confirm_password");
 
   const onSubmit = async (data) => {
-    await registerUser(data);
+    setFormSumitted(true);
+    console.log(data);
+    // await registerUser(data);
   };
 
   if (isSuccess) {
@@ -71,14 +83,6 @@ const Register = () => {
     setCitiesList(citiesFiltered);
   };
 
-  const handleOpenSideBar = () => {
-    setOpenSideBar(true);
-  };
-
-  const handleCloseSideBar = () => {
-    setOpenSideBar(false);
-  };
-
   const handleCompleteForm = () => {
     setFormStep((cur) => cur + 1);
   };
@@ -92,7 +96,7 @@ const Register = () => {
     } else if (formStep === 1) {
       return (
         <input
-          disabled={!isValid || isLoading}
+          // disabled={!isValid || isLoading}
           type="submit"
           className="register-main-form-btn"
         />
@@ -101,22 +105,16 @@ const Register = () => {
     {
       return (
         <button
-          disabled={!isValid}
+          // disabled={!isValid}
           type="submit"
           className="register-main-form-btn"
           onClick={handleCompleteForm}
         >
-          Next Step
+          Continue
         </button>
       );
     }
   };
-
-  // useEffect(() => {
-  //   if (registeredCookies) {
-  //     navigate("/verify", { replace: true });
-  //   }
-  // }, [registeredCookies]);
 
   useEffect(() => {
     if (registeredCookies) {
@@ -124,238 +122,208 @@ const Register = () => {
     }
     handleSelectedCities();
     handleSelectedState();
-  }, [registeredCookies, watchCountry, watchState]);
+  }, [registeredCookies, watchCountry, watchState, isSuccess]);
   return (
     <div>
-      <Navbar handleOpenSideBar={handleOpenSideBar} />
+      <div className="authentication-header">
+        <Link to="/">
+          <img src={LogoMark} alt="homerun icon" className="homerun-icon" />
+        </Link>
+      </div>
       <div className="register-main-container">
         <div className="register-iamge-wrapper">
           <img src={LoginImage} alt="" className="register-image" />
         </div>
-        <div className="register-inner-form-wrapper">
-          {error?.data?.message ? (
-            <p className="register-error">{error?.data?.message}</p>
-          ) : (
-            <p>We will be glad to have you onboard</p>
-          )}
-          {error?.error && (
-            <p className="register-error">Some went wrong....</p>
-          )}
-          {error?.error?.message && (
-            <p className="register-error">Some went wrong....</p>
-          )}
-          {isLoading && (
-            <p className="register-error">
-              We are sending your data, please wait.....
-            </p>
-          )}
-          {formStep === 1 && (
-            <div className="back-button-wrapper" onClick={handleFormGoBack}>
-              <img src={backButton} alt="back-button" className="back-button" />
-            </div>
-          )}
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="register-form-wrapper"
-          >
-            {formStep === 0 && (
-              <>
-                <label>
-                  <input
-                    type="text"
-                    className="register-main-text-input"
-                    style={{ borderColor: errors.firstName ? "red" : "blue" }}
-                    placeholder="First name"
-                    {...register("first_name", {
-                      required: "First name is required",
-                    })}
-                  />
-                  {errors.first_name && (
-                    <p className="input-error-message">
-                      {errors.first_name.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <input
-                    type="text"
-                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
-                    className="register-main-text-input"
-                    placeholder="Last name"
-                    {...register("last_name", {
-                      required: "Last name is required",
-                    })}
-                  />
-                  {errors.last_name && (
-                    <p className="input-error-message">
-                      {errors.last_name.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <input
-                    type="email"
-                    style={{ borderColor: errors.email ? "red" : "blue" }}
-                    className="register-main-text-input"
-                    placeholder="Email(example@example.com)"
-                    {...register("email", {
-                      required: "Valid email is required",
-                    })}
-                  />
-                  {errors.email && (
-                    <p className="input-error-message">
-                      {errors.email.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <input
-                    type="text"
-                    style={{ borderColor: errors.phoneNumber ? "red" : "blue" }}
-                    className="register-main-text-input"
-                    placeholder="Phone number"
-                    {...register("phone_number", {
-                      required: "Valid phone number is required",
-                    })}
-                  />
-                  {errors.phone_number && (
-                    <p className="input-error-message">
-                      {errors.phone_number.message}
-                    </p>
-                  )}
-                </label>
-              </>
+
+        {!formSubmitted && (
+          <div className="register-inner-form-wrapper">
+            <img
+              src={HomerunIcon}
+              alt="homerun icon"
+              className="homerun-icon"
+            />
+            <h1>Welcome To Homerun</h1>
+            {error?.data?.message ? (
+              <p className="register-error">{error?.data?.message}</p>
+            ) : (
+              <p>Please take a few moment to register. </p>
+            )}
+            {error?.error && (
+              <p className="register-error">Some went wrong....</p>
+            )}
+            {error?.error?.message && (
+              <p className="register-error">Some went wrong....</p>
+            )}
+            {isLoading && (
+              <p className="register-error">
+                We are sending your data, please wait.....
+              </p>
             )}
             {formStep === 1 && (
-              <>
-                <label>
-                  <select
+              <div className="back-button-wrapper" onClick={handleFormGoBack}>
+                <img
+                  src={backButton}
+                  alt="back-button"
+                  className="back-button"
+                />
+              </div>
+            )}
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="register-form-wrapper"
+            >
+              {formStep === 0 && (
+                <>
+                  <CustomImput
+                    name="firstName"
+                    required="First name is required"
+                    placeholder="First name"
+                    className="main-text-input"
                     type="text"
-                    className="register-main-text-input"
-                    placeholder="Country Name(Resident country)"
-                    {...register("resident_country", {
-                      required: "Country name is required",
-                    })}
-                  >
-                    <option value="0">Select your resident country</option>
-                    {countries && countries !== undefined
-                      ? countries.map((countryData, index) => {
-                          return (
-                            <option value={countryData.id} key={index}>
-                              {countryData.title}
-                            </option>
-                          );
-                        })
-                      : "No country selected"}
-                  </select>
-                  {errors.resident_country && (
-                    <p className="input-error-message">
-                      {errors.resident_country.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <select
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="State Name"
-                    {...register("resident_state", {
-                      required: "State name is required",
-                    })}
-                  >
-                    <option value="0">Select State</option>
-                    {myState && myState !== undefined
-                      ? myState.map((stateData, index) => {
-                          return (
-                            <option value={stateData.id} key={index}>
-                              {stateData.title}
-                            </option>
-                          );
-                        })
-                      : "No state selected"}
-                  </select>
-                  {errors.resident_state && (
-                    <p className="input-error-message">
-                      {errors.resident_state.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <select
-                    type="text"
-                    className="register-main-text-input"
-                    placeholder="City Name"
-                    {...register("resident_city", {
-                      required: "City name is required",
-                    })}
-                  >
-                    <option value="0">Select City</option>
-                    {citiesList && citiesList !== undefined
-                      ? citiesList.map((cityData, index) => {
-                          return (
-                            <option value={cityData.id} key={index}>
-                              {cityData.title}
-                            </option>
-                          );
-                        })
-                      : "No city selected"}
-                  </select>
-                  {errors.resident_city && (
-                    <p className="input-error-message">
-                      {errors.resident_city.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <input
-                    type="password"
-                    style={{ borderColor: errors.password ? "red" : "blue" }}
-                    className="register-main-text-input"
-                    placeholder="Enter your password"
-                    {...register("password", {
-                      required: "password is required",
-                    })}
+                    error={errors?.firstName?.message}
+                    register={register}
+                    style={{ borderColor: errors.firstName ? "red" : "blue" }}
                   />
-                  {errors.password && (
-                    <p className="input-error-message">
-                      {errors.password.message}
-                    </p>
-                  )}
-                </label>
-                <label>
-                  <input
+                  <CustomImput
+                    name="lastName"
+                    required="Last name is required"
+                    placeholder="Last name"
+                    className="main-text-input"
+                    type="text"
+                    error={errors?.lastName?.message}
+                    register={register}
+                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
+                  />
+                  <CustomImput
+                    name="email"
+                    required="Email is required"
+                    placeholder="Email"
+                    className="main-text-input"
+                    type="email"
+                    error={errors?.email?.message}
+                    register={register}
+                    style={{ borderColor: errors.email ? "red" : "blue" }}
+                  />
+                  <label className="phone-input-wrapper">
+                    <Controller
+                      name="phone_number"
+                      control={control}
+                      // rules={{
+                      //   validate: (value) => isValidPhoneNumber(value),
+                      // }}
+                      render={({ field: { ref, ...field } }) => {
+                        return (
+                          <>
+                            <PhoneInput
+                              {...field}
+                              isValid={false}
+                              // value={value}
+                              // onchange={onchange}
+                              inputProps={{
+                                ref,
+                                required: true,
+                              }}
+                              buttonStyle={{
+                                width: "15%",
+                                borderTopLeftRadius: 12,
+                                borderBottomLeftRadius: 12,
+                                backgroundColor: "#fff",
+                                paddingLeft: 15,
+                              }}
+                              inputStyle={{
+                                // backgroundColor: "gray",
+                                height: 55,
+                                width: "100%",
+                                // marginTop: ,
+                                borderRadius: 12,
+                                paddingLeft: 80,
+                                fontFamily: "Josefin Slab",
+                                fontSize: 18,
+                              }}
+                              inputClass="register-main-text-input"
+                              country={"us"}
+                              // value={this.state.phone}
+                              // onChange={(phone) => this.setState({ phone })}
+                            />
+                            {errors.phone_number && (
+                              <p className="input-error-message">
+                                {errors.phone_number.message}
+                              </p>
+                            )}
+                          </>
+                        );
+                      }}
+                    />
+                  </label>
+                </>
+              )}
+              {formStep === 1 && (
+                <>
+                  <CustomSelect
+                    name="country"
+                    type="text"
+                    className="register-main-text-input"
+                    register={register}
+                    require="Country is required"
+                    placeholder="Country name"
+                    error={errors.country?.message}
+                    data={countries}
+                  />
+                  <CustomSelect
+                    name="state"
+                    type="text"
+                    className="register-main-text-input"
+                    register={register}
+                    require="State is required"
+                    placeholder="State name"
+                    error={errors.state?.message}
+                    data={staties}
+                  />
+                  <CustomSelect
+                    name="city"
+                    type="text"
+                    className="register-main-text-input"
+                    register={register}
+                    require="City is required"
+                    placeholder="City name"
+                    error={errors.city?.message}
+                    data={cities}
+                  />
+                  <CustomImput
+                    name="password"
+                    required="Password is required"
+                    placeholder="Password"
+                    className="main-text-input"
+                    error={errors?.password?.message}
                     type="password"
+                    register={register}
+                    style={{ borderColor: errors.password ? "red" : "blue" }}
+                  />
+
+                  <CustomImput
+                    name="confirm_password"
+                    required="Confirm Password is required"
+                    placeholder="Confirm Password"
+                    className="main-text-input"
+                    error={errors?.confirm_password?.message}
+                    type="password"
+                    register={register}
                     style={{
                       borderColor: errors.confirm_password ? "red" : "blue",
                     }}
-                    className="register-main-text-input"
-                    placeholder="Enter your password again"
-                    {...register("confirm_password", {
-                      required: true,
-                      validate: (val) => {
-                        if (watch("password") != val) {
-                          return "Your passwords do no match";
-                        }
-                      },
-                    })}
                   />
-                  {errors.confirm_password && (
-                    <p className="input-error-message">
-                      {errors.confirm_password.message}
-                    </p>
-                  )}
-                </label>
-              </>
-            )}
-            {renderButton()}
-          </form>
-        </div>
+                </>
+              )}
+              {renderButton()}
+            </form>
+            <p className="already-last-text">
+              You already have an account? Login to Homerun
+            </p>
+          </div>
+        )}
+
+        {formSubmitted && <OtpComponent />}
       </div>
-      <MainSideBar
-        handleOpenSideBar={handleOpenSideBar}
-        handleCloseSideBar={handleCloseSideBar}
-        openSideBar={openSideBar}
-      />
     </div>
   );
 };

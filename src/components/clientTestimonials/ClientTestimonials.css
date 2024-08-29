@@ -1,74 +1,75 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
-.client-test-container {
-  padding: 45px 5%;
+.testimonial-main-container {
+  padding: 15px 5%;
+  display: flex;
+  flex-direction: column;
 }
-.testimonial-header {
-  text-align: center;
+.slider-container {
+  width: 85dvw;
+  margin-top: 20px;
 }
-.testimonial-header p {
-  font-size: 1.5em;
-  font-family: "Josefin Slab", serif;
-  margin-top: 10px;
-  margin-bottom: 25px;
+.testimonial-header-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
 }
-.testimonial-card {
-  background-color: #fff;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  height: auto;
-  padding: 5%;
-  border-radius: 10px;
-  text-align: center;
+.testimonial-content-wrapper p {
+  font-size: 1.35em;
+  font-weight: lighter;
+}
+.testimonial-header-wrapper h1 {
+  color: #ff6600;
+  font-size: 1.35em;
+}
+.tester {
+  background-color: red;
+}
+.terstimonial-logo {
+  width: 120px;
+  height: 32px;
+  margin-left: 5px;
+}
+.client-test-card-main-wrapper {
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  text-align: left;
+  background-color: yellow; */
+}
+.header-container {
   width: 100%;
-  max-width: 400px;
-  margin-top: 20px;
+  padding: 15px 5%;
 }
-.testinonia-img {
-  display: block;
-  max-width: 60px;
-  margin-right: auto;
-  margin-left: auto;
-  /* width: 60px; */
+.client-card {
+  /* background-color: red;
+  padding: 3%; */
 }
-.testimonial-card p {
-  font-size: 1.5em;
-  font-family: "Josefin Slab", serif;
-  margin-top: 20px;
-}
-
 @media (min-width: 475px) {
-  .testimonial-card {
-    margin-right: auto;
-    margin-left: auto;
-  }
 }
 @media (min-width: 640px) {
-  .testimonial-card {
-    margin-right: auto;
-    margin-left: auto;
-  }
 }
 
 @media (min-width: 768px) {
-  .testimonial-card {
-    width: 48%;
-  }
-  .testimonia-card-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
 }
 
 @media (min-width: 1024px) {
-  .testimonia-card-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  .header-container {
+    width: 80%;
   }
 }
 
 @media (min-width: 1280px) {
+  .testimonial-main-container {
+    flex-direction: row;
+  }
+  .slider-container {
+    width: 50dvw;
+  }
+  .header-container {
+    width: 50%;
+  }
 }
 
 @media (min-width: 1536px) {
