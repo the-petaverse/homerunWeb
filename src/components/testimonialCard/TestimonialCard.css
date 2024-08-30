@@ -10,6 +10,7 @@
   border: solid 0.5px gray;
   width: 95% !important;
   padding: 8%;
+  gap: 30px;
   border-radius: 15px;
   font-size: 1.3em;
 }

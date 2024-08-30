@@ -10,7 +10,7 @@ const Footer = () => {
         {/* <Hq /> */}
         <div className="footer-menu-wrapper">
           <div className="company-wrapper ">
-            <img src={Logo} alt="logo" className="footer-logo" />
+           <Link to="/"><img src={Logo} alt="logo" className="footer-logo" /></Link>
           </div>
         </div>
       </div>

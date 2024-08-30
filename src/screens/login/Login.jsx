@@ -93,7 +93,7 @@ const Login = () => {
               <p className="already-sign-in">You don’t have an account?</p>
 
               <p>
-                <span className="sign-up-span">Sign up</span> to Homerun
+                <span ><Link to="/register" className="sign-up-span">Sign up</Link></span> to Homerun
               </p>
             </div>
           </form>

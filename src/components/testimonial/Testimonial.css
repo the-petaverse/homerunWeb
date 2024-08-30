@@ -41,12 +41,12 @@
 }
 .store-logo-wrapper {
   background-color: rgb(241, 238, 238);
-  margin-left: -15px;
   cursor: pointer;
 }
 .google-icon,
 .iphone-icon {
-  width: 90%;
+  width: 100%;
+  border-radius: 5px;
 }
 
 .another-color-for-wrapper {
@@ -60,10 +60,11 @@
   background-color: #f2f2fb;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 2%;
+  align-items: center; /* Vertically center the icons */
+  padding: 10px;
+  gap: 10px; 
 }
+
 .happy-detail-wrapper {
   display: flex;
 }
