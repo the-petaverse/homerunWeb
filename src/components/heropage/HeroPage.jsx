@@ -24,7 +24,7 @@ const HeroPage = () => {
           </div>
         </div>
         <div className="banner-container">
-          <img src={HeroImage} alt="hero-iage" className="hero-img" />
+          <img src={HeroImage} alt="hero-image" className="hero-img" />
         </div>
       </div>
       <div className="card-display-container">

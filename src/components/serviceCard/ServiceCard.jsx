@@ -10,11 +10,20 @@ import HotelImage from "../../assets/hotel.png";
 import PropertyImage from "../../assets/property.png";
 import { Link } from "react-router-dom";
 
-const ServiceCard = ({ cardImage }) => {
-  const handleServiceClick = (heading) => {
-    console.log(heading);
+const ServiceCard = () => {
+  const services = [
+    { id: 1, name: "transcript", image: TransImage },
+    { id: 2, name: "grocery", image: GrocyImage },
+    { id: 3, name: "surprise", image: SurpriseImage },
+    { id: 4, name: "hotel", image: HotelImage },
+    { id: 5, name: "property", image: PropertyImage },
+  ];
+
+  const handleServiceClick = (serviceName) => {
+    console.log(serviceName);
   };
-  var settings = {
+
+  const settings = {
     dots: false,
     infinite: true,
     speed: 500,
@@ -52,37 +61,25 @@ const ServiceCard = ({ cardImage }) => {
       },
     ],
   };
+
   return (
     <>
       <Slider {...settings}>
-        <div className="serviceCard-main-wrapper">
-          <Link
-            to={"/request-category/transcript"}
-            // onClick={() => handleServiceClick("transcript")}
-          >
-            <img src={TransImage} className="card-image-wrapper" />
-          </Link>
-        </div>
-        <div className="serviceCard-main-wrapper">
-          <Link to={"/request-category/grocery"}>
-            <img src={GrocyImage} className="card-image-wrapper" />
-          </Link>
-        </div>
-        <div className="serviceCard-main-wrapper">
-          <Link to={"/request-category/surprise"}>
-            <img src={SurpriseImage} className="card-image-wrapper" />
-          </Link>
-        </div>
-        <div className="serviceCard-main-wrapper">
-          <Link to={"/request-category/hotel"}>
-            <img src={HotelImage} className="card-image-wrapper" />
-          </Link>
-        </div>
-        <div className="serviceCard-main-wrapper">
-          <Link to={"/request-category/property"}>
-            <img src={PropertyImage} className="card-image-wrapper" />
-          </Link>
-        </div>
+        {services.map((service) => (
+          <div className="serviceCard-main-wrapper" key={service.id}>
+             
+            <Link to={`/request-category/${service.name}`}>
+              <img
+                src={service.image}
+                className="card-image-wrapper"
+                alt={service.name}
+                onClick={() => handleServiceClick(service.name)}
+              />
+             
+            </Link>
+              </div>
+         
+        ))}
       </Slider>
     </>
   );

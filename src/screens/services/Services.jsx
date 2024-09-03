@@ -26,6 +26,50 @@ const Services = () => {
   const handleCloseSideBar = () => {
     setOpenSideBar(false);
   };
+
+
+  const serviceData = [
+    {
+      id: 1,
+      title: "Transcript And Document Retrieval",
+      description:
+        "Need important documents from institutions back home? We obtain credentials and other necessary documents on your behalf, saving you time and hassle.",
+      imageSrc: TranscriptImage,
+      link: "/request-category/transcript",
+    },
+    {
+      id: 2,
+      title: "Grocery and Food Delivery",
+      description:
+        "Enjoy the convenience of having groceries and food items delivered to your door, both locally and internationally. Freshness and quality are guaranteed with every delivery.",
+      imageSrc: GrocyImage,
+      link: "/request-category/grocery",
+    },
+    {
+      id: 3,
+      title: "Surprise Packages",
+      description:
+        "Add a touch of joy to your day with our surprise packages. Whether it's a gift for a loved one or a treat for yourself, we deliver delightful surprises that brighten your day.",
+      imageSrc: SurpriseImage,
+      link: "/request-category/surprise",
+    },
+    {
+      id: 4,
+      title: "Hotel and Car Booking",
+      description:
+        "Secure hotel accommodations and recreation centers effortlessly. Whether for business or leisure, we ensure your stay is comfortable and enjoyable.",
+      imageSrc: HotelImage,
+      link: "/request-category/hotel",
+    },
+    {
+      id: 5,
+      title: "Property Inspection",
+      description:
+        "Seamlessly acquire property in your home country while you’re abroad. Our expert team will handle every detail, ensuring a smooth and stress-free process.",
+      imageSrc: PropertyImage,
+      link: "/request-category/property",
+    },
+  ];
   return (
     <>
       <Navbar handleOpenSideBar={handleOpenSideBar} />
@@ -35,7 +79,11 @@ const Services = () => {
         </div>
         <div className="serices-header-wrapper">
           <div className="header-image-wrapper">
-            <img src={Service} alt="service-image" className="service-image" />
+            <img
+              src={Service}
+              alt="service-image"
+              className="service-image"
+            />
           </div>
           <div className="service-image-container">
             <p>
@@ -47,90 +95,22 @@ const Services = () => {
           </div>
         </div>
         <div className="service-cards-wrapper">
-          <div className="services-card">
-            <img
-              src={TranscriptImage}
-              alt="transcript"
-              className="service-images"
-            />
-            <div className="card-right-holder">
-              <h1>Transcript And Document Retrieval</h1>
-              <p>
-                Need important documents from institutions back home? We obtain
-                credeimport Hq from; ntials and other necessary documents on
-                your behalf, saving you time and hassle.
-              </p>
-              <div className="service-btn">
-                <Link to={"/request-category/transcript"}>
-                  Post this request
-                </Link>
+          {serviceData.map((service) => (
+            <div className="services-card" key={service.id}>
+              <img
+                src={service.imageSrc}
+                alt={service.title}
+                className="service-images"
+              />
+              <div className="card-right-holder">
+                <h1>{service.title}</h1>
+                <p>{service.description}</p>
+                <div className="service-btn">
+                  <Link to={service.link}>Post this request</Link>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="services-card">
-            <img src={GrocyImage} alt="transcript" className="service-images" />
-            <div className="card-right-holder">
-              <h1>Grocery and Food Delivery</h1>
-              <p>
-                Enjoy the convenience of having groceries and food items
-                delivered to your door, both locally and internationally.
-                Freshness and quality are guaranteed with every delivery.
-              </p>
-              <div className="service-btn">
-                <Link to={"/request-category/grocery"}>Post this request</Link>
-              </div>
-            </div>
-          </div>
-          <div className="services-card">
-            <img
-              src={SurpriseImage}
-              alt="transcript"
-              className="service-images"
-            />
-            <div className="card-right-holder">
-              <h1>Surprise Packages</h1>
-              <p>
-                Add a touch of joy to your day with our surprise packages.
-                Whether it's a gift for a loved one or a treat for yourself, we
-                deliver delightful surprises that brighten your day.
-              </p>
-              <div className="service-btn">
-                <Link to={"/request-category/surprise"}>Post this request</Link>
-              </div>
-            </div>
-          </div>
-          <div className="services-card">
-            <img src={HotelImage} alt="transcript" className="service-images" />
-            <div className="card-right-holder">
-              <h1>Hotel and Car Booking</h1>
-              <p>
-                Secure hotel accommodations and recreation centers effortlessly.
-                Whether for business or leisure, we ensure your stay is
-                comfortable and enjoyable.
-              </p>
-              <div className="service-btn">
-                <Link to={"/request-category/hotel"}>Post this request</Link>
-              </div>
-            </div>
-          </div>
-          <div className="services-card">
-            <img
-              src={PropertyImage}
-              alt="transcript"
-              className="service-images"
-            />
-            <div className="card-right-holder">
-              <h1>Property Inspection</h1>
-              <p>
-                Seamlessly acquire property in your home country while you’re
-                abroad. Our expert team will handle every detail, ensuring a
-                smooth and stress-free process.
-              </p>
-              <div className="service-btn">
-                <Link to={"/request-category/property"}>Post this request</Link>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
       <Footer />

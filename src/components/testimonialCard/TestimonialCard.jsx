@@ -23,7 +23,7 @@ const TestimonialCard = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2.2,
+    slidesToShow: 2,
     slidesToScroll: 1,
     initialSlide: 1,
     responsive: [

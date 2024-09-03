@@ -72,6 +72,10 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
+           path: "dashboard",
+          element: <Dashboard />,
+        },
+  {
     path: "/",
     element: <ProtectedRoutes />,
     children: [
@@ -81,16 +85,16 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/",
-    element: <PrivateRoute />,
-    children: [
-      {
-        path: "dashboard",
-        element: <Dashboard />,
-      },
-    ],
-  },
+  // {
+  //   path: "/",
+  //   element: <PrivateRoute />,
+  //   children: [
+  //     {
+  //       path: "dashboard",
+  //       element: <Dashboard />,
+  //     },
+  //   ],
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

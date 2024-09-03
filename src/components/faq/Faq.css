@@ -49,6 +49,12 @@
 .accordion-icon {
   width: 30px;
   height: 30px;
+  transition: transform 0.1s ease;
+}
+
+
+.accordion-header-wrapper:hover .accordion-icon {
+  transform: rotate(90deg); /* Rotate the icon 90 degrees to point downwards */
 }
 
 @media (min-width: 475px) {

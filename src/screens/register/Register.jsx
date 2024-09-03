@@ -22,7 +22,7 @@ const countries = [
   { id: "2", title: "USA" },
   { id: "3", title: "Kenya" },
 ];
-const staties = [
+const states = [
   { id: "1", countryid: "1", title: "Lagos" },
   { id: "2", countryid: "1", title: "Ondo" },
   { id: "3", countryid: "2", title: "Texas" },
@@ -71,7 +71,7 @@ const Register = () => {
     cookies.set("resgitered", registerData.message);
   }
   const handleSelectedState = () => {
-    const stateFiltered = staties.filter(
+    const stateFiltered = states.filter(
       (statedata) => statedata.countryid === watchCountry
     );
     setMyState(stateFiltered);
@@ -277,7 +277,7 @@ const Register = () => {
                     require="State is required"
                     placeholder="State name"
                     error={errors.state?.message}
-                    data={staties}
+                    data={states}
                   />
                   <CustomSelect
                     name="city"
@@ -317,7 +317,7 @@ const Register = () => {
               {renderButton()}
             </form>
             <p className="already-last-text">
-              You already have an account? Login to Homerun
+              You already have an account? <span ><Link to="/login" className="login-link">Login</Link></span> to Homerun
             </p>
           </div>
         )}
