@@ -9,7 +9,7 @@ import SurpriseSubServices from "../../components/surpriseSubServices/SurpriseSu
 
 const CategoriesDetailPage = () => {
   const { category } = useParams();
-  console.log(category);
+  console.log({category});
 
   return (
     <div>

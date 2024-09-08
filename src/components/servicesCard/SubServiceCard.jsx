@@ -46,6 +46,8 @@ const SubServiceCard = ({ category }) => {
     isLoading: subSuccess,
   } = useGetRequestSubCategoryQuery();
 
+  console.log({subData}, 'wetin be this')
+
   // if (isLoading) {
   //   console.log("isLoading");
   // }

@@ -10,6 +10,7 @@
   /* height: 45dvh; */
   display: flex;
   border-radius: 60px;
+  height: auto;
   /* border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px; */
 }

@@ -21,7 +21,9 @@
     "react-slick": "^0.30.2",
     "react-spinners": "^0.14.1",
     "slick-carousel": "^1.8.1",
-    "universal-cookie": "^7.1.4"
+    "universal-cookie": "^7.1.4",
+    "heroicons": "^2.0.18",
+    "iconsax-react": "^0.0.8"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

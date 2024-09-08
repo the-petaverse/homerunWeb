@@ -72,9 +72,9 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
-           path: "dashboard",
-          element: <Dashboard />,
-        },
+    path: "dashboard",
+    element: <Dashboard />,
+  },
   {
     path: "/",
     element: <ProtectedRoutes />,
