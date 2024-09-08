@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import LoginImage from "../../assets/login.png";
 import { useForm } from "react-hook-form";
 import { Navigate, useNavigate } from "react-router-dom";
-import { useVerifyUserMutation } from "../../services/auth/authApi";
+import { useVerifyUserMutation } from "../../../services/auth/authApi";
 // import BackIcon from "../../assets/back-arrow.png";
 
 // import WavyCheckIcon from "../../assets/wavy-check.png";
 import "./Verify.css";
 import Cookies from "universal-cookie";
-import OtpComponent from "../../components/otpComponent/OtpComponent";
-import CustomSuccessPage from "../../components/customSuccessPage/CustomSuccessPage";
+import OtpComponent from "../../../components/otpComponent/OtpComponent";
+import CustomSuccessPage from "../../../components/customSuccessPage/CustomSuccessPage";
 
 const Verify = () => {
   const cookies = new Cookies();

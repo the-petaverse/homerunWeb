@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Services from "../services/Services";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/footer/Footer";
-import MainSideBar from "../../components/mainSideBar/MainSideBar";
+import Navbar from "../../../components/Navbar/Navbar";
+import Footer from "../../../components/footer/Footer";
+import MainSideBar from "../../../components/mainSideBar/MainSideBar";
 
 const ErrandLists = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -16,9 +16,9 @@ const ErrandLists = () => {
   };
   return (
     <div>
-      <Navbar handleOpenSideBar={handleOpenSideBar} />
+      {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
       <Services />
-      <Footer />
+      {/* <Footer /> */}
       <MainSideBar
         handleOpenSideBar={handleOpenSideBar}
         handleCloseSideBar={handleCloseSideBar}

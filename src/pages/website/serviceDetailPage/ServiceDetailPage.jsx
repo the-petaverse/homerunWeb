@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/footer/Footer";
+import Navbar from "../../../components/Navbar/Navbar";
+import Footer from "../../../components/footer/Footer";
 import BackIcon from "../../assets/back-arrow.png";
 import "./ServiceDetailPage.css";
-import NewRequest from "../../components/newRequest/NewRequest";
+import NewRequest from "../../../components/newRequest/NewRequest";
 import {
   useGetRequestSubCategoryQuery,
   useGetRequestCategoriesQuery,
-} from "../../services/requestsCategory/requestApi";
-import CustomNote from "../../components/customNote/CustomNote";
-import CustomEstimation from "../../components/customEstimation/CustomEstimation";
+} from "../../../services/requestsCategory/requestApi";
+import CustomNote from "../../../components/customNote/CustomNote";
+import CustomEstimation from "../../../components/customEstimation/CustomEstimation";
 
 const ServiceDetailPage = () => {
   const [serviceData, setServiceData] = useState([]);
@@ -43,7 +43,7 @@ const ServiceDetailPage = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="service-detail-main-container">
         <div className="service-left-container">
           <div className="back-arrow-wrapper">
@@ -75,7 +75,7 @@ const ServiceDetailPage = () => {
           <CustomEstimation />
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

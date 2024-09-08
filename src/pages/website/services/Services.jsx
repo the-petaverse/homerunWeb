@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import "./Services.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/footer/Footer";
-import Service from "../../assets/service.png";
-import TranscriptImage from "../../assets/service-trans.png";
-import GrocyImage from "../../assets/service-grocy.png";
-import SurpriseImage from "../../assets/service-surprise.png";
-import HotelImage from "../../assets/service-hotel.png";
-import PropertyImage from "../../assets/service-property.png";
-import MainSideBar from "../../components/mainSideBar/MainSideBar";
-import Hq from "../../components/hq/Hq";
+import Service from "../../../assets/service.png";
+import TranscriptImage from "../../../assets/service-trans.png";
+import GrocyImage from "../../../assets/service-grocy.png";
+import SurpriseImage from "../../../assets/service-surprise.png";
+import HotelImage from "../../../assets/service-hotel.png";
+import PropertyImage from "../../../assets/service-property.png";
+import MainSideBar from "../../../components/mainSideBar/MainSideBar";
+// import Hq from "../../components/hq/Hq";
 
-import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
+import { useGetRequestCategoriesQuery } from "../../../services/requestsCategory/requestApi";
 import { Link } from "react-router-dom";
 
 const Services = () => {
@@ -72,7 +70,7 @@ const Services = () => {
   ];
   return (
     <>
-      <Navbar handleOpenSideBar={handleOpenSideBar} />
+      {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
       <div className="services-main-container">
         <div>
           <h1>What We Do</h1>
@@ -113,7 +111,7 @@ const Services = () => {
           ))}
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
       <MainSideBar
         handleOpenSideBar={handleOpenSideBar}
         handleCloseSideBar={handleCloseSideBar}

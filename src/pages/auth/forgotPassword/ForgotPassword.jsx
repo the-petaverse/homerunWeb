@@ -5,10 +5,10 @@ import "./ForgotPassword.css";
 import LogoMark from "../../assets/logomark.png";
 
 import BackIcon from "../../assets/back-arrow.png";
-import OtpComponent from "../../components/otpComponent/OtpComponent";
-import ResetPassword from "../../components/resetPassword/ResetPassword";
+import OtpComponent from "../../../components/otpComponent/OtpComponent";
+import ResetPassword from "../../../components/resetPassword/ResetPassword";
 import { Link } from "react-router-dom";
-import CustomSuccessPage from "../../components/customSuccessPage/CustomSuccessPage";
+import CustomSuccessPage from "../../../components/customSuccessPage/CustomSuccessPage";
 
 const ForgotPassword = () => {
   const [emailSent, setEmailSent] = useState(false);

@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import "./About.css";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/footer/Footer";
-import AboutUsImage from "../../assets/about-us.png";
-import MainSideBar from "../../components/mainSideBar/MainSideBar";
-import Team from "../../components/team/Team";
-import MissionVision from "../../components/missionVision/MissionVision";
-import Hq from "../../components/hq/Hq";
+import AboutUsImage from "../../../assets/about-us.png";
+import Team from "../../../components/team/Team";
+import MissionVision from "../../../components/missionVision/MissionVision";
 const About = () => {
   // const [openSideBar, setOpenSideBar] = useState(false);
 
@@ -18,7 +14,6 @@ const About = () => {
   // };
   return (
     <>
-      <Navbar />
       <div className="about-us-container">
         <div className="about-header-wrapper">
           <div className="about-details-wrapper">
@@ -63,7 +58,7 @@ const About = () => {
       </section>
       <MissionVision />
       {/* <Hq /> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

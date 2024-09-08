@@ -1,17 +1,26 @@
-import React, { useState } from "react";
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/footer/Footer";
-import Home from "./screens/homePage/Home";
-import MainSideBar from "./components/mainSideBar/MainSideBar";
-import Hq from "./components/hq/Hq";
+import { Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import WebsiteLayout from "./layout/WebsiteLayout";
+import { websiteRoutes } from "./router";
+import Preloader from "./components/preloader/Preloader";
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Home />
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<WebsiteLayout />}>
+        {websiteRoutes.map(({ path, component: Component }, index) => (
+          <Route
+            path={path}
+            key={index}
+            element={
+              <Suspense fallback={<Preloader />}>
+                <Component />
+              </Suspense>
+            }
+          />
+        ))}
+      </Route>
+    </Routes>
   );
 };
 

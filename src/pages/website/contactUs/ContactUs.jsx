@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/footer/Footer";
 import { useForm } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";
-import LocationIcon from "../../assets/hq.png";
-import LocationMap from "../../assets/map.png";
+import { useNavigate } from "react-router-dom";
 import "./ContactUs.css";
-import MainSideBar from "../../components/mainSideBar/MainSideBar";
-import ContactHeader from "../../components/contactHeader/ContactHeader";
-import FaqCard from "../../components/faqCard/FaqCard";
-import Hq from "../../components/hq/Hq";
+import MainSideBar from "../../../components/mainSideBar/MainSideBar";
+import ContactHeader from "../../../components/contactHeader/ContactHeader";
+import FaqCard from "../../../components/faqCard/FaqCard";
 
 const ContactUs = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -39,7 +34,7 @@ const ContactUs = () => {
   };
   return (
     <>
-      <Navbar handleOpenSideBar={handleOpenSideBar} />
+      {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
       <div className="contact-main-container">
         <ContactHeader />
         <div className="contact-main-wrapper">
@@ -174,7 +169,7 @@ const ContactUs = () => {
         openSideBar={openSideBar}
       />
       {/* <Hq /> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

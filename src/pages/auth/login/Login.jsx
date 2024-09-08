@@ -7,8 +7,8 @@ import LogoMark from "../../assets/logomark.png";
 import HomerunIcon from "../../assets/homerun-icon.png";
 import Cookies from "universal-cookie";
 
-import { useLoginUserMutation } from "../../services/auth/authApi";
-import CustomImput from "../../components/customImput/CustomImput";
+import { useLoginUserMutation } from "../../../services/auth/authApi";
+import CustomImput from "../../../components/customImput/CustomImput";
 
 const Login = () => {
   const cookies = new Cookies();

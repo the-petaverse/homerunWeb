@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // Icon for open state
-import {ArrowDown2, ArrowRight2 } from "iconsax-react";
+import { ArrowDown2, ArrowRight2 } from "iconsax-react";
 // import { IoChevronForwardSharp } from "react-icons/io5";
 
 const accordionData = [

@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../../../components/Navbar/Navbar";
 import LoginImage from "../../assets/login.png";
 import ProfileImage from "../../assets/profile.png";
 import LogoMark from "../../assets/logomark.png";
 import HomerunIcon from "../../assets/homerun-icon.png";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate, Link, Navigate } from "react-router-dom";
-import { useRegisterUserMutation } from "../../services/auth/authApi";
+import { useRegisterUserMutation } from "../../../services/auth/authApi";
 import backButton from "../../assets/form-back.png";
 import "./Register.css";
-import MainSideBar from "../../components/mainSideBar/MainSideBar";
+import MainSideBar from "../../../components/mainSideBar/MainSideBar";
 import Cookies from "universal-cookie";
-import OtpComponent from "../../components/otpComponent/OtpComponent";
-import CustomSelect from "../../components/customSelect/CustomSelect";
-import CustomImput from "../../components/customImput/CustomImput";
+import OtpComponent from "../../../components/otpComponent/OtpComponent";
+import CustomSelect from "../../../components/customSelect/CustomSelect";
+import CustomImput from "../../../components/customImput/CustomImput";
 
 const countries = [
   { id: "1", title: "Nigeria" },
