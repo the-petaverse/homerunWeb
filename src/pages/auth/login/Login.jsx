@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Outlet, Link } from "react-router-dom";
 import "./Login.css";
-import LoginImage from "../../assets/login.png";
-import LogoMark from "../../assets/logomark.png";
-import HomerunIcon from "../../assets/homerun-icon.png";
+import LoginImage from "../../../assets/login.png";
+import LogoMark from "../../../assets/logomark.png";
+import HomerunIcon from "../../../assets/homerun-icon.png";
 import Cookies from "universal-cookie";
 
 import { useLoginUserMutation } from "../../../services/auth/authApi";

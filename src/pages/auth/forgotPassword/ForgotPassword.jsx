@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import LoginImage from "../../assets/login.png";
+import LoginImage from '../../../assets/login.png'
 import "./ForgotPassword.css";
-import LogoMark from "../../assets/logomark.png";
+import LogoMark from "../../../assets/logomark.png";
 
-import BackIcon from "../../assets/back-arrow.png";
+import BackIcon from "../../../assets/back-arrow.png";
 import OtpComponent from "../../../components/otpComponent/OtpComponent";
 import ResetPassword from "../../../components/resetPassword/ResetPassword";
 import { Link } from "react-router-dom";
