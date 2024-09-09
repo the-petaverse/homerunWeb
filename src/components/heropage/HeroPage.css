@@ -9,7 +9,8 @@
   background-image: url("../../assets/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
-
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 .banner-container {
   padding-top: 5%;
@@ -47,7 +48,8 @@
   border-radius: 30px;
   font-size: 1.2em;
   font-weight: 500;
-  margin-top: 500px;
+  text-decoration: none;
+  /* margin-top: 500px; */
 }
 .card-display-container {
   margin-top: -100px;

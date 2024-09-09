@@ -10,17 +10,17 @@ import EverythinYouNeed from "../../../components/everything/EverythinYouNeed";
 import Sustainability from "../../../components/sustainability/Sustainability";
 // import Modal from "../../components/modal/Modal";
 import Faq from "../../../components/faq/Faq";
-
+import './Home.css'
 const Home = () => {
   return (
-    <>
+    <div className="home-container">
       <HeroPage />
       <Testimonial />
       <EverythinYouNeed />
       <ClientTestimonials />
       <Sustainability />
       <Faq />
-    </>
+    </div>
   );
 };
 

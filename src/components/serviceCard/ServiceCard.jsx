@@ -67,7 +67,6 @@ const ServiceCard = () => {
       <Slider {...settings}>
         {services.map((service) => (
           <div className="serviceCard-main-wrapper" key={service.id}>
-             
             <Link to={`/request-category/${service.name}`}>
               <img
                 src={service.image}
@@ -75,10 +74,8 @@ const ServiceCard = () => {
                 alt={service.name}
                 onClick={() => handleServiceClick(service.name)}
               />
-             
             </Link>
-              </div>
-         
+          </div>
         ))}
       </Slider>
     </>

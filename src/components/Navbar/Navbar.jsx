@@ -74,10 +74,12 @@ const Navbar = () => {
           className="icon-image-nav"
           onClick={handleOpenSideBar}
         />
+
+        {openRequestNav && (
+          <RequestNavModal handleOpenRequestNav={handleOpenRequestNav} />
+        )}
       </div>
-      {openRequestNav && (
-        <RequestNavModal handleOpenRequestNav={handleOpenRequestNav} />
-      )}
+
       {openSideBar && <MainSideBar handleOpenSideBar={handleOpenSideBar} />}
     </>
   );

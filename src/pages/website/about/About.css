@@ -3,9 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
 .about-us-container {
-  padding: 15px 5%;
-  position: relative;
+  padding: 15px 5px;
+  /* position: relative; */
   padding-top: 145px;
+  border: 20px solid yellow;
   /* margin-top: 25px; */
   background-color: rgb(202, 198, 198);
   /* padding-bottom: 100%; */
@@ -14,6 +15,7 @@
 .about-header-wrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .about-img {
   width: 100%;
@@ -21,7 +23,10 @@
 }
 .detail-wrapper {
   width: 100%;
-  position: relative;
+  position: absolute;
+  border: 10px solid red;
+  right: 0;
+  top: 80%;
 }
 .about-top-detail {
   padding: 2%;
@@ -40,9 +45,13 @@
   /* text-align: justify; */
 }
 .about-details-wrapper {
+  width: 100%;
+  height: 500px;
 }
 .who-we-are-image {
   width: 100%;
+  height: 100%;
+  border: 20px solid green;
   margin-bottom: -30px;
   /* position: relative; */
   margin-top: 25px;

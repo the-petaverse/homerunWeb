@@ -10,7 +10,6 @@
   position: relative;
   display: flex;
   height: 100%;
-  flex-direction: row;
   overflow-y: hidden;
   overflow-x: hidden;
 }

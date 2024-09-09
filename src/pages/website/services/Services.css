@@ -4,31 +4,63 @@
 
 .services-main-container {
   /* padding: 90px ; */
-  padding-top: 155px;
-  padding-bottom: 155px;
-  background-color: rgb(188, 186, 186);
-  width: 100dvw;
-   display: flex; 
-   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  /* padding-top: 155px; */
+  /* padding-bottom: 155px; */
+  background-color: #F2F2FB;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 155px 0;
+  /* border: 10px solid red; */
+  /* justify-content: space-around; */
+  /* align-items: center; */
+}
+
+.services-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 30px;
+}
+
+h4 {
+font-size: 1.32rem;
+color: #333;
+font-weight: 300;
+}
+
+span {
+  font-weight: 600;
+}
+
+
+h1 {
+  font-size: 2rem;
+}
+/* h1 {
+  text-align: left;
+} */
+
+.link {
+  text-decoration: none;
 }
 .service-cards-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-} 
+}
 .header-image-wrapper {
-  width: 80vw;
-  margin-bottom: -10%;
-
-  
-} 
+  width: 500px;
+  /* margin-bottom: -10%; */
+  /* border: 10px solid red; */
+}
 
 .service-image {
-  width: 120%;
+  width: 100%;
   padding: 50px;
-  
+  height: 600px;
+  /* border: 10px solid green; */
 }
 .serices-header-wrapper {
   display: flex;
@@ -38,14 +70,14 @@
 }
 .service-image-container {
   background-color: #262262;
-  position: relative;
+  position: absolute;
   color: #fff;
-  width: 98%;
-  right: 0%;
-  
-  
+  width: 100%;
+  height: auto;
+  right: 0;
+  top: 30%;
   /* height: 15dvw; */
-  padding: 5%;
+  padding: 20px;
   border-radius: 15px;
 }
 .service-image-container p {
@@ -94,12 +126,15 @@
   text-align: center;
   color: #000;
 }
-@media (min-width: 475px) {
-}
-@media (min-width: 640px) {
+
+@media (max-width: 768px) {
+  .services-main-container {
+    padding: 20px;
+  }
 }
 
 @media (min-width: 768px) {
+
   .service-cards-wrapper {
     width: 100%;
   }
@@ -127,23 +162,23 @@
 
 @media (min-width: 1024px) {
   .service-cards-wrapper {
-    width: 110%;
+    width: 100%;
   }
   .serices-header-wrapper {
     flex-direction: row;
   }
   .header-image-wrapper {
-    width: 90%;
+    width: 100%;
     margin-bottom: 1px;
   }
-  .service-image-container {
+  /* .service-image-container {
     width: 40%;
     margin-left: -180px;
     margin-top: 50px;
     height: 15%;
     padding: 2%;
     border-radius: 15px;
-  }
+  } */
   .service-image-container p {
     font-size: 1.35em;
   }

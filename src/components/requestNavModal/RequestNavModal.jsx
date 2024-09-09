@@ -17,6 +17,7 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
         <div className="top-request-nav-content">
           <Link
             to={"/request-category/transcript"}
+            className="nav-link"
             onClick={handleOpenRequestNav}
           >
             <h1>Transcript & Doc...</h1>
@@ -29,7 +30,11 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
           <img src={GrocyIcon} alt="transcript icon" />
         </div>
         <div className="top-request-nav-content">
-          <Link to={"/request-category/grocery"} onClick={handleOpenRequestNav}>
+          <Link
+            to={"/request-category/grocery"}
+            className="nav-link"
+            onClick={handleOpenRequestNav}
+          >
             <h1>Grocery & Food</h1>
             <p>Groceries and food items delivered to your door...</p>
           </Link>
@@ -42,6 +47,7 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
         <div className="top-request-nav-content">
           <Link
             to={"/request-category/surprise"}
+            className="nav-link"
             onClick={handleOpenRequestNav}
           >
             <h1>Surprise Packages</h1>
@@ -54,7 +60,11 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
           <img src={HotelIcon} alt="transcript icon" />
         </div>
         <div className="top-request-nav-content">
-          <Link to={"/request-category/hotel"} onClick={handleOpenRequestNav}>
+          <Link
+            to={"/request-category/hotel"}
+            className="nav-link"
+            onClick={handleOpenRequestNav}
+          >
             <h1>Hotel & Car Booking</h1>
             <p>Secure accommodations, recreation centers and cars...</p>
           </Link>
@@ -67,6 +77,7 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
         <div className="top-request-nav-content">
           <Link
             to={"/request-category/property"}
+            className="nav-link"
             onClick={handleOpenRequestNav}
           >
             <h1>Property Inspection</h1>

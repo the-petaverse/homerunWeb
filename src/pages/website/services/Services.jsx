@@ -25,7 +25,6 @@ const Services = () => {
     setOpenSideBar(false);
   };
 
-
   const serviceData = [
     {
       id: 1,
@@ -72,16 +71,15 @@ const Services = () => {
     <>
       {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
       <div className="services-main-container">
-        <div>
+        <div className="services-heading">
+          <h4>
+            Home / <span> Services</span>
+          </h4>
           <h1>What We Do</h1>
         </div>
         <div className="serices-header-wrapper">
           <div className="header-image-wrapper">
-            <img
-              src={Service}
-              alt="service-image"
-              className="service-image"
-            />
+            <img src={Service} alt="service-image" className="service-image" />
           </div>
           <div className="service-image-container">
             <p>
@@ -104,7 +102,9 @@ const Services = () => {
                 <h1>{service.title}</h1>
                 <p>{service.description}</p>
                 <div className="service-btn">
-                  <Link to={service.link}>Post this request</Link>
+                  <Link to={service.link} className="link">
+                    Post this request
+                  </Link>
                 </div>
               </div>
             </div>
