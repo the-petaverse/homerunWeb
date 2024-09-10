@@ -55,9 +55,6 @@
 }
 
 
-
-
-
 .submit-btn {
   width: 100%;
   background-color: #766D6E;
@@ -71,7 +68,9 @@
 .terms-note-right {
   display: flex;
   flex-direction: column;
+  /* justify-content: space-between; */
   gap: 40px;
+  align-items: start;
   /* justify-content: space-between; */
   /* border: 10px solid red; */
   /* height: 100%; */
