@@ -6,11 +6,15 @@
   /* margin-right: -110px; */
   /* margin-right: -500px; */
 }
+
 .card-image-wrapper {
   border: solid 10.5px rgb(77, 76, 123) !important;
   width: 100% !important;
   /* height: 50dvh; */
   border-radius: 26px;
+}
+.card-image-wrapper:hover {
+  border: solid red 10px;
 }
 
 .slick-arrow::before {

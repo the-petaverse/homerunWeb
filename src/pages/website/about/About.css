@@ -2,9 +2,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
-.tester {
-  border: solid 1px red;
-}
 .about-us-container {
   padding: 15px 5%;
   position: relative;

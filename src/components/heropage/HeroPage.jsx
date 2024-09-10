@@ -22,11 +22,6 @@ const HeroPage = () => {
             title=" Get Started For Free"
             btnStyles="get-stated-btn"
           />
-          {/* <div className="howitworks-wrapper">
-            <Link to="/register" className="get-stated-btn">
-              Get Started For Free
-            </Link>
-          </div> */}
         </div>
         <div className="banner-container">
           <img src={HeroImage} alt="hero-image" className="hero-img" />
