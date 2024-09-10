@@ -13,7 +13,7 @@ const About = () => {
   //   setOpenSideBar(false);
   // };
   return (
-    <div className="tester">
+    <>
       <div className="about-us-container">
         <div className="about-header-wrapper">
           <div className="about-details-wrapper">
@@ -47,19 +47,14 @@ const About = () => {
             </p>
           </div>
         </div>
-        {/* <MainSideBar
-          handleOpenSideBar={handleOpenSideBar}
-          handleCloseSideBar={handleCloseSideBar}
-          openSideBar={openSideBar}
-        /> */}
       </div>
-      <section>
+      <section className="team-wrapper">
         <Team />
       </section>
       <MissionVision />
       {/* <Hq /> */}
       {/* <Footer /> */}
-    </div>
+    </>
   );
 };
 
