@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import BackIcon from "../../../assets/back-arrow.png";
 import "./ServiceDetailPage.css";
 import NewRequest from "../../../components/newRequest/NewRequest";
@@ -13,11 +13,18 @@ import { ArrowLeft } from "iconsax-react";
 
 const ServiceDetailPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [serviceData, setServiceData] = useState([]);
   const [requestId, setRequestId] = useState();
   const [subRequestId, setSubRequestId] = useState();
   const [formStage, setFormStage] = useState(0);
   const { subcategory } = useParams();
+
+  const { state } = location;
+
+  const category = state.category;
+
+  // console.log({ state });
   const {
     data: subData,
     isLoading,
@@ -26,7 +33,7 @@ const ServiceDetailPage = () => {
     error,
   } = useGetRequestSubCategoryQuery();
 
-  console.log({ subcategory });
+  // console.log({ subcategory });
 
   const filterServcies = () => {
     if (isSuccess) {
@@ -71,6 +78,7 @@ const ServiceDetailPage = () => {
                 formStage={formStage}
                 setFormStage={setFormStage}
                 subcategory={subcategory}
+                category={category}
                 requestId={requestId}
                 subRequestId={subRequestId}
               />

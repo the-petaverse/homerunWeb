@@ -83,6 +83,12 @@
 .payment-btn {
   width: 80%;
 }
+
+.property-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
 @media (max-width: 475px) {
   .payment-btn {
     width: 100%;
