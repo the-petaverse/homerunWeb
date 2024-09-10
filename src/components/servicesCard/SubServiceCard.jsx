@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./SubServiceCard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import SubTranscriptIcon from "../../assets/sub-transcript.png";
 import PropagateLoader from "react-spinners/PropagateLoader";
@@ -33,6 +33,7 @@ const subServiceData = [
   },
 ];
 const SubServiceCard = ({ category }) => {
+  const navigate = useNavigate();
   const [categoryList, setCategoryList] = useState([]);
   const [subCategoryList, setSubCategoryList] = useState([]);
   const [categoryId, setCategoryId] = useState();
@@ -46,7 +47,10 @@ const SubServiceCard = ({ category }) => {
     isLoading: subSuccess,
   } = useGetRequestSubCategoryQuery();
 
-  console.log({subData}, 'wetin be this')
+  const handleNavigate = (serviceLink) => {
+    navigate(`/sub-category/" + ${serviceLink}`);
+  };
+  console.log({ subData }, "wetin be this");
 
   // if (isLoading) {
   //   console.log("isLoading");
@@ -110,6 +114,7 @@ const SubServiceCard = ({ category }) => {
         </div>
         
       ) : (
+
         <div className="cat-card-parent-wrapper">
           {subCategoryList &&
             subCategoryList?.map((ctegoryData, index) => {
@@ -138,17 +143,18 @@ const SubServiceCard = ({ category }) => {
         {subServiceData &&
           subServiceData.map((subService, index) => {
             return (
-              <div className="subservices-card">
-                <Link to={"/sub-category/" + subService.name}>
-                  <div className="subservice-icon-wrapper">
-                    <img
-                      src={subService.icons}
-                      alt="transcript icon"
-                      className="subservices-icons"
-                    />
-                  </div>
-                  <h2>{subService.name}</h2>
-                </Link>
+              <div
+                className="subservices-card"
+                onClick={() => handleNavigate(subService.name)}
+              >
+                <div className="subservice-icon-wrapper">
+                  <img
+                    src={subService.icons}
+                    alt="transcript icon"
+                    className="subservices-icons"
+                  />
+                </div>
+                <h2>{subService.name}</h2>
               </div>
             );
           })}

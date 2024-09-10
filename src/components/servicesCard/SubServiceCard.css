@@ -16,16 +16,19 @@
   /* background-color: red; */
 }
 .subservices-card {
-  background-color: #eae8e8;
+  background-color: #fff;
   width: 100%;
-  border: solid 0.5px gray;
+  border: solid 0.25px rgb(202, 201, 201);
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 2.5%;
-
+  cursor: pointer;
   text-align: center;
   border-radius: 20px;
+}
+.subservices-card:hover {
+  border: solid 1px black;
 }
 .subservices-card a {
   color: #000;
