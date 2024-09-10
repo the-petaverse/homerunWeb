@@ -49,6 +49,7 @@
   font-weight: 500;
   margin-top: 20px;
   font-weight: 700;
+  cursor: pointer;
 }
 .card-display-container {
   margin-top: -100px;

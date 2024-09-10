@@ -42,7 +42,8 @@
 
 @media (min-width: 1024px) {
   .inner-footer-wrapper {
-    width: 35%;
+    width: 26.5%;
+    flex-direction: row;
   }
 }
 @media (min-width: 1280px) {

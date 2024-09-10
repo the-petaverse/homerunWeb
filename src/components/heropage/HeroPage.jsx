@@ -1,11 +1,16 @@
 import React from "react";
 import "./HeroPage.css";
 import HeroImage from "../../assets/person.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ServiceCard from "../serviceCard/ServiceCard";
 import CustomButton from "../customButton/CustomButton";
 
 const HeroPage = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/register");
+  };
   return (
     <>
       <div className="hero-container">
@@ -19,6 +24,7 @@ const HeroPage = () => {
             </p>
           </div>
           <CustomButton
+            btnOnClick={handleNavigate}
             title=" Get Started For Free"
             btnStyles="get-stated-btn"
           />

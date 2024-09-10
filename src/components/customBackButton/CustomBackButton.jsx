@@ -2,12 +2,12 @@ import React from "react";
 import BackIcon from "../../assets/back-arrow.png";
 import "./CustomBackButton.css";
 
-const CustomBackButton = () => {
+const CustomBackButton = ({ title, backBtnClick }) => {
   return (
-    <div className="back-arrow-wrapper">
+    <button onClick={backBtnClick} className="back-arrow-wrapper">
       <img src={BackIcon} alt="back button" />
-      <span>Back</span>
-    </div>
+      <span>{title}</span>
+    </button>
   );
 };
 

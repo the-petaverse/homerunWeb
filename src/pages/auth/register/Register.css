@@ -41,7 +41,7 @@
 .register-error {
   color: red;
 }
-.register-main-text-input {
+.main-text-input {
   /* background-color: rgb(237, 231, 231); */
   height: 55px;
   width: 100%;
@@ -49,31 +49,45 @@
   border-radius: 10px;
   font-family: "Josefin Slab", serif;
   font-size: 1.5em;
-  font-weight: bold;
+  font-weight: 500;
   color: black;
-  padding: 0 15px;
+  padding: 0px 15px;
   border: solid 0.5px rgb(218, 206, 206);
 }
-
+.last-text-wrapper {
+  text-align: center;
+}
+.last-text-wrapper p {
+  font-size: 1.15em;
+}
 .register-main-form-btn {
   background-color: rgb(16, 4, 91);
   height: 55px;
   margin-top: 25px;
-  border-radius: 10px;
+  border-radius: 25px;
   border: solid 0.5px rgb(18, 2, 86);
   color: #fff;
   font-size: 1.6em;
   cursor: pointer;
+  margin-bottom: 30px;
+}
+.register-main-form-btn-disabled {
+  background-color: rgb(110, 107, 107);
+  height: 55px;
+  margin-top: 25px;
+  border-radius: 25px;
+  border: solid 0.5px rgb(18, 2, 86);
+  color: #fff;
+  font-size: 1.6em;
+  cursor: pointer;
+  margin-bottom: 30px;
 }
 .register-form-wrapper label p {
   color: red;
   font-size: 20px;
   font-family: "Josefin Slab", serif;
 }
-.back-button-wrapper {
-  width: 60px;
-  margin-left: -5px;
-}
+
 .back-button {
   width: 60px;
   margin-bottom: -25px;
@@ -82,7 +96,8 @@
 
 .login-link {
   color: orange;
-  font-size: 18px;
+  font-size: 1.12em;
+  font-weight: bold;
 }
 @media (min-width: 475px) {
   .register-inner-form-wrapper {
@@ -113,6 +128,13 @@
     /* padding: 25px 5%; */
     /* display: flex;
     flex-direction: row; */
+  }
+  .register-notice-message h1 {
+    font-size: 2.5em;
+  }
+  .register-notice-message p {
+    font-size: 1.25em;
+    margin-top: 10px;
   }
 }
 

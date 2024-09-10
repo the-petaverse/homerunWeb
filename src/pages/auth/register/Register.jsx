@@ -13,6 +13,7 @@ import Cookies from "universal-cookie";
 import OtpComponent from "../../../components/otpComponent/OtpComponent";
 import CustomSelect from "../../../components/customSelect/CustomSelect";
 import CustomImput from "../../../components/customImput/CustomImput";
+import CustomBackButton from "../../../components/customBackButton/CustomBackButton";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -93,18 +94,26 @@ const Register = () => {
     } else if (formStep === 1) {
       return (
         <input
-          // disabled={!isValid || isLoading}
+          disabled={!isValid || isLoading}
           type="submit"
-          className="register-main-form-btn"
+          className={
+            !isValid
+              ? "register-main-form-btn-disabled"
+              : "register-main-form-btn"
+          }
         />
       );
     }
     {
       return (
         <button
-          // disabled={!isValid}
+          disabled={!isValid}
           type="submit"
-          className="register-main-form-btn"
+          className={
+            !isValid
+              ? "register-main-form-btn-disabled"
+              : "register-main-form-btn"
+          }
           onClick={handleCompleteForm}
         >
           Continue
@@ -139,12 +148,13 @@ const Register = () => {
               alt="homerun icon"
               className="homerun-icon"
             />
-            <h1>Welcome To Homerun</h1>
-            {error?.data?.message ? (
-              <p className="register-error">{error?.data?.message}</p>
-            ) : (
-              <p>Please take a few moment to register. </p>
+            {formStep < 1 && (
+              <div className="register-notice-message">
+                <h1>Welcome To Homerun</h1>
+                <p>Please take a few moment to register. </p>
+              </div>
             )}
+
             {error?.error && (
               <p className="register-error">Some went wrong....</p>
             )}
@@ -157,11 +167,10 @@ const Register = () => {
               </p>
             )}
             {formStep === 1 && (
-              <div className="back-button-wrapper" onClick={handleFormGoBack}>
-                <img
-                  src={backButton}
-                  alt="back-button"
-                  className="back-button"
+              <div className="back-button-wrapper">
+                <CustomBackButton
+                  title="Back"
+                  backBtnClick={handleFormGoBack}
                 />
               </div>
             )}
@@ -259,7 +268,7 @@ const Register = () => {
                   <CustomSelect
                     name="country"
                     type="text"
-                    className="register-main-text-input"
+                    className="main-text-input"
                     register={register}
                     require="Country is required"
                     placeholder="Country name"
@@ -269,7 +278,7 @@ const Register = () => {
                   <CustomSelect
                     name="state"
                     type="text"
-                    className="register-main-text-input"
+                    className="main-text-input"
                     register={register}
                     require="State is required"
                     placeholder="State name"
@@ -279,7 +288,7 @@ const Register = () => {
                   <CustomSelect
                     name="city"
                     type="text"
-                    className="register-main-text-input"
+                    className="main-text-input"
                     register={register}
                     require="City is required"
                     placeholder="City name"
@@ -313,9 +322,17 @@ const Register = () => {
               )}
               {renderButton()}
             </form>
-            <p className="already-last-text">
-              You already have an account? <span ><Link to="/login" className="login-link">Login</Link></span> to Homerun
-            </p>
+            <div className="last-text-wrapper">
+              <p className="already-last-text">
+                You already have an account?{" "}
+                <span>
+                  <Link to="/login" className="login-link">
+                    Login
+                  </Link>
+                </span>{" "}
+                to Homerun
+              </p>
+            </div>
           </div>
         )}
 
