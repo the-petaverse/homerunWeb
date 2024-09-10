@@ -24,13 +24,13 @@ const CategoriesDetailPage = lazy(() =>
 export const websiteRoutes = [
   {
     path: "/",
-    title: 'Landing Page',
+    title: "Landing Page",
     component: Home,
     //   errorcomponent: <NotFound />,
   },
   {
     path: "/about",
-    title: 'About Page',
+    title: "About Page",
     component: About,
   },
   // {
@@ -39,27 +39,27 @@ export const websiteRoutes = [
   // },
   {
     path: "/requests-list",
-    title: 'ErrandList Page',
+    title: "ErrandList Page",
     component: ErrandLists,
   },
   {
     path: "/sub-category/:subcategory",
-    title: 'Service Detail Page Page',
+    title: "Service Detail Page Page",
     component: ServiceDetailPage,
   },
   {
     path: "/request-category/:category",
-    title: 'Categories Page',
+    title: "Categories Page",
     component: CategoriesDetailPage,
   },
   {
     path: "/contact",
-    title: 'Contact Us Page',
+    title: "Contact Us Page",
     component: ContactUs,
   },
   {
     path: "/our-services",
-    title: 'Services Page',
+    title: "Services Page",
     component: Services,
   },
 
