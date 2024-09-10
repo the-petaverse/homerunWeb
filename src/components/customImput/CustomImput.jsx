@@ -28,7 +28,8 @@ const CustomImput = ({
           type={type}
           placeholder={placeholder}
           style={style}
-          className={className}
+          className="main-text-input"
+          // className={}
           {...register(name, {
             required: required,
           })}

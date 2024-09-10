@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./SubServiceCard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import SubTranscriptIcon from "../../assets/sub-transcript.png";
 import PropagateLoader from "react-spinners/PropagateLoader";
@@ -32,7 +32,34 @@ const subServiceData = [
     icons: "/images/sub-transcript.png",
   },
 ];
+
+const properySubServiceData = [
+  {
+    id: "1",
+    name: "Pre-purchase Verification, status and inspection",
+    icons: "/images/sub-transcript.png",
+  },
+
+  {
+    id: "2",
+    name: "Property document processing follow-up and collection",
+    icons: "/images/sub-transcript.png",
+  },
+
+  {
+    id: "3",
+    name: "Post purchase developement / renovation / construction supervision",
+    icons: "/images/sub-transcript.png",
+  },
+
+  {
+    id: "4",
+    name: "Property Management",
+    icons: "/images/sub-transcript.png",
+  },
+];
 const SubServiceCard = ({ category }) => {
+  const navigate = useNavigate();
   const [categoryList, setCategoryList] = useState([]);
   const [subCategoryList, setSubCategoryList] = useState([]);
   const [categoryId, setCategoryId] = useState();
@@ -88,6 +115,10 @@ const SubServiceCard = ({ category }) => {
     filterSubCategory();
     // console.log(subData);
   }, [isSuccess, categoryId, subSuccess, subLoading, subLoading, subData]);
+
+  const routeToSubCategory = (categoryname) => {
+    navigate(`/sub-category/${categoryname}`, { state: { category } });
+  };
   return (
     <div className="category-detail-main-container">
       <div className="category-header-wrapper">
@@ -133,11 +164,12 @@ const SubServiceCard = ({ category }) => {
       )} */}
 
       <div className="subservices-card-wrapper">
-        {subServiceData &&
+        {category === "transcript" &&
+          subServiceData &&
           subServiceData.map((subService, index) => {
             return (
               <div className="subservices-card">
-                <Link to={"/sub-category/" + subService.name}>
+                <button onClick={() => routeToSubCategory(subService.name)}>
                   <div className="subservice-icon-wrapper">
                     <img
                       src={subService.icons}
@@ -146,7 +178,26 @@ const SubServiceCard = ({ category }) => {
                     />
                   </div>
                   <h2>{subService.name}</h2>
-                </Link>
+                </button>
+              </div>
+            );
+          })}
+
+        {category === "property" &&
+          subServiceData &&
+          properySubServiceData.map((subService, index) => {
+            return (
+              <div className="subservices-card">
+                <button onClick={() => routeToSubCategory(subService.name)}>
+                  <div className="subservice-icon-wrapper">
+                    <img
+                      src={subService.icons}
+                      alt="transcript icon"
+                      className="subservices-icons"
+                    />
+                  </div>
+                  <h2>{subService.name}</h2>
+                </button>
               </div>
             );
           })}

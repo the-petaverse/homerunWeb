@@ -2,7 +2,6 @@ import React from "react";
 import "./Footer.css";
 import Logo from "../../assets/white-logo.png";
 import { Link } from "react-router-dom";
-import Hq from "../hq/Hq";
 const Footer = () => {
   return (
     <div className="footer-main-container">

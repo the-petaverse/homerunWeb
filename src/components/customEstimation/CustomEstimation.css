@@ -1,3 +1,66 @@
 .estimated-main-container {
   margin-top: 25px;
+  text-align: left;
+  /* margin-top: 20px; */
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px 20px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.estimated-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.estimated-heading {
+  font-size: 1rem;
+  color: #262262;
+}
+
+.estimated-texting-1 {
+  font-size: 1.4rem;
+  color: #4D4D4D;
+}
+
+.estimated-texting-2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #262262;
+}
+
+.estimated-info-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.estimated-text-1, .estimated-text-2 {
+  font-size: 0.8rem;
+  color: #4d4d4d;
+}
+
+.estimated-text-2 {
+  font-weight: 700;
+}
+
+.errands-process-container {
+  padding: 12px 24px 12px 24px;
+  border: 1px dashed #0B994C;
+  border-radius: 12px;
+  background-color: #F0FFF8;
+  display: flex;
+  gap: 4px;
+}
+
+.process-text {
+  color: #0B994C;
+  font-weight: 700;
 }

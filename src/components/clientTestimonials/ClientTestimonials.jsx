@@ -3,7 +3,6 @@ import "./ClientTestimonials.css";
 import Logo from "../../assets/homerun-logo.png";
 import TestimonialCard from "../testimonialCard/TestimonialCard";
 
-import { Link } from "react-router-dom";
 
 const ClientTestimonials = () => {
   return (

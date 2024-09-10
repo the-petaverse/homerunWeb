@@ -2,4 +2,24 @@
   text-align: left;
   /* margin-top: 20px; */
   width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px 20px 24px 20px;
+  
+}
+
+
+.note-heading {
+  color: #EB5130;
+  padding: 12px 24px 12px 24px;
+  border-radius: 12px;
+  display: flex;
+  gap: 18px;
+  background-color: #FFF3F0;
+  margin-bottom: 30px;
+}
+
+span {
+  color: #262262;
+  font-weight: 700;
 }

@@ -6,7 +6,7 @@ const TermsAndConditionCheckBox = () => {
     <div className="term-check-container">
       <input type="checkbox" />
       <label>
-        Acept Homerun’s <span>Terms & Privacy Policy.</span>
+        Accept Homerun’s <span>Terms & Privacy Policy.</span>
       </label>
     </div>
   );

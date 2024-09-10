@@ -53,6 +53,7 @@ const SurpriseSubServices = ({ category }) => {
     // console.log(id);
     setServiceSelected(title);
   };
+
   return (
     <div className="surprise-main-container">
       <div className="surprise-header-wrapper">

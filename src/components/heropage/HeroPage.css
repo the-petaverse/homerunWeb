@@ -9,6 +9,8 @@
   background-image: url("../../assets/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 .banner-container {
   padding-top: 5%;
@@ -35,17 +37,19 @@
 }
 .heading-para {
   font-size: 1.8em;
-  font-family: "Josefin Slab", serif;
+  /* font-family: "Josefin Slab", serif; */
   font-optical-sizing: auto;
   font-style: normal;
 }
 .get-stated-btn {
   color: #fff;
   background-color: #ff6600;
-  padding: 15px 15px;
-  border-radius: 10px;
+  padding: 20px 20px;
+  border-radius: 30px;
   font-size: 1.2em;
-  margin-top: 500px;
+  font-weight: 500;
+  text-decoration: none;
+  /* margin-top: 500px; */
 }
 .card-display-container {
   margin-top: -100px;
@@ -109,7 +113,16 @@
   }
   .heading-txt-one,
   .heading-txt-two {
-    font-size: 2em;
+    font-size: 3em;
+  }
+
+  .heading-txt-one {
+    font-weight: 500;
+  }
+
+  .heading-txt-two {
+    font-weight: bolder;
+    line-height: 57.6px;
   }
   .hero-img {
     max-width: 400px;

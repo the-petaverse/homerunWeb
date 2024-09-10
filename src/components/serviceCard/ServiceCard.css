@@ -11,6 +11,13 @@
   width: 100% !important;
   /* height: 50dvh; */
   border-radius: 26px;
+
+}
+
+.card-image-wrapper:hover {
+  border: solid 10.5px rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(10px);
+  
 }
 
 .slick-arrow::before {

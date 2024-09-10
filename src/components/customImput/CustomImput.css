@@ -1,5 +1,5 @@
 .input-error-message {
-  color: red;
+  /* color: red; */
   font-size: 15px;
   margin-top: 5px;
   /* margin-top: 50px; */
@@ -8,4 +8,16 @@
 }
 .input-main-container {
   width: 100%;
+  /* border: 1px solid red; */
+
 }
+
+.main-text-input {
+  border: 1px solid #838d8d !important;
+  width: 100% !important;
+  font-family: inherit !important; 
+  font-weight: 500 !important; 
+  background-color: inherit !important;
+  color: #333 !important; 
+}
+

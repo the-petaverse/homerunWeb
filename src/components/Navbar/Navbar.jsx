@@ -49,7 +49,7 @@ const Navbar = () => {
 
           <ul className="list-wrapper">
             <Link
-              to=""
+              // to=""
               className="nav-links post-request-wrapper"
               onClick={handleOpenRequestNav}
             >
@@ -74,10 +74,12 @@ const Navbar = () => {
           className="icon-image-nav"
           onClick={handleOpenSideBar}
         />
+
+        {openRequestNav && (
+          <RequestNavModal handleOpenRequestNav={handleOpenRequestNav} />
+        )}
       </div>
-      {openRequestNav && (
-        <RequestNavModal handleOpenRequestNav={handleOpenRequestNav} />
-      )}
+
       {openSideBar && <MainSideBar handleOpenSideBar={handleOpenSideBar} />}
     </>
   );
