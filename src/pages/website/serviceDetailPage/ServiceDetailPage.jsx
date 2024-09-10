@@ -22,7 +22,7 @@ const ServiceDetailPage = () => {
 
   const { state } = location;
 
-  const category = state.category;
+  const category = state?.category;
 
   // console.log({ state });
   const {
@@ -55,6 +55,7 @@ const ServiceDetailPage = () => {
     navigate(-1);
   };
 
+  console.log()
   return (
     <>
       {/* <Navbar /> */}
@@ -86,6 +87,7 @@ const ServiceDetailPage = () => {
           </div>
         </div>
         <div className="service-right-container">
+          
           <CustomNote />
           <CustomEstimation />
         </div>

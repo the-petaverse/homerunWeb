@@ -24,6 +24,7 @@ import ErrandProcesses from "../errandProcesses/ErrandProcesses";
 import CustomNote from "../customNote/CustomNote";
 import TermsAndConditionCheckBox from "../termsAndConditionCheckBox/TermsAndConditionCheckBox";
 import CustomButton from "../customButton/CustomButton";
+import { InfoCircle } from "iconsax-react";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -438,12 +439,34 @@ const NewRequest = ({
           <Requirement />
           <ErrandProcesses />
           <div className="terms-note-wrapper">
-            <CustomNote />
-            <TermsAndConditionCheckBox />
+            {/* <CustomNote /> */}
+            <div className="terms-note-left">
+              <h4 className="note-heading">
+                <InfoCircle color="#EB5130" size={20} />
+                PLEASE NOTE
+              </h4>
+
+              <p>
+                {" "}
+                Processing times and costs may vary based on the institution and
+                location. We’ll provide a detailed cost breakdown and timeline
+                once your request is verified.
+              </p>
+            </div>
+
+            <div className="terms-note-right">
+              <div className="term-check-container">
+                <input type="checkbox" />
+                <label style={{ marginLeft: "10px" }}>
+                  Accept Homerun’s <span>Terms & Privacy Policy.</span>
+                </label>
+              </div>
+
+              <button type="submit" className="submit-btn">
+                Make a Request
+              </button>
+            </div>
           </div>
-          <section className="button-wrapper">
-            <CustomButton />
-          </section>
         </form>
       </div>
       <div className="register-main-container">

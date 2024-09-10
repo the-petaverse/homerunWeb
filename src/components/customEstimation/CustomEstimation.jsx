@@ -32,7 +32,7 @@ const CustomEstimation = () => {
         <p className="estimated-texting-2">$211.00</p>
       </div>
 
-      <div className="errand-process-container">
+      <div className="errands-process-container">
         <DocumentDownload color="#0B994C" size={20} />
         <p className="process-text">
           Download the errand process and requirement

@@ -42,7 +42,39 @@
 .terms-note-wrapper {
   display: flex;
   margin-top: 20px;
-  /* align-items: center; */
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  gap: 8px;
+  width: 100%;
+  /* align-items: self-start; */
+  align-items: start;
+}
+.terms-note-left, .terms-note-right {
+  width: 50%;
+}
+
+
+
+
+
+.submit-btn {
+  width: 100%;
+  background-color: #766D6E;
+  border-radius: 32px;
+  color: #fff;
+  font-weight: 500;
+  padding: 15px;
+}
+
+
+.terms-note-right {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  /* justify-content: space-between; */
+  /* border: 10px solid red; */
+  /* height: 100%; */
 }
 
 .increase-width {
@@ -53,6 +85,8 @@
 .final-section-wrapper {
   width: 100%;
 }
+
+
 .form-section-wrapper {
   display: flex;
 
