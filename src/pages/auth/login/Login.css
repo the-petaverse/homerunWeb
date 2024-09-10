@@ -87,6 +87,11 @@
   transition: 0.3s;
   pointer-events: none;
 }
+.authentication-header {
+  position: absolute;
+  top: 2%;
+  left: 2.5%;
+}
 
 /* .main-text-input:focus .input-placeholder {
   top: -50px;

@@ -24,6 +24,7 @@ import ErrandProcesses from "../errandProcesses/ErrandProcesses";
 import CustomNote from "../customNote/CustomNote";
 import TermsAndConditionCheckBox from "../termsAndConditionCheckBox/TermsAndConditionCheckBox";
 import CustomButton from "../customButton/CustomButton";
+import CustomTextArea from "../customTextArea/CustomTextArea";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -224,6 +225,7 @@ const NewRequest = ({
       </div>
       <div className="new-request-form-container">
         <form action="">
+          <CustomTextArea />
           <div className="form-section-wrapper">
             <CustomImput
               name="firstName"
@@ -233,7 +235,7 @@ const NewRequest = ({
               type="text"
               error={errors?.firstName?.message}
               register={register}
-              style={{ borderColor: errors.firstName ? "red" : "blue" }}
+              style={{ borderColor: errors.firstName ? "red" : "black" }}
             />
             <CustomImput
               name="lastName"
@@ -243,7 +245,7 @@ const NewRequest = ({
               type="text"
               error={errors?.lastName?.message}
               register={register}
-              style={{ borderColor: errors.lastName ? "red" : "blue" }}
+              style={{ borderColor: errors.lastName ? "red" : "black" }}
             />
           </div>
           <div className="form-section-wrapper">
@@ -255,7 +257,7 @@ const NewRequest = ({
               type="text"
               error={errors?.middleName?.message}
               register={register}
-              style={{ borderColor: errors.middleName ? "red" : "blue" }}
+              style={{ borderColor: errors.middleName ? "red" : "black" }}
             />
             <CustomImput
               name="email"
@@ -265,7 +267,7 @@ const NewRequest = ({
               type="email"
               error={errors?.email?.message}
               register={register}
-              style={{ borderColor: errors.email ? "red" : "blue" }}
+              style={{ borderColor: errors.email ? "red" : "black" }}
             />
           </div>
           <div className="form-section-wrapper align-select-input">
@@ -278,7 +280,7 @@ const NewRequest = ({
               placeholder="Institution name"
               error={errors.institution?.message}
               data={institutions}
-              style={{ borderColor: errors.email ? "red" : "blue" }}
+              style={{ borderColor: errors.email ? "red" : "black" }}
             />
             <CustomSelect
               name="yearOfGraduation"
@@ -287,7 +289,7 @@ const NewRequest = ({
               register={register}
               require="Year of Graduation is required"
               placeholder="Year of graduation"
-              style={{ borderColor: errors.email ? "red" : "blue" }}
+              style={{ borderColor: errors.email ? "red" : "black" }}
               error={errors.yearOfGraduation?.message}
               data={yearofGraduation}
             />
@@ -301,7 +303,7 @@ const NewRequest = ({
               type="text"
               error={errors?.graduatedDegree?.message}
               register={register}
-              style={{ borderColor: errors.graduatedDegree ? "red" : "blue" }}
+              style={{ borderColor: errors.graduatedDegree ? "red" : "black" }}
             />
             <CustomSelect
               name="yearOfEntry"
@@ -310,7 +312,7 @@ const NewRequest = ({
               register={register}
               require="Year of Entry is required"
               placeholder="Year of graduation"
-              style={{ borderColor: errors.yearOfEntry ? "red" : "blue" }}
+              style={{ borderColor: errors.yearOfEntry ? "red" : "black" }}
               error={errors.yearOfEntry?.message}
               data={yearofGraduation}
             />
@@ -319,7 +321,7 @@ const NewRequest = ({
             <CustomDoubleRadioButton
               name="firstCollection"
               label="Is this your FIRST time collecting the transcript?"
-              style={{ borderColor: errors.firstName ? "red" : "blue" }}
+              style={{ borderColor: errors.firstName ? "red" : "black" }}
               register={register}
               error={errors.firstCollection?.message}
             />
@@ -328,7 +330,7 @@ const NewRequest = ({
             <CustomDoubleRadioButton
               label="Have you previously obtained a Notification of Result/Certificate?"
               name="obtainedNotificationOfResult"
-              style={{ borderColor: errors.firstName ? "red" : "blue" }}
+              style={{ borderColor: errors.firstName ? "red" : "black" }}
               register={register}
               error={errors.obtainedNotificationOfResult?.message}
             />
@@ -341,7 +343,7 @@ const NewRequest = ({
               register={register}
               require="Year of Entry is required"
               placeholder="Year of graduation"
-              style={{ borderColor: errors.yearOfEntry ? "red" : "blue" }}
+              style={{ borderColor: errors.yearOfEntry ? "red" : "black" }}
               error={errors.yearOfEntry?.message}
               data={yearofGraduation}
             />
@@ -356,7 +358,7 @@ const NewRequest = ({
               type="text"
               error={errors?.documentTitle?.message}
               register={register}
-              style={{ borderColor: errors.documentTitle ? "red" : "blue" }}
+              style={{ borderColor: errors.documentTitle ? "red" : "black" }}
             />
             <CustomInputUpload />
           </div>

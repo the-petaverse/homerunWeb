@@ -15,21 +15,25 @@ const subServiceData = [
     id: "1",
     name: "Transcripts processing and collection",
     icons: "/images/sub-transcript.png",
+    slug: "transcript-processing",
   },
   {
-    id: "1",
+    id: "2",
     name: "Higher education certificates processing and collection",
     icons: "/images/sub-transcript.png",
+    slug: "higher-certificate-collection",
   },
   {
-    id: "1",
+    id: "3",
     name: "Birth certificates",
     icons: "/images/sub-transcript.png",
+    slug: "birth-certificate-collection",
   },
   {
-    id: "1",
+    id: "4",
     name: "Sworn Affidavits",
     icons: "/images/sub-transcript.png",
+    slug: "sworn-afidavit",
   },
 ];
 const SubServiceCard = ({ category }) => {
@@ -48,9 +52,8 @@ const SubServiceCard = ({ category }) => {
   } = useGetRequestSubCategoryQuery();
 
   const handleNavigate = (serviceLink) => {
-    navigate(`/sub-category/" + ${serviceLink}`);
+    navigate(`/sub-category/${serviceLink}`);
   };
-  console.log({ subData }, "wetin be this");
 
   // if (isLoading) {
   //   console.log("isLoading");
@@ -145,7 +148,7 @@ const SubServiceCard = ({ category }) => {
             return (
               <div
                 className="subservices-card"
-                onClick={() => handleNavigate(subService.name)}
+                onClick={() => handleNavigate(subService.slug)}
               >
                 <div className="subservice-icon-wrapper">
                   <img
