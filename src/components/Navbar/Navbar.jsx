@@ -49,7 +49,7 @@ const Navbar = () => {
 
           <ul className="list-wrapper">
             <Link
-              to=""
+              // to=""
               className="nav-links post-request-wrapper"
               onClick={handleOpenRequestNav}
             >

@@ -15,7 +15,7 @@ const CategoriesDetailPage = () => {
     <div>
       {/* <Navbar /> */}
       {category === "property" && <SubServiceCard category={category} />}
-      {/* {category === "transcript" && <SubServiceCard category={category} />} */}
+      {category === "transcript" && <SubServiceCard category={category} />}
       {/* {category === "surprise" && <SubServiceCard category={category} />} */}
       {category === "surprise" && <SurpriseSubServices category={category} />}
       {/* <Footer /> */}
