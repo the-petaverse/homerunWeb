@@ -7,6 +7,7 @@ import SurpriseImage from "../../../assets/service-surprise.png";
 import HotelImage from "../../../assets/service-hotel.png";
 import PropertyImage from "../../../assets/service-property.png";
 import MainSideBar from "../../../components/mainSideBar/MainSideBar";
+import CustomButton from "../../../components/customButton/CustomButton";
 // import Hq from "../../components/hq/Hq";
 
 import { useGetRequestCategoriesQuery } from "../../../services/requestsCategory/requestApi";
@@ -21,15 +22,18 @@ const Services = () => {
     setOpenSideBar(true);
   };
 
+  const handleClickBtn = (serviceLink) => {
+    console.log("object");
+  };
   const handleCloseSideBar = () => {
     setOpenSideBar(false);
   };
-
 
   const serviceData = [
     {
       id: 1,
       title: "Transcript And Document Retrieval",
+      slug: "transcript",
       description:
         "Need important documents from institutions back home? We obtain credentials and other necessary documents on your behalf, saving you time and hassle.",
       imageSrc: TranscriptImage,
@@ -38,6 +42,7 @@ const Services = () => {
     {
       id: 2,
       title: "Grocery and Food Delivery",
+      slug: "grocery",
       description:
         "Enjoy the convenience of having groceries and food items delivered to your door, both locally and internationally. Freshness and quality are guaranteed with every delivery.",
       imageSrc: GrocyImage,
@@ -46,6 +51,7 @@ const Services = () => {
     {
       id: 3,
       title: "Surprise Packages",
+      slug: "surprise",
       description:
         "Add a touch of joy to your day with our surprise packages. Whether it's a gift for a loved one or a treat for yourself, we deliver delightful surprises that brighten your day.",
       imageSrc: SurpriseImage,
@@ -54,6 +60,7 @@ const Services = () => {
     {
       id: 4,
       title: "Hotel and Car Booking",
+      slug: "surprise",
       description:
         "Secure hotel accommodations and recreation centers effortlessly. Whether for business or leisure, we ensure your stay is comfortable and enjoyable.",
       imageSrc: HotelImage,
@@ -61,6 +68,7 @@ const Services = () => {
     },
     {
       id: 5,
+      slug: "property",
       title: "Property Inspection",
       description:
         "Seamlessly acquire property in your home country while you’re abroad. Our expert team will handle every detail, ensuring a smooth and stress-free process.",
@@ -72,16 +80,10 @@ const Services = () => {
     <>
       {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
       <div className="services-main-container">
-        <div>
-          <h1>What We Do</h1>
-        </div>
+        <h1>What We Do</h1>
         <div className="serices-header-wrapper">
           <div className="header-image-wrapper">
-            <img
-              src={Service}
-              alt="service-image"
-              className="service-image"
-            />
+            <img src={Service} alt="service-image" className="service-image" />
           </div>
           <div className="service-image-container">
             <p>
@@ -104,7 +106,9 @@ const Services = () => {
                 <h1>{service.title}</h1>
                 <p>{service.description}</p>
                 <div className="service-btn">
-                  <Link to={service.link}>Post this request</Link>
+                  <Link to={`/request-category/${service.slug}`}>
+                    Post this request
+                  </Link>
                 </div>
               </div>
             </div>

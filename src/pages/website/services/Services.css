@@ -4,31 +4,28 @@
 
 .services-main-container {
   /* padding: 90px ; */
+  padding: 15px 5%;
   padding-top: 155px;
   padding-bottom: 155px;
-  background-color: rgb(188, 186, 186);
-  width: 100dvw;
-   display: flex; 
-   flex-direction: column;
+  background-color: rgb(247, 248, 248);
+  /* width: 100dvw; */
+  display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  /* align-items: center; */
 }
 .service-cards-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-} 
+}
 .header-image-wrapper {
-  width: 80vw;
+  /* width: 80vw; */
   margin-bottom: -10%;
-
-  
-} 
+}
 
 .service-image {
-  width: 120%;
-  padding: 50px;
-  
+  width: 110%;
+  /* padding: 50px; */
 }
 .serices-header-wrapper {
   display: flex;
@@ -41,9 +38,8 @@
   position: relative;
   color: #fff;
   width: 98%;
-  right: 0%;
-  
-  
+  right: 5%;
+
   /* height: 15dvw; */
   padding: 5%;
   border-radius: 15px;
@@ -81,14 +77,15 @@
   line-height: 30px;
 }
 .service-btn {
-  border: solid 0.5px gray;
-  padding: 22px 5%;
+  border: solid 1px gray;
+  padding: 15px 5%;
   font-size: 1.2em;
   margin-top: 15px;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 50px;
   background-color: #fff;
   text-align: center;
+  cursor: pointer;
 }
 .service-btn a {
   text-align: center;
@@ -120,7 +117,7 @@
     width: 86%;
   }
   .card-right-holder p {
-    font-size: 1.15em;
+    font-size: 1.35em;
     margin-top: 10px;
   }
 }
@@ -128,6 +125,10 @@
 @media (min-width: 1024px) {
   .service-cards-wrapper {
     width: 110%;
+    margin-top: 25px;
+  }
+  .card-right-holder h1 {
+    line-height: 55px;
   }
   .serices-header-wrapper {
     flex-direction: row;
@@ -158,6 +159,8 @@
   }
   .service-btn {
     width: 80%;
+    font-size: 1.35em;
+    font-weight: 1000px;
   }
 }
 
@@ -165,8 +168,16 @@
   .service-cards-wrapper {
     width: 100%;
   }
+  .service-image-container p {
+    font-size: 2.35em;
+  }
   .service-image-container {
-    width: 28%;
+    width: 45%;
+    padding: 3%;
+  }
+  .services-main-container h1 {
+    font-size: 3.2em;
+    margin: 25px 0;
   }
   .service-images {
     width: 40%;
