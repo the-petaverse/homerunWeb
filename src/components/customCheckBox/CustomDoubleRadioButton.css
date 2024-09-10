@@ -18,14 +18,20 @@
 
   /* background-color: yellow; */
 }
+.chaeck-boxes-detail-wrapper p {
+  font-weight: 600;
+}
 .check-boxes-option {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: rgb(206, 203, 203);
   width: 48%;
-  padding: 5px 5.5%;
+  padding: 6px 5.5%;
   border-radius: 10px;
+}
+.check-boxes-option label {
+  font-weight: 500;
 }
 input[type="radio"] {
   border: 0px;

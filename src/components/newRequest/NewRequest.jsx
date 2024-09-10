@@ -97,6 +97,7 @@ const NewRequest = ({
   } = useGetRequestCategoriesQuery();
   //const { subcategory } = useParams();
   const [myState, setMyState] = useState([]);
+  const [addUploadInput, setAddUploadInput] = useState(new Array(1).fill(""));
   const [citiesList, setCitiesList] = useState([]);
   const [serviceData, setServiceData] = useState([]);
   const [openAccordion, setOpenAccordion] = useState(1);
@@ -117,6 +118,18 @@ const NewRequest = ({
     },
     mode: "all",
   });
+
+  // const increaseUploadInput = () => {
+  //   setAddUploadInput((addUpload) => [...addUpload, addUploadInput]);
+  // };
+
+  // const removeUploadInput = (id) => {
+  //   console.log(id);
+  //   const index = addUploadInput.indexOf(id);
+  //   if (index > -1) {
+  //     addUploadInput.splice(index, 1);
+  //   }
+  // };
 
   const watchCountry = watch("country");
   const watchState = watch("state_name");
@@ -218,159 +231,176 @@ const NewRequest = ({
   ]);
   return (
     <div className="new-request-from-main-container">
-      <CustomBackButton />
+      <CustomBackButton title="Back" />
       <div className="slate-header-wrapper">
         <h2>Transcript Processing And Collection</h2>
         <p>Please fill in the following details to make your request. </p>
       </div>
       <div className="new-request-form-container">
         <form action="">
-          <CustomTextArea />
-          <div className="form-section-wrapper">
-            <CustomImput
-              name="firstName"
-              required="First name is required"
-              placeholder="First name"
-              className="main-text-input"
-              type="text"
-              error={errors?.firstName?.message}
-              register={register}
-              style={{ borderColor: errors.firstName ? "red" : "black" }}
+          <div className="inputs-container">
+            <CustomTextArea
+              title="Errand Description"
+              textAreaStyle="textarea"
+              placeHolder="Enter your errand description here"
             />
-            <CustomImput
-              name="lastName"
-              required="Last name is required"
-              placeholder="Last name"
-              className="main-text-input"
-              type="text"
-              error={errors?.lastName?.message}
-              register={register}
-              style={{ borderColor: errors.lastName ? "red" : "black" }}
-            />
+            <div className="form-section-wrapper">
+              <CustomImput
+                name="firstName"
+                required="First name is required"
+                placeholder="First name"
+                className="main-text-input"
+                type="text"
+                error={errors?.firstName?.message}
+                register={register}
+                style={{ borderColor: errors.firstName ? "red" : "black" }}
+              />
+              <CustomImput
+                name="lastName"
+                required="Last name is required"
+                placeholder="Last name"
+                className="main-text-input"
+                type="text"
+                error={errors?.lastName?.message}
+                register={register}
+                style={{ borderColor: errors.lastName ? "red" : "black" }}
+              />
+            </div>
+            <div className="form-section-wrapper">
+              <CustomImput
+                name="middleName"
+                required="Middle name is required"
+                placeholder="Middle name"
+                className="main-text-input"
+                type="text"
+                error={errors?.middleName?.message}
+                register={register}
+                style={{ borderColor: errors.middleName ? "red" : "black" }}
+              />
+              <CustomImput
+                name="email"
+                required="Email is required"
+                placeholder="Matric Number"
+                className="main-text-input"
+                type="text"
+                error={errors?.email?.message}
+                register={register}
+                style={{ borderColor: errors.email ? "red" : "black" }}
+              />
+            </div>
+            <div className="form-section-wrapper align-select-input">
+              <CustomSelect
+                name="institution"
+                type="text"
+                className="main-text-input increase-width"
+                register={register}
+                require="Institution is required"
+                placeholder="Institution name"
+                error={errors.institution?.message}
+                data={institutions}
+                style={{ borderColor: errors.email ? "red" : "black" }}
+              />
+              <CustomSelect
+                name="yearOfGraduation"
+                type="text"
+                className="main-text-input increase-width"
+                register={register}
+                require="Year of Graduation is required"
+                placeholder="Year of graduation"
+                style={{ borderColor: errors.email ? "red" : "black" }}
+                error={errors.yearOfGraduation?.message}
+                data={yearofGraduation}
+              />
+            </div>
+            <div className="form-section-wrapper">
+              <CustomImput
+                name="graduatedDegree"
+                required="Graduated Degree is required"
+                placeholder="Graduated Degree/Course of Study"
+                className="main-text-input"
+                type="text"
+                error={errors?.graduatedDegree?.message}
+                register={register}
+                style={{
+                  borderColor: errors.graduatedDegree ? "red" : "black",
+                }}
+              />
+              <CustomSelect
+                name="yearOfEntry"
+                type="text"
+                className="main-text-input increase-width"
+                register={register}
+                require="Year of Entry is required"
+                placeholder="Year of graduation"
+                style={{ borderColor: errors.yearOfEntry ? "red" : "black" }}
+                error={errors.yearOfEntry?.message}
+                data={yearofGraduation}
+              />
+            </div>
+            <div className="form-section-wrapper">
+              <CustomDoubleRadioButton
+                name="firstCollection"
+                label="Is this your FIRST time collecting the transcript?"
+                style={{ borderColor: errors.firstName ? "red" : "black" }}
+                register={register}
+                error={errors.firstCollection?.message}
+              />
+            </div>
+            <div className="form-section-wrapper">
+              <CustomDoubleRadioButton
+                label="Have you previously obtained a Notification of Result/Certificate?"
+                name="obtainedNotificationOfResult"
+                style={{ borderColor: errors.firstName ? "red" : "black" }}
+                register={register}
+                error={errors.obtainedNotificationOfResult?.message}
+              />
+            </div>
+            <div className="final-section-wrapper">
+              <CustomSelect
+                name="yearOfEntry"
+                type="text"
+                className="main-text-input"
+                register={register}
+                require="Year of Entry is required"
+                placeholder="Year of graduation"
+                style={{ borderColor: errors.yearOfEntry ? "red" : "black" }}
+                error={errors.yearOfEntry?.message}
+                data={yearofGraduation}
+              />
+            </div>
           </div>
-          <div className="form-section-wrapper">
-            <CustomImput
-              name="middleName"
-              required="Middle name is required"
-              placeholder="Middle name"
-              className="main-text-input"
-              type="text"
-              error={errors?.middleName?.message}
-              register={register}
-              style={{ borderColor: errors.middleName ? "red" : "black" }}
-            />
-            <CustomImput
-              name="email"
-              required="Email is required"
-              placeholder="Email"
-              className="main-text-input"
-              type="email"
-              error={errors?.email?.message}
-              register={register}
-              style={{ borderColor: errors.email ? "red" : "black" }}
-            />
-          </div>
-          <div className="form-section-wrapper align-select-input">
-            <CustomSelect
-              name="institution"
-              type="text"
-              className="main-text-input increase-width"
-              register={register}
-              require="Institution is required"
-              placeholder="Institution name"
-              error={errors.institution?.message}
-              data={institutions}
-              style={{ borderColor: errors.email ? "red" : "black" }}
-            />
-            <CustomSelect
-              name="yearOfGraduation"
-              type="text"
-              className="main-text-input increase-width"
-              register={register}
-              require="Year of Graduation is required"
-              placeholder="Year of graduation"
-              style={{ borderColor: errors.email ? "red" : "black" }}
-              error={errors.yearOfGraduation?.message}
-              data={yearofGraduation}
-            />
-          </div>
-          <div className="form-section-wrapper">
-            <CustomImput
-              name="graduatedDegree"
-              required="Graduated Degree is required"
-              placeholder="Graduated Degree/Course of Study"
-              className="main-text-input"
-              type="text"
-              error={errors?.graduatedDegree?.message}
-              register={register}
-              style={{ borderColor: errors.graduatedDegree ? "red" : "black" }}
-            />
-            <CustomSelect
-              name="yearOfEntry"
-              type="text"
-              className="main-text-input increase-width"
-              register={register}
-              require="Year of Entry is required"
-              placeholder="Year of graduation"
-              style={{ borderColor: errors.yearOfEntry ? "red" : "black" }}
-              error={errors.yearOfEntry?.message}
-              data={yearofGraduation}
-            />
-          </div>
-          <div className="form-section-wrapper">
-            <CustomDoubleRadioButton
-              name="firstCollection"
-              label="Is this your FIRST time collecting the transcript?"
-              style={{ borderColor: errors.firstName ? "red" : "black" }}
-              register={register}
-              error={errors.firstCollection?.message}
-            />
-          </div>
-          <div className="form-section-wrapper">
-            <CustomDoubleRadioButton
-              label="Have you previously obtained a Notification of Result/Certificate?"
-              name="obtainedNotificationOfResult"
-              style={{ borderColor: errors.firstName ? "red" : "black" }}
-              register={register}
-              error={errors.obtainedNotificationOfResult?.message}
-            />
-          </div>
-          <div className="final-section-wrapper">
-            <CustomSelect
-              name="yearOfEntry"
-              type="text"
-              className="main-text-input"
-              register={register}
-              require="Year of Entry is required"
-              placeholder="Year of graduation"
-              style={{ borderColor: errors.yearOfEntry ? "red" : "black" }}
-              error={errors.yearOfEntry?.message}
-              data={yearofGraduation}
-            />
-          </div>
-          <div>
+          <div className="upload-section-wrapper">
             <CustomUpload />
-            <CustomImput
-              name="documentTitle"
-              required="Graduated Degree is required"
-              placeholder="Input Document Title"
-              className="main-text-input"
-              type="text"
-              error={errors?.documentTitle?.message}
-              register={register}
-              style={{ borderColor: errors.documentTitle ? "red" : "black" }}
-            />
-            <CustomInputUpload />
+
+            <div className="form-upload-section">
+              <CustomImput
+                name="documentTitle"
+                required="Graduated Degree is required"
+                placeholder="Input Document Title"
+                className="main-text-input"
+                type="text"
+                error={errors?.documentTitle?.message}
+                register={register}
+                style={{
+                  borderColor: errors.documentTitle ? "red" : "black",
+                }}
+              />
+              <CustomInputUpload />
+            </div>
           </div>
-          <Requirement />
-          <ErrandProcesses />
+          <div className="requirement-wrapper">
+            <Requirement />
+            <ErrandProcesses />
+          </div>
           <div className="terms-note-wrapper">
-            <CustomNote />
-            <TermsAndConditionCheckBox />
+            <div className="notes-wrapper">
+              <CustomNote />
+            </div>
+            <div className="term-section">
+              <TermsAndConditionCheckBox />
+              <CustomButton title="Make Request" btnStyles="button-wrapper" />
+            </div>
           </div>
-          <section className="button-wrapper">
-            <CustomButton />
-          </section>
         </form>
       </div>
       <div className="register-main-container">

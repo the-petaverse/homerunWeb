@@ -1,32 +1,106 @@
 .new-request-from-main-container {
-  padding: 20px 5%;
+  padding: 40px 5%;
+  background-color: rgb(247, 248, 248);
 }
 .slate-header-wrapper {
   text-align: left;
 }
 .slate-header-wrapper h2 {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+.slate-header-wrapper p {
+  font-size: 1.25em;
+  margin-bottom: 25px;
 }
 .new-request-form-container {
   /* background-color: red; */
 
   width: 100%;
 }
-.button-wrapper {
-  text-align: end;
-  width: 80%;
+.textarea {
+  border: solid 0.35px rgb(65, 64, 64);
+  border-radius: 20px;
+  padding: 2%;
+  font-size: 1.2em;
+  width: 100%;
+  /* resize: none; */
 }
-
+.main-text-input {
+  height: 55px;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+  font-family: "Josefin Slab", serif;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: black;
+  padding: 0px 15px;
+  border: solid 0.5px rgb(218, 206, 206);
+}
+.button-wrapper {
+  background-color: rgb(16, 4, 91);
+  height: 55px;
+  margin-top: 10px;
+  border-radius: 25px;
+  border: solid 0.5px rgb(18, 2, 86);
+  color: #fff;
+  font-size: 1.6em;
+  cursor: pointer;
+  width: 100%;
+}
+.bottom-wrapper {
+}
 .terms-note-wrapper {
   display: flex;
-  margin-top: 20px;
+  margin-top: 25px;
+  /* background-color: red; */
+  /* margin-top: 20px;
+  padding-top: 50px; */
+  background-color: #fff;
+  padding: 3%;
+  border-radius: 25px;
+
   /* align-items: center; */
 }
-
-.increase-width {
+.notes-wrapper {
+  /* background-color: yellow; */
+  width: 50%;
+}
+.upload-section-wrapper {
+  background-color: #fff;
+  margin-top: 25px;
+  padding: 3.5% 5%;
+  border-radius: 25px;
+}
+.inputs-container {
+  background-color: #fff;
+  padding: 5%;
+  margin-top: 10px;
+  border-radius: 25px;
+}
+.form-upload-section {
+  border: dashed 0.5px #5d5858;
+  padding: 2% 2.5%;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.requirement-wrapper {
+  border-radius: 25px;
+  background-color: #fff;
+  padding: 5%;
+  margin-top: 25px;
+}
+.term-section {
+  width: 45%;
+  /* background-color: green; */
+  padding-top: 30px;
+  margin-left: 20px;
+}
+/* .increase-width {
   width: 26.5dvw;
   justify-content: space-between;
-}
+} */
 
 .final-section-wrapper {
   width: 100%;

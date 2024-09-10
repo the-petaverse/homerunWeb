@@ -1,13 +1,18 @@
 import React from "react";
 import "./CustomTextArea.css";
 
-const CustomTextArea = () => {
+const CustomTextArea = ({ title, textAreaStyle, placeHolder }) => {
   return (
     <div className="custom-text-area-wrapper">
       <p>
-        <label>Errand Description</label>
+        <label>{title}</label>
       </p>
-      <textarea rows={10} cols={136} />
+      <textarea
+        rows={4}
+        cols={92}
+        className={textAreaStyle}
+        placeholder={placeHolder}
+      />
     </div>
   );
 };

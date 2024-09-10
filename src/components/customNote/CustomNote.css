@@ -2,4 +2,18 @@
   text-align: left;
   /* margin-top: 20px; */
   width: 100%;
+  padding-top: 15px;
+}
+.note-main-container p {
+  font-size: 1.2em;
+}
+.note-title-wrapper {
+  background-color: #fff3f0;
+  padding: 12px 15px;
+  border-radius: 15px;
+  color: #eb5130;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }

@@ -9,6 +9,7 @@ import {
 } from "../../../services/requestsCategory/requestApi";
 import CustomNote from "../../../components/customNote/CustomNote";
 import CustomEstimation from "../../../components/customEstimation/CustomEstimation";
+import ClientTestimonials from "../../../components/clientTestimonials/ClientTestimonials";
 
 const ServiceDetailPage = () => {
   const [serviceData, setServiceData] = useState([]);
@@ -69,8 +70,14 @@ const ServiceDetailPage = () => {
           </div>
         </div>
         <div className="service-right-container">
-          <CustomNote />
-          <CustomEstimation />
+          <div className="top-note-wrapper">
+            <CustomNote />
+            <h3>All funds paid arenonrefundable.</h3>
+          </div>
+          <div className="estimatio-wrapper">
+            <CustomEstimation />
+          </div>
+          {/* <CustomEstimation /> */}
         </div>
       </div>
       {/* <Footer /> */}

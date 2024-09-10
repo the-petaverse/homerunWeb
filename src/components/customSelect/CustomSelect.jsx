@@ -1,4 +1,5 @@
 import React from "react";
+import "./CustomSelect.css";
 
 const CustomSelect = ({
   type,
@@ -18,7 +19,6 @@ const CustomSelect = ({
         type={type}
         error={errors}
         style={style}
-        // className="register-main-text-input"
         className={className}
         placeholder={placeholder}
         data={data}

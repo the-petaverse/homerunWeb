@@ -1,5 +1,6 @@
 import React from "react";
 import "./CustomUpload.css";
+import PlusIcon from "../../../public/images/plus.png";
 
 const CustomUpload = () => {
   return (
@@ -7,7 +8,7 @@ const CustomUpload = () => {
       <div className="custom-upload-header">
         <h2>Upload Document</h2>
         <div className="custom-header-btn">
-          <span>+</span> <span>Add</span>
+          <img src={PlusIcon} /> <span>Add</span>
         </div>
       </div>
     </div>
