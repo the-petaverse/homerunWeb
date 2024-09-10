@@ -1,10 +1,10 @@
 import React from "react";
 import "./CustomButton.css";
 
-const CustomButton = () => {
+const CustomButton = ({ title, btnStyles }) => {
   return (
-    <div className="custom-btn-wrapper">
-      <button className="custom-btn-main">CustomButton</button>
+    <div>
+      <button className={`${btnStyles}`}>{title}</button>
     </div>
   );
 };

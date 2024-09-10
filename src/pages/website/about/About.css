@@ -2,6 +2,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
+.tester {
+  border: solid 1px red;
+}
 .about-us-container {
   padding: 15px 5%;
   position: relative;
@@ -138,7 +141,7 @@
     margin-bottom: -80px;
   }
   .detail-wrapper {
-    width: 35%;
+    width: 135%;
     margin-left: auto;
   }
 }
@@ -148,7 +151,7 @@
 
 @media (min-width: 1536px) {
   .detail-wrapper {
-    width: 22%;
+    width: 122%;
     margin-right: 120px;
   }
   .who-we-are-image {

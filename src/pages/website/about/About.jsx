@@ -13,7 +13,7 @@ const About = () => {
   //   setOpenSideBar(false);
   // };
   return (
-    <>
+    <div className="tester">
       <div className="about-us-container">
         <div className="about-header-wrapper">
           <div className="about-details-wrapper">
@@ -59,7 +59,7 @@ const About = () => {
       <MissionVision />
       {/* <Hq /> */}
       {/* <Footer /> */}
-    </>
+    </div>
   );
 };
 

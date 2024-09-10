@@ -9,7 +9,6 @@
   background-image: url("../../assets/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 .banner-container {
   padding-top: 5%;
@@ -41,13 +40,15 @@
   font-style: normal;
 }
 .get-stated-btn {
+  width: 50%;
   color: #fff;
   background-color: #ff6600;
   padding: 20px 20px;
   border-radius: 30px;
-  font-size: 1.2em;
+  font-size: 1.45em;
   font-weight: 500;
-  margin-top: 500px;
+  margin-top: 20px;
+  font-weight: 700;
 }
 .card-display-container {
   margin-top: -100px;

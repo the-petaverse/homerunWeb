@@ -1,6 +1,9 @@
 .request-nav-modal-container {
   display: none;
 }
+a:link {
+  text-decoration: none;
+}
 
 @media (max-width: 475px) {
 }
@@ -24,6 +27,7 @@
     padding: 1.5%;
     padding-top: 5.85%;
     border-radius: 15px;
+    position: fixed;
     z-index: 999;
   }
   .top-request-nav-content a {
