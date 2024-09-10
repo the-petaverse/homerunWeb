@@ -59,3 +59,8 @@
   display: flex;
   gap: 4px;
 }
+
+.process-text {
+  color: #0B994C;
+  font-weight: 700;
+}
