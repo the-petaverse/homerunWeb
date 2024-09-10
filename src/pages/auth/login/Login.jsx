@@ -62,7 +62,6 @@ const Login = () => {
               placeholder="Email"
               className="main-text-input"
               type="email"
-              label="Email"
               error={errors?.email?.message}
               register={register}
               style={{ borderColor: errors.email ? "red" : "blue" }}
