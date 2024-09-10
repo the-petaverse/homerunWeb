@@ -91,9 +91,13 @@ const Login = () => {
             />
             <div className="already-sign-n-wrapper">
               <p className="already-sign-in">You don’t have an account?</p>
-
               <p>
-                <span ><Link to="/register" className="sign-up-span">Sign up</Link></span> to Homerun
+                <span>
+                  <Link to="/register" className="sign-up-span">
+                    Sign up
+                  </Link>
+                </span>{" "}
+                to Homerun
               </p>
             </div>
           </form>
