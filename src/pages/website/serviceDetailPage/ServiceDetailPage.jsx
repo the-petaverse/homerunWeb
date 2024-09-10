@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BackIcon from "../../../assets/back-arrow.png";
 import "./ServiceDetailPage.css";
 import NewRequest from "../../../components/newRequest/NewRequest";
@@ -9,8 +9,10 @@ import {
 } from "../../../services/requestsCategory/requestApi";
 import CustomNote from "../../../components/customNote/CustomNote";
 import CustomEstimation from "../../../components/customEstimation/CustomEstimation";
+import { ArrowLeft } from "iconsax-react";
 
 const ServiceDetailPage = () => {
+  const navigate = useNavigate();
   const [serviceData, setServiceData] = useState([]);
   const [requestId, setRequestId] = useState();
   const [subRequestId, setSubRequestId] = useState();
@@ -23,6 +25,8 @@ const ServiceDetailPage = () => {
     isSuccess,
     error,
   } = useGetRequestSubCategoryQuery();
+
+  console.log({ subcategory });
 
   const filterServcies = () => {
     if (isSuccess) {
@@ -39,15 +43,20 @@ const ServiceDetailPage = () => {
     filterServcies();
   }, [isSuccess]);
 
+  const handleRouteBack = () => {
+    console.log(123);
+    navigate(-1);
+  };
+
   return (
     <>
       {/* <Navbar /> */}
       <div className="service-detail-main-container">
         <div className="service-left-container">
-          <div className="back-arrow-wrapper">
-            <img src={BackIcon} alt="back button" />
+          <button onClick={handleRouteBack} className="back-arrow-wrapper">
+            <ArrowLeft color="#333" size={18} />
             <span>Back</span>
-          </div>
+          </button>
           <div className="main-service-detail-page-container">
             {serviceData &&
               serviceData.map((data, index) => {

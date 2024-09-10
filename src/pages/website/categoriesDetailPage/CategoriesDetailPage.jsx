@@ -12,7 +12,7 @@ const CategoriesDetailPage = () => {
   console.log({category});
 
   return (
-    <div>
+    <div >
       {/* <Navbar /> */}
       {category === "property" && <SubServiceCard category={category} />}
       {category === "transcript" && <SubServiceCard category={category} />}

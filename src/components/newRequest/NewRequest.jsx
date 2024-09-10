@@ -63,6 +63,7 @@ const NewRequest = ({
   requestId,
   subRequestId,
 }) => {
+  // console.log({subcategory})
   const {
     data: subData,
     isLoading,
@@ -219,11 +220,23 @@ const NewRequest = ({
     <div className="new-request-from-main-container">
       <CustomBackButton />
       <div className="slate-header-wrapper">
-        <h2>Transcript Processing And Collection</h2>
+        <h2>{subcategory}</h2>
         <p>Please fill in the following details to make your request. </p>
       </div>
+
       <div className="new-request-form-container">
+        <h3 className="form-heading">Errand Request</h3>
+
         <form action="">
+          <textarea
+            name=""
+            className="textarea-input"
+            id=""
+            cols="4"
+            rows="50"
+            placeholder="Enter your errand description here"
+          />
+
           <div className="form-section-wrapper">
             <CustomImput
               name="firstName"
