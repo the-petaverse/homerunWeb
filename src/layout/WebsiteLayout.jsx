@@ -17,7 +17,6 @@ function WebsiteLayout() {
         <main className="main">
           <section className="section-container">
             <Outlet />
-            what is happening
           </section>
         </main>
       </div>

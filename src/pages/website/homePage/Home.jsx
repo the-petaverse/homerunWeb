@@ -1,4 +1,5 @@
 import React from "react";
+import "./Home.css";
 import HeroPage from "../../../components/heropage/HeroPage";
 import Testimonial from "../../../components/testimonial/Testimonial";
 // import Services from "../services/Services";
@@ -13,14 +14,14 @@ import Faq from "../../../components/faq/Faq";
 
 const Home = () => {
   return (
-    <>
+    <div className="home-main-container">
       <HeroPage />
       <Testimonial />
       <EverythinYouNeed />
       <ClientTestimonials />
       <Sustainability />
       <Faq />
-    </>
+    </div>
   );
 };
 

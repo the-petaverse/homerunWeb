@@ -40,12 +40,12 @@
   font-style: normal;
 }
 .get-stated-btn {
-  width: 50%;
+  width: 100%;
   color: #fff;
   background-color: #ff6600;
   padding: 20px 20px;
   border-radius: 30px;
-  font-size: 1.45em;
+  font-size: 1.15em;
   font-weight: 500;
   margin-top: 20px;
   font-weight: 700;
@@ -94,17 +94,34 @@
   .heading-txt {
     font-size: 3em;
   }
+  .get-stated-btn {
+    width: 80%;
+    font-size: 1.5em;
+  }
 }
 
-@media (max-width: 640px) {
+@media (min-width: 640px) {
+  .get-stated-btn {
+    width: 60%;
+    font-size: 1.5em;
+  }
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
+  .get-stated-btn {
+    width: 50%;
+    font-size: 1.5em;
+  }
 }
 
 @media (min-width: 1024px) {
   .hero-container {
     flex-direction: row;
     padding: 105px 5%;
+  }
+  .get-stated-btn {
+    width: 80%;
+    margin-bottom: 20px;
+    font-size: 1.5em;
   }
   .header-wrapper {
     width: 48%;
@@ -131,6 +148,10 @@
   .heading-txt-one,
   .heading-txt-two {
     font-size: 3.2em;
+  }
+  .get-stated-btn {
+    width: 50%;
+    margin-bottom: 20px;
   }
   .hero-img {
     max-width: 480px;

@@ -63,6 +63,8 @@
 @media (min-width: 1280px) {
   .testimonial-main-container {
     flex-direction: row;
+    padding: 3% 5%;
+    background-color: rgb(247, 248, 248);
   }
   .slider-container {
     width: 50dvw;

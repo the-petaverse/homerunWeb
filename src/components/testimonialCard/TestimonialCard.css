@@ -7,7 +7,7 @@
 }
 .testimonial-card {
   background-color: #fff;
-  border: solid 0.5px gray;
+  /* border: solid 0.5px gray; */
   width: 95% !important;
   padding: 8%;
   gap: 30px;

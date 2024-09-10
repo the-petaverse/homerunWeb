@@ -13,9 +13,6 @@
   /* height: 50dvh; */
   border-radius: 26px;
 }
-.card-image-wrapper:hover {
-  border: solid red 10px;
-}
 
 .slick-arrow::before {
   display: none;
@@ -73,6 +70,7 @@
   .serviceCard-main-wrapper {
     color: #fff;
     width: 32% !important;
+
     /* margin-right: -110px; */
     /* margin-right: -500px; */
   }
