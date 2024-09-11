@@ -1,17 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
-.category-detail-main-container {
-  padding: 15px 5%;
-  margin-bottom: 50px;
-  height: 80dvh;
+.sub-category-wrapper {
+  padding-bottom: 4.5%;
   background-color: rgb(247, 248, 248);
 }
-.category-header-wrapper {
-  text-align: center;
-  margin-bottom: 25px;
-}
-.cat-card-parent-wrapper {
+/* .cat-card-parent-wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -44,9 +35,9 @@ a {
 }
 .category-image {
   width: 100px;
-}
+} */
 
-@media (min-width: 475px) {
+/* @media (min-width: 475px) {
 }
 @media (min-width: 640px) {
   .main-category-card-container {
@@ -88,4 +79,4 @@ a {
 }
 
 @media (min-width: 1536px) {
-}
+} */

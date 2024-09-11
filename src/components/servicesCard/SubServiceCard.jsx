@@ -35,6 +35,30 @@ const subServiceData = [
     icons: "/images/sub-transcript.png",
     slug: "sworn-afidavit",
   },
+  {
+    id: "5",
+    name: "Police Report",
+    icons: "/images/sub-transcript.png",
+    slug: "police-report",
+  },
+  {
+    id: "6",
+    name: "Passport Collection",
+    icons: "/images/sub-transcript.png",
+    slug: "passport_collection",
+  },
+  {
+    id: "7",
+    name: "Others",
+    icons: "/images/sub-transcript.png",
+    slug: "other_collection",
+  },
+  {
+    id: "8",
+    name: "Certificate of Single Parent",
+    icons: "/images/sub-transcript.png",
+    slug: "single_parent_certificate",
+  },
 ];
 const SubServiceCard = ({ category }) => {
   const navigate = useNavigate();
@@ -51,8 +75,8 @@ const SubServiceCard = ({ category }) => {
     isLoading: subSuccess,
   } = useGetRequestSubCategoryQuery();
 
-  const handleNavigate = (serviceLink) => {
-    navigate(`/sub-category/${serviceLink}`);
+  const handleNavigate = (servicesubCategory) => {
+    navigate(`/sub-category/${servicesubCategory}`);
   };
 
   // if (isLoading) {

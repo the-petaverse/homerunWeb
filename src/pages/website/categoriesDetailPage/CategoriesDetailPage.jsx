@@ -12,7 +12,7 @@ const CategoriesDetailPage = () => {
   const { category } = useParams();
 
   return (
-    <div>
+    <div className="sub-category-wrapper">
       {/* <Navbar /> */}
       {category === "property" && <SubServiceCard category={category} />}
       {category === "transcript" && <SubServiceCard category={category} />}

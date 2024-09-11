@@ -4,9 +4,7 @@ import { Controller, useForm } from "react-hook-form";
 import CustomTextArea from "../customTextArea/CustomTextArea";
 import CustomImput from "../customImput/CustomImput";
 import CustomSelect from "../customSelect/CustomSelect";
-import CustomDoubleRadioButton from "../customCheckBox/CustomDoubleRadioButton";
-import CustomUpload from "../customUpload/CustomUpload";
-import CustomInputUpload from "../customInputUpload/CustomInputUpload";
+
 import Requirement from "../requirement/Requirement";
 import ErrandProcesses from "../errandProcesses/ErrandProcesses";
 import CustomNote from "../customNote/CustomNote";

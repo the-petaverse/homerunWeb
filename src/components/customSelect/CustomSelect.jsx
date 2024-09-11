@@ -26,7 +26,7 @@ const CustomSelect = ({
           required: required,
         })}
       >
-        <option value="0">{`Select ${name}`}</option>
+        <option value="0">{`Select ${placeholder}`}</option>
         {data && data !== undefined
           ? data.map((myData, index) => {
               return (

@@ -1,17 +1,38 @@
 import React from "react";
 import "./CustomDoubleRadioButton.css";
 
-const CustomDoubleRadioButton = ({ register, error, name, label, style }) => {
+const CustomDoubleRadioButton = ({
+  register,
+  error,
+  name,
+  label,
+  style,
+  optionOne,
+  optionTwo,
+  boxesWrapperStyle,
+  ckeckBoxesOptionStyle,
+  ckeckBoxesOptionTwoStyle,
+}) => {
   return (
     <>
       <div className="check-boxes-main-container" style={style}>
         <div className="chaeck-boxes-detail-wrapper">
           <p>{label}</p>
         </div>
-        <div className="check-boxes-main-wrapper">
-          <div className="check-boxes-option">
+        <div
+          className={
+            boxesWrapperStyle ? boxesWrapperStyle : "check-boxes-main-wrapper"
+          }
+        >
+          <div
+            className={
+              ckeckBoxesOptionStyle
+                ? ckeckBoxesOptionStyle
+                : "check-boxes-option"
+            }
+          >
             <p for="Yes" className="checkbox-label">
-              Yes
+              {optionOne ? optionOne : "Yes"}
             </p>
             <input
               id="Yes"
@@ -22,9 +43,15 @@ const CustomDoubleRadioButton = ({ register, error, name, label, style }) => {
               })}
             />
           </div>
-          <div className="check-boxes-option">
+          <div
+            className={
+              ckeckBoxesOptionTwoStyle
+                ? ckeckBoxesOptionTwoStyle
+                : "check-boxes-option"
+            }
+          >
             <p for="No" className="checkbox-label">
-              No
+              {optionTwo ? optionTwo : "No"}
             </p>
             <input
               name={name}

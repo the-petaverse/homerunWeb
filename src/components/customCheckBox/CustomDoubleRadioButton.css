@@ -7,7 +7,6 @@
   border: solid 1px rgb(218, 206, 206);
   margin-top: 18px;
   border-radius: 10px;
-  font-size: 1.3em;
   font-weight: lighter;
 }
 .check-boxes-main-wrapper {
@@ -20,6 +19,7 @@
 }
 .chaeck-boxes-detail-wrapper p {
   font-weight: 600;
+  font-size: 1.2em;
 }
 .check-boxes-option {
   display: flex;
@@ -29,10 +29,13 @@
   width: 48%;
   padding: 3.5%;
   border-radius: 10px;
+  font-size: 1.2em;
 }
+
 .check-boxes-option p {
   font-weight: 510;
-  padding-left: 5px;
+  font-size: 1em;
+  width: 120%;
 }
 input[type="radio"] {
   border: 0px;

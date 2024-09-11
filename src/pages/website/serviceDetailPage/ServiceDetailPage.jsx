@@ -11,6 +11,7 @@ import CustomNote from "../../../components/customNote/CustomNote";
 import CustomEstimation from "../../../components/customEstimation/CustomEstimation";
 import ClientTestimonials from "../../../components/clientTestimonials/ClientTestimonials";
 import BirthCertificate from "../../../components/birthCertificate/BirthCertificate";
+import PassportPoliceReport from "../../../components/passportPoliceReport/PassportPoliceReport";
 
 const ServiceDetailPage = () => {
   const [serviceData, setServiceData] = useState([]);
@@ -72,6 +73,18 @@ const ServiceDetailPage = () => {
               )}
               {subcategory === "birth-certificate-collection" && (
                 <BirthCertificate
+                  formStage={formStage}
+                  setFormStage={setFormStage}
+                  subcategory={subcategory}
+                  requestId={requestId}
+                  subRequestId={subRequestId}
+                />
+              )}
+              {(subcategory === "passport_collection" ||
+                subcategory === "police-report" ||
+                subcategory === "other_collection" ||
+                subcategory === "sworn-afidavit") && (
+                <PassportPoliceReport
                   formStage={formStage}
                   setFormStage={setFormStage}
                   subcategory={subcategory}
