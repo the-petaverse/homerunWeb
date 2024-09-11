@@ -12,6 +12,7 @@ import CustomEstimation from "../../../components/customEstimation/CustomEstimat
 import ClientTestimonials from "../../../components/clientTestimonials/ClientTestimonials";
 import BirthCertificate from "../../../components/birthCertificate/BirthCertificate";
 import PassportPoliceReport from "../../../components/passportPoliceReport/PassportPoliceReport";
+import SingleParentCertificate from "../../../components/singleParentCertificate/SingleParentCertificate";
 
 const ServiceDetailPage = () => {
   const [serviceData, setServiceData] = useState([]);
@@ -85,6 +86,15 @@ const ServiceDetailPage = () => {
                 subcategory === "other_collection" ||
                 subcategory === "sworn-afidavit") && (
                 <PassportPoliceReport
+                  formStage={formStage}
+                  setFormStage={setFormStage}
+                  subcategory={subcategory}
+                  requestId={requestId}
+                  subRequestId={subRequestId}
+                />
+              )}
+              {subcategory === "single_parent_certificate" && (
+                <SingleParentCertificate
                   formStage={formStage}
                   setFormStage={setFormStage}
                   subcategory={subcategory}

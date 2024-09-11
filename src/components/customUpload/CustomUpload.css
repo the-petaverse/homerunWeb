@@ -5,6 +5,7 @@
 .custom-upload-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   /* padding: 1.55% 2%; */
   border-radius: 10px;
 }

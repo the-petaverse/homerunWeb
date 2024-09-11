@@ -22,7 +22,7 @@ const BirthCertificate = ({
   requestId,
   subRequestId,
 }) => {
-  const [date, setDate] = React.useState(new Date(Date.now()));
+  const [date, setDate] = React.useState();
   const {
     register,
     handleSubmit,
@@ -117,7 +117,7 @@ const BirthCertificate = ({
                   render={() => (
                     <DatePicker
                       selected={date}
-                      placeholderText="Select date"
+                      placeholderText="Date Of Birth"
                       onChange={handleChange}
                       className="date-piker-select"
                     />
