@@ -13,14 +13,7 @@ const CategoriesDetailPage = () => {
 
   return (
     <div className="sub-category-wrapper">
-      {/* <Navbar /> */}
-      {category === "property" && <SubServiceCard category={category} />}
-      {category === "transcript" && <SubServiceCard category={category} />}
-      {category === "surprise" && <SubServiceCard category={category} />}
-      {category === "grocery" && <SubServiceCard category={category} />}
-      {category === "hotel" && <SubServiceCard category={category} />}
-      {/* {category === "grocery" && <SurpriseSubServices category={category} />} */}
-      {/* <Footer /> */}
+      <SubServiceCard category={category} />
     </div>
   );
 };

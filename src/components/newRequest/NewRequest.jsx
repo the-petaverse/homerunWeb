@@ -231,13 +231,6 @@ const NewRequest = ({
   ]);
   return (
     <div className="new-request-from-main-container">
-      <div className="back-button-wrapper">
-        <CustomBackButton title="Back" />
-      </div>
-      <div className="slate-header-wrapper">
-        <h2>{subcategory}</h2>
-        <p>Please fill in the following details to make your request. </p>
-      </div>
       <div className="new-request-form-container">
         <form action="">
           <div className="inputs-container">

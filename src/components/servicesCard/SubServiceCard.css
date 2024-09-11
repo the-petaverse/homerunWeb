@@ -134,8 +134,9 @@ a {
     height: 100dvh;
     padding-top: 115px;
   }
-  .subservices-card h2 {
+  .card-tile-wrapper h2 {
     font-size: 1.35em;
+    width: 100%;
   }
   .subservices-card-wrapper {
     display: grid;

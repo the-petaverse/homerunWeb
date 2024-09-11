@@ -13,6 +13,10 @@ import ClientTestimonials from "../../../components/clientTestimonials/ClientTes
 import BirthCertificate from "../../../components/birthCertificate/BirthCertificate";
 import PassportPoliceReport from "../../../components/passportPoliceReport/PassportPoliceReport";
 import SingleParentCertificate from "../../../components/singleParentCertificate/SingleParentCertificate";
+import PropertErrand from "../../../components/propertErrand/PropertErrand";
+import CustomBackButton from "../../../components/customBackButton/CustomBackButton";
+import { subServiceData } from "../../../data/subCategoryData";
+import { filterSubCategory } from "../../../util/filterSubCategories";
 
 const ServiceDetailPage = () => {
   const [serviceData, setServiceData] = useState([]);
@@ -38,19 +42,24 @@ const ServiceDetailPage = () => {
       setServiceData(filteredService);
     }
   };
+  const subServices = filterSubCategory(subServiceData, subcategory);
 
   useEffect(() => {
     filterServcies();
   }, [isSuccess]);
-
   return (
     <>
       {/* <Navbar /> */}
       <div className="service-detail-main-container">
         <div className="service-left-container">
-          <div className="back-arrow-wrapper">
-            <img src={BackIcon} alt="back button" />
-            <span>Back</span>
+          <div className="main-back-button-container">
+            <div className="main-back-button-wrapper">
+              <CustomBackButton title="Back" />
+            </div>
+            <div className="slate-header-wrapper">
+              <h2>{subServices && subServices[0]?.name}</h2>
+              <p>Please fill in the following details to make your request. </p>
+            </div>
           </div>
           <div className="main-service-detail-page-container">
             {serviceData &&
@@ -95,6 +104,18 @@ const ServiceDetailPage = () => {
               )}
               {subcategory === "single_parent_certificate" && (
                 <SingleParentCertificate
+                  formStage={formStage}
+                  setFormStage={setFormStage}
+                  subcategory={subcategory}
+                  requestId={requestId}
+                  subRequestId={subRequestId}
+                />
+              )}
+              {(subcategory === "property-management-services" ||
+                subcategory === "post-purchase-development" ||
+                subcategory === "property-document-follow-up" ||
+                subcategory === "pre-purchase-verification") && (
+                <PropertErrand
                   formStage={formStage}
                   setFormStage={setFormStage}
                   subcategory={subcategory}

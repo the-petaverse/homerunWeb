@@ -5,7 +5,7 @@ const CustomTextArea = ({ title, textAreaStyle, placeHolder }) => {
   return (
     <div className="custom-text-area-wrapper">
       <p>
-        <label>{title}</label>
+        <label>{title ? title : ""}</label>
       </p>
       <textarea
         rows={4}

@@ -9,57 +9,9 @@ import {
   useGetRequestCategoriesQuery,
   useGetRequestSubCategoryQuery,
 } from "../../services/requestsCategory/requestApi";
+import { subServiceData } from "../../data/subCategoryData";
+import { serviceCategory } from "../../data/categoryData";
 
-const subServiceData = [
-  {
-    id: "1",
-    name: "Transcripts processing and collection",
-    icons: "/images/sub-transcript.png",
-    slug: "transcript-processing",
-  },
-  {
-    id: "2",
-    name: "Higher education certificates processing and collection",
-    icons: "/images/sub-transcript.png",
-    slug: "higher-certificate-collection",
-  },
-  {
-    id: "3",
-    name: "Birth certificates",
-    icons: "/images/sub-transcript.png",
-    slug: "birth-certificate-collection",
-  },
-  {
-    id: "4",
-    name: "Sworn Affidavits",
-    icons: "/images/sub-transcript.png",
-    slug: "sworn-afidavit",
-  },
-  {
-    id: "5",
-    name: "Police Report",
-    icons: "/images/sub-transcript.png",
-    slug: "police-report",
-  },
-  {
-    id: "6",
-    name: "Passport Collection",
-    icons: "/images/sub-transcript.png",
-    slug: "passport_collection",
-  },
-  {
-    id: "7",
-    name: "Others",
-    icons: "/images/sub-transcript.png",
-    slug: "other_collection",
-  },
-  {
-    id: "8",
-    name: "Certificate of Single Parent",
-    icons: "/images/sub-transcript.png",
-    slug: "single_parent_certificate",
-  },
-];
 const SubServiceCard = ({ category }) => {
   const navigate = useNavigate();
   const [categoryList, setCategoryList] = useState([]);
@@ -98,29 +50,30 @@ const SubServiceCard = ({ category }) => {
   // }
 
   const filterSubCategory = () => {
-    if (categoryId) {
-      let filteredSubCategory = subData?.subRequestsCategory?.filter(
-        (subCategoryData) => subCategoryData?.category_id === categoryId
+    if (category) {
+      let filteredSubCategory = subServiceData.filter(
+        (subCategoryData) => subCategoryData?.category_id === category
       );
+
       setSubCategoryList(filteredSubCategory);
     }
   };
+  // const filterCategoryList = () => {
+  //   if (isSuccess) {
+  //     let filteredCategory = serviceCategory?.filter(
+  //       (categoryData) => categoryData.slug_name === category
+  //     );
 
-  const filterCategoryList = () => {
-    if (isSuccess) {
-      let filteredCategory = data?.requestsCategory?.filter(
-        (categoryData) => categoryData.slug_name === category
-      );
-
-      setCategoryId(filteredCategory[0]?._id);
-    }
-  };
+  //     console.log(serviceCategory);
+  //     setCategoryId(filteredCategory.id);
+  //   }
+  // };
 
   useEffect(() => {
-    filterCategoryList();
+    // filterCategoryList();
     filterSubCategory();
     // console.log(subData);
-  }, [isSuccess, categoryId, subSuccess, subLoading, subLoading, subData]);
+  }, [isSuccess, category, subSuccess, subLoading, subLoading, subData]);
   return (
     <div className="category-detail-main-container">
       <div className="category-header-wrapper">
@@ -167,8 +120,8 @@ const SubServiceCard = ({ category }) => {
       )} */}
 
       <div className="subservices-card-wrapper">
-        {subServiceData &&
-          subServiceData.map((subService, index) => {
+        {subCategoryList &&
+          subCategoryList.map((subService, index) => {
             return (
               <div
                 className="subservices-card"
@@ -181,7 +134,9 @@ const SubServiceCard = ({ category }) => {
                     className="subservices-icons"
                   />
                 </div>
-                <h2>{subService.name}</h2>
+                <div className="card-tile-wrapper">
+                  <h2>{subService.name}</h2>
+                </div>
               </div>
             );
           })}
