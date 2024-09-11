@@ -1,6 +1,6 @@
 import React from "react";
 import "./CustomNote.css";
-import CircleInfo from "../../../public/images/info-circle.png";
+import CircleInfo from "/images/info-circle.png";
 
 const CustomNote = () => {
   return (

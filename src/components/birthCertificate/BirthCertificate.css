@@ -34,11 +34,26 @@
   width: 100%;
   margin-top: 15px;
   border-radius: 10px;
-  font-family: "Josefin Slab", serif;
   font-size: 1.5em;
   font-weight: 500;
   color: black;
   padding: 0px 15px;
+  border: solid 0.5px rgb(218, 206, 206);
+}
+.single-input-wrapper {
+  align-content: left;
+  width: 50%;
+}
+.main-text-single-input {
+  height: 55px;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: black;
+  padding: 0px 15px;
+
   border: solid 0.5px rgb(218, 206, 206);
 }
 .button-wrapper {
@@ -117,6 +132,22 @@
   gap: 10px;
   /* background-color: red; */
 }
+.date-pickermain-text-input {
+  /* height: 55px; */
+}
+.date-piker-select {
+  height: 55px;
+  width: 24dvw;
+  margin-top: 15px;
+  border-radius: 10px;
+  font-size: 1.5em;
+  font-weight: 300;
+  color: black;
+  padding: 0px 15px;
+  border: solid 1.56px rgb(218, 206, 206);
+  /* width: 150%; */
+}
+
 .accordion-main-container {
   padding: 15px 3%;
   margin-right: 25px;

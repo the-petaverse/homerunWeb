@@ -231,9 +231,11 @@ const NewRequest = ({
   ]);
   return (
     <div className="new-request-from-main-container">
-      <CustomBackButton title="Back" />
+      <div className="back-button-wrapper">
+        <CustomBackButton title="Back" />
+      </div>
       <div className="slate-header-wrapper">
-        <h2>Transcript Processing And Collection</h2>
+        <h2>{subcategory}</h2>
         <p>Please fill in the following details to make your request. </p>
       </div>
       <div className="new-request-form-container">

@@ -1,6 +1,6 @@
 import React from "react";
 import "./CustomUpload.css";
-import PlusIcon from "../../../public/images/plus.png";
+import PlusIcon from "/images/plus.png";
 
 const CustomUpload = () => {
   return (

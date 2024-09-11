@@ -1,6 +1,6 @@
 import React from "react";
 import "./CustomEstimation.css";
-import ProcessDownload from "../../../public/images/document-download.png";
+import ProcessDownload from "/images/document-download.png";
 
 const paymentList = [
   { id: "1", title: "Notary fees (If Applicable)", cost: "$19.00" },

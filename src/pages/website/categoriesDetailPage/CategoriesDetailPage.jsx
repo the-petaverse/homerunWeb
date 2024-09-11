@@ -10,7 +10,6 @@ import SurpriseSubServices from "../../../components/surpriseSubServices/Surpris
 const categoryData = [{ id: "1", title: "property" }];
 const CategoriesDetailPage = () => {
   const { category } = useParams();
-  console.log({ category });
 
   return (
     <div>

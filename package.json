@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
+    "heroicons": "^2.0.18",
+    "iconsax-react": "^0.0.8",
     "react": "^18.2.0",
+    "react-datepicker": "^7.3.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.5",
     "react-paystack": "^5.0.0",
@@ -21,9 +24,7 @@
     "react-slick": "^0.30.2",
     "react-spinners": "^0.14.1",
     "slick-carousel": "^1.8.1",
-    "universal-cookie": "^7.1.4",
-    "heroicons": "^2.0.18",
-    "iconsax-react": "^0.0.8"
+    "universal-cookie": "^7.1.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

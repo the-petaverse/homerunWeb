@@ -10,6 +10,7 @@ import {
 import CustomNote from "../../../components/customNote/CustomNote";
 import CustomEstimation from "../../../components/customEstimation/CustomEstimation";
 import ClientTestimonials from "../../../components/clientTestimonials/ClientTestimonials";
+import BirthCertificate from "../../../components/birthCertificate/BirthCertificate";
 
 const ServiceDetailPage = () => {
   const [serviceData, setServiceData] = useState([]);
@@ -59,13 +60,25 @@ const ServiceDetailPage = () => {
                 );
               })}
             <div className="detail-form-main-container">
-              <NewRequest
-                formStage={formStage}
-                setFormStage={setFormStage}
-                subcategory={subcategory}
-                requestId={requestId}
-                subRequestId={subRequestId}
-              />
+              {(subcategory === "transcript-processing" ||
+                subcategory === "higher-certificate-collection") && (
+                <NewRequest
+                  formStage={formStage}
+                  setFormStage={setFormStage}
+                  subcategory={subcategory}
+                  requestId={requestId}
+                  subRequestId={subRequestId}
+                />
+              )}
+              {subcategory === "birth-certificate-collection" && (
+                <BirthCertificate
+                  formStage={formStage}
+                  setFormStage={setFormStage}
+                  subcategory={subcategory}
+                  requestId={requestId}
+                  subRequestId={subRequestId}
+                />
+              )}
             </div>
           </div>
         </div>
