@@ -28,8 +28,18 @@ const SubServiceCard = ({ category }) => {
   } = useGetRequestSubCategoryQuery();
 
   const handleNavigate = (servicesubCategory) => {
-    if (category === "hotel") {
-      console.log("object");
+    //User the serviceSub category to determin the navigation
+    //1. Car list
+    //2. Hampers
+    //3. Party packs
+    //4. Grocery bundles
+    //All of the above goes to the same page
+    if (
+      servicesubCategory === "car_booking" ||
+      servicesubCategory === "grocery_bundles" ||
+      servicesubCategory === "party_packs" ||
+      servicesubCategory === "hampers"
+    ) {
       navigate(`/car-hotel-services/${servicesubCategory}`);
     } else {
       navigate(`/sub-category/${servicesubCategory}`);
@@ -128,6 +138,7 @@ const SubServiceCard = ({ category }) => {
           subCategoryList.map((subService, index) => {
             return (
               <div
+                key={index}
                 className="subservices-card"
                 onClick={() => handleNavigate(subService.slug)}
               >

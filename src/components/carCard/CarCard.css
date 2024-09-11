@@ -1,10 +1,11 @@
 .car-main-container {
   width: 92%;
   border: solid 0.25px gray;
-  padding: 4%;
+  padding: 5.5%;
   border-radius: 20px;
   margin-bottom: 20px;
   margin-top: 15px;
+  cursor: pointer;
 }
 .car-main-container:hover {
   border: solid 1.5px gray;

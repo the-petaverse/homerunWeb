@@ -6,11 +6,24 @@ import { subServiceData } from "../../../data/subCategoryData";
 import { filterSubCategory } from "../../../util/filterSubCategories";
 import { useParams } from "react-router-dom";
 import { carData } from "../../../data/carData";
+import { groceryBundleData } from "../../../data/groceryBundle";
+import { partyPacksData } from "../../../data/partyPacks";
+import { hampersPackgeData } from "../../../data/hampers";
 
 const CarHotelBooking = () => {
   const { subcategory } = useParams();
-  const subServices = filterSubCategory(subServiceData, subcategory);
+  let subServices = filterSubCategory(subServiceData, subcategory);
+  let cardData;
 
+  if (subcategory === "car_booking") {
+    cardData = carData;
+  } else if (subcategory === "grocery_bundles") {
+    cardData = groceryBundleData;
+  } else if (subcategory === "party_packs") {
+    cardData = partyPacksData;
+  } else {
+    cardData = hampersPackgeData;
+  }
   return (
     <div className="car-hotel-main-container">
       <div className="car-back-button-container">
@@ -23,9 +36,9 @@ const CarHotelBooking = () => {
         </div>
       </div>
       <div className="car-card-outer-wrapper">
-        {carData &&
-          carData.map((car, index) => {
-            return <CarCard key={index} car={car} />;
+        {cardData &&
+          cardData.map((card, index) => {
+            return <CarCard key={index} card={card} />;
           })}
       </div>
     </div>
