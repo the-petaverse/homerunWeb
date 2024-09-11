@@ -28,9 +28,13 @@ const SubServiceCard = ({ category }) => {
   } = useGetRequestSubCategoryQuery();
 
   const handleNavigate = (servicesubCategory) => {
-    navigate(`/sub-category/${servicesubCategory}`);
+    if (category === "hotel") {
+      console.log("object");
+      navigate(`/car-hotel-services/${servicesubCategory}`);
+    } else {
+      navigate(`/sub-category/${servicesubCategory}`);
+    }
   };
-
   // if (isLoading) {
   //   console.log("isLoading");
   // }

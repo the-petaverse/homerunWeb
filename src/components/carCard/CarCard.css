@@ -1,0 +1,19 @@
+.car-main-container {
+  width: 92%;
+  border: solid 0.25px gray;
+  padding: 4%;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+.car-main-container:hover {
+  border: solid 1.5px gray;
+}
+.car-card-image > img {
+  width: 100%;
+}
+.view-details-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}

@@ -83,4 +83,18 @@ export const subServiceData = [
     slug: "property-management-services",
     category_id: "property",
   },
+  {
+    id: "13",
+    name: "Hotel Booking",
+    icons: "/images/sub-transcript.png",
+    slug: "hotel_booking",
+    category_id: "hotel",
+  },
+  {
+    id: "14",
+    name: "Car Booking",
+    icons: "/images/sub-transcript.png",
+    slug: "car_booking",
+    category_id: "hotel",
+  },
 ];

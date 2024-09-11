@@ -2,6 +2,9 @@ import { lazy } from "react";
 
 // import Home from "../pages/website/homePage/Home";
 const Home = lazy(() => import("../pages/website/homePage/Home"));
+const CarHotel = lazy(() =>
+  import("../pages/website/carHotelBooking/CarHotelBooking")
+);
 const About = lazy(() => import("../pages/website/about/About"));
 const Login = lazy(() => import("../pages/auth/login/Login"));
 const Register = lazy(() => import("../pages/auth/register/Register"));
@@ -61,6 +64,11 @@ export const websiteRoutes = [
     path: "/our-services",
     title: "Services Page",
     component: Services,
+  },
+  {
+    path: "/car-hotel-services/:subcategory",
+    title: "Care & Hotel Page",
+    component: CarHotel,
   },
 
   // {
