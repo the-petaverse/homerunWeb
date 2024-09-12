@@ -41,6 +41,8 @@ const SubServiceCard = ({ category }) => {
       servicesubCategory === "hampers"
     ) {
       navigate(`/car-hotel-services/${servicesubCategory}`);
+    } else if (servicesubCategory === "hotel_booking") {
+      navigate(`/hotel-services/${servicesubCategory}`);
     } else {
       navigate(`/sub-category/${servicesubCategory}`);
     }
