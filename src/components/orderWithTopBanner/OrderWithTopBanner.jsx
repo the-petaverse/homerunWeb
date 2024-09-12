@@ -52,17 +52,18 @@ const OrderWithTopBanner = () => {
   const subServices = filterSubCategory(subServiceData, subcategory);
 
   //Implementation to make sidebar sticky
-  const customScrollSidebar = () => {
-    let sidebar = document.getElementsByClassName("sidebar")[0];
-    let sidebar_content = document.getElementsByClassName(
-      "with-top-banner-right-container"
+  const customScrollSidebar = async () => {
+    let sidebar = await document.getElementsByClassName("sidebar")[0];
+    let sidebar_content = await document.getElementsByClassName(
+      "TopBannerRigh"
     )[0];
 
-    window.onscroll = () => {
-      let scrollTop = window.scrollY;
-      let viewportHeight = window.innerHeight;
-      let contentHeight = sidebar_content.getBoundingClientRect().height;
-      let sidebarTop = sidebar.getBoundingClientRect().top + window.pageYOffset;
+    window.onscroll = async () => {
+      let scrollTop = await window.scrollY;
+      let viewportHeight = await window.innerHeight;
+      let contentHeight = await sidebar_content.getBoundingClientRect().height;
+      let sidebarTop =
+        (await sidebar.getBoundingClientRect().top) + window.pageYOffset;
 
       if (scrollTop >= contentHeight - viewportHeight + sidebarTop) {
         sidebar_content.style.transform = `translateY(-${
@@ -124,7 +125,7 @@ const OrderWithTopBanner = () => {
             </div>
           </div>
           <div className="sidebar">
-            <div className="with-top-banner-right-container">
+            <div className="TopBannerRigh">
               <div className="with-top-banner-top-note-wrapper">
                 <CustomNote />
                 <h3>All funds paid arenonrefundable.</h3>
@@ -132,7 +133,6 @@ const OrderWithTopBanner = () => {
               <div className="estimatio-wrapper">
                 <CustomEstimation />
               </div>
-              {/* <CustomEstimation /> */}
             </div>
           </div>
         </div>

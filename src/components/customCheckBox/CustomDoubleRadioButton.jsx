@@ -11,11 +11,19 @@ const CustomDoubleRadioButton = ({
   optionTwo,
   boxesWrapperStyle,
   ckeckBoxesOptionStyle,
+  checkBoxesMainContainerStyle,
   ckeckBoxesOptionTwoStyle,
 }) => {
   return (
     <>
-      <div className="check-boxes-main-container" style={style}>
+      <div
+        className={
+          checkBoxesMainContainerStyle
+            ? checkBoxesMainContainerStyle
+            : "check-boxes-main-container"
+        }
+        style={style}
+      >
         <div className="chaeck-boxes-detail-wrapper">
           <p>{label}</p>
         </div>

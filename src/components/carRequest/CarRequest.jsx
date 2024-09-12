@@ -25,6 +25,7 @@ import CustomNote from "../customNote/CustomNote";
 import TermsAndConditionCheckBox from "../termsAndConditionCheckBox/TermsAndConditionCheckBox";
 import CustomButton from "../customButton/CustomButton";
 import CustomTextArea from "../customTextArea/CustomTextArea";
+import carCheck from "/images/car-check.png";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -234,11 +235,120 @@ const CarRequest = ({
       <div className="new-request-form-container">
         <form action="">
           <div className="inputs-container">
-            <CustomTextArea
-              title="Errand Description"
-              textAreaStyle="textarea"
-              placeHolder="Enter your errand description here"
-            />
+            <div className="car-extra-container">
+              <div className="car-extra-content-wrapper">
+                <div className="car-holder-details-wrapper">
+                  <p>Child Booster Seat - ($50)</p>
+                </div>
+                <div className="car-content-adjuster-wrapper">
+                  <div>
+                    <p>-</p>
+                  </div>
+                  <div>
+                    <p>0</p>
+                  </div>
+                  <div>
+                    <p>+</p>
+                  </div>
+                </div>
+              </div>
+              <div className="car-extra-content-wrapper">
+                <div className="car-holder-details-wrapper">
+                  <p>Child Booster Seat - ($50)</p>
+                </div>
+                <div className="car-content-adjuster-wrapper">
+                  <div>
+                    <p>-</p>
+                  </div>
+                  <div>
+                    <p>0</p>
+                  </div>
+                  <div>
+                    <p>+</p>
+                  </div>
+                </div>
+              </div>
+              <div className="car-extra-content-wrapper">
+                <div className="car-holder-details-wrapper">
+                  <p>Child Booster Seat - ($50)</p>
+                </div>
+                <div className="car-content-adjuster-wrapper">
+                  <div>
+                    <p>-</p>
+                  </div>
+                  <div>
+                    <p>0</p>
+                  </div>
+                  <div>
+                    <p>+</p>
+                  </div>
+                </div>
+              </div>
+              <div className="form-section-wrapper">
+                <CustomDoubleRadioButton
+                  name="carControl"
+                  label="Please select control type"
+                  style={{ borderColor: errors.carControl ? "red" : "black" }}
+                  register={register}
+                  error={errors.carControl?.message}
+                  optionOne="Manual"
+                  optionTwo="Automatic"
+                  boxesWrapperStyle="checkboxes-customized"
+                />
+              </div>
+              <div className="car-protection-wrapper">
+                <div className="car-protection-header">
+                  <img src={carCheck} alt="check" />
+                  <h2>Full Protection Cover</h2>
+                </div>
+                <div className="car-protec-details">
+                  <p>
+                    With our full protection cover, you can drive confidently
+                    knowing you're safeguarded against any unexpected surprises.
+                    We've got you fully covered, so you can focus on enjoying
+                    the journey ahead.
+                  </p>
+                </div>
+                <div className="car-protect-viw-details">
+                  <div>
+                    <p>
+                      You will be covered with Full Protection Cover of up to
+                      1,570 USD
+                    </p>
+                  </div>
+                  <div>
+                    <p>View details</p>
+                  </div>
+                </div>
+                <CustomDoubleRadioButton
+                  name="firstCollection"
+                  label="Do You Want Full Protection Cover ($11.98 per day)?"
+                  style={{ borderColor: errors.firstName ? "red" : "black" }}
+                  register={register}
+                  error={errors.firstCollection?.message}
+                  checkBoxesMainContainerStyle="car-protect-checkboxe-container"
+                />
+              </div>
+              <div className="driver-details-header">
+                <h2>Main Driver’s Information</h2>
+              </div>
+              <div className="car-extra-content-wrapper">
+                <div className="car-holder-details-wrapper">
+                  <p>Child Booster Seat - ($50)</p>
+                </div>
+                <div className="car-content-adjuster-wrapper">
+                  <div>
+                    <p>-</p>
+                  </div>
+                  <div>
+                    <p>0</p>
+                  </div>
+                  <div>
+                    <p>+</p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="form-section-wrapper">
               <CustomImput
                 name="firstName"
@@ -273,63 +383,14 @@ const CarRequest = ({
                 style={{ borderColor: errors.middleName ? "red" : "black" }}
               />
               <CustomImput
-                name="email"
-                required="Email is required"
-                placeholder="Matric Number"
+                name="phoneNumber"
+                required="Phone Number is required"
+                placeholder="Phone Number"
                 className="main-text-input"
                 type="text"
-                error={errors?.email?.message}
+                error={errors?.phoneNumber?.message}
                 register={register}
-                style={{ borderColor: errors.email ? "red" : "black" }}
-              />
-            </div>
-            <div className="form-section-wrapper align-select-input">
-              <CustomSelect
-                name="institution"
-                type="text"
-                className="main-text-input increase-width"
-                register={register}
-                require="Institution is required"
-                placeholder="Institution name"
-                error={errors.institution?.message}
-                data={institutions}
-                style={{ borderColor: errors.email ? "red" : "black" }}
-              />
-              <CustomSelect
-                name="yearOfGraduation"
-                type="text"
-                className="main-text-input increase-width"
-                register={register}
-                require="Year of Graduation is required"
-                placeholder="Year of graduation"
-                style={{ borderColor: errors.email ? "red" : "black" }}
-                error={errors.yearOfGraduation?.message}
-                data={yearofGraduation}
-              />
-            </div>
-            <div className="form-section-wrapper">
-              <CustomImput
-                name="graduatedDegree"
-                required="Graduated Degree is required"
-                placeholder="Graduated Degree/Course of Study"
-                className="main-text-input"
-                type="text"
-                error={errors?.graduatedDegree?.message}
-                register={register}
-                style={{
-                  borderColor: errors.graduatedDegree ? "red" : "black",
-                }}
-              />
-              <CustomSelect
-                name="yearOfEntry"
-                type="text"
-                className="main-text-input increase-width"
-                register={register}
-                require="Year of Entry is required"
-                placeholder="Year of graduation"
-                style={{ borderColor: errors.yearOfEntry ? "red" : "black" }}
-                error={errors.yearOfEntry?.message}
-                data={yearofGraduation}
+                style={{ borderColor: errors.phoneNumber ? "red" : "black" }}
               />
             </div>
             <div className="form-section-wrapper">
@@ -341,48 +402,8 @@ const CarRequest = ({
                 error={errors.firstCollection?.message}
               />
             </div>
-            <div className="form-section-wrapper">
-              <CustomDoubleRadioButton
-                label="Have you previously obtained a Notification of Result/Certificate?"
-                name="obtainedNotificationOfResult"
-                style={{ borderColor: errors.firstName ? "red" : "black" }}
-                register={register}
-                error={errors.obtainedNotificationOfResult?.message}
-              />
-            </div>
-            <div className="final-section-wrapper">
-              <CustomSelect
-                name="yearOfEntry"
-                type="text"
-                className="main-text-input"
-                register={register}
-                require="Year of Entry is required"
-                placeholder="Year of graduation"
-                style={{ borderColor: errors.yearOfEntry ? "red" : "black" }}
-                error={errors.yearOfEntry?.message}
-                data={yearofGraduation}
-              />
-            </div>
           </div>
-          <div className="upload-section-wrapper">
-            <CustomUpload />
 
-            <div className="form-upload-section">
-              <CustomImput
-                name="documentTitle"
-                required="Graduated Degree is required"
-                placeholder="Input Document Title"
-                className="main-text-input"
-                type="text"
-                error={errors?.documentTitle?.message}
-                register={register}
-                style={{
-                  borderColor: errors.documentTitle ? "red" : "black",
-                }}
-              />
-              <CustomInputUpload />
-            </div>
-          </div>
           <div className="requirement-wrapper">
             <Requirement />
             <ErrandProcesses />

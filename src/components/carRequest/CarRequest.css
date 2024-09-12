@@ -5,6 +5,93 @@
 .slate-header-wrapper {
   text-align: left;
 }
+.car-extra-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 0 1%; */
+  border: solid 0.5px gray;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.checkboxes-customized {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(238, 235, 235);
+  width: 36%;
+  border-radius: 10px;
+  font-size: 1em;
+}
+.car-protect-checkboxes-customized {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(238, 235, 235);
+  width: 50%;
+  border-radius: 10px;
+  font-size: 10px;
+}
+.driver-details-header {
+  margin-top: 20px;
+  text-align: left;
+}
+.car-protection-wrapper {
+  margin-top: 20px;
+  border: solid 1px gray;
+  padding: 2.5% 2%;
+  border-radius: 20px;
+}
+.car-protec-details {
+  margin-top: 15px;
+  text-align: left;
+}
+.car-protec-details > p {
+  font-size: 1.2em;
+}
+.car-protect-viw-details {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2%;
+  background-color: rgb(194, 236, 222);
+}
+.car-protect-viw-details > div > p {
+  font-size: 1em;
+  font-weight: 550;
+}
+.car-protect-checkboxe-container {
+  /* padding: 10px 2%; */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  /* border: solid 1px rgb(218, 206, 206); */
+  margin-top: 18px;
+  border-radius: 10px;
+  font-weight: lighter;
+}
+.car-protection-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.car-content-adjuster-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+  padding: 2%;
+  /* margin-right: 5px; */
+  border-radius: 20px;
+  background-color: rgb(207, 252, 252);
+}
+.car-holder-details-wrapper {
+  padding: 10px;
+}
+.car-content-adjuster-wrapper > div > p {
+  font-size: 1.25em;
+  font-weight: bold;
+}
 .slate-header-wrapper h2 {
   margin-bottom: 20px;
   font-size: 2em;
