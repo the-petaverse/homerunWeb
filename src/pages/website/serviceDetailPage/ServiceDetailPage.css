@@ -2,6 +2,8 @@
   margin-top: 50px;
 }
 .service-detail-main-container {
+}
+.bottom-holder {
   padding: 10px 2.5%;
   justify-content: space-between;
   display: flex;
@@ -13,9 +15,10 @@
 }
 .service-right-container {
   padding: 15px;
-  position: fixed;
+  /* position: fixed; */
+
   right: 2%;
-  margin-top: 120px;
+  /* margin-top: 120px; */
   border-radius: 25px;
   width: 35dvw;
 }

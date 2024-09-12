@@ -1,6 +1,7 @@
 .nav-container {
   background-color: #fff;
   width: 100dvw;
+  top: 0;
   /* height: 50px; */
   position: fixed;
   display: flex;
