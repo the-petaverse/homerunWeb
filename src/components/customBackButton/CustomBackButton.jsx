@@ -1,5 +1,5 @@
 import React from "react";
-import BackIcon from "../../assets/back-arrow.png";
+import BackIcon from "/images/back-arrow.png";
 import "./CustomBackButton.css";
 
 const CustomBackButton = ({ title, backBtnClick }) => {

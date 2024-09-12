@@ -4,17 +4,19 @@ import CarCard from "../../../components/carCard/CarCard";
 import CustomBackButton from "../../../components/customBackButton/CustomBackButton";
 import { subServiceData } from "../../../data/subCategoryData";
 import { filterSubCategory } from "../../../util/filterSubCategories";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { carData } from "../../../data/carData";
 import { groceryBundleData } from "../../../data/groceryBundle";
 import { partyPacksData } from "../../../data/partyPacks";
 import { hampersPackgeData } from "../../../data/hampers";
 
 const CarHotelBooking = () => {
+  const navigate = useNavigate();
   const { subcategory } = useParams();
   let subServices = filterSubCategory(subServiceData, subcategory);
   let cardData;
 
+  //Logic to detrmine screen to naviagte
   if (subcategory === "car_booking") {
     cardData = carData;
   } else if (subcategory === "grocery_bundles") {
@@ -24,6 +26,11 @@ const CarHotelBooking = () => {
   } else {
     cardData = hampersPackgeData;
   }
+
+  // Logic to navigate to order screen
+  const navigateToOderScreen = () => {
+    navigate(`/sub-category/${subcategory}`);
+  };
   return (
     <div className="car-hotel-main-container">
       <div className="car-back-button-container">
@@ -38,7 +45,13 @@ const CarHotelBooking = () => {
       <div className="car-card-outer-wrapper">
         {cardData &&
           cardData.map((card, index) => {
-            return <CarCard key={index} card={card} />;
+            return (
+              <CarCard
+                key={index}
+                card={card}
+                navigateToOderScreen={navigateToOderScreen}
+              />
+            );
           })}
       </div>
     </div>

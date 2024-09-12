@@ -1,0 +1,122 @@
+.main-service-detail-page-container {
+  margin-top: 50px;
+}
+.banner-slate-header-wrapper {
+  display: flex;
+  gap: 20px;
+  height: 25%;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.car-image-wrapper {
+  width: 34%;
+  height: 34%;
+  padding: 5%;
+  background-color: #fff;
+  border: solid 0.3px gray;
+  border-radius: 25px;
+}
+.car-image-wrapper > img {
+  width: 100%;
+  height: 100%;
+}
+.service-top-banner-details {
+  width: 62%;
+
+  padding: 2.5% 3%;
+  background-color: #fff;
+  border: solid 0.3px gray;
+  border-radius: 25px;
+}
+.service-top-banner-details > h2 {
+  font-size: 2.1em;
+  font-weight: 150;
+}
+.service-top-banner-details > h3 {
+  font-size: 2.25em;
+  font-weight: 560;
+  margin: 10px 0;
+}
+.service-top-banner-details > h5 {
+  font-size: 1.6em;
+  font-weight: 150;
+  margin: 10px 0;
+}
+.service-top-banner-details > h6 {
+  font-size: 2.2em;
+  font-weight: 5600;
+  margin: 10px 0;
+}
+.service-top-banner-details > h4 {
+  font-size: 1.25em;
+  font-weight: lighter;
+  margin: 10px 0;
+}
+.service-top-banner-details > ul > li {
+  font-size: 1em;
+  font-weight: lighter;
+  margin: 10px 0;
+  margin-left: -10px;
+}
+.top-holder {
+  padding: 10px 3%;
+}
+.service-with-top-main-container {
+}
+.bottom-holder {
+  /* padding: 10px 2.5%; */
+  justify-content: space-between;
+  display: flex;
+  background-color: rgb(247, 248, 248);
+}
+.main-back-button-container {
+  width: 100%;
+}
+.with-top-banner-left-container {
+  /* background-color: red; */
+
+  margin-top: -30px;
+  width: 60%;
+}
+.with-top-banner-right-container {
+  /* background-color: red; */
+  padding: 15px;
+  /* position: fixed; */
+
+  right: 2%;
+  /* margin-top: 30px; */
+  border-radius: 25px;
+  width: 35dvw;
+}
+.main-back-button-container {
+  margin-top: 120px;
+  padding: 5px 5%;
+}
+.top-banner-main-back-button-wrapper {
+  margin-top: 140px;
+  margin-bottom: 50px;
+}
+.with-top-banner-top-note-wrapper,
+.estimatio-wrapper {
+  background-color: #fff;
+  padding: 3.5% 5%;
+  border-radius: 25px;
+}
+.estimatio-wrapper {
+  margin-top: 25px;
+  padding: 2% 5%;
+  padding-bottom: 3.5%;
+}
+.top-note-wrapper h3 {
+  margin: 25px 0;
+}
+.service-detail-header {
+  text-align: center;
+}
+.detail-form-main-container {
+  text-align: center;
+  width: 60dvw;
+}
+.detail-form-main-container h1 {
+  font-size: 6em;
+}
