@@ -32,8 +32,8 @@ const CarHotelBooking = () => {
   }
 
   // Logic to navigate to order screen
-  const navigateToOderScreen = () => {
-    navigate(`/sub-category/${subcategory}`);
+  const navigateToOderScreen = (serviceName) => {
+    navigate(`/sub-category/${serviceName}`);
   };
   return (
     <div className="car-hotel-main-container">

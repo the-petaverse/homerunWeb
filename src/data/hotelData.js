@@ -8,6 +8,9 @@ export const hotelData = [
     petsIcon: "/images/pets.png",
     price: "$16.56M",
     hotelImage: "/images/hotel.png",
+    hotelBannerImage: "/images/hotel-banner.png",
+    slug: "hotel-blue-one",
+    subCategory: "hotel",
   },
   {
     id: "2",
@@ -18,6 +21,9 @@ export const hotelData = [
     petsIcon: "/images/pets.png",
     price: "$16.56M",
     hotelImage: "/images/hotel.png",
+    hotelBannerImage: "/images/hotel-banner.png",
+    slug: "hotel-blue",
+    subCategory: "hotel",
   },
   {
     id: "3",
@@ -28,6 +34,9 @@ export const hotelData = [
     petsIcon: "/images/pets.png",
     price: "$16.56M",
     hotelImage: "/images/hotel.png",
+    hotelBannerImage: "/images/hotel-banner.png",
+    slug: "hotel-blue",
+    subCategory: "hotel",
   },
   {
     id: "4",
@@ -38,6 +47,9 @@ export const hotelData = [
     petsIcon: "/images/pets.png",
     price: "$16.56M",
     hotelImage: "/images/hotel.png",
+    hotelBannerImage: "/images/hotel-banner.png",
+    slug: "hotel-blue",
+    subCategory: "hotel",
   },
   {
     id: "5",
@@ -48,6 +60,9 @@ export const hotelData = [
     petsIcon: "/images/pets.png",
     price: "$16.56M",
     hotelImage: "/images/hotel.png",
+    hotelBannerImage: "/images/hotel-banner.png",
+    slug: "hotel-blue",
+    subCategory: "hotel",
   },
   {
     id: "6",
@@ -58,6 +73,9 @@ export const hotelData = [
     petsIcon: "/images/pets.png",
     price: "$16.56M",
     hotelImage: "/images/hotel.png",
+    hotelBannerImage: "/images/hotel-banner.png",
+    slug: "hotel-blue",
+    subCategory: "hotel",
   },
   {
     id: "7",
@@ -68,6 +86,9 @@ export const hotelData = [
     petsIcon: "/images/pets.png",
     price: "$16.56M",
     hotelImage: "/images/hotel.png",
+    hotelBannerImage: "/images/hotel-banner.png",
+    slug: "hotel-blue",
+    subCategory: "hotel",
   },
   {
     id: "8",
@@ -78,6 +99,9 @@ export const hotelData = [
     petsIcon: "/images/pets.png",
     price: "$16.56M",
     hotelImage: "/images/hotel.png",
+    hotelBannerImage: "/images/hotel-banner.png",
+    slug: "hotel-blue",
+    subCategory: "hotel",
   },
   {
     id: "9",
@@ -88,6 +112,9 @@ export const hotelData = [
     petsIcon: "/images/pets.png",
     price: "$16.56M",
     hotelImage: "/images/hotel.png",
+    hotelBannerImage: "/images/hotel-banner.png",
+    slug: "hotel-blue",
+    subCategory: "hotel",
   },
   {
     id: "10",
@@ -98,5 +125,8 @@ export const hotelData = [
     petsIcon: "/images/pets.png",
     price: "$16.57M",
     hotelImage: "/images/hotel.png",
+    hotelBannerImage: "/images/hotel-banner.png",
+    slug: "hotel-blue",
+    subCategory: "hotel",
   },
 ];

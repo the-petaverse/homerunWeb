@@ -4,7 +4,10 @@ import CarImage from "/images/yellow-car.png";
 
 const CarCard = ({ card, navigateToOderScreen }) => {
   return (
-    <div className="car-main-container" onClick={() => navigateToOderScreen()}>
+    <div
+      className="car-main-container"
+      onClick={() => navigateToOderScreen(card.slug)}
+    >
       <div className="car-card-image">
         <img src={card.image} alt="car" />
       </div>

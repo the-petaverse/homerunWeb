@@ -8,6 +8,11 @@
   /* justify-content: space-between; */
   align-items: center;
 }
+.hotel-blue-banner-slate-header-wrapper {
+}
+.hotel-blue-image-wrapper > img {
+  width: 100%;
+}
 .car-image-wrapper {
   width: 34%;
   height: 34%;

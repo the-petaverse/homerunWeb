@@ -24,6 +24,8 @@ import CustomEstimation from "../customEstimation/CustomEstimation";
 import carImage from "/images/big-car.png";
 import ClientTestimonials from "../clientTestimonials/ClientTestimonials";
 import CarRequest from "../carRequest/CarRequest";
+import HotelBanner from "/images/hotel-banner.png";
+import { customScrollSidebar } from "../../util/stickyFunction";
 
 const OrderWithTopBanner = () => {
   const [serviceData, setServiceData] = useState([]);
@@ -52,30 +54,6 @@ const OrderWithTopBanner = () => {
   const subServices = filterSubCategory(subServiceData, subcategory);
 
   //Implementation to make sidebar sticky
-  const customScrollSidebar = async () => {
-    let sidebar = await document.getElementsByClassName("sidebar")[0];
-    let sidebar_content = await document.getElementsByClassName(
-      "TopBannerRigh"
-    )[0];
-
-    window.onscroll = async () => {
-      let scrollTop = await window.scrollY;
-      let viewportHeight = await window.innerHeight;
-      let contentHeight = await sidebar_content.getBoundingClientRect().height;
-      let sidebarTop =
-        (await sidebar.getBoundingClientRect().top) + window.pageYOffset;
-
-      if (scrollTop >= contentHeight - viewportHeight + sidebarTop) {
-        sidebar_content.style.transform = `translateY(-${
-          viewportHeight - viewportHeight + sidebarTop
-        }px)`;
-        sidebar_content.style.position = "fixed";
-      } else {
-        sidebar_content.style.transform = "";
-        sidebar_content.style.position = "";
-      }
-    };
-  };
 
   useEffect(() => {
     // filterServcies();
@@ -89,27 +67,37 @@ const OrderWithTopBanner = () => {
           <div className="top-banner-main-back-button-wrapper">
             <CustomBackButton title="Back" />
           </div>
-          <div className="banner-slate-header-wrapper">
-            <div className="car-image-wrapper">
-              <img src={carImage} alt="car" />
+          {subcategory === "mini_car" && (
+            <div className="banner-slate-header-wrapper">
+              <div className="car-image-wrapper">
+                <img src={carImage} alt="car" />
+              </div>
+              <div className="service-top-banner-details">
+                <h2>Product name</h2>
+                <h3>Mini Car</h3>
+                <h5>PRICE</h5>
+                <h6>From $713.00</h6>
+                <h4>CAR DETAILS</h4>
+                <ul>
+                  <li>4 Seats</li>
+                  <li>3 Doors</li>
+                  <li>2 Small Suitcase</li>
+                  <li>Air Conditioning</li>
+                  <li>Petrol</li>
+                  <li>Manual & Automatic</li>
+                </ul>
+              </div>
             </div>
-            <div className="service-top-banner-details">
-              <h2>Product name</h2>
-              <h3>Mini Car</h3>
-              <h5>PRICE</h5>
-              <h6>From $713.00</h6>
-              <h4>CAR DETAILS</h4>
-              <ul>
-                <li>4 Seats</li>
-                <li>3 Doors</li>
-                <li>2 Small Suitcase</li>
-                <li>Air Conditioning</li>
-                <li>Petrol</li>
-                <li>Manual & Automatic</li>
-              </ul>
+          )}
+          {subcategory === "hotel-blue-one" && (
+            <div className="hotel-blue-banner-slate-header-wrapper">
+              <div className="hotel-blue-image-wrapper">
+                <img src={HotelBanner} alt="hotel" />
+              </div>
             </div>
-          </div>
+          )}
         </div>
+
         <div className="bottom-holder">
           <div className="with-top-banner-left-container">
             <div className="main-service-detail-page-container">
@@ -125,8 +113,8 @@ const OrderWithTopBanner = () => {
             </div>
           </div>
           <div className="sidebar">
-            <div className="TopBannerRigh">
-              <div className="with-top-banner-top-note-wrapper">
+            <div className="service-right-container">
+              <div className="top-note-wrapper">
                 <CustomNote />
                 <h3>All funds paid arenonrefundable.</h3>
               </div>

@@ -3,7 +3,10 @@ import "./HotelCard.css";
 
 const HotelCard = ({ hotel, navigateToOderScreen }) => {
   return (
-    <div className="hotelCardContainer" onClick={navigateToOderScreen}>
+    <div
+      className="hotelCardContainer"
+      onClick={() => navigateToOderScreen(hotel.slug)}
+    >
       <div className="hotelCardImageWrapper">
         <img src={hotel.hotelImage} alt="hotel" className="hotelCardImage" />
       </div>
