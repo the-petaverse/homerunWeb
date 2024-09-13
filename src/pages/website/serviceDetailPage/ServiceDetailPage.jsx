@@ -56,7 +56,9 @@ const ServiceDetailPage = () => {
     <>
       {/* <Navbar /> */}
       <div className="service-detail-main-container">
-        {subcategory && subcategory === "car_booking" && <OrderWithTopBanner />}
+        {subcategory &&
+          (subcategory === "car_booking" ||
+            subcategory === "hotel_booking") && <OrderWithTopBanner />}
         {subcategory === "police-report" && (
           <>
             <div className="service-left-container">

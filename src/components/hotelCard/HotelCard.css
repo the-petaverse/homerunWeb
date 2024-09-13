@@ -4,6 +4,12 @@
   border: solid 0.86px gray;
   border-radius: 15px;
   margin-top: 15px;
+  cursor: pointer;
+}
+.hotelCardContainer:hover {
+  -webkit-box-shadow: -4px 6px 5px 0px rgba(199, 181, 199, 1);
+  -moz-box-shadow: -4px 6px 5px 0px rgba(199, 181, 199, 1);
+  box-shadow: -4px 6px 5px 0px rgba(199, 181, 199, 1);
 }
 .hotelCardImage {
   width: 100%;

@@ -9,6 +9,8 @@ import { carData } from "../../../data/carData";
 import { groceryBundleData } from "../../../data/groceryBundle";
 import { partyPacksData } from "../../../data/partyPacks";
 import { hampersPackgeData } from "../../../data/hampers";
+import { hotelData } from "../../../data/hotelData";
+import HotelCard from "../../../components/hotelCard/HotelCard";
 
 const CarHotelBooking = () => {
   const navigate = useNavigate();
@@ -23,6 +25,8 @@ const CarHotelBooking = () => {
     cardData = groceryBundleData;
   } else if (subcategory === "party_packs") {
     cardData = partyPacksData;
+  } else if (subcategory === "hotel_booking") {
+    cardData = hotelData;
   } else {
     cardData = hampersPackgeData;
   }
@@ -46,11 +50,24 @@ const CarHotelBooking = () => {
         {cardData &&
           cardData.map((card, index) => {
             return (
-              <CarCard
-                key={index}
-                card={card}
-                navigateToOderScreen={navigateToOderScreen}
-              />
+              <>
+                {subcategory === "hotel_booking" && (
+                  <HotelCard
+                    hotel={card}
+                    key={index}
+                    navigateToOderScreen={navigateToOderScreen}
+                  />
+                )}
+                {(subcategory === "car_booking" ||
+                  subcategory === "grocery_bundles" ||
+                  subcategory === "party_packs") && (
+                  <CarCard
+                    key={index}
+                    card={card}
+                    navigateToOderScreen={navigateToOderScreen}
+                  />
+                )}
+              </>
             );
           })}
       </div>

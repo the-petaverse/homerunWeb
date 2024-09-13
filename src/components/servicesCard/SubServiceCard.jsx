@@ -38,11 +38,10 @@ const SubServiceCard = ({ category }) => {
       servicesubCategory === "car_booking" ||
       servicesubCategory === "grocery_bundles" ||
       servicesubCategory === "party_packs" ||
-      servicesubCategory === "hampers"
+      servicesubCategory === "hampers" ||
+      servicesubCategory === "hotel_booking"
     ) {
-      navigate(`/car-hotel-services/${servicesubCategory}`);
-    } else if (servicesubCategory === "hotel_booking") {
-      navigate(`/hotel-services/${servicesubCategory}`);
+      navigate(`/services-sub-category/${servicesubCategory}`);
     } else {
       navigate(`/sub-category/${servicesubCategory}`);
     }

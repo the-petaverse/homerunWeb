@@ -1,9 +1,0 @@
-.hotel-list-container {
-  padding: 125px 5%;
-  padding-bottom: 150px;
-}
-.hotelCardParentContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 15px;
-}
