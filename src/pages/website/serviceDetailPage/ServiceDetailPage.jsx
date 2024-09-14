@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import BackIcon from "/images/back-arrow.png";
 import "./ServiceDetailPage.css";
 import NewRequest from "../../../components/newRequest/NewRequest";
@@ -21,6 +21,7 @@ import { customScrollSidebar } from "../../../util/stickyFunction";
 import OrderWithTopBanner from "../../../components/orderWithTopBanner/OrderWithTopBanner";
 
 const ServiceDetailPage = () => {
+  const location = useLocation();
   const [serviceData, setServiceData] = useState([]);
   const [requestId, setRequestId] = useState();
   const [subRequestId, setSubRequestId] = useState();
@@ -33,6 +34,15 @@ const ServiceDetailPage = () => {
     isSuccess,
     error,
   } = useGetRequestSubCategoryQuery();
+  //Data received from router Dom
+  let serviceSubCategory;
+  let serviceCategory;
+
+  if (location.state) {
+    const { category, subCategory } = location?.state;
+    serviceSubCategory = subCategory;
+    serviceCategory = category;
+  }
 
   const filterServcies = () => {
     if (isSuccess) {
@@ -56,12 +66,15 @@ const ServiceDetailPage = () => {
     <>
       {/* <Navbar /> */}
       <div className="service-detail-main-container">
-        {subcategory &&
+        {/* {subcategory &&
           (subcategory === "mini_car" || subcategory === "hotel-blue-one") && (
             <OrderWithTopBanner subcategory={subcategory} />
-          )}
-        {subcategory === "police-report" && (
-          <>
+          )} */}
+
+        {/* <> */}
+        {serviceCategory &&
+          (serviceCategory === "transcript" ||
+            serviceCategory === "property") && (
             <div className="service-left-container">
               <div className="main-back-button-container">
                 <div className="main-back-button-wrapper">
@@ -139,19 +152,19 @@ const ServiceDetailPage = () => {
                 </div>
               </div>
             </div>
-            <div className="sidebar">
-              <div className="service-right-container">
-                <div className="top-note-wrapper">
-                  <CustomNote />
-                  <h3>All funds paid arenonrefundable.</h3>
-                </div>
-                <div className="estimatio-wrapper">
-                  <CustomEstimation />
-                </div>
-              </div>
+          )}
+        <div className="sidebar">
+          <div className="service-right-container">
+            <div className="top-note-wrapper">
+              <CustomNote />
+              <h3>All funds paid arenonrefundable.</h3>
             </div>
-          </>
-        )}
+            <div className="estimatio-wrapper">
+              <CustomEstimation />
+            </div>
+          </div>
+        </div>
+        {/* </> */}
       </div>
       {/* <Footer /> */}
     </>

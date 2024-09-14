@@ -4,7 +4,7 @@ import CarCard from "../../../components/carCard/CarCard";
 import CustomBackButton from "../../../components/customBackButton/CustomBackButton";
 import { subServiceData } from "../../../data/subCategoryData";
 import { filterSubCategory } from "../../../util/filterSubCategories";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { carData } from "../../../data/carData";
 import { groceryBundleData } from "../../../data/groceryBundle";
 import { partyPacksData } from "../../../data/partyPacks";
@@ -13,6 +13,7 @@ import { hotelData } from "../../../data/hotelData";
 import HotelCard from "../../../components/hotelCard/HotelCard";
 
 const CarHotelBooking = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const { subcategory } = useParams();
   let subServices = filterSubCategory(subServiceData, subcategory);
@@ -30,10 +31,22 @@ const CarHotelBooking = () => {
   } else {
     cardData = hampersPackgeData;
   }
+  let serviceCatory;
 
+  if (location.state) {
+    const { category } = location.state;
+    serviceCatory = category;
+  }
+  const serviceDetails = {
+    subCategory: subcategory,
+    category: serviceCatory,
+  };
+  // const categoryData = {
+  //   category: category,
+  // };
   // Logic to navigate to order screen
   const navigateToOderScreen = (serviceName) => {
-    navigate(`/sub-category/${serviceName}`);
+    navigate(`/sub-category/${serviceName}`, { state: serviceDetails });
   };
   return (
     <div className="car-hotel-main-container">

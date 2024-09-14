@@ -48,13 +48,13 @@ const Navbar = () => {
           </ul>
 
           <ul className="list-wrapper">
-            <Link
+            <div
               // to=""
               className="nav-links post-request-wrapper"
               onClick={handleOpenRequestNav}
             >
               <li className="post-request-wrapper-li">Post a Request</li>
-            </Link>
+            </div>
             {!receivedCookies && (
               <Link to="/login" className="nav-links">
                 <li className="login-wrapper">Login</li>

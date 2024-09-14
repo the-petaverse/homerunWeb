@@ -3,7 +3,7 @@ import SuccessImage from "../../assets/green.png";
 import { useForm } from "react-hook-form";
 import { PaystackButton } from "react-paystack";
 import backButton from "../../assets/form-back.png";
-import "./HotelRequest.css";
+import "./CarRequest.css";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetRequestSubCategoryQuery,
@@ -27,6 +27,11 @@ import CustomButton from "../customButton/CustomButton";
 import CustomTextArea from "../customTextArea/CustomTextArea";
 import carCheck from "/images/car-check.png";
 
+const countries = [
+  { id: "1", title: "Nigeria" },
+  { id: "2", title: "USA" },
+  { id: "3", title: "Kenya" },
+];
 const staties = [
   { id: "1", countryid: "1", title: "Lagos" },
   { id: "2", countryid: "1", title: "Ondo" },
@@ -39,8 +44,21 @@ const cities = [
   { id: "3", stateId: "2", title: "Akure" },
   { id: "4", stateId: "2", title: "Owo" },
 ];
-
-const HotelRequest = ({
+const institutions = [
+  { id: "1", title: "OAU" },
+  { id: "2", title: "UNIBEN" },
+  { id: "3", title: "LASPOTECH" },
+  { id: "4", title: "UNILAG" },
+  { id: "5", title: "ABU" },
+];
+const yearofGraduation = [
+  { id: "1", title: "2020" },
+  { id: "2", title: "2022" },
+  { id: "3", title: "2019" },
+  { id: "4", title: "1985" },
+  { id: "5", title: "2004" },
+];
+const CarRequest = ({
   setFormStage,
   formStage,
   subcategory,
@@ -406,4 +424,4 @@ const HotelRequest = ({
   );
 };
 
-export default HotelRequest;
+export default CarRequest;

@@ -26,6 +26,8 @@ import ClientTestimonials from "../clientTestimonials/ClientTestimonials";
 import CarRequest from "../carRequest/CarRequest";
 import HotelBanner from "/images/hotel-banner.png";
 import { customScrollSidebar } from "../../util/stickyFunction";
+import { hotelData } from "../../data/hotelData";
+import HotelRequest from "../hotelRequest/HotelRequest";
 
 const OrderWithTopBanner = () => {
   const [serviceData, setServiceData] = useState([]);
@@ -51,8 +53,7 @@ const OrderWithTopBanner = () => {
   //     setServiceData(filteredService);
   //   }
   // };
-  const subServices = filterSubCategory(subServiceData, subcategory);
-
+  const subServices = filterSubCategory(hotelData, subcategory);
   //Implementation to make sidebar sticky
 
   useEffect(() => {
@@ -91,6 +92,34 @@ const OrderWithTopBanner = () => {
           )}
           {subcategory === "hotel-blue-one" && (
             <div className="hotel-blue-banner-slate-header-wrapper">
+              <div className="hotel-group-header">
+                <div>
+                  <img src={subServices[0]?.hotelLogo} alt="logo" />
+                </div>
+                <div>
+                  <div className="hotel-top-title-wrapper">
+                    <h2>{subServices[0]?.title}</h2>
+                  </div>
+                  <div className="hotel-location-group">
+                    <div className="hotel-location-group-inner-wrapper">
+                      <img src={subServices[0].locationIcon} alt="location" />
+                      <p>{subServices[0].location}</p>
+                    </div>
+                    <div className="hotel-location-group-inner-wrapper">
+                      <img src={subServices[0].petsIcon} alt="location" />
+                      <p>Beds</p>
+                    </div>
+                    <div className="hotel-location-group-inner-wrapper">
+                      <img src={subServices[0].petsIcon} alt="location" />
+                      <p>Baths</p>
+                    </div>
+                    <div className="hotel-location-group-inner-wrapper">
+                      <img src={subServices[0].petsIcon} alt="location" />
+                      <p>{subServices[0].location}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="hotel-blue-image-wrapper">
                 <img src={HotelBanner} alt="hotel" />
               </div>
@@ -102,13 +131,24 @@ const OrderWithTopBanner = () => {
           <div className="with-top-banner-left-container">
             <div className="main-service-detail-page-container">
               <div className="detail-form-main-container">
-                <CarRequest
-                  formStage={formStage}
-                  setFormStage={setFormStage}
-                  subcategory={subcategory}
-                  requestId={requestId}
-                  subRequestId={subRequestId}
-                />
+                {subServices && subServices[0].subCategory === "car" && (
+                  <CarRequest
+                    formStage={formStage}
+                    setFormStage={setFormStage}
+                    subcategory={subcategory}
+                    requestId={requestId}
+                    subRequestId={subRequestId}
+                  />
+                )}
+                {subServices && subServices[0].subCategory === "hotel" && (
+                  <HotelRequest
+                    formStage={formStage}
+                    setFormStage={setFormStage}
+                    subcategory={subcategory}
+                    requestId={requestId}
+                    subRequestId={subRequestId}
+                  />
+                )}
               </div>
             </div>
           </div>

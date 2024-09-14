@@ -27,6 +27,9 @@ const SubServiceCard = ({ category }) => {
     isLoading: subSuccess,
   } = useGetRequestSubCategoryQuery();
 
+  const categoryData = {
+    category: category,
+  };
   const handleNavigate = (servicesubCategory) => {
     //User the serviceSub category to determin the navigation
     //1. Car list
@@ -41,9 +44,11 @@ const SubServiceCard = ({ category }) => {
       servicesubCategory === "hampers" ||
       servicesubCategory === "hotel_booking"
     ) {
-      navigate(`/services-sub-category/${servicesubCategory}`);
+      navigate(`/services-sub-category/${servicesubCategory}`, {
+        state: categoryData,
+      });
     } else {
-      navigate(`/sub-category/${servicesubCategory}`);
+      navigate(`/sub-category/${servicesubCategory}`, { state: categoryData });
     }
   };
   // if (isLoading) {
