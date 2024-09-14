@@ -29,7 +29,11 @@ import { customScrollSidebar } from "../../util/stickyFunction";
 import { hotelData } from "../../data/hotelData";
 import HotelRequest from "../hotelRequest/HotelRequest";
 
-const OrderWithTopBanner = () => {
+const OrderWithTopBanner = ({
+  serviceName,
+  serviceSubCategory,
+  serviceCategory,
+}) => {
   const [serviceData, setServiceData] = useState([]);
   const [requestId, setRequestId] = useState();
   const [subRequestId, setSubRequestId] = useState();
@@ -53,6 +57,8 @@ const OrderWithTopBanner = () => {
   //     setServiceData(filteredService);
   //   }
   // };
+
+  // console.log(serviceName, serviceSubCategory, serviceCategory);
   const subServices = filterSubCategory(hotelData, subcategory);
   //Implementation to make sidebar sticky
 
@@ -68,7 +74,7 @@ const OrderWithTopBanner = () => {
           <div className="top-banner-main-back-button-wrapper">
             <CustomBackButton title="Back" />
           </div>
-          {subcategory === "mini_car" && (
+          {serviceSubCategory === "car_booking" && (
             <div className="banner-slate-header-wrapper">
               <div className="car-image-wrapper">
                 <img src={carImage} alt="car" />
@@ -90,7 +96,7 @@ const OrderWithTopBanner = () => {
               </div>
             </div>
           )}
-          {subcategory === "hotel-blue-one" && (
+          {serviceSubCategory === "hotel_booking" && (
             <div className="hotel-blue-banner-slate-header-wrapper">
               <div className="hotel-group-header">
                 <div>
@@ -131,7 +137,7 @@ const OrderWithTopBanner = () => {
           <div className="with-top-banner-left-container">
             <div className="main-service-detail-page-container">
               <div className="detail-form-main-container">
-                {subServices && subServices[0].subCategory === "car" && (
+                {serviceSubCategory === "car_booking" && (
                   <CarRequest
                     formStage={formStage}
                     setFormStage={setFormStage}
@@ -140,7 +146,7 @@ const OrderWithTopBanner = () => {
                     subRequestId={subRequestId}
                   />
                 )}
-                {subServices && subServices[0].subCategory === "hotel" && (
+                {serviceSubCategory === "hotel_booking" && (
                   <HotelRequest
                     formStage={formStage}
                     setFormStage={setFormStage}

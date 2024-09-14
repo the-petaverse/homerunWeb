@@ -34,6 +34,7 @@ const ServiceDetailPage = () => {
     isSuccess,
     error,
   } = useGetRequestSubCategoryQuery();
+
   //Data received from router Dom
   let serviceSubCategory;
   let serviceCategory;
@@ -56,6 +57,7 @@ const ServiceDetailPage = () => {
   };
   const subServices = filterSubCategory(subServiceData, subcategory);
 
+  console.log(subcategory);
   //Implementation to make sidebar sticky
 
   useEffect(() => {
@@ -66,12 +68,14 @@ const ServiceDetailPage = () => {
     <>
       {/* <Navbar /> */}
       <div className="service-detail-main-container">
-        {/* {subcategory &&
-          (subcategory === "mini_car" || subcategory === "hotel-blue-one") && (
-            <OrderWithTopBanner subcategory={subcategory} />
-          )} */}
+        {serviceCategory && serviceCategory === "hotel" && (
+          <OrderWithTopBanner
+            serviceName={subcategory}
+            serviceSubCategory={serviceSubCategory}
+            serviceCategory={serviceCategory}
+          />
+        )}
 
-        {/* <> */}
         {serviceCategory &&
           (serviceCategory === "transcript" ||
             serviceCategory === "property") && (
