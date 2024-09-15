@@ -2,17 +2,20 @@
   padding: 0px 2.5%;
   background-color: rgb(247, 248, 248);
 }
-.slate-header-wrapper {
-  text-align: left;
-}
+
 .hotel-extra-content-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 0 1%; */
+  width: 100%;
+  padding: 0 0 0 1%;
   border: solid 0.5px gray;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-top: 20px;
+}
+.hotel-content-adjuster-wrapper > div > p {
+  font-size: 1.25em;
+  font-weight: bold;
 }
 .checkboxes-customized {
   display: flex;
@@ -23,7 +26,7 @@
   border-radius: 10px;
   font-size: 1em;
 }
-.car-protect-checkboxes-customized {
+.hotel-protect-checkboxes-customized {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,31 +39,31 @@
   margin-top: 20px;
   text-align: left;
 }
-.car-protection-wrapper {
+.hotel-protection-wrapper {
   margin-top: 20px;
   border: solid 1px gray;
   padding: 2.5% 2%;
   border-radius: 20px;
 }
-.car-protec-details {
+.hotel-protec-details {
   margin-top: 15px;
   text-align: left;
 }
-.car-protec-details > p {
+.hotel-protec-details > p {
   font-size: 1.2em;
 }
-.car-protect-viw-details {
+.hotel-protect-viw-details {
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
   padding: 1.2%;
-  background-color: rgb(194, 236, 222);
+  background-color: rgb(236, 194, 194);
 }
-.car-protect-viw-details > div > p {
+.hotel-protect-viw-details > div > p {
   font-size: 1em;
   font-weight: 550;
 }
-.car-protect-checkboxe-container {
+.hotel-protect-checkboxe-container {
   /* padding: 10px 2%; */
   justify-content: space-between;
   align-items: center;
@@ -71,35 +74,28 @@
   border-radius: 10px;
   font-weight: lighter;
 }
-.car-protection-header {
+.hotel-protection-header {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.car-content-adjuster-wrapper {
+.hotel-content-adjuster-wrapper {
   display: flex;
   justify-content: space-between;
-  width: 25%;
+  width: 35%;
   padding: 2%;
   /* margin-right: 5px; */
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: rgb(207, 252, 252);
 }
-.car-holder-details-wrapper {
+.hotel-holder-details-wrapper {
   padding: 10px;
 }
-.car-content-adjuster-wrapper > div > p {
+.hotel-content-adjuster-wrapper > div > p {
   font-size: 1.25em;
   font-weight: bold;
 }
-.slate-header-wrapper h2 {
-  margin-bottom: 20px;
-  font-size: 2em;
-}
-.slate-header-wrapper p {
-  font-size: 1.25em;
-  margin-bottom: 25px;
-}
+
 .new-request-form-container {
   /* background-color: red; */
   width: 100%;

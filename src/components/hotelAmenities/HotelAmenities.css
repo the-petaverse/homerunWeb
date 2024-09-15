@@ -12,35 +12,7 @@
   padding: 2%;
   border-radius: 15px;
 }
-.hotel-content-adjuster-wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 25%;
-  padding: 2%;
-  /* margin-right: 5px; */
-  border-radius: 20px;
-  background-color: rgb(207, 252, 252);
-}
-.hotel-extra-content-wrapper {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
 
-  padding: 0 1%;
-  border: solid 0.5px gray;
-  border-radius: 15px;
-  margin-top: 20px;
-}
-.hotel-content-adjuster-wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 25%;
-  padding: 3%;
-  /* margin-right: 5px; */
-  border-radius: 15px;
-  background-color: rgb(207, 252, 252);
-}
 .inner-amenities-header-wrapper {
   display: flex;
   align-items: center;

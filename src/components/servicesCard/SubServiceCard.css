@@ -84,7 +84,7 @@
   background-color: rgb(200, 194, 194);
 }
 .category-detail-main-container {
-  padding-top: 125px;
+  /* padding-top: 125px; */
 }
 a {
   text-decoration: none;
@@ -132,7 +132,7 @@ a {
 
   .category-detail-main-container {
     height: 100dvh;
-    padding-top: 115px;
+    /* padding-top: 115px; */
   }
   .card-tile-wrapper h2 {
     font-size: 1.35em;

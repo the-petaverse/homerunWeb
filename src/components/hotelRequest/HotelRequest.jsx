@@ -27,6 +27,7 @@ import CustomButton from "../customButton/CustomButton";
 import CustomTextArea from "../customTextArea/CustomTextArea";
 import carCheck from "/images/car-check.png";
 import HotelAmenities from "../hotelAmenities/HotelAmenities";
+import SelectRooms from "../selectRooms/SelectRooms";
 
 const staties = [
   { id: "1", countryid: "1", title: "Lagos" },
@@ -271,15 +272,34 @@ const HotelRequest = ({
                 </div>
               </div>
             </div>
-            <div className="form-section-wrapper">
-              <CustomDoubleRadioButton
-                name="firstCollection"
-                label="Is this your FIRST time collecting the transcript?"
-                style={{ borderColor: errors.firstName ? "red" : "black" }}
+            <div>
+              <SelectRooms />
+            </div>
+            <div className="form-section-wrapper align-select-input">
+              <CustomSelect
+                name="checkInDate"
+                type="text"
+                className="main-text-input increase-width"
                 register={register}
-                error={errors.firstCollection?.message}
+                require="Check In is required"
+                placeholder="check in date"
+                error={errors.checkInDate?.message}
+                // data={institutions}
+                style={{ borderColor: errors.checkInDate ? "red" : "black" }}
+              />
+              <CustomSelect
+                name="checkOutDate"
+                type="text"
+                className="main-text-input increase-width"
+                register={register}
+                require="Check out date is required"
+                placeholder="check out date"
+                style={{ borderColor: errors.checkOutDate ? "red" : "black" }}
+                error={errors.checkOutDate?.message}
+                // data={yearofGraduation}
               />
             </div>
+            <div className="form-section-wrapper"></div>
           </div>
 
           <div className="requirement-wrapper">

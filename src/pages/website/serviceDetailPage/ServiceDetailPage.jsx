@@ -69,11 +69,13 @@ const ServiceDetailPage = () => {
   return (
     <div>
       {/* <Navbar /> */}
-      <ServiceHeader
-        serviceCategory={serviceCategory}
-        serviceSubCategory={serviceSubCategory}
-        serviceName={subcategory}
-      />
+      {serviceCategory && serviceCategory === "hotel" && (
+        <ServiceHeader
+          serviceCategory={serviceCategory}
+          serviceSubCategory={serviceSubCategory}
+          serviceName={subcategory}
+        />
+      )}
       <div>
         <div className="service-detail-main-container">
           {serviceCategory && serviceCategory === "hotel" && (
