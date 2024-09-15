@@ -59,7 +59,7 @@ const OrderWithTopBanner = ({
   // };
 
   // console.log(serviceName, serviceSubCategory, serviceCategory);
-  const subServices = filterSubCategory(hotelData, subcategory);
+
   //Implementation to make sidebar sticky
 
   useEffect(() => {
@@ -69,70 +69,8 @@ const OrderWithTopBanner = ({
   return (
     <>
       {/* <Navbar /> */}
-      <div className="service-with-top-main-container">
-        <div className="top-holder">
-          <div className="top-banner-main-back-button-wrapper">
-            <CustomBackButton title="Back" />
-          </div>
-          {serviceSubCategory === "car_booking" && (
-            <div className="banner-slate-header-wrapper">
-              <div className="car-image-wrapper">
-                <img src={carImage} alt="car" />
-              </div>
-              <div className="service-top-banner-details">
-                <h2>Product name</h2>
-                <h3>Mini Car</h3>
-                <h5>PRICE</h5>
-                <h6>From $713.00</h6>
-                <h4>CAR DETAILS</h4>
-                <ul>
-                  <li>4 Seats</li>
-                  <li>3 Doors</li>
-                  <li>2 Small Suitcase</li>
-                  <li>Air Conditioning</li>
-                  <li>Petrol</li>
-                  <li>Manual & Automatic</li>
-                </ul>
-              </div>
-            </div>
-          )}
-          {serviceSubCategory === "hotel_booking" && (
-            <div className="hotel-blue-banner-slate-header-wrapper">
-              <div className="hotel-group-header">
-                <div>
-                  <img src={subServices[0]?.hotelLogo} alt="logo" />
-                </div>
-                <div>
-                  <div className="hotel-top-title-wrapper">
-                    <h2>{subServices[0]?.title}</h2>
-                  </div>
-                  <div className="hotel-location-group">
-                    <div className="hotel-location-group-inner-wrapper">
-                      <img src={subServices[0].locationIcon} alt="location" />
-                      <p>{subServices[0].location}</p>
-                    </div>
-                    <div className="hotel-location-group-inner-wrapper">
-                      <img src={subServices[0].petsIcon} alt="location" />
-                      <p>Beds</p>
-                    </div>
-                    <div className="hotel-location-group-inner-wrapper">
-                      <img src={subServices[0].petsIcon} alt="location" />
-                      <p>Baths</p>
-                    </div>
-                    <div className="hotel-location-group-inner-wrapper">
-                      <img src={subServices[0].petsIcon} alt="location" />
-                      <p>{subServices[0].location}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="hotel-blue-image-wrapper">
-                <img src={HotelBanner} alt="hotel" />
-              </div>
-            </div>
-          )}
-        </div>
 
+      <div className="service-with-top-main-container">
         <div className="bottom-holder">
           <div className="with-top-banner-left-container">
             <div className="main-service-detail-page-container">
@@ -155,17 +93,6 @@ const OrderWithTopBanner = ({
                     subRequestId={subRequestId}
                   />
                 )}
-              </div>
-            </div>
-          </div>
-          <div className="sidebar">
-            <div className="service-right-container">
-              <div className="top-note-wrapper">
-                <CustomNote />
-                <h3>All funds paid arenonrefundable.</h3>
-              </div>
-              <div className="estimatio-wrapper">
-                <CustomEstimation />
               </div>
             </div>
           </div>

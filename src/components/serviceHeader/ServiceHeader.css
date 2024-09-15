@@ -1,0 +1,41 @@
+.services-top-holder {
+  padding: 10px 3%;
+}
+.services-top-banner-details {
+  width: 62%;
+
+  padding: 2.5% 3%;
+  background-color: #fff;
+  border: solid 0.3px gray;
+  border-radius: 25px;
+}
+.services-top-banner-details > h2 {
+  font-size: 2.1em;
+  font-weight: 150;
+}
+.services-top-banner-details > h3 {
+  font-size: 2.25em;
+  font-weight: 560;
+  margin: 10px 0;
+}
+.services-top-banner-details > h5 {
+  font-size: 1.6em;
+  font-weight: 150;
+  margin: 10px 0;
+}
+.service-top-banner-details > h6 {
+  font-size: 2.2em;
+  font-weight: 5600;
+  margin: 10px 0;
+}
+.services-top-banner-details > h4 {
+  font-size: 1.25em;
+  font-weight: lighter;
+  margin: 10px 0;
+}
+.services-top-banner-details > ul > li {
+  font-size: 1em;
+  font-weight: lighter;
+  margin: 10px 0;
+  margin-left: -10px;
+}

@@ -11,6 +11,7 @@ export const hotelData = [
     hotelBannerImage: "/images/hotel-banner.png",
     slug: "hotel-blue-one",
     subCategory: "hotel",
+    hotelLogo: "/images/hotel-logo.png",
   },
   {
     id: "2",

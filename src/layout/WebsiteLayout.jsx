@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/footer/Footer";
 import { Outlet } from "react-router-dom";
-// import "./layout.css";
+import "./layout.css";
 
 function WebsiteLayout() {
   const [openSidebar, setOpenSidebar] = useState(false);

@@ -26,6 +26,7 @@ import TermsAndConditionCheckBox from "../termsAndConditionCheckBox/TermsAndCond
 import CustomButton from "../customButton/CustomButton";
 import CustomTextArea from "../customTextArea/CustomTextArea";
 import carCheck from "/images/car-check.png";
+import HotelAmenities from "../hotelAmenities/HotelAmenities";
 
 const staties = [
   { id: "1", countryid: "1", title: "Lagos" },
@@ -217,152 +218,19 @@ const HotelRequest = ({
       <div className="new-request-form-container">
         <form action="">
           <div className="inputs-container">
-            <div className="car-extra-container">
-              <div className="car-extra-content-wrapper">
-                <div className="car-holder-details-wrapper">
-                  <p>Child Booster Seat - ($50)</p>
-                </div>
-                <div className="car-content-adjuster-wrapper">
-                  <div>
-                    <p>-</p>
-                  </div>
-                  <div>
-                    <p>0</p>
-                  </div>
-                  <div>
-                    <p>+</p>
-                  </div>
-                </div>
-              </div>
-              <div className="car-extra-content-wrapper">
-                <div className="car-holder-details-wrapper">
-                  <p>Child Booster Seat - ($50)</p>
-                </div>
-                <div className="car-content-adjuster-wrapper">
-                  <div>
-                    <p>-</p>
-                  </div>
-                  <div>
-                    <p>0</p>
-                  </div>
-                  <div>
-                    <p>+</p>
-                  </div>
-                </div>
-              </div>
-              <div className="car-extra-content-wrapper">
-                <div className="car-holder-details-wrapper">
-                  <p>Child Booster Seat - ($50)</p>
-                </div>
-                <div className="car-content-adjuster-wrapper">
-                  <div>
-                    <p>-</p>
-                  </div>
-                  <div>
-                    <p>0</p>
-                  </div>
-                  <div>
-                    <p>+</p>
-                  </div>
-                </div>
-              </div>
-              <div className="form-section-wrapper">
-                <CustomDoubleRadioButton
-                  name="carControl"
-                  label="Please select control type"
-                  style={{ borderColor: errors.carControl ? "red" : "black" }}
-                  register={register}
-                  error={errors.carControl?.message}
-                  optionOne="Manual"
-                  optionTwo="Automatic"
-                  boxesWrapperStyle="checkboxes-customized"
-                />
-              </div>
-              <div className="car-protection-wrapper">
-                <div className="car-protection-header">
-                  <img src={carCheck} alt="check" />
-                  <h2>Full Protection Cover</h2>
-                </div>
-                <div className="car-protec-details">
-                  <p>
-                    With our full protection cover, you can drive confidently
-                    knowing you're safeguarded against any unexpected surprises.
-                    We've got you fully covered, so you can focus on enjoying
-                    the journey ahead.
-                  </p>
-                </div>
-                <div className="car-protect-viw-details">
-                  <div>
-                    <p>
-                      You will be covered with Full Protection Cover of up to
-                      1,570 USD
-                    </p>
-                  </div>
-                  <div>
-                    <p>View details</p>
-                  </div>
-                </div>
-                <CustomDoubleRadioButton
-                  name="firstCollection"
-                  label="Do You Want Full Protection Cover ($11.98 per day)?"
-                  style={{ borderColor: errors.firstName ? "red" : "black" }}
-                  register={register}
-                  error={errors.firstCollection?.message}
-                  checkBoxesMainContainerStyle="car-protect-checkboxe-container"
-                />
-              </div>
-              <div className="driver-details-header">
-                <h2>Main Driver’s Information</h2>
-              </div>
-              <div className="car-extra-content-wrapper">
-                <div className="car-holder-details-wrapper">
-                  <p>Child Booster Seat - ($50)</p>
-                </div>
-                <div className="car-content-adjuster-wrapper">
-                  <div>
-                    <p>-</p>
-                  </div>
-                  <div>
-                    <p>0</p>
-                  </div>
-                  <div>
-                    <p>+</p>
-                  </div>
-                </div>
-              </div>
+            <div className="amenities-wrapper">
+              <HotelAmenities />
             </div>
             <div className="form-section-wrapper">
               <CustomImput
-                name="firstName"
-                required="First name is required"
-                placeholder="First name"
+                name="fullName"
+                required="Full name is required"
+                placeholder="Full name"
                 className="main-text-input"
                 type="text"
-                error={errors?.firstName?.message}
+                error={errors?.fullName?.message}
                 register={register}
-                style={{ borderColor: errors.firstName ? "red" : "black" }}
-              />
-              <CustomImput
-                name="lastName"
-                required="Last name is required"
-                placeholder="Last name"
-                className="main-text-input"
-                type="text"
-                error={errors?.lastName?.message}
-                register={register}
-                style={{ borderColor: errors.lastName ? "red" : "black" }}
-              />
-            </div>
-            <div className="form-section-wrapper">
-              <CustomImput
-                name="middleName"
-                required="Middle name is required"
-                placeholder="Middle name"
-                className="main-text-input"
-                type="text"
-                error={errors?.middleName?.message}
-                register={register}
-                style={{ borderColor: errors.middleName ? "red" : "black" }}
+                style={{ borderColor: errors.fullName ? "red" : "black" }}
               />
               <CustomImput
                 name="phoneNumber"
@@ -374,6 +242,34 @@ const HotelRequest = ({
                 register={register}
                 style={{ borderColor: errors.phoneNumber ? "red" : "black" }}
               />
+            </div>
+            <div className="form-section-wrapper">
+              <CustomImput
+                name="fullName"
+                required="Full name is required"
+                placeholder="Full name"
+                className="main-text-input"
+                type="text"
+                error={errors?.fullName?.message}
+                register={register}
+                style={{ borderColor: errors.fullName ? "red" : "black" }}
+              />
+              <div className="hotel-extra-content-wrapper">
+                <div className="hotel-holder-details-wrapper">
+                  <p>Child Booster Seat - ($50)</p>
+                </div>
+                <div className="hotel-content-adjuster-wrapper">
+                  <div>
+                    <p>-</p>
+                  </div>
+                  <div>
+                    <p>0</p>
+                  </div>
+                  <div>
+                    <p>+</p>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="form-section-wrapper">
               <CustomDoubleRadioButton
