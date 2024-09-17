@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./CustomStore.css";
 import { Gift } from "iconsax-react";
 import GiftCard from "../giftCard/GiftCard";
+import ProceedToCheckout from "../proceedToCheckout/ProceedToCheckout";
+import { useSelector } from "react-redux";
 
 const listProducts = [
   {
@@ -34,6 +36,36 @@ const listProducts = [
     details: "Lorem Ipsun dolor",
     image: "/images/vase.png",
   },
+  {
+    id: "5",
+    name: "Iphone 14 pro max",
+    details: "Lorem Ipsun dolor",
+    image: "/images/vase.png",
+  },
+  {
+    id: "5",
+    name: "Iphone 14 pro max",
+    details: "Lorem Ipsun dolor",
+    image: "/images/vase.png",
+  },
+  {
+    id: "5",
+    name: "Iphone 14 pro max",
+    details: "Lorem Ipsun dolor",
+    image: "/images/vase.png",
+  },
+  {
+    id: "5",
+    name: "Iphone 14 pro max",
+    details: "Lorem Ipsun dolor",
+    image: "/images/vase.png",
+  },
+  {
+    id: "5",
+    name: "Iphone 14 pro max",
+    details: "Lorem Ipsun dolor",
+    image: "/images/vase.png",
+  },
 ];
 
 const categoryData = [
@@ -50,6 +82,7 @@ const categoryData = [
   { id: "11", title: "Handmade Items" },
 ];
 const CustomStore = () => {
+  const cart = useSelector((state) => state.cart);
   const [productCategory, setProductCategory] = useState("Home");
 
   const showProductCategory = (category) => {
@@ -117,6 +150,11 @@ const CustomStore = () => {
           </section>
         )}
       </div>
+      {cart.cartItems && cart?.cartItems.length > 0 && (
+        <div className="proceed-to-checkout-outer-wrapper">
+          <ProceedToCheckout />
+        </div>
+      )}
     </div>
   );
 };

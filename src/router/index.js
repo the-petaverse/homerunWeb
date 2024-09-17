@@ -7,6 +7,7 @@ const CarHotel = lazy(() =>
 );
 
 const About = lazy(() => import("../pages/website/about/About"));
+const CheckoutPage = lazy(() => import("../pages/website/cart/Cart"));
 const Login = lazy(() => import("../pages/auth/login/Login"));
 const Register = lazy(() => import("../pages/auth/register/Register"));
 const ForgotPassword = lazy(() =>
@@ -53,6 +54,11 @@ export const websiteRoutes = [
     path: "/sub-category/:subcategory",
     title: "Service Detail Page Page",
     component: ServiceDetailPage,
+  },
+  {
+    path: "/checkout",
+    title: "Checkout page",
+    component: CheckoutPage,
   },
   {
     path: "/surprise-sub-category/:subcategory",

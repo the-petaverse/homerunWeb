@@ -23,19 +23,15 @@ const GiftCard = ({ product, index }) => {
       for={product.name}
       // onClick={() => handleAddToCard(product)}
     >
-      {cart.cartItems &&
-        cart.cartItems.map((item, index) => {
-          return (
-            <input
-              key={index}
-              type="checkbox"
-              // checked={item.id === product.id ? true : false}
-              value={product.name}
-              ref={checkboxRef}
-              onClick={() => handleAddToCard(product)}
-            />
-          );
-        })}
+      <input
+        key={index}
+        type="checkbox"
+        // checked={item.id === product.id ? true : false}
+        value={product.name}
+        ref={checkboxRef}
+        onClick={() => handleAddToCard(product)}
+      />
+
       <img src="/images/vase.png" alt={product.name} />
       <div className="list-content-wrapper">
         <div className="gift-card-header">

@@ -2,6 +2,8 @@
   padding: 2% 0;
   justify-content: space-between;
   display: flex;
+  align-items: center;
+  position: relative;
 }
 .gift-left-side-navigation {
   background-color: rgb(236, 233, 233);
@@ -50,7 +52,16 @@
 
   /* padding: 0 3%; */
 }
-
+.proceed-to-checkout-outer-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 24.5%;
+  width: 70%;
+  bottom: 2%;
+  background-color: #fff;
+  padding: 1.5% 0;
+  border-radius: 15px;
+}
 .gift-left-side-navigation ul {
   padding-left: 1px;
 }
