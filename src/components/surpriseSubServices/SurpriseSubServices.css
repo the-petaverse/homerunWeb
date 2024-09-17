@@ -22,7 +22,6 @@
   }
 }
 
-
 .surprise-inner-btn-card {
   display: flex;
   align-items: center;
@@ -52,6 +51,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-top: 25px;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

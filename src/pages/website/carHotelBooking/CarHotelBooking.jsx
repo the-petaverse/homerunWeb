@@ -73,7 +73,8 @@ const CarHotelBooking = () => {
                 )}
                 {(subcategory === "car_booking" ||
                   subcategory === "grocery_bundles" ||
-                  subcategory === "party_packs") && (
+                  subcategory === "party_packs" ||
+                  subcategory === "hampers") && (
                   <CarCard
                     key={index}
                     card={card}

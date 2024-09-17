@@ -1,0 +1,45 @@
+.destination-card-main-container {
+  display: flex;
+  justify-content: space-between;
+}
+.destination-card-container {
+  position: relative;
+  cursor: pointer;
+}
+.destination-card-container > h2 {
+  position: absolute;
+  top: 80px;
+  left: 50px;
+  color: #fff;
+}
+.radio-btn {
+  position: absolute;
+  right: -80px;
+  top: 10px;
+  display: none;
+}
+.destination-card-container:hover .radio-btn {
+  display: block;
+}
+input[type="radio"]:checked {
+  display: block;
+}
+.destination-header-wrapper {
+  text-align: left;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.destination-header-wrapper > h4 {
+  font-size: 1.55em;
+}
+.add-destination-btn {
+  border: dotted 1px gray;
+  padding: 1.5%;
+  border-radius: 15px;
+}
+.add-destination-btn > h5 {
+  font-weight: 400;
+  font-size: 1.25em;
+}

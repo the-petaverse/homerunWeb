@@ -16,6 +16,9 @@ const ErrandLists = lazy(() =>
   import("../pages/website/errandList/ErrandLists")
 );
 const ContactUs = lazy(() => import("../pages/website/contactUs/ContactUs"));
+const SurpriseDetailPage = lazy(() =>
+  import("../pages/website/surprisesSubServices/SurprisesSubServices")
+);
 const Services = lazy(() => import("../pages/website/services/Services"));
 const ServiceDetailPage = lazy(() =>
   import("../pages/website/serviceDetailPage/ServiceDetailPage")
@@ -50,6 +53,11 @@ export const websiteRoutes = [
     path: "/sub-category/:subcategory",
     title: "Service Detail Page Page",
     component: ServiceDetailPage,
+  },
+  {
+    path: "/surprise-sub-category/:subcategory",
+    title: "Surprise Detail Page",
+    component: SurpriseDetailPage,
   },
   {
     path: "/request-category/:category",

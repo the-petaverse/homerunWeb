@@ -5,6 +5,7 @@ import { filterSubCategory } from "../../util/filterSubCategories";
 import { hotelData } from "../../data/hotelData";
 import carImage from "/images/big-car.png";
 import HotelBanner from "/images/hotel-banner.png";
+import AnnivaBanner from "/images/anny-banner.png";
 
 const ServiceHeader = ({
   serviceCategory,
@@ -72,6 +73,20 @@ const ServiceHeader = ({
           </div>
           <div className="hotel-blue-image-wrapper">
             <img src={HotelBanner} alt="hotel" />
+          </div>
+        </div>
+      )}
+      {serviceSubCategory === "our_packages" && (
+        <div className="hotel-blue-banner-slate-header-wrapper">
+          <div className="hotel-group-header">
+            <div>
+              <div className="hotel-top-title-wrapper">
+                <h2>{subServices[0]?.title}</h2>
+              </div>
+            </div>
+          </div>
+          <div className="hotel-blue-image-wrapper">
+            <img src={AnnivaBanner} alt="hotel" />
           </div>
         </div>
       )}

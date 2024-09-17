@@ -26,17 +26,13 @@ const SubServiceCard = ({ category }) => {
     error: subError,
     isLoading: subSuccess,
   } = useGetRequestSubCategoryQuery();
-
+  console.log(category);
   const categoryData = {
     category: category,
   };
   const handleNavigate = (servicesubCategory) => {
     //User the serviceSub category to determin the navigation
-    //1. Car list
-    //2. Hampers
-    //3. Party packs
-    //4. Grocery bundles
-    //All of the above goes to the same page
+
     if (
       servicesubCategory === "car_booking" ||
       servicesubCategory === "grocery_bundles" ||
@@ -45,6 +41,14 @@ const SubServiceCard = ({ category }) => {
       servicesubCategory === "hotel_booking"
     ) {
       navigate(`/services-sub-category/${servicesubCategory}`, {
+        state: categoryData,
+      });
+    } else if (
+      servicesubCategory === "our_packages" ||
+      servicesubCategory === "gift_items" ||
+      servicesubCategory === "cake_items"
+    ) {
+      navigate(`/surprise-sub-category/${servicesubCategory}`, {
         state: categoryData,
       });
     } else {

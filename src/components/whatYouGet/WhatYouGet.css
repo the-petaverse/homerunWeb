@@ -1,0 +1,10 @@
+.what-you-get-header-wrapper {
+  text-align: left;
+}
+.what-you-get-main-header {
+  display: flex;
+  justify-content: space-between;
+}
+.what-you-get-header-wrapper > p {
+  margin-top: 10px;
+}

@@ -5,7 +5,7 @@
 .slate-header-wrapper {
   text-align: left;
 }
-.car-extra-content-wrapper {
+.anniva-extra-content-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,7 +76,7 @@
   align-items: center;
   gap: 10px;
 }
-.car-content-adjuster-wrapper {
+.anniva-content-adjuster-wrapper {
   display: flex;
   justify-content: space-between;
   width: 25%;
@@ -85,10 +85,10 @@
   border-radius: 20px;
   background-color: rgb(207, 252, 252);
 }
-.car-holder-details-wrapper {
+.anniva-holder-details-wrapper {
   padding: 10px;
 }
-.car-content-adjuster-wrapper > div > p {
+.anniva-content-adjuster-wrapper > div > p {
   font-size: 1.25em;
   font-weight: bold;
 }
@@ -107,6 +107,13 @@
 .back-button-wrapper {
   margin-top: 10px;
   margin-bottom: 15px;
+}
+.destination-giver-info {
+  text-align: left;
+}
+.destination-receiver-info {
+  text-align: left;
+  margin-top: 20px;
 }
 .textarea {
   border: solid 0.35px rgb(65, 64, 64);

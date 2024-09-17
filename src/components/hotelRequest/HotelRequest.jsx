@@ -272,8 +272,28 @@ const HotelRequest = ({
                 </div>
               </div>
             </div>
-            <div>
-              <SelectRooms />
+            <div className="form-section-wrapper align-select-input">
+              <CustomSelect
+                name="roomType"
+                type="text"
+                className="main-text-input increase-width"
+                register={register}
+                require="Room type is required"
+                placeholder="room type"
+                error={errors.roomType?.message}
+                // data={institutions}
+                style={{ borderColor: errors.roomType ? "red" : "black" }}
+              />
+              <CustomImput
+                name="numberOfRooms"
+                required="Number of rooms is required"
+                placeholder="Number of rooms"
+                className="main-text-input"
+                type="text"
+                error={errors?.numberOfRooms?.message}
+                register={register}
+                style={{ borderColor: errors.numberOfRooms ? "red" : "black" }}
+              />
             </div>
             <div className="form-section-wrapper align-select-input">
               <CustomSelect

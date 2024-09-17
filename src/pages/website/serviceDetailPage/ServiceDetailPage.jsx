@@ -21,6 +21,7 @@ import { customScrollSidebar } from "../../../util/stickyFunction";
 import OrderWithTopBanner from "../../../components/orderWithTopBanner/OrderWithTopBanner";
 import carImage from "/images/big-car.png";
 import ServiceHeader from "../../../components/serviceHeader/ServiceHeader";
+import SurpriseOrderGroup from "../../../components/surpriseOrderGroup/SurpriseOrderGroup";
 
 const ServiceDetailPage = () => {
   const location = useLocation();
@@ -46,7 +47,6 @@ const ServiceDetailPage = () => {
     serviceSubCategory = subCategory;
     serviceCategory = category;
   }
-
   const filterServcies = () => {
     if (isSuccess) {
       let filteredService = subData?.subRequestsCategory.filter(
@@ -59,7 +59,8 @@ const ServiceDetailPage = () => {
   };
   const subServices = filterSubCategory(subServiceData, subcategory);
 
-  // console.log(subcategory);
+  console.log(serviceCategory);
+  // console.log(serviceCategory);
   //Implementation to make sidebar sticky
 
   useEffect(() => {
@@ -69,15 +70,23 @@ const ServiceDetailPage = () => {
   return (
     <div>
       {/* <Navbar /> */}
-      {serviceCategory && serviceCategory === "hotel" && (
-        <ServiceHeader
-          serviceCategory={serviceCategory}
-          serviceSubCategory={serviceSubCategory}
-          serviceName={subcategory}
-        />
-      )}
+      {serviceCategory &&
+        (serviceCategory === "hotel" || serviceCategory === "surprise") && (
+          <ServiceHeader
+            serviceCategory={serviceCategory}
+            serviceSubCategory={serviceSubCategory}
+            serviceName={subcategory}
+          />
+        )}
       <div>
         <div className="service-detail-main-container">
+          {serviceCategory && serviceCategory === "surprise" && (
+            <SurpriseOrderGroup
+              serviceName={subcategory}
+              serviceSubCategory={serviceSubCategory}
+              serviceCategory={serviceCategory}
+            />
+          )}
           {serviceCategory && serviceCategory === "hotel" && (
             <OrderWithTopBanner
               serviceName={subcategory}

@@ -3,7 +3,7 @@ import SuccessImage from "../../assets/green.png";
 import { useForm } from "react-hook-form";
 import { PaystackButton } from "react-paystack";
 import backButton from "../../assets/form-back.png";
-import "./CarRequest.css";
+import "./AnniversaryRequest.css";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetRequestSubCategoryQuery,
@@ -26,6 +26,8 @@ import TermsAndConditionCheckBox from "../termsAndConditionCheckBox/TermsAndCond
 import CustomButton from "../customButton/CustomButton";
 import CustomTextArea from "../customTextArea/CustomTextArea";
 import carCheck from "/images/car-check.png";
+import WhatYouGet from "../whatYouGet/WhatYouGet";
+import DestinationCard from "../destinationCard/DestinationCard";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -58,7 +60,7 @@ const yearofGraduation = [
   { id: "4", title: "1985" },
   { id: "5", title: "2004" },
 ];
-const CarRequest = ({
+const AnniversaryRequest = ({
   setFormStage,
   formStage,
   subcategory,
@@ -234,158 +236,74 @@ const CarRequest = ({
     <div className="new-request-from-main-container">
       <div className="new-request-form-container">
         <form action="">
+          <div className="requirement-wrapper">
+            <WhatYouGet />
+          </div>
+          <div className="requirement-wrapper">
+            <Requirement />
+          </div>
+          <div className="requirement-wrapper">
+            <DestinationCard />
+            <CustomImput
+              name="destinationName"
+              required="Destination name is required"
+              placeholder="Omutu Resort"
+              className="main-text-input"
+              type="text"
+              error={errors?.destinationName?.message}
+              register={register}
+              style={{ borderColor: errors.destinationName ? "red" : "black" }}
+            />
+            <div className="form-section-wrapper">
+              <CustomImput
+                name="destinationCountry"
+                required="Destination country is required"
+                placeholder="Nigeria"
+                className="main-text-input"
+                type="text"
+                error={errors?.destinationCountry?.message}
+                register={register}
+                style={{
+                  borderColor: errors.destinationCountry ? "red" : "black",
+                }}
+              />
+              <CustomImput
+                name="destinationLocation"
+                required="Destination Location is required"
+                placeholder="Lagos"
+                className="main-text-input"
+                type="text"
+                error={errors?.destinationLocation?.message}
+                register={register}
+                style={{
+                  borderColor: errors.destinationLocation ? "red" : "black",
+                }}
+              />
+            </div>
+            <CustomTextArea
+              textAreaStyle="textarea"
+              placeHolder="Lane 16, Tunde Bakere Avenue Off New york city Atalanta Australia"
+            />
+          </div>
           <div className="inputs-container">
-            <div className="car-extra-container">
-              <div className="car-extra-content-wrapper">
-                <div className="car-holder-details-wrapper">
-                  <p>Child Booster Seat - ($50)</p>
-                </div>
-                <div className="car-content-adjuster-wrapper">
-                  <div>
-                    <p>-</p>
-                  </div>
-                  <div>
-                    <p>0</p>
-                  </div>
-                  <div>
-                    <p>+</p>
-                  </div>
-                </div>
-              </div>
-              <div className="car-extra-content-wrapper">
-                <div className="car-holder-details-wrapper">
-                  <p>Child Booster Seat - ($50)</p>
-                </div>
-                <div className="car-content-adjuster-wrapper">
-                  <div>
-                    <p>-</p>
-                  </div>
-                  <div>
-                    <p>0</p>
-                  </div>
-                  <div>
-                    <p>+</p>
-                  </div>
-                </div>
-              </div>
-              <div className="car-extra-content-wrapper">
-                <div className="car-holder-details-wrapper">
-                  <p>Child Booster Seat - ($50)</p>
-                </div>
-                <div className="car-content-adjuster-wrapper">
-                  <div>
-                    <p>-</p>
-                  </div>
-                  <div>
-                    <p>0</p>
-                  </div>
-                  <div>
-                    <p>+</p>
-                  </div>
-                </div>
-              </div>
-              <div className="form-section-wrapper">
-                <CustomDoubleRadioButton
-                  name="carControl"
-                  label="Please select control type"
-                  style={{ borderColor: errors.carControl ? "red" : "black" }}
-                  register={register}
-                  error={errors.carControl?.message}
-                  optionOne="Manual"
-                  optionTwo="Automatic"
-                  boxesWrapperStyle="checkboxes-customized"
-                />
-              </div>
-              <div className="car-protection-wrapper">
-                <div className="car-protection-header">
-                  <img src={carCheck} alt="check" />
-                  <h2>Full Protection Cover</h2>
-                </div>
-                <div className="car-protec-details">
-                  <p>
-                    With our full protection cover, you can drive confidently
-                    knowing you're safeguarded against any unexpected surprises.
-                    We've got you fully covered, so you can focus on enjoying
-                    the journey ahead.
-                  </p>
-                </div>
-                <div className="car-protect-viw-details">
-                  <div>
-                    <p>
-                      You will be covered with Full Protection Cover of up to
-                      1,570 USD
-                    </p>
-                  </div>
-                  <div>
-                    <p>View details</p>
-                  </div>
-                </div>
-                <CustomDoubleRadioButton
-                  name="firstCollection"
-                  label="Do You Want Full Protection Cover ($11.98 per day)?"
-                  style={{ borderColor: errors.firstName ? "red" : "black" }}
-                  register={register}
-                  error={errors.firstCollection?.message}
-                  checkBoxesMainContainerStyle="car-protect-checkboxe-container"
-                />
-              </div>
-              <div className="driver-details-header">
-                <h2>Main Driver’s Information</h2>
-              </div>
-              <div className="car-extra-content-wrapper">
-                <div className="car-holder-details-wrapper">
-                  <p>Child Booster Seat - ($50)</p>
-                </div>
-                <div className="car-content-adjuster-wrapper">
-                  <div>
-                    <p>-</p>
-                  </div>
-                  <div>
-                    <p>0</p>
-                  </div>
-                  <div>
-                    <p>+</p>
-                  </div>
-                </div>
-              </div>
+            <div className="destination-giver-info">
+              <h2>Personal Information</h2>
             </div>
             <div className="form-section-wrapper">
               <CustomImput
-                name="firstName"
-                required="First name is required"
-                placeholder="First name"
+                name="fullName"
+                required="Full name is required"
+                placeholder="Full name"
                 className="main-text-input"
                 type="text"
-                error={errors?.firstName?.message}
+                error={errors?.fullName?.message}
                 register={register}
-                style={{ borderColor: errors.firstName ? "red" : "black" }}
-              />
-              <CustomImput
-                name="lastName"
-                required="Last name is required"
-                placeholder="Last name"
-                className="main-text-input"
-                type="text"
-                error={errors?.lastName?.message}
-                register={register}
-                style={{ borderColor: errors.lastName ? "red" : "black" }}
-              />
-            </div>
-            <div className="form-section-wrapper">
-              <CustomImput
-                name="middleName"
-                required="Middle name is required"
-                placeholder="Middle name"
-                className="main-text-input"
-                type="text"
-                error={errors?.middleName?.message}
-                register={register}
-                style={{ borderColor: errors.middleName ? "red" : "black" }}
+                style={{ borderColor: errors.fullName ? "red" : "black" }}
               />
               <CustomImput
                 name="phoneNumber"
-                required="Phone Number is required"
-                placeholder="Phone Number"
+                required="Phone number is required"
+                placeholder="Phone number"
                 className="main-text-input"
                 type="text"
                 error={errors?.phoneNumber?.message}
@@ -394,18 +312,79 @@ const CarRequest = ({
               />
             </div>
             <div className="form-section-wrapper">
-              <CustomDoubleRadioButton
-                name="firstCollection"
-                label="Is this your FIRST time collecting the transcript?"
-                style={{ borderColor: errors.firstName ? "red" : "black" }}
+              <CustomImput
+                name="email"
+                required="Email is required"
+                placeholder="Email"
+                className="main-text-input"
+                type="text"
+                error={errors?.email?.message}
                 register={register}
-                error={errors.firstCollection?.message}
+                style={{ borderColor: errors.email ? "red" : "black" }}
+              />
+              <CustomImput
+                name="ghetawayDate"
+                required="Getaway Date is required"
+                placeholder="Getaway Date"
+                className="main-text-input"
+                type="text"
+                error={errors?.ghetawayDate?.message}
+                register={register}
+                style={{ borderColor: errors.ghetawayDate ? "red" : "black" }}
               />
             </div>
+            <CustomTextArea
+              textAreaStyle="textarea"
+              placeHolder="Address (Optional)"
+            />
+            <div className="destination-receiver-info">
+              <h2>Recipient Information</h2>
+            </div>
+            <div className="form-section-wrapper">
+              <CustomImput
+                name="fullName"
+                required="Full name is required"
+                placeholder="Full name"
+                className="main-text-input"
+                type="text"
+                error={errors?.fullName?.message}
+                register={register}
+                style={{ borderColor: errors.fullName ? "red" : "black" }}
+              />
+              <CustomImput
+                name="phoneNumber"
+                required="Phone number is required"
+                placeholder="Phone number"
+                className="main-text-input"
+                type="text"
+                error={errors?.phoneNumber?.message}
+                register={register}
+                style={{ borderColor: errors.phoneNumber ? "red" : "black" }}
+              />
+            </div>
+
+            <CustomTextArea
+              textAreaStyle="textarea"
+              placeHolder="Any Special Instructions: Any preferences or dislikes of the recipient?"
+            />
+            <div className="destination-receiver-info">
+              <h2>Personalization and Preferences</h2>
+            </div>
+            <CustomTextArea
+              textAreaStyle="textarea"
+              placeHolder="Tell us your dietary restrictions, favorite foods, and preferred wine or drink"
+            />
+            <CustomTextArea
+              textAreaStyle="textarea"
+              placeHolder="Any specific romantic gestures (e.g., flowers, candles, music preferences)"
+            />
+            <CustomTextArea
+              textAreaStyle="textarea"
+              placeHolder="Specific instructions for any personalized items or experiences (e.g., engraving, custom notes)."
+            />
           </div>
 
           <div className="requirement-wrapper">
-            <Requirement />
             <ErrandProcesses />
           </div>
           <div className="terms-note-wrapper">
@@ -424,4 +403,4 @@ const CarRequest = ({
   );
 };
 
-export default CarRequest;
+export default AnniversaryRequest;

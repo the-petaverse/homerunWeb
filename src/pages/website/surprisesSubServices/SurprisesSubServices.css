@@ -1,0 +1,11 @@
+.surprise-back-button-container {
+  padding: 0 5%;
+}
+.surprise-back-button-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.surprise-back-button-wrapper {
+  width: 5%;
+}
