@@ -32,6 +32,12 @@
   color: #fff;
   margin-top: 15px;
 }
+.gift-items-product-header-wrapper {
+  margin-top: 15px;
+}
+.surprise-gift-product-list-wrapper {
+  cursor: pointer;
+}
 .person-header-image {
   width: 94%;
 }

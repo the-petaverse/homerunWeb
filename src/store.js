@@ -5,9 +5,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import { requestsApi } from "./services/requestsCategory/requestApi";
 import { errandApi } from "./services/errands/errandsApi";
 import { paymentApi } from "./services/payment/stripe";
+import cartReducer from "./services/slices/cartSlice";
 
 export const store = configureStore({
   reducer: {
+    cart: cartReducer,
     [authApi.reducerPath]: authApi.reducer,
     [requestsApi.reducerPath]: requestsApi.reducer,
     [errandApi.reducerPath]: errandApi.reducer,
