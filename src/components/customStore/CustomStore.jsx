@@ -1,5 +1,7 @@
 import React from "react";
 import "./CustomStore.css";
+import { Gift } from "iconsax-react";
+import GiftCard from "../giftCard/GiftCard";
 
 const listProducts = [
   {
@@ -22,6 +24,12 @@ const listProducts = [
   },
   {
     id: "4",
+    name: "Iphone 14 pro max",
+    details: "Lorem Ipsun dolor",
+    image: "/images/vase.png",
+  },
+  {
+    id: "5",
     name: "Iphone 14 pro max",
     details: "Lorem Ipsun dolor",
     image: "/images/vase.png",
@@ -68,20 +76,7 @@ const CustomStore = () => {
         <section className="product-list-wrapper">
           {listProducts &&
             listProducts.map((product, index) => {
-              return (
-                <div className="product-list-card">
-                  <input type="checkbox" value={product.name} />
-                  <img src="/images/vase.png" alt="" />
-                  <div className="list-content-wrapper">
-                    <h4>{product.name}</h4>
-                    <p>{product.details}</p>
-                    <div className="list-price-wrapper">
-                      <span>$1.17</span>
-                      <span>+</span>
-                    </div>
-                  </div>
-                </div>
-              );
+              return <GiftCard product={product} index={index} />;
             })}
         </section>
       </div>
