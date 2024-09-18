@@ -13,13 +13,21 @@ const ServiceHeader = ({
   serviceName,
 }) => {
   const subServices = filterSubCategory(hotelData, serviceName);
-
+  console.log(
+    serviceCategory,
+    serviceSubCategory,
+    serviceName,
+    "serviceCategory"
+  );
   return (
     <div className="services-top-holder">
       <div className="services-top-banner-main-back-button-wrapper">
         <CustomBackButton title="Back" />
       </div>
-      {serviceSubCategory === "car_booking" && (
+      {(serviceSubCategory === "car_booking" ||
+        serviceSubCategory === "hampers" ||
+        serviceSubCategory === "party_packs" ||
+        serviceSubCategory === "grocery_bundles") && (
         <div className="banner-slate-header-wrapper">
           <div className="car-image-wrapper">
             <img src={carImage} alt="car" />

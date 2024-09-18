@@ -46,9 +46,14 @@ const SubServiceCard = ({ category }) => {
     } else if (
       servicesubCategory === "our_packages" ||
       servicesubCategory === "gift_items" ||
-      servicesubCategory === "cake_items"
+      servicesubCategory === "cake_items" ||
+      servicesubCategory === "custom_grocery"
     ) {
       navigate(`/surprise-sub-category/${servicesubCategory}`, {
+        state: categoryData,
+      });
+    } else if (servicesubCategory === "grocery_subscription") {
+      navigate(`/grocery-sub-category/${servicesubCategory}`, {
         state: categoryData,
       });
     } else {

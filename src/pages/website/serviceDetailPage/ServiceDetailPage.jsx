@@ -22,6 +22,7 @@ import OrderWithTopBanner from "../../../components/orderWithTopBanner/OrderWith
 import carImage from "/images/big-car.png";
 import ServiceHeader from "../../../components/serviceHeader/ServiceHeader";
 import SurpriseOrderGroup from "../../../components/surpriseOrderGroup/SurpriseOrderGroup";
+import GroceryOrderGroup from "../../../components/groceryOrderGroup/GroceryOrderGroup";
 
 const ServiceDetailPage = () => {
   const location = useLocation();
@@ -59,7 +60,6 @@ const ServiceDetailPage = () => {
   };
   const subServices = filterSubCategory(subServiceData, subcategory);
 
-  // console.log(serviceCategory);
   //Implementation to make sidebar sticky
 
   useEffect(() => {
@@ -70,7 +70,9 @@ const ServiceDetailPage = () => {
     <div>
       {/* <Navbar /> */}
       {serviceCategory &&
-        (serviceCategory === "hotel" || serviceCategory === "surprise") && (
+        (serviceCategory === "hotel" ||
+          serviceCategory === "surprise" ||
+          serviceCategory === "grocery") && (
           <ServiceHeader
             serviceCategory={serviceCategory}
             serviceSubCategory={serviceSubCategory}
@@ -81,6 +83,13 @@ const ServiceDetailPage = () => {
         <div className="service-detail-main-container">
           {serviceCategory && serviceCategory === "surprise" && (
             <SurpriseOrderGroup
+              serviceName={subcategory}
+              serviceSubCategory={serviceSubCategory}
+              serviceCategory={serviceCategory}
+            />
+          )}
+          {serviceCategory && serviceCategory === "grocery" && (
+            <GroceryOrderGroup
               serviceName={subcategory}
               serviceSubCategory={serviceSubCategory}
               serviceCategory={serviceCategory}

@@ -2,7 +2,7 @@
   background-color: #fff;
   width: 100dvw;
   top: 0;
-  /* height: 50px; */
+  /* height: 120px; */
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -19,7 +19,7 @@
   animation: blinker 1s linear infinite;
 }
 .image-wrapper {
-  width: 120px;
+  width: 200px;
 }
 .menu-list-wrapper {
   display: flex;

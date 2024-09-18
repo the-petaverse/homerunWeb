@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 // import BackIcon from "/images/back-arrow.png";
 
-import "./SurpriseOrderGroup.css";
+import "./GroceryOrderGroup.css";
 
 import CarRequest from "../carRequest/CarRequest";
 import { customScrollSidebar } from "../../util/stickyFunction";
@@ -10,7 +10,7 @@ import AnniversaryRequest from "../anniversaryRequest/AnniversaryRequest";
 import { useSelector } from "react-redux";
 import OrderItemRequest from "../orderItemRequest/OrderItemRequest";
 
-const SurpriseOrderGroup = ({
+const GroceryOrderGroup = ({
   serviceName,
   serviceSubCategory,
   serviceCategory,
@@ -43,7 +43,7 @@ const SurpriseOrderGroup = ({
   // console.log(serviceName, serviceSubCategory, serviceCategory);
 
   //Implementation to make sidebar sticky
-  console.log(serviceSubCategory, serviceCategory, "again");
+  console.log(serviceName, serviceSubCategory, serviceCategory);
 
   useEffect(() => {
     // filterServcies();
@@ -58,16 +58,7 @@ const SurpriseOrderGroup = ({
           <div className="with-top-banner-left-container">
             <div className="main-service-detail-page-container">
               <div className="detail-form-main-container">
-                {serviceName === "anniversary_celebrations" && (
-                  <AnniversaryRequest
-                    formStage={formStage}
-                    setFormStage={setFormStage}
-                    subcategory={subcategory}
-                    requestId={requestId}
-                    subRequestId={subRequestId}
-                  />
-                )}
-                {serviceName === "gift_items" && (
+                {serviceSubCategory === "grocery_bundles" && (
                   <OrderItemRequest
                     formStage={formStage}
                     setFormStage={setFormStage}
@@ -76,25 +67,7 @@ const SurpriseOrderGroup = ({
                     subRequestId={subRequestId}
                   />
                 )}
-                {serviceName === "cake_items" && (
-                  <OrderItemRequest
-                    formStage={formStage}
-                    setFormStage={setFormStage}
-                    subcategory={subcategory}
-                    requestId={requestId}
-                    subRequestId={subRequestId}
-                  />
-                )}
-                {serviceSubCategory === "hampers" && (
-                  <OrderItemRequest
-                    formStage={formStage}
-                    setFormStage={setFormStage}
-                    subcategory={subcategory}
-                    requestId={requestId}
-                    subRequestId={subRequestId}
-                  />
-                )}
-                {serviceSubCategory === "party_packs" && (
+                {serviceSubCategory === "custom_grocery" && (
                   <OrderItemRequest
                     formStage={formStage}
                     setFormStage={setFormStage}
@@ -113,4 +86,4 @@ const SurpriseOrderGroup = ({
   );
 };
 
-export default SurpriseOrderGroup;
+export default GroceryOrderGroup;

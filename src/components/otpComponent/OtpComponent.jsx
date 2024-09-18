@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./OtpComponent.css";
 import { Navigate, useNavigate } from "react-router-dom";
-import BackIcon from "../../assets/back-arrow.png";
+import BackIcon from "/images/back-arrow.png";
 import WavyCheckIcon from "../../assets/wavy-check.png";
 import HomerunIcon from "../../assets/homerun-icon.png";
 import { useForm } from "react-hook-form";

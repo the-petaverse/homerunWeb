@@ -1,7 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
-
 .hero-container {
-  padding: 135px 5%;
+  /* padding: 135px 5%; */
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -11,7 +9,7 @@
   background-size: cover;
 }
 .banner-container {
-  padding-top: 5%;
+  padding-top: 4%;
 }
 .header-wrapper {
   width: 100%;
@@ -23,14 +21,14 @@
   width: 100%;
   max-width: 800px;
   height: auto;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .heading-txt-one,
 .heading-txt-two {
   font-size: 2em;
   margin-bottom: 10px;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   line-height: 1.2em;
 }
 .heading-para {
@@ -52,7 +50,7 @@
   cursor: pointer;
 }
 .card-display-container {
-  margin-top: -100px;
+  /* margin-top: -100px; */
   width: 85%;
   margin-right: auto;
   margin-left: auto;
@@ -117,7 +115,7 @@
 @media (min-width: 1024px) {
   .hero-container {
     flex-direction: row;
-    padding: 105px 5%;
+    padding: 90px 5%;
   }
   .get-stated-btn {
     width: 80%;

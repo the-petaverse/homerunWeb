@@ -1,0 +1,31 @@
+.grocerySubscriptionCardContainer {
+  border: solid 15px #d4d3f9;
+  width: 30%;
+  padding: 4%;
+  border-radius: 20px;
+}
+.grocery-subscription-inner-header-wrapper {
+}
+.grocery-subscription-list-details-wrapper,
+.grocery-subscription-special-offerlist-details-wrapper {
+  margin-top: 15px;
+}
+.grocery-subscription-list-details-wrapper > ul > li,
+.grocery-subscription-special-offerlist-details-wrapper > ul > li {
+  list-style: none;
+  margin-left: -45px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+.grocery-subscript-btn {
+  width: 100%;
+  background-color: #262262;
+  color: #fff;
+  font-size: 1.25em;
+  padding: 4.5% 0;
+  border-radius: 15px;
+  margin-top: 30px;
+  cursor: pointer;
+}

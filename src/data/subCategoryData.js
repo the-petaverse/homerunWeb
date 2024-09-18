@@ -157,7 +157,7 @@ export const subServiceData = [
     id: "23",
     name: "Monthly Grocery Subscription",
     icons: "/images/sub-transcript.png",
-    slug: "monthly_grocery",
+    slug: "grocery_subscription",
     category_id: "grocery",
   },
 ];

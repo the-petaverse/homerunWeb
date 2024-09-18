@@ -8,6 +8,9 @@ const CarHotel = lazy(() =>
 
 const About = lazy(() => import("../pages/website/about/About"));
 const CheckoutPage = lazy(() => import("../pages/website/cart/Cart"));
+const GrocerySubscription = lazy(() =>
+  import("../pages/website/grocerySubscription/GrocerySubscription")
+);
 const Login = lazy(() => import("../pages/auth/login/Login"));
 const Register = lazy(() => import("../pages/auth/register/Register"));
 const ForgotPassword = lazy(() =>
@@ -64,6 +67,11 @@ export const websiteRoutes = [
     path: "/surprise-sub-category/:subcategory",
     title: "Surprise Detail Page",
     component: SurpriseDetailPage,
+  },
+  {
+    path: "/grocery-sub-category/:subcategory",
+    title: "Grocery Detail Page",
+    component: GrocerySubscription,
   },
   {
     path: "/request-category/:category",

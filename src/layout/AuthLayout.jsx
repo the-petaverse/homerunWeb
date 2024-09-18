@@ -11,8 +11,7 @@ function AuthLayout() {
     [openSidebar]
   );
   return (
-    <div className="container">
-      {/* <Navbar /> */}
+    <div className="auth-layout-container">
       <div className="website-container">
         <main className="main">
           <section className="section-container">

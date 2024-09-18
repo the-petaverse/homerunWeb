@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import LoginImage from "../../assets/login.png";
-import BackIcon from "../../assets/back-arrow.png";
+import BackIcon from "/images/back-arrow.png";
 const ResetPassword = ({ setShowDashboard, setPassworsResetSuccess }) => {
   //   const [showDashboard, setShowDashboard] = useState(1);
   const {

@@ -45,9 +45,9 @@ const SurprisesSubServices = () => {
         {subcategory === "our_packages" && (
           <SurpriseSubServices navigateToOderScreen={navigateToOderScreen} />
         )}
-        {(subcategory === "gift_items" || subcategory === "cake_items") && (
-          <CustomStore />
-        )}
+        {(subcategory === "gift_items" ||
+          subcategory === "cake_items" ||
+          subcategory === "custom_grocery") && <CustomStore />}
       </div>
     </div>
   );
