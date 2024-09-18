@@ -59,7 +59,6 @@ const ServiceDetailPage = () => {
   };
   const subServices = filterSubCategory(subServiceData, subcategory);
 
-  console.log(serviceCategory);
   // console.log(serviceCategory);
   //Implementation to make sidebar sticky
 

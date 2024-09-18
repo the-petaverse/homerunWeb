@@ -4,6 +4,7 @@ import { Gift } from "iconsax-react";
 import GiftCard from "../giftCard/GiftCard";
 import ProceedToCheckout from "../proceedToCheckout/ProceedToCheckout";
 import { useSelector } from "react-redux";
+import { useLocation, useParams } from "react-router-dom";
 
 const listProducts = [
   {
@@ -82,9 +83,13 @@ const categoryData = [
   { id: "11", title: "Handmade Items" },
 ];
 const CustomStore = () => {
+  const { subcategory } = useParams();
   const cart = useSelector((state) => state.cart);
   const [productCategory, setProductCategory] = useState("Home");
+  const location = useLocation();
+  const { category } = location?.state || [];
 
+  console.log(subcategory);
   const showProductCategory = (category) => {
     setProductCategory(category);
   };
@@ -152,7 +157,7 @@ const CustomStore = () => {
       </div>
       {cart.cartItems && cart?.cartItems.length > 0 && (
         <div className="proceed-to-checkout-outer-wrapper">
-          <ProceedToCheckout />
+          <ProceedToCheckout category={category} subcategory={subcategory} />
         </div>
       )}
     </div>

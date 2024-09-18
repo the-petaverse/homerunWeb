@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Cart.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import CartItemsCard from "../../../components/cartItemsCard/CartItemsCard";
+import CustomButton from "../../../components/customButton/CustomButton";
+import { addToCart } from "../../../services/slices/cartSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  let serviceData = {};
+
+  if (location.state) {
+    const { category, subcategory } = location?.state;
+    serviceData = {
+      subCategory: subcategory,
+      category: category,
+    };
+  }
+  const handleAddToCard = (product) => {
+    dispatch(addToCart(product));
+  };
+
+  const navigateToOderScreen = () => {
+    const { subCategory } = serviceData;
+    navigate(`/sub-category/${subCategory}`, { state: serviceData });
+  };
+
   return (
     <div className="cart-main-container">
       <div className="check-out-header-wrapper">
@@ -14,35 +40,34 @@ const Cart = () => {
             {cart.cartItems &&
               cart.cartItems.map((cartItem, index) => {
                 return (
-                  <div className="checkout-card-item-wrapper" key={index}>
-                    <div>
-                      <div className="checkout-card-item-image-wrapper">
-                        <img src={cartItem.image} alt={cartItem.name} />
-                        <div className="inner-checkout-price-holder">
-                          <div>
-                            <h3>{cartItem.name}</h3>
-                            <p>{cartItem.details}</p>
-                          </div>
-                          <div>
-                            <p>price</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="checkout-remove-btn-wrapper">
-                      <p>Remove</p>
-                      <div className="checkout-add-remove-wrapper">
-                        <p>-</p>
-                        <p>2</p>
-                        <p>+</p>
-                      </div>
-                    </div>
-                  </div>
+                  <CartItemsCard
+                    cartItem={cartItem}
+                    index={index}
+                    handleAddToCard={handleAddToCard}
+                  />
                 );
               })}
           </div>
           <div className="checkout-right-content">
-            <h3>Payment Summary Continue Shopping</h3>
+            <h3>Payment Summary</h3>
+            <ul>
+              <li>
+                Handling fee <span>$28.00</span>
+              </li>
+              <li>
+                Service fee <span>$28.00</span>
+              </li>
+              <li>
+                Total <span>$28.00</span>
+              </li>
+            </ul>
+            <div>
+              <CustomButton
+                title="Checkout ($188.00)"
+                btnStyles="checkout-btn"
+                btnOnClick={navigateToOderScreen}
+              />
+            </div>
           </div>
         </div>
       </div>

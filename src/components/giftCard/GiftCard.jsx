@@ -6,7 +6,6 @@ import { addToCart } from "../../services/slices/cartSlice";
 const GiftCard = ({ product, index }) => {
   const cart = useSelector((state) => state.cart);
 
-  console.log(cart.cartItems);
   const dispatch = useDispatch();
   const checkboxRef = useRef(null);
 

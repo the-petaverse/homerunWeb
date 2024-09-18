@@ -4,12 +4,17 @@ import CustomButton from "../customButton/CustomButton";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const ProceedToCheckout = () => {
+const ProceedToCheckout = ({ category, subcategory }) => {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
+  console.log(category, subcategory);
 
+  const paramData = {
+    category: category,
+    subcategory: subcategory,
+  };
   const handleProceedToCheckout = () => {
-    navigate("/checkout");
+    navigate("/checkout", { state: paramData });
   };
 
   return (

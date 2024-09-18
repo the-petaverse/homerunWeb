@@ -26,7 +26,7 @@ const SubServiceCard = ({ category }) => {
     error: subError,
     isLoading: subSuccess,
   } = useGetRequestSubCategoryQuery();
-  console.log(category);
+
   const categoryData = {
     category: category,
   };

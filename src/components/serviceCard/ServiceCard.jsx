@@ -8,9 +8,10 @@ import GrocyImage from "../../assets/grocy.png";
 import SurpriseImage from "../../assets/surprise.png";
 import HotelImage from "../../assets/hotel.png";
 import PropertyImage from "../../assets/property.png";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ServiceCard = () => {
+  const navigate = useNavigate();
   const services = [
     { id: 1, name: "transcript", image: TransImage },
     { id: 2, name: "grocery", image: GrocyImage },
@@ -20,6 +21,7 @@ const ServiceCard = () => {
   ];
 
   const handleServiceClick = (serviceName) => {
+    navigate(`/request-category/${serviceName}`);
     console.log(serviceName);
   };
 
@@ -67,14 +69,12 @@ const ServiceCard = () => {
       <Slider {...settings}>
         {services.map((service) => (
           <div className="serviceCard-main-wrapper" key={service.id}>
-            <Link to={`/request-category/${service.name}`}>
-              <img
-                src={service.image}
-                className="card-image-wrapper"
-                alt={service.name}
-                onClick={() => handleServiceClick(service.name)}
-              />
-            </Link>
+            <img
+              src={service.image}
+              className="card-image-wrapper"
+              alt={service.name}
+              onClick={() => handleServiceClick(service.name)}
+            />
           </div>
         ))}
       </Slider>
