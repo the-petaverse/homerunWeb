@@ -51,7 +51,8 @@
 }
 .card-display-container {
   /* margin-top: -100px; */
-  width: 85%;
+  width: 100%;
+  padding: 0 5%;
   margin-right: auto;
   margin-left: auto;
 }

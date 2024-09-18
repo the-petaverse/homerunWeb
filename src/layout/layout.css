@@ -1,6 +1,6 @@
 .container {
   min-height: 100dvh;
-  padding-top: 120px;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
 }
@@ -19,4 +19,23 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 110rem; */
+}
+
+@media (min-width: 475px) {
+}
+@media (min-width: 640px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1280px) {
+  .container {
+    margin-top: 120px;
+  }
+}
+@media (min-width: 1536px) {
 }

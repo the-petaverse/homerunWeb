@@ -1,15 +1,25 @@
 .serviceCard-main-wrapper {
-  color: #fff;
-  width: 100% !important;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
+  border: solid 10px rgba(255, 255, 255, 0.4);
+  border-radius: 35px;
   /* margin-right: -110px; */
   /* margin-right: -500px; */
 }
-
+/* .serviceCard-main-wrapper:hover {
+  border: solid 1px #fff;
+} */
+.slick-slide > div {
+  margin: 0 10px;
+}
+.slick-slide > div:hover {
+  border: solid 2px #fff;
+  border-radius: 36px;
+}
 .card-image-wrapper {
-  border: solid 10.5px rgb(77, 76, 123) !important;
-  width: 100% !important;
+  /* border: solid 10.5px rgb(77, 76, 123); */
+  width: 100%;
   /* height: 50dvh; */
   border-radius: 26px;
 }
@@ -20,7 +30,7 @@
 @media (min-width: 475px) {
   .serviceCard-main-wrapper {
     color: #fff;
-    width: 35% !important;
+    width: 35%;
     margin-right: auto;
     margin-left: auto;
     /* margin-right: -110px; */
@@ -28,7 +38,7 @@
   }
   .card-image-wrapper {
     border: solid 0.5px gray;
-    width: 100% !important;
+    width: 100%;
     /* height: 50dvh; */
     border-radius: 26px;
   }
@@ -39,13 +49,13 @@
 @media (max-width: 768px) {
   .serviceCard-main-wrapper {
     color: #fff;
-    width: 32% !important;
+    width: 32%;
     /* margin-right: -110px; */
     /* margin-right: -500px; */
   }
   .card-image-wrapper {
     border: solid 0.5px gray;
-    width: 282% !important;
+    width: 100%;
     /* height: 50dvh; */
     border-radius: 26px;
   }
@@ -54,14 +64,14 @@
 @media (min-width: 769px) {
   .serviceCard-main-wrapper {
     color: #fff;
-    width: 32% !important;
+    width: 32%;
     cursor: pointer;
     /* margin-right: -110px; */
     /* margin-right: -500px; */
   }
   .card-image-wrapper {
     border: solid 0.5px gray;
-    width: 282% !important;
+    width: 100%;
     /* height: 50dvh; */
     border-radius: 26px;
   }
@@ -69,14 +79,14 @@
 @media (min-width: 1024px) {
   .serviceCard-main-wrapper {
     color: #fff;
-    width: 32% !important;
+    width: 32%;
 
     /* margin-right: -110px; */
     /* margin-right: -500px; */
   }
   .card-image-wrapper {
     border: solid 0.5px gray;
-    width: 282% !important;
+    width: 100%;
     /* height: 50dvh; */
     border-radius: 26px;
   }
