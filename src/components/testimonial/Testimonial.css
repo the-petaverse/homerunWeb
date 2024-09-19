@@ -118,9 +118,11 @@
   }
   .happy-detail-wrapper h2 {
     font-size: 1.25em;
+    margin-left: 5px;
   }
   .happy-detail-wrapper p {
     font-size: 1.1em;
+    margin-left: 5px;
   }
   .users-rate-wrapper h3 {
     font-size: 1.5em;

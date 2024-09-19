@@ -2,34 +2,33 @@
   margin-top: auto;
   text-align: center;
   background-color: #262262;
-  padding: 45px 0;
+  padding: 65px 0;
   position: relative;
 }
 .fotter-social-holder {
-  background-color: #2d2779;
-  width: 56%;
+  background-color: #262262;
+  width: 90%;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 40px;
   color: #fff;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 50px;
-  border-radius: 40px;
+  border-radius: 45px;
   padding: 1% 5%;
 }
 .footer-icon-wrapper {
   background-color: #262262;
-  padding: 1.5% 3.5%;
+  padding: 1.5%;
   display: flex;
   align-items: center;
   gap: 10px;
-  /* width: 25%; */
-  border-radius: 20px;
 }
 .footer-icon-wrapper > span {
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: bold;
 }
 .footer-logo {
@@ -74,11 +73,36 @@
     width: 26.5%;
     flex-direction: row;
   }
+  .footer-icon-wrapper {
+    background-color: #262262;
+    padding: 2%;
+
+    border-radius: 25px;
+  }
+  .footer-icon-wrapper > span {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  .fotter-social-holder {
+    background-color: #2d2779;
+    width: 80%;
+    flex-direction: row;
+  }
 }
 @media (min-width: 1280px) {
   .company-wrapper {
     width: 20%;
   }
+  .fotter-social-holder {
+    background-color: #2d2779;
+    width: 68%;
+    flex-direction: row;
+  }
 }
 @media (min-width: 1536px) {
+  .fotter-social-holder {
+    background-color: #2d2779;
+    width: 47.5%;
+    flex-direction: row;
+  }
 }
