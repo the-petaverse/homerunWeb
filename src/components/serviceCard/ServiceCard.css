@@ -7,9 +7,7 @@
   /* margin-right: -110px; */
   /* margin-right: -500px; */
 }
-/* .serviceCard-main-wrapper:hover {
-  border: solid 1px #fff;
-} */
+
 .slick-slide > div {
   margin: 0 10px;
 }
@@ -44,9 +42,9 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (min-width: 640px) {
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .serviceCard-main-wrapper {
     color: #fff;
     width: 32%;

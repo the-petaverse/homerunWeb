@@ -12,18 +12,19 @@ function WebsiteLayout() {
     [openSidebar]
   );
   return (
-    <div className="container">
-      <Navbar />
-      <div className="website-container">
-        <main className="main">
-          <section className="section-container">
-            <Outlet />
-          </section>
-        </main>
+    <>
+      <div className="container">
+        <Navbar />
+        <div className="website-container">
+          <main className="main">
+            <section className="section-container">
+              <Outlet />
+            </section>
+          </main>
+        </div>
       </div>
-
       <Footer />
-    </div>
+    </>
   );
 }
 

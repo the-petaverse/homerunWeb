@@ -36,7 +36,7 @@ const ServiceCard = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3.095,
+          slidesToShow: 5,
           slidesToScroll: 2,
           initialSlide: 1,
           infinite: true,
@@ -47,8 +47,8 @@ const ServiceCard = () => {
         breakpoint: 600,
         settings: {
           infinite: true,
-          slidesToShow: 2.095,
-          slidesToScroll: 2,
+          slidesToShow: 2.55,
+          slidesToScroll: 2.5,
           initialSlide: 1,
         },
       },
@@ -56,8 +56,8 @@ const ServiceCard = () => {
         breakpoint: 475,
         settings: {
           infinite: true,
-          slidesToShow: 2.095,
-          slidesToScroll: 1,
+          slidesToShow: 1.35,
+          slidesToScroll: 1.095,
           initialSlide: 1,
         },
       },

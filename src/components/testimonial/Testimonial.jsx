@@ -15,14 +15,14 @@ const Testimonial = () => {
       image: Pen,
       title: "Sign up for free",
       description: "Register and post any request of your choice.",
-      link: "/register"
+      link: "/register",
     },
     {
       id: 2,
       image: Pin,
       title: "Post a Request",
       description: "Enter your request details, home or abroad.",
-      link: "/request-category/grocery"
+      link: "/request-category/grocery",
     },
     {
       id: 3,
@@ -61,7 +61,7 @@ const Testimonial = () => {
             <div key={step.id} className="happy-detail-wrapper">
               <div>
                 <Link to={step.link}>
-                <img src={step.image} alt="" className="sign-image" />
+                  <img src={step.image} alt="" className="sign-image" />
                 </Link>
               </div>
               <div>
@@ -73,8 +73,15 @@ const Testimonial = () => {
         </div>
         <div className="playstore-icons-wrapper">
           {storeLinks.map((store) => (
-            <Link key={store.id} className={`store-logo-wrapper ${store.wrapperClass || ""}`}>
-              <img src={store.image} alt={store.alt} className={store.className} />
+            <Link
+              key={store.id}
+              className={`store-logo-wrapper ${store.wrapperClass || ""}`}
+            >
+              <img
+                src={store.image}
+                alt={store.alt}
+                className={store.className}
+              />
             </Link>
           ))}
         </div>

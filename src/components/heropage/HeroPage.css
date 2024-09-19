@@ -1,12 +1,16 @@
 .hero-container {
-  /* padding: 135px 5%; */
+  padding: 105px 5%;
   color: #fff;
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: column; */
   background-image: url("../../assets/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
+}
+.outer-hero-container {
+  display: flex;
+  flex-direction: column;
 }
 .banner-container {
   padding-top: 4%;
@@ -37,7 +41,7 @@
   font-optical-sizing: auto;
   font-style: normal;
 }
-.get-stated-btn {
+.hero-get-stated-btn {
   width: 100%;
   color: #fff;
   background-color: #ff6600;
@@ -50,9 +54,9 @@
   cursor: pointer;
 }
 .card-display-container {
-  /* margin-top: -100px; */
+  margin-top: -50px;
   width: 100%;
-  padding: 0 5%;
+  /* padding: 0 5%; */
   margin-right: auto;
   margin-left: auto;
 }
@@ -94,22 +98,28 @@
   .heading-txt {
     font-size: 3em;
   }
-  .get-stated-btn {
+  .hero-get-stated-btn {
     width: 80%;
     font-size: 1.5em;
   }
 }
 
 @media (min-width: 640px) {
-  .get-stated-btn {
+  .hero-get-stated-btn {
     width: 60%;
     font-size: 1.5em;
   }
 }
 @media (min-width: 768px) {
-  .get-stated-btn {
+  .hero-get-stated-btn {
     width: 50%;
     font-size: 1.5em;
+  }
+  .header-content-wrapper > h3 {
+    font-size: 3em;
+  }
+  .header-content-wrapper > p {
+    font-size: 1.85em;
   }
 }
 
@@ -118,14 +128,27 @@
     flex-direction: row;
     padding: 90px 5%;
   }
-  .get-stated-btn {
+  .outer-hero-container {
+    flex-direction: row;
+  }
+  .card-display-container {
+    margin-top: 4px;
+  }
+  .header-content-wrapper > h3 {
+    font-size: 2.25em;
+  }
+  .header-content-wrapper > p {
+    font-size: 1.5em;
+  }
+  .hero-get-stated-btn {
     width: 80%;
     margin-bottom: 20px;
     font-size: 1.5em;
+    margin-top: 30px;
   }
   .header-wrapper {
     width: 48%;
-    margin-top: 25px;
+    margin-top: 50px;
   }
   .heading-txt-one,
   .heading-txt-two {
@@ -149,9 +172,16 @@
   .heading-txt-two {
     font-size: 3.2em;
   }
-  .get-stated-btn {
+  .header-content-wrapper > h3 {
+    font-size: 3.55em;
+  }
+  .header-content-wrapper > p {
+    font-size: 2em;
+  }
+  .hero-get-stated-btn {
     width: 50%;
     margin-bottom: 20px;
+    margin-top: 50px;
   }
   .hero-img {
     max-width: 480px;
@@ -174,9 +204,7 @@
     margin-top: 65px;
   }
   .card-display-container {
-    margin-top: -400px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-top: -250px;
   }
 }
 /* 

@@ -17,6 +17,7 @@
 .testimonial-content-wrapper p {
   font-size: 1.35em;
   font-weight: medium;
+  /* font-style: italic; */
 }
 .testimonial-header-wrapper h1 {
   color: #ff6600;

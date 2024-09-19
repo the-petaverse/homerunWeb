@@ -3,12 +3,42 @@
   text-align: center;
   background-color: #262262;
   padding: 45px 0;
+  position: relative;
 }
-
+.fotter-social-holder {
+  background-color: #2d2779;
+  width: 56%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 40px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  border-radius: 40px;
+  padding: 1% 5%;
+}
+.footer-icon-wrapper {
+  background-color: #262262;
+  padding: 1.5% 3.5%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* width: 25%; */
+  border-radius: 20px;
+}
+.footer-icon-wrapper > span {
+  font-size: 1.5em;
+  font-weight: bold;
+}
 .footer-logo {
   width: 180px;
 }
-
+.footer-icon-container {
+  display: flex;
+  gap: 10px;
+}
 .company-wrapper {
   margin-left: auto;
   margin-right: auto;
