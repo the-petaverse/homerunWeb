@@ -77,7 +77,7 @@ const Services = () => {
     },
   ];
   return (
-    <>
+    <div className="services-overall-container">
       {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
       <div className="services-main-container">
         <h1>What We Do</h1>
@@ -121,7 +121,7 @@ const Services = () => {
         handleCloseSideBar={handleCloseSideBar}
         openSideBar={openSideBar}
       />
-    </>
+    </div>
   );
 };
 
