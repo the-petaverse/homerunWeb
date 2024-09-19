@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import "./CustomImput.css";
+import { FaWhatsapp } from "react-icons/fa";
 
 const CustomImput = ({
   type,
@@ -10,6 +11,9 @@ const CustomImput = ({
   name,
   required,
   register,
+  iconLeft,
+  iconRight,
+  inconClick,
   error,
   id,
   ...rest
@@ -19,8 +23,9 @@ const CustomImput = ({
   } = useForm({ mode: "all" });
 
   return (
-    <>
+    <div>
       <div className="input-main-container">
+        {iconLeft && <div className="custom-input-icon">{iconLeft}</div>}
         <input
           name={name}
           id={id}
@@ -28,15 +33,20 @@ const CustomImput = ({
           type={type}
           placeholder={placeholder}
           style={style}
-          className={className}
+          className={className ? className : "custom-main-text-input"}
           {...register(name, {
             required: required,
           })}
           {...rest}
         />
-        {error && <p className="input-error-message">{error}</p>}
+        {iconRight && (
+          <div className="custom-right-input-icon" onClick={inconClick}>
+            {iconRight}
+          </div>
+        )}
       </div>
-    </>
+      {error && <p className="input-error-message">{error}</p>}
+    </div>
   );
 };
 

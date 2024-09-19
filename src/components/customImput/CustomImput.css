@@ -8,4 +8,27 @@
 }
 .input-main-container {
   width: 100%;
+  position: relative;
+}
+.custom-input-icon {
+  position: absolute;
+  bottom: 20%;
+  left: 14px;
+}
+.custom-right-input-icon {
+  position: absolute;
+  bottom: 20%;
+  right: 14px;
+}
+.custom-main-text-input {
+  background-color: rgb(245, 243, 243);
+  height: 50px;
+  width: 100%;
+  margin-top: 18px;
+  border-radius: 15px;
+  font-size: 1em;
+  font-weight: 400;
+  padding: 0 42px;
+  border: solid 0.5px rgb(218, 206, 206);
+  outline: none;
 }

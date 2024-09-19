@@ -5,12 +5,16 @@ import "./Login.css";
 import LoginImage from "../../../assets/login.png";
 import LogoMark from "../../../assets/logomark.png";
 import HomerunIcon from "../../../assets/homerun-icon.png";
+import { FaEnvelopeOpenText } from "react-icons/fa";
+import { TbPasswordUser } from "react-icons/tb";
+import { FiEyeOff, FiEye } from "react-icons/fi";
 import Cookies from "universal-cookie";
 
 import { useLoginUserMutation } from "../../../services/auth/authApi";
 import CustomImput from "../../../components/customImput/CustomImput";
 
 const Login = () => {
+  const [revealPassword, setRevealPassword] = useState(false);
   const cookies = new Cookies();
   const [loginUser, { data: loginData, isLoading, isSuccess, error }] =
     useLoginUserMutation();
@@ -29,7 +33,9 @@ const Login = () => {
     console.log(data);
     // await loginUser(data);
   };
-
+  const handleShowPassword = () => {
+    setRevealPassword((prev) => !prev);
+  };
   if (isSuccess) {
     cookies.set("auth_token", loginData.data);
   }
@@ -60,22 +66,30 @@ const Login = () => {
               name="email"
               required="Email is required"
               placeholder="Email"
-              className="main-text-input"
               type="email"
               error={errors?.email?.message}
               register={register}
               style={{ borderColor: errors.email ? "red" : "blue" }}
+              iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
             />
 
             <CustomImput
               name="password"
               required="Password is required"
               placeholder="Password"
-              className="main-text-input"
               error={errors?.password?.message}
-              type="password"
+              type={revealPassword ? "text" : "password"}
               register={register}
               style={{ borderColor: errors.password ? "red" : "blue" }}
+              iconLeft={<TbPasswordUser color="gray" size={20} />}
+              iconRight={
+                revealPassword ? (
+                  <FiEye color="gray" size={20} />
+                ) : (
+                  <FiEyeOff color="gray" size={20} />
+                )
+              }
+              inconClick={handleShowPassword}
             />
 
             <div className="keep-loggin-wrapper">

@@ -12,9 +12,9 @@ function AuthLayout() {
   );
   return (
     <div className="auth-layout-container">
-      <div className="website-container">
-        <main className="main">
-          <section className="section-container">
+      <div className="auth-website-container">
+        <main className="auth-main">
+          <section className="auth-section-container">
             <Outlet />
           </section>
         </main>

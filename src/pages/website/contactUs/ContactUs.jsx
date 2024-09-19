@@ -5,6 +5,8 @@ import "./ContactUs.css";
 import MainSideBar from "../../../components/mainSideBar/MainSideBar";
 import ContactHeader from "../../../components/contactHeader/ContactHeader";
 import FaqCard from "../../../components/faqCard/FaqCard";
+import CustomImput from "../../../components/customImput/CustomImput";
+import { FaWhatsapp } from "react-icons/fa";
 
 const ContactUs = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -33,105 +35,115 @@ const ContactUs = () => {
     setOpenSideBar(false);
   };
   return (
-    <>
+    <div className="contact-overall-container">
       {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
       <div className="contact-main-container">
         <ContactHeader />
         <div className="contact-main-wrapper">
-          <div className="inner-navigation-btn-wrapper">
-            <button
-              onClick={() => handleInnerNavigation(1)}
-              className={
-                toggleInnerNavigation === 1
-                  ? "inner-nav-btn-active"
-                  : "inner-nav-btn"
-              }
-            >
-              Get in Touch
-            </button>
-            <button
-              onClick={() => handleInnerNavigation(2)}
-              className={
-                toggleInnerNavigation === 2
-                  ? "frequent-inner-nav-btn-active"
-                  : "frequent-inner-nav-btn"
-              }
-            >
-              Frequently Asked Questions
-            </button>
-          </div>
-          <div className="contact-inner-main-container">
-            {toggleInnerNavigation === 2 && (
-              <div className="contact-inner-faq-wrapper">
-                <h2>Frequently Asked Questions</h2>
-                <FaqCard />
-              </div>
-            )}
-            {toggleInnerNavigation === 1 && (
-              <div className="contact-inner-form-wrapper">
-                <form
-                  onSubmit={handleSubmit(onSubmit)}
-                  className="contact-form-wrapper"
-                >
-                  <h2>Get in Touch</h2>
-                  <label className="lable-wrapper">
-                    <span> Full name *</span>
-                    <input
-                      type="text"
-                      className="contact-main-text-input"
-                      placeholder="Enter your full name"
-                      {...register("fullName")}
-                    />
-                  </label>
-                  <label className="lable-wrapper">
-                    <span>Location *</span>
-                    <input
-                      type="text"
-                      className="contact-main-text-input"
-                      placeholder="Enter your location here"
-                      {...register("location")}
-                    />
-                  </label>
+          <div className="contact-main-outer-wrapper">
+            <div className="inner-navigation-btn-wrapper">
+              <button
+                onClick={() => handleInnerNavigation(1)}
+                className={
+                  toggleInnerNavigation === 1
+                    ? "inner-nav-btn-active"
+                    : "inner-nav-btn"
+                }
+              >
+                Get in Touch
+              </button>
+              <button
+                onClick={() => handleInnerNavigation(2)}
+                className={
+                  toggleInnerNavigation === 2
+                    ? "frequent-inner-nav-btn-active"
+                    : "frequent-inner-nav-btn"
+                }
+              >
+                Frequently Asked Questions
+              </button>
+            </div>
+            <div className="contact-inner-main-container">
+              {toggleInnerNavigation === 2 && (
+                <div className="contact-inner-faq-wrapper">
+                  <h2>Frequently Asked Questions</h2>
+                  <FaqCard />
+                </div>
+              )}
+              {toggleInnerNavigation === 1 && (
+                <div className="contact-inner-form-wrapper">
+                  <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="contact-form-wrapper"
+                  >
+                    <h2>Get in Touch</h2>
 
-                  <label className="lable-wrapper">
-                    <span> Email *</span>
-                    <input
-                      type="email"
-                      className="contact-half-text-input"
-                      placeholder="Enter email address"
-                      {...register("email")}
-                    />
-                  </label>
-                  <label className="lable-wrapper">
-                    <span> Phone number *</span>
-                    <input
+                    <CustomImput
+                      name="fullName"
+                      required="Full name is required"
+                      placeholder="Full name"
+                      icon={<FaWhatsapp size={40} />}
+                      error={errors?.fullName?.message}
                       type="text"
-                      className="contact-half-text-input"
-                      placeholder="Phone number"
-                      {...register("phoneNumber")}
+                      register={register}
+                      style={{
+                        borderColor: errors.fullName ? "red" : "blue",
+                      }}
                     />
-                  </label>
+                    <CustomImput
+                      name="location"
+                      required="Location is required"
+                      placeholder="Enter your full location"
+                      error={errors?.location?.message}
+                      type="text"
+                      register={register}
+                      style={{
+                        borderColor: errors.location ? "red" : "blue",
+                      }}
+                    />
+                    <CustomImput
+                      name="email"
+                      required="Email is required"
+                      placeholder="Enter your email address"
+                      error={errors?.email?.message}
+                      type="text"
+                      register={register}
+                      style={{
+                        borderColor: errors.email ? "red" : "blue",
+                      }}
+                    />
+                    <CustomImput
+                      name="phoneNumber"
+                      required="Phone Number is required"
+                      placeholder="Enter your phone number"
+                      error={errors?.phoneNumber?.message}
+                      type="text"
+                      register={register}
+                      style={{
+                        borderColor: errors.phoneNumber ? "red" : "blue",
+                      }}
+                    />
 
-                  <label className="lable-wrapper">
-                    <textarea
-                      type="text"
-                      className="contact-main-text-input textarea-container"
-                      placeholder="Enter your message here"
-                      {...register("details")}
+                    <label className="lable-wrapper">
+                      <textarea
+                        type="text"
+                        className="contact-main-text-input textarea-container"
+                        placeholder="Enter your message here"
+                        {...register("details")}
+                      />
+                    </label>
+                    <input
+                      type="submit"
+                      value="Send Message"
+                      className="contact-main-form-btn"
+                      onClick={handleVerifyRedirect}
                     />
-                  </label>
-                  <input
-                    type="submit"
-                    value="Send Message"
-                    className="contact-main-form-btn"
-                    onClick={handleVerifyRedirect}
-                  />
-                </form>
-              </div>
-            )}
-            <div className="hq-wrapper">
-              {/* <img src={LocationIcon} alt="location" className="hq-locaion" /> */}
-              {/* <svg
+                  </form>
+                </div>
+              )}
+              <div className="hq-wrapper">
+                {/* <img src={LocationIcon} alt="location" className="hq-locaion" /> */}
+                {/* <svg
                 width="42"
                 height="48"
                 viewBox="0 0 42 48"
@@ -144,12 +156,12 @@ const ContactUs = () => {
                 />
               </svg> */}
 
-              <div style={{ marginLeft: "10px" }}>
-                <h3>Homerun Headquarters</h3>
-                <p>10, Engineer Abiola Olowu street, ibeju lekki</p>
+                <div style={{ marginLeft: "10px" }}>
+                  <h3>Homerun Headquarters</h3>
+                  <p>10, Engineer Abiola Olowu street, ibeju lekki</p>
+                </div>
               </div>
-            </div>
-            {/* <div className="map-wrapper">
+              {/* <div className="map-wrapper">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d507455.8277511089!2d3.509923553537845!3d6.458326490572662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b3e6ae28999%3A0xd607b937cfdbdfcc!2sOlowu%20St%2C%20Lagos%20Island%2C%20Lagos%20102273%2C%20Lagos!5e0!3m2!1sen!2sng!4v1725650349361!5m2!1sen!2sng"
                 width="600"
@@ -160,6 +172,7 @@ const ContactUs = () => {
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
             </div> */}
+            </div>
           </div>
         </div>
       </div>
@@ -170,7 +183,7 @@ const ContactUs = () => {
       />
       {/* <Hq /> */}
       {/* <Footer /> */}
-    </>
+    </div>
   );
 };
 

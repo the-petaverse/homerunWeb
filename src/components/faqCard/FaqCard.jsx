@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./FaqCard.css";
 // Icon for open state
 import { ArrowDown2, ArrowRight2 } from "iconsax-react";
 // import { IoChevronForwardSharp } from "react-icons/io5";
