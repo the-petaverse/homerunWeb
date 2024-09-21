@@ -14,6 +14,9 @@ const CustomImput = ({
   iconLeft,
   iconRight,
   inconClick,
+  validate,
+  pattern,
+  onPaste,
   error,
   id,
   ...rest
@@ -32,10 +35,17 @@ const CustomImput = ({
           error={error}
           type={type}
           placeholder={placeholder}
+          onPaste={onPaste}
           style={style}
           className={className ? className : "custom-main-text-input"}
           {...register(name, {
             required: required,
+            validate: validate ? validate : "",
+            pattern: {
+              value: pattern ? pattern : "",
+              message:
+                "Your password MUST have at least(1 Capital, 1 special character, 1 Number, and 1 small character!!) and can not be less than 8",
+            },
           })}
           {...rest}
         />

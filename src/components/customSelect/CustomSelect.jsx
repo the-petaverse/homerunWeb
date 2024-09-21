@@ -33,7 +33,7 @@ const CustomSelect = ({
         {data && data !== undefined
           ? data.map((myData, index) => {
               return (
-                <option value={myData.id} key={index}>
+                <option value={myData.title} key={index}>
                   {myData.title}
                 </option>
               );

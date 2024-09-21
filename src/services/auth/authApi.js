@@ -28,11 +28,14 @@ export const authApi = createApi({
       }),
     }),
     verifyUser: builder.mutation({
-      query: (data) => ({
-        url: "auth/verify_otp",
-        method: "POST",
-        body: data,
-      }),
+      query: (otp) => (
+        console.log(otp),
+        {
+          url: "auth/verify_otp",
+          method: "POST",
+          body: { otp: otp },
+        }
+      ),
     }),
   }),
 });

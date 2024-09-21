@@ -21,8 +21,6 @@ function AuthLayout() {
         </main>
         <ToastContainer />
       </div>
-
-      {/* <Footer /> */}
     </div>
   );
 }

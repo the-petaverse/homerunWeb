@@ -9,10 +9,12 @@ import Cookies from "universal-cookie";
 import { useVerifyUserMutation } from "../../services/auth/authApi";
 import CustomBackButton from "../customBackButton/CustomBackButton";
 import CustomButton from "../customButton/CustomButton";
+import { toast } from "react-toastify";
 
 const OtpComponent = ({ setOtpSent }) => {
   const cookies = new Cookies();
-  const [otpDigits, setOtpDigits] = useState(new Array(6).fill(""));
+  const toastId = React.useRef(null);
+  const [otpDigits, setOtpDigits] = useState(new Array(8).fill(""));
   const [userVerifiedOtp, setUserverifiedOtp] = useState("");
   const [verifyUser, { data: verifyData, isSuccess, error, isLoading }] =
     useVerifyUserMutation();
@@ -30,10 +32,26 @@ const OtpComponent = ({ setOtpSent }) => {
     formState: { errors, isValid },
   } = useForm();
 
-  const submitOtpToTheServer = (e) => {
+  const submitOtpToTheServer = async (e) => {
     e.preventDefault();
-    console.log(otpDigits);
+    const otp = otpDigits.join("");
+    await verifyUser(otp);
+    // console.log(res);
   };
+
+  if (isSuccess) {
+    console.log(verifyData);
+  }
+  if (error) {
+    if (error) {
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.error(error?.data?.message, {
+          position: "top-right",
+        });
+      }
+    }
+    console.log(error);
+  }
   const handleChange = (elemt, ind) => {
     elemt.preventDefault();
 

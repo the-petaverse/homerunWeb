@@ -23,11 +23,13 @@ import CustomPhoneInput from "../../../components/customPhoneInput/CustomPhoneIn
 import { TbWorldPin, TbBuildingEstate } from "react-icons/tb";
 import { FaCity } from "react-icons/fa";
 import { cities, countries, states } from "../../../data/location";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const cookies = new Cookies();
   const registeredCookies = cookies.get("resgitered");
   const [revealPassword, setRevealPassword] = useState(false);
+  const toastId = React.useRef(null);
 
   const [registerUser, { data: registerData, isSuccess, error, isLoading }] =
     useRegisterUserMutation();
@@ -50,17 +52,12 @@ const Register = () => {
   const watchCountry = watch("country");
   const watchState = watch("state");
   const watchPassword = watch("password");
-  const confirmPassword = watch("confirm_password");
 
   const onSubmit = async (data) => {
-    setFormSumitted(true);
-    console.log(data);
-    // await registerUser(data);
+    // setFormSumitted(true);
+    await registerUser(data);
   };
 
-  if (isSuccess) {
-    cookies.set("resgitered", registerData.message);
-  }
   const handleSelectedState = () => {
     const stateFiltered = states.filter(
       (statedata) => statedata.countryid === watchCountry
@@ -73,7 +70,7 @@ const Register = () => {
     );
     setCitiesList(citiesFiltered);
   };
-
+  console.log(formSubmitted);
   const handleCompleteForm = () => {
     setFormStep((cur) => cur + 1);
   };
@@ -118,12 +115,35 @@ const Register = () => {
     setRevealPassword((prev) => !prev);
   };
   useEffect(() => {
-    if (registeredCookies) {
-      navigate("/verify", { replace: true });
+    if (error) {
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.error(error?.data?.message, {
+          position: "top-right",
+        });
+      }
+    }
+    if (isSuccess) {
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.success(registerData?.message, {
+          position: "top-right",
+        });
+      }
+      setFormSumitted(true);
+      cookies.set("resgitered", registerData.data);
+    }
+    if (registeredCookies !== undefined) {
+      setFormSumitted(false);
     }
     handleSelectedCities();
     handleSelectedState();
-  }, [registeredCookies, watchCountry, watchState, isSuccess]);
+  }, [
+    registeredCookies,
+    watchCountry,
+    watchState,
+    isSuccess,
+    error,
+    formSubmitted,
+  ]);
   return (
     <div>
       <div className="authentication-header">
@@ -136,7 +156,7 @@ const Register = () => {
           <img src={LoginImage} alt="" className="register-image" />
         </div>
 
-        {!formSubmitted && (
+        {!formSubmitted && registeredCookies === undefined && (
           <div className="register-inner-form-wrapper">
             <img
               src={HomerunIcon}
@@ -164,25 +184,25 @@ const Register = () => {
               {formStep === 0 && (
                 <>
                   <CustomImput
-                    name="firstName"
+                    name="first_name"
                     required="First name is required"
                     placeholder="First name"
                     // className="main-text-input"
                     type="text"
-                    error={errors?.firstName?.message}
+                    error={errors?.first_name?.message}
                     register={register}
-                    style={{ borderColor: errors.firstName ? "red" : "blue" }}
+                    style={{ borderColor: errors.first_name ? "red" : "blue" }}
                     iconLeft={<IoPersonOutline color="gray" size={20} />}
                   />
                   <CustomImput
-                    name="lastName"
+                    name="last_name"
                     required="Last name is required"
                     placeholder="Last name"
                     // className="main-text-input"
                     type="text"
                     error={errors?.lastName?.message}
                     register={register}
-                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
+                    style={{ borderColor: errors.last_name ? "red" : "blue" }}
                     iconLeft={<IoPersonOutline color="gray" size={20} />}
                   />
                   <CustomImput
@@ -197,47 +217,56 @@ const Register = () => {
                     iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                   />
                   <CustomPhoneInput
+                    name="phone_number"
                     control={control}
-                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
+                    style={{
+                      borderColor: errors.phone_number ? "red" : "blue",
+                    }}
                     register={register}
                   />
                 </>
               )}
-              {formStep === 1 && (
+              {formStep >= 1 && (
                 <>
                   <CustomSelect
-                    name="country"
+                    name="resident_country"
                     type="text"
                     className="main-text-input"
-                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
+                    style={{
+                      borderColor: errors.resident_country ? "red" : "blue",
+                    }}
                     register={register}
                     require="Country is required"
                     placeholder="Country name"
-                    error={errors.country?.message}
+                    error={errors.resident_country?.message}
                     data={countries}
                     iconLeft={<TbWorldPin color="gray" size={20} />}
                   />
                   <CustomSelect
-                    name="state"
+                    name="resident_state"
                     type="text"
-                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
+                    style={{
+                      borderColor: errors.resident_state ? "red" : "blue",
+                    }}
                     className="main-text-input"
                     register={register}
                     require="State is required"
                     placeholder="State name"
-                    error={errors.state?.message}
+                    error={errors.resident_state?.message}
                     data={states}
                     iconLeft={<TbBuildingEstate color="gray" size={20} />}
                   />
                   <CustomSelect
-                    name="city"
+                    name="resident_city"
                     type="text"
-                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
+                    style={{
+                      borderColor: errors.resident_city ? "red" : "blue",
+                    }}
                     className="main-text-input"
                     register={register}
                     require="City is required"
                     placeholder="City name"
-                    error={errors.city?.message}
+                    error={errors.resident_city?.message}
                     data={cities}
                     iconLeft={<FaCity color="gray" size={20} />}
                   />
@@ -245,12 +274,16 @@ const Register = () => {
                     name="password"
                     required="Password is required"
                     placeholder="Password"
-                    // className="main-text-input"
+                    onPaste={(e) => {
+                      e.preventDefault();
+                      return false;
+                    }}
                     error={errors?.password?.message}
                     type={revealPassword ? "text" : "password"}
                     register={register}
                     style={{ borderColor: errors.password ? "red" : "blue" }}
                     iconLeft={<TbPasswordUser color="gray" size={20} />}
+                    pattern={/^(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,}$/}
                     iconRight={
                       revealPassword ? (
                         <FiEye color="gray" size={20} />
@@ -265,6 +298,10 @@ const Register = () => {
                     name="confirm_password"
                     required="Confirm Password is required"
                     placeholder="Confirm Password"
+                    onPaste={(e) => {
+                      e.preventDefault();
+                      return false;
+                    }}
                     // className="main-text-input"
                     error={errors?.confirm_password?.message}
                     type={revealPassword ? "text" : "password"}
@@ -281,6 +318,9 @@ const Register = () => {
                       )
                     }
                     inconClick={handleShowPassword}
+                    validate={(value) =>
+                      value === watchPassword || "Passwords do not match"
+                    }
                   />
                 </>
               )}
@@ -299,8 +339,7 @@ const Register = () => {
             </div>
           </div>
         )}
-
-        {formSubmitted && <OtpComponent />}
+        {(formSubmitted || registeredCookies) && <OtpComponent />}
       </div>
     </div>
   );

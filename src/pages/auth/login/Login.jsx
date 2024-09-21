@@ -12,7 +12,7 @@ import Cookies from "universal-cookie";
 
 import { useLoginUserMutation } from "../../../services/auth/authApi";
 import CustomImput from "../../../components/customImput/CustomImput";
-import { Bounce, ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
@@ -49,7 +49,7 @@ const Login = () => {
     cookies.set("auth_token", loginData?.data);
   }
   if (error) {
-    console.log(error);
+    // console.log(error);
     if (!toast.isActive(toastId.current)) {
       toastId.current = toast.error(error?.data?.message, {
         position: "top-right",
