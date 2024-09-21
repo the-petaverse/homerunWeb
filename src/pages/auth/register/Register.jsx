@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
+// import PhoneInput from "react-phone-input-2";
+// import "react-phone-input-2/lib/style.css";
+
 import LoginImage from "../../../assets/login.png";
 import LogoMark from "../../../assets/logomark.png";
 import HomerunIcon from "../../../assets/homerun-icon.png";
@@ -16,28 +17,18 @@ import CustomImput from "../../../components/customImput/CustomImput";
 import CustomBackButton from "../../../components/customBackButton/CustomBackButton";
 import { IoPersonOutline } from "react-icons/io5";
 import { FaEnvelopeOpenText } from "react-icons/fa";
-
-const countries = [
-  { id: "1", title: "Nigeria" },
-  { id: "2", title: "USA" },
-  { id: "3", title: "Kenya" },
-];
-const states = [
-  { id: "1", countryid: "1", title: "Lagos" },
-  { id: "2", countryid: "1", title: "Ondo" },
-  { id: "3", countryid: "2", title: "Texas" },
-  { id: "4", countryid: "2", title: "Califonia" },
-];
-const cities = [
-  { id: "1", stateId: "1", title: "Ikeja" },
-  { id: "2", stateId: "1", title: "Mushin" },
-  { id: "3", stateId: "2", title: "Akure" },
-  { id: "4", stateId: "2", title: "Owo" },
-];
+import { TbPasswordUser } from "react-icons/tb";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import CustomPhoneInput from "../../../components/customPhoneInput/CustomPhoneInput";
+import { TbWorldPin, TbBuildingEstate } from "react-icons/tb";
+import { FaCity } from "react-icons/fa";
+import { cities, countries, states } from "../../../data/location";
 
 const Register = () => {
   const cookies = new Cookies();
   const registeredCookies = cookies.get("resgitered");
+  const [revealPassword, setRevealPassword] = useState(false);
+
   const [registerUser, { data: registerData, isSuccess, error, isLoading }] =
     useRegisterUserMutation();
   const navigate = useNavigate();
@@ -123,7 +114,9 @@ const Register = () => {
       );
     }
   };
-
+  const handleShowPassword = () => {
+    setRevealPassword((prev) => !prev);
+  };
   useEffect(() => {
     if (registeredCookies) {
       navigate("/verify", { replace: true });
@@ -148,25 +141,13 @@ const Register = () => {
             <img
               src={HomerunIcon}
               alt="homerun icon"
-              className="homerun-icon"
+              className="homerun-icon-inform"
             />
             {formStep < 1 && (
               <div className="register-notice-message">
                 <h1>Welcome To Homerun</h1>
                 <p>Please take a few moment to register. </p>
               </div>
-            )}
-
-            {error?.error && (
-              <p className="register-error">Some went wrong....</p>
-            )}
-            {error?.error?.message && (
-              <p className="register-error">Some went wrong....</p>
-            )}
-            {isLoading && (
-              <p className="register-error">
-                We are sending your data, please wait.....
-              </p>
             )}
             {formStep === 1 && (
               <div className="back-button-wrapper">
@@ -215,57 +196,11 @@ const Register = () => {
                     style={{ borderColor: errors.email ? "red" : "blue" }}
                     iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                   />
-                  <label className="phone-input-wrapper">
-                    <Controller
-                      name="phone_number"
-                      control={control}
-                      // rules={{
-                      //   validate: (value) => isValidPhoneNumber(value),
-                      // }}
-                      render={({ field: { ref, ...field } }) => {
-                        return (
-                          <>
-                            <PhoneInput
-                              {...field}
-                              isValid={false}
-                              // value={value}
-                              // onchange={onchange}
-                              inputProps={{
-                                ref,
-                                required: true,
-                              }}
-                              buttonStyle={{
-                                width: "15%",
-                                borderTopLeftRadius: 12,
-                                borderBottomLeftRadius: 12,
-                                backgroundColor: "#fff",
-                                paddingLeft: 15,
-                              }}
-                              inputStyle={{
-                                // backgroundColor: "gray",
-                                height: 55,
-                                width: "100%",
-                                // marginTop: ,
-                                borderRadius: 12,
-                                paddingLeft: 80,
-                                fontFamily: "Josefin Slab",
-                                fontSize: 18,
-                              }}
-                              inputClass="register-main-text-input"
-                              country={"us"}
-                              // value={this.state.phone}
-                              // onChange={(phone) => this.setState({ phone })}
-                            />
-                            {errors.phone_number && (
-                              <p className="input-error-message">
-                                {errors.phone_number.message}
-                              </p>
-                            )}
-                          </>
-                        );
-                      }}
-                    />
-                  </label>
+                  <CustomPhoneInput
+                    control={control}
+                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
+                    register={register}
+                  />
                 </>
               )}
               {formStep === 1 && (
@@ -274,31 +209,37 @@ const Register = () => {
                     name="country"
                     type="text"
                     className="main-text-input"
+                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
                     register={register}
                     require="Country is required"
                     placeholder="Country name"
                     error={errors.country?.message}
                     data={countries}
+                    iconLeft={<TbWorldPin color="gray" size={20} />}
                   />
                   <CustomSelect
                     name="state"
                     type="text"
+                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
                     className="main-text-input"
                     register={register}
                     require="State is required"
                     placeholder="State name"
                     error={errors.state?.message}
                     data={states}
+                    iconLeft={<TbBuildingEstate color="gray" size={20} />}
                   />
                   <CustomSelect
                     name="city"
                     type="text"
+                    style={{ borderColor: errors.lastName ? "red" : "blue" }}
                     className="main-text-input"
                     register={register}
                     require="City is required"
                     placeholder="City name"
                     error={errors.city?.message}
                     data={cities}
+                    iconLeft={<FaCity color="gray" size={20} />}
                   />
                   <CustomImput
                     name="password"
@@ -306,22 +247,40 @@ const Register = () => {
                     placeholder="Password"
                     // className="main-text-input"
                     error={errors?.password?.message}
-                    type="password"
+                    type={revealPassword ? "text" : "password"}
                     register={register}
                     style={{ borderColor: errors.password ? "red" : "blue" }}
+                    iconLeft={<TbPasswordUser color="gray" size={20} />}
+                    iconRight={
+                      revealPassword ? (
+                        <FiEye color="gray" size={20} />
+                      ) : (
+                        <FiEyeOff color="gray" size={20} />
+                      )
+                    }
+                    inconClick={handleShowPassword}
                   />
 
                   <CustomImput
                     name="confirm_password"
                     required="Confirm Password is required"
                     placeholder="Confirm Password"
-                    className="main-text-input"
+                    // className="main-text-input"
                     error={errors?.confirm_password?.message}
-                    type="password"
+                    type={revealPassword ? "text" : "password"}
                     register={register}
                     style={{
                       borderColor: errors.confirm_password ? "red" : "blue",
                     }}
+                    iconLeft={<TbPasswordUser color="gray" size={20} />}
+                    iconRight={
+                      revealPassword ? (
+                        <FiEye color="gray" size={20} />
+                      ) : (
+                        <FiEyeOff color="gray" size={20} />
+                      )
+                    }
+                    inconClick={handleShowPassword}
                   />
                 </>
               )}
@@ -329,12 +288,12 @@ const Register = () => {
             </form>
             <div className="last-text-wrapper">
               <p className="already-last-text">
-                You already have an account?{" "}
+                You already have an account?
                 <span>
                   <Link to="/login" className="login-link">
                     Login
                   </Link>
-                </span>{" "}
+                </span>
                 to Homerun
               </p>
             </div>

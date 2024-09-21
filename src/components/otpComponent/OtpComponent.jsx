@@ -61,7 +61,7 @@ const OtpComponent = ({ setOtpSent }) => {
   }, [isSuccess, registeredCookies]);
   return (
     <>
-      <div className="register-inner-form-wrapper">
+      <div className="otp-main-inner-form-wrapper">
         <img src={HomerunIcon} alt="homerun icon" className="homerun-icon" />
         <div>
           <CustomBackButton title="Back" />
@@ -74,24 +74,9 @@ const OtpComponent = ({ setOtpSent }) => {
             className="check-mark-btn"
           />
         </div>
-        {error?.data?.error ? (
-          <p className="token-error-message">{error?.data?.error}</p>
-        ) : (
-          <p className="token-message">
-            Please input OTP sent to Wasiu@gmail.com
-          </p>
-        )}
-        {error?.data?.message && (
-          <p className="token-error-message">{error?.data?.message}</p>
-        )}
-        {isLoading && (
-          <p className="token-error-message">
-            Sending your verification code.....
-          </p>
-        )}
-        {isSuccess && (
-          <p className="token-error-message">Successfully verified</p>
-        )}
+        <p className="token-message">
+          Please input OTP sent to Wasiu@gmail.com
+        </p>
         <form className="">
           <div className="otp-main-wrapper">
             {otpDigits.map((data, index) => {

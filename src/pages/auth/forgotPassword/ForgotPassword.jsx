@@ -9,6 +9,8 @@ import OtpComponent from "../../../components/otpComponent/OtpComponent";
 import ResetPassword from "../../../components/resetPassword/ResetPassword";
 import { Link } from "react-router-dom";
 import CustomSuccessPage from "../../../components/customSuccessPage/CustomSuccessPage";
+import CustomImput from "../../../components/customImput/CustomImput";
+import { FaEnvelopeOpenText } from "react-icons/fa";
 
 const ForgotPassword = () => {
   const [emailSent, setEmailSent] = useState(false);
@@ -50,7 +52,7 @@ const ForgotPassword = () => {
                       <img src={BackIcon} alt="" />
                       <span>Back</span>
                     </div>
-                    <div>
+                    <div className="forgot-passwrd-reset-header">
                       <h1>Reset Password</h1>
                       <p>Please enter your email address</p>
                     </div>
@@ -58,22 +60,16 @@ const ForgotPassword = () => {
                       onSubmit={handleSubmit(onPassSubmit)}
                       className="form-wrapper"
                     >
-                      <label>
-                        {/* Email: */}
-                        <input
-                          type="text"
-                          placeholder="Email"
-                          className="main-text-input"
-                          {...register("email", {
-                            required: "Email is required",
-                          })}
-                        />
-                        {errors.email && (
-                          <p className="input-error-message">
-                            {errors.email.message}
-                          </p>
-                        )}
-                      </label>
+                      <CustomImput
+                        name="email"
+                        required="Email is required"
+                        placeholder="Email"
+                        type="email"
+                        error={errors?.email?.message}
+                        register={register}
+                        style={{ borderColor: errors.email ? "red" : "blue" }}
+                        iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
+                      />
 
                       <input
                         type="submit"

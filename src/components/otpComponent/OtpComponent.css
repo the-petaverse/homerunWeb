@@ -1,3 +1,7 @@
+.otp-main-inner-form-wrapper {
+  width: 100%;
+  padding: 5%;
+}
 .otp-main-wrapper {
   display: flex;
   justify-content: space-between;
@@ -86,4 +90,40 @@
 .timer-inner-wrapper p {
   font-weight: bold;
   margin-right: 5px;
+}
+
+@media (min-width: 475px) {
+  .otp-main-inner-form-wrapper {
+    width: 85%;
+    padding: 1.5%;
+    margin-top: 120px;
+  }
+}
+@media (min-width: 640px) {
+  .otp-main-inner-form-wrapper {
+    width: 55%;
+    padding: 1.5%;
+    margin-top: 120px;
+  }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+  .otp-main-inner-form-wrapper {
+    width: 40%;
+    padding: 2.5%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .otp-main-inner-form-wrapper {
+    width: 35%;
+    padding: 2.5%;
+    margin-top: 60px;
+  }
+}
+
+@media (min-width: 1536px) {
 }

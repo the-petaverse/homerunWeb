@@ -78,7 +78,7 @@ const Login = () => {
           <img src={HomerunIcon} alt="" className="homerun-icon" />
           <h3>Welcome Back </h3>
           <p className="login-message">Please enter your email and password.</p>
-          {error && <p className="login-error-style">{error.data.error}</p>}
+
           <form onSubmit={handleSubmit(onSubmit)} className="form-wrapper">
             <CustomImput
               name="email"

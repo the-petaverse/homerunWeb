@@ -11,15 +11,18 @@ const CustomSelect = ({
   errors,
   style,
   watch,
+  iconLeft,
   data,
 }) => {
   return (
     <div className="custom-select-container">
+      {iconLeft && <div className="custom-select-icon-left">{iconLeft}</div>}
       <select
         type={type}
         error={errors}
         style={style}
-        className={className}
+        className="custome-select-class-name"
+        // className={className ? className : "custome-select-class-name"}
         placeholder={placeholder}
         data={data}
         {...register(name, {

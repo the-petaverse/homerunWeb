@@ -126,10 +126,18 @@ const Dashboard = () => {
         <div className="dashboard-right-panel-wrapper">
           <div className="dashboard-right-top-panel-wrapper">
             <p>Good Morning Simisoluwa</p>
+            <p>This month</p>
           </div>
           <div className="dashboard-right-bottom-panel-wrapper">
-            <div className="dashboard-center-details-wrapper"></div>
-            <div className="dashboard-chart-details-wrapper"></div>
+            <div className="dashboard-center-details-wrapper">
+              <div className="dashboard-center-details-headers">
+                <h3>Current Request</h3>
+                <p>View all</p>
+              </div>
+            </div>
+            <div className="dashboard-chart-details-wrapper">
+              <h1>charts goes here</h1>
+            </div>
           </div>
         </div>
       </div>

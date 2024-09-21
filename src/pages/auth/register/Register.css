@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
 .register-main-container {
-  /* padding: 25px 5%; */
+  /* padding: 20% 5%; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,7 +22,10 @@
   padding: 15px 5%;
   /* text-align: center; */
 }
-
+.homerun-icon-inform {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
 /* .register-inner-form-wrapper p {
   font-size: 1.2em;
   margin-top: 15px;
@@ -153,9 +156,11 @@
   }
 
   .register-main-container {
-    /* padding: 25px 5%; */
-    /* display: flex; */
     flex-direction: row;
+  }
+  .homerun-icon-inform {
+    margin-top: 60px;
+    margin-bottom: 20px;
   }
   .register-image {
     width: 100%;

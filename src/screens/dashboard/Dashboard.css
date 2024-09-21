@@ -2,17 +2,36 @@
   border-top: solid gray 0.5px;
   display: flex;
   align-items: center;
-  padding: 0 5%;
+  justify-content: space-between;
+  padding: 0 3%;
   /* padding-top: 20%; */
 }
 .dashboard-right-panel-wrapper {
   background-color: aliceblue;
-  padding: 0.6% 2%;
+  width: 74dvw;
+}
+.dashboard-right-bottom-panel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard-center-details-wrapper {
+  background-color: red;
+}
+.dashboard-chart-details-wrapper {
+  background-color: yellow;
 }
 .dashboard-left-panel-wrapper {
   border-right: solid gray 0.5px;
-  width: 18dvw;
-  height: 86dvh;
+  width: 16dvw;
+  /* height: 84dvh; */
+}
+.dashboard-right-top-panel-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.dashboard-center-details-headers {
+  display: flex;
 }
 .dashboard-left-panel-wrapper-icons-only {
   border-right: solid gray 0.5px;
