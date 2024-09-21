@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 import RequestNavModal from "../requestNavModal/RequestNavModal";
 import MainSideBar from "../mainSideBar/MainSideBar";
+import { FiShoppingCart } from "react-icons/fi";
+import { FaRegBell } from "react-icons/fa";
+import UserAvarta from "../userAvarta/UserAvarta";
+
 const Navbar = () => {
   const [openRequestNav, setOpenRequestNav] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -47,26 +51,42 @@ const Navbar = () => {
             </Link>
           </ul>
 
-          <ul className="list-wrapper">
-            <div
-              // to=""
-              className="nav-links post-request-wrapper"
-              onClick={handleOpenRequestNav}
-            >
-              <li className="post-request-wrapper-li">Post a Request</li>
-            </div>
-            {!receivedCookies && (
+          {!receivedCookies && (
+            <ul className="list-wrapper">
+              <div
+                // to=""
+                className="nav-links post-request-wrapper"
+                onClick={handleOpenRequestNav}
+              >
+                <li className="post-request-wrapper-li">Post a Request</li>
+              </div>
+
               <Link to="/login" className="nav-links">
                 <li className="login-wrapper">Login</li>
               </Link>
-            )}
+            </ul>
+          )}
 
-            {receivedCookies && (
-              <Link to="/login" className="nav-links" onClick={handleLogout}>
-                <li> Logout</li>
-              </Link>
-            )}
-          </ul>
+          {/* Menu to show when the user is authenticated */}
+          {receivedCookies && (
+            <ul className="list-wrapper">
+              <div
+                // to=""
+                className="nav-links post-request-wrapper"
+                onClick={handleOpenRequestNav}
+              >
+                <li className="post-request-wrapper-li">Post errand</li>
+              </div>
+              <li className="use-profile-icons icon-withcart-notification">
+                <span>7</span>
+                <FiShoppingCart size={25} />
+              </li>
+              <li className="use-profile-icons">
+                <FaRegBell size={25} />
+              </li>
+              <UserAvarta />
+            </ul>
+          )}
         </section>
         <img
           src={MenuIcon}

@@ -1,176 +1,139 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Dashboard.css";
+import Navbar from "../../components/Navbar/Navbar";
+import { SiNintendoswitch } from "react-icons/si";
+import { MdOutlineSendTimeExtension } from "react-icons/md";
+import { RiHome7Fill } from "react-icons/ri";
+import { FiShoppingCart } from "react-icons/fi";
+import { MdOutlinePayments } from "react-icons/md";
 
-import Avatar from "../../assets/avarta.png";
-import MenuIcon from "../../assets/menu.png";
-import BinIcon from "../../assets/bin.png";
-import { useNavigate, Link } from "react-router-dom";
-import Modal from "../../components/modal/Modal";
-
-import ResetPassword from "../../components/resetPassword/ResetPassword";
-import NewRequest from "../../components/newRequest/NewRequest";
-import AllRequest from "../../components/allRequest/AllRequest";
-import VerificationCode from "../../components/verificationCode/VerificationCode";
-import SideBar from "../../components/sideBar/SideBar";
-import { useGetUserErransQuery } from "../../services/errands/errandsApi";
-import {
-  useGetUserQuery,
-  useGetUsersQuery,
-  useLoginUserMutation,
-} from "../../services/auth/authApi";
-import Cookies from "universal-cookie";
-
+const paneMenuList = [
+  {
+    id: "1",
+    title: "Dashboard",
+    titleHeader: "",
+    icon: <RiHome7Fill size={30} />,
+  },
+  {
+    id: "2",
+    title: "Errands",
+    titleHeader: "",
+    icon: <MdOutlineSendTimeExtension size={30} />,
+  },
+  {
+    id: "3",
+    title: "Manage my Request",
+    titleHeader: "Product Management",
+    icon: <MdOutlineSendTimeExtension size={30} />,
+  },
+  {
+    id: "4",
+    title: "Cart",
+    titleHeader: "",
+    icon: <FiShoppingCart size={30} />,
+  },
+  {
+    id: "5",
+    title: "Refer and Earn",
+    titleHeader: "",
+    icon: <MdOutlinePayments size={30} />,
+  },
+  {
+    id: "6",
+    title: "Support",
+    titleHeader: "Support & Settings",
+    icon: <MdOutlineSendTimeExtension size={30} />,
+  },
+  {
+    id: "7",
+    title: "My Account",
+    titleHeader: "",
+    icon: <FiShoppingCart size={30} />,
+  },
+  {
+    id: "8",
+    title: "Settings",
+    titleHeader: "",
+    icon: <MdOutlinePayments size={30} />,
+  },
+  {
+    id: "9",
+    title: "Logout",
+    titleHeader: "",
+    icon: <MdOutlinePayments size={30} />,
+  },
+];
 const Dashboard = () => {
-  const cookies = new Cookies();
-  const reacivedToken = cookies.get("auth_token");
-  // const [{ data: loginData }] = useLoginUserMutation();
-  const {
-    data: userData,
-    isLoading,
-    isFetching,
-    errors,
-    isSuccess,
-  } = useGetUserQuery();
+  const [sidePaneSelected, setSidePaneSelected] = useState();
+  const [showIconsOnly, setShowIconsOnly] = useState(false);
 
-  const [openModal, setModalOpen] = useState(false);
-  const [formStage, setFormStage] = useState(0);
-  const [showDashboard, setShowDashboard] = useState(1);
-  const [openSideBar, setOpenSideBar] = useState(false);
-
-  const navigate = useNavigate();
-
-  const handleShowDashboard = (number) => {
-    setShowDashboard(number);
+  const handleSelectLeftPaneMenu = (pandId) => {
+    setSidePaneSelected(pandId);
   };
 
-  const handleLogout = () => {
-    cookies.remove("auth_token");
+  const handleShowOnlyIcons = () => {
+    setShowIconsOnly((prev) => !prev);
   };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
-  const handleOpenSideBar = () => {
-    setOpenSideBar(true);
-  };
-
-  const handleCloseSideBar = () => {
-    setOpenSideBar(false);
-  };
-
-  // useEffect(() => {}, [reacivedToken, isSuccess]);
-
   return (
-    <div className="dashboard-container">
-      <div className="left-side-container">
-        <div className="name-email-holder">
-          <img src={Avatar} alt="" className="avarta-wrapper" />
-          {userData && (
-            <h3 className="user-name">
-              {userData.user.first_name} {userData.user.last_name}
-            </h3>
-          )}
-          {userData && <h3>{userData.user.email}</h3>}
-        </div>
-        <div className="right-menu-list-wrapper">
-          <ul className="right-main-list">
-            <button
-              className="inner-menu-list"
-              onClick={() => handleShowDashboard(1)}
+    <>
+      <Navbar />
+      <div className="dashboadr-main-container">
+        <div
+          className={
+            showIconsOnly
+              ? "dashboard-left-panel-wrapper-icons-only"
+              : "dashboard-left-panel-wrapper"
+          }
+        >
+          <div className="dashboard-left-pane-header">
+            {!showIconsOnly && <p>MAIN MENU</p>}
+            <div
+              className={
+                showIconsOnly
+                  ? "dashboard-switch-holder-icons-only"
+                  : "dashboard-switch-holder"
+              }
+              onClick={handleShowOnlyIcons}
             >
-              <li>All request</li>
-            </button>
-            <Link
-              to="/requests-list"
-              className="inner-menu-list"
-              // onClick={() => {
-              //   handleShowDashboard(2);
-              //   setFormStage(0);
-              // }}
-            >
-              <li>New Request</li>
-            </Link>
-            <button
-              className="inner-menu-list"
-              onClick={() => handleShowDashboard(3)}
-            >
-              <li>Messages</li>
-            </button>
-            <button
-              className="inner-menu-list"
-              onClick={() => handleShowDashboard(4)}
-            >
-              <li>Password</li>
-            </button>
-            <Link
-              to="/login"
-              className="inner-menu-list"
-              onClick={handleLogout}
-            >
-              <li>Log out</li>
-            </Link>
-          </ul>
-        </div>
-      </div>
-      <div className="right-side-container">
-        <div className="right-side-header">
-          <h2>User's Dashboard</h2>
-          <img
-            src={MenuIcon}
-            alt=""
-            className="icon-image"
-            onClick={handleOpenSideBar}
-          />
-        </div>
-        <div className="request-main-containerr">
-          <div>{showDashboard === 1 && <AllRequest />}</div>
-          <div>
-            {showDashboard === 2 && (
-              <NewRequest
-                formStage={formStage}
-                setFormStage={setFormStage}
-                setShowDashboard={setShowDashboard}
-                setModalOpen={setModalOpen}
+              <SiNintendoswitch
+                size={25}
+                color="#fff"
+                className={showIconsOnly ? "switch-icon" : ""}
               />
-            )}
+            </div>
           </div>
-          <div>
-            {showDashboard === 3 && (
-              <>
-                <div className="slate-header-wrapper">
-                  <h2>Notifications</h2>
-                </div>
-                <div className="request-wrapper">
-                  <h3 className="title-request">Request title</h3>
-                  <p className="details-request">
-                    Request details to go insiode here Request details to go
-                    insiode here
-                  </p>
-                  <p>Request status</p>
-                  <img src={BinIcon} alt="" className="bin-icon" />
-                </div>
-              </>
-            )}
+          <div className="dashboard-left-pane-content">
+            {paneMenuList &&
+              paneMenuList.map((menuList, index) => {
+                return (
+                  <ul className="" key={index}>
+                    <li
+                      className={
+                        sidePaneSelected === menuList.id
+                          ? "dashboard-left-pane-list-active"
+                          : "dashboard-left-pane-list"
+                      }
+                      onClick={() => handleSelectLeftPaneMenu(menuList.id)}
+                    >
+                      <span>{menuList.icon}</span>
+                      {!showIconsOnly ? menuList.title : ""}
+                    </li>
+                  </ul>
+                );
+              })}
           </div>
-          <div>
-            {showDashboard === 4 && (
-              <ResetPassword setShowDashboard={setShowDashboard} />
-            )}
+        </div>
+        <div className="dashboard-right-panel-wrapper">
+          <div className="dashboard-right-top-panel-wrapper">
+            <p>Good Morning Simisoluwa</p>
           </div>
-          {/* Verification section */}
-          <div>{showDashboard === 5 && <VerificationCode />}</div>
+          <div className="dashboard-right-bottom-panel-wrapper">
+            <div className="dashboard-center-details-wrapper"></div>
+            <div className="dashboard-chart-details-wrapper"></div>
+          </div>
         </div>
       </div>
-      <SideBar
-        setShowDashboard={setShowDashboard}
-        handleShowDashboard={handleShowDashboard}
-        handleLogout={handleLogout}
-        setFormStage={setFormStage}
-        openSideBar={openSideBar}
-        handleCloseSideBar={handleCloseSideBar}
-      />
-      <Modal open={openModal} closeModal={handleCloseModal} />
-    </div>
+    </>
   );
 };
 

@@ -14,6 +14,8 @@ import OtpComponent from "../../../components/otpComponent/OtpComponent";
 import CustomSelect from "../../../components/customSelect/CustomSelect";
 import CustomImput from "../../../components/customImput/CustomImput";
 import CustomBackButton from "../../../components/customBackButton/CustomBackButton";
+import { IoPersonOutline } from "react-icons/io5";
+import { FaEnvelopeOpenText } from "react-icons/fa";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -184,31 +186,34 @@ const Register = () => {
                     name="firstName"
                     required="First name is required"
                     placeholder="First name"
-                    className="main-text-input"
+                    // className="main-text-input"
                     type="text"
                     error={errors?.firstName?.message}
                     register={register}
                     style={{ borderColor: errors.firstName ? "red" : "blue" }}
+                    iconLeft={<IoPersonOutline color="gray" size={20} />}
                   />
                   <CustomImput
                     name="lastName"
                     required="Last name is required"
                     placeholder="Last name"
-                    className="main-text-input"
+                    // className="main-text-input"
                     type="text"
                     error={errors?.lastName?.message}
                     register={register}
                     style={{ borderColor: errors.lastName ? "red" : "blue" }}
+                    iconLeft={<IoPersonOutline color="gray" size={20} />}
                   />
                   <CustomImput
                     name="email"
                     required="Email is required"
                     placeholder="Email"
-                    className="main-text-input"
+                    // className="main-text-input"
                     type="email"
                     error={errors?.email?.message}
                     register={register}
                     style={{ borderColor: errors.email ? "red" : "blue" }}
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                   />
                   <label className="phone-input-wrapper">
                     <Controller
@@ -299,7 +304,7 @@ const Register = () => {
                     name="password"
                     required="Password is required"
                     placeholder="Password"
-                    className="main-text-input"
+                    // className="main-text-input"
                     error={errors?.password?.message}
                     type="password"
                     register={register}

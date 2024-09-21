@@ -4,6 +4,8 @@ import WebsiteLayout from "./layout/WebsiteLayout";
 import { authRoutes, websiteRoutes } from "./router";
 import Preloader from "./components/preloader/Preloader";
 import AuthLayout from "./layout/AuthLayout";
+import Dashboard from "./screens/dashboard/Dashboard";
+import PrivateRoute from "./screens/private/PrivateRoutes";
 
 const App = () => {
   return (
@@ -34,6 +36,15 @@ const App = () => {
           />
         ))}
       </Route>
+
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 };

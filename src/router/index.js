@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import PrivateRoute from "../screens/private/PrivateRoutes";
 
 // import Home from "../pages/website/homePage/Home";
 const Home = lazy(() => import("../pages/website/homePage/Home"));
@@ -8,6 +9,8 @@ const CarHotel = lazy(() =>
 
 const About = lazy(() => import("../pages/website/about/About"));
 const CheckoutPage = lazy(() => import("../pages/website/cart/Cart"));
+const ProvateRoutes = lazy(() => import("../screens/private/PrivateRoutes"));
+const UserDashboard = lazy(() => import("../screens/dashboard/Dashboard"));
 const GrocerySubscription = lazy(() =>
   import("../pages/website/grocerySubscription/GrocerySubscription")
 );

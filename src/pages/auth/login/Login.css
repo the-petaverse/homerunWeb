@@ -1,9 +1,7 @@
 .login-main-container {
-  /* padding: 0 5%; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* align-items: center; */
 }
 .login-iamge-wrapper {
   display: none;
@@ -13,7 +11,7 @@
   width: 100%;
   text-align: center;
   padding: 5%;
-  padding-top: 10%;
+  padding-top: 25%;
 }
 .inner-form-wrapper h3 {
   font-size: 2em;
@@ -196,7 +194,9 @@
   .inner-form-wrapper {
     width: 40%;
     text-align: left;
+    padding-top: 10%;
   }
+
   .form-wrapper {
     display: flex;
     flex-direction: column;

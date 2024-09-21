@@ -12,9 +12,12 @@ import Cookies from "universal-cookie";
 
 import { useLoginUserMutation } from "../../../services/auth/authApi";
 import CustomImput from "../../../components/customImput/CustomImput";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [revealPassword, setRevealPassword] = useState(false);
+  const toastId = React.useRef(null);
   const cookies = new Cookies();
   const [loginUser, { data: loginData, isLoading, isSuccess, error }] =
     useLoginUserMutation();
@@ -28,17 +31,32 @@ const Login = () => {
     watch,
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
+  // const notify = () => toast("Wow so easy!");
 
   const onSubmit = async (data) => {
-    console.log(data);
-    // await loginUser(data);
+    // console.log(data);
+    await loginUser(data);
   };
   const handleShowPassword = () => {
     setRevealPassword((prev) => !prev);
   };
   if (isSuccess) {
-    cookies.set("auth_token", loginData.data);
+    if (!toast.isActive(toastId.current)) {
+      toastId.current = toast.success(loginData?.message, {
+        position: "top-right",
+      });
+    }
+    cookies.set("auth_token", loginData?.data);
   }
+  if (error) {
+    console.log(error);
+    if (!toast.isActive(toastId.current)) {
+      toastId.current = toast.error(error?.data?.message, {
+        position: "top-right",
+      });
+    }
+  }
+
   useEffect(() => {
     if (receivedCookies) {
       navigate("/dashboard", { replace: true });

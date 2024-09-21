@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/footer/Footer";
 import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 function AuthLayout() {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -18,6 +19,7 @@ function AuthLayout() {
             <Outlet />
           </section>
         </main>
+        <ToastContainer />
       </div>
 
       {/* <Footer /> */}
