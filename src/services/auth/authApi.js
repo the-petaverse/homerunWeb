@@ -28,14 +28,34 @@ export const authApi = createApi({
       }),
     }),
     verifyUser: builder.mutation({
-      query: (otp) => (
-        console.log(otp),
-        {
-          url: "auth/verify_otp",
-          method: "POST",
-          body: { otp: otp },
-        }
-      ),
+      query: (otp) => ({
+        url: "auth/verify_otp",
+        method: "POST",
+        body: { otp: otp },
+      }),
+    }),
+    resetUserOtp: builder.mutation({
+      query: (data) => ({
+        url: "/auth/reset_otp",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    // User provide email to get authenticated
+    // Before allowed to reset password
+    forgotUserPassword: builder.mutation({
+      query: (data) => ({
+        url: "/auth/forgot_password",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    resetUserPassword: builder.mutation({
+      query: (data) => ({
+        url: "/auth/reset_password",
+        method: "POST",
+        body: data,
+      }),
     }),
   }),
 });
@@ -46,4 +66,7 @@ export const {
   useGetUserQuery,
   useRegisterUserMutation,
   useVerifyUserMutation,
+  useResetUserOtpMutation,
+  useForgotUserPasswordMutation,
+  useResetUserPasswordMutation,
 } = authApi;

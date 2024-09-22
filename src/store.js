@@ -6,9 +6,11 @@ import { requestsApi } from "./services/requestsCategory/requestApi";
 import { errandApi } from "./services/errands/errandsApi";
 import { paymentApi } from "./services/payment/stripe";
 import cartReducer from "./services/slices/cartSlice";
+import currentUser from "./services/slices/userSlice";
 
 export const store = configureStore({
   reducer: {
+    currentUser: currentUser,
     cart: cartReducer,
     [authApi.reducerPath]: authApi.reducer,
     [requestsApi.reducerPath]: requestsApi.reducer,

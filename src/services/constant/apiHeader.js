@@ -10,6 +10,8 @@ export const apiHeader = fetchBaseQuery({
     let token;
     if (cookies.get("access_token") !== undefined) {
       token = cookies.get("auth_token");
+    } else if (cookies.get("request-service")) {
+      token = cookies.get("request-service");
     } else {
       token = cookies.get("resgitered");
     }

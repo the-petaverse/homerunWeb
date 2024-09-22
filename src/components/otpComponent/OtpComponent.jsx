@@ -6,31 +6,52 @@ import WavyCheckIcon from "../../assets/wavy-check.png";
 import HomerunIcon from "../../assets/homerun-icon.png";
 import { useForm } from "react-hook-form";
 import Cookies from "universal-cookie";
-import { useVerifyUserMutation } from "../../services/auth/authApi";
+import {
+  useResetUserOtpMutation,
+  useVerifyUserMutation,
+} from "../../services/auth/authApi";
 import CustomBackButton from "../customBackButton/CustomBackButton";
 import CustomButton from "../customButton/CustomButton";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCurrentUser } from "../../services/slices/userSlice";
 
-const OtpComponent = ({ setOtpSent }) => {
+const OtpComponent = ({ email, setPassworsResetSuccess }) => {
+  const { currentUser } = useSelector((state) => state.currentUser);
   const cookies = new Cookies();
+  const requestedMailSent = cookies.get("request-service");
+  const dispatch = useDispatch();
   const toastId = React.useRef(null);
   const [otpDigits, setOtpDigits] = useState(new Array(8).fill(""));
   const [userVerifiedOtp, setUserverifiedOtp] = useState("");
   const [verifyUser, { data: verifyData, isSuccess, error, isLoading }] =
     useVerifyUserMutation();
+  const [
+    resetUserOtp,
+    {
+      data: otpResetData,
+      isSuccess: otpResetIsSuccess,
+      error: otpRequestError,
+      isLoading: otpRequestIsLoading,
+    },
+  ] = useResetUserOtpMutation();
   const registeredCookies = cookies.get("resgitered");
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    setOtpSent(true);
-    // verifyUser(data);
-  };
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors, isValid },
   } = useForm();
+
+  // Server request to reset OTP should
+  const handleServerResetOtp = async () => {
+    const data = {
+      email: currentUser.userEmail,
+    };
+    await resetUserOtp(data);
+  };
 
   const submitOtpToTheServer = async (e) => {
     e.preventDefault();
@@ -39,19 +60,6 @@ const OtpComponent = ({ setOtpSent }) => {
     // console.log(res);
   };
 
-  if (isSuccess) {
-    console.log(verifyData);
-  }
-  if (error) {
-    if (error) {
-      if (!toast.isActive(toastId.current)) {
-        toastId.current = toast.error(error?.data?.message, {
-          position: "top-right",
-        });
-      }
-    }
-    console.log(error);
-  }
   const handleChange = (elemt, ind) => {
     elemt.preventDefault();
 
@@ -74,9 +82,51 @@ const OtpComponent = ({ setOtpSent }) => {
   useEffect(() => {
     if (isSuccess) {
       cookies.remove("resgitered");
-      // navigate("/login", { replace: true });
+      dispatch(updateCurrentUser());
+      setPassworsResetSuccess(true);
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.success(verifyData?.message, {
+          position: "top-right",
+        });
+      }
+      if (requestedMailSent !== undefined) {
+        navigate("/forgot-password", { replace: true });
+      } else {
+        navigate("/login", { replace: true });
+      }
     }
-  }, [isSuccess, registeredCookies]);
+
+    if (error) {
+      console.error(error);
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.error(error?.data?.message, {
+          position: "top-right",
+        });
+      }
+    }
+    if (otpRequestError) {
+      console.log(otpRequestError);
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.error(otpRequestError?.data?.message, {
+          position: "top-right",
+        });
+      }
+    }
+    if (otpResetIsSuccess) {
+      console.log(otpResetData);
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.success(otpResetData?.message, {
+          position: "top-right",
+        });
+      }
+    }
+  }, [
+    isSuccess,
+    registeredCookies,
+    otpRequestError,
+    otpResetIsSuccess,
+    requestedMailSent,
+  ]);
   return (
     <>
       <div className="otp-main-inner-form-wrapper">
@@ -93,7 +143,7 @@ const OtpComponent = ({ setOtpSent }) => {
           />
         </div>
         <p className="token-message">
-          Please input OTP sent to Wasiu@gmail.com
+          {`Please input OTP sent to ${currentUser.userEmail}`}
         </p>
         <form className="">
           <div className="otp-main-wrapper">
@@ -129,7 +179,7 @@ const OtpComponent = ({ setOtpSent }) => {
               </div>
             </div>
             <div>
-              <p>Resend OTP</p>
+              <p onClick={handleServerResetOtp}>Resend OTP</p>
             </div>
           </div>
           <CustomButton

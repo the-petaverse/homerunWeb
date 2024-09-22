@@ -24,9 +24,12 @@ import { TbWorldPin, TbBuildingEstate } from "react-icons/tb";
 import { FaCity } from "react-icons/fa";
 import { cities, countries, states } from "../../../data/location";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { addCurrentUser } from "../../../services/slices/userSlice";
 
 const Register = () => {
   const cookies = new Cookies();
+  const dispatch = useDispatch();
   const registeredCookies = cookies.get("resgitered");
   const [revealPassword, setRevealPassword] = useState(false);
   const toastId = React.useRef(null);
@@ -52,6 +55,7 @@ const Register = () => {
   const watchCountry = watch("country");
   const watchState = watch("state");
   const watchPassword = watch("password");
+  const watchEmail = watch("email");
 
   const onSubmit = async (data) => {
     // setFormSumitted(true);
@@ -70,7 +74,6 @@ const Register = () => {
     );
     setCitiesList(citiesFiltered);
   };
-  console.log(formSubmitted);
   const handleCompleteForm = () => {
     setFormStep((cur) => cur + 1);
   };
@@ -128,6 +131,7 @@ const Register = () => {
           position: "top-right",
         });
       }
+      dispatch(addCurrentUser(watchEmail));
       setFormSumitted(true);
       cookies.set("resgitered", registerData.data);
     }
@@ -339,7 +343,9 @@ const Register = () => {
             </div>
           </div>
         )}
-        {(formSubmitted || registeredCookies) && <OtpComponent />}
+        {(formSubmitted || registeredCookies) && (
+          <OtpComponent email={watchEmail} />
+        )}
       </div>
     </div>
   );

@@ -1,22 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import LoginImage from "../../assets/login.png";
 import BackIcon from "/images/back-arrow.png";
-const ResetPassword = ({ setShowDashboard, setPassworsResetSuccess }) => {
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import { TbPasswordUser } from "react-icons/tb";
+import CustomImput from "../customImput/CustomImput";
+import { useResetUserPasswordMutation } from "../../services/auth/authApi";
+import { toast } from "react-toastify";
+const ResetPassword = ({
+  setShowDashboard,
+  setPassworsResetSuccess,
+  setPassworsResetComplete,
+}) => {
   //   const [showDashboard, setShowDashboard] = useState(1);
+  const [revealPassword, setRevealPassword] = useState(false);
+  const toastId = React.useRef(null);
+  const [
+    resetUserPassword,
+    { data: resetPasswordData, isLoading, isSuccess, error },
+  ] = useResetUserPasswordMutation();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
+  const handleShowPassword = () => {
+    setRevealPassword((prev) => !prev);
+  };
 
-  const onPassSubmit = (data) => {
-    setPassworsResetSuccess(true);
+  const watchPassword = watch("password");
+  const onPassSubmit = async (data) => {
+    // setPassworsResetSuccess(true);
     // setUserverifiedOtp("2");
     // setShowDashboard(5);
-    console.log("PassData: ", data);
+    await resetUserPassword(data);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log(resetPasswordData);
+      setPassworsResetComplete(true);
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.success(resetPasswordData?.message, {
+          position: "top-right",
+        });
+      }
+    }
+    if (error) {
+      console.log(error);
+    }
+  }, [error, isSuccess]);
 
   return (
     <>
@@ -32,34 +66,54 @@ const ResetPassword = ({ setShowDashboard, setPassworsResetSuccess }) => {
           <p>Please enter and confirm new password</p>
         </div>
         <form onSubmit={handleSubmit(onPassSubmit)} className="form-wrapper">
-          <label>
-            <input
-              type="password"
-              placeholder="Password"
-              className="main-text-input"
-              {...register("password", {
-                required: "Password can't be empty",
-              })}
-            />
-            {errors.password && (
-              <p className="input-error-message">{errors.password.message}</p>
-            )}
-          </label>
-          <label>
-            <input
-              type="password"
-              placeholder="Confirm password"
-              className="main-text-input"
-              {...register("newPassword", {
-                required: "New Password can't be empty",
-              })}
-            />
-            {errors.newPassword && (
-              <p className="input-error-message">
-                {errors.newPassword.message}
-              </p>
-            )}
-          </label>
+          <CustomImput
+            name="password"
+            required="Password is required"
+            placeholder="Password"
+            type={revealPassword ? "text" : "password"}
+            error={errors?.password?.message}
+            register={register}
+            style={{ borderColor: errors.password ? "red" : "blue" }}
+            iconLeft={<TbPasswordUser color="gray" size={20} />}
+            pattern={/^(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,}$/}
+            iconRight={
+              revealPassword ? (
+                <FiEye color="gray" size={20} />
+              ) : (
+                <FiEyeOff color="gray" size={20} />
+              )
+            }
+            inconClick={handleShowPassword}
+          />
+          <CustomImput
+            name="confirm_password"
+            required="Confirm Password is required"
+            placeholder="Confirm Password"
+            onPaste={(e) => {
+              e.preventDefault();
+              return false;
+            }}
+            // className="main-text-input"
+            error={errors?.confirm_password?.message}
+            type={revealPassword ? "text" : "password"}
+            register={register}
+            style={{
+              borderColor: errors.confirm_password ? "red" : "blue",
+            }}
+            iconLeft={<TbPasswordUser color="gray" size={20} />}
+            iconRight={
+              revealPassword ? (
+                <FiEye color="gray" size={20} />
+              ) : (
+                <FiEyeOff color="gray" size={20} />
+              )
+            }
+            inconClick={handleShowPassword}
+            validate={(value) =>
+              value === watchPassword || "Passwords do not match"
+            }
+          />
+
           <input
             type="submit"
             className={!isValid ? "main-form-btn-disabled" : "main-form-btn"}
