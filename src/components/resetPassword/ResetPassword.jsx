@@ -7,6 +7,9 @@ import { TbPasswordUser } from "react-icons/tb";
 import CustomImput from "../customImput/CustomImput";
 import { useResetUserPasswordMutation } from "../../services/auth/authApi";
 import { toast } from "react-toastify";
+import { updateCurrentUser } from "../../services/slices/userSlice";
+import { useDispatch } from "react-redux";
+import Cookies from "universal-cookie";
 const ResetPassword = ({
   setShowDashboard,
   setPassworsResetSuccess,
@@ -14,6 +17,8 @@ const ResetPassword = ({
 }) => {
   //   const [showDashboard, setShowDashboard] = useState(1);
   const [revealPassword, setRevealPassword] = useState(false);
+  const dispatch = useDispatch();
+  const cookies = new Cookies();
   const toastId = React.useRef(null);
   const [
     resetUserPassword,
@@ -39,8 +44,9 @@ const ResetPassword = ({
 
   useEffect(() => {
     if (isSuccess) {
-      console.log(resetPasswordData);
+      dispatch(updateCurrentUser());
       setPassworsResetComplete(true);
+      cookies.remove("request");
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success(resetPasswordData?.message, {
           position: "top-right",

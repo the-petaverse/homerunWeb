@@ -82,6 +82,7 @@ const OtpComponent = ({ email, setPassworsResetSuccess }) => {
   useEffect(() => {
     if (isSuccess) {
       cookies.remove("resgitered");
+      cookies.remove("request-service");
       dispatch(updateCurrentUser());
       setPassworsResetSuccess(true);
       if (!toast.isActive(toastId.current)) {

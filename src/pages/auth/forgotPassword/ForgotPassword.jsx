@@ -36,7 +36,6 @@ const ForgotPassword = () => {
     watch,
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
-
   const watchEmail = watch("email");
 
   const onPassSubmit = async (data) => {
@@ -52,6 +51,7 @@ const ForgotPassword = () => {
       }
       setEmailSent(true);
       cookies.set("request-service", data.data);
+      cookies.set("request", data.data);
       dispatch(addCurrentUser(watchEmail));
     }
     if (error) {
@@ -119,15 +119,21 @@ const ForgotPassword = () => {
             )}
           </>
         )}
-        {currentUser !== "" && !passworsResetSuccess && (
+        {requestedMailSent !== undefined && (
           <OtpComponent setPassworsResetSuccess={setPassworsResetSuccess} />
         )}
-        {requestedMailSent && !passworsResetComplete && (
-          <ResetPassword setPassworsResetComplete={setPassworsResetComplete} />
-        )}
-        {/* </>
+        {passworsResetSuccess && (
+          <>
+            {!passworsResetComplete && (
+              <ResetPassword
+                setPassworsResetComplete={setPassworsResetComplete}
+              />
+            )}
+            {/* </>
         )} */}
-        {passworsResetComplete && <CustomSuccessPage />}
+            {passworsResetComplete && <CustomSuccessPage />}
+          </>
+        )}
       </div>
     </div>
   );
