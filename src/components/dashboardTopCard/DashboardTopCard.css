@@ -1,0 +1,15 @@
+.dashboard-card-request-inner-wrapper {
+  text-align: center;
+}
+.dashboard-card-request-inner-wrapper > p {
+  font-size: 1.15em;
+  margin-top: 15px;
+}
+.dashboard-top-card-style {
+  width: 80%;
+  padding: 2%;
+  font-size: 1em;
+  border: solid 1px #262262;
+  border-radius: 15px;
+  margin-top: 20px;
+}

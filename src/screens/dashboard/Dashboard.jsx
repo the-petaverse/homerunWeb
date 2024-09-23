@@ -6,6 +6,9 @@ import { MdOutlineSendTimeExtension } from "react-icons/md";
 import { RiHome7Fill } from "react-icons/ri";
 import { FiShoppingCart } from "react-icons/fi";
 import { MdOutlinePayments } from "react-icons/md";
+import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
+import DashboardTopCard from "../../components/dashboardTopCard/DashboardTopCard";
 
 const paneMenuList = [
   {
@@ -64,13 +67,18 @@ const paneMenuList = [
   },
 ];
 const Dashboard = () => {
+  const cookies = new Cookies();
+  const navigate = useNavigate();
   const [sidePaneSelected, setSidePaneSelected] = useState();
   const [showIconsOnly, setShowIconsOnly] = useState(false);
 
   const handleSelectLeftPaneMenu = (pandId) => {
     setSidePaneSelected(pandId);
   };
-
+  const handleLogOut = () => {
+    cookies.remove("auth_token");
+    navigate("/login", { replace: true });
+  };
   const handleShowOnlyIcons = () => {
     setShowIconsOnly((prev) => !prev);
   };
@@ -113,7 +121,10 @@ const Dashboard = () => {
                           ? "dashboard-left-pane-list-active"
                           : "dashboard-left-pane-list"
                       }
-                      onClick={() => handleSelectLeftPaneMenu(menuList.id)}
+                      onClick={() => {
+                        handleSelectLeftPaneMenu(menuList.id);
+                        menuList.title === "Logout" && handleLogOut();
+                      }}
                     >
                       <span>{menuList.icon}</span>
                       {!showIconsOnly ? menuList.title : ""}
@@ -123,7 +134,13 @@ const Dashboard = () => {
               })}
           </div>
         </div>
-        <div className="dashboard-right-panel-wrapper">
+        <div
+          className={
+            showIconsOnly
+              ? "dashboard-right-panel-wrapper-with-icons-only"
+              : "dashboard-right-panel-wrapper"
+          }
+        >
           <div className="dashboard-right-top-panel-wrapper">
             <p>Good Morning Simisoluwa</p>
             <p>This month</p>
@@ -134,6 +151,7 @@ const Dashboard = () => {
                 <h3>Current Request</h3>
                 <p>View all</p>
               </div>
+              <DashboardTopCard />
             </div>
             <div className="dashboard-chart-details-wrapper">
               <h1>charts goes here</h1>
