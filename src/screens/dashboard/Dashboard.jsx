@@ -9,6 +9,9 @@ import { MdOutlinePayments } from "react-icons/md";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import DashboardTopCard from "../../components/dashboardTopCard/DashboardTopCard";
+import QuickActionCard from "../../components/quickActionCard/QuickActionCard";
+import { serviceCategory } from "../../data/categoryData";
+import RewardCard from "../../components/rewardCard/RewardCard";
 
 const paneMenuList = [
   {
@@ -148,17 +151,34 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="dashboard-right-bottom-panel-wrapper">
-            <div className="dashboard-center-details-wrapper">
-              <div className="dashboard-center-details-headers">
-                <h3>Current Request</h3>
-                <div>
-                  <p>View all</p>
+            <div className="dashbaord-top-card-holder-wrapper">
+              <div className="dashboard-center-details-wrapper">
+                <div className="dashboard-center-details-headers">
+                  <h3>Current Request</h3>
+                  <div>
+                    <p>View all</p>
+                  </div>
+                </div>
+                <DashboardTopCard showIconsOnly={showIconsOnly} />
+              </div>
+              <div className="dashboard-quick-action-section">
+                <p>Quick Actions</p>
+                <div className="dashboard-quick-action-card-wrapper">
+                  {serviceCategory &&
+                    serviceCategory.map((serviceData, index) => (
+                      <QuickActionCard
+                        serviceData={serviceData}
+                        index={index}
+                      />
+                    ))}
                 </div>
               </div>
-              <DashboardTopCard />
+              <div className="dashboard-quick-action-section">
+                <p>Recent Activities</p>
+              </div>
             </div>
             <div className="dashboard-chart-details-wrapper">
-              <h1>charts goes here</h1>
+              <RewardCard />
             </div>
           </div>
         </div>

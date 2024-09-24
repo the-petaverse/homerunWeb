@@ -1,0 +1,16 @@
+.reward-card-main-container {
+  border: solid gray 0.5px;
+  padding: 5.5%;
+  border-radius: 15px;
+  background-color: #fff;
+}
+.reward-card-points-holder-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.reward-card-points-holder {
+  font-size: 1.55em;
+  font-weight: bold;
+}

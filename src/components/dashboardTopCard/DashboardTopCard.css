@@ -6,7 +6,27 @@
   justify-items: space-between;
   gap: 20px;
 }
+.dashboard-top-card-left-pane {
+  width: 23.5%;
+}
+.dashboard-card-header-container {
+  width: 100%;
+  transition: width 0.5s ease-in-out;
+}
+.dashboard-card-header-container-with-icons-only {
+  width: 120%;
+  transition: width 0.5s ease-in-out;
+}
+.dashboard-top-card-left-pane-with-icons-only {
+  width: 21.5%;
+}
 .dashboard-top-card-right-pane {
+  width: 88.5;
+  padding: 0 1.5%;
+  border-left: solid 0.35px #000;
+}
+.dashboard-top-card-right-pane-with-icons-only {
+  width: 84.5;
   padding: 0 1.5%;
   border-left: solid 0.35px #000;
 }
@@ -65,10 +85,15 @@
   justify-content: space-between;
   margin-top: 10px;
 }
+
 .dashbaord-card-total-amount-wrapper,
 .dashbaord-card-paid-amount-wrapper {
   background-color: #f5f2fa;
   width: 48%;
   padding: 2%;
   border-radius: 10px;
+}
+.dashbaord-card-total-amount,
+.dashbaord-card-paid-amount {
+  font-size: 1.25em;
 }

@@ -3,11 +3,17 @@ import "./DashboardTopCard.css";
 import CustomButton from "../customButton/CustomButton";
 import ProgressBar from "../progessBar/ProgressBar";
 
-const DashboardTopCard = () => {
+const DashboardTopCard = ({ showIconsOnly }) => {
   const [progressBarSteps, setProgressBarSteps] = useState(50);
   return (
     <div className="dashboard-top-card-main-container">
-      <div className="dashboard-top-card-left-pane">
+      <div
+        className={
+          showIconsOnly
+            ? "dashboard-top-card-left-pane-with-icons-only"
+            : "dashboard-top-card-left-pane"
+        }
+      >
         <p>Request ID: #765322</p>
         <div className="dashboard-card-request-inner-wrapper">
           <p>Request: Jul. 24, 2024</p>
@@ -18,8 +24,20 @@ const DashboardTopCard = () => {
           />
         </div>
       </div>
-      <div className="dashboard-top-card-right-pane">
-        <div className="dashboard-card-header-container">
+      <div
+        className={
+          showIconsOnly
+            ? "dashboard-top-card-right-pane-with-icons-only"
+            : "dashboard-top-card-right-pane"
+        }
+      >
+        <div
+          className={
+            showIconsOnly
+              ? "dashboard-card-header-container-with-icons-only"
+              : "dashboard-card-header-container"
+          }
+        >
           <p>Transcript</p>
           <div className="dashboard-card-detail-title-wrapper">
             <p className="dashboard-card-main-title">

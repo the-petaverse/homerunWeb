@@ -26,20 +26,44 @@
   transition: width 0.5s ease-in-out;
   /* align-items: flex-start; */
 }
+
 .dashboard-right-bottom-panel-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.dashboard-center-details-wrapper {
+.dashbaord-top-card-holder-wrapper {
   width: 60%;
+}
+.dashboard-center-details-wrapper {
+  width: 100%;
   background-color: #ede8f4;
   padding: 2%;
   border-radius: 20px;
 }
+
 .dashboard-chart-details-wrapper {
-  background-color: yellow;
-  width: 30%;
+  border: solid gray 0.5px;
+  width: 38%;
+  align-self: flex-start;
+  padding: 2%;
+  border-radius: 15px;
+}
+.dashboard-quick-action-section {
+  background-color: #fff;
+  padding: 2%;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.dashboard-quick-action-card-wrapper {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+.dashboard-quick-action-section > p {
+  font-weight: bold;
+  font-size: 1.25em;
 }
 .dashboard-left-panel-wrapper {
   width: 20dvw;
