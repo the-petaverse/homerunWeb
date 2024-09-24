@@ -1,0 +1,29 @@
+.dashbaord-request-card-main-container {
+  margin-top: 15px;
+  border: solid gray 0.5px;
+  padding: 5.5%;
+  border-radius: 15px;
+  background-color: #fff;
+}
+.dashboard-request-main-header {
+  font-size: 1.45em;
+  font-weight: bold;
+}
+.dash-request-card-status-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6.45%;
+  margin-top: 10px;
+}
+.dash-request-status-card {
+  text-align: center;
+}
+.dash-request-status-card > p {
+  /* font-size: 1.05em; */
+  margin-top: 5px;
+}
+.dash-point-counter {
+  font-size: bold;
+  font-size: 1.35em;
+}

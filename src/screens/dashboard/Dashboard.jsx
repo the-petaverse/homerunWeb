@@ -12,6 +12,7 @@ import DashboardTopCard from "../../components/dashboardTopCard/DashboardTopCard
 import QuickActionCard from "../../components/quickActionCard/QuickActionCard";
 import { serviceCategory } from "../../data/categoryData";
 import RewardCard from "../../components/rewardCard/RewardCard";
+import DashbaordRequestCard from "../../components/dahsboardRequestCard/DashbaordRequestCard";
 
 const paneMenuList = [
   {
@@ -179,6 +180,7 @@ const Dashboard = () => {
             </div>
             <div className="dashboard-chart-details-wrapper">
               <RewardCard />
+              <DashbaordRequestCard />
             </div>
           </div>
         </div>

@@ -3,9 +3,10 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  height: 100dvh;
 }
 .dashboard-right-panel-wrapper {
-  background-color: #f5f2fa;
+  background-color: #f5f4f7;
   width: 80dvw;
   padding: 0 2%;
   border-left: solid #ede8f4 0.5px;
@@ -13,18 +14,20 @@
   flex-direction: column;
   transition: width 0.5s ease-in-out;
   /* align-items: flex-start; */
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  height: 100%;
 }
 .dashboard-right-panel-wrapper-with-icons-only {
-  background-color: #f5f2fa;
+  background-color: #f5f4f7;
   width: 92dvw;
   padding: 0 2%;
   border-left: solid gray 0.5px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   transition: width 0.5s ease-in-out;
   /* align-items: flex-start; */
+  height: 100%;
 }
 
 .dashboard-right-bottom-panel-wrapper {
@@ -33,7 +36,7 @@
   justify-content: space-between;
 }
 .dashbaord-top-card-holder-wrapper {
-  width: 60%;
+  width: 64%;
 }
 .dashboard-center-details-wrapper {
   width: 100%;
@@ -44,7 +47,7 @@
 
 .dashboard-chart-details-wrapper {
   border: solid gray 0.5px;
-  width: 38%;
+  width: 34%;
   align-self: flex-start;
   padding: 2%;
   border-radius: 15px;
