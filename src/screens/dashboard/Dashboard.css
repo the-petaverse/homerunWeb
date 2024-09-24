@@ -1,26 +1,30 @@
 .dashboadr-main-container {
   border-top: solid gray 0.5px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  padding: 0 3%;
-  /* padding-top: 20%; */
 }
 .dashboard-right-panel-wrapper {
-  background-color: aliceblue;
+  background-color: #f5f2fa;
   width: 80dvw;
-  border-left: solid gray 0.5px;
+  padding: 0 2%;
+  border-left: solid #ede8f4 0.5px;
   display: flex;
   flex-direction: column;
+  transition: width 0.5s ease-in-out;
+  /* align-items: flex-start; */
   justify-content: space-between;
 }
 .dashboard-right-panel-wrapper-with-icons-only {
-  background-color: aliceblue;
-  width: 90dvw;
+  background-color: #f5f2fa;
+  width: 92dvw;
+  padding: 0 2%;
   border-left: solid gray 0.5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: width 0.5s ease-in-out;
+  /* align-items: flex-start; */
 }
 .dashboard-right-bottom-panel-wrapper {
   display: flex;
@@ -28,27 +32,49 @@
   justify-content: space-between;
 }
 .dashboard-center-details-wrapper {
-  background-color: red;
+  width: 60%;
+  background-color: #ede8f4;
+  padding: 2%;
+  border-radius: 20px;
 }
 .dashboard-chart-details-wrapper {
   background-color: yellow;
+  width: 30%;
 }
 .dashboard-left-panel-wrapper {
-  width: 16dvw;
+  width: 20dvw;
+  padding-left: 5%;
+  transition: width 0.5s ease-in-out;
   /* height: 84dvh; */
 }
 .dashboard-right-top-panel-wrapper {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin-top: 25px;
+}
+.dashboard-right-top-panel-wrapper > p {
+  font-size: 1.35em;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 .dashboard-center-details-headers {
   display: flex;
-  /* background-color: red; */
+  margin-bottom: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard-center-details-headers > div {
+  background-color: #fff;
+  padding: 0.65% 4%;
+  border-radius: 10px;
 }
 .dashboard-left-panel-wrapper-icons-only {
   /* border-right: solid gray 0.5px; */
-  width: 3.5dvw;
+  width: 8dvw;
+  padding-left: 3.5%;
   height: 86dvh;
+  transition: width 0.5s ease-in-out;
 }
 .dashboard-left-pane-content {
   margin-top: 25px;
