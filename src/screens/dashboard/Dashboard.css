@@ -9,7 +9,7 @@
   background-color: #f5f4f7;
   width: 80dvw;
   padding: 0 2%;
-  border-left: solid #ede8f4 0.5px;
+  border-left: solid gray 1px;
   display: flex;
   flex-direction: column;
   transition: width 0.5s ease-in-out;
@@ -21,7 +21,7 @@
   background-color: #f5f4f7;
   width: 92dvw;
   padding: 0 2%;
-  border-left: solid gray 0.5px;
+  border-left: solid gray 1px;
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */

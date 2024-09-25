@@ -13,6 +13,7 @@ import QuickActionCard from "../../components/quickActionCard/QuickActionCard";
 import { serviceCategory } from "../../data/categoryData";
 import RewardCard from "../../components/rewardCard/RewardCard";
 import DashbaordRequestCard from "../../components/dahsboardRequestCard/DashbaordRequestCard";
+import DashboardInnerRequestNav from "../../components/dashboardInnerRequestNav/DashboardInnerRequestNav";
 
 const paneMenuList = [
   {
@@ -29,7 +30,7 @@ const paneMenuList = [
   },
   {
     id: "3",
-    title: "Manage my Request",
+    title: "Manage Request",
     titleHeader: "Product Management",
     icon: <MdOutlineSendTimeExtension size={30} />,
   },
@@ -70,12 +71,25 @@ const paneMenuList = [
     icon: <MdOutlinePayments size={30} />,
   },
 ];
+
+const myRequestInnerNavData = [
+  { id: "1", title: "Active", counter: "1" },
+  { id: "2", title: "Completed", counter: "13" },
+  { id: "3", title: "Cancelled", counter: "2" },
+];
 const Dashboard = () => {
   const cookies = new Cookies();
   const navigate = useNavigate();
-  const [sidePaneSelected, setSidePaneSelected] = useState();
+  const [innerNavMenuClicked, setInerMenuClicked] = useState();
+  const [sidePaneSelected, setSidePaneSelected] = useState("1");
+  const [sidePaneTitleSelected, setSidePaneTitleSelected] = useState();
   const [showIconsOnly, setShowIconsOnly] = useState(false);
 
+  console.log(innerNavMenuClicked, "Dashboard");
+
+  const handleInnerNavBarClicked = (inneNavLabel) => {
+    setInerMenuClicked(inneNavLabel);
+  };
   const handleSelectLeftPaneMenu = (pandId) => {
     setSidePaneSelected(pandId);
   };
@@ -145,44 +159,61 @@ const Dashboard = () => {
               : "dashboard-right-panel-wrapper"
           }
         >
-          <div className="dashboard-right-top-panel-wrapper">
-            <p>Good Morning Simisoluwa</p>
-            <div>
-              <p>This month</p>
-            </div>
-          </div>
-          <div className="dashboard-right-bottom-panel-wrapper">
-            <div className="dashbaord-top-card-holder-wrapper">
-              <div className="dashboard-center-details-wrapper">
-                <div className="dashboard-center-details-headers">
-                  <h3>Current Request</h3>
-                  <div>
-                    <p>View all</p>
+          {sidePaneSelected === "1" && (
+            <>
+              <div className="dashboard-right-top-panel-wrapper">
+                <p>Good Morning Simisoluwa</p>
+                <div>
+                  <p>This month</p>
+                </div>
+              </div>
+              <div className="dashboard-right-bottom-panel-wrapper">
+                <div className="dashbaord-top-card-holder-wrapper">
+                  <div className="dashboard-center-details-wrapper">
+                    <div className="dashboard-center-details-headers">
+                      <h3>Current Request</h3>
+                      <div>
+                        <p>View all</p>
+                      </div>
+                    </div>
+                    <DashboardTopCard showIconsOnly={showIconsOnly} />
+                  </div>
+                  <div className="dashboard-quick-action-section">
+                    <p>Quick Actions</p>
+                    <div className="dashboard-quick-action-card-wrapper">
+                      {serviceCategory &&
+                        serviceCategory.map((serviceData, index) => (
+                          <QuickActionCard
+                            serviceData={serviceData}
+                            index={index}
+                          />
+                        ))}
+                    </div>
+                  </div>
+                  <div className="dashboard-quick-action-section">
+                    <p>Recent Activities</p>
                   </div>
                 </div>
-                <DashboardTopCard showIconsOnly={showIconsOnly} />
-              </div>
-              <div className="dashboard-quick-action-section">
-                <p>Quick Actions</p>
-                <div className="dashboard-quick-action-card-wrapper">
-                  {serviceCategory &&
-                    serviceCategory.map((serviceData, index) => (
-                      <QuickActionCard
-                        serviceData={serviceData}
-                        index={index}
-                      />
-                    ))}
+                <div className="dashboard-chart-details-wrapper">
+                  <RewardCard />
+                  <DashbaordRequestCard />
                 </div>
               </div>
-              <div className="dashboard-quick-action-section">
-                <p>Recent Activities</p>
+            </>
+          )}
+          {sidePaneSelected === "3" && (
+            <>
+              <div>
+                <div>
+                  <DashboardInnerRequestNav
+                    handleInnerNavBarClicked={handleInnerNavBarClicked}
+                    myRequestInnerNavData={myRequestInnerNavData}
+                  />
+                </div>
+                <DashboardTopCard />
               </div>
-            </div>
-            <div className="dashboard-chart-details-wrapper">
-              <RewardCard />
-              <DashbaordRequestCard />
-            </div>
-          </div>
+            </>
+          )}
         </div>
       </div>
     </>
