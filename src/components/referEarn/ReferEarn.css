@@ -1,0 +1,65 @@
+.dashboard-refer-earn-main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.dashboard-refer-left-pane {
+  width: 80%;
+}
+.earn-process-header {
+  margin: 15px 0;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.dashboard-earn-steps-card-wrapper {
+  display: flex;
+  align-items: flex-start;
+  width: 60%;
+}
+.earn-details-title {
+  font-weight: bold;
+  font-size: 1.25em;
+}
+.earn-details-body {
+  font-size: 1.2em;
+  margin-top: 5px;
+}
+.earn-refer-code-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 96%;
+  margin-top: 25px;
+}
+.ear-refer-input-holder {
+  width: 65%;
+  position: relative;
+}
+.refer-earninput-icon {
+  position: absolute;
+  right: 30px;
+  top: 10px;
+  cursor: pointer;
+}
+.earn-refer-input {
+  background-color: #eae9f9;
+  height: 50px;
+  width: 100%;
+  border-radius: 15px;
+  font-size: 1em;
+  font-weight: 400;
+  padding: 0 42px;
+  border: solid 0.5px rgb(218, 206, 206);
+  outline: none;
+  font-size: 1.55em;
+  font-weight: bold;
+}
+.refer-earn-btn {
+  height: 50px;
+  width: 30%;
+  background-color: #262262;
+  color: #fff;
+  border-radius: 15px;
+  padding: 1.5% 0;
+  font-size: 1.2em;
+}

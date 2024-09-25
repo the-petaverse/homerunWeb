@@ -3,7 +3,7 @@ import "./DashboardTopCard.css";
 import CustomButton from "../customButton/CustomButton";
 import ProgressBar from "../progessBar/ProgressBar";
 
-const DashboardTopCard = ({ showIconsOnly }) => {
+const DashboardTopCard = ({ showIconsOnly, innerNavMenuClicked }) => {
   const [progressBarSteps, setProgressBarSteps] = useState(50);
   return (
     <div className="dashboard-top-card-main-container">
@@ -52,7 +52,10 @@ const DashboardTopCard = ({ showIconsOnly }) => {
               <div className="dashboard-card-progress-counter-wrapper">
                 <p>In progress (Stage 3 of 4)</p>
               </div>
-              <ProgressBar progressBarSteps={progressBarSteps} />
+              <ProgressBar
+                progressBarSteps={progressBarSteps}
+                innerNavMenuClicked={innerNavMenuClicked}
+              />
             </div>
             <div className="dashboard-progress-bar-right-pane">
               <p>50pt</p>

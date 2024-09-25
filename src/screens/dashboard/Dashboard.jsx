@@ -14,6 +14,7 @@ import { serviceCategory } from "../../data/categoryData";
 import RewardCard from "../../components/rewardCard/RewardCard";
 import DashbaordRequestCard from "../../components/dahsboardRequestCard/DashbaordRequestCard";
 import DashboardInnerRequestNav from "../../components/dashboardInnerRequestNav/DashboardInnerRequestNav";
+import ReferEarn from "../../components/referEarn/ReferEarn";
 
 const paneMenuList = [
   {
@@ -80,7 +81,7 @@ const myRequestInnerNavData = [
 const Dashboard = () => {
   const cookies = new Cookies();
   const navigate = useNavigate();
-  const [innerNavMenuClicked, setInerMenuClicked] = useState();
+  const [innerNavMenuClicked, setInerMenuClicked] = useState("Active");
   const [sidePaneSelected, setSidePaneSelected] = useState("1");
   const [sidePaneTitleSelected, setSidePaneTitleSelected] = useState();
   const [showIconsOnly, setShowIconsOnly] = useState(false);
@@ -208,9 +209,26 @@ const Dashboard = () => {
                   <DashboardInnerRequestNav
                     handleInnerNavBarClicked={handleInnerNavBarClicked}
                     myRequestInnerNavData={myRequestInnerNavData}
+                    innerNavMenuClicked={innerNavMenuClicked}
                   />
                 </div>
-                <DashboardTopCard />
+                <div className="dashboard-request-main-status-wrapper">
+                  <p>{innerNavMenuClicked} Request(s)</p>
+                  <div>
+                    <DashboardTopCard
+                      innerNavMenuClicked={innerNavMenuClicked}
+                      showIconsOnly={showIconsOnly}
+                    />
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+          {sidePaneSelected === "5" && (
+            <>
+              <div className="refer-earn-main-wrapper">
+                <h1>Refer & Earn</h1>
+                <ReferEarn />
               </div>
             </>
           )}

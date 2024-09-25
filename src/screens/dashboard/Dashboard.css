@@ -29,7 +29,18 @@
   /* align-items: flex-start; */
   height: 100%;
 }
-
+.dashboard-request-main-status-wrapper {
+  margin-top: 35px;
+}
+.refer-earn-main-wrapper {
+  margin-top: 25px;
+  width: 100%;
+}
+.dashboard-request-main-status-wrapper > p {
+  margin-bottom: 15px;
+  font-size: 1.55em;
+  font-weight: bold;
+}
 .dashboard-right-bottom-panel-wrapper {
   display: flex;
   align-items: center;
