@@ -138,6 +138,7 @@ const ServiceDetailPage = () => {
                         subcategory={subcategory}
                         requestId={requestId}
                         subRequestId={subRequestId}
+                        serviceCategory={serviceCategory}
                       />
                     )}
                     {subcategory === "birth-certificate-collection" && (

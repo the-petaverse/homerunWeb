@@ -145,7 +145,7 @@ const ContactUs = () => {
                       }}
                       register={register}
                     />
-                    <p>
+                    <p className="phone-number-error-style">
                       {isValidPhoneNumber(
                         watchPhoneNumber ? watchPhoneNumber : ""
                       )

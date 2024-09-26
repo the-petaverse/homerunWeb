@@ -43,6 +43,7 @@ const CustomDoubleRadioButton = ({
               {optionOne ? optionOne : "Yes"}
             </p>
             <input
+              value={optionOne ? optionOne : "Yes"}
               id="Yes"
               name={name}
               type="radio"
@@ -62,6 +63,7 @@ const CustomDoubleRadioButton = ({
               {optionTwo ? optionTwo : "No"}
             </p>
             <input
+              value={optionTwo ? optionTwo : "No"}
               name={name}
               className="radio-style"
               id="No"

@@ -26,6 +26,7 @@ import { cities, countries, states } from "../../../data/location";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addCurrentUser } from "../../../services/slices/userSlice";
+import { isValidPhoneNumber } from "react-phone-number-input";
 
 const Register = () => {
   const cookies = new Cookies();
@@ -56,6 +57,7 @@ const Register = () => {
   const watchState = watch("state");
   const watchPassword = watch("password");
   const watchEmail = watch("email");
+  const watchPhoneNumber = watch("phone_number");
 
   const onSubmit = async (data) => {
     // setFormSumitted(true);
@@ -87,7 +89,11 @@ const Register = () => {
     } else if (formStep === 1) {
       return (
         <input
-          disabled={!isValid || isLoading}
+          disabled={
+            !isValid ||
+            isLoading ||
+            isValidPhoneNumber(watchPhoneNumber ? watchPhoneNumber : "")
+          }
           type="submit"
           className={
             !isValid
@@ -100,10 +106,14 @@ const Register = () => {
     {
       return (
         <button
-          disabled={!isValid}
+          disabled={
+            !isValid ||
+            !isValidPhoneNumber(watchPhoneNumber ? watchPhoneNumber : "")
+          }
           type="submit"
           className={
-            !isValid
+            !isValid ||
+            !isValidPhoneNumber(watchPhoneNumber ? watchPhoneNumber : "")
               ? "register-main-form-btn-disabled"
               : "register-main-form-btn"
           }
@@ -224,10 +234,17 @@ const Register = () => {
                     name="phone_number"
                     control={control}
                     style={{
-                      borderColor: errors.phone_number ? "red" : "blue",
+                      borderColor: errors.watchPhoneNumber ? "red" : "blue",
                     }}
                     register={register}
                   />
+                  <p className="register-phone-number-error-style">
+                    {isValidPhoneNumber(
+                      watchPhoneNumber ? watchPhoneNumber : ""
+                    )
+                      ? undefined
+                      : "Invalid phone number"}
+                  </p>
                 </>
               )}
               {formStep >= 1 && (
