@@ -37,6 +37,7 @@ const CustomImput = ({
           placeholder={placeholder}
           onPaste={onPaste}
           style={style}
+          autocomplete="off"
           className={className ? className : "custom-main-text-input"}
           {...register(name, {
             required: required,

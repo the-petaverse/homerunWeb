@@ -32,7 +32,11 @@ const ReferEarn = () => {
       <div className="dashboard-refer-left-pane">
         <div className="earn-refer-code-wrapper">
           <div className="ear-refer-input-holder">
-            <input type="text" className="earn-refer-input" value="Hello" />
+            <input
+              type="text"
+              className="earn-refer-input"
+              value={refererCode}
+            />
             <BsCopy
               size={30}
               className="refer-earninput-icon"

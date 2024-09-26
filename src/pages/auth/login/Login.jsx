@@ -49,11 +49,14 @@ const Login = () => {
     cookies.set("auth_token", loginData?.data);
   }
   if (error) {
-    // console.log(error);
+    console.log(error.error);
     if (!toast.isActive(toastId.current)) {
-      toastId.current = toast.error(error?.data?.message, {
-        position: "top-right",
-      });
+      toastId.current = toast.error(
+        error ? error?.data?.message : error?.error,
+        {
+          position: "top-right",
+        }
+      );
     }
   }
 

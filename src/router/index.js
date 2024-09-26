@@ -1,5 +1,4 @@
 import { lazy } from "react";
-import PrivateRoute from "../screens/private/PrivateRoutes";
 
 // import Home from "../pages/website/homePage/Home";
 const Home = lazy(() => import("../pages/website/homePage/Home"));

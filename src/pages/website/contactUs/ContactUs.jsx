@@ -6,7 +6,11 @@ import MainSideBar from "../../../components/mainSideBar/MainSideBar";
 import ContactHeader from "../../../components/contactHeader/ContactHeader";
 import FaqCard from "../../../components/faqCard/FaqCard";
 import CustomImput from "../../../components/customImput/CustomImput";
-import { FaWhatsapp } from "react-icons/fa";
+import { IoPersonOutline } from "react-icons/io5";
+import { BiMessageAltDots } from "react-icons/bi";
+import { FiMapPin } from "react-icons/fi";
+import { FaEnvelopeOpenText } from "react-icons/fa";
+import CustomPhoneInput from "../../../components/customPhoneInput/CustomPhoneInput";
 
 const ContactUs = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -16,6 +20,7 @@ const ContactUs = () => {
   const {
     register,
     handleSubmit,
+    control,
     watch,
     formState: { errors },
   } = useForm();
@@ -79,16 +84,30 @@ const ContactUs = () => {
                     <h2>Get in Touch</h2>
 
                     <CustomImput
+                      name="messageTitle"
+                      required="Message title is required"
+                      placeholder="Message Title"
+                      // icon={<FaWhatsapp size={40} />}
+                      error={errors?.messageTitle?.message}
+                      type="text"
+                      iconLeft={<BiMessageAltDots color="gray" size={22} />}
+                      register={register}
+                      style={{
+                        borderColor: errors.messageTitle ? "red" : "blue",
+                      }}
+                    />
+                    <CustomImput
                       name="fullName"
                       required="Full name is required"
                       placeholder="Full name"
-                      icon={<FaWhatsapp size={40} />}
+                      // icon={<FaWhatsapp size={40} />}
                       error={errors?.fullName?.message}
                       type="text"
                       register={register}
                       style={{
                         borderColor: errors.fullName ? "red" : "blue",
                       }}
+                      iconLeft={<IoPersonOutline color="gray" size={22} />}
                     />
                     <CustomImput
                       name="location"
@@ -100,6 +119,7 @@ const ContactUs = () => {
                       style={{
                         borderColor: errors.location ? "red" : "blue",
                       }}
+                      iconLeft={<FiMapPin color="gray" size={22} />}
                     />
                     <CustomImput
                       name="email"
@@ -111,17 +131,15 @@ const ContactUs = () => {
                       style={{
                         borderColor: errors.email ? "red" : "blue",
                       }}
+                      iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     />
-                    <CustomImput
-                      name="phoneNumber"
-                      required="Phone Number is required"
-                      placeholder="Enter your phone number"
-                      error={errors?.phoneNumber?.message}
-                      type="text"
-                      register={register}
+                    <CustomPhoneInput
+                      name="phone_number"
+                      control={control}
                       style={{
-                        borderColor: errors.phoneNumber ? "red" : "blue",
+                        borderColor: errors.phone_number ? "red" : "blue",
                       }}
+                      register={register}
                     />
 
                     <label className="lable-wrapper">
@@ -130,6 +148,9 @@ const ContactUs = () => {
                         className="contact-main-text-input textarea-container"
                         placeholder="Enter your message here"
                         {...register("details")}
+                        style={{
+                          borderColor: errors.phone_number ? "red" : "blue",
+                        }}
                       />
                     </label>
                     <input
