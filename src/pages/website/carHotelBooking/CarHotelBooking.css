@@ -1,7 +1,7 @@
 .car-hotel-main-container {
   padding: 125px 5%;
   padding-bottom: 150px;
-  /* background-color: red; */
+  background-color: #fff;
 }
 .car-card-outer-wrapper {
   display: grid;

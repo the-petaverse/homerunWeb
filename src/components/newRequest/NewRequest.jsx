@@ -282,28 +282,29 @@ const NewRequest = ({
                 register={register}
                 style={{ borderColor: errors.email ? "red" : "black" }}
               />
-              <CustomSelect
+              <CustomImput
                 name="institution"
-                type="text"
-                className="main-text-input increase-width"
-                register={register}
-                require="Institution is required"
+                required="Institution is required"
                 placeholder="Institution name"
-                error={errors.institution?.message}
-                data={institutions}
-                style={{ borderColor: errors.email ? "red" : "black" }}
-              />
-              <CustomSelect
-                name="yearOfGraduation"
+                // className="main-text-input"
                 type="text"
-                className="main-text-input increase-width"
+                error={errors?.institution?.message}
                 register={register}
-                require="Year of Graduation is required"
-                placeholder="Year of graduation"
-                style={{ borderColor: errors.email ? "red" : "black" }}
-                error={errors.yearOfGraduation?.message}
-                data={yearofGraduation}
+                style={{ borderColor: errors.institution ? "red" : "black" }}
               />
+              <CustomImput
+                name="yearOfGraduation"
+                required="Year of Graduation is required"
+                placeholder="Year of Graduation"
+                // className="main-text-input"
+                type="text"
+                error={errors?.yearOfGraduation?.message}
+                register={register}
+                style={{
+                  borderColor: errors.yearOfGraduation ? "red" : "black",
+                }}
+              />
+
               <CustomImput
                 name="graduatedDegree"
                 required="Graduated Degree is required"
@@ -316,16 +317,17 @@ const NewRequest = ({
                   borderColor: errors.graduatedDegree ? "red" : "black",
                 }}
               />
-              <CustomSelect
+              <CustomImput
                 name="yearOfEntry"
+                required="Year of Entry is required"
+                placeholder="Year of Entry"
+                // className="main-text-input"
                 type="text"
-                className="main-text-input increase-width"
+                error={errors?.yearOfEntry?.message}
                 register={register}
-                require="Year of Entry is required"
-                placeholder="Year of graduation"
-                style={{ borderColor: errors.yearOfEntry ? "red" : "black" }}
-                error={errors.yearOfEntry?.message}
-                data={yearofGraduation}
+                style={{
+                  borderColor: errors.yearOfEntry ? "red" : "black",
+                }}
               />
             </div>
             <div className="form-section-wrapper">

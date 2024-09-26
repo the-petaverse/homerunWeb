@@ -149,12 +149,9 @@
 .final-section-wrapper {
   width: 100%;
 }
-.form-section-wrapper {
-  display: flex;
-
-  /* align-items: center; */
-
-  justify-content: space-between;
+.property-form-section-wrapper {
+  display: grid;
+  grid-template-columns: auto auto;
   gap: 10px;
   /* background-color: red; */
 }

@@ -1,6 +1,8 @@
 .sub-category-wrapper {
   padding-bottom: 4.5%;
-  background-color: rgb(247, 248, 248);
+  background-color: rgb(248, 247, 247);
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 100px;
 }
 /* .cat-card-parent-wrapper {
   display: flex;

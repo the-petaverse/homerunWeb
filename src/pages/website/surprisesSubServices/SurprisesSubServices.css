@@ -1,10 +1,12 @@
 .surprise-back-button-container {
   padding: 0 5%;
+  background-color: #fff;
 }
 .surprise-back-button-container {
   display: flex;
   align-items: center;
   gap: 20px;
+  background-color: #fff;
 }
 .surprise-back-button-wrapper {
   width: 5%;

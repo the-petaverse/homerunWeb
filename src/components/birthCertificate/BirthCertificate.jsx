@@ -176,7 +176,10 @@ const BirthCertificate = ({
               <CustomNote />
             </div>
             <div className="term-section">
-              <TermsAndConditionCheckBox />
+              <TermsAndConditionCheckBox
+                register={register}
+                name="terms&conditions"
+              />
               <CustomButton title="Make Request" btnStyles="button-wrapper" />
             </div>
           </div>

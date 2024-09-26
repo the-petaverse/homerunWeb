@@ -54,12 +54,12 @@ const PassportPoliceReport = ({
               textAreaStyle="textarea"
               placeHolder="Enter your errand description here"
             />
-            <div className="form-section-wrapper">
+            <div className="sworn-form-section-wrapper">
               <CustomImput
                 name="firstName"
                 required="First name is required"
                 placeholder="First name"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.firstName?.message}
                 register={register}
@@ -69,7 +69,7 @@ const PassportPoliceReport = ({
                 name="lastName"
                 required="Last name is required"
                 placeholder="Last name"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.lastName?.message}
                 register={register}
@@ -82,7 +82,7 @@ const PassportPoliceReport = ({
                   name="middleName"
                   required="Middle Name is required"
                   placeholder="Middle Name"
-                  className="main-text-single-input"
+                  // className="main-text-single-input"
                   type="text"
                   error={errors?.middleName?.message}
                   register={register}
@@ -93,12 +93,12 @@ const PassportPoliceReport = ({
               </div>
             )}
             {subcategory !== "sworn-afidavit" && (
-              <div className="form-section-wrapper">
+              <div className="sworn-form-section-wrapper">
                 <CustomImput
                   name="middleName"
                   required="Middle name is required"
                   placeholder="Middle name"
-                  className="main-text-input"
+                  // className="main-text-input"
                   type="text"
                   error={errors?.middleName?.message}
                   register={register}
@@ -235,7 +235,10 @@ const PassportPoliceReport = ({
               <CustomNote />
             </div>
             <div className="term-section">
-              <TermsAndConditionCheckBox />
+              <TermsAndConditionCheckBox
+                register={register}
+                name="terms&conditions"
+              />
               <CustomButton title="Make Request" btnStyles="button-wrapper" />
             </div>
           </div>

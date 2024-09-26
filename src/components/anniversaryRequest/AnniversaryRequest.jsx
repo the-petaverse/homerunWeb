@@ -207,20 +207,20 @@ const AnniversaryRequest = ({
     setCitiesList(filteredCities);
   };
 
-  const filterServcies = () => {
-    if (isSuccess) {
-      let filteredService = subData?.subRequestsCategory.filter(
-        (subservice) => subservice.sub_category_slug === subcategory
-      );
-      setServiceData(filteredService);
-    }
-  };
+  // const filterServcies = () => {
+  //   if (isSuccess) {
+  //     let filteredService = subData?.subRequestsCategory.filter(
+  //       (subservice) => subservice.sub_category_slug === subcategory
+  //     );
+  //     setServiceData(filteredService);
+  //   }
+  // };
 
   useEffect(() => {
     handleState();
     handleCities();
     // handleSubRequests();
-    filterServcies();
+    // filterServcies();
   }, [
     watchCountry,
     watchState,
@@ -234,6 +234,9 @@ const AnniversaryRequest = ({
   ]);
   return (
     <div className="new-request-from-main-container">
+      <div>
+        <CustomBackButton title="Back" />
+      </div>
       <div className="new-request-form-container">
         <form action="">
           <div className="requirement-wrapper">
@@ -243,40 +246,40 @@ const AnniversaryRequest = ({
             <Requirement />
           </div>
           <div className="requirement-wrapper">
-            <DestinationCard />
+            {/* <DestinationCard /> */}
             <CustomImput
               name="destinationName"
               required="Destination name is required"
-              placeholder="Omutu Resort"
-              className="main-text-input"
+              placeholder="Proposed destination name"
+              // className="main-text-input"
               type="text"
               error={errors?.destinationName?.message}
               register={register}
               style={{ borderColor: errors.destinationName ? "red" : "black" }}
             />
-            <div className="form-section-wrapper">
-              <CustomImput
-                name="destinationCountry"
-                required="Destination country is required"
-                placeholder="Nigeria"
-                className="main-text-input"
-                type="text"
-                error={errors?.destinationCountry?.message}
-                register={register}
-                style={{
-                  borderColor: errors.destinationCountry ? "red" : "black",
-                }}
-              />
+            <div className="anny-surp-form-section-wrapper">
               <CustomImput
                 name="destinationLocation"
-                required="Destination Location is required"
-                placeholder="Lagos"
-                className="main-text-input"
+                required="Destination location is required"
+                placeholder="Destination Location"
+                // className="main-text-input"
                 type="text"
                 error={errors?.destinationLocation?.message}
                 register={register}
                 style={{
                   borderColor: errors.destinationLocation ? "red" : "black",
+                }}
+              />
+              <CustomImput
+                name="destinationCity"
+                required="Destination City is required"
+                placeholder="Destination city"
+                // className="main-text-input"
+                type="text"
+                error={errors?.destinationCity?.message}
+                register={register}
+                style={{
+                  borderColor: errors.destinationCity ? "red" : "black",
                 }}
               />
             </div>
@@ -289,12 +292,12 @@ const AnniversaryRequest = ({
             <div className="destination-giver-info">
               <h2>Personal Information</h2>
             </div>
-            <div className="form-section-wrapper">
+            <div className="anny-surp-form-section-wrapper">
               <CustomImput
                 name="fullName"
                 required="Full name is required"
                 placeholder="Full name"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.fullName?.message}
                 register={register}
@@ -304,19 +307,19 @@ const AnniversaryRequest = ({
                 name="phoneNumber"
                 required="Phone number is required"
                 placeholder="Phone number"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.phoneNumber?.message}
                 register={register}
                 style={{ borderColor: errors.phoneNumber ? "red" : "black" }}
               />
             </div>
-            <div className="form-section-wrapper">
+            <div className="anny-surp-form-section-wrapper">
               <CustomImput
                 name="email"
                 required="Email is required"
                 placeholder="Email"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.email?.message}
                 register={register}
@@ -326,7 +329,7 @@ const AnniversaryRequest = ({
                 name="ghetawayDate"
                 required="Getaway Date is required"
                 placeholder="Getaway Date"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.ghetawayDate?.message}
                 register={register}
@@ -340,12 +343,12 @@ const AnniversaryRequest = ({
             <div className="destination-receiver-info">
               <h2>Recipient Information</h2>
             </div>
-            <div className="form-section-wrapper">
+            <div className="anny-surp-form-section-wrapper">
               <CustomImput
                 name="fullName"
                 required="Full name is required"
                 placeholder="Full name"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.fullName?.message}
                 register={register}
@@ -355,7 +358,7 @@ const AnniversaryRequest = ({
                 name="phoneNumber"
                 required="Phone number is required"
                 placeholder="Phone number"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.phoneNumber?.message}
                 register={register}
@@ -392,7 +395,10 @@ const AnniversaryRequest = ({
               <CustomNote />
             </div>
             <div className="term-section">
-              <TermsAndConditionCheckBox />
+              <TermsAndConditionCheckBox
+                register={register}
+                name="terms&conditions"
+              />
               <CustomButton title="Make Request" btnStyles="button-wrapper" />
             </div>
           </div>

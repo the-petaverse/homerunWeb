@@ -63,12 +63,12 @@ const SingleParentCertificate = ({
               textAreaStyle="textarea"
               placeHolder="Enter your errand description here"
             />
-            <div className="form-section-wrapper">
+            <div className="single-parent-form-section-wrapper">
               <CustomImput
                 name="fullName"
                 required="full Name is required"
                 placeholder="Applicant’s Full name"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.fullName?.message}
                 register={register}
@@ -78,7 +78,7 @@ const SingleParentCertificate = ({
                 name="profession"
                 required="Profession is required"
                 placeholder="Applicant’s Profession"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.profession?.message}
                 register={register}
@@ -123,7 +123,7 @@ const SingleParentCertificate = ({
                   name="documentTitle"
                   required="Graduated Degree is required"
                   placeholder="Child 1 Fullname"
-                  className="child-main-text-input"
+                  // className="child-main-text-input"
                   type="text"
                   error={errors?.documentTitle?.message}
                   register={register}
@@ -135,7 +135,7 @@ const SingleParentCertificate = ({
                   name="documentTitle"
                   required="Graduated Degree is required"
                   placeholder="Child 2 Fullname"
-                  className="child-main-text-input"
+                  // className="child-main-text-input"
                   type="text"
                   error={errors?.documentTitle?.message}
                   register={register}
@@ -145,12 +145,12 @@ const SingleParentCertificate = ({
                 />
               </div>
             </div>
-            <div className="form-section-wrapper">
+            <div className="single-parent-form-section-wrapper">
               <CustomImput
                 name="applicatnState"
                 required="State is required"
                 placeholder="State 0f Applicant’s Birth"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.applicatnState?.message}
                 register={register}
@@ -162,7 +162,7 @@ const SingleParentCertificate = ({
                 name="localGovt"
                 required="localGovt is required"
                 placeholder="Local Government "
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.localGovt?.message}
                 register={register}
@@ -237,7 +237,10 @@ const SingleParentCertificate = ({
               <CustomNote />
             </div>
             <div className="term-section">
-              <TermsAndConditionCheckBox />
+              <TermsAndConditionCheckBox
+                register={register}
+                name="terms&conditions"
+              />
               <CustomButton title="Make Request" btnStyles="button-wrapper" />
             </div>
           </div>

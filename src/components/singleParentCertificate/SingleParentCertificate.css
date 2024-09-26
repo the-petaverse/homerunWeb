@@ -21,8 +21,9 @@
   padding-bottom: 25px;
 }
 .upload-child-inner {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
 }
 .upload-child-style {
   font-size: 1.25em;
@@ -198,12 +199,11 @@
 .final-section-wrapper {
   width: 100%;
 }
-.form-section-wrapper {
-  display: flex;
-
+.single-parent-form-section-wrapper {
+  display: grid;
+  grid-template-columns: auto auto;
   /* align-items: center; */
 
-  justify-content: space-between;
   gap: 10px;
   /* background-color: red; */
 }

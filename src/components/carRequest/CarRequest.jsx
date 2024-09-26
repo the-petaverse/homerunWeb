@@ -413,7 +413,10 @@ const CarRequest = ({
               <CustomNote />
             </div>
             <div className="term-section">
-              <TermsAndConditionCheckBox />
+              <TermsAndConditionCheckBox
+                name="terms&conditions"
+                register={register}
+              />
               <CustomButton title="Make Request" btnStyles="button-wrapper" />
             </div>
           </div>

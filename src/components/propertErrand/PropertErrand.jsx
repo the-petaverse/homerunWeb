@@ -57,12 +57,12 @@ const PropertErrand = ({
               placeHolder="Enter your errand description here"
             />
 
-            <div className="form-section-wrapper">
+            <div className="property-form-section-wrapper">
               <CustomImput
                 name="YourName"
                 required="Name is required"
                 placeholder="Your name"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.YourName?.message}
                 register={register}
@@ -72,19 +72,19 @@ const PropertErrand = ({
                 name="phoneNumber"
                 required="Phone Number is required"
                 placeholder="Phone number"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.phoneNumber?.message}
                 register={register}
                 style={{ borderColor: errors.phoneNumber ? "red" : "black" }}
               />
             </div>
-            <div className="form-section-wrapper">
+            <div className="property-form-section-wrapper">
               <CustomImput
                 name="middleName"
                 required="Middle name is required"
                 placeholder="Property Type"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.middleName?.message}
                 register={register}
@@ -94,7 +94,7 @@ const PropertErrand = ({
                 name="middleName"
                 required="Middle name is required"
                 placeholder="Property Location"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.middleName?.message}
                 register={register}
@@ -141,7 +141,10 @@ const PropertErrand = ({
               <CustomNote />
             </div>
             <div className="term-section">
-              <TermsAndConditionCheckBox />
+              <TermsAndConditionCheckBox
+                register={register}
+                name="terms&conditions"
+              />
               <CustomButton title="Make Request" btnStyles="button-wrapper" />
             </div>
           </div>

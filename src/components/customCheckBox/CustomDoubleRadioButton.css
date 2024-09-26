@@ -4,7 +4,7 @@
   align-items: center;
   width: 100%;
   display: flex;
-  border: solid 1px rgb(218, 206, 206);
+  border: solid 0.5px rgb(218, 206, 206);
   margin-top: 18px;
   border-radius: 10px;
   font-weight: lighter;

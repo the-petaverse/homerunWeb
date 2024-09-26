@@ -71,7 +71,7 @@ const ServiceDetailPage = () => {
   return (
     <div>
       {/* <Navbar /> */}
-      {serviceCategory &&
+      {/* {serviceCategory &&
         (serviceCategory === "hotel" ||
           serviceCategory === "surprise" ||
           serviceCategory === "grocery") && (
@@ -80,7 +80,7 @@ const ServiceDetailPage = () => {
             serviceSubCategory={serviceSubCategory}
             serviceName={subcategory}
           />
-        )}
+        )} */}
       <div>
         <div className="service-detail-main-container">
           {serviceCategory && serviceCategory === "surprise" && (
@@ -113,8 +113,10 @@ const ServiceDetailPage = () => {
                   <div className="main-back-button-wrapper">
                     <CustomBackButton title="Back" />
                   </div>
-                  <div className="slate-header-wrapper">
-                    <h2>{subServices && subServices[0]?.name}</h2>
+                  <div className="new-request-slate-header-wrapper">
+                    <h2 className="new-request-main-header">
+                      {subServices && subServices[0]?.name}
+                    </h2>
                     <p>
                       Please fill in the following details to make your request.{" "}
                     </p>
