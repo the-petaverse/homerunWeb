@@ -11,6 +11,7 @@ import { BiMessageAltDots } from "react-icons/bi";
 import { FiMapPin } from "react-icons/fi";
 import { FaEnvelopeOpenText } from "react-icons/fa";
 import CustomPhoneInput from "../../../components/customPhoneInput/CustomPhoneInput";
+import { isValidPhoneNumber } from "react-phone-number-input";
 
 const ContactUs = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -23,8 +24,13 @@ const ContactUs = () => {
     control,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({ mode: "all" });
 
+  const watchPhoneNumber = watch("phone_number");
+  // console.log(isValidPhoneNumber(watchPhoneNumber));
+  if (watchPhoneNumber) {
+    console.log(isValidPhoneNumber(watchPhoneNumber));
+  }
   const handleInnerNavigation = (id) => {
     setToggleInnerNavigation(id);
   };
@@ -82,7 +88,6 @@ const ContactUs = () => {
                     className="contact-form-wrapper"
                   >
                     <h2>Get in Touch</h2>
-
                     <CustomImput
                       name="messageTitle"
                       required="Message title is required"
@@ -126,7 +131,7 @@ const ContactUs = () => {
                       required="Email is required"
                       placeholder="Enter your email address"
                       error={errors?.email?.message}
-                      type="text"
+                      type="email"
                       register={register}
                       style={{
                         borderColor: errors.email ? "red" : "blue",
@@ -134,14 +139,19 @@ const ContactUs = () => {
                       iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     />
                     <CustomPhoneInput
-                      name="phone_number"
                       control={control}
                       style={{
-                        borderColor: errors.phone_number ? "red" : "blue",
+                        borderColor: errors.watchPhoneNumber ? "red" : "blue",
                       }}
                       register={register}
                     />
-
+                    <p>
+                      {isValidPhoneNumber(
+                        watchPhoneNumber ? watchPhoneNumber : ""
+                      )
+                        ? undefined
+                        : "Invalid phone number"}
+                    </p>
                     <label className="lable-wrapper">
                       <textarea
                         type="text"
@@ -155,9 +165,20 @@ const ContactUs = () => {
                     </label>
                     <input
                       type="submit"
+                      disabled={
+                        !isValidPhoneNumber(
+                          watchPhoneNumber ? watchPhoneNumber : ""
+                        )
+                      }
                       value="Send Message"
-                      className="contact-main-form-btn"
-                      onClick={handleVerifyRedirect}
+                      className={
+                        !isValidPhoneNumber(
+                          watchPhoneNumber ? watchPhoneNumber : ""
+                        )
+                          ? "contact-main-form-btn-disabled "
+                          : "contact-main-form-btn"
+                      }
+                      // onClick={handleVerifyRedirect}
                     />
                   </form>
                 </div>

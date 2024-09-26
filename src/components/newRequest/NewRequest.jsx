@@ -204,20 +204,20 @@ const NewRequest = ({
     setCitiesList(filteredCities);
   };
 
-  const filterServcies = () => {
-    if (isSuccess) {
-      let filteredService = subData?.subRequestsCategory.filter(
-        (subservice) => subservice.sub_category_slug === subcategory
-      );
-      setServiceData(filteredService);
-    }
-  };
+  // const filterServcies = () => {
+  //   if (isSuccess) {
+  //     let filteredService = subData?.subRequestsCategory.filter(
+  //       (subservice) => subservice.sub_category_slug === subcategory
+  //     );
+  //     setServiceData(filteredService);
+  //   }
+  // };
 
   useEffect(() => {
     handleState();
     handleCities();
     // handleSubRequests();
-    filterServcies();
+    // filterServcies();
   }, [
     watchCountry,
     watchState,
@@ -244,7 +244,7 @@ const NewRequest = ({
                 name="firstName"
                 required="First name is required"
                 placeholder="First name"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.firstName?.message}
                 register={register}

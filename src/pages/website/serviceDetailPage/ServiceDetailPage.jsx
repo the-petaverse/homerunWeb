@@ -31,6 +31,7 @@ const ServiceDetailPage = () => {
   const [subRequestId, setSubRequestId] = useState();
   const [formStage, setFormStage] = useState(0);
   const { subcategory } = useParams();
+  console.log(subcategory);
   const {
     data: subData,
     isLoading,
@@ -48,22 +49,23 @@ const ServiceDetailPage = () => {
     serviceSubCategory = subCategory;
     serviceCategory = category;
   }
-  const filterServcies = () => {
-    if (isSuccess) {
-      let filteredService = subData?.subRequestsCategory.filter(
-        (subservice) => subservice?.sub_category_slug === subcategory
-      );
-      setRequestId(filteredService[0]?.category_id);
-      setSubRequestId(filteredService[0]?._id);
-      setServiceData(filteredService);
-    }
-  };
+  console.log(serviceSubCategory, "hello");
+  // const filterServcies = () => {
+  //   if (isSuccess) {
+  //     let filteredService = subData?.subRequestsCategory.filter(
+  //       (subservice) => subservice?.sub_category_slug === subcategory
+  //     );
+  //     setRequestId(filteredService[0]?.category_id);
+  //     setSubRequestId(filteredService[0]?._id);
+  //     setServiceData(filteredService);
+  //   }
+  // };
   const subServices = filterSubCategory(subServiceData, subcategory);
 
   //Implementation to make sidebar sticky
 
   useEffect(() => {
-    filterServcies();
+    // filterServcies();
     customScrollSidebar();
   }, [isSuccess]);
   return (
@@ -142,7 +144,8 @@ const ServiceDetailPage = () => {
                       <BirthCertificate
                         formStage={formStage}
                         setFormStage={setFormStage}
-                        subcategory={subcategory}
+                        serviceSubCategory={serviceSubCategory}
+                        serviceCategory={serviceCategory}
                         requestId={requestId}
                         subRequestId={subRequestId}
                       />

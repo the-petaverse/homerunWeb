@@ -14,7 +14,6 @@
   margin-bottom: 25px;
 }
 .new-request-form-container {
-  /* background-color: red; */
   width: 100%;
 }
 .back-button-wrapper {
@@ -41,8 +40,8 @@
   border: solid 0.5px rgb(218, 206, 206);
 }
 .single-input-wrapper {
-  align-content: left;
-  width: 50%;
+  /* align-content: left; */
+  width: 100%;
 }
 .main-text-single-input {
   height: 55px;
@@ -91,7 +90,7 @@
   padding: 3.5% 5%;
   border-radius: 25px;
 }
-.inputs-container {
+.birth-inputs-container {
   background-color: #fff;
   padding: 5%;
   margin-top: 10px;
@@ -123,28 +122,27 @@
 .final-section-wrapper {
   width: 100%;
 }
-.form-section-wrapper {
-  display: flex;
-
-  /* align-items: center; */
-
-  justify-content: space-between;
+.birth-form-section-wrapper {
+  display: grid;
+  grid-template-columns: auto auto;
   gap: 10px;
-  /* background-color: red; */
 }
 .date-pickermain-text-input {
   /* height: 55px; */
 }
-.date-piker-select {
+.birth-date-piker-select {
+  background-color: rgb(245, 243, 243);
   height: 55px;
-  width: 24dvw;
+  width: 80%;
   margin-top: 15px;
-  border-radius: 10px;
-  font-size: 1.5em;
+  border-radius: 15px;
+  font-size: 1.2em;
   font-weight: 300;
   color: black;
   padding: 0px 15px;
   border: solid 1.56px rgb(218, 206, 206);
+  margin-left: -75px;
+
   /* width: 150%; */
 }
 
