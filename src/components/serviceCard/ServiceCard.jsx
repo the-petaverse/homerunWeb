@@ -9,9 +9,17 @@ import SurpriseImage from "../../assets/surprise.png";
 import HotelImage from "../../assets/hotel.png";
 import PropertyImage from "../../assets/property.png";
 import { useNavigate } from "react-router-dom";
+import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
+import { Image, Transformation } from "cloudinary-react";
 
 const ServiceCard = () => {
   const navigate = useNavigate();
+  const {
+    data: serviceCategories,
+    isLoading,
+    isSuccess,
+    error,
+  } = useGetRequestCategoriesQuery();
   const services = [
     { id: 1, name: "transcript", image: TransImage },
     { id: 2, name: "grocery", image: GrocyImage },
@@ -20,6 +28,7 @@ const ServiceCard = () => {
     { id: 5, name: "property", image: PropertyImage },
   ];
 
+  console.log(serviceCategories);
   const handleServiceClick = (serviceName) => {
     navigate(`/request-category/${serviceName}`);
     console.log(serviceName);
@@ -67,16 +76,21 @@ const ServiceCard = () => {
   return (
     <>
       <Slider {...settings}>
-        {services.map((service) => (
-          <div className="serviceCard-main-wrapper" key={service.id}>
-            <img
-              src={service.image}
-              className="card-image-wrapper"
-              alt={service.name}
-              onClick={() => handleServiceClick(service.name)}
-            />
-          </div>
-        ))}
+        {serviceCategories &&
+          serviceCategories?.serviceCategory?.map((service) => (
+            <div className="serviceCard-main-wrapper" key={service.id}>
+              <Image
+                className="card-image-wrapper"
+                cloudName="petaverse"
+                publicId={service.category_image_url}
+              >
+                <Transformation crop="scale" width="260" />
+              </Image>
+              <div className="service-card-image-header">
+                <p>{service.category_name}</p>
+              </div>
+            </div>
+          ))}
       </Slider>
     </>
   );
