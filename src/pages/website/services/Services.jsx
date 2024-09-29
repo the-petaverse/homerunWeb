@@ -12,11 +12,16 @@ import CustomButton from "../../../components/customButton/CustomButton";
 
 import { useGetRequestCategoriesQuery } from "../../../services/requestsCategory/requestApi";
 import { Link } from "react-router-dom";
+import { Image, Transformation } from "cloudinary-react";
 
 const Services = () => {
-  const { data, isLoading, isFetching, error, isSuccess } =
-    useGetRequestCategoriesQuery();
-
+  const {
+    data: serviceCategories,
+    isLoading,
+    isSuccess,
+    error,
+  } = useGetRequestCategoriesQuery();
+  console.log(serviceCategories);
   const [openSideBar, setOpenSideBar] = useState(false);
   const handleOpenSideBar = () => {
     setOpenSideBar(true);
@@ -95,32 +100,40 @@ const Services = () => {
           </div>
         </div>
         <div className="service-cards-wrapper">
-          {serviceData.map((service) => (
-            <div className="services-card" key={service.id}>
-              <img
-                src={service.imageSrc}
-                alt={service.title}
-                className="service-images"
-              />
-              <div className="card-right-holder">
-                <h1>{service.title}</h1>
-                <p>{service.description}</p>
-                <div className="service-btn">
-                  <Link to={`/request-category/${service.slug}`}>
-                    Post this request
-                  </Link>
+          {serviceCategories &&
+            serviceCategories?.serviceCategory?.map((service) => (
+              <div className="services-card" key={service.id}>
+                {/* <img
+                  src={service.imageSrc}
+                  alt={service.title}
+                  className="service-images"
+                /> */}
+                <Image
+                  className="service-images"
+                  cloudName="petaverse"
+                  publicId={service.category_image_url}
+                >
+                  <Transformation crop="scale" width="320" />
+                </Image>
+                <div className="card-right-holder">
+                  <h1>{service.category_name}</h1>
+                  <p>{service.category_details}</p>
+                  <div className="service-btn">
+                    <Link to={`/request-category/${service.slug_name}`}>
+                      Post this request
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
       {/* <Footer /> */}
-      <MainSideBar
+      {/* <MainSideBar
         handleOpenSideBar={handleOpenSideBar}
         handleCloseSideBar={handleCloseSideBar}
         openSideBar={openSideBar}
-      />
+      /> */}
     </div>
   );
 };

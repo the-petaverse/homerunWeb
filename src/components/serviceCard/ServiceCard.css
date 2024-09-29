@@ -15,7 +15,7 @@
   border: solid 2px #fff;
   border-radius: 36px;
 }
-.card-image-wrapper {
+.service-card-image-wrapper {
   /* border: solid 10.5px rgb(77, 76, 123); */
   width: 100%;
   /* height: 50dvh; */
@@ -31,7 +31,7 @@
 }
 .service-card-image-header > p {
   color: #000;
-  font-size: 1.65em;
+  font-size: 1.35em;
   font-weight: bold;
   padding: 15px 25px;
 }
@@ -41,13 +41,16 @@
 @media (min-width: 475px) {
   .serviceCard-main-wrapper {
     color: #fff;
-    width: 35%;
+    /* width: 35%; */
     margin-right: auto;
     margin-left: auto;
     /* margin-right: -110px; */
     /* margin-right: -500px; */
   }
-  .card-image-wrapper {
+  .service-card-image-header > p {
+    font-size: 1.35em;
+  }
+  .service-card-image-wrapper {
     border: solid 0.5px gray;
     width: 100%;
     /* height: 50dvh; */
@@ -56,6 +59,9 @@
 }
 
 @media (min-width: 640px) {
+  .service-card-image-header > p {
+    font-size: 1.55em;
+  }
 }
 @media (min-width: 768px) {
   .serviceCard-main-wrapper {
@@ -64,7 +70,7 @@
     /* margin-right: -110px; */
     /* margin-right: -500px; */
   }
-  .card-image-wrapper {
+  .service-card-image-wrapper {
     border: solid 0.5px gray;
     width: 100%;
     /* height: 50dvh; */
@@ -80,7 +86,7 @@
     /* margin-right: -110px; */
     /* margin-right: -500px; */
   }
-  .card-image-wrapper {
+  .service-card-image-wrapper {
     border: solid 0.5px gray;
     width: 100%;
     /* height: 50dvh; */
@@ -95,7 +101,10 @@
     /* margin-right: -110px; */
     /* margin-right: -500px; */
   }
-  .card-image-wrapper {
+  .service-card-image-header > p {
+    font-size: 1.35em;
+  }
+  .service-card-image-wrapper {
     border: solid 0.5px gray;
     width: 100%;
     /* height: 50dvh; */
@@ -105,6 +114,9 @@
 @media (min-width: 1280px) {
   .slick-arrow::before {
     display: block;
+  }
+  .service-card-image-header > p {
+    font-size: 1.65em;
   }
 }
 @media (min-width: 1536px) {

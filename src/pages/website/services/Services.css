@@ -58,7 +58,7 @@
 .service-images {
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
-  width: 96%;
+  /* width: 96%; */
 }
 .card-right-holder {
   background-color: #fff;
@@ -112,7 +112,7 @@
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     border-top-right-radius: 0px;
-    width: 50%;
+    /* width: 50%; */
   }
   .card-right-holder {
     border-top-right-radius: 25px;
@@ -160,7 +160,7 @@
     width: 72.5%;
   }
   .service-images {
-    width: 50%;
+    /* width: 50%; */
   }
   .card-right-holder {
     width: 86%;
@@ -187,8 +187,11 @@
     font-size: 3.2em;
     margin: 25px 0;
   }
+  .card-right-holder h1 {
+    font-size: 2.85em;
+  }
   .service-images {
-    width: 40%;
+    /* width: 40%; */
   }
   .header-image-wrapper {
     width: 80%;
@@ -198,7 +201,7 @@
     width: 50%;
   }
   .service-images {
-    width: 50%;
+    /* width: 10%; */
   }
   .card-right-holder {
     width: 60%;

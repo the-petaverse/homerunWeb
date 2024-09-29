@@ -9,7 +9,7 @@ export const requestsApi = createApi({
       query: () => "request/categories",
     }),
     getRequestSubCategory: builder.query({
-      query: () => "request/sub-categories",
+      query: () => "request/service-sub-category",
     }),
   }),
 });
