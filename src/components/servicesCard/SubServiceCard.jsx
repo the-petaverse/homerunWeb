@@ -33,8 +33,6 @@ const SubServiceCard = ({ category }) => {
     isLoading: subSuccess,
   } = useGetRequestSubCategoryQuery();
 
-  console.log(subData, "subData");
-
   const categoryData = {
     category: category,
   };
@@ -74,27 +72,14 @@ const SubServiceCard = ({ category }) => {
     serviceCategories,
     category
   );
-  // console.log(selectedServiceCategory[0]?._id);
+
   // Filtering sub services
   const subServicesFiltered = filterSubCategory(subData, categoryId);
 
-  // const filterCategoryList = () => {
-  //   if (isSuccess) {
-  //     let filteredCategory = serviceCategory?.filter(
-  //       (categoryData) => categoryData.slug_name === category
-  //     );
-
-  //     console.log(serviceCategory);
-  //     setCategoryId(filteredCategory.id);
-  //   }
-  // };
   useEffect(() => {
     if (selectedServiceCategory) {
       setCategoryId(selectedServiceCategory[0]?._id);
     }
-    // filterCategoryList();
-    // filterSubCategory();
-    // console.log(subData);
   }, [
     isSuccess,
     category,
@@ -118,8 +103,7 @@ const SubServiceCard = ({ category }) => {
                 <Transformation crop="scale" />
               </Image>
               <h1 className="servie-category-header">
-                {mainServiceCategory?.category_name}
-                Requests
+                {`${mainServiceCategory?.category_name} Requests`}
               </h1>
             </div>
             <div className="category-header-wrapper-para-wrapper">

@@ -17,9 +17,10 @@
 }
 .servie-category-header {
   position: absolute;
-  top: 30px;
-  left: 30%;
+  top: 40px;
+  left: 32.5%;
   color: #fff;
+  font-size: 2em;
 }
 .cat-card-parent-wrapper {
   display: flex;
