@@ -20,13 +20,13 @@ const CarHotelBooking = () => {
   let cardData;
 
   //Logic to detrmine screen to naviagte
-  if (subcategory === "car_booking") {
+  if (subcategory === "car-booking") {
     cardData = carData;
-  } else if (subcategory === "grocery_bundles") {
+  } else if (subcategory === "grocery-bundles") {
     cardData = groceryBundleData;
-  } else if (subcategory === "party_packs") {
+  } else if (subcategory === "party-packs") {
     cardData = partyPacksData;
-  } else if (subcategory === "hotel_booking") {
+  } else if (subcategory === "hotel-booking") {
     cardData = hotelData;
   } else {
     cardData = hampersPackgeData;
@@ -64,16 +64,16 @@ const CarHotelBooking = () => {
           cardData.map((card, index) => {
             return (
               <>
-                {subcategory === "hotel_booking" && (
+                {subcategory === "hotel-booking" && (
                   <HotelCard
                     hotel={card}
                     key={index}
                     navigateToOderScreen={navigateToOderScreen}
                   />
                 )}
-                {(subcategory === "car_booking" ||
-                  subcategory === "grocery_bundles" ||
-                  subcategory === "party_packs" ||
+                {(subcategory === "car-booking" ||
+                  subcategory === "grocery-bundles" ||
+                  subcategory === "party-packs" ||
                   subcategory === "hampers") && (
                   <CarCard
                     key={index}

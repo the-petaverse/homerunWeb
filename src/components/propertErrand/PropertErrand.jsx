@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./PropertErrand.css";
 import { Controller, useForm } from "react-hook-form";
 import CustomTextArea from "../customTextArea/CustomTextArea";
@@ -19,6 +19,7 @@ import CustomUpload from "../customUpload/CustomUpload";
 import CustomInputUpload from "../customInputUpload/CustomInputUpload";
 import { filterSubCategory } from "../../util/filterSubCategories";
 import { subServiceData } from "../../data/subCategoryData";
+import { FaEnvelopeOpenText } from "react-icons/fa";
 
 const PropertErrand = ({
   setFormStage,
@@ -26,8 +27,11 @@ const PropertErrand = ({
   subcategory,
   requestId,
   subRequestId,
+  serviceData,
 }) => {
   const [date, setDate] = React.useState(new Date(Date.now()));
+
+  console.log(subcategory);
   const {
     register,
     handleSubmit,
@@ -37,20 +41,21 @@ const PropertErrand = ({
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      request_name: requestId,
-      sub_request_name: subRequestId,
+      sub_request_name: subcategory,
     },
     mode: "all",
   });
   const onSubmitData = (data) => {
     console.log(data);
   };
+  console.log(serviceData);
+  useEffect(() => {}, [serviceData, requestId, subRequestId]);
 
   return (
     <div className="new-request-from-main-container">
-      <div className="new-request-form-container">
+      <div className="property-new-request-form-container">
         <form onSubmit={handleSubmit(onSubmitData)}>
-          <div className="inputs-container">
+          <div className="property-inputs-container">
             <CustomTextArea
               title="Errand Description"
               textAreaStyle="textarea"
@@ -66,12 +71,14 @@ const PropertErrand = ({
                 type="text"
                 error={errors?.YourName?.message}
                 register={register}
+                iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                 style={{ borderColor: errors.YourName ? "red" : "black" }}
               />
               <CustomImput
                 name="phoneNumber"
                 required="Phone Number is required"
                 placeholder="Phone number"
+                iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                 // className="main-text-input"
                 type="text"
                 error={errors?.phoneNumber?.message}
@@ -84,6 +91,7 @@ const PropertErrand = ({
                 name="middleName"
                 required="Middle name is required"
                 placeholder="Property Type"
+                iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                 // className="main-text-input"
                 type="text"
                 error={errors?.middleName?.message}
@@ -94,6 +102,7 @@ const PropertErrand = ({
                 name="middleName"
                 required="Middle name is required"
                 placeholder="Property Location"
+                iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                 // className="main-text-input"
                 type="text"
                 error={errors?.middleName?.message}
@@ -133,19 +142,22 @@ const PropertErrand = ({
           )}
 
           <div className="requirement-wrapper">
-            <Requirement />
-            <ErrandProcesses />
+            <Requirement serviceData={serviceData} />
+            <ErrandProcesses serviceData={serviceData} />
           </div>
           <div className="terms-note-wrapper">
-            <div className="notes-wrapper">
-              <CustomNote />
+            <div className="property-notes-wrapper">
+              <CustomNote serviceData={serviceData} />
             </div>
-            <div className="term-section">
+            <div className="property-term-section">
               <TermsAndConditionCheckBox
                 register={register}
                 name="terms&conditions"
               />
-              <CustomButton title="Make Request" btnStyles="button-wrapper" />
+              <CustomButton
+                title="Make Request"
+                btnStyles="property-button-wrapper"
+              />
             </div>
           </div>
         </form>

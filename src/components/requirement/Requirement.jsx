@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Requirement.css";
 
-const Requirement = () => {
+const Requirement = ({ serviceData }) => {
+  const [showRequirement, setShowRequirement] = useState(false);
+
+  const handleOpenRequirement = () => {
+    setShowRequirement((prev) => !prev);
+  };
+  useEffect(() => {}, [serviceData]);
   return (
     <div className="requirement-container">
-      <div className="requirement-header">
-        <h2>Requirements</h2>
-        <img src="/images/chevron-forw.png" alt="" />
-      </div>
-      <div className="requirement-content">
+      <div className="requirement-main-header-wrapper">
+        <div className="requirement-header" onClick={handleOpenRequirement}>
+          <h2>Requirements</h2>
+          <img src="/images/chevron-forw.png" alt="" />
+        </div>
         <p>Please see a list of what is required from you</p>
-        <ul>
-          <li>Letter of attestation (Done by a Lawyer)</li>
-          <li>Affidavit for WAEC (Done at Court)</li>
-          <li>Copy of WAEC result</li>
-          <li>A non-refundable fee of 98 dollars (Diaspora)</li>
-          <li>A non-refundable fee of 45,000 naira (Local)</li>
-          <li>Courier Fees</li>
-          <li>2 passport photographs</li>
-          <li>3 Tubers of yam and red oil</li>
-        </ul>
       </div>
+      {showRequirement && (
+        <div className="requirement-content">
+          <ul>
+            {serviceData &&
+              serviceData[0]?.sub_service_requirement.map((require, index) => (
+                <li key={index}>{require}</li>
+              ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

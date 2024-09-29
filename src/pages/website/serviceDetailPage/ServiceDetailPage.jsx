@@ -23,15 +23,17 @@ import carImage from "/images/big-car.png";
 import ServiceHeader from "../../../components/serviceHeader/ServiceHeader";
 import SurpriseOrderGroup from "../../../components/surpriseOrderGroup/SurpriseOrderGroup";
 import GroceryOrderGroup from "../../../components/groceryOrderGroup/GroceryOrderGroup";
+import useScreenSize from "../../../helpers/useScreenSize";
 
 const ServiceDetailPage = () => {
+  const screenSize = useScreenSize();
   const location = useLocation();
   const [serviceData, setServiceData] = useState([]);
   const [requestId, setRequestId] = useState();
   const [subRequestId, setSubRequestId] = useState();
   const [formStage, setFormStage] = useState(0);
   const { subcategory } = useParams();
-  console.log(subcategory);
+  console.log(typeof screenSize.width);
   const {
     data: subData,
     isLoading,
@@ -49,25 +51,27 @@ const ServiceDetailPage = () => {
     serviceSubCategory = subCategory;
     serviceCategory = category;
   }
-  console.log(serviceSubCategory, "hello");
-  // const filterServcies = () => {
-  //   if (isSuccess) {
-  //     let filteredService = subData?.subRequestsCategory.filter(
-  //       (subservice) => subservice?.sub_category_slug === subcategory
-  //     );
-  //     setRequestId(filteredService[0]?.category_id);
-  //     setSubRequestId(filteredService[0]?._id);
-  //     setServiceData(filteredService);
-  //   }
-  // };
-  const subServices = filterSubCategory(subServiceData, subcategory);
-
+  console.log(subData);
+  const filterRequestedServcie = () => {
+    if (isSuccess) {
+      let filteredService = subData?.serviceSubCategory.filter(
+        (requestedService) => requestedService?.sub_service_slug === subcategory
+      );
+      setRequestId(filteredService[0]?.main_category_id);
+      setSubRequestId(filteredService[0]?._id);
+      setServiceData(filteredService);
+    }
+  };
+  // const subServices = filterSubCategory(subServiceData, subcategory);
   //Implementation to make sidebar sticky
+  // console.log(serviceData);
 
   useEffect(() => {
-    // filterServcies();
-    customScrollSidebar();
-  }, [isSuccess]);
+    filterRequestedServcie();
+    if (screenSize.width >= 1024) {
+      customScrollSidebar();
+    }
+  }, [isSuccess, screenSize.width]);
   return (
     <div>
       {/* <Navbar /> */}
@@ -107,7 +111,7 @@ const ServiceDetailPage = () => {
 
           {serviceCategory &&
             (serviceCategory === "transcript" ||
-              serviceCategory === "property") && (
+              serviceCategory === "property_errand") && (
               <div className="service-left-container">
                 <div className="main-back-button-container">
                   <div className="main-back-button-wrapper">
@@ -115,10 +119,10 @@ const ServiceDetailPage = () => {
                   </div>
                   <div className="new-request-slate-header-wrapper">
                     <h2 className="new-request-main-header">
-                      {subServices && subServices[0]?.name}
+                      {serviceData && serviceData[0]?.sub_service_title}
                     </h2>
                     <p>
-                      Please fill in the following details to make your request.{" "}
+                      Please fill in the following details to make your request.
                     </p>
                   </div>
                 </div>
@@ -184,20 +188,31 @@ const ServiceDetailPage = () => {
                         subcategory={subcategory}
                         requestId={requestId}
                         subRequestId={subRequestId}
+                        serviceData={serviceData}
                       />
                     )}
                   </div>
                 </div>
               </div>
             )}
-          <div className="sidebar">
-            <div className="service-right-container">
+          <div
+            className={
+              screenSize.width < 1024 ? "sidebar-with-small-screen" : "sidebar"
+            }
+          >
+            <div
+              className={
+                screenSize.width < 1024
+                  ? "service-right-container-with-small-screen"
+                  : "service-right-container"
+              }
+            >
               <div className="top-note-wrapper">
-                <CustomNote />
+                <CustomNote serviceData={serviceData} />
                 <h3>All funds paid arenonrefundable.</h3>
               </div>
               <div className="estimatio-wrapper">
-                <CustomEstimation />
+                <CustomEstimation serviceData={serviceData} />
               </div>
             </div>
           </div>

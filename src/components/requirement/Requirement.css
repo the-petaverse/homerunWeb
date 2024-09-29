@@ -1,7 +1,14 @@
+.requirement-main-header-wrapper {
+  text-align: left;
+}
+.requirement-main-header-wrapper > p {
+  margin-top: 10px;
+}
 .requirement-header {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 .requirement-content {
   text-align: left;
@@ -11,4 +18,10 @@
   margin-top: 15px;
   text-align: left;
   padding: 0 0 0 20px;
+  margin-top: 25px;
+}
+.requirement-content > ul > li {
+  margin-top: 5px;
+  font-size: 1.1em;
+  margin-left: -10px;
 }

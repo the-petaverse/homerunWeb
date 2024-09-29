@@ -1,19 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./CustomNote.css";
 import CircleInfo from "/images/info-circle.png";
 
-const CustomNote = () => {
+const CustomNote = ({ serviceData }) => {
+  useEffect(() => {}, [serviceData]);
   return (
     <div className="note-main-container">
       <div className="note-title-wrapper">
         <img src={CircleInfo} alt="cirle-info" />
         <h4>PLEASE NOTE</h4>
       </div>
-      <p>
-        Processing times and costs may vary based on the institution and
-        location. We’ll provide a detailed cost breakdown and timeline once your
-        request is verified
-      </p>
+      <p>{serviceData && serviceData[0]?.sub_service_note}</p>
     </div>
   );
 };

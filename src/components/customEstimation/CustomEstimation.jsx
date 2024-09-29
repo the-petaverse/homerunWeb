@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./CustomEstimation.css";
 import ProcessDownload from "/images/document-download.png";
 
-const paymentList = [
-  { id: "1", title: "Notary fees (If Applicable)", cost: "$19.00" },
-  { id: "2", title: "Notary fees (If Applicable)", cost: "$19.00" },
-  { id: "3", title: "Notary fees (If Applicable)", cost: "$19.00" },
-  { id: "4", title: "Notary fees (If Applicable)", cost: "$19.00" },
-  { id: "5", title: "Notary fees (If Applicable)", cost: "$19.00" },
+const currencyFlip = [
+  { id: "1", title: "USD", synbol: "$", flag: "" },
+  { id: "2", title: "NGN", cost: "N", flag: "" },
 ];
-const CustomEstimation = () => {
+const CustomEstimation = ({ serviceData }) => {
+  console.log(serviceData[0]?.sub_service_estimated_cost);
+  useEffect(() => {}, [serviceData]);
   return (
     <div className="estimated-main-container">
       <div className="estimated-header">
@@ -17,14 +16,15 @@ const CustomEstimation = () => {
         <h4>flag</h4>
       </div>
 
-      {paymentList.map((pay, index) => {
-        return (
-          <ul className="payment-list">
-            <li>{pay.title}</li>
-            <li>{pay.cost}</li>
-          </ul>
-        );
-      })}
+      {serviceData &&
+        serviceData[0]?.sub_service_estimated_cost.map((pay, index) => {
+          return (
+            <ul className="payment-list">
+              <li>{pay.title}</li>
+              <li>$ {pay.cost}</li>
+            </ul>
+          );
+        })}
       <div className="download-section">
         <img src={ProcessDownload} alt="process" />
         <h4>Download the errand process and requirement</h4>
