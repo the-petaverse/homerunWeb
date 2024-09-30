@@ -51,7 +51,7 @@ const ServiceDetailPage = () => {
     serviceSubCategory = subCategory;
     serviceCategory = category;
   }
-  console.log(subData);
+
   const filterRequestedServcie = () => {
     if (isSuccess) {
       let filteredService = subData?.serviceSubCategory.filter(
@@ -127,11 +127,12 @@ const ServiceDetailPage = () => {
                     serviceData={serviceData}
                   />
                 )}
-                {serviceCategory && serviceCategory === "surprise" && (
+                {serviceCategory && serviceCategory === "surprise_gifts" && (
                   <SurpriseOrderGroup
                     serviceName={subcategory}
                     serviceSubCategory={serviceSubCategory}
                     serviceCategory={serviceCategory}
+                    serviceData={serviceData}
                   />
                 )}
                 {serviceCategory && serviceCategory === "grocery" && (

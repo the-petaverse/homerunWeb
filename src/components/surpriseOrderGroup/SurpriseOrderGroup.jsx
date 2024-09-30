@@ -14,9 +14,10 @@ const SurpriseOrderGroup = ({
   serviceName,
   serviceSubCategory,
   serviceCategory,
+  serviceData,
 }) => {
   const cart = useSelector((state) => state.cart);
-  const [serviceData, setServiceData] = useState([]);
+  // const [serviceData, setServiceData] = useState([]);
   const [requestId, setRequestId] = useState();
   const [subRequestId, setSubRequestId] = useState();
   const [formStage, setFormStage] = useState(0);
@@ -58,7 +59,7 @@ const SurpriseOrderGroup = ({
           <div className="with-top-banner-left-container">
             <div className="main-service-detail-page-container">
               <div className="detail-form-main-container">
-                {serviceName === "anniversary_celebrations" && (
+                {serviceName === "surprise-packages" && (
                   <AnniversaryRequest
                     formStage={formStage}
                     setFormStage={setFormStage}
@@ -67,7 +68,7 @@ const SurpriseOrderGroup = ({
                     subRequestId={subRequestId}
                   />
                 )}
-                {serviceName === "gift_items" && (
+                {serviceName === "gift-items" && (
                   <OrderItemRequest
                     formStage={formStage}
                     setFormStage={setFormStage}
@@ -85,7 +86,7 @@ const SurpriseOrderGroup = ({
                     subRequestId={subRequestId}
                   />
                 )}
-                {serviceSubCategory === "hampers" && (
+                {serviceName === "hamper-items" && (
                   <OrderItemRequest
                     formStage={formStage}
                     setFormStage={setFormStage}
@@ -94,7 +95,7 @@ const SurpriseOrderGroup = ({
                     subRequestId={subRequestId}
                   />
                 )}
-                {serviceSubCategory === "party_packs" && (
+                {serviceName === "party-packs" && (
                   <OrderItemRequest
                     formStage={formStage}
                     setFormStage={setFormStage}

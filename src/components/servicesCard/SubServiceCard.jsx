@@ -42,7 +42,7 @@ const SubServiceCard = ({ category }) => {
     if (
       // servicesubCategory === "car-booking" ||
       servicesubCategory === "grocery-bundles" ||
-      servicesubCategory === "party-packs" ||
+      // servicesubCategory === "party-packs" ||
       servicesubCategory === "hampers"
       // servicesubCategory === "hotel-booking"
     ) {
@@ -50,7 +50,7 @@ const SubServiceCard = ({ category }) => {
         state: categoryData,
       });
     } else if (
-      servicesubCategory === "our_packages" ||
+      // servicesubCategory === "surprise-packages" ||
       servicesubCategory === "gift_items" ||
       servicesubCategory === "cake_items" ||
       servicesubCategory === "custom_grocery"

@@ -234,9 +234,6 @@ const AnniversaryRequest = ({
   ]);
   return (
     <div className="new-request-from-main-container">
-      <div>
-        <CustomBackButton title="Back" />
-      </div>
       <div className="new-request-form-container">
         <form action="">
           <div className="requirement-wrapper">
