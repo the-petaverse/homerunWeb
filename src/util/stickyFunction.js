@@ -10,7 +10,7 @@ export const customScrollSidebar = () => {
     let contentHeight = sidebar_content.getBoundingClientRect().height;
     let sidebarTop = sidebar.getBoundingClientRect().top + window.pageYOffset;
 
-    if (scrollTop >= contentHeight - viewportHeight + sidebarTop) {
+    if (scrollTop >= contentHeight - viewportHeight) {
       sidebar_content.style.transform = `translateY(-${
         viewportHeight - viewportHeight + sidebarTop
       }px)`;

@@ -18,11 +18,11 @@ const CarHotelBooking = () => {
   const { subcategory } = useParams();
   let subServices = filterSubCategory(subServiceData, subcategory);
   let cardData;
-
+  console.log(subcategory, "carhotel");
   //Logic to detrmine screen to naviagte
   if (subcategory === "car-booking") {
     cardData = carData;
-  } else if (subcategory === "grocery-bundles") {
+  } else if (subcategory === "grocery_bundles") {
     cardData = groceryBundleData;
   } else if (subcategory === "party-packs") {
     cardData = partyPacksData;
@@ -72,9 +72,9 @@ const CarHotelBooking = () => {
                   />
                 )}
                 {(subcategory === "car-booking" ||
-                  subcategory === "grocery-bundles" ||
+                  subcategory === "grocery_bundles" ||
                   subcategory === "party-packs" ||
-                  subcategory === "hampers") && (
+                  subcategory === "hamper-items") && (
                   <CarCard
                     key={index}
                     card={card}

@@ -41,24 +41,24 @@ const SubServiceCard = ({ category }) => {
 
     if (
       // servicesubCategory === "car-booking" ||
-      servicesubCategory === "grocery-bundles" ||
-      // servicesubCategory === "party-packs" ||
-      servicesubCategory === "hampers"
+      servicesubCategory === "grocery_bundles" ||
+      servicesubCategory === "party-packs" ||
+      servicesubCategory === "hamper-items"
       // servicesubCategory === "hotel-booking"
     ) {
       navigate(`/services-sub-category/${servicesubCategory}`, {
         state: categoryData,
       });
     } else if (
-      // servicesubCategory === "surprise-packages" ||
-      servicesubCategory === "gift_items" ||
-      servicesubCategory === "cake_items" ||
+      servicesubCategory === "surprise-packages" ||
+      servicesubCategory === "gift-items" ||
+      servicesubCategory === "cake-items" ||
       servicesubCategory === "custom_grocery"
     ) {
       navigate(`/surprise-sub-category/${servicesubCategory}`, {
         state: categoryData,
       });
-    } else if (servicesubCategory === "grocery_subscription") {
+    } else if (servicesubCategory === "monthly-grocery-sub") {
       navigate(`/grocery-sub-category/${servicesubCategory}`, {
         state: categoryData,
       });

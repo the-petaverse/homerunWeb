@@ -3,7 +3,7 @@ import "./CarCard.css";
 import CarImage from "/images/yellow-car.png";
 
 const CarCard = ({ card, navigateToOderScreen }) => {
-  console.log(card);
+  console.log(card, "hses");
   return (
     <div
       className="car-main-container"

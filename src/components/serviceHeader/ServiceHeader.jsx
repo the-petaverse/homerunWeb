@@ -25,8 +25,8 @@ const ServiceHeader = ({
         <CustomBackButton title="Back" />
       </div>
       {(serviceSubCategory === "car_booking" ||
-        serviceSubCategory === "hampers" ||
-        serviceSubCategory === "party_packs" ||
+        serviceSubCategory === "hamper-items" ||
+        serviceSubCategory === "party-packs" ||
         serviceSubCategory === "grocery_bundles") && (
         <div className="banner-slate-header-wrapper">
           <div className="car-image-wrapper">

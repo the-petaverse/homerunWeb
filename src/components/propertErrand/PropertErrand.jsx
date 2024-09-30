@@ -52,7 +52,7 @@ const PropertErrand = ({
   useEffect(() => {}, [serviceData, requestId, subRequestId]);
 
   return (
-    <div className="new-request-from-main-container">
+    <div className="property-new-request-from-main-container">
       <div className="property-new-request-form-container">
         <form onSubmit={handleSubmit(onSubmitData)}>
           <div className="property-inputs-container">

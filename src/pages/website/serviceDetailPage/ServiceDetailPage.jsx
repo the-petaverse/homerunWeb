@@ -50,6 +50,7 @@ const ServiceDetailPage = () => {
     const { category, subCategory } = location?.state;
     serviceSubCategory = subCategory;
     serviceCategory = category;
+    console.log(serviceCategory);
   }
 
   const filterRequestedServcie = () => {
@@ -64,8 +65,8 @@ const ServiceDetailPage = () => {
   };
   // const subServices = filterSubCategory(subServiceData, subcategory);
   //Implementation to make sidebar sticky
-  // console.log(serviceData);
 
+  console.log(serviceSubCategory, "Show up");
   useEffect(() => {
     filterRequestedServcie();
     if (screenSize.width >= 1024) {
@@ -73,155 +74,137 @@ const ServiceDetailPage = () => {
     }
   }, [isSuccess, screenSize.width]);
   return (
-    <div>
-      {/* <Navbar /> */}
-      {/* {serviceCategory &&
-        (serviceCategory === "hotel" ||
-          serviceCategory === "surprise" ||
-          serviceCategory === "grocery") && (
-          <ServiceHeader
-            serviceCategory={serviceCategory}
-            serviceSubCategory={serviceSubCategory}
-            serviceName={subcategory}
-          />
-        )} */}
-      <div>
-        <div className="service-detail-main-container">
-          {/* {serviceCategory &&
-            (serviceCategory === "official_document" ||
-              serviceCategory === "property_errand") && ( */}
-          <div className="service-left-container">
-            <div className="main-back-button-container">
-              <div className="main-back-button-wrapper">
-                <CustomBackButton title="Back" />
-              </div>
-              <div className="new-request-slate-header-wrapper">
-                <h2 className="new-request-main-header">
-                  {serviceData && serviceData[0]?.sub_service_title}
-                </h2>
-                <p>
-                  Please fill in the following details to make your request.
-                </p>
-              </div>
-            </div>
-            <div className="main-service-detail-page-container">
-              {serviceData &&
-                serviceData.map((data, index) => {
-                  return (
-                    <div key={index} className="service-detail-header">
-                      <h1>{data?.sub_category_title}</h1>
-                    </div>
-                  );
-                })}
-              <div className="detail-form-main-container">
-                {(subcategory === "transcript_collection" ||
-                  subcategory ===
-                    "higher-education-certificate-collection") && (
-                  <NewRequest
-                    formStage={formStage}
-                    setFormStage={setFormStage}
-                    subcategory={subcategory}
-                    requestId={requestId}
-                    subRequestId={subRequestId}
-                    serviceCategory={serviceCategory}
-                    serviceData={serviceData}
-                  />
-                )}
-                {serviceCategory && serviceCategory === "surprise_gifts" && (
-                  <SurpriseOrderGroup
-                    serviceName={subcategory}
-                    serviceSubCategory={serviceSubCategory}
-                    serviceCategory={serviceCategory}
-                    serviceData={serviceData}
-                  />
-                )}
-                {serviceCategory && serviceCategory === "grocery" && (
-                  <GroceryOrderGroup
-                    serviceName={subcategory}
-                    serviceSubCategory={serviceSubCategory}
-                    serviceCategory={serviceCategory}
-                  />
-                )}
-                {subcategory &&
-                  (subcategory === "hotel-booking" ||
-                    subcategory === "car-booking") && (
-                    <OrderWithTopBanner
-                      serviceName={subcategory}
-                      serviceSubCategory={serviceSubCategory}
-                      serviceCategory={serviceCategory}
-                      serviceData={serviceData}
-                    />
-                  )}
-                {subcategory === "birth-certificate" && (
-                  <BirthCertificate
-                    formStage={formStage}
-                    setFormStage={setFormStage}
-                    serviceSubCategory={serviceSubCategory}
-                    serviceCategory={serviceCategory}
-                    requestId={requestId}
-                    subRequestId={subRequestId}
-                    serviceData={serviceData}
-                  />
-                )}
-                {(subcategory === "passport_collection" ||
-                  subcategory === "police-report" ||
-                  subcategory === "other-certificate" ||
-                  subcategory === "sworn-affidavits") && (
-                  <PassportPoliceReport
-                    formStage={formStage}
-                    setFormStage={setFormStage}
-                    subcategory={subcategory}
-                    requestId={requestId}
-                    subRequestId={subRequestId}
-                    serviceData={serviceData}
-                  />
-                )}
-                {subcategory === "single-parent-certificate" && (
-                  <SingleParentCertificate
-                    formStage={formStage}
-                    setFormStage={setFormStage}
-                    subcategory={subcategory}
-                    requestId={requestId}
-                    subRequestId={subRequestId}
-                    serviceData={serviceData}
-                  />
-                )}
-                {(subcategory === "property-mangement" ||
-                  subcategory === "property-post-purchase" ||
-                  subcategory === "property-document-processing" ||
-                  subcategory === "pre-purchase-verification") && (
-                  <PropertErrand
-                    formStage={formStage}
-                    setFormStage={setFormStage}
-                    subcategory={subcategory}
-                    requestId={requestId}
-                    subRequestId={subRequestId}
-                    serviceData={serviceData}
-                  />
-                )}
-              </div>
-            </div>
+    <div className="main-order-page-container">
+      {(serviceSubCategory === "hamper-items" ||
+        serviceSubCategory === "grocery_bundles" ||
+        serviceSubCategory === "party-packs") && (
+        <ServiceHeader
+          serviceCategory={serviceCategory}
+          serviceSubCategory={serviceSubCategory}
+          serviceName={subcategory}
+        />
+      )}
+      {(subcategory === "property-mangement" ||
+        subcategory === "property-post-purchase" ||
+        subcategory === "property-document-processing" ||
+        subcategory === "pre-purchase-verification" ||
+        subcategory === "cake-items" ||
+        subcategory === "gift-items" ||
+        subcategory === "transcript_collection" ||
+        subcategory === "higher-education-certificate-collection" ||
+        subcategory === "hotel-booking" ||
+        subcategory === "car-booking" ||
+        subcategory === "birth-certificate" ||
+        subcategory === "passport_collection" ||
+        subcategory === "police-report" ||
+        subcategory === "other-certificate" ||
+        subcategory === "sworn-affidavits" ||
+        subcategory === "single-parent-certificate") && (
+        <div>
+          <CustomBackButton title="Back" />
+          <div>
+            <h2>{serviceData && serviceData[0]?.sub_service_title}</h2>
+            <p>Please fill in the following details to make your request.</p>
           </div>
-          {/* )} */}
-          <div
-            className={
-              screenSize.width < 1024 ? "sidebar-with-small-screen" : "sidebar"
-            }
-          >
-            <div
-              className={
-                screenSize.width < 1024
-                  ? "service-right-container-with-small-screen"
-                  : "service-right-container"
-              }
-            >
-              <div className="top-note-wrapper">
-                <CustomNote serviceData={serviceData} />
-                <h3>All funds paid arenonrefundable.</h3>
-              </div>
-              <div className="estimatio-wrapper">
-                <CustomEstimation serviceData={serviceData} />
-              </div>
+        </div>
+      )}
+      <div className="inner-cointainer-wrapping-left-right-section">
+        <div className="left-main-container">
+          {(subcategory === "property-mangement" ||
+            subcategory === "property-post-purchase" ||
+            subcategory === "property-document-processing" ||
+            subcategory === "pre-purchase-verification") && (
+            <PropertErrand
+              formStage={formStage}
+              setFormStage={setFormStage}
+              subcategory={subcategory}
+              requestId={requestId}
+              subRequestId={subRequestId}
+              serviceData={serviceData}
+            />
+          )}
+          {(serviceCategory === "surprise_gifts" ||
+            subcategory === "cake-items" ||
+            serviceSubCategory === "hamper-items") && (
+            <SurpriseOrderGroup
+              serviceName={subcategory}
+              serviceSubCategory={serviceSubCategory}
+              serviceCategory={serviceCategory}
+              serviceData={serviceData}
+            />
+          )}
+          {(subcategory === "transcript_collection" ||
+            subcategory === "higher-education-certificate-collection") && (
+            <NewRequest
+              formStage={formStage}
+              setFormStage={setFormStage}
+              subcategory={subcategory}
+              requestId={requestId}
+              subRequestId={subRequestId}
+              serviceCategory={serviceCategory}
+              serviceData={serviceData}
+            />
+          )}
+          {serviceCategory && serviceCategory === "grocery_food" && (
+            <GroceryOrderGroup
+              serviceName={subcategory}
+              serviceSubCategory={serviceSubCategory}
+              serviceCategory={serviceCategory}
+            />
+          )}
+          {subcategory &&
+            (subcategory === "hotel-booking" ||
+              subcategory === "car-booking") && (
+              <OrderWithTopBanner
+                serviceName={subcategory}
+                serviceSubCategory={serviceSubCategory}
+                serviceCategory={serviceCategory}
+                serviceData={serviceData}
+              />
+            )}
+          {subcategory === "birth-certificate" && (
+            <BirthCertificate
+              formStage={formStage}
+              setFormStage={setFormStage}
+              serviceSubCategory={serviceSubCategory}
+              serviceCategory={serviceCategory}
+              requestId={requestId}
+              subRequestId={subRequestId}
+              serviceData={serviceData}
+            />
+          )}
+          {(subcategory === "passport_collection" ||
+            subcategory === "police-report" ||
+            subcategory === "other-certificate" ||
+            subcategory === "sworn-affidavits") && (
+            <PassportPoliceReport
+              formStage={formStage}
+              setFormStage={setFormStage}
+              subcategory={subcategory}
+              requestId={requestId}
+              subRequestId={subRequestId}
+              serviceData={serviceData}
+            />
+          )}
+          {subcategory === "single-parent-certificate" && (
+            <SingleParentCertificate
+              formStage={formStage}
+              setFormStage={setFormStage}
+              subcategory={subcategory}
+              requestId={requestId}
+              subRequestId={subRequestId}
+              serviceData={serviceData}
+            />
+          )}
+        </div>
+        <div className="sidebar-with-small-screen">
+          <div className={"service-right-container-with-small-screen"}>
+            {/* <div className="top-note-wrapper">
+              <CustomNote serviceData={serviceData} />
+              <h3>All funds paid arenonrefundable.</h3>
+            </div> */}
+            <div className="estimatio-wrapper">
+              <CustomEstimation serviceData={serviceData} />
             </div>
           </div>
         </div>

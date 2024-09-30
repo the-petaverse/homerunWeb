@@ -41,7 +41,7 @@ const SurpriseOrderGroup = ({
   //   }
   // };
 
-  // console.log(serviceName, serviceSubCategory, serviceCategory);
+  // console.log(serviceName, serviceSubCategory, serviceCategory, "Yepe");
 
   //Implementation to make sidebar sticky
   console.log(serviceSubCategory, serviceCategory, "again");
@@ -77,7 +77,7 @@ const SurpriseOrderGroup = ({
                     subRequestId={subRequestId}
                   />
                 )}
-                {serviceName === "cake_items" && (
+                {serviceName === "cake-items" && (
                   <OrderItemRequest
                     formStage={formStage}
                     setFormStage={setFormStage}
@@ -86,7 +86,7 @@ const SurpriseOrderGroup = ({
                     subRequestId={subRequestId}
                   />
                 )}
-                {serviceName === "hamper-items" && (
+                {serviceSubCategory === "hamper-items" && (
                   <OrderItemRequest
                     formStage={formStage}
                     setFormStage={setFormStage}
@@ -95,7 +95,7 @@ const SurpriseOrderGroup = ({
                     subRequestId={subRequestId}
                   />
                 )}
-                {serviceName === "party-packs" && (
+                {serviceSubCategory === "party-packs" && (
                   <OrderItemRequest
                     formStage={formStage}
                     setFormStage={setFormStage}

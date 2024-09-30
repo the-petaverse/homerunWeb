@@ -1,7 +1,7 @@
-.new-request-from-main-container {
+.property-new-request-from-main-container {
   /* padding: 0px 2.5%; */
   background-color: rgb(247, 248, 248);
-  width: 96dvw;
+  /* width: 96dvw; */
 }
 .slate-header-wrapper {
   text-align: left;
