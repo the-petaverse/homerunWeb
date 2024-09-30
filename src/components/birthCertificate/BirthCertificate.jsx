@@ -24,6 +24,7 @@ const BirthCertificate = ({
   subRequestId,
   serviceSubCategory,
   serviceCategory,
+  serviceData,
 }) => {
   const [date, setDate] = React.useState();
   const { subcategory } = useParams();
@@ -168,14 +169,14 @@ const BirthCertificate = ({
           </div>
 
           <div className="requirement-wrapper">
-            <Requirement />
-            <ErrandProcesses />
+            <Requirement serviceData={serviceData} />
+            <ErrandProcesses serviceData={serviceData} />
           </div>
           <div className="terms-note-wrapper">
-            <div className="notes-wrapper">
-              <CustomNote />
+            <div className="birth-notes-wrapper">
+              <CustomNote serviceData={serviceData} />
             </div>
-            <div className="term-section">
+            <div className="birth-term-section">
               <TermsAndConditionCheckBox
                 register={register}
                 name="terms&conditions"

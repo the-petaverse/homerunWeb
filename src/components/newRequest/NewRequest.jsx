@@ -63,6 +63,7 @@ const NewRequest = ({
   serviceCategory,
   requestId,
   subRequestId,
+  serviceData,
 }) => {
   const {
     data: subData,
@@ -99,7 +100,7 @@ const NewRequest = ({
   const [myState, setMyState] = useState([]);
   const [addUploadInput, setAddUploadInput] = useState(new Array(1).fill(""));
   const [citiesList, setCitiesList] = useState([]);
-  const [serviceData, setServiceData] = useState([]);
+  // const [serviceData, setServiceData] = useState([]);
   const [openAccordion, setOpenAccordion] = useState(1);
   const { subcategory } = useParams();
   const navigate = useNavigate();
@@ -229,6 +230,7 @@ const NewRequest = ({
     paymentPending,
     requestId,
     subRequestId,
+    serviceData,
   ]);
   return (
     <div className="new-request-from-main-container">
@@ -382,14 +384,14 @@ const NewRequest = ({
             </div>
           </div>
           <div className="requirement-wrapper">
-            <Requirement />
-            <ErrandProcesses />
+            <Requirement serviceData={serviceData} />
+            <ErrandProcesses serviceData={serviceData} />
           </div>
           <div className="terms-note-wrapper">
-            <div className="notes-wrapper">
-              <CustomNote />
+            <div className="all-new-notes-wrapper">
+              <CustomNote serviceData={serviceData} />
             </div>
-            <div className="term-section">
+            <div className="all-term-section">
               <TermsAndConditionCheckBox
                 name="terms&conditions"
                 register={register}

@@ -33,12 +33,14 @@ const OrderWithTopBanner = ({
   serviceName,
   serviceSubCategory,
   serviceCategory,
+  serviceData,
 }) => {
-  const [serviceData, setServiceData] = useState([]);
+  // const [serviceData, setServiceData] = useState([]);
   const [requestId, setRequestId] = useState();
   const [subRequestId, setSubRequestId] = useState();
   const [formStage, setFormStage] = useState(0);
   const { subcategory } = useParams();
+
   // const {
   //   data: subData,
   //   isLoading,
@@ -75,7 +77,7 @@ const OrderWithTopBanner = ({
           <div className="with-top-banner-left-container">
             <div className="main-service-detail-page-container">
               <div className="detail-form-main-container">
-                {serviceSubCategory === "car_booking" && (
+                {subcategory === "car-booking" && (
                   <CarRequest
                     formStage={formStage}
                     setFormStage={setFormStage}
@@ -84,13 +86,14 @@ const OrderWithTopBanner = ({
                     subRequestId={subRequestId}
                   />
                 )}
-                {serviceSubCategory === "hotel_booking" && (
+                {subcategory === "hotel-booking" && (
                   <HotelRequest
                     formStage={formStage}
                     setFormStage={setFormStage}
                     subcategory={subcategory}
                     requestId={requestId}
                     subRequestId={subRequestId}
+                    serviceData={serviceData}
                   />
                 )}
               </div>

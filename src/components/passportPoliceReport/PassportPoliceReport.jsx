@@ -24,6 +24,7 @@ const PassportPoliceReport = ({
   subcategory,
   requestId,
   subRequestId,
+  serviceData,
 }) => {
   const [date, setDate] = React.useState(new Date(Date.now()));
   const {
@@ -43,7 +44,7 @@ const PassportPoliceReport = ({
   const onSubmitData = (data) => {
     console.log(data);
   };
-
+  console.log(subcategory);
   return (
     <div className="new-request-from-main-container">
       <div className="new-request-form-container">
@@ -227,19 +228,22 @@ const PassportPoliceReport = ({
             </div>
           )}
           <div className="requirement-wrapper">
-            <Requirement />
-            <ErrandProcesses />
+            <Requirement serviceData={serviceData} />
+            <ErrandProcesses serviceData={serviceData} />
           </div>
           <div className="terms-note-wrapper">
-            <div className="notes-wrapper">
-              <CustomNote />
+            <div className="inner-notes-wrapper">
+              <CustomNote serviceData={serviceData} />
             </div>
-            <div className="term-section">
+            <div className="inner-term-section">
               <TermsAndConditionCheckBox
                 register={register}
                 name="terms&conditions"
               />
-              <CustomButton title="Make Request" btnStyles="button-wrapper" />
+              <CustomButton
+                title="Make Request"
+                btnStyles="passport-button-wrapper"
+              />
             </div>
           </div>
         </form>

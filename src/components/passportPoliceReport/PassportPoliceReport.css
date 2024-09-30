@@ -79,14 +79,14 @@
   width: 26%;
   font-size: 0.75em;
 }
-.button-wrapper {
+.passport-button-wrapper {
   background-color: rgb(16, 4, 91);
   height: 55px;
   margin-top: 10px;
   border-radius: 25px;
   border: solid 0.5px rgb(18, 2, 86);
   color: #fff;
-  font-size: 1.6em;
+  font-size: 1.2em;
   cursor: pointer;
   width: 100%;
 }
@@ -95,18 +95,12 @@
 .terms-note-wrapper {
   display: flex;
   margin-top: 25px;
-  /* background-color: red; */
-  /* margin-top: 20px;
-  padding-top: 50px; */
   background-color: #fff;
   padding: 3%;
   border-radius: 25px;
-
-  /* align-items: center; */
 }
-.notes-wrapper {
-  /* background-color: yellow; */
-  width: 50%;
+.inner-notes-wrapper {
+  width: 100%;
 }
 .upload-section-wrapper {
   background-color: #fff;
@@ -132,11 +126,9 @@
   padding: 5%;
   margin-top: 25px;
 }
-.term-section {
-  width: 45%;
-  /* background-color: green; */
+.inner-term-section {
+  width: 100%;
   padding-top: 30px;
-  margin-left: 20px;
 }
 /* .increase-width {
   width: 26.5dvw;
@@ -147,11 +139,9 @@
   width: 100%;
 }
 .sworn-form-section-wrapper {
-  display: grid;
-  grid-template-columns: auto auto;
-  /* align-items: center; */
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-  /* background-color: red; */
 }
 .date-pickermain-text-input {
   /* height: 55px; */
@@ -210,6 +200,22 @@
   .payment-btn {
     width: 80%;
     margin-left: 10px;
+  }
+  .inner-term-section {
+    width: 45%;
+    padding-top: 30px;
+    margin-left: 20px;
+  }
+  .inner-notes-wrapper {
+    width: 50%;
+  }
+  .passport-button-wrapper {
+    font-size: 1.6em;
+  }
+  .sworn-form-section-wrapper {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
   }
 }
 @media (min-width: 1280px) {

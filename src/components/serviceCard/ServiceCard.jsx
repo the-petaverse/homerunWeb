@@ -31,7 +31,7 @@ const ServiceCard = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4.1,
+    slidesToShow: 5,
     slidesToScroll: 1,
     initialSlide: 1,
     responsive: [

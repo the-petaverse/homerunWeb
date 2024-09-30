@@ -21,8 +21,8 @@
   padding-bottom: 25px;
 }
 .upload-child-inner {
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 .upload-child-style {
@@ -69,9 +69,9 @@
   margin-top: 15px;
   border: solid 0.5px rgb(218, 206, 206);
 }
-.single-input-wrapper {
+.parent-single-input-wrapper {
   align-content: left;
-  width: 50%;
+  width: 100%;
 }
 .main-text-single-input {
   height: 55px;
@@ -133,9 +133,9 @@
 
   /* align-items: center; */
 }
-.notes-wrapper {
-  /* background-color: yellow; */
-  width: 50%;
+.parent-notes-wrapper {
+  width: 100%;
+  text-align: center;
 }
 .upload-section-wrapper {
   background-color: #fff;
@@ -162,6 +162,7 @@
   margin-top: 20px;
   border-radius: 10px;
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: space-between;
 }
@@ -185,34 +186,25 @@
   padding: 5%;
   margin-top: 25px;
 }
-.term-section {
-  width: 45%;
-  /* background-color: green; */
+.parent-term-section {
+  width: 100%;
   padding-top: 30px;
-  margin-left: 20px;
 }
-/* .increase-width {
-  width: 26.5dvw;
-  justify-content: space-between;
-} */
 
 .final-section-wrapper {
   width: 100%;
 }
 .single-parent-form-section-wrapper {
-  display: grid;
-  grid-template-columns: auto auto;
-  /* align-items: center; */
-
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-  /* background-color: red; */
 }
 .date-pickermain-text-input {
   /* height: 55px; */
 }
-.date-piker-select {
+.parent-date-piker-select {
   height: 55px;
-  width: 24dvw;
+  width: 82.5dvw;
   margin-top: 15px;
   border-radius: 10px;
   font-size: 1.5em;
@@ -244,16 +236,16 @@
 .payment-btn {
   width: 80%;
 }
-@media (max-width: 475px) {
+@media (min-width: 475px) {
   .payment-btn {
     width: 100%;
     margin-right: 25px;
   }
 }
-@media (max-width: 640px) {
+@media (min-width: 640px) {
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .payment-btn {
     width: 80%;
     margin-left: 50px;
@@ -264,6 +256,50 @@
   .payment-btn {
     width: 80%;
     margin-left: 10px;
+  }
+  .image-upload-section {
+    border: dashed 0.5px #5d5858;
+    padding: 2% 2.5%;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .upload-child-inner {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+  }
+  .single-parent-form-section-wrapper {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+  }
+  .parent-date-piker-select {
+    height: 55px;
+    /* width: 24dvw; */
+    margin-top: 15px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    font-weight: 300;
+    color: black;
+    padding: 0px 15px;
+    border: solid 1.56px rgb(218, 206, 206);
+    width: 100%;
+  }
+  .parent-term-section {
+    width: 45%;
+    padding-top: 30px;
+    margin-left: 20px;
+  }
+  .parent-notes-wrapper {
+    width: 50%;
+  }
+  .parent-single-input-wrapper {
+    align-content: left;
+    width: 50%;
   }
 }
 @media (min-width: 1280px) {

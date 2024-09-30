@@ -26,6 +26,7 @@ const SingleParentCertificate = ({
   subcategory,
   requestId,
   subRequestId,
+  serviceData,
 }) => {
   const [date, setDate] = useState();
 
@@ -85,7 +86,7 @@ const SingleParentCertificate = ({
                 style={{ borderColor: errors.profession ? "red" : "black" }}
               />
             </div>
-            <div className="form-section-wrapper">
+            <div className="single-parent-form-section-wrapper">
               <CustomSelect
                 name="maritalStatus"
                 type="text"
@@ -107,7 +108,7 @@ const SingleParentCertificate = ({
                       selected={date}
                       placeholderText="Date Of Birth"
                       onChange={handleChange}
-                      className="date-piker-select"
+                      className="parent-date-piker-select"
                     />
                   )}
                 />
@@ -171,7 +172,7 @@ const SingleParentCertificate = ({
                 }}
               />
             </div>
-            <div className="single-input-wrapper">
+            <div className="parent-single-input-wrapper">
               <CustomSelect
                 name="maritalStatus"
                 type="text"
@@ -229,14 +230,14 @@ const SingleParentCertificate = ({
             </div>
           </div>
           <div className="requirement-wrapper">
-            <Requirement />
-            <ErrandProcesses />
+            <Requirement serviceData={serviceData} />
+            <ErrandProcesses serviceData={serviceData} />
           </div>
           <div className="terms-note-wrapper">
-            <div className="notes-wrapper">
-              <CustomNote />
+            <div className="parent-notes-wrapper">
+              <CustomNote serviceData={serviceData} />
             </div>
-            <div className="term-section">
+            <div className="parent-term-section">
               <TermsAndConditionCheckBox
                 register={register}
                 name="terms&conditions"

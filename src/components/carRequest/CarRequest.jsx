@@ -205,20 +205,20 @@ const CarRequest = ({
     setCitiesList(filteredCities);
   };
 
-  const filterServcies = () => {
-    if (isSuccess) {
-      let filteredService = subData?.subRequestsCategory.filter(
-        (subservice) => subservice.sub_category_slug === subcategory
-      );
-      setServiceData(filteredService);
-    }
-  };
+  // const filterServcies = () => {
+  //   if (isSuccess) {
+  //     let filteredService = subData?.subRequestsCategory.filter(
+  //       (subservice) => subservice.sub_category_slug === subcategory
+  //     );
+  //     setServiceData(filteredService);
+  //   }
+  // };
 
   useEffect(() => {
     handleState();
     handleCities();
     // handleSubRequests();
-    filterServcies();
+    // filterServcies();
   }, [
     watchCountry,
     watchState,

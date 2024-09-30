@@ -40,11 +40,11 @@ const SubServiceCard = ({ category }) => {
     //User the serviceSub category to determin the navigation
 
     if (
-      servicesubCategory === "car-booking" ||
+      // servicesubCategory === "car-booking" ||
       servicesubCategory === "grocery-bundles" ||
       servicesubCategory === "party-packs" ||
-      servicesubCategory === "hampers" ||
-      servicesubCategory === "hotel-booking"
+      servicesubCategory === "hampers"
+      // servicesubCategory === "hotel-booking"
     ) {
       navigate(`/services-sub-category/${servicesubCategory}`, {
         state: categoryData,

@@ -48,6 +48,7 @@ const HotelRequest = ({
   subcategory,
   requestId,
   subRequestId,
+  serviceData,
 }) => {
   const {
     data: subData,
@@ -84,7 +85,6 @@ const HotelRequest = ({
   const [myState, setMyState] = useState([]);
   const [addUploadInput, setAddUploadInput] = useState(new Array(1).fill(""));
   const [citiesList, setCitiesList] = useState([]);
-  const [serviceData, setServiceData] = useState([]);
   const [openAccordion, setOpenAccordion] = useState(1);
   const navigate = useNavigate();
   const cookies = new Cookies();
@@ -189,20 +189,20 @@ const HotelRequest = ({
     setCitiesList(filteredCities);
   };
 
-  const filterServcies = () => {
-    if (isSuccess) {
-      let filteredService = subData?.subRequestsCategory.filter(
-        (subservice) => subservice.sub_category_slug === subcategory
-      );
-      setServiceData(filteredService);
-    }
-  };
+  // const filterServcies = () => {
+  //   if (isSuccess) {
+  //     let filteredService = subData?.subRequestsCategory.filter(
+  //       (subservice) => subservice.sub_category_slug === subcategory
+  //     );
+  //     setServiceData(filteredService);
+  //   }
+  // };
 
   useEffect(() => {
     handleState();
     handleCities();
     // handleSubRequests();
-    filterServcies();
+    // filterServcies();
   }, [
     watchCountry,
     watchState,
@@ -227,7 +227,7 @@ const HotelRequest = ({
                 name="fullName"
                 required="Full name is required"
                 placeholder="Full name"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.fullName?.message}
                 register={register}
@@ -237,7 +237,7 @@ const HotelRequest = ({
                 name="phoneNumber"
                 required="Phone Number is required"
                 placeholder="Phone Number"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.phoneNumber?.message}
                 register={register}
@@ -249,7 +249,7 @@ const HotelRequest = ({
                 name="fullName"
                 required="Full name is required"
                 placeholder="Full name"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.fullName?.message}
                 register={register}
@@ -288,7 +288,7 @@ const HotelRequest = ({
                 name="numberOfRooms"
                 required="Number of rooms is required"
                 placeholder="Number of rooms"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.numberOfRooms?.message}
                 register={register}
@@ -323,12 +323,12 @@ const HotelRequest = ({
           </div>
 
           <div className="requirement-wrapper">
-            <Requirement />
-            <ErrandProcesses />
+            <Requirement serviceData={serviceData} />
+            <ErrandProcesses serviceData={serviceData} />
           </div>
           <div className="terms-note-wrapper">
             <div className="notes-wrapper">
-              <CustomNote />
+              <CustomNote serviceData={serviceData} />
             </div>
             <div className="term-section">
               <TermsAndConditionCheckBox

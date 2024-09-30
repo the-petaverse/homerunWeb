@@ -118,7 +118,7 @@ const PropertErrand = ({
             </div>
           </div>
 
-          {(subcategory === "property-document-follow-up" ||
+          {(subcategory === "property-document-processing" ||
             subcategory === "post-purchase-development") && (
             <div className="upload-section-wrapper">
               <CustomUpload />

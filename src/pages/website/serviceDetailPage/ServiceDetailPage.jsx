@@ -33,7 +33,7 @@ const ServiceDetailPage = () => {
   const [subRequestId, setSubRequestId] = useState();
   const [formStage, setFormStage] = useState(0);
   const { subcategory } = useParams();
-  console.log(typeof screenSize.width);
+  console.log(subcategory);
   const {
     data: subData,
     isLoading,
@@ -87,114 +87,121 @@ const ServiceDetailPage = () => {
         )} */}
       <div>
         <div className="service-detail-main-container">
-          {serviceCategory && serviceCategory === "surprise" && (
-            <SurpriseOrderGroup
-              serviceName={subcategory}
-              serviceSubCategory={serviceSubCategory}
-              serviceCategory={serviceCategory}
-            />
-          )}
-          {serviceCategory && serviceCategory === "grocery" && (
-            <GroceryOrderGroup
-              serviceName={subcategory}
-              serviceSubCategory={serviceSubCategory}
-              serviceCategory={serviceCategory}
-            />
-          )}
-          {serviceCategory && serviceCategory === "hotel" && (
-            <OrderWithTopBanner
-              serviceName={subcategory}
-              serviceSubCategory={serviceSubCategory}
-              serviceCategory={serviceCategory}
-            />
-          )}
-
-          {serviceCategory &&
-            (serviceCategory === "transcript" ||
-              serviceCategory === "property_errand") && (
-              <div className="service-left-container">
-                <div className="main-back-button-container">
-                  <div className="main-back-button-wrapper">
-                    <CustomBackButton title="Back" />
-                  </div>
-                  <div className="new-request-slate-header-wrapper">
-                    <h2 className="new-request-main-header">
-                      {serviceData && serviceData[0]?.sub_service_title}
-                    </h2>
-                    <p>
-                      Please fill in the following details to make your request.
-                    </p>
-                  </div>
-                </div>
-                <div className="main-service-detail-page-container">
-                  {serviceData &&
-                    serviceData.map((data, index) => {
-                      return (
-                        <div key={index} className="service-detail-header">
-                          <h1>{data?.sub_category_title}</h1>
-                        </div>
-                      );
-                    })}
-                  <div className="detail-form-main-container">
-                    {(subcategory === "transcript-processing" ||
-                      subcategory === "higher-certificate-collection") && (
-                      <NewRequest
-                        formStage={formStage}
-                        setFormStage={setFormStage}
-                        subcategory={subcategory}
-                        requestId={requestId}
-                        subRequestId={subRequestId}
-                        serviceCategory={serviceCategory}
-                      />
-                    )}
-                    {subcategory === "birth-certificate-collection" && (
-                      <BirthCertificate
-                        formStage={formStage}
-                        setFormStage={setFormStage}
-                        serviceSubCategory={serviceSubCategory}
-                        serviceCategory={serviceCategory}
-                        requestId={requestId}
-                        subRequestId={subRequestId}
-                      />
-                    )}
-                    {(subcategory === "passport_collection" ||
-                      subcategory === "police-report" ||
-                      subcategory === "other_collection" ||
-                      subcategory === "sworn-afidavit") && (
-                      <PassportPoliceReport
-                        formStage={formStage}
-                        setFormStage={setFormStage}
-                        subcategory={subcategory}
-                        requestId={requestId}
-                        subRequestId={subRequestId}
-                      />
-                    )}
-                    {subcategory === "single_parent_certificate" && (
-                      <SingleParentCertificate
-                        formStage={formStage}
-                        setFormStage={setFormStage}
-                        subcategory={subcategory}
-                        requestId={requestId}
-                        subRequestId={subRequestId}
-                      />
-                    )}
-                    {(subcategory === "property-management-services" ||
-                      subcategory === "post-purchase-development" ||
-                      subcategory === "property-document-follow-up" ||
-                      subcategory === "pre-purchase-verification") && (
-                      <PropertErrand
-                        formStage={formStage}
-                        setFormStage={setFormStage}
-                        subcategory={subcategory}
-                        requestId={requestId}
-                        subRequestId={subRequestId}
-                        serviceData={serviceData}
-                      />
-                    )}
-                  </div>
-                </div>
+          {/* {serviceCategory &&
+            (serviceCategory === "official_document" ||
+              serviceCategory === "property_errand") && ( */}
+          <div className="service-left-container">
+            <div className="main-back-button-container">
+              <div className="main-back-button-wrapper">
+                <CustomBackButton title="Back" />
               </div>
-            )}
+              <div className="new-request-slate-header-wrapper">
+                <h2 className="new-request-main-header">
+                  {serviceData && serviceData[0]?.sub_service_title}
+                </h2>
+                <p>
+                  Please fill in the following details to make your request.
+                </p>
+              </div>
+            </div>
+            <div className="main-service-detail-page-container">
+              {serviceData &&
+                serviceData.map((data, index) => {
+                  return (
+                    <div key={index} className="service-detail-header">
+                      <h1>{data?.sub_category_title}</h1>
+                    </div>
+                  );
+                })}
+              <div className="detail-form-main-container">
+                {(subcategory === "transcript_collection" ||
+                  subcategory ===
+                    "higher-education-certificate-collection") && (
+                  <NewRequest
+                    formStage={formStage}
+                    setFormStage={setFormStage}
+                    subcategory={subcategory}
+                    requestId={requestId}
+                    subRequestId={subRequestId}
+                    serviceCategory={serviceCategory}
+                    serviceData={serviceData}
+                  />
+                )}
+                {serviceCategory && serviceCategory === "surprise" && (
+                  <SurpriseOrderGroup
+                    serviceName={subcategory}
+                    serviceSubCategory={serviceSubCategory}
+                    serviceCategory={serviceCategory}
+                  />
+                )}
+                {serviceCategory && serviceCategory === "grocery" && (
+                  <GroceryOrderGroup
+                    serviceName={subcategory}
+                    serviceSubCategory={serviceSubCategory}
+                    serviceCategory={serviceCategory}
+                  />
+                )}
+                {subcategory &&
+                  (subcategory === "hotel-booking" ||
+                    subcategory === "car-booking") && (
+                    <OrderWithTopBanner
+                      serviceName={subcategory}
+                      serviceSubCategory={serviceSubCategory}
+                      serviceCategory={serviceCategory}
+                      serviceData={serviceData}
+                    />
+                  )}
+                {subcategory === "birth-certificate" && (
+                  <BirthCertificate
+                    formStage={formStage}
+                    setFormStage={setFormStage}
+                    serviceSubCategory={serviceSubCategory}
+                    serviceCategory={serviceCategory}
+                    requestId={requestId}
+                    subRequestId={subRequestId}
+                    serviceData={serviceData}
+                  />
+                )}
+                {(subcategory === "passport_collection" ||
+                  subcategory === "police-report" ||
+                  subcategory === "other-certificate" ||
+                  subcategory === "sworn-affidavits") && (
+                  <PassportPoliceReport
+                    formStage={formStage}
+                    setFormStage={setFormStage}
+                    subcategory={subcategory}
+                    requestId={requestId}
+                    subRequestId={subRequestId}
+                    serviceData={serviceData}
+                  />
+                )}
+                {subcategory === "single-parent-certificate" && (
+                  <SingleParentCertificate
+                    formStage={formStage}
+                    setFormStage={setFormStage}
+                    subcategory={subcategory}
+                    requestId={requestId}
+                    subRequestId={subRequestId}
+                    serviceData={serviceData}
+                  />
+                )}
+                {(subcategory === "property-mangement" ||
+                  subcategory === "property-post-purchase" ||
+                  subcategory === "property-document-processing" ||
+                  subcategory === "pre-purchase-verification") && (
+                  <PropertErrand
+                    formStage={formStage}
+                    setFormStage={setFormStage}
+                    subcategory={subcategory}
+                    requestId={requestId}
+                    subRequestId={subRequestId}
+                    serviceData={serviceData}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+          {/* )} */}
           <div
             className={
               screenSize.width < 1024 ? "sidebar-with-small-screen" : "sidebar"
