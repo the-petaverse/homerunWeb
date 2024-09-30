@@ -1,10 +1,10 @@
 .hero-container {
-  padding: 105px 5%;
+  /* padding: 105px 5%; */
   color: #fff;
   /* display: flex;
   justify-content: space-between;
   flex-direction: column; */
-  background-image: url("../../assets/bg.png");
+  /* background-image: url("../../assets/bg.png"); */
   background-repeat: no-repeat;
   background-size: cover;
 }

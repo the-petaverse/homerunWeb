@@ -4,11 +4,13 @@
 }
 .services-top-banner-details {
   width: 62%;
-
   padding: 2.5% 3%;
   background-color: #fff;
   border: solid 0.3px gray;
   border-radius: 25px;
+}
+.banner-slate-header-wrapper {
+  margin-top: 15px;
 }
 .services-top-banner-details > h2 {
   font-size: 2.1em;

@@ -16,5 +16,17 @@
 .view-details-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 10px;
+}
+.view-details-wrapper > h3 {
+  color: orange;
+}
+.card-car-details > h1 {
+  margin-top: 10px;
+}
+.detail-view-wrapper {
+  display: none;
+}
+.car-main-container:hover .detail-view-wrapper {
+  display: block;
 }
