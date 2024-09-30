@@ -100,9 +100,9 @@ const ServiceDetailPage = () => {
         subcategory === "other-certificate" ||
         subcategory === "sworn-affidavits" ||
         subcategory === "single-parent-certificate") && (
-        <div>
+        <div className="main-order-page-header">
           <CustomBackButton title="Back" />
-          <div>
+          <div className="inner-main-order-page-header">
             <h2>{serviceData && serviceData[0]?.sub_service_title}</h2>
             <p>Please fill in the following details to make your request.</p>
           </div>
@@ -197,12 +197,20 @@ const ServiceDetailPage = () => {
             />
           )}
         </div>
-        <div className="sidebar-with-small-screen">
-          <div className={"service-right-container-with-small-screen"}>
-            {/* <div className="top-note-wrapper">
+        <div
+          className={
+            serviceSubCategory === "hamper-items" ||
+            serviceSubCategory === "grocery_bundles" ||
+            serviceSubCategory === "party-packs"
+              ? "sidebar-with-small-screen-with-top-header"
+              : "sidebar-with-small-screen"
+          }
+        >
+          <div className="service-right-container-with-small-screen">
+            <div className="top-note-wrapper">
               <CustomNote serviceData={serviceData} />
               <h3>All funds paid arenonrefundable.</h3>
-            </div> */}
+            </div>
             <div className="estimatio-wrapper">
               <CustomEstimation serviceData={serviceData} />
             </div>

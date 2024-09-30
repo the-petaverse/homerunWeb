@@ -1,6 +1,7 @@
 .main-order-page-container {
   background-color: #fff;
   padding: 10px 5%;
+  padding-bottom: 50px;
   border-bottom-right-radius: 100px;
   border-bottom-left-radius: 100px;
   /* height: 100dvh; */
@@ -16,9 +17,25 @@
 }
 .sidebar-with-small-screen {
   width: 100%;
-  /* margin-top: 25px; */
+  margin-top: 0px;
 }
-
+.sidebar-with-small-screen-with-top-header {
+  width: 100%;
+  margin-top: 0px;
+}
+.main-order-page-header {
+  padding: 0 1%;
+}
+.inner-main-order-page-header {
+  width: 100%;
+  margin-top: 15px;
+}
+.inner-main-order-page-header > h2 {
+  font-size: 1.5em;
+}
+.top-note-wrapper {
+  display: none;
+}
 @media (min-width: 1024px) {
   .inner-cointainer-wrapping-left-right-section {
     width: 100%;
@@ -31,6 +48,17 @@
   }
   .sidebar-with-small-screen {
     width: 30%;
-    /* margin-top: 25px; */
+    margin-top: -180px;
+  }
+
+  .inner-main-order-page-header {
+    width: 52%;
+    margin-top: 15px;
+  }
+  .inner-main-order-page-header > h2 {
+    font-size: 2.25em;
+  }
+  .top-note-wrapper {
+    display: block;
   }
 }

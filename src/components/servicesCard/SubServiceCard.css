@@ -7,7 +7,8 @@
 .card-image-wrapper {
   border-radius: 20px;
   height: 200px;
-  width: 80dvw;
+  width: 100%;
+  /* width: 80dvw; */
   /* width: 4000px; */
 }
 .category-header-wrapper {
@@ -20,7 +21,7 @@
   top: 40px;
   left: 32.5%;
   color: #fff;
-  font-size: 2em;
+  font-size: 1.2em;
 }
 .cat-card-parent-wrapper {
   display: flex;
@@ -38,14 +39,14 @@
 .subservices-card {
   background-color: #fff;
   width: 100%;
-  /* border: solid 0.25px rgb(202, 201, 201); */
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 2.5%;
+  padding: 10% 2.5%;
   cursor: pointer;
   text-align: center;
   border-radius: 20px;
+  margin-top: 25px;
 }
 .subservices-card:hover {
   border: solid 1px black;
@@ -60,6 +61,7 @@
 
 .category-header-wrapper {
   /* position: relative; */
+  width: 100%;
 }
 .category-header-wrapper h1 {
   width: 35%;
@@ -68,7 +70,7 @@
   margin-left: auto;
 }
 .category-header-wrapper-para-wrapper {
-  width: 35%;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -131,6 +133,18 @@ a {
   .cat-card-parent-wrapper {
     flex-direction: row;
     margin-top: 55px;
+  }
+  .servie-category-header {
+    position: absolute;
+    top: 40px;
+    left: 32.5%;
+    color: #fff;
+    font-size: 2em;
+  }
+  .category-header-wrapper-para-wrapper {
+    width: 35%;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .main-category-card-container {
