@@ -97,19 +97,25 @@ const CustomStore = () => {
     <div className="gifts-container">
       <div className="gift-left-side-navigation">
         <h2>Categories</h2>
-        {categoryData &&
-          categoryData.map((catTitle, index) => {
-            return (
-              <ul className="surprise-gift-product-list-wrapper">
+        <ul className="surprise-gift-product-list-wrapper">
+          {categoryData &&
+            categoryData.map((catTitle, index) => {
+              return (
                 <li
                   key={index}
                   onClick={() => showProductCategory(catTitle.title)}
+                  style={{
+                    color: productCategory === catTitle.title ? "red" : "",
+                    backgroundColor:
+                      productCategory === catTitle.title ? "#f9f9f9" : "",
+                    padding: productCategory === catTitle.title ? "10px" : "",
+                  }}
                 >
                   {catTitle.title}
                 </li>
-              </ul>
-            );
-          })}
+              );
+            })}
+        </ul>
       </div>
       <div className="gift-right-container">
         {productCategory === "Home" && (

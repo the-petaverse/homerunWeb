@@ -17,11 +17,14 @@
   position: absolute;
   background-color: #fff;
   margin-top: 15px;
-  width: 300px;
+  width: 250px;
   text-align: left;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  padding: 2.5%;
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  /* padding: 2.5%; */
   right: 0;
 }
 .user-avatar-menu > ul > li {

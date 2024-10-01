@@ -30,19 +30,25 @@ const UserAvarta = () => {
       {openAvatarMenu && (
         <div className="user-avatar-menu">
           <ul>
-            <li onClick={handleNavigate}>
+            <li
+              onClick={() => {
+                handleNavigate();
+                handleOpenAvartarMenuModal();
+              }}
+              className="flex"
+            >
               <span className="user-avatar-logo-wrapper">
                 <BsPerson size={25} />
               </span>
               My Account
             </li>
-            <li>
+            <li className="flex">
               <span>
                 <MdOutlineSettings />
               </span>
               Settings
             </li>
-            <li>
+            <li className="flex">
               <span>
                 <TbLogout2 />
               </span>

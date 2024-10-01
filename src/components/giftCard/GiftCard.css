@@ -1,8 +1,10 @@
 .product-list-card {
   width: 95%;
-  border: 0.35px solid rgb(159, 157, 157);
   border-radius: 15px;
   position: relative;
+}
+.product-list-card:hover {
+  border: 0.35px solid rgb(159, 157, 157);
 }
 .product-list-card > input[type="checkbox"] {
   position: absolute;

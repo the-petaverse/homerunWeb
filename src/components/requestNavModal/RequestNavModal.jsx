@@ -29,7 +29,7 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
                 to={`/request-category/${serviceCate.slug_name}`}
                 onClick={handleOpenRequestNav}
               >
-                <h1>{serviceCate.category_name}</h1>
+                <h1 className="font-bold">{serviceCate.category_name}</h1>
                 <p>Obtain credentials and other necessary documents on...</p>
               </Link>
             </div>

@@ -1,28 +1,35 @@
 .gifts-container {
-  padding: 2% 0;
+  padding: 2% 5%;
   justify-content: space-between;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
-  background-color: #fff;
+  background-color: #f5f2f2;
+  padding-top: 20px;
 }
 .gift-left-side-navigation {
-  background-color: rgb(236, 233, 233);
-  border-radius: 10px;
-  width: 18%;
-  padding: 2.5%;
+  background-color: #fff;
+  border-radius: 15px;
+  width: 16%;
+  padding: 2%;
+  border: solid 0.1px rgb(218, 216, 216);
 }
 .gift-right-container {
   width: 78%;
 }
+.header-image-wrapper {
+  width: 85%;
+}
 .store-header-wrapper {
   display: flex;
+  justify-content: space-between;
 }
 .request-personalized-store-card {
-  background-color: rgb(246, 244, 244);
+  background-color: #fff;
   padding: 3% 2.5%;
   text-align: center;
   border-radius: 15px;
+  height: 70%;
 }
 .request-personalized-store-card h3 {
   margin-top: 20px;
@@ -41,8 +48,10 @@
 .surprise-gift-product-list-wrapper {
   cursor: pointer;
 }
+
 .person-header-image {
-  width: 94%;
+  width: 90%;
+  height: 70%;
 }
 .product-list-wrapper {
   width: 96%;
@@ -68,6 +77,6 @@
 }
 .gift-left-side-navigation ul li {
   list-style-type: none;
-  margin-top: 18px;
-  font-size: 1.1em;
+  margin-top: 25px;
+  font-size: 1em;
 }

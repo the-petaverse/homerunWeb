@@ -1,5 +1,5 @@
 .hero-container {
-  /* padding: 105px 5%; */
+  padding: 15px 5%;
   color: #fff;
   /* display: flex;
   justify-content: space-between;
@@ -37,7 +37,7 @@
   line-height: 1.2em;
 }
 .heading-para {
-  font-size: 1.8em;
+  font-size: 1.2em;
   /* font-family: "Josefin Slab", serif; */
   font-optical-sizing: auto;
   font-style: normal;

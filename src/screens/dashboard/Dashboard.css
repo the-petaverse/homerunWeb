@@ -4,6 +4,7 @@
   align-items: flex-start;
   justify-content: space-between;
   height: 100dvh;
+  margin-top: 130px;
 }
 .dashboard-right-panel-wrapper {
   background-color: #f5f4f7;

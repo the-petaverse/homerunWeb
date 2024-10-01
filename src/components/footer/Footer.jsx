@@ -22,7 +22,7 @@ const Footer = () => {
           <span>
             <IoCallOutline size={40} />
           </span>
-          <span>08160178711</span>
+          <span>+2348160178711</span>
         </div>
 
         <div className="footer-icon-container">

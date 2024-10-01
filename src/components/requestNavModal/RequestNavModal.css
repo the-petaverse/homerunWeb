@@ -23,7 +23,7 @@ a:link {
     width: 50%;
     position: absolute;
     right: 2%;
-    top: 12%;
+    top: 10%;
     padding: 1.5%;
     padding-top: 5.85%;
     border-radius: 15px;
@@ -44,7 +44,7 @@ a:link {
   .request-nav-image {
     margin-right: 10px;
   }
-  .top-request-nav-content h1 {
+  .top-request-nav-content > h1 {
     font-size: 1.35em;
   }
 }

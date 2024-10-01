@@ -6,11 +6,12 @@
   flex-direction: column;
 }
 .slider-container {
-  width: 85dvw;
+  width: 100%;
   margin-top: 20px;
 }
 .testimonial-header-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 35px;
 }
@@ -58,6 +59,9 @@
 @media (min-width: 1024px) {
   .header-container {
     width: 80%;
+  }
+  .testimonial-header-wrapper {
+    flex-direction: row;
   }
 }
 

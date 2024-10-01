@@ -33,7 +33,7 @@
   color: #000;
   font-size: 1.35em;
   font-weight: bold;
-  padding: 15px 25px;
+  padding: 5px 15px;
 }
 .slick-arrow::before {
   display: none;
