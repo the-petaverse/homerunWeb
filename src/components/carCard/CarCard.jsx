@@ -2,13 +2,20 @@ import React from "react";
 import "./CarCard.css";
 import CarImage from "/images/yellow-car.png";
 
-const CarCard = ({ card, navigateToOderScreen, handleShowDetailsModal }) => {
-  console.log(card, "hses");
+const CarCard = ({
+  card,
+  navigateToOderScreen,
+  handleShowDetailsModal,
+  setCardSelected,
+}) => {
   return (
     <div
       className="car-main-container"
       // onClick={() => navigateToOderScreen(card.slug)}
-      onClick={handleShowDetailsModal}
+      onClick={() => {
+        handleShowDetailsModal();
+        setCardSelected(card);
+      }}
     >
       <div className="car-card-image">
         <img src={card.image} alt="car" />

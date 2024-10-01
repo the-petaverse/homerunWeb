@@ -14,7 +14,7 @@ import Faq from "../../../components/faq/Faq";
 
 const Home = () => {
   return (
-    <div>
+    <div className="home-main-container">
       <HeroPage />
       <Testimonial />
       <EverythinYouNeed />

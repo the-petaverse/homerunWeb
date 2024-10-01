@@ -15,6 +15,7 @@ import DetailsModal from "../../../components/detailsModal/DetailsModal";
 
 const CarHotelBooking = () => {
   const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [cardSelected, setCardSelected] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
   const { subcategory } = useParams();
@@ -52,6 +53,7 @@ const CarHotelBooking = () => {
   };
 
   const handleShowDetailsModal = () => {
+    console.log("object");
     setShowDetailsModal((prev) => !prev);
   };
   return (
@@ -85,7 +87,7 @@ const CarHotelBooking = () => {
                     <CarCard
                       key={index}
                       card={card}
-                      // navigateToOderScreen={navigateToOderScreen}
+                      setCardSelected={setCardSelected}
                       // navigateToOderScreen={navigateToOderScreen}
                       handleShowDetailsModal={handleShowDetailsModal}
                     />
@@ -94,8 +96,14 @@ const CarHotelBooking = () => {
               );
             })}
         </div>
-        {/* {showDetailsModal && <DetailsModal />} */}
       </div>
+      {showDetailsModal && (
+        <DetailsModal
+          cardSelected={cardSelected}
+          handleShowDetailsModal={handleShowDetailsModal}
+          navigateToOderScreen={navigateToOderScreen}
+        />
+      )}
     </>
   );
 };

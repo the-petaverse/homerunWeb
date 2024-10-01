@@ -3,12 +3,12 @@
   align-items: center;
   justify-content: space-between;
   background-color: rgb(241, 232, 232);
-  padding: 10px 2%;
+  padding: 5px 10px;
   border-radius: 10px;
-
+  width: 96px;
   cursor: pointer;
 }
 .back-arrow-wrapper span {
-  font-size: 1.5em;
-  font-weight: 500;
+  font-size: 1.25em;
+  font-weight: 400;
 }

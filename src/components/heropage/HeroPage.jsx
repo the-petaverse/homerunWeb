@@ -13,15 +13,13 @@ const HeroPage = () => {
   };
   return (
     <>
-      <div className=" w-full px-20  bg-[url('/images/bg.png')] bg-no-repeat bg-cover bg-center h-full colo py-5">
+      <div className="hero-container">
         <div className="outer-hero-container">
           <div className="header-wrapper">
             <div className="header-content-wrapper">
-              <h3 className="text-white font-bold">
-                Relax and Enjoy Life While
-              </h3>
-              <h3 className="text-white font-bold">We Handle Your Errands</h3>
-              <p className="text-white font-light mt-5">
+              <h3 className="heading-txt-one">Relax and Enjoy Life While</h3>
+              <h3 className="heading-txt-two">We Handle Your Errands</h3>
+              <p className="heading-para">
                 Whether you're abroad or at home, Homerun is here to take care
                 of your errands, so you can focus on what matters most.
               </p>

@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/footer/Footer";
 import { Outlet } from "react-router-dom";
-// import "./layout.css";
+import "./layout.css";
 import { ToastContainer } from "react-toastify";
 
 function WebsiteLayout() {
@@ -14,7 +14,7 @@ function WebsiteLayout() {
   );
   return (
     <>
-      <div className="">
+      <div className="website-wrapper">
         <Navbar />
         <div className="website-container">
           <main className="main">

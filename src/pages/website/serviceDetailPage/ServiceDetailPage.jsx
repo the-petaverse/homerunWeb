@@ -75,7 +75,7 @@ const ServiceDetailPage = () => {
   }, [isSuccess, screenSize.width]);
   return (
     <div className="main-order-page-container">
-      {(serviceSubCategory === "hamper-items" ||
+      {/* {(serviceSubCategory === "hamper-items" ||
         serviceSubCategory === "grocery_bundles" ||
         serviceSubCategory === "party-packs") && (
         <ServiceHeader
@@ -83,8 +83,8 @@ const ServiceDetailPage = () => {
           serviceSubCategory={serviceSubCategory}
           serviceName={subcategory}
         />
-      )}
-      {(subcategory === "property-mangement" ||
+      )} */}
+      {/* {(subcategory === "property-mangement" ||
         subcategory === "property-post-purchase" ||
         subcategory === "property-document-processing" ||
         subcategory === "pre-purchase-verification" ||
@@ -99,15 +99,15 @@ const ServiceDetailPage = () => {
         subcategory === "police-report" ||
         subcategory === "other-certificate" ||
         subcategory === "sworn-affidavits" ||
-        subcategory === "single-parent-certificate") && (
-        <div className="main-order-page-header">
-          <CustomBackButton title="Back" />
-          <div className="inner-main-order-page-header">
-            <h2>{serviceData && serviceData[0]?.sub_service_title}</h2>
-            <p>Please fill in the following details to make your request.</p>
-          </div>
+        subcategory === "single-parent-certificate") && ( */}
+      <div className="main-order-page-header">
+        <CustomBackButton title="Back" />
+        <div className="inner-main-order-page-header">
+          <h2>{serviceData && serviceData[0]?.sub_service_title}</h2>
+          <p>Please fill in the following details to make your request.</p>
         </div>
-      )}
+      </div>
+      {/* )} */}
       <div className="inner-cointainer-wrapping-left-right-section">
         <div className="left-main-container">
           {(subcategory === "property-mangement" ||
