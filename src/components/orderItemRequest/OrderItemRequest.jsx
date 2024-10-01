@@ -45,8 +45,8 @@ const OrderItemRequest = ({
   };
 
   return (
-    <div className="new-request-from-main-container">
-      <div className="new-request-form-container">
+    <div className="grocery-bundle-new-request-from-main-container">
+      <div className="grocery-bundle-new-request-form-container">
         <form onSubmit={handleSubmit(onSubmitData)}>
           <div className="inputs-container">
             <CustomTextArea
@@ -54,12 +54,12 @@ const OrderItemRequest = ({
               textAreaStyle="textarea"
               placeHolder="Enter your errand description here"
             />
-            <div className="form-section-wrapper">
+            <div className="grocery-bundle-form-section-wrapper">
               <CustomImput
                 name="email"
                 required="Email is required"
                 placeholder="Email"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.email?.message}
                 register={register}
@@ -69,19 +69,19 @@ const OrderItemRequest = ({
                 name="recipientName"
                 required="Recipient’s name is required"
                 placeholder="Recipient’s name"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.recipientName?.message}
                 register={register}
                 style={{ borderColor: errors.recipientName ? "red" : "black" }}
               />
             </div>
-            <div className="form-section-wrapper">
+            <div className="grocery-bundle-form-section-wrapper">
               <CustomImput
                 name="phoneNumber"
                 required="Phone number is required"
                 placeholder="Phone number"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.phoneNumber?.message}
                 register={register}
@@ -91,19 +91,19 @@ const OrderItemRequest = ({
                 name="deliveryDate"
                 required="Delivery Date is required"
                 placeholder="Delivery Date"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.deliveryDate?.message}
                 register={register}
                 style={{ borderColor: errors.deliveryDate ? "red" : "black" }}
               />
             </div>
-            <div className="form-section-wrapper">
+            <div className="grocery-bundle-form-section-wrapper">
               <CustomImput
                 name="deliveryTime"
                 required="Delivery time is required"
                 placeholder="Select Time"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.deliveryTime?.message}
                 register={register}
@@ -113,7 +113,7 @@ const OrderItemRequest = ({
                 name="location"
                 required="Location is required"
                 placeholder="Location"
-                className="main-text-input"
+                // className="main-text-input"
                 type="text"
                 error={errors?.location?.message}
                 register={register}
@@ -131,10 +131,10 @@ const OrderItemRequest = ({
             <ErrandProcesses />
           </div>
           <div className="terms-note-wrapper">
-            <div className="notes-wrapper">
+            <div className="grocery-bundle-notes-wrapper">
               <CustomNote />
             </div>
-            <div className="term-section">
+            <div className="grocery-bundle-term-section">
               <TermsAndConditionCheckBox
                 register={register}
                 name="terms&conditions"

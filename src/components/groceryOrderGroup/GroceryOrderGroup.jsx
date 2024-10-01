@@ -55,7 +55,7 @@ const GroceryOrderGroup = ({
 
       <div className="service-with-top-main-container">
         <div className="bottom-holder">
-          <div className="with-top-banner-left-container">
+          <div>
             <div className="main-service-detail-page-container">
               <div className="detail-form-main-container">
                 {serviceSubCategory === "grocery_bundles" && (

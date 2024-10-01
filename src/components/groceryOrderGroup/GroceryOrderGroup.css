@@ -99,8 +99,15 @@
 }
 .detail-form-main-container {
   text-align: center;
-  width: 60dvw;
+  width: 100%;
 }
 .detail-form-main-container h1 {
   font-size: 6em;
+}
+
+@media (min-width: 1024px) {
+  .detail-form-main-container {
+    text-align: center;
+    width: 60dvw;
+  }
 }

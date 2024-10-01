@@ -1,5 +1,5 @@
 .main-order-page-container {
-  background-color: #fff;
+  background-color: rgb(247, 248, 248);
   padding: 10px 5%;
   padding-bottom: 50px;
   border-bottom-right-radius: 100px;
@@ -19,12 +19,11 @@
   width: 100%;
   margin-top: 0px;
 }
-.sidebar-with-small-screen-with-top-header {
-  width: 100%;
-  margin-top: 0px;
-}
+
 .main-order-page-header {
   padding: 0 1%;
+  margin-top: 15px;
+  /* background-color: #e5e7eb; */
 }
 .inner-main-order-page-header {
   width: 100%;
@@ -48,7 +47,7 @@
   }
   .sidebar-with-small-screen {
     width: 30%;
-    margin-top: -180px;
+    margin-top: -50px;
   }
 
   .inner-main-order-page-header {
@@ -60,5 +59,8 @@
   }
   .top-note-wrapper {
     display: block;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 15px;
   }
 }

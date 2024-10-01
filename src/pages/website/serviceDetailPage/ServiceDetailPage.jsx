@@ -50,7 +50,6 @@ const ServiceDetailPage = () => {
     const { category, subCategory } = location?.state;
     serviceSubCategory = subCategory;
     serviceCategory = category;
-    console.log(serviceCategory);
   }
 
   const filterRequestedServcie = () => {
@@ -66,7 +65,7 @@ const ServiceDetailPage = () => {
   // const subServices = filterSubCategory(subServiceData, subcategory);
   //Implementation to make sidebar sticky
 
-  console.log(serviceSubCategory, "Show up");
+  console.log(serviceSubCategory, serviceCategory, "Show up");
   useEffect(() => {
     filterRequestedServcie();
     if (screenSize.width >= 1024) {
@@ -75,31 +74,6 @@ const ServiceDetailPage = () => {
   }, [isSuccess, screenSize.width]);
   return (
     <div className="main-order-page-container">
-      {/* {(serviceSubCategory === "hamper-items" ||
-        serviceSubCategory === "grocery_bundles" ||
-        serviceSubCategory === "party-packs") && (
-        <ServiceHeader
-          serviceCategory={serviceCategory}
-          serviceSubCategory={serviceSubCategory}
-          serviceName={subcategory}
-        />
-      )} */}
-      {/* {(subcategory === "property-mangement" ||
-        subcategory === "property-post-purchase" ||
-        subcategory === "property-document-processing" ||
-        subcategory === "pre-purchase-verification" ||
-        subcategory === "cake-items" ||
-        subcategory === "gift-items" ||
-        subcategory === "transcript_collection" ||
-        subcategory === "higher-education-certificate-collection" ||
-        subcategory === "hotel-booking" ||
-        subcategory === "car-booking" ||
-        subcategory === "birth-certificate" ||
-        subcategory === "passport_collection" ||
-        subcategory === "police-report" ||
-        subcategory === "other-certificate" ||
-        subcategory === "sworn-affidavits" ||
-        subcategory === "single-parent-certificate") && ( */}
       <div className="main-order-page-header">
         <CustomBackButton title="Back" />
         <div className="inner-main-order-page-header">
@@ -197,15 +171,7 @@ const ServiceDetailPage = () => {
             />
           )}
         </div>
-        <div
-          className={
-            serviceSubCategory === "hamper-items" ||
-            serviceSubCategory === "grocery_bundles" ||
-            serviceSubCategory === "party-packs"
-              ? "sidebar-with-small-screen-with-top-header"
-              : "sidebar-with-small-screen"
-          }
-        >
+        <div className="sidebar-with-small-screen">
           <div className="service-right-container-with-small-screen">
             <div className="top-note-wrapper">
               <CustomNote serviceData={serviceData} />

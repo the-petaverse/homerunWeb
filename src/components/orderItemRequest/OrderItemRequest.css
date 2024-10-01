@@ -13,8 +13,7 @@
   font-size: 1.25em;
   margin-bottom: 25px;
 }
-.new-request-form-container {
-  /* background-color: red; */
+.grocery-bundle-new-request-form-container {
   width: 100%;
 }
 .back-button-wrapper {
@@ -104,9 +103,8 @@
 
   /* align-items: center; */
 }
-.notes-wrapper {
-  /* background-color: yellow; */
-  width: 50%;
+.grocery-bundle-notes-wrapper {
+  width: 100%;
 }
 .upload-section-wrapper {
   background-color: #fff;
@@ -132,11 +130,11 @@
   padding: 5%;
   margin-top: 25px;
 }
-.term-section {
-  width: 45%;
+.grocery-bundle-term-section {
+  width: 100%;
   /* background-color: green; */
   padding-top: 30px;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 /* .increase-width {
   width: 26.5dvw;
@@ -146,14 +144,10 @@
 .final-section-wrapper {
   width: 100%;
 }
-.form-section-wrapper {
-  display: flex;
-
-  /* align-items: center; */
-
-  justify-content: space-between;
+.grocery-bundle-form-section-wrapper {
+  display: grid;
+  grid-template-columns: auto;
   gap: 10px;
-  /* background-color: red; */
 }
 .date-pickermain-text-input {
   /* height: 55px; */
@@ -192,16 +186,16 @@
 .payment-btn {
   width: 80%;
 }
-@media (max-width: 475px) {
+@media (min-width: 475px) {
   .payment-btn {
     width: 100%;
     margin-right: 25px;
   }
 }
-@media (max-width: 640px) {
+@media (min-width: 640px) {
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .payment-btn {
     width: 80%;
     margin-left: 50px;
@@ -212,6 +206,19 @@
   .payment-btn {
     width: 80%;
     margin-left: 10px;
+  }
+  .grocery-bundle-form-section-wrapper {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+  }
+  .grocery-bundle-notes-wrapper {
+    width: 50%;
+  }
+  .grocery-bundle-term-section {
+    width: 45%;
+    padding-top: 30px;
+    margin-left: 20px;
   }
 }
 @media (min-width: 1280px) {
