@@ -3,11 +3,9 @@
   background-color: rgb(248, 247, 247);
   border-bottom-right-radius: 100px;
   border-bottom-left-radius: 100px;
-  padding-bottom: 50px;
 }
 
 @media (min-width: 1024px) {
   .sub-category-wrapper {
-    padding-bottom: 350px;
   }
 }

@@ -108,7 +108,7 @@ const PassportPoliceReport = ({
                 <CustomSelect
                   name="meansOfIdentification"
                   type="text"
-                  className="main-text-input"
+                  // className="main-text-input"
                   register={register}
                   require="Identification is required"
                   placeholder="Means of identification"
