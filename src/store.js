@@ -7,11 +7,13 @@ import { errandApi } from "./services/errands/errandsApi";
 import { paymentApi } from "./services/payment/stripe";
 import cartReducer from "./services/slices/cartSlice";
 import currentUser from "./services/slices/userSlice";
+import { propertyErrandApi } from "./services/propertyErrands/propertyErrand";
 
 export const store = configureStore({
   reducer: {
     currentUser: currentUser,
     cart: cartReducer,
+    [propertyErrandApi.reducerPath]: propertyErrandApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     [requestsApi.reducerPath]: requestsApi.reducer,
     [errandApi.reducerPath]: errandApi.reducer,
@@ -23,7 +25,8 @@ export const store = configureStore({
       authApi.middleware,
       requestsApi.middleware,
       errandApi.middleware,
-      paymentApi.middleware
+      paymentApi.middleware,
+      propertyErrandApi.middleware
     ),
 });
 

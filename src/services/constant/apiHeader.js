@@ -8,7 +8,7 @@ export const apiHeader = fetchBaseQuery({
     const cookies = new Cookies();
 
     let token;
-    if (cookies.get("access_token") !== undefined) {
+    if (cookies.get("auth_token")) {
       token = cookies.get("auth_token");
     } else if (cookies.get("request-service")) {
       token = cookies.get("request-service");
@@ -17,7 +17,7 @@ export const apiHeader = fetchBaseQuery({
     } else {
       token = cookies.get("resgitered");
     }
-    console.log(token);
+
     //If the token is available
     if (token) {
       headers.set("authorization", `Bearer ${token}`);

@@ -4,7 +4,9 @@ import "./RewardCard.css";
 import { FaMedal } from "react-icons/fa";
 import { FaArrowTrendUp } from "react-icons/fa6";
 
-const RewardCard = () => {
+const RewardCard = (props) => {
+  const { UserData } = props;
+
   return (
     <div className="reward-card-main-container">
       <div className="reward-card-header-wrapper">
@@ -12,10 +14,12 @@ const RewardCard = () => {
         <p>Rewards</p>
       </div>
       <div className="reward-card-points-holder-wrapper">
-        <p className="reward-card-points-holder">834points</p>
+        <p className="reward-card-points-holder">
+          {UserData && UserData?.user?.total_reward_points}
+        </p>
         <div className="reward-card-points-wrapper">
           <FaArrowTrendUp size={30} />
-          <p>15.0%</p>
+          <p>0%</p>
         </div>
       </div>
     </div>

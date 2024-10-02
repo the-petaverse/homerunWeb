@@ -11,7 +11,7 @@ export const authApi = createApi({
       query: () => "auth/users",
     }),
     getUser: builder.query({
-      query: () => "auth/user",
+      query: () => "/auth/user/me",
     }),
     loginUser: builder.mutation({
       query: (data) => ({

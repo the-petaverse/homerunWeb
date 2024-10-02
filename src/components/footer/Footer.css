@@ -4,6 +4,7 @@
   background-color: #262262;
   padding: 65px 0;
   position: relative;
+  align-items: flex-end;
 }
 .fotter-social-holder {
   background-color: #262262;

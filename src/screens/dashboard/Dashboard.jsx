@@ -15,6 +15,8 @@ import RewardCard from "../../components/rewardCard/RewardCard";
 import DashbaordRequestCard from "../../components/dahsboardRequestCard/DashbaordRequestCard";
 import DashboardInnerRequestNav from "../../components/dashboardInnerRequestNav/DashboardInnerRequestNav";
 import ReferEarn from "../../components/referEarn/ReferEarn";
+import { useGetUserQuery } from "../../services/auth/authApi";
+import { periodOfTheDay } from "../../helpers/getPeriodOfTheDay";
 
 const paneMenuList = [
   {
@@ -85,8 +87,13 @@ const Dashboard = () => {
   const [sidePaneSelected, setSidePaneSelected] = useState("1");
   const [sidePaneTitleSelected, setSidePaneTitleSelected] = useState();
   const [showIconsOnly, setShowIconsOnly] = useState(false);
+  const { data: UserData, isLoading, isSuccess, error } = useGetUserQuery();
 
-  console.log(innerNavMenuClicked, "Dashboard");
+  if (isSuccess) {
+    console.log(UserData, "Dashboard");
+  }
+
+  const greetings = periodOfTheDay();
 
   const handleInnerNavBarClicked = (inneNavLabel) => {
     setInerMenuClicked(inneNavLabel);
@@ -163,7 +170,9 @@ const Dashboard = () => {
           {sidePaneSelected === "1" && (
             <>
               <div className="dashboard-right-top-panel-wrapper">
-                <p>Good Morning Simisoluwa</p>
+                <p>
+                  {greetings} {UserData && UserData?.user?.first_name}
+                </p>
                 <div>
                   <p>This month</p>
                 </div>
@@ -196,7 +205,7 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <div className="dashboard-chart-details-wrapper">
-                  <RewardCard />
+                  <RewardCard UserData={UserData} />
                   <DashbaordRequestCard />
                 </div>
               </div>

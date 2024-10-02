@@ -78,7 +78,7 @@ const ServiceDetailPage = () => {
         <CustomBackButton title="Back" />
         <div className="inner-main-order-page-header">
           <h2>{serviceData && serviceData[0]?.sub_service_title}</h2>
-          <p className="mt-15 text-xl mb-25">
+          <p className="mt-15 text-xl mb-6">
             Please fill in the following details to make your request.
           </p>
         </div>

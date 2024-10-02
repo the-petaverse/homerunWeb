@@ -22,51 +22,66 @@ import { subServiceData } from "../../data/subCategoryData";
 import { FaEnvelopeOpenText } from "react-icons/fa";
 import CustomPhoneInput from "../customPhoneInput/CustomPhoneInput";
 import { isValidPhoneNumber } from "react-phone-number-input";
+import { useCreatePropertyErrandMutation } from "../../services/propertyErrands/propertyErrand";
 
-const PropertErrand = ({
-  setFormStage,
-  formStage,
-  subcategory,
-  requestId,
-  subRequestId,
-  serviceData,
-}) => {
+const PropertErrand = (props) => {
+  const {
+    setFormStage,
+    formStage,
+    subcategory,
+    requestId,
+    subRequestId,
+    serviceData,
+  } = props;
+
   const [date, setDate] = React.useState(new Date(Date.now()));
   const [fileUplodComponent, setFileUplodComponent] = useState([
     { fileName: "" },
   ]);
+  const [createPropertyErrand, { data, isSuccess, error, isLoading, isError }] =
+    useCreatePropertyErrandMutation();
 
-  console.log(subcategory);
   const {
     register,
     handleSubmit,
     control,
     watch,
     setValue,
+    reset,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      sub_request_name: subcategory,
+      property_service_title: subcategory,
+      property_ordered: subRequestId && subRequestId,
     },
     mode: "all",
   });
-  console.log(isValid);
+
   const watchPhoneNumber = watch("phone_number");
-  const onSubmitData = (data) => {
-    console.log(data);
+  const onSubmitData = async (data) => {
+    data["property_ordered"] = await subRequestId;
+    // console.log(data);
+    await createPropertyErrand(data);
   };
 
   const handleIncreaseFileUploader = () => {
     setFileUplodComponent([...fileUplodComponent, { fileName: "" }]);
   };
 
+  if (isSuccess) {
+    console.log(data);
+  }
+
+  if (error) {
+    console.log(error);
+  }
   const handleDeleteFileUploader = (fileUploaderIndex) => {
     const deletedFileUploader = [...fileUplodComponent];
     deletedFileUploader.splice(fileUploaderIndex, 1);
     setFileUplodComponent(deletedFileUploader);
   };
-  console.log(serviceData);
-  useEffect(() => {}, [serviceData, requestId, subRequestId, isValid]);
+
+  useEffect(() => {}, [serviceData, requestId, subRequestId, isValid, reset]);
 
   return (
     <div className="property-new-request-from-main-container">
@@ -81,15 +96,15 @@ const PropertErrand = ({
 
             <div className="property-form-section-wrapper">
               <CustomImput
-                name="YourName"
+                name="fullName"
                 required="Name is required"
                 placeholder="Your name"
                 // className="main-text-input"
                 type="text"
-                error={errors?.YourName?.message}
+                error={errors?.fullName?.message}
                 register={register}
                 iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
-                style={{ borderColor: errors.YourName ? "red" : "black" }}
+                style={{ borderColor: errors.fullName ? "red" : "black" }}
               />
 
               <CustomPhoneInput
@@ -104,27 +119,27 @@ const PropertErrand = ({
             </div>
             <div className="property-form-section-wrapper">
               <CustomImput
-                name="propertyType"
+                name="proprty_type"
                 required="Property type is required"
                 placeholder="Property Type"
                 iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                 // className="main-text-input"
                 type="text"
-                error={errors?.propertyType?.message}
+                error={errors?.proprty_type?.message}
                 register={register}
-                style={{ borderColor: errors.propertyType ? "red" : "black" }}
+                style={{ borderColor: errors.proprty_type ? "red" : "black" }}
               />
               <CustomImput
-                name="propertyLocation"
+                name="proprty_location"
                 required="Property Location is required"
                 placeholder="Property Location"
                 iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                 // className="main-text-input"
                 type="text"
-                error={errors?.propertyLocation?.message}
+                error={errors?.proprty_location?.message}
                 register={register}
                 style={{
-                  borderColor: errors.propertyLocation ? "red" : "black",
+                  borderColor: errors.proprty_location ? "red" : "black",
                 }}
               />
             </div>
@@ -136,7 +151,7 @@ const PropertErrand = ({
             </div>
           </div>
 
-          {(subcategory === "property-document-processing" ||
+          {/* {(subcategory === "property-document-processing" ||
             subcategory === "post-purchase-development") && (
             <div className="upload-section-wrapper">
               <CustomUpload
@@ -166,7 +181,7 @@ const PropertErrand = ({
                   ))}
               </div>
             </div>
-          )}
+          )} */}
 
           <div className="requirement-wrapper">
             <Requirement serviceData={serviceData} />
@@ -179,7 +194,7 @@ const PropertErrand = ({
             <div className="property-term-section">
               <TermsAndConditionCheckBox
                 register={register}
-                name="terms&conditions"
+                name="terms_conditions"
               />
               <CustomButton
                 title="Make Request"
