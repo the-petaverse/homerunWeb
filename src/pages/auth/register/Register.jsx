@@ -228,20 +228,14 @@ const Register = () => {
                     iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                   />
                   <CustomPhoneInput
+                    inputWatcch={watchPhoneNumber}
                     name="phone_number"
                     control={control}
                     style={{
-                      borderColor: errors.watchPhoneNumber ? "red" : "blue",
+                      borderColor: errors.phone_number ? "red" : "blue",
                     }}
                     register={register}
                   />
-                  <p className="register-phone-number-error-style">
-                    {isValidPhoneNumber(
-                      watchPhoneNumber ? watchPhoneNumber : ""
-                    )
-                      ? undefined
-                      : "Invalid phone number"}
-                  </p>
                 </>
               )}
               {formStep >= 1 && (

@@ -20,6 +20,8 @@ import CustomInputUpload from "../customInputUpload/CustomInputUpload";
 import { filterSubCategory } from "../../util/filterSubCategories";
 import { subServiceData } from "../../data/subCategoryData";
 import { FaEnvelopeOpenText } from "react-icons/fa";
+import CustomPhoneInput from "../customPhoneInput/CustomPhoneInput";
+import { isValidPhoneNumber } from "react-phone-number-input";
 
 const PropertErrand = ({
   setFormStage,
@@ -30,6 +32,9 @@ const PropertErrand = ({
   serviceData,
 }) => {
   const [date, setDate] = React.useState(new Date(Date.now()));
+  const [fileUplodComponent, setFileUplodComponent] = useState([
+    { fileName: "" },
+  ]);
 
   console.log(subcategory);
   const {
@@ -45,11 +50,23 @@ const PropertErrand = ({
     },
     mode: "all",
   });
+  console.log(isValid);
+  const watchPhoneNumber = watch("phone_number");
   const onSubmitData = (data) => {
     console.log(data);
   };
+
+  const handleIncreaseFileUploader = () => {
+    setFileUplodComponent([...fileUplodComponent, { fileName: "" }]);
+  };
+
+  const handleDeleteFileUploader = (fileUploaderIndex) => {
+    const deletedFileUploader = [...fileUplodComponent];
+    deletedFileUploader.splice(fileUploaderIndex, 1);
+    setFileUplodComponent(deletedFileUploader);
+  };
   console.log(serviceData);
-  useEffect(() => {}, [serviceData, requestId, subRequestId]);
+  useEffect(() => {}, [serviceData, requestId, subRequestId, isValid]);
 
   return (
     <div className="property-new-request-from-main-container">
@@ -74,40 +91,41 @@ const PropertErrand = ({
                 iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                 style={{ borderColor: errors.YourName ? "red" : "black" }}
               />
-              <CustomImput
-                name="phoneNumber"
-                required="Phone Number is required"
-                placeholder="Phone number"
-                iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
-                // className="main-text-input"
-                type="text"
-                error={errors?.phoneNumber?.message}
+
+              <CustomPhoneInput
+                name="phone_number"
+                inputWatcch={watchPhoneNumber}
+                control={control}
+                style={{
+                  borderColor: errors.phone_number ? "red" : "black",
+                }}
                 register={register}
-                style={{ borderColor: errors.phoneNumber ? "red" : "black" }}
               />
             </div>
             <div className="property-form-section-wrapper">
               <CustomImput
-                name="middleName"
-                required="Middle name is required"
+                name="propertyType"
+                required="Property type is required"
                 placeholder="Property Type"
                 iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                 // className="main-text-input"
                 type="text"
-                error={errors?.middleName?.message}
+                error={errors?.propertyType?.message}
                 register={register}
-                style={{ borderColor: errors.middleName ? "red" : "black" }}
+                style={{ borderColor: errors.propertyType ? "red" : "black" }}
               />
               <CustomImput
-                name="middleName"
-                required="Middle name is required"
+                name="propertyLocation"
+                required="Property Location is required"
                 placeholder="Property Location"
                 iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                 // className="main-text-input"
                 type="text"
-                error={errors?.middleName?.message}
+                error={errors?.propertyLocation?.message}
                 register={register}
-                style={{ borderColor: errors.middleName ? "red" : "black" }}
+                style={{
+                  borderColor: errors.propertyLocation ? "red" : "black",
+                }}
               />
             </div>
             <div className="text-area-below">
@@ -121,22 +139,31 @@ const PropertErrand = ({
           {(subcategory === "property-document-processing" ||
             subcategory === "post-purchase-development") && (
             <div className="upload-section-wrapper">
-              <CustomUpload />
+              <CustomUpload
+                handleIncreaseFileUploader={handleIncreaseFileUploader}
+              />
 
               <div className="form-upload-section">
-                <CustomImput
-                  name="documentTitle"
-                  required="Graduated Degree is required"
-                  placeholder="Input Document Title"
-                  className="main-text-input"
-                  type="text"
-                  error={errors?.documentTitle?.message}
-                  register={register}
-                  style={{
-                    borderColor: errors.documentTitle ? "red" : "black",
-                  }}
-                />
-                <CustomInputUpload />
+                {fileUplodComponent &&
+                  fileUplodComponent.map((fileUploader, index) => (
+                    <>
+                      <CustomImput
+                        name={`documentTitle-${index}`}
+                        required="Graduated Degree is required"
+                        placeholder="Input Document Title"
+                        className="main-text-input"
+                        type="text"
+                        error={errors?.documentTitle?.message}
+                        register={register}
+                        style={{
+                          borderColor: errors.documentTitle ? "red" : "black",
+                        }}
+                      />
+                      <CustomInputUpload
+                        handleDeleteFileUploader={handleDeleteFileUploader}
+                      />
+                    </>
+                  ))}
               </div>
             </div>
           )}
@@ -157,6 +184,7 @@ const PropertErrand = ({
               <CustomButton
                 title="Make Request"
                 btnStyles="property-button-wrapper"
+                btnDisabled={!isValid && "true"}
               />
             </div>
           </div>

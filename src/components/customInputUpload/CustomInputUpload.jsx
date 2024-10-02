@@ -1,7 +1,7 @@
 import React from "react";
 import "./CustomInputUpload.css";
 
-const CustomInputUpload = () => {
+const CustomInputUpload = ({ handleDeleteFileUploader }) => {
   return (
     <div className="input-upload-container">
       <label for="file-input">
@@ -9,7 +9,11 @@ const CustomInputUpload = () => {
         Click to upload (jpg, pdf, png)
       </label>
       <input type="file" id="file-input" />
-      <img src="/images/x-circle.png" alt="" />
+      <img
+        src="/images/x-circle.png"
+        alt=""
+        onClick={handleDeleteFileUploader}
+      />
     </div>
   );
 };

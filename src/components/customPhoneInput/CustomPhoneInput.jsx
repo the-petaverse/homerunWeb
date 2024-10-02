@@ -4,7 +4,13 @@ import "react-phone-number-input/style.css";
 import PhoneInputWithCountry from "react-phone-number-input/react-hook-form";
 import { isValidPhoneNumber } from "react-phone-number-input";
 
-const CustomPhoneInput = ({ control, style, register, ...rest }) => {
+const CustomPhoneInput = ({
+  control,
+  style,
+  register,
+  inputWatcch,
+  ...rest
+}) => {
   return (
     <div>
       <PhoneInputWithCountry
@@ -18,6 +24,11 @@ const CustomPhoneInput = ({ control, style, register, ...rest }) => {
         // isValidPhoneNumber={console.log(isValidPhoneNumber())}
         // className="main-text-input"
       />
+      <p className="register-phone-number-error-style">
+        {isValidPhoneNumber(inputWatcch ? inputWatcch : "")
+          ? undefined
+          : "Invalid phone number"}
+      </p>
     </div>
   );
 };

@@ -31,4 +31,8 @@
 .PhoneInputCountryIconImg {
   margin-right: 5px;
 }
+.register-phone-number-error-style {
+  color: red;
+  margin-top: 5px;
+}
 /* ===================PhoneInputInput================================ */

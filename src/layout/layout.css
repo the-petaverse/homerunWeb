@@ -1,5 +1,5 @@
 .website-wrapper {
-  min-height: 100dvh;
+  /* min-height: 100dvh; */
   margin-top: 120px;
   display: flex;
   flex-direction: column;
