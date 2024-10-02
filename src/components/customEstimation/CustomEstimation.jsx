@@ -12,16 +12,16 @@ const CustomEstimation = ({ serviceData }) => {
   return (
     <div className="estimated-main-container">
       <div className="estimated-header">
-        <h4>Estimated Payment</h4>
-        <h4>flag</h4>
+        <h4 className="font-bold">Estimated Payment</h4>
+        <h4 className="font-semibold">flag</h4>
       </div>
 
       {serviceData &&
         serviceData[0]?.sub_service_estimated_cost.map((pay, index) => {
           return (
             <ul className="payment-list">
-              <li>{pay.title}</li>
-              <li>$ {pay.cost}</li>
+              <li className="text-lg">{pay.title}</li>
+              <li className="text-lg">${pay.cost}</li>
             </ul>
           );
         })}

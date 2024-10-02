@@ -16,14 +16,14 @@ const ErrandProcesses = ({ serviceData }) => {
           className="errand-process-header"
           onClick={handleShowErrandProcess}
         >
-          <h2>Errand Processes</h2>
+          <h2 className="font-bold text-2xl">Errand Processes</h2>
           {showErrandProcess ? (
             <FaChevronDown size={25} />
           ) : (
             <FaChevronRight size={25} />
           )}
         </div>
-        <p>Please see the entire errand journey</p>
+        <p className="text-lg">Please see the entire errand journey</p>
       </div>
       {showErrandProcess && (
         <div className="errand-process-content-wrapper">

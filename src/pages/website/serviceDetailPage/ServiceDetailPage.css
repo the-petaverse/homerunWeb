@@ -35,6 +35,7 @@
 .top-note-wrapper {
   display: none;
 }
+
 @media (min-width: 1024px) {
   .inner-cointainer-wrapping-left-right-section {
     width: 100%;
@@ -43,24 +44,28 @@
     justify-content: space-between;
   }
   .left-main-container {
-    width: 70%;
+    width: 65%;
   }
   .sidebar-with-small-screen {
     width: 30%;
-    margin-top: -50px;
+    margin-top: -170px;
   }
 
   .inner-main-order-page-header {
-    width: 52%;
+    width: 50%;
     margin-top: 15px;
   }
   .inner-main-order-page-header > h2 {
-    font-size: 2.25em;
+    font-size: 2.55em;
+    line-height: 50px;
+    font-weight: bold;
+    margin-bottom: 15px;
   }
+
   .top-note-wrapper {
     display: block;
     background-color: #fff;
-    padding: 10px;
+    padding: 25px;
     border-radius: 15px;
   }
 }

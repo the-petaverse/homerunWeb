@@ -131,8 +131,10 @@ const SubServiceCard = ({ category }) => {
                   </Image>
                 </div>
                 <div className="card-tile-wrapper">
-                  <h2>{subService.sub_service_title}</h2>
-                  <p>{subService.sub_service_details}</p>
+                  <h2 className="font-bold text-12xl">
+                    {subService.sub_service_title}
+                  </h2>
+                  <p className="">{subService.sub_service_details}</p>
                 </div>
               </div>
             );

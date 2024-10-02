@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 const CustomBackButton = ({ title, backBtnClick }) => {
   const navigate = useNavigate();
   return (
-    <div className="back-arrow-wrapper">
+    <div className="back-arrow-wrapper" onClick={() => navigate(-1)}>
       <IoArrowBack size={25} />
-      <button onClick={() => navigate(-1)}>
+      <button>
         <span>{title}</span>
       </button>
     </div>

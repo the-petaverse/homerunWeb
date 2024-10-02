@@ -78,7 +78,9 @@ const ServiceDetailPage = () => {
         <CustomBackButton title="Back" />
         <div className="inner-main-order-page-header">
           <h2>{serviceData && serviceData[0]?.sub_service_title}</h2>
-          <p>Please fill in the following details to make your request.</p>
+          <p className="mt-15 text-xl mb-25">
+            Please fill in the following details to make your request.
+          </p>
         </div>
       </div>
       {/* )} */}
@@ -175,7 +177,9 @@ const ServiceDetailPage = () => {
           <div className="service-right-container-with-small-screen">
             <div className="top-note-wrapper">
               <CustomNote serviceData={serviceData} />
-              <h3>All funds paid arenonrefundable.</h3>
+              <h3 className="font-bold text-xl">
+                All funds paid arenonrefundable.
+              </h3>
             </div>
             <div className="estimatio-wrapper">
               <CustomEstimation serviceData={serviceData} />
