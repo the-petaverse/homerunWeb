@@ -110,9 +110,9 @@ const Login = () => {
               iconLeft={<TbPasswordUser color="gray" size={20} />}
               iconRight={
                 revealPassword ? (
-                  <FiEye color="gray" size={20} />
-                ) : (
                   <FiEyeOff color="gray" size={20} />
+                ) : (
+                  <FiEye color="gray" size={20} />
                 )
               }
               inconClick={handleShowPassword}

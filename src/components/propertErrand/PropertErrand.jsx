@@ -32,6 +32,7 @@ const PropertErrand = (props) => {
     requestId,
     subRequestId,
     serviceData,
+    setOrderCreated,
   } = props;
 
   const [date, setDate] = React.useState(new Date(Date.now()));
@@ -57,12 +58,17 @@ const PropertErrand = (props) => {
     mode: "all",
   });
 
+  console.log(subRequestId);
   const watchPhoneNumber = watch("phone_number");
+  const watchedFields = watch(); // Watch all form fields
   const onSubmitData = async (data) => {
     const formData = new FormData();
     for (const key in data) {
+      console.log(key);
       if (key === "file") {
         formData.append("proportyDocument", data[key][0]);
+      } else if (key === "property_ordered") {
+        formData.append("property_ordered", subRequestId);
       } else {
         formData.append(key, data[key]);
       }
@@ -76,6 +82,7 @@ const PropertErrand = (props) => {
   };
 
   if (isSuccess) {
+    setOrderCreated(true);
     console.log(data);
   }
 
@@ -88,7 +95,9 @@ const PropertErrand = (props) => {
     setFileUplodComponent(deletedFileUploader);
   };
 
-  useEffect(() => {}, [serviceData, requestId, subRequestId, isValid, reset]);
+  useEffect(() => {
+    // reset(watchedFields);
+  }, [serviceData, requestId, subRequestId, isValid, reset]);
 
   return (
     <div className="property-new-request-from-main-container">
