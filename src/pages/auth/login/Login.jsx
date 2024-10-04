@@ -14,9 +14,12 @@ import { useLoginUserMutation } from "../../../services/auth/authApi";
 import CustomImput from "../../../components/customImput/CustomImput";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { addUserAuth } from "../../../services/slices/authSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [revealPassword, setRevealPassword] = useState(false);
+  const dispatch = useDispatch();
   const toastId = React.useRef(null);
   const cookies = new Cookies();
   const [loginUser, { data: loginData, isLoading, isSuccess, error }] =
@@ -47,6 +50,7 @@ const Login = () => {
         position: "top-right",
       });
     }
+    dispatch(addUserAuth(loginData.data));
     cookies.set("auth_token", loginData?.data);
   }
   if (error) {

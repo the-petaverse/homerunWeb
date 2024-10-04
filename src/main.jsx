@@ -1,36 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  BrowserRouter,
-  // Navigate,
-  // RouterProvider,
-} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
-// import About from "./screens/about/About";
-// import NotFound from "./components/NotFound/NotFound";
-// import Login from "./screens/login/Login";
-// import Register from "./screens/register/Register";
-// import Dashboard from "./screens/dashboard/Dashboard.jsx";
-// import PrivateRoute from "./screens/private/PrivateRoutes.jsx";
-// import Verify from "./screens/verification/Verify.jsx";
-// import ContactUs from "./screens/contactUs/ContactUs.jsx";
-// import ErrandLists from "./screens/errandList/ErrandLists.jsx";
-// import ServiceDetailPage from "./screens/serviceDetailPage/ServiceDetailPage.jsx";
-// import CategoriesDetailPage from "./screens/categoriesDetailPage/CategoriesDetailPage.jsx";
-import { Provider } from "react-redux";
+
+import { Provider, useDispatch } from "react-redux";
 import { store } from "./store.js";
-// import ProtectedRoutes from "./screens/private/ProtectedRoutes.jsx";
-// import Services from "./screens/services/Services.jsx";
-// import ResetPassword from "./components/resetPassword/ResetPassword.jsx";
-// import ForgotPassword from "./screens/forgotPassword/ForgotPassword.jsx";
+import { AuthContextProvider } from "./context/AuthContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       {/* <RouterProvider router={router} /> */}
       <BrowserRouter>
-        <App />
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

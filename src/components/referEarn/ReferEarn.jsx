@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ReferEarn.css";
 import { BsCopy } from "react-icons/bs";
+import { FiCheckSquare } from "react-icons/fi";
+
+import { useGetUserReferrerCodeQuery } from "../../services/referrerSystem/referrerSystem";
+import { useAuthContext } from "../../customHooks/useAuthContext";
 
 const inviteData = [
   {
@@ -26,7 +30,28 @@ const inviteData = [
   },
 ];
 const ReferEarn = () => {
-  const [refererCode, setRefereCode] = useState("Somecodes here");
+  const [refererCode, setRefereCode] = useState("");
+  const { data, isLoading, error, isSuccess } = useGetUserReferrerCodeQuery();
+  const [copiedValue, setCopiedValue] = useState();
+  const conReceived = useAuthContext();
+  console.log(conReceived);
+  if (error) {
+    console.log(error);
+  }
+  const handleCopyCode = async () => {
+    await navigator.clipboard.writeText(refererCode);
+    const copiedText = await navigator.clipboard.readText();
+    if (copiedText) {
+      setCopiedValue(copiedText);
+    }
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      setRefereCode(data?.referrerSystem?.referrer_code);
+    }
+    console.log(copiedValue);
+  }, [isSuccess, copiedValue]);
   return (
     <div className="dashboard-refer-earn-main-container">
       <div className="dashboard-refer-left-pane">
@@ -36,12 +61,21 @@ const ReferEarn = () => {
               type="text"
               className="earn-refer-input"
               value={refererCode}
+              readOnly={true}
             />
-            <BsCopy
-              size={30}
-              className="refer-earninput-icon"
-              onClick={navigator.clipboard.writeText(refererCode)}
-            />
+            {copiedValue ? (
+              <FiCheckSquare
+                size={30}
+                color="green"
+                className="refer-earninput-icon"
+              />
+            ) : (
+              <BsCopy
+                size={30}
+                className="refer-earninput-icon"
+                onClick={handleCopyCode}
+              />
+            )}
           </div>
           <button className="refer-earn-btn">Share</button>
         </div>

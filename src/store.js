@@ -8,12 +8,16 @@ import { paymentApi } from "./services/payment/stripe";
 import cartReducer from "./services/slices/cartSlice";
 import currentUser from "./services/slices/userSlice";
 import { propertyErrandApi } from "./services/propertyErrands/propertyErrand";
+import { referrerSystemApi } from "./services/referrerSystem/referrerSystem";
+import authReducer from "./services/slices/authSlice";
 
 export const store = configureStore({
   reducer: {
     currentUser: currentUser,
     cart: cartReducer,
+    auth: authReducer,
     [propertyErrandApi.reducerPath]: propertyErrandApi.reducer,
+    [referrerSystemApi.reducerPath]: referrerSystemApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     [requestsApi.reducerPath]: requestsApi.reducer,
     [errandApi.reducerPath]: errandApi.reducer,
@@ -26,7 +30,8 @@ export const store = configureStore({
       requestsApi.middleware,
       errandApi.middleware,
       paymentApi.middleware,
-      propertyErrandApi.middleware
+      propertyErrandApi.middleware,
+      referrerSystemApi.middleware
     ),
 });
 

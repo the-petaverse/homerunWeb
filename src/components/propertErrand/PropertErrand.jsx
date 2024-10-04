@@ -59,9 +59,16 @@ const PropertErrand = (props) => {
 
   const watchPhoneNumber = watch("phone_number");
   const onSubmitData = async (data) => {
-    data["property_ordered"] = await subRequestId;
-    // console.log(data);
-    await createPropertyErrand(data);
+    const formData = new FormData();
+    for (const key in data) {
+      if (key === "file") {
+        formData.append("proportyDocument", data[key][0]);
+      } else {
+        formData.append(key, data[key]);
+      }
+    }
+
+    await createPropertyErrand(formData);
   };
 
   const handleIncreaseFileUploader = () => {
@@ -151,7 +158,7 @@ const PropertErrand = (props) => {
             </div>
           </div>
 
-          {/* {(subcategory === "property-document-processing" ||
+          {(subcategory === "property-document-processing" ||
             subcategory === "post-purchase-development") && (
             <div className="upload-section-wrapper">
               <CustomUpload
@@ -162,7 +169,7 @@ const PropertErrand = (props) => {
                 {fileUplodComponent &&
                   fileUplodComponent.map((fileUploader, index) => (
                     <>
-                      <CustomImput
+                      {/* <CustomImput
                         name={`documentTitle-${index}`}
                         required="Graduated Degree is required"
                         placeholder="Input Document Title"
@@ -173,15 +180,17 @@ const PropertErrand = (props) => {
                         style={{
                           borderColor: errors.documentTitle ? "red" : "black",
                         }}
-                      />
+                      /> */}
                       <CustomInputUpload
+                        // name="proportyDocument"
+                        register={register}
                         handleDeleteFileUploader={handleDeleteFileUploader}
                       />
                     </>
                   ))}
               </div>
             </div>
-          )} */}
+          )}
 
           <div className="requirement-wrapper">
             <Requirement serviceData={serviceData} />

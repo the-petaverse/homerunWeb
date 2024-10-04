@@ -4,9 +4,11 @@ import Cookies from "universal-cookie";
 export const apiHeader = fetchBaseQuery({
   // baseUrl: "https://homerun-backend.onrender.com/api/v1/",
   baseUrl: "http://localhost:4200/api/v1/",
+
   prepareHeaders: (headers, { getState }) => {
     const cookies = new Cookies();
 
+    console.log(getState);
     let token;
     if (cookies.get("auth_token")) {
       token = cookies.get("auth_token");
@@ -22,6 +24,7 @@ export const apiHeader = fetchBaseQuery({
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
     }
+
     return headers;
   },
 });
