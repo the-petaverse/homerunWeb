@@ -3,16 +3,14 @@ import "./CustomButton.css";
 
 const CustomButton = ({ title, btnStyles, btnOnClick, btnDisabled }) => {
   return (
-    <div>
-      <button
-        onClick={btnOnClick}
-        className={`${btnStyles}`}
-        disabled={btnDisabled}
-        style={{ backgroundColor: btnDisabled ? "gray" : "" }}
-      >
-        {title}
-      </button>
-    </div>
+    <button
+      onClick={btnOnClick}
+      className={btnStyles ? btnStyles : "customBtnStyle"}
+      disabled={btnDisabled}
+      style={{ backgroundColor: btnDisabled ? "gray" : "" }}
+    >
+      {title}
+    </button>
   );
 };
 

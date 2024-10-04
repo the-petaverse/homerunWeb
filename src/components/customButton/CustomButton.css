@@ -1,1 +1,11 @@
-
+.customBtnStyle {
+  width: 100%;
+  background-color: rgb(16, 4, 91);
+  height: 40px;
+  border-radius: 25px;
+  border: solid 0.5px rgb(18, 2, 86);
+  color: #fff;
+  font-size: 1.25em;
+  cursor: pointer;
+  margin-bottom: 30px;
+}

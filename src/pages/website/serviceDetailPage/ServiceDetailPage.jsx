@@ -195,10 +195,7 @@ const ServiceDetailPage = () => {
           </div>
         </>
       )}
-      <div>
-        <h1>Payment page</h1>
-        <PaymentComponent />
-      </div>
+      {orderCreated && <PaymentComponent />}
     </div>
   );
 };
