@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Dashboard.css";
 import Navbar from "../../components/Navbar/Navbar";
 import { SiNintendoswitch } from "react-icons/si";
@@ -104,12 +104,14 @@ const Dashboard = () => {
       isLoading: paymenyLoading,
       isSuccess: paymentSuccess,
       error: paymentError,
+      isFetching,
     },
   ] = useCreatePaymentMutation();
 
   if (isSuccess) {
     console.log(UserData, "Dashboard");
   }
+
   if (paymentSuccess) {
     console.log(paymentData);
   }
@@ -118,14 +120,12 @@ const Dashboard = () => {
   }
 
   const handlePaymentCreations = async () => {
-    try {
-      const data = {
-        email: "micheaol80@gmail.com",
-      };
-      const result = await createPayment(data);
-      console.log(result);
-      window.location.href = result.data.authorization_url;
-    } catch (error) {}
+    const data = {
+      email: "micheaol80@gmail.com",
+    };
+    const result = await createPayment(data);
+    console.log(result);
+    window.location.href = result.data.authorization_url;
   };
   const greetings = periodOfTheDay();
 
@@ -143,6 +143,12 @@ const Dashboard = () => {
   const handleShowOnlyIcons = () => {
     setShowIconsOnly((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (isFetching) {
+      console.log("paymenyLoading .......");
+    }
+  }, [paymenyLoading, isFetching]);
 
   // console.log(reference);
   return (

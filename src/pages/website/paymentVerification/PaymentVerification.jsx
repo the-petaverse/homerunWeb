@@ -25,11 +25,26 @@ const PaymentVerification = () => {
   }, [reference, isLoading, error, isSuccess, isFetching]);
   return (
     <div className="pt-[100] bg-white h-[70dvh] flex flex-col px-28 text-center">
-      <h1 className="mt-10">Payment Verification</h1>
-      <div>
-        <p className="text-black mt-5">Payment verified successfully!</p>
+      <h1 className="mt-10 text-3xl font-bold">
+        Payment transaction completed!
+      </h1>
+      <div className="lg:w-[10%] mr-auto ml-auto my-6">
+        <img
+          src="/images/success.png"
+          alt="succes image"
+          className="w-[100%]"
+        />
       </div>
-      <div className="lg:w-[30%] max-sm:w-[100%] mr-auto ml-auto mt-20">
+      <div>
+        <p className="text-xl">Your Request has been submittd successfully.</p>
+        <p className="text-xl">
+          A member of our team will contact you shortly to carry out your errand
+        </p>
+        <p className="text-xl">
+          Once again, thank you for trusting us with your errand
+        </p>
+      </div>
+      <div className="lg:w-[30%] max-sm:w-[100%] mr-auto ml-auto mt-12">
         <CustomButton
           title="Back to Dashboard"
           btnOnClick={handleBackToDashboard}
