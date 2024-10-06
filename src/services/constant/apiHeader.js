@@ -8,7 +8,6 @@ export const apiHeader = fetchBaseQuery({
   prepareHeaders: (headers, { getState }) => {
     const cookies = new Cookies();
 
-    console.log(getState);
     let token;
     if (cookies.get("auth_token")) {
       token = cookies.get("auth_token");

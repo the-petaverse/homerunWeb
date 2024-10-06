@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CustomButton from "../customButton/CustomButton";
+// import { useCreatePaymentMutation } from "../../services/payment/paystack";
 
-const PaymentComponent = () => {
+const PaymentComponent = ({ handlePaymentCreations }) => {
+  // useEffect(() => {
+  //   if (isLoading) {
+  //     console.log("isLoading.....");
+  //   }
+  //   if (isSuccess) {
+  //     console.log("object success");
+  //     console.log(data);
+  //   }
+  //   if (error) {
+  //     console.log(error);
+  //   }
+  // }, [isSuccess, error]);
+
   return (
     <div className="bg-full sm: h-[80dvh]">
       <div className="sm:w-[100%] lg:w-[65%] bg-white mr-auto ml-auto h-[85%] sm:mt-0 lg:mt-10 rounded-2xl p-5 text-center flex flex-col justify-between">
@@ -27,7 +41,7 @@ const PaymentComponent = () => {
         <div className="border-b-[0.1em]"></div>
         <div className="sm:w-[60%] lg:w-[32%] max-sm:w-[100%] lg:mr-auto lg:ml-auto sm:mr-auto sm:ml-auto lg:flex-row max-sm:flex-col mt-10 self-end">
           {/* <CustomButton title="Cancel" /> */}
-          <CustomButton title="Pay Now" />
+          <CustomButton title="Pay Now" btnOnClick={handlePaymentCreations} />
         </div>
       </div>
     </div>

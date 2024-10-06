@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import BackIcon from "/images/back-arrow.png";
 import "./ServiceDetailPage.css";
 import NewRequest from "../../../components/newRequest/NewRequest";
@@ -29,6 +29,7 @@ import PaymentComponent from "../../../components/paymentComponent/PaymentCompon
 
 const ServiceDetailPage = () => {
   const screenSize = useScreenSize();
+  const navigate = useNavigate();
   const location = useLocation();
   const [serviceData, setServiceData] = useState([]);
   const [orderCreated, setOrderCreated] = useState(false);
@@ -75,127 +76,125 @@ const ServiceDetailPage = () => {
     if (screenSize.width >= 1024) {
       customScrollSidebar();
     }
-  }, [isSuccess, screenSize.width]);
+    if (orderCreated) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, [isSuccess, orderCreated]);
   return (
     <div className="main-order-page-container">
-      {!orderCreated && (
-        <>
-          <div className="main-order-page-header">
-            <CustomBackButton title="Back" />
-            <div className="inner-main-order-page-header">
-              <h2>{serviceData && serviceData[0]?.sub_service_title}</h2>
-              <p className="mt-15 text-xl mb-6">
-                Please fill in the following details to make your request.
-              </p>
+      <div className="main-order-page-header">
+        <CustomBackButton title="Back" />
+        <div className="inner-main-order-page-header">
+          <h2>{serviceData && serviceData[0]?.sub_service_title}</h2>
+          <p className="mt-15 text-xl mb-6">
+            Please fill in the following details to make your request.
+          </p>
+        </div>
+      </div>
+      <div className="inner-cointainer-wrapping-left-right-section">
+        <div className="left-main-container">
+          {(subcategory === "property-mangement" ||
+            subcategory === "property-post-purchase" ||
+            subcategory === "property-document-processing" ||
+            subcategory === "pre-purchase-verification") && (
+            <PropertErrand
+              formStage={formStage}
+              setFormStage={setFormStage}
+              subcategory={subcategory}
+              requestId={requestId}
+              subRequestId={subRequestId}
+              serviceData={serviceData}
+              setOrderCreated={setOrderCreated}
+            />
+          )}
+          {(serviceCategory === "surprise_gifts" ||
+            subcategory === "cake-items" ||
+            serviceSubCategory === "hamper-items") && (
+            <SurpriseOrderGroup
+              serviceName={subcategory}
+              serviceSubCategory={serviceSubCategory}
+              serviceCategory={serviceCategory}
+              serviceData={serviceData}
+            />
+          )}
+          {(subcategory === "transcript_collection" ||
+            subcategory === "higher-education-certificate-collection") && (
+            <NewRequest
+              formStage={formStage}
+              setFormStage={setFormStage}
+              subcategory={subcategory}
+              requestId={requestId}
+              subRequestId={subRequestId}
+              serviceCategory={serviceCategory}
+              serviceData={serviceData}
+            />
+          )}
+          {serviceCategory && serviceCategory === "grocery_food" && (
+            <GroceryOrderGroup
+              serviceName={subcategory}
+              serviceSubCategory={serviceSubCategory}
+              serviceCategory={serviceCategory}
+            />
+          )}
+          {subcategory &&
+            (subcategory === "hotel-booking" ||
+              subcategory === "car-booking") && (
+              <OrderWithTopBanner
+                serviceName={subcategory}
+                serviceSubCategory={serviceSubCategory}
+                serviceCategory={serviceCategory}
+                serviceData={serviceData}
+              />
+            )}
+          {subcategory === "birth-certificate" && (
+            <BirthCertificate
+              formStage={formStage}
+              setFormStage={setFormStage}
+              serviceSubCategory={serviceSubCategory}
+              serviceCategory={serviceCategory}
+              requestId={requestId}
+              subRequestId={subRequestId}
+              serviceData={serviceData}
+            />
+          )}
+          {(subcategory === "passport_collection" ||
+            subcategory === "police-report" ||
+            subcategory === "other-certificate" ||
+            subcategory === "sworn-affidavits") && (
+            <PassportPoliceReport
+              formStage={formStage}
+              setFormStage={setFormStage}
+              subcategory={subcategory}
+              requestId={requestId}
+              subRequestId={subRequestId}
+              serviceData={serviceData}
+            />
+          )}
+          {subcategory === "single-parent-certificate" && (
+            <SingleParentCertificate
+              formStage={formStage}
+              setFormStage={setFormStage}
+              subcategory={subcategory}
+              requestId={requestId}
+              subRequestId={subRequestId}
+              serviceData={serviceData}
+            />
+          )}
+        </div>
+        <div className="sidebar-with-small-screen">
+          <div className="service-right-container-with-small-screen">
+            <div className="top-note-wrapper">
+              <CustomNote serviceData={serviceData} />
+              <h3 className="font-bold text-xl">
+                All funds paid arenonrefundable.
+              </h3>
+            </div>
+            <div className="estimatio-wrapper">
+              <CustomEstimation serviceData={serviceData} />
             </div>
           </div>
-          <div className="inner-cointainer-wrapping-left-right-section">
-            <div className="left-main-container">
-              {(subcategory === "property-mangement" ||
-                subcategory === "property-post-purchase" ||
-                subcategory === "property-document-processing" ||
-                subcategory === "pre-purchase-verification") && (
-                <PropertErrand
-                  formStage={formStage}
-                  setFormStage={setFormStage}
-                  subcategory={subcategory}
-                  requestId={requestId}
-                  subRequestId={subRequestId}
-                  serviceData={serviceData}
-                  setOrderCreated={setOrderCreated}
-                />
-              )}
-              {(serviceCategory === "surprise_gifts" ||
-                subcategory === "cake-items" ||
-                serviceSubCategory === "hamper-items") && (
-                <SurpriseOrderGroup
-                  serviceName={subcategory}
-                  serviceSubCategory={serviceSubCategory}
-                  serviceCategory={serviceCategory}
-                  serviceData={serviceData}
-                />
-              )}
-              {(subcategory === "transcript_collection" ||
-                subcategory === "higher-education-certificate-collection") && (
-                <NewRequest
-                  formStage={formStage}
-                  setFormStage={setFormStage}
-                  subcategory={subcategory}
-                  requestId={requestId}
-                  subRequestId={subRequestId}
-                  serviceCategory={serviceCategory}
-                  serviceData={serviceData}
-                />
-              )}
-              {serviceCategory && serviceCategory === "grocery_food" && (
-                <GroceryOrderGroup
-                  serviceName={subcategory}
-                  serviceSubCategory={serviceSubCategory}
-                  serviceCategory={serviceCategory}
-                />
-              )}
-              {subcategory &&
-                (subcategory === "hotel-booking" ||
-                  subcategory === "car-booking") && (
-                  <OrderWithTopBanner
-                    serviceName={subcategory}
-                    serviceSubCategory={serviceSubCategory}
-                    serviceCategory={serviceCategory}
-                    serviceData={serviceData}
-                  />
-                )}
-              {subcategory === "birth-certificate" && (
-                <BirthCertificate
-                  formStage={formStage}
-                  setFormStage={setFormStage}
-                  serviceSubCategory={serviceSubCategory}
-                  serviceCategory={serviceCategory}
-                  requestId={requestId}
-                  subRequestId={subRequestId}
-                  serviceData={serviceData}
-                />
-              )}
-              {(subcategory === "passport_collection" ||
-                subcategory === "police-report" ||
-                subcategory === "other-certificate" ||
-                subcategory === "sworn-affidavits") && (
-                <PassportPoliceReport
-                  formStage={formStage}
-                  setFormStage={setFormStage}
-                  subcategory={subcategory}
-                  requestId={requestId}
-                  subRequestId={subRequestId}
-                  serviceData={serviceData}
-                />
-              )}
-              {subcategory === "single-parent-certificate" && (
-                <SingleParentCertificate
-                  formStage={formStage}
-                  setFormStage={setFormStage}
-                  subcategory={subcategory}
-                  requestId={requestId}
-                  subRequestId={subRequestId}
-                  serviceData={serviceData}
-                />
-              )}
-            </div>
-            <div className="sidebar-with-small-screen">
-              <div className="service-right-container-with-small-screen">
-                <div className="top-note-wrapper">
-                  <CustomNote serviceData={serviceData} />
-                  <h3 className="font-bold text-xl">
-                    All funds paid arenonrefundable.
-                  </h3>
-                </div>
-                <div className="estimatio-wrapper">
-                  <CustomEstimation serviceData={serviceData} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-      {orderCreated && <PaymentComponent />}
+        </div>
+      </div>
     </div>
   );
 };

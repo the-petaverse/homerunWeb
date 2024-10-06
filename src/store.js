@@ -10,12 +10,14 @@ import currentUser from "./services/slices/userSlice";
 import { propertyErrandApi } from "./services/propertyErrands/propertyErrand";
 import { referrerSystemApi } from "./services/referrerSystem/referrerSystem";
 import authReducer from "./services/slices/authSlice";
+import { paystackApi } from "./services/payment/paystack";
 
 export const store = configureStore({
   reducer: {
     currentUser: currentUser,
     cart: cartReducer,
     auth: authReducer,
+    [paystackApi.reducerPath]: paymentApi.reducer,
     [propertyErrandApi.reducerPath]: propertyErrandApi.reducer,
     [referrerSystemApi.reducerPath]: referrerSystemApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
@@ -30,6 +32,7 @@ export const store = configureStore({
       requestsApi.middleware,
       errandApi.middleware,
       paymentApi.middleware,
+      paystackApi.middleware,
       propertyErrandApi.middleware,
       referrerSystemApi.middleware
     ),

@@ -7,7 +7,7 @@ import { RiHome7Fill } from "react-icons/ri";
 import { FiShoppingCart } from "react-icons/fi";
 import { MdOutlinePayments } from "react-icons/md";
 import Cookies from "universal-cookie";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DashboardTopCard from "../../components/dashboardTopCard/DashboardTopCard";
 import QuickActionCard from "../../components/quickActionCard/QuickActionCard";
 import { serviceCategory } from "../../data/categoryData";
@@ -17,6 +17,11 @@ import DashboardInnerRequestNav from "../../components/dashboardInnerRequestNav/
 import ReferEarn from "../../components/referEarn/ReferEarn";
 import { useGetUserQuery } from "../../services/auth/authApi";
 import { periodOfTheDay } from "../../helpers/getPeriodOfTheDay";
+import PaymentComponent from "../../components/paymentComponent/PaymentComponent";
+import {
+  useCreatePaymentMutation,
+  useVerifyPaymentQuery,
+} from "../../services/payment/paystack";
 
 const paneMenuList = [
   {
@@ -83,16 +88,45 @@ const myRequestInnerNavData = [
 const Dashboard = () => {
   const cookies = new Cookies();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [orderCreated, setOrderCreated] = useState(true);
   const [innerNavMenuClicked, setInerMenuClicked] = useState("Active");
   const [sidePaneSelected, setSidePaneSelected] = useState("1");
   const [sidePaneTitleSelected, setSidePaneTitleSelected] = useState();
   const [showIconsOnly, setShowIconsOnly] = useState(false);
   const { data: UserData, isLoading, isSuccess, error } = useGetUserQuery();
 
+  // const reference = query.get("reference");
+  const [
+    createPayment,
+    {
+      data: paymentData,
+      isLoading: paymenyLoading,
+      isSuccess: paymentSuccess,
+      error: paymentError,
+    },
+  ] = useCreatePaymentMutation();
+
   if (isSuccess) {
     console.log(UserData, "Dashboard");
   }
+  if (paymentSuccess) {
+    console.log(paymentData);
+  }
+  if (paymentError) {
+    console.log(paymentError);
+  }
 
+  const handlePaymentCreations = async () => {
+    try {
+      const data = {
+        email: "micheaol80@gmail.com",
+      };
+      const result = await createPayment(data);
+      console.log(result);
+      window.location.href = result.data.authorization_url;
+    } catch (error) {}
+  };
   const greetings = periodOfTheDay();
 
   const handleInnerNavBarClicked = (inneNavLabel) => {
@@ -101,6 +135,7 @@ const Dashboard = () => {
   const handleSelectLeftPaneMenu = (pandId) => {
     setSidePaneSelected(pandId);
   };
+
   const handleLogOut = () => {
     cookies.remove("auth_token");
     navigate("/login", { replace: true });
@@ -108,6 +143,8 @@ const Dashboard = () => {
   const handleShowOnlyIcons = () => {
     setShowIconsOnly((prev) => !prev);
   };
+
+  // console.log(reference);
   return (
     <>
       <Navbar />
@@ -167,79 +204,86 @@ const Dashboard = () => {
               : "dashboard-right-panel-wrapper"
           }
         >
-          {sidePaneSelected === "1" && (
+          {!orderCreated && (
             <>
-              <div className="dashboard-right-top-panel-wrapper">
-                <p>
-                  {greetings} {UserData && UserData?.user?.first_name}
-                </p>
-                <div>
-                  <p>This month</p>
-                </div>
-              </div>
-              <div className="dashboard-right-bottom-panel-wrapper">
-                <div className="dashbaord-top-card-holder-wrapper">
-                  <div className="dashboard-center-details-wrapper">
-                    <div className="dashboard-center-details-headers">
-                      <h3>Current Request</h3>
-                      <div>
-                        <p>View all</p>
+              {sidePaneSelected === "1" && (
+                <>
+                  <div className="dashboard-right-top-panel-wrapper">
+                    <p>
+                      {greetings} {UserData && UserData?.user?.first_name}
+                    </p>
+                    <div>
+                      <p>This month</p>
+                    </div>
+                  </div>
+                  <div className="dashboard-right-bottom-panel-wrapper">
+                    <div className="dashbaord-top-card-holder-wrapper">
+                      <div className="dashboard-center-details-wrapper">
+                        <div className="dashboard-center-details-headers">
+                          <h3>Current Request</h3>
+                          <div>
+                            <p>View all</p>
+                          </div>
+                        </div>
+                        <DashboardTopCard showIconsOnly={showIconsOnly} />
+                      </div>
+                      <div className="dashboard-quick-action-section">
+                        <p>Quick Actions</p>
+                        <div className="dashboard-quick-action-card-wrapper">
+                          {serviceCategory &&
+                            serviceCategory.map((serviceData, index) => (
+                              <QuickActionCard
+                                serviceData={serviceData}
+                                index={index}
+                              />
+                            ))}
+                        </div>
+                      </div>
+                      <div className="dashboard-quick-action-section">
+                        <p>Recent Activities</p>
                       </div>
                     </div>
-                    <DashboardTopCard showIconsOnly={showIconsOnly} />
-                  </div>
-                  <div className="dashboard-quick-action-section">
-                    <p>Quick Actions</p>
-                    <div className="dashboard-quick-action-card-wrapper">
-                      {serviceCategory &&
-                        serviceCategory.map((serviceData, index) => (
-                          <QuickActionCard
-                            serviceData={serviceData}
-                            index={index}
-                          />
-                        ))}
+                    <div className="dashboard-chart-details-wrapper">
+                      <RewardCard UserData={UserData} />
+                      <DashbaordRequestCard />
                     </div>
                   </div>
-                  <div className="dashboard-quick-action-section">
-                    <p>Recent Activities</p>
-                  </div>
-                </div>
-                <div className="dashboard-chart-details-wrapper">
-                  <RewardCard UserData={UserData} />
-                  <DashbaordRequestCard />
-                </div>
-              </div>
-            </>
-          )}
-          {sidePaneSelected === "3" && (
-            <>
-              <div>
-                <div>
-                  <DashboardInnerRequestNav
-                    handleInnerNavBarClicked={handleInnerNavBarClicked}
-                    myRequestInnerNavData={myRequestInnerNavData}
-                    innerNavMenuClicked={innerNavMenuClicked}
-                  />
-                </div>
-                <div className="dashboard-request-main-status-wrapper">
-                  <p>{innerNavMenuClicked} Request(s)</p>
+                </>
+              )}
+              {sidePaneSelected === "3" && (
+                <>
                   <div>
-                    <DashboardTopCard
-                      innerNavMenuClicked={innerNavMenuClicked}
-                      showIconsOnly={showIconsOnly}
-                    />
+                    <div>
+                      <DashboardInnerRequestNav
+                        handleInnerNavBarClicked={handleInnerNavBarClicked}
+                        myRequestInnerNavData={myRequestInnerNavData}
+                        innerNavMenuClicked={innerNavMenuClicked}
+                      />
+                    </div>
+                    <div className="dashboard-request-main-status-wrapper">
+                      <p>{innerNavMenuClicked} Request(s)</p>
+                      <div>
+                        <DashboardTopCard
+                          innerNavMenuClicked={innerNavMenuClicked}
+                          showIconsOnly={showIconsOnly}
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </>
+              )}
+              {sidePaneSelected === "5" && (
+                <>
+                  <div className="refer-earn-main-wrapper">
+                    <h1>Refer & Earn</h1>
+                    <ReferEarn />
+                  </div>
+                </>
+              )}
             </>
           )}
-          {sidePaneSelected === "5" && (
-            <>
-              <div className="refer-earn-main-wrapper">
-                <h1>Refer & Earn</h1>
-                <ReferEarn />
-              </div>
-            </>
+          {orderCreated && (
+            <PaymentComponent handlePaymentCreations={handlePaymentCreations} />
           )}
         </div>
       </div>

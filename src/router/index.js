@@ -22,6 +22,9 @@ const ErrandLists = lazy(() =>
   import("../pages/website/errandList/ErrandLists")
 );
 const ContactUs = lazy(() => import("../pages/website/contactUs/ContactUs"));
+const PaymentVerificationPage = lazy(() =>
+  import("../pages/website/paymentVerification/PaymentVerification")
+);
 const SurpriseDetailPage = lazy(() =>
   import("../pages/website/surprisesSubServices/SurprisesSubServices")
 );
@@ -59,6 +62,11 @@ export const websiteRoutes = [
     path: "/sub-category/:subcategory",
     title: "Service Detail Page Page",
     component: ServiceDetailPage,
+  },
+  {
+    path: "/payment/transaction/verify-payment",
+    title: "Payment verification Page",
+    component: PaymentVerificationPage,
   },
   {
     path: "/checkout",
