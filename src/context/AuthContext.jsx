@@ -1,14 +1,13 @@
-import { createContext, useContext } from "react";
-import { useSelector } from "react-redux";
+import { createContext, useState } from "react";
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  // Create or receive the state to add
-  // to the context here
-  const userAuth = useSelector((state) => state.auth);
+  const [auth, setAuth] = useState(null);
 
   return (
-    <AuthContext.Provider value={userAuth}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ auth, setAuth }}>
+      {children}
+    </AuthContext.Provider>
   );
 };

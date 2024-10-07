@@ -7,6 +7,7 @@ import "./index.css";
 import { Provider, useDispatch } from "react-redux";
 import { store } from "./store.js";
 import { AuthContextProvider } from "./context/AuthContext";
+import OrderContextProvider from "./context/orderContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -14,7 +15,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       {/* <RouterProvider router={router} /> */}
       <BrowserRouter>
         <AuthContextProvider>
-          <App />
+          <OrderContextProvider>
+            <App />
+          </OrderContextProvider>
         </AuthContextProvider>
       </BrowserRouter>
     </Provider>
