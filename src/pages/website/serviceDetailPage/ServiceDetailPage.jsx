@@ -26,6 +26,7 @@ import GroceryOrderGroup from "../../../components/groceryOrderGroup/GroceryOrde
 import useScreenSize from "../../../helpers/useScreenSize";
 import PayButton from "../../../components/payButton/PayButton";
 import PaymentComponent from "../../../components/paymentComponent/PaymentComponent";
+import { useSelector } from "react-redux";
 
 const ServiceDetailPage = () => {
   const screenSize = useScreenSize();
@@ -33,7 +34,7 @@ const ServiceDetailPage = () => {
   const location = useLocation();
   const [serviceData, setServiceData] = useState([]);
   const [orderCreated, setOrderCreated] = useState(false);
-
+  const { userOrder } = useSelector((state) => state.userOrder);
   const [requestId, setRequestId] = useState();
   const [subRequestId, setSubRequestId] = useState();
   const [formStage, setFormStage] = useState(0);
@@ -70,16 +71,16 @@ const ServiceDetailPage = () => {
   // const subServices = filterSubCategory(subServiceData, subcategory);
   //Implementation to make sidebar sticky
 
-  console.log(orderCreated, "Show up");
   useEffect(() => {
     filterRequestedServcie();
     if (screenSize.width >= 1024) {
       customScrollSidebar();
     }
-    if (orderCreated) {
+    if (userOrder !== undefined) {
+      // console.log(userOrder);
       navigate("/dashboard", { replace: true });
     }
-  }, [isSuccess, orderCreated]);
+  }, [isSuccess, userOrder]);
   return (
     <div className="main-order-page-container">
       <div className="main-order-page-header">

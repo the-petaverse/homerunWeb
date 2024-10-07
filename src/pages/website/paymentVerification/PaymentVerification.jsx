@@ -2,9 +2,13 @@ import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useVerifyPaymentQuery } from "../../../services/payment/paystack";
 import CustomButton from "../../../components/customButton/CustomButton";
+import { useDispatch, useSelector } from "react-redux";
+import { addUserOrder } from "../../../services/slices/userOrder";
 
 const PaymentVerification = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { userOrder } = useSelector((state) => state.userOrder);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const reference = searchParams.get("reference");
@@ -13,6 +17,7 @@ const PaymentVerification = () => {
       skip: !reference,
     });
   const handleBackToDashboard = () => {
+    localStorage.removeItem("user_order");
     navigate("/dashboard", { replace: true });
   };
   useEffect(() => {
@@ -22,7 +27,10 @@ const PaymentVerification = () => {
     if (isSuccess) {
       console.log(data);
     }
-  }, [reference, isLoading, error, isSuccess, isFetching]);
+    if (userOrder === undefined) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, [reference, isLoading, error, isSuccess, isFetching, userOrder]);
   return (
     <div className="pt-[100] bg-white  flex flex-col max-sm:px-8 lg:px-28 text-center pb-10 ">
       <h1 className="mt-10 text-3xl font-bold">

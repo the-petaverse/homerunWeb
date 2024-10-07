@@ -22,6 +22,7 @@ import {
   useCreatePaymentMutation,
   useVerifyPaymentQuery,
 } from "../../services/payment/paystack";
+import { useSelector } from "react-redux";
 
 const paneMenuList = [
   {
@@ -89,6 +90,7 @@ const Dashboard = () => {
   const cookies = new Cookies();
   const navigate = useNavigate();
   const location = useLocation();
+  const { userOrder } = useSelector((state) => state.userOrder);
   const [orderCreated, setOrderCreated] = useState(true);
   const [innerNavMenuClicked, setInerMenuClicked] = useState("Active");
   const [sidePaneSelected, setSidePaneSelected] = useState("1");
@@ -97,6 +99,7 @@ const Dashboard = () => {
   const { data: UserData, isLoading, isSuccess, error } = useGetUserQuery();
 
   // const reference = query.get("reference");
+
   const [
     createPayment,
     {
@@ -108,6 +111,9 @@ const Dashboard = () => {
     },
   ] = useCreatePaymentMutation();
 
+  if (userOrder !== undefined) {
+    console.log(userOrder);
+  }
   if (isSuccess) {
     console.log(UserData, "Dashboard");
   }
@@ -148,7 +154,7 @@ const Dashboard = () => {
     if (isFetching) {
       console.log("paymenyLoading .......");
     }
-  }, [paymenyLoading, isFetching]);
+  }, [paymenyLoading, isFetching, userOrder]);
 
   // console.log(reference);
   return (
@@ -210,7 +216,7 @@ const Dashboard = () => {
               : "dashboard-right-panel-wrapper"
           }
         >
-          {!orderCreated && (
+          {userOrder === undefined && (
             <>
               {sidePaneSelected === "1" && (
                 <>
@@ -288,7 +294,7 @@ const Dashboard = () => {
               )}
             </>
           )}
-          {orderCreated && (
+          {userOrder !== undefined && (
             <PaymentComponent handlePaymentCreations={handlePaymentCreations} />
           )}
         </div>

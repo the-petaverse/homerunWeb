@@ -23,6 +23,8 @@ import { FaEnvelopeOpenText } from "react-icons/fa";
 import CustomPhoneInput from "../customPhoneInput/CustomPhoneInput";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import { useCreatePropertyErrandMutation } from "../../services/propertyErrands/propertyErrand";
+import { useDispatch, useSelector } from "react-redux";
+import { addUserOrder } from "../../services/slices/userOrder";
 
 const PropertErrand = (props) => {
   const {
@@ -32,9 +34,10 @@ const PropertErrand = (props) => {
     requestId,
     subRequestId,
     serviceData,
-    setOrderCreated,
   } = props;
 
+  const userOrder = useSelector((state) => state.userOrder);
+  const dispatch = useDispatch();
   const [date, setDate] = React.useState(new Date(Date.now()));
   const [fileUplodComponent, setFileUplodComponent] = useState([
     { fileName: "" },
@@ -58,7 +61,6 @@ const PropertErrand = (props) => {
     mode: "all",
   });
 
-  console.log(subRequestId);
   const watchPhoneNumber = watch("phone_number");
   const watchedFields = watch(); // Watch all form fields
   const onSubmitData = async (data) => {
@@ -73,7 +75,6 @@ const PropertErrand = (props) => {
         formData.append(key, data[key]);
       }
     }
-
     await createPropertyErrand(formData);
   };
 
@@ -82,7 +83,8 @@ const PropertErrand = (props) => {
   };
 
   if (isSuccess) {
-    setOrderCreated(true);
+    // setOrderCreated(true);
+    dispatch(addUserOrder(data));
     console.log(data);
   }
 
