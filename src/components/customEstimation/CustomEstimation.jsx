@@ -21,7 +21,7 @@ const CustomEstimation = ({ serviceData }) => {
           return (
             <ul className="payment-list">
               <li className="text-lg">{pay.title}</li>
-              <li className="text-lg">${pay.cost}</li>
+              <li className="text-lg">N {pay.cost}</li>
             </ul>
           );
         })}

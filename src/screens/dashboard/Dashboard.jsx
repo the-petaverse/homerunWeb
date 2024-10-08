@@ -23,6 +23,7 @@ import {
   useVerifyPaymentQuery,
 } from "../../services/payment/paystack";
 import { useSelector } from "react-redux";
+import { useGetUserPropertyOrdersQuery } from "../../services/propertyErrands/propertyErrand";
 
 const paneMenuList = [
   {
@@ -97,7 +98,23 @@ const Dashboard = () => {
   const [sidePaneTitleSelected, setSidePaneTitleSelected] = useState();
   const [showIconsOnly, setShowIconsOnly] = useState(false);
   const { data: UserData, isLoading, isSuccess, error } = useGetUserQuery();
+  const {
+    data: userOrders,
+    isLoading: userOrdersLoading,
+    error: userOrdersError,
+    isSuccess: userOrdersSuccess,
+  } = useGetUserPropertyOrdersQuery();
 
+  if (userOrdersSuccess) {
+    console.log(userOrders, "Success");
+  }
+  if (userOrdersError) {
+    console.log(userOrdersError);
+  }
+
+  if (error) {
+    console.log(error);
+  }
   // const reference = query.get("reference");
 
   const [
@@ -112,7 +129,7 @@ const Dashboard = () => {
   ] = useCreatePaymentMutation();
 
   if (userOrder !== undefined) {
-    console.log(userOrder);
+    console.log(userOrder.data);
   }
   if (isSuccess) {
     console.log(UserData, "Dashboard");
@@ -127,7 +144,10 @@ const Dashboard = () => {
 
   const handlePaymentCreations = async () => {
     const data = {
-      email: "micheaol80@gmail.com",
+      // email: "micheaol80@gmail.com",
+      package_ordered: userOrder.data?.property_ordered,
+      property_service_title: userOrder.data?.property_service_title,
+      request_id: userOrder.data?.request_id,
     };
     const result = await createPayment(data);
     console.log(result);
@@ -150,11 +170,7 @@ const Dashboard = () => {
     setShowIconsOnly((prev) => !prev);
   };
 
-  useEffect(() => {
-    if (isFetching) {
-      console.log("paymenyLoading .......");
-    }
-  }, [paymenyLoading, isFetching, userOrder]);
+  useEffect(() => {}, [paymenyLoading, isFetching, userOrder]);
 
   // console.log(reference);
   return (

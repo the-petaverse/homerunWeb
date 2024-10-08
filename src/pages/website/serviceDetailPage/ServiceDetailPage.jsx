@@ -119,7 +119,13 @@ const ServiceDetailPage = () => {
             />
           )}
           {(subcategory === "transcript_collection" ||
-            subcategory === "higher-education-certificate-collection") && (
+            subcategory === "higher-education-certificate-collection" ||
+            subcategory === "birth-certificate" ||
+            subcategory === "passport_collection" ||
+            subcategory === "police-report" ||
+            subcategory === "other-certificate" ||
+            subcategory === "sworn-affidavits" ||
+            subcategory === "single-parent-certificate") && (
             <NewRequest
               formStage={formStage}
               setFormStage={setFormStage}
@@ -147,7 +153,7 @@ const ServiceDetailPage = () => {
                 serviceData={serviceData}
               />
             )}
-          {subcategory === "birth-certificate" && (
+          {/* {subcategory === "birth-certificate" && (
             <BirthCertificate
               formStage={formStage}
               setFormStage={setFormStage}
@@ -157,8 +163,8 @@ const ServiceDetailPage = () => {
               subRequestId={subRequestId}
               serviceData={serviceData}
             />
-          )}
-          {(subcategory === "passport_collection" ||
+          )} */}
+          {/* {(subcategory === "passport_collection" ||
             subcategory === "police-report" ||
             subcategory === "other-certificate" ||
             subcategory === "sworn-affidavits") && (
@@ -170,8 +176,8 @@ const ServiceDetailPage = () => {
               subRequestId={subRequestId}
               serviceData={serviceData}
             />
-          )}
-          {subcategory === "single-parent-certificate" && (
+          )} */}
+          {/* {subcategory === "single-parent-certificate" && (
             <SingleParentCertificate
               formStage={formStage}
               setFormStage={setFormStage}
@@ -180,7 +186,7 @@ const ServiceDetailPage = () => {
               subRequestId={subRequestId}
               serviceData={serviceData}
             />
-          )}
+          )} */}
         </div>
         <div className="sidebar-with-small-screen">
           <div className="service-right-container-with-small-screen">

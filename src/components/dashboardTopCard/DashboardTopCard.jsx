@@ -5,6 +5,7 @@ import ProgressBar from "../progessBar/ProgressBar";
 
 const DashboardTopCard = ({ showIconsOnly, innerNavMenuClicked }) => {
   const [progressBarSteps, setProgressBarSteps] = useState(50);
+
   return (
     <div className="dashboard-top-card-main-container">
       <div

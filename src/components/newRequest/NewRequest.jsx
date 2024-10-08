@@ -25,6 +25,8 @@ import CustomNote from "../customNote/CustomNote";
 import TermsAndConditionCheckBox from "../termsAndConditionCheckBox/TermsAndConditionCheckBox";
 import CustomButton from "../customButton/CustomButton";
 import CustomTextArea from "../customTextArea/CustomTextArea";
+import CustomImageUpload from "../customImageUpload /CustomImageUpload";
+import AvartaIcon from "/images/avatar-icon.png";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -106,8 +108,8 @@ const NewRequest = ({
   const navigate = useNavigate();
   const cookies = new Cookies();
   const receivedCookies = cookies.get("auth_token");
-  const paymentPending = cookies.get("paid_false");
 
+  console.log(subRequestId);
   const {
     register,
     handleSubmit,
@@ -115,7 +117,7 @@ const NewRequest = ({
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      request_name: serviceCategory,
+      package_ordered: subRequestId && subRequestId,
       sub_request_name: subcategory,
     },
     mode: "all",
@@ -141,10 +143,17 @@ const NewRequest = ({
   };
 
   const onSubmit = (data) => {
-    // setFormStage((cur) => cur + 1);
-    // // Implement API call here
-    // data.request_name = requestId;
-    // data.sub_request_name = subRequestId;
+    // const formData = new FormData();
+    // for (const key in data) {
+    //   console.log(key);
+    //   if (key === "file") {
+    //     formData.append("files", data[key][0]);
+    //   } else if (key === "property_ordered") {
+    //     formData.append("property_ordered", subRequestId);
+    //   } else {
+    //     formData.append(key, data[key]);
+    //   }
+    // }
     // createErrand(data);
     console.log(data);
   };
@@ -227,7 +236,6 @@ const NewRequest = ({
     categoryIsSuccess,
     errandSuccess,
     errandData?.message,
-    paymentPending,
     requestId,
     subRequestId,
     serviceData,
@@ -274,84 +282,75 @@ const NewRequest = ({
                 register={register}
                 style={{ borderColor: errors.middleName ? "red" : "black" }}
               />
-              <CustomImput
-                name="email"
-                required="Email is required"
-                placeholder="Matric Number"
-                // className="main-text-input"
-                type="text"
-                error={errors?.email?.message}
-                register={register}
-                style={{ borderColor: errors.email ? "red" : "black" }}
-              />
-              <CustomImput
-                name="institution"
-                required="Institution is required"
-                placeholder="Institution name"
-                // className="main-text-input"
-                type="text"
-                error={errors?.institution?.message}
-                register={register}
-                style={{ borderColor: errors.institution ? "red" : "black" }}
-              />
-              <CustomImput
-                name="yearOfGraduation"
-                required="Year of Graduation is required"
-                placeholder="Year of Graduation"
-                // className="main-text-input"
-                type="text"
-                error={errors?.yearOfGraduation?.message}
-                register={register}
-                style={{
-                  borderColor: errors.yearOfGraduation ? "red" : "black",
-                }}
-              />
+              {subcategory === "single-parent-certificate" && (
+                <>
+                  <CustomImput
+                    name="profession"
+                    required="Profession is required"
+                    placeholder="Applicant’s Profession"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.profession?.message}
+                    register={register}
+                    style={{ borderColor: errors.profession ? "red" : "black" }}
+                  />
+                  <CustomSelect
+                    name="maritalStatus"
+                    type="text"
+                    className="main-text-input"
+                    register={register}
+                    require="State is required"
+                    placeholder="Marital Status"
+                    error={errors.stateOfBirth?.message}
+                    //   data={stateOfBirth}
+                    style={{
+                      borderColor: errors.stateOfBirth ? "red" : "black",
+                    }}
+                  />
 
-              <CustomImput
-                name="graduatedDegree"
-                required="Graduated Degree is required"
-                placeholder="Graduated Degree/Course of Study"
-                // className="main-text-input"
-                type="text"
-                error={errors?.graduatedDegree?.message}
-                register={register}
-                style={{
-                  borderColor: errors.graduatedDegree ? "red" : "black",
-                }}
-              />
-              <CustomImput
-                name="yearOfEntry"
-                required="Year of Entry is required"
-                placeholder="Year of Entry"
-                // className="main-text-input"
-                type="text"
-                error={errors?.yearOfEntry?.message}
-                register={register}
-                style={{
-                  borderColor: errors.yearOfEntry ? "red" : "black",
-                }}
-              />
-            </div>
-            <div className="form-section-wrapper">
-              <CustomDoubleRadioButton
-                name="firstCollection"
-                label="Is this your FIRST time collecting the transcript?"
-                style={{ borderColor: errors.firstName ? "red" : "black" }}
-                register={register}
-                error={errors.firstCollection?.message}
-              />
-            </div>
-            <div className="form-section-wrapper">
-              <CustomDoubleRadioButton
-                label="Have you previously obtained a Notification of Result/Certificate?"
-                name="obtainedNotificationOfResult"
-                style={{ borderColor: errors.firstName ? "red" : "black" }}
-                register={register}
-                error={errors.obtainedNotificationOfResult?.message}
-              />
-            </div>
-            <div className="final-section-wrapper">
-              <CustomSelect
+                  <CustomImput
+                    name="applicatnState"
+                    required="State is required"
+                    placeholder="State 0f Applicant’s Birth"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.applicatnState?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.applicatnState ? "red" : "black",
+                    }}
+                  />
+                  <CustomImput
+                    name="localGovt"
+                    required="local Govt name is required"
+                    placeholder="local Goverment"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.localGovt?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.localGovt ? "red" : "black",
+                    }}
+                  />
+                </>
+              )}
+              {(subcategory === "police-report" ||
+                subcategory === "single-parent-certificate") && (
+                <CustomSelect
+                  name="meansOfIdentification"
+                  type="text"
+                  // className="main-text-input"
+                  register={register}
+                  require="Identification is required"
+                  placeholder="Means of identification"
+                  error={errors.meansOfIdentification?.message}
+                  //   data={stateOfBirth}
+                  style={{
+                    borderColor: errors.meansOfIdentification ? "red" : "black",
+                  }}
+                />
+              )}
+              {/* <CustomSelect
                 name="yearOfEntry"
                 type="text"
                 className="main-text-input"
@@ -361,28 +360,289 @@ const NewRequest = ({
                 style={{ borderColor: errors.yearOfEntry ? "red" : "black" }}
                 error={errors.yearOfEntry?.message}
                 data={yearofGraduation}
-              />
-            </div>
-          </div>
-          <div className="upload-section-wrapper">
-            <CustomUpload />
+              /> */}
 
-            <div className="form-upload-section">
-              <CustomImput
-                name="documentTitle"
-                required="Graduated Degree is required"
-                placeholder="Input Document Title"
-                className="main-text-input"
+              {/* <CustomImput
+                name="localGovt"
+                required="localGovt is required"
+                placeholder="Local Government "
+                // className="main-text-input"
                 type="text"
-                error={errors?.documentTitle?.message}
+                error={errors?.localGovt?.message}
                 register={register}
                 style={{
-                  borderColor: errors.documentTitle ? "red" : "black",
+                  borderColor: errors.localGovt ? "red" : "black",
                 }}
-              />
-              <CustomInputUpload />
+              /> */}
+              {subcategory === "birth-certificate" && (
+                <>
+                  <CustomImput
+                    name="sex"
+                    required="Sex is required"
+                    placeholder="Sex"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.sex?.message}
+                    register={register}
+                    style={{ borderColor: errors.sex ? "red" : "black" }}
+                  />
+                  <CustomImput
+                    name="stateOfBirth"
+                    required="State name is required"
+                    placeholder="State of birth"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.stateOfBirth?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.stateOfBirth ? "red" : "black",
+                    }}
+                  />
+                  <CustomImput
+                    name="matherFullName"
+                    required="Mother's Full Name is required"
+                    placeholder="Mother's Full Name"
+                    // className="main-text-single-input"
+                    type="text"
+                    error={errors?.matherFullName?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.matherFullName ? "red" : "black",
+                    }}
+                  />
+
+                  <CustomImput
+                    name="localGovt"
+                    required="local Govt name is required"
+                    placeholder="local Goverment"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.localGovt?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.localGovt ? "red" : "black",
+                    }}
+                  />
+                  <CustomImput
+                    name="fatherFullName"
+                    required="Father's Full Name is required"
+                    placeholder="Father's Full Name"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.fatherFullName?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.fatherFullName ? "red" : "black",
+                    }}
+                  />
+                </>
+              )}
+              {(subcategory === "transcript_collection" ||
+                subcategory === "higher-education-certificate-collection") && (
+                <>
+                  <CustomImput
+                    name="matricNumber"
+                    required="Matric Number is required"
+                    placeholder="Matric Number"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.matricNumber?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.matricNumber ? "red" : "black",
+                    }}
+                  />
+                  <CustomImput
+                    name="institution"
+                    required="Institution is required"
+                    placeholder="Institution name"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.institution?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.institution ? "red" : "black",
+                    }}
+                  />
+                  <CustomImput
+                    name="yearOfGraduation"
+                    required="Year of Graduation is required"
+                    placeholder="Year of Graduation"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.yearOfGraduation?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.yearOfGraduation ? "red" : "black",
+                    }}
+                  />
+                  <CustomImput
+                    name="graduatedDegree"
+                    required="Graduated Degree is required"
+                    placeholder="Graduated Degree/Course of Study"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.graduatedDegree?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.graduatedDegree ? "red" : "black",
+                    }}
+                  />
+                  <CustomImput
+                    name="yearOfEntry"
+                    required="Year of Entry is required"
+                    placeholder="Year of Entry"
+                    // className="main-text-input"
+                    type="text"
+                    error={errors?.yearOfEntry?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.yearOfEntry ? "red" : "black",
+                    }}
+                  />
+                </>
+              )}
             </div>
+            {(subcategory === "transcript_collection" ||
+              subcategory === "higher-education-certificate-collection") && (
+              <>
+                <div className="form-section-wrapper">
+                  <CustomDoubleRadioButton
+                    name="firstCollection"
+                    label="Is this your FIRST time collecting the transcript?"
+                    style={{ borderColor: errors.firstName ? "red" : "black" }}
+                    register={register}
+                    error={errors.firstCollection?.message}
+                  />
+                </div>
+                <div className="form-section-wrapper">
+                  <CustomDoubleRadioButton
+                    label="Have you previously obtained a Notification of Result/Certificate?"
+                    name="obtainedNotificationOfResult"
+                    style={{ borderColor: errors.firstName ? "red" : "black" }}
+                    register={register}
+                    error={errors.obtainedNotificationOfResult?.message}
+                  />
+                </div>
+              </>
+            )}
+            {subcategory === "passport_collection" && (
+              <div className="form-section-wrapper">
+                <CustomDoubleRadioButton
+                  label="Do you have someone processing it for you?"
+                  name="obtainedNotificationOfResult"
+                  style={{ borderColor: errors.firstName ? "red" : "black" }}
+                  register={register}
+                  error={errors.obtainedNotificationOfResult?.message}
+                />
+              </div>
+            )}
+
+            {subcategory === "sworn-affidavits" && (
+              <>
+                <div className="form-section-wrapper">
+                  <CustomDoubleRadioButton
+                    label="Do you have any supporting documents?"
+                    name="obtainedNotificationOfResult"
+                    style={{ borderColor: errors.firstName ? "red" : "black" }}
+                    register={register}
+                    error={errors.obtainedNotificationOfResult?.message}
+                  />
+                </div>
+                <div className="form-section-wrapper">
+                  <CustomDoubleRadioButton
+                    label="Do you need witnesses for this affidavit?"
+                    name="obtainedNotificationOfResult"
+                    style={{ borderColor: errors.firstName ? "red" : "black" }}
+                    register={register}
+                    error={errors.obtainedNotificationOfResult?.message}
+                  />
+                </div>
+                <div className="form-section-wrapper">
+                  <CustomDoubleRadioButton
+                    label="Do you need witnesses for this affidavit?"
+                    name="obtainedNotificationOfResult"
+                    style={{ borderColor: errors.firstName ? "red" : "black" }}
+                    register={register}
+                    error={errors.obtainedNotificationOfResult?.message}
+                  />
+                </div>
+                <div className="form-section-wrapper">
+                  <CustomDoubleRadioButton
+                    label="Are the witnesses available to sign the affidavit? "
+                    name="obtainedNotificationOfResult"
+                    style={{ borderColor: errors.firstName ? "red" : "black" }}
+                    register={register}
+                    error={errors.obtainedNotificationOfResult?.message}
+                  />
+                </div>
+                <div className="form-section-wrapper">
+                  <CustomDoubleRadioButton
+                    label="Do you need the affidavit to be notarized?"
+                    name="obtainedNotificationOfResult"
+                    style={{ borderColor: errors.firstName ? "red" : "black" }}
+                    register={register}
+                    optionOne="I do"
+                    optionTwo="I don't"
+                    ckeckBoxesOptionTwoStyle="check-boxes-optionTwo"
+                    boxesWrapperStyle="check-boxes-wrapper"
+                    error={errors.obtainedNotificationOfResult?.message}
+                  />
+                </div>
+              </>
+            )}
           </div>
+          {(subcategory === "police-report" ||
+            subcategory === "sworn-afidavit" ||
+            subcategory === "single-parent-certificate") && (
+            <div className="upload-section-wrapper">
+              <CustomUpload />
+
+              <div className="form-upload-section">
+                <CustomImput
+                  name="documentTitle"
+                  required="Graduated Degree is required"
+                  placeholder="Input Document Title"
+                  className="main-text-input"
+                  type="text"
+                  error={errors?.documentTitle?.message}
+                  register={register}
+                  style={{
+                    borderColor: errors.documentTitle ? "red" : "black",
+                  }}
+                />
+                <CustomInputUpload register={register} />
+              </div>
+            </div>
+          )}
+
+          {subcategory === "single-parent-certificate" && (
+            <div className="upload-section-wrapper">
+              <div className="image-uploader-header">
+                <h4>Upload Applicant’s Passport Photograph Add</h4>
+              </div>
+              <div className="image-upload-section">
+                <div className="image-avatar-wrapper">
+                  <img src={AvartaIcon} alt="avarta" />
+                </div>
+                <div className="image-uploader-wrapper">
+                  <CustomImput
+                    name="documentTitle"
+                    required="Graduated Degree is required"
+                    placeholder="Input Document Title"
+                    className="main-text-input"
+                    type="text"
+                    error={errors?.documentTitle?.message}
+                    register={register}
+                    style={{
+                      borderColor: errors.documentTitle ? "red" : "black",
+                    }}
+                  />
+                  <CustomImageUpload />
+                </div>
+              </div>
+            </div>
+          )}
           <div className="requirement-wrapper">
             <Requirement serviceData={serviceData} />
             <ErrandProcesses serviceData={serviceData} />

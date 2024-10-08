@@ -12,7 +12,13 @@ export const propertyErrandApi = createApi({
         body: data,
       }),
     }),
+    getUserPropertyOrders: builder.query({
+      query: () => "request/my-property-order",
+    }),
   }),
 });
 
-export const { useCreatePropertyErrandMutation } = propertyErrandApi;
+export const {
+  useCreatePropertyErrandMutation,
+  useGetUserPropertyOrdersQuery,
+} = propertyErrandApi;

@@ -1,21 +1,7 @@
 import React, { useEffect } from "react";
 import CustomButton from "../customButton/CustomButton";
-// import { useCreatePaymentMutation } from "../../services/payment/paystack";
 
 const PaymentComponent = ({ handlePaymentCreations }) => {
-  // useEffect(() => {
-  //   if (isLoading) {
-  //     console.log("isLoading.....");
-  //   }
-  //   if (isSuccess) {
-  //     console.log("object success");
-  //     console.log(data);
-  //   }
-  //   if (error) {
-  //     console.log(error);
-  //   }
-  // }, [isSuccess, error]);
-
   return (
     <div className="bg-full sm: h-[80dvh]">
       <div className="sm:w-[100%] lg:w-[65%] bg-white mr-auto ml-auto h-[85%] sm:mt-0 lg:mt-10 rounded-2xl p-5 text-center flex flex-col justify-between">
