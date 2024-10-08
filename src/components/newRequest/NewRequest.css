@@ -17,6 +17,17 @@
   /* background-color: red; */
   width: 100%;
 }
+.doc-button-wrapper {
+  background-color: rgb(18, 2, 86);
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 25px;
+  border: solid 0.5px rgb(18, 2, 86);
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  width: 100%;
+}
 .back-button-wrapper {
   margin-top: 10px;
   margin-bottom: 15px;

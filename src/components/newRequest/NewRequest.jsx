@@ -603,7 +603,7 @@ const NewRequest = ({
                   name="documentTitle"
                   required="Graduated Degree is required"
                   placeholder="Input Document Title"
-                  className="main-text-input"
+                  // className="main-text-input"
                   type="text"
                   error={errors?.documentTitle?.message}
                   register={register}
@@ -630,7 +630,7 @@ const NewRequest = ({
                     name="documentTitle"
                     required="Graduated Degree is required"
                     placeholder="Input Document Title"
-                    className="main-text-input"
+                    // className="main-text-input"
                     type="text"
                     error={errors?.documentTitle?.message}
                     register={register}
@@ -656,7 +656,11 @@ const NewRequest = ({
                 name="terms&conditions"
                 register={register}
               />
-              <input type="submit" className="button-wrapper" />
+              <CustomButton
+                title="Make Request"
+                btnStyles="doc-button-wrapper"
+                btnDisabled={!isValid && "true"}
+              />
             </div>
           </div>
         </form>

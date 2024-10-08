@@ -10,9 +10,6 @@ import {
 import CustomNote from "../../../components/customNote/CustomNote";
 import CustomEstimation from "../../../components/customEstimation/CustomEstimation";
 import ClientTestimonials from "../../../components/clientTestimonials/ClientTestimonials";
-import BirthCertificate from "../../../components/birthCertificate/BirthCertificate";
-import PassportPoliceReport from "../../../components/passportPoliceReport/PassportPoliceReport";
-import SingleParentCertificate from "../../../components/singleParentCertificate/SingleParentCertificate";
 import PropertErrand from "../../../components/propertErrand/PropertErrand";
 import CustomBackButton from "../../../components/customBackButton/CustomBackButton";
 import { subServiceData } from "../../../data/subCategoryData";
@@ -153,40 +150,6 @@ const ServiceDetailPage = () => {
                 serviceData={serviceData}
               />
             )}
-          {/* {subcategory === "birth-certificate" && (
-            <BirthCertificate
-              formStage={formStage}
-              setFormStage={setFormStage}
-              serviceSubCategory={serviceSubCategory}
-              serviceCategory={serviceCategory}
-              requestId={requestId}
-              subRequestId={subRequestId}
-              serviceData={serviceData}
-            />
-          )} */}
-          {/* {(subcategory === "passport_collection" ||
-            subcategory === "police-report" ||
-            subcategory === "other-certificate" ||
-            subcategory === "sworn-affidavits") && (
-            <PassportPoliceReport
-              formStage={formStage}
-              setFormStage={setFormStage}
-              subcategory={subcategory}
-              requestId={requestId}
-              subRequestId={subRequestId}
-              serviceData={serviceData}
-            />
-          )} */}
-          {/* {subcategory === "single-parent-certificate" && (
-            <SingleParentCertificate
-              formStage={formStage}
-              setFormStage={setFormStage}
-              subcategory={subcategory}
-              requestId={requestId}
-              subRequestId={subRequestId}
-              serviceData={serviceData}
-            />
-          )} */}
         </div>
         <div className="sidebar-with-small-screen">
           <div className="service-right-container-with-small-screen">
