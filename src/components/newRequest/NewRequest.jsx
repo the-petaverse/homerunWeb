@@ -27,6 +27,7 @@ import CustomButton from "../customButton/CustomButton";
 import CustomTextArea from "../customTextArea/CustomTextArea";
 import CustomImageUpload from "../customImageUpload /CustomImageUpload";
 import AvartaIcon from "/images/avatar-icon.png";
+import { useCreateOfficialDocumentErrandMutation } from "../../services/officialDocument/officialDocumentApi";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -67,38 +68,6 @@ const NewRequest = ({
   subRequestId,
   serviceData,
 }) => {
-  const {
-    data: subData,
-    isLoading,
-    isFetching,
-    isSuccess,
-    error,
-  } = useGetRequestSubCategoryQuery();
-  const {
-    data: userData,
-    isLoading: useIsLoading,
-    isFetching: userIsFetching,
-    errors: userError,
-    isSuccess: userIsSuccess,
-  } = useGetUserQuery();
-
-  const [
-    createErrand,
-    {
-      data: errandData,
-      isLoading: errandLoading,
-      error: errandError,
-      isSuccess: errandSuccess,
-    },
-  ] = useCreateErrandMutation();
-  const {
-    data: categoryData,
-    isLoading: categoryIsLoading,
-    isSuccess: categoryIsSuccess,
-    isFetching: categoryIsFetching,
-    error: categoryError,
-  } = useGetRequestCategoriesQuery();
-  //const { subcategory } = useParams();
   const [myState, setMyState] = useState([]);
   const [addUploadInput, setAddUploadInput] = useState(new Array(1).fill(""));
   const [citiesList, setCitiesList] = useState([]);
@@ -108,8 +77,42 @@ const NewRequest = ({
   const navigate = useNavigate();
   const cookies = new Cookies();
   const receivedCookies = cookies.get("auth_token");
+  // const {
+  //   data: subData,
+  //   isLoading,
+  //   isFetching,
+  //   isSuccess,
+  //   error,
+  // } = useGetRequestSubCategoryQuery();
+  // const {
+  //   data: userData,
+  //   isLoading: useIsLoading,
+  //   isFetching: userIsFetching,
+  //   errors: userError,
+  //   isSuccess: userIsSuccess,
+  // } = useGetUserQuery();
 
-  console.log(subRequestId);
+  const [
+    createOfficialDocumentErrand,
+    {
+      data: errandData,
+      isLoading: errandLoading,
+      error: errandError,
+      isSuccess: errandSuccess,
+    },
+  ] = useCreateOfficialDocumentErrandMutation();
+  // const {
+  //   data: categoryData,
+  //   isLoading: categoryIsLoading,
+  //   isSuccess: categoryIsSuccess,
+  //   isFetching: categoryIsFetching,
+  //   error: categoryError,
+  // } = useGetRequestCategoriesQuery();
+  //const { subcategory } = useParams();
+
+  if (errandError) {
+    console.log(errandError);
+  }
   const {
     register,
     handleSubmit,
@@ -142,66 +145,36 @@ const NewRequest = ({
     setOpenAccordion(parseInt(data));
   };
 
-  const onSubmit = (data) => {
-    // const formData = new FormData();
-    // for (const key in data) {
-    //   console.log(key);
-    //   if (key === "file") {
-    //     formData.append("files", data[key][0]);
-    //   } else if (key === "property_ordered") {
-    //     formData.append("property_ordered", subRequestId);
-    //   } else {
-    //     formData.append(key, data[key]);
-    //   }
-    // }
-    // createErrand(data);
-    console.log(data);
-  };
-  const handleCompleteForm = () => {
-    setFormStage((cur) => cur + 1);
-  };
-  const handleFormGoBack = () => {
-    setFormStage((cur) => cur - 1);
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+
+    for (const key in data) {
+      if (key === "file") {
+        formData.append("files", data[key][0]);
+      } else if (key === "package_ordered") {
+        formData.append(key, subRequestId);
+      } else if (
+        key === "firstName" ||
+        key === "lastName" ||
+        key === "errand_ordered_summary" ||
+        key === "middleName" ||
+        key === "ordered_service_title" ||
+        key === "terms_conditions"
+      ) {
+        formData.append(key, data[key]);
+      } else {
+        formData.append(key, data[key]);
+      }
+    }
+    console.log(formData);
+    await createOfficialDocumentErrand(formData);
   };
 
   if (errandSuccess) {
-    cookies.set("paid_false", errandData?.message);
+    console.log(errandData);
+    // cookies.set("paid_false", errandData?.message);
   }
-  const renderButton = () => {
-    if (formStage > 1) {
-      return undefined;
-    } else if (formStage === 1) {
-      return (
-        <label className="final-submit-btn-wrapper">
-          <input
-            type="Submit"
-            className="final-button-wrapper final-submit-btn"
-            // onClick={handleCompleteForm}
-            disabled={!isValid && !receivedCookies}
-          >
-            {/* Next Step */}
-          </input>
-        </label>
-      );
-    } else {
-      return (
-        <button
-          disabled={!isValid || !receivedCookies}
-          className="register-main-form-btn"
-          onClick={handleCompleteForm}
-        >
-          Next Step
-        </button>
-      );
-    }
-  };
 
-  // const handleSubRequests = () => {
-  //   const filteredSubRequest = subData?.subRequestsCategory.filter(
-  //     (subData) => subData.sub_category_slug === subcategory
-  //   );
-  //   setSubRequestList(filteredSubRequest);
-  // };
   const handleState = () => {
     const filteredStates = staties.filter(
       (statesData) => statesData.countryid === watchCountry
@@ -215,25 +188,14 @@ const NewRequest = ({
     setCitiesList(filteredCities);
   };
 
-  // const filterServcies = () => {
-  //   if (isSuccess) {
-  //     let filteredService = subData?.subRequestsCategory.filter(
-  //       (subservice) => subservice.sub_category_slug === subcategory
-  //     );
-  //     setServiceData(filteredService);
-  //   }
-  // };
-
   useEffect(() => {
     handleState();
     handleCities();
-    // handleSubRequests();
-    // filterServcies();
   }, [
     watchCountry,
     watchState,
-    isSuccess,
-    categoryIsSuccess,
+    // isSuccess,
+    // categoryIsSuccess,
     errandSuccess,
     errandData?.message,
     requestId,
@@ -256,7 +218,6 @@ const NewRequest = ({
                 name="firstName"
                 required="First name is required"
                 placeholder="First name"
-                // className="main-text-input"
                 type="text"
                 error={errors?.firstName?.message}
                 register={register}
@@ -266,7 +227,6 @@ const NewRequest = ({
                 name="lastName"
                 required="Last name is required"
                 placeholder="Last name"
-                // className="main-text-input"
                 type="text"
                 error={errors?.lastName?.message}
                 register={register}
@@ -276,7 +236,6 @@ const NewRequest = ({
                 name="middleName"
                 required="Middle name is required"
                 placeholder="Middle name"
-                // className="main-text-input"
                 type="text"
                 error={errors?.middleName?.message}
                 register={register}
@@ -288,7 +247,6 @@ const NewRequest = ({
                     name="profession"
                     required="Profession is required"
                     placeholder="Applicant’s Profession"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.profession?.message}
                     register={register}
@@ -312,7 +270,6 @@ const NewRequest = ({
                     name="applicatnState"
                     required="State is required"
                     placeholder="State 0f Applicant’s Birth"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.applicatnState?.message}
                     register={register}
@@ -324,7 +281,6 @@ const NewRequest = ({
                     name="localGovt"
                     required="local Govt name is required"
                     placeholder="local Goverment"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.localGovt?.message}
                     register={register}
@@ -339,7 +295,6 @@ const NewRequest = ({
                 <CustomSelect
                   name="meansOfIdentification"
                   type="text"
-                  // className="main-text-input"
                   register={register}
                   require="Identification is required"
                   placeholder="Means of identification"
@@ -350,37 +305,12 @@ const NewRequest = ({
                   }}
                 />
               )}
-              {/* <CustomSelect
-                name="yearOfEntry"
-                type="text"
-                className="main-text-input"
-                register={register}
-                require="Year of Entry is required"
-                placeholder="Year of graduation"
-                style={{ borderColor: errors.yearOfEntry ? "red" : "black" }}
-                error={errors.yearOfEntry?.message}
-                data={yearofGraduation}
-              /> */}
-
-              {/* <CustomImput
-                name="localGovt"
-                required="localGovt is required"
-                placeholder="Local Government "
-                // className="main-text-input"
-                type="text"
-                error={errors?.localGovt?.message}
-                register={register}
-                style={{
-                  borderColor: errors.localGovt ? "red" : "black",
-                }}
-              /> */}
               {subcategory === "birth-certificate" && (
                 <>
                   <CustomImput
                     name="sex"
                     required="Sex is required"
                     placeholder="Sex"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.sex?.message}
                     register={register}
@@ -390,7 +320,6 @@ const NewRequest = ({
                     name="stateOfBirth"
                     required="State name is required"
                     placeholder="State of birth"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.stateOfBirth?.message}
                     register={register}
@@ -402,7 +331,6 @@ const NewRequest = ({
                     name="matherFullName"
                     required="Mother's Full Name is required"
                     placeholder="Mother's Full Name"
-                    // className="main-text-single-input"
                     type="text"
                     error={errors?.matherFullName?.message}
                     register={register}
@@ -415,7 +343,6 @@ const NewRequest = ({
                     name="localGovt"
                     required="local Govt name is required"
                     placeholder="local Goverment"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.localGovt?.message}
                     register={register}
@@ -427,7 +354,6 @@ const NewRequest = ({
                     name="fatherFullName"
                     required="Father's Full Name is required"
                     placeholder="Father's Full Name"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.fatherFullName?.message}
                     register={register}
@@ -444,7 +370,6 @@ const NewRequest = ({
                     name="matricNumber"
                     required="Matric Number is required"
                     placeholder="Matric Number"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.matricNumber?.message}
                     register={register}
@@ -456,7 +381,6 @@ const NewRequest = ({
                     name="institution"
                     required="Institution is required"
                     placeholder="Institution name"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.institution?.message}
                     register={register}
@@ -468,7 +392,6 @@ const NewRequest = ({
                     name="yearOfGraduation"
                     required="Year of Graduation is required"
                     placeholder="Year of Graduation"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.yearOfGraduation?.message}
                     register={register}
@@ -480,7 +403,6 @@ const NewRequest = ({
                     name="graduatedDegree"
                     required="Graduated Degree is required"
                     placeholder="Graduated Degree/Course of Study"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.graduatedDegree?.message}
                     register={register}
@@ -492,7 +414,6 @@ const NewRequest = ({
                     name="yearOfEntry"
                     required="Year of Entry is required"
                     placeholder="Year of Entry"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.yearOfEntry?.message}
                     register={register}
@@ -603,7 +524,6 @@ const NewRequest = ({
                   name="documentTitle"
                   required="Graduated Degree is required"
                   placeholder="Input Document Title"
-                  // className="main-text-input"
                   type="text"
                   error={errors?.documentTitle?.message}
                   register={register}
@@ -630,7 +550,6 @@ const NewRequest = ({
                     name="documentTitle"
                     required="Graduated Degree is required"
                     placeholder="Input Document Title"
-                    // className="main-text-input"
                     type="text"
                     error={errors?.documentTitle?.message}
                     register={register}

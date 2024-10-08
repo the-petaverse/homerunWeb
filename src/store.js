@@ -12,6 +12,7 @@ import { referrerSystemApi } from "./services/referrerSystem/referrerSystem";
 import authReducer from "./services/slices/authSlice";
 import { paystackApi } from "./services/payment/paystack";
 import userOrderReducer from "./services/slices/userOrder";
+import { officialDocumentApi } from "./services/officialDocument/officialDocumentApi";
 
 export const store = configureStore({
   reducer: {
@@ -26,6 +27,7 @@ export const store = configureStore({
     [requestsApi.reducerPath]: requestsApi.reducer,
     [errandApi.reducerPath]: errandApi.reducer,
     [paymentApi.reducerPath]: paymentApi.reducer,
+    [officialDocumentApi.reducerPath]: officialDocumentApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -36,7 +38,8 @@ export const store = configureStore({
       paymentApi.middleware,
       paystackApi.middleware,
       propertyErrandApi.middleware,
-      referrerSystemApi.middleware
+      referrerSystemApi.middleware,
+      officialDocumentApi.middleware
     ),
 });
 

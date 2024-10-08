@@ -66,7 +66,6 @@ const PropertErrand = (props) => {
   const onSubmitData = async (data) => {
     const formData = new FormData();
     for (const key in data) {
-      console.log(key);
       if (key === "file") {
         formData.append("proportyDocument", data[key][0]);
       } else if (key === "property_ordered") {
