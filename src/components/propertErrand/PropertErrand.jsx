@@ -106,62 +106,115 @@ const PropertErrand = (props) => {
         <form onSubmit={handleSubmit(onSubmitData)}>
           <div className="property-inputs-container">
             <CustomTextArea
+              register={register}
+              name="errand_ordered_summary"
               title="Errand Description"
               textAreaStyle="textarea"
               placeHolder="Enter your errand description here"
             />
+            {(subcategory === "property-post-purchase" ||
+              subcategory === "property-mangement") && (
+              <div className="property-form-section-wrapper">
+                <CustomImput
+                  name="yourName"
+                  required="Your name is required"
+                  placeholder="Your name"
+                  iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
+                  // className="main-text-input"
+                  type="text"
+                  error={errors?.proprty_location?.message}
+                  register={register}
+                  style={{
+                    borderColor: errors.proprty_location ? "red" : "black",
+                  }}
+                />
+                <CustomPhoneInput
+                  name="seller_phone_number"
+                  inputWatcch={watchPhoneNumber}
+                  control={control}
+                  style={{
+                    borderColor: errors.phone_number ? "red" : "black",
+                  }}
+                  register={register}
+                />
+              </div>
+            )}
+            {(subcategory === "pre-purchase-verification" ||
+              subcategory === "property-document-processing") && (
+              <div className="property-form-section-wrapper">
+                <CustomImput
+                  name="seller_name"
+                  required="Name is required"
+                  placeholder="Seller name"
+                  // className="main-text-input"
+                  type="text"
+                  error={errors?.fullName?.message}
+                  register={register}
+                  iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
+                  style={{ borderColor: errors.fullName ? "red" : "black" }}
+                />
+
+                <CustomPhoneInput
+                  name="seller_phone_number"
+                  inputWatcch={watchPhoneNumber}
+                  control={control}
+                  style={{
+                    borderColor: errors.phone_number ? "red" : "black",
+                  }}
+                  register={register}
+                />
+                <CustomImput
+                  name="seller_email"
+                  required="Name is required"
+                  placeholder="Seller email"
+                  // className="main-text-input"
+                  type="text"
+                  error={errors?.fullName?.message}
+                  register={register}
+                  iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
+                  style={{ borderColor: errors.fullName ? "red" : "black" }}
+                />
+              </div>
+            )}
 
             <div className="property-form-section-wrapper">
-              <CustomImput
-                name="fullName"
-                required="Name is required"
-                placeholder="Your name"
-                // className="main-text-input"
-                type="text"
-                error={errors?.fullName?.message}
-                register={register}
-                iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
-                style={{ borderColor: errors.fullName ? "red" : "black" }}
-              />
-
-              <CustomPhoneInput
-                name="phone_number"
-                inputWatcch={watchPhoneNumber}
-                control={control}
-                style={{
-                  borderColor: errors.phone_number ? "red" : "black",
-                }}
-                register={register}
-              />
-            </div>
-            <div className="property-form-section-wrapper">
-              <CustomImput
-                name="proprty_type"
-                required="Property type is required"
-                placeholder="Property Type"
-                iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
-                // className="main-text-input"
-                type="text"
-                error={errors?.proprty_type?.message}
-                register={register}
-                style={{ borderColor: errors.proprty_type ? "red" : "black" }}
-              />
-              <CustomImput
-                name="proprty_location"
-                required="Property Location is required"
-                placeholder="Property Location"
-                iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
-                // className="main-text-input"
-                type="text"
-                error={errors?.proprty_location?.message}
-                register={register}
-                style={{
-                  borderColor: errors.proprty_location ? "red" : "black",
-                }}
-              />
+              {(subcategory === "pre-purchase-verification" ||
+                subcategory === "property-document-processing" ||
+                subcategory === "property-post-purchase" ||
+                subcategory === "property-mangement") && (
+                <CustomImput
+                  name="proprty_location"
+                  required="Property Location is required"
+                  placeholder="Property Location"
+                  iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
+                  // className="main-text-input"
+                  type="text"
+                  error={errors?.proprty_location?.message}
+                  register={register}
+                  style={{
+                    borderColor: errors.proprty_location ? "red" : "black",
+                  }}
+                />
+              )}
+              {(subcategory === "property-post-purchase" ||
+                subcategory === "property-mangement") && (
+                <CustomImput
+                  name="proprty_type"
+                  required="Property type is required"
+                  placeholder="Property Type"
+                  iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
+                  // className="main-text-input"
+                  type="text"
+                  error={errors?.proprty_type?.message}
+                  register={register}
+                  style={{ borderColor: errors.proprty_type ? "red" : "black" }}
+                />
+              )}
             </div>
             <div className="text-area-below">
               <CustomTextArea
+                register={register}
+                name="errand_ordered_summary"
                 textAreaStyle="textarea"
                 placeHolder="Enter your errand description here"
               />
@@ -169,12 +222,11 @@ const PropertErrand = (props) => {
           </div>
 
           {(subcategory === "property-document-processing" ||
-            subcategory === "post-purchase-development") && (
+            subcategory === "property-post-purchase") && (
             <div className="upload-section-wrapper">
               <CustomUpload
                 handleIncreaseFileUploader={handleIncreaseFileUploader}
               />
-
               <div className="form-upload-section">
                 {fileUplodComponent &&
                   fileUplodComponent.map((fileUploader, index) => (

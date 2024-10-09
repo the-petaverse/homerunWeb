@@ -28,6 +28,8 @@ import CustomTextArea from "../customTextArea/CustomTextArea";
 import CustomImageUpload from "../customImageUpload /CustomImageUpload";
 import AvartaIcon from "/images/avatar-icon.png";
 import { useCreateOfficialDocumentErrandMutation } from "../../services/officialDocument/officialDocumentApi";
+import { addUserOrder } from "../../services/slices/userOrder";
+import { useDispatch } from "react-redux";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -75,6 +77,7 @@ const NewRequest = ({
   const [openAccordion, setOpenAccordion] = useState(1);
   const { subcategory } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const cookies = new Cookies();
   const receivedCookies = cookies.get("auth_token");
   // const {
@@ -125,7 +128,9 @@ const NewRequest = ({
     },
     mode: "all",
   });
-  console.log(serviceData[0]?._id, "subcategory");
+  if (errandSuccess) {
+    console.log(errandData, "subcategory");
+  }
   // const increaseUploadInput = () => {
   //   setAddUploadInput((addUpload) => [...addUpload, addUploadInput]);
   // };
@@ -168,14 +173,8 @@ const NewRequest = ({
         formData.append(key, data[key]);
       }
     }
-    console.log(formData);
     await createOfficialDocumentErrand(formData);
   };
-
-  if (errandSuccess) {
-    console.log(errandData);
-    // cookies.set("paid_false", errandData?.message);
-  }
 
   const handleState = () => {
     const filteredStates = staties.filter(
@@ -191,6 +190,10 @@ const NewRequest = ({
   };
 
   useEffect(() => {
+    if (errandSuccess) {
+      dispatch(addUserOrder(errandData));
+      console.log(errandData);
+    }
     handleState();
     handleCities();
   }, [

@@ -9,11 +9,13 @@ const CustomPhoneInput = ({
   style,
   register,
   inputWatcch,
+  placeholder,
   ...rest
 }) => {
   return (
     <div>
       <PhoneInputWithCountry
+        placeholder={placeholder}
         international
         countryCallingCodeEditable={false}
         defaultCountry="NG"
