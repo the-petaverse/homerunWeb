@@ -120,12 +120,12 @@ const NewRequest = ({
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      package_ordered: subRequestId && subRequestId,
-      sub_request_name: subcategory,
+      ordered_service_id: subRequestId && subRequestId,
+      ordered_service_title: subcategory,
     },
     mode: "all",
   });
-
+  console.log(serviceData[0]?._id, "subcategory");
   // const increaseUploadInput = () => {
   //   setAddUploadInput((addUpload) => [...addUpload, addUploadInput]);
   // };
@@ -149,16 +149,18 @@ const NewRequest = ({
     const formData = new FormData();
 
     for (const key in data) {
+      console.log(key);
       if (key === "file") {
         formData.append("files", data[key][0]);
-      } else if (key === "package_ordered") {
-        formData.append(key, subRequestId);
+      } else if (key === "ordered_service_id") {
+        formData.append(key, serviceData[0]?._id);
+      } else if (key === "ordered_service_title") {
+        formData.append(key, serviceData[0]?.sub_service_title);
       } else if (
         key === "firstName" ||
         key === "lastName" ||
         key === "errand_ordered_summary" ||
         key === "middleName" ||
-        key === "ordered_service_title" ||
         key === "terms_conditions"
       ) {
         formData.append(key, data[key]);
@@ -208,6 +210,8 @@ const NewRequest = ({
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="inputs-container">
             <CustomTextArea
+              register={register}
+              name="errand_ordered_summary"
               title="Errand Description"
               textAreaStyle="textarea"
               placeHolder="Enter your errand description here"
@@ -464,7 +468,7 @@ const NewRequest = ({
                 <div className="form-section-wrapper">
                   <CustomDoubleRadioButton
                     label="Do you have any supporting documents?"
-                    name="obtainedNotificationOfResult"
+                    name="doYouHaveAnySupportingDocumentation"
                     style={{ borderColor: errors.firstName ? "red" : "black" }}
                     register={register}
                     error={errors.obtainedNotificationOfResult?.message}
@@ -473,16 +477,7 @@ const NewRequest = ({
                 <div className="form-section-wrapper">
                   <CustomDoubleRadioButton
                     label="Do you need witnesses for this affidavit?"
-                    name="obtainedNotificationOfResult"
-                    style={{ borderColor: errors.firstName ? "red" : "black" }}
-                    register={register}
-                    error={errors.obtainedNotificationOfResult?.message}
-                  />
-                </div>
-                <div className="form-section-wrapper">
-                  <CustomDoubleRadioButton
-                    label="Do you need witnesses for this affidavit?"
-                    name="obtainedNotificationOfResult"
+                    name="needWitnessForAffidavits"
                     style={{ borderColor: errors.firstName ? "red" : "black" }}
                     register={register}
                     error={errors.obtainedNotificationOfResult?.message}
@@ -491,7 +486,7 @@ const NewRequest = ({
                 <div className="form-section-wrapper">
                   <CustomDoubleRadioButton
                     label="Are the witnesses available to sign the affidavit? "
-                    name="obtainedNotificationOfResult"
+                    name="areWitnessAvailabelToSign"
                     style={{ borderColor: errors.firstName ? "red" : "black" }}
                     register={register}
                     error={errors.obtainedNotificationOfResult?.message}
@@ -500,7 +495,7 @@ const NewRequest = ({
                 <div className="form-section-wrapper">
                   <CustomDoubleRadioButton
                     label="Do you need the affidavit to be notarized?"
-                    name="obtainedNotificationOfResult"
+                    name="doYouNeedNotarize"
                     style={{ borderColor: errors.firstName ? "red" : "black" }}
                     register={register}
                     optionOne="I do"
@@ -572,7 +567,7 @@ const NewRequest = ({
             </div>
             <div className="all-term-section">
               <TermsAndConditionCheckBox
-                name="terms&conditions"
+                name="terms_conditions"
                 register={register}
               />
               <CustomButton
