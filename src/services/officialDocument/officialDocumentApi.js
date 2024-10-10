@@ -12,10 +12,13 @@ export const officialDocumentApi = createApi({
         body: data,
       }),
     }),
-    // getUserErrans: builder.query({
-    //   query: () => "user/errand",
-    // }),
+    getAUserErrands: builder.query({
+      query: () => "request/my-official-document-orders/",
+    }),
   }),
 });
 
-export const { useCreateOfficialDocumentErrandMutation } = officialDocumentApi;
+export const {
+  useCreateOfficialDocumentErrandMutation,
+  useGetAUserErrandsQuery,
+} = officialDocumentApi;

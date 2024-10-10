@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./DashboardInnerRequestNav.css";
 const DashboardInnerRequestNav = ({
   myRequestInnerNavData,
   handleInnerNavBarClicked,
   innerNavMenuClicked,
+  progressBarSteps,
+  requestStages,
 }) => {
+  console.log(innerNavMenuClicked, "innerNavMenuClicked");
+  useEffect(() => {}, [innerNavMenuClicked, progressBarSteps, requestStages]);
   return (
     <div className="dashboard-inner-request-inner-nav-container">
       {myRequestInnerNavData &&

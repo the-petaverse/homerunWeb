@@ -16,7 +16,7 @@
   transition: width 0.5s ease-in-out;
   /* align-items: flex-start; */
   /* justify-content: space-between; */
-  height: 100%;
+  /* height: 100%; */
 }
 .dashboard-right-panel-wrapper-with-icons-only {
   background-color: #f5f4f7;
@@ -28,7 +28,7 @@
   /* justify-content: space-between; */
   transition: width 0.5s ease-in-out;
   /* align-items: flex-start; */
-  height: 100%;
+  /* height: 100%; */
 }
 .dashboard-request-main-status-wrapper {
   margin-top: 35px;

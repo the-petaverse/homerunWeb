@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useVerifyPaymentQuery } from "../../../services/payment/paystack";
 import CustomButton from "../../../components/customButton/CustomButton";
 import { useDispatch, useSelector } from "react-redux";
-import { addUserOrder } from "../../../services/slices/userOrder";
+import { removeUserOrder } from "../../../services/slices/userOrder";
 
 const PaymentVerification = () => {
   const navigate = useNavigate();
@@ -17,15 +17,13 @@ const PaymentVerification = () => {
       skip: !reference,
     });
   const handleBackToDashboard = () => {
-    localStorage.removeItem("user_order");
+    dispatch(removeUserOrder());
     navigate("/dashboard", { replace: true });
   };
+
   useEffect(() => {
     if (!reference) {
       navigate("/dashboard", { replace: true });
-    }
-    if (isSuccess) {
-      console.log(data);
     }
     if (userOrder === undefined) {
       navigate("/dashboard", { replace: true });

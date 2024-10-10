@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DashboardTopCard.css";
 import CustomButton from "../customButton/CustomButton";
 import ProgressBar from "../progessBar/ProgressBar";
+import { useGetAUserErrandsQuery } from "../../services/officialDocument/officialDocumentApi";
 
-const DashboardTopCard = ({ showIconsOnly, innerNavMenuClicked }) => {
-  const [progressBarSteps, setProgressBarSteps] = useState(50);
-
+const DashboardTopCard = ({
+  showIconsOnly,
+  innerNavMenuClicked,
+  data,
+  progressBarSteps,
+  requestStages,
+  setProgressBarStatus,
+}) => {
+  console.log(requestStages);
+  useEffect(() => {
+    setProgressBarStatus(data);
+  }, [requestStages, progressBarSteps, innerNavMenuClicked]);
   return (
     <div className="dashboard-top-card-main-container">
       <div
@@ -15,7 +25,9 @@ const DashboardTopCard = ({ showIconsOnly, innerNavMenuClicked }) => {
             : "dashboard-top-card-left-pane"
         }
       >
-        <p>Request ID: #765322</p>
+        <p className="">
+          Request ID: <span className="font-bold">{data.request_id}</span>
+        </p>
         <div className="dashboard-card-request-inner-wrapper">
           <p>Request: Jul. 24, 2024</p>
           <p>Delivery: Jul. 24, 2024</p>
@@ -42,25 +54,22 @@ const DashboardTopCard = ({ showIconsOnly, innerNavMenuClicked }) => {
           <p>Transcript</p>
           <div className="dashboard-card-detail-title-wrapper">
             <p className="dashboard-card-main-title">
-              Transcript Retrieval from Belamy University
+              {data?.ordered_service_title}
             </p>
             <p className="dashboard-card-main-sub-title">
-              Transcript retrieved and awaiting delivery
+              {`${data?.ordered_service_title} retrieval ${data?.order_status}`}
             </p>
           </div>
           <div className="dashboard-progress-bar-main-wrapper">
             <div className="dashboard-progress-bar-left-pane">
               <div className="dashboard-card-progress-counter-wrapper">
-                <p>In progress (Stage 3 of 4)</p>
+                <p>In progress {`(Stage ${requestStages} of 4)`}</p>
               </div>
               <ProgressBar
                 progressBarSteps={progressBarSteps}
                 innerNavMenuClicked={innerNavMenuClicked}
+                requestStages={requestStages}
               />
-            </div>
-            <div className="dashboard-progress-bar-right-pane">
-              <p>50pt</p>
-              <p>50KgCO2</p>
             </div>
           </div>
           <div className="dashboard-card-amount-main-wrapper">

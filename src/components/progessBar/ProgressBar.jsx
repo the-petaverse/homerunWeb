@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ProgressBar.css";
 
-const ProgressBar = ({ progressBarSteps, innerNavMenuClicked }) => {
-  console.log(innerNavMenuClicked, "progressBar");
+const ProgressBar = ({
+  progressBarSteps,
+  innerNavMenuClicked,
+  requestStages,
+}) => {
+  useEffect(() => {}, [progressBarSteps, innerNavMenuClicked, requestStages]);
+
   return (
     <div className="progress-bar-main-container">
       <div className="progress-bar-wrapper">

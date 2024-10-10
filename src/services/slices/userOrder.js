@@ -13,8 +13,13 @@ const userOrderSlice = createSlice({
       state.userOrder = { data: action.payload };
       localStorage.setItem("user_order", JSON.stringify(state.userOrder));
     },
+
+    removeUserOrder(state, action) {
+      state.userOrder = undefined;
+      localStorage.removeItem("user_order");
+    },
   },
 });
 
-export const { addUserOrder } = userOrderSlice.actions;
+export const { addUserOrder, removeUserOrder } = userOrderSlice.actions;
 export default userOrderSlice.reducer;

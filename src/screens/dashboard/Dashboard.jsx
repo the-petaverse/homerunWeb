@@ -24,6 +24,7 @@ import {
 } from "../../services/payment/paystack";
 import { useSelector } from "react-redux";
 import { useGetUserPropertyOrdersQuery } from "../../services/propertyErrands/propertyErrand";
+import { useGetAUserErrandsQuery } from "../../services/officialDocument/officialDocumentApi";
 
 const paneMenuList = [
   {
@@ -96,21 +97,18 @@ const Dashboard = () => {
   const [innerNavMenuClicked, setInerMenuClicked] = useState("Active");
   const [sidePaneSelected, setSidePaneSelected] = useState("1");
   const [sidePaneTitleSelected, setSidePaneTitleSelected] = useState();
+  const [userSingleOrderToDisplay, setUserSingleOrderToDisplay] = useState();
+  const [userAllOrdersToDisplay, setUserAllOrdersToDisplay] = useState();
   const [showIconsOnly, setShowIconsOnly] = useState(false);
+  const [progressBarSteps, setProgressBarSteps] = useState();
+  const [requestStages, setRequestStages] = useState();
+
   const { data: UserData, isLoading, isSuccess, error } = useGetUserQuery();
   const {
-    data: userOrders,
-    isLoading: userOrdersLoading,
-    error: userOrdersError,
-    isSuccess: userOrdersSuccess,
-  } = useGetUserPropertyOrdersQuery();
-
-  if (userOrdersSuccess) {
-    console.log(userOrders, "Success");
-  }
-  if (userOrdersError) {
-    console.log(userOrdersError);
-  }
+    data: userOrderData,
+    isSuccess: userOrderSuccess,
+    error: userOrderError,
+  } = useGetAUserErrandsQuery();
 
   if (error) {
     console.log(error);
@@ -134,7 +132,7 @@ const Dashboard = () => {
   if (isSuccess) {
     console.log(UserData, "Dashboard");
   }
-
+  console.log(userSingleOrderToDisplay);
   if (paymentSuccess) {
     console.log(paymentData);
   }
@@ -144,9 +142,8 @@ const Dashboard = () => {
 
   const handlePaymentCreations = async () => {
     const data = {
-      // email: "micheaol80@gmail.com",
-      package_ordered: userOrder.data?.property_ordered,
-      property_service_title: userOrder.data?.property_service_title,
+      ordered_service_id: userOrder.data?.ordered_service_id,
+      ordered_service_title: userOrder.data?.ordered_service_title,
       request_id: userOrder.data?.request_id,
     };
     const result = await createPayment(data);
@@ -169,10 +166,53 @@ const Dashboard = () => {
   const handleShowOnlyIcons = () => {
     setShowIconsOnly((prev) => !prev);
   };
+  const setProgressBarStatus = (data) => {
+    if (data?.order_status === "On-going") {
+      setProgressBarSteps(75);
+      setRequestStages(3);
+    } else if (data?.order_status === "Completed") {
+      setProgressBarSteps(100);
+      setRequestStages(4);
+    } else {
+      setProgressBarSteps(0);
+      setRequestStages(1);
+    }
+    return progressBarSteps;
+  };
 
-  useEffect(() => {}, [paymenyLoading, isFetching, userOrder]);
+  useEffect(() => {
+    if (userOrderSuccess) {
+      setUserSingleOrderToDisplay([
+        userOrderData.userOrders[userOrderData.userOrders.length - 1],
+      ]);
+      if (innerNavMenuClicked === "Active") {
+        const filterUserOrder = userOrderData.userOrders.filter(
+          (orderFiltered) => orderFiltered.order_status === "On-going"
+        );
+        setUserAllOrdersToDisplay(filterUserOrder);
+      } else if (innerNavMenuClicked === "Completed") {
+        const filterUserOrder = userOrderData.userOrders.filter(
+          (orderFiltered) => orderFiltered.order_status === "Completed"
+        );
+        setUserAllOrdersToDisplay(filterUserOrder);
+      } else {
+        const filterUserOrder = userOrderData.userOrders.filter(
+          (orderFiltered) => orderFiltered.order_status === "Pending"
+        );
+        setUserAllOrdersToDisplay(filterUserOrder);
+      }
+    }
+    // setProgressBarStatus();
+  }, [
+    paymenyLoading,
+    isFetching,
+    userOrder,
+    userOrderSuccess,
+    innerNavMenuClicked,
+    requestStages,
+    progressBarSteps,
+  ]);
 
-  // console.log(reference);
   return (
     <>
       <Navbar />
@@ -253,7 +293,17 @@ const Dashboard = () => {
                             <p>View all</p>
                           </div>
                         </div>
-                        <DashboardTopCard showIconsOnly={showIconsOnly} />
+                        {userSingleOrderToDisplay &&
+                          userSingleOrderToDisplay.map((userSingle) => (
+                            <DashboardTopCard
+                              showIconsOnly={showIconsOnly}
+                              data={userSingle}
+                              innerNavMenuClicked={innerNavMenuClicked}
+                              progressBarSteps={progressBarSteps}
+                              requestStages={requestStages}
+                              setProgressBarStatus={setProgressBarStatus}
+                            />
+                          ))}
                       </div>
                       <div className="dashboard-quick-action-section">
                         <p>Quick Actions</p>
@@ -286,16 +336,25 @@ const Dashboard = () => {
                         handleInnerNavBarClicked={handleInnerNavBarClicked}
                         myRequestInnerNavData={myRequestInnerNavData}
                         innerNavMenuClicked={innerNavMenuClicked}
+                        progressBarSteps={progressBarSteps}
+                        requestStages={requestStages}
                       />
                     </div>
                     <div className="dashboard-request-main-status-wrapper">
                       <p>{innerNavMenuClicked} Request(s)</p>
-                      <div>
-                        <DashboardTopCard
-                          innerNavMenuClicked={innerNavMenuClicked}
-                          showIconsOnly={showIconsOnly}
-                        />
-                      </div>
+                      {userAllOrdersToDisplay &&
+                        userAllOrdersToDisplay.map((userAllOrders) => (
+                          <div className="mt-10">
+                            <DashboardTopCard
+                              innerNavMenuClicked={innerNavMenuClicked}
+                              showIconsOnly={showIconsOnly}
+                              data={userAllOrders}
+                              progressBarSteps={progressBarSteps}
+                              requestStages={requestStages}
+                              setProgressBarStatus={setProgressBarStatus}
+                            />
+                          </div>
+                        ))}
                     </div>
                   </div>
                 </>
