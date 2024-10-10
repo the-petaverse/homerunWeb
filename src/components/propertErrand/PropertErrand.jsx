@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./PropertErrand.css";
 import { Controller, useForm } from "react-hook-form";
-import CustomTextArea from "../customTextArea/CustomTextArea";
 import CustomImput from "../customImput/CustomImput";
 import CustomSelect from "../customSelect/CustomSelect";
 
@@ -25,6 +24,7 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import { useCreatePropertyErrandMutation } from "../../services/propertyErrands/propertyErrand";
 import { useDispatch, useSelector } from "react-redux";
 import { addUserOrder } from "../../services/slices/userOrder";
+import CustomTextArea from "../customTextArea/CustomTextArea";
 
 const PropertErrand = (props) => {
   const {
@@ -55,8 +55,12 @@ const PropertErrand = (props) => {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      property_service_title: subcategory,
-      property_ordered: subRequestId && subRequestId,
+      ordered_service_title: subcategory,
+      ordered_service_id: subRequestId && subRequestId,
+      firstName: "",
+      lastName: "",
+      // If first name is available it will be added
+      // otherwise it will be added from the logged in user
     },
     mode: "all",
   });
@@ -66,6 +70,7 @@ const PropertErrand = (props) => {
   const onSubmitData = async (data) => {
     const formData = new FormData();
     for (const key in data) {
+      console.log(key);
       if (key === "file") {
         formData.append("proportyDocument", data[key][0]);
       } else if (key === "property_ordered") {
@@ -74,7 +79,8 @@ const PropertErrand = (props) => {
         formData.append(key, data[key]);
       }
     }
-    await createPropertyErrand(formData);
+    console.log(data);
+    // await createPropertyErrand(formData);
   };
 
   const handleIncreaseFileUploader = () => {
@@ -120,7 +126,6 @@ const PropertErrand = (props) => {
                   required="Your name is required"
                   placeholder="Your name"
                   iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
-                  // className="main-text-input"
                   type="text"
                   error={errors?.proprty_location?.message}
                   register={register}
@@ -144,14 +149,14 @@ const PropertErrand = (props) => {
               <div className="property-form-section-wrapper">
                 <CustomImput
                   name="seller_name"
-                  required="Name is required"
+                  required="Seller name is required"
                   placeholder="Seller name"
                   // className="main-text-input"
                   type="text"
-                  error={errors?.fullName?.message}
+                  error={errors?.seller_name?.message}
                   register={register}
                   iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
-                  style={{ borderColor: errors.fullName ? "red" : "black" }}
+                  style={{ borderColor: errors.seller_name ? "red" : "black" }}
                 />
 
                 <CustomPhoneInput
@@ -163,21 +168,24 @@ const PropertErrand = (props) => {
                   }}
                   register={register}
                 />
-                <CustomImput
-                  name="seller_email"
-                  required="Name is required"
-                  placeholder="Seller email"
-                  // className="main-text-input"
-                  type="text"
-                  error={errors?.fullName?.message}
-                  register={register}
-                  iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
-                  style={{ borderColor: errors.fullName ? "red" : "black" }}
-                />
               </div>
             )}
 
             <div className="property-form-section-wrapper">
+              {(subcategory === "pre-purchase-verification" ||
+                subcategory === "property-document-processing") && (
+                <CustomImput
+                  name="seller_email"
+                  required="Seller email is required"
+                  placeholder="Seller email"
+                  // className="main-text-input"
+                  type="text"
+                  error={errors?.seller_email?.message}
+                  register={register}
+                  iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
+                  style={{ borderColor: errors.seller_email ? "red" : "black" }}
+                />
+              )}
               {(subcategory === "pre-purchase-verification" ||
                 subcategory === "property-document-processing" ||
                 subcategory === "property-post-purchase" ||
@@ -214,7 +222,7 @@ const PropertErrand = (props) => {
             <div className="text-area-below">
               <CustomTextArea
                 register={register}
-                name="errand_ordered_summary"
+                name="errand_more_details"
                 textAreaStyle="textarea"
                 placeHolder="Enter your errand description here"
               />
