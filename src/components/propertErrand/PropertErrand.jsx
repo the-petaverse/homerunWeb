@@ -25,6 +25,7 @@ import { useCreatePropertyErrandMutation } from "../../services/propertyErrands/
 import { useDispatch, useSelector } from "react-redux";
 import { addUserOrder } from "../../services/slices/userOrder";
 import CustomTextArea from "../customTextArea/CustomTextArea";
+import { useCreateOfficialDocumentErrandMutation } from "../../services/officialDocument/officialDocumentApi";
 
 const PropertErrand = (props) => {
   const {
@@ -42,8 +43,10 @@ const PropertErrand = (props) => {
   const [fileUplodComponent, setFileUplodComponent] = useState([
     { fileName: "" },
   ]);
-  const [createPropertyErrand, { data, isSuccess, error, isLoading, isError }] =
-    useCreatePropertyErrandMutation();
+  const [
+    createOfficialDocumentErrand,
+    { data, isSuccess, error, isLoading, isError },
+  ] = useCreateOfficialDocumentErrandMutation();
 
   const {
     register,
@@ -69,18 +72,29 @@ const PropertErrand = (props) => {
   const watchedFields = watch(); // Watch all form fields
   const onSubmitData = async (data) => {
     const formData = new FormData();
+
     for (const key in data) {
       console.log(key);
       if (key === "file") {
-        formData.append("proportyDocument", data[key][0]);
-      } else if (key === "property_ordered") {
-        formData.append("property_ordered", subRequestId);
+        formData.append("files", data[key][0]);
+      } else if (key === "ordered_service_id") {
+        formData.append(key, serviceData[0]?._id);
+      } else if (key === "ordered_service_title") {
+        formData.append(key, serviceData[0]?.sub_service_title);
+      } else if (
+        key === "firstName" ||
+        key === "lastName" ||
+        key === "errand_ordered_summary" ||
+        key === "middleName" ||
+        key === "terms_conditions"
+      ) {
+        formData.append(key, data[key]);
       } else {
         formData.append(key, data[key]);
       }
     }
     console.log(data);
-    // await createPropertyErrand(formData);
+    await createOfficialDocumentErrand(formData);
   };
 
   const handleIncreaseFileUploader = () => {
