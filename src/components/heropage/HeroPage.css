@@ -1,6 +1,7 @@
 .hero-container {
   padding: 15px 5%;
   color: #fff;
+  padding-top: 50px;
   /* display: flex;
   justify-content: space-between;
   flex-direction: column; */
@@ -33,6 +34,7 @@
 .heading-txt-two {
   font-size: 2em;
   margin-bottom: 10px;
+  font-weight: bold;
   /* margin-top: 25px; */
   line-height: 1.2em;
 }
@@ -57,6 +59,7 @@
 .card-display-container {
   margin-top: -50px;
   width: 100%;
+  /* padding-bottom: 25px; */
   /* padding: 0 5%; */
   margin-right: auto;
   margin-left: auto;
@@ -127,13 +130,14 @@
 @media (min-width: 1024px) {
   .hero-container {
     flex-direction: row;
-    padding: 90px 5%;
+    padding: 0px 5%;
   }
   .outer-hero-container {
     flex-direction: row;
   }
   .card-display-container {
     margin-top: 4px;
+    padding-bottom: 25px;
   }
   .header-content-wrapper > h3 {
     font-size: 2.25em;

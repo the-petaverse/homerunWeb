@@ -25,6 +25,9 @@ import {
 import { useSelector } from "react-redux";
 import { useGetUserPropertyOrdersQuery } from "../../services/propertyErrands/propertyErrand";
 import { useGetAUserErrandsQuery } from "../../services/officialDocument/officialDocumentApi";
+import ServiceCard from "../../components/serviceCard/ServiceCard";
+import CustomServiceCard from "../../components/customServiceCard/CustomServiceCard";
+import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
 
 const paneMenuList = [
   {
@@ -45,36 +48,36 @@ const paneMenuList = [
     titleHeader: "Product Management",
     icon: <MdOutlineSendTimeExtension size={30} />,
   },
-  {
-    id: "4",
-    title: "Cart",
-    titleHeader: "",
-    icon: <FiShoppingCart size={30} />,
-  },
+  // {
+  //   id: "4",
+  //   title: "Cart",
+  //   titleHeader: "",
+  //   icon: <FiShoppingCart size={30} />,
+  // },
   {
     id: "5",
     title: "Refer and Earn",
-    titleHeader: "",
+    titleHeader: "Refer & win",
     icon: <MdOutlinePayments size={30} />,
   },
-  {
-    id: "6",
-    title: "Support",
-    titleHeader: "Support & Settings",
-    icon: <MdOutlineSendTimeExtension size={30} />,
-  },
-  {
-    id: "7",
-    title: "My Account",
-    titleHeader: "",
-    icon: <FiShoppingCart size={30} />,
-  },
-  {
-    id: "8",
-    title: "Settings",
-    titleHeader: "",
-    icon: <MdOutlinePayments size={30} />,
-  },
+  // {
+  //   id: "6",
+  //   title: "Support",
+  //   titleHeader: "Support & Settings",
+  //   icon: <MdOutlineSendTimeExtension size={30} />,
+  // },
+  // {
+  //   id: "7",
+  //   title: "My Account",
+  //   titleHeader: "My account",
+  //   icon: <FiShoppingCart size={30} />,
+  // },
+  // {
+  //   id: "8",
+  //   title: "Settings",
+  //   titleHeader: "",
+  //   icon: <MdOutlinePayments size={30} />,
+  // },
   {
     id: "9",
     title: "Logout",
@@ -105,7 +108,12 @@ const Dashboard = () => {
   const [showIconsOnly, setShowIconsOnly] = useState(false);
   const [progressBarSteps, setProgressBarSteps] = useState();
   const [requestStages, setRequestStages] = useState();
-
+  const {
+    data: serviceCategories,
+    isLoading: serviceCategoryLoading,
+    isSuccess: serviceCategorySuccess,
+    error: serviceCategoryError,
+  } = useGetRequestCategoriesQuery();
   const { data: UserData, isLoading, isSuccess, error } = useGetUserQuery();
   const {
     data: userOrderData,
@@ -117,7 +125,7 @@ const Dashboard = () => {
     console.log(error);
   }
   // const reference = query.get("reference");
-
+  console.log(serviceCategories);
   const [
     createPayment,
     {
@@ -184,6 +192,7 @@ const Dashboard = () => {
     return progressBarSteps;
   };
 
+  console.log(sidePaneSelected);
   useEffect(() => {
     if (userOrderSuccess) {
       setUserSingleOrderToDisplay([
@@ -340,6 +349,14 @@ const Dashboard = () => {
                   </div>
                 </>
               )}
+              {sidePaneSelected === "2" && (
+                <div className="grid gap-10 grid-cols-3 grid-rows-3 pt-10">
+                  {serviceCategories &&
+                    serviceCategories?.serviceCategory.map((service) => (
+                      <CustomServiceCard service={service} />
+                    ))}
+                </div>
+              )}
               {sidePaneSelected === "3" && (
                 <>
                   <div>
@@ -374,7 +391,7 @@ const Dashboard = () => {
               {sidePaneSelected === "5" && (
                 <>
                   <div className="refer-earn-main-wrapper">
-                    <h1>Refer & Earn</h1>
+                    <h1 className="font-bold text-2xl">Refer & Earn</h1>
                     <ReferEarn />
                   </div>
                 </>

@@ -24,7 +24,6 @@ const ServiceCard = () => {
 
   const handleServiceClick = (serviceName) => {
     navigate(`/request-category/${serviceName}`);
-    console.log(serviceName);
   };
 
   const settings = {

@@ -22,7 +22,6 @@ const UserAvarta = () => {
   return (
     <div className="user-avatar-main-container">
       <div className="user-avatar-header" onClick={handleOpenAvartarMenuModal}>
-        {/* <img src="" alt="" /> */}
         <RxAvatar size={20} />
         <p className="lg:text-sm max-sm:text-xs sm:text-xs">Michael Oladele</p>
         <FaChevronDown size={20} color="gray" className="" />
