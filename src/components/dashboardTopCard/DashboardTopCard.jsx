@@ -15,7 +15,12 @@ const DashboardTopCard = ({
   console.log(requestStages);
   useEffect(() => {
     setProgressBarStatus(data);
-  }, [requestStages, progressBarSteps, innerNavMenuClicked]);
+  }, [
+    requestStages,
+    progressBarSteps,
+    innerNavMenuClicked,
+    setProgressBarStatus,
+  ]);
   return (
     <div className="dashboard-top-card-main-container">
       <div

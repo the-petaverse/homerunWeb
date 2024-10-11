@@ -36,16 +36,13 @@ const Navbar = () => {
           <img src={logo} alt="" className="image-wrapper" />
         </Link>
         <section className="menu-list-sec-wrapper">
-          <ul className="menu-list-wrapper">
+          <ul className="menu-list-wrapper  ">
             <Link to="/about" className="nav-links">
-              <li>About Us</li>
+              <li className="">About Us</li>
             </Link>
             <Link to="/our-services" className="nav-links ">
               <li>Services</li>
             </Link>
-            {/* <Link to="/about" className="nav-links">
-            <li>About us</li>
-          </Link> */}
             <Link to="/contact" className="nav-links">
               <li>Contact Us</li>
             </Link>
@@ -69,7 +66,7 @@ const Navbar = () => {
 
           {/* Menu to show when the user is authenticated */}
           {receivedCookies && (
-            <ul className="list-wrapper">
+            <ul className="list-wrapper ml-5">
               <div
                 // to=""
                 className="nav-links post-request-wrapper"
@@ -77,10 +74,10 @@ const Navbar = () => {
               >
                 <li className="post-request-wrapper-li">Post errand</li>
               </div>
-              <li className="use-profile-icons icon-withcart-notification">
+              {/* <li className="use-profile-icons icon-withcart-notification">
                 <span>7</span>
                 <FiShoppingCart size={25} />
-              </li>
+              </li> */}
               <li className="use-profile-icons">
                 <FaRegBell size={25} />
               </li>

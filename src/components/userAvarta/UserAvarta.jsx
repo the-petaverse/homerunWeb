@@ -23,9 +23,9 @@ const UserAvarta = () => {
     <div className="user-avatar-main-container">
       <div className="user-avatar-header" onClick={handleOpenAvartarMenuModal}>
         {/* <img src="" alt="" /> */}
-        <RxAvatar size={30} />
-        <p>Michael Oladele</p>
-        <FaChevronDown size={25} color="gray" />
+        <RxAvatar size={20} />
+        <p className="lg:text-sm max-sm:text-xs sm:text-xs">Michael Oladele</p>
+        <FaChevronDown size={20} color="gray" className="" />
       </div>
       {openAvatarMenu && (
         <div className="user-avatar-menu">
@@ -42,13 +42,13 @@ const UserAvarta = () => {
               </span>
               My Account
             </li>
-            <li className="flex">
+            <li className="flex text-sm">
               <span>
                 <MdOutlineSettings />
               </span>
               Settings
             </li>
-            <li className="flex">
+            <li className="flex text-sm">
               <span>
                 <TbLogout2 />
               </span>

@@ -98,6 +98,9 @@ const Dashboard = () => {
   const [sidePaneSelected, setSidePaneSelected] = useState("1");
   const [sidePaneTitleSelected, setSidePaneTitleSelected] = useState();
   const [userSingleOrderToDisplay, setUserSingleOrderToDisplay] = useState();
+  const [requesActiveCounter, setRequestActiveCounter] = useState();
+  const [requesCompletedCounter, setRequestCompletedCounter] = useState();
+  const [requesCancelledCounter, setRequestCancelledCounter] = useState();
   const [userAllOrdersToDisplay, setUserAllOrdersToDisplay] = useState();
   const [showIconsOnly, setShowIconsOnly] = useState(false);
   const [progressBarSteps, setProgressBarSteps] = useState();
@@ -166,6 +169,7 @@ const Dashboard = () => {
   const handleShowOnlyIcons = () => {
     setShowIconsOnly((prev) => !prev);
   };
+
   const setProgressBarStatus = (data) => {
     if (data?.order_status === "On-going") {
       setProgressBarSteps(75);
@@ -199,10 +203,11 @@ const Dashboard = () => {
         const filterUserOrder = userOrderData.userOrders.filter(
           (orderFiltered) => orderFiltered.order_status === "Pending"
         );
+
         setUserAllOrdersToDisplay(filterUserOrder);
       }
     }
-    // setProgressBarStatus();
+    // filterServiceCount();
   }, [
     paymenyLoading,
     isFetching,
@@ -211,6 +216,9 @@ const Dashboard = () => {
     innerNavMenuClicked,
     requestStages,
     progressBarSteps,
+    requesActiveCounter,
+    requesCompletedCounter,
+    requesCancelledCounter,
   ]);
 
   return (
@@ -323,7 +331,11 @@ const Dashboard = () => {
                     </div>
                     <div className="dashboard-chart-details-wrapper">
                       <RewardCard UserData={UserData} />
-                      <DashbaordRequestCard />
+                      <DashbaordRequestCard
+                        requesActiveCounter={requesActiveCounter}
+                        requesCompletedCounter={requesCompletedCounter}
+                        requesCancelledCounter={requesCancelledCounter}
+                      />
                     </div>
                   </div>
                 </>

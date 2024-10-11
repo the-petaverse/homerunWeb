@@ -15,8 +15,7 @@ const ProgressBar = ({
           className="progress-bar-fill"
           style={{
             width: `${progressBarSteps}%`,
-            backgroundColor:
-              innerNavMenuClicked === "Cancelled" ? "red" : "#23a45a",
+            backgroundColor: progressBarSteps > 50 ? "#23a45a" : "red",
           }}
         ></div>
       </div>
