@@ -37,13 +37,19 @@ const DashboardInnerRequestNav = ({
               {innerNaveMenu.title} Request
             </p>
             {innerNaveMenu.title === "Active" && (
-              <p className="dash-inner-request-counter">{activeCount}</p>
+              <p className="dash-inner-request-counter">
+                {activeCount ? activeCount : 0}
+              </p>
             )}
             {innerNaveMenu.title === "Completed" && (
-              <p className="dash-inner-request-counter">{completedCount}</p>
+              <p className="dash-inner-request-counter">
+                {completedCount ? completedCount : 0}
+              </p>
             )}
             {innerNaveMenu.title === "Cancelled" && (
-              <p className="dash-inner-request-counter">{cancelledCount}</p>
+              <p className="dash-inner-request-counter">
+                {cancelledCount ? cancelledCount : 0}
+              </p>
             )}
           </div>
         ))}
