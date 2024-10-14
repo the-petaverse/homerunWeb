@@ -13,7 +13,7 @@ const EverythinYouNeed = () => {
       </div>
       <div className="video-main-container">
         <video className="vedio-player-wrapper" controls>
-          <source src="./Videos/video1.mp4" type="video/mp4" />
+          {/* <source src="./Videos/video1.mp4" type="video/mp4" /> */}
         </video>
       </div>
     </div>
