@@ -1,0 +1,38 @@
+.car-hotel-main-container {
+  /* position: relative; */
+  padding: 25px 5%;
+  padding-bottom: 150px;
+  background-color: #fff;
+}
+.car-card-outer-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.car-back-button-container {
+  /* padding: 5px 5%; */
+  display: flex;
+  gap: 20px;
+}
+.car-back-button-wrapper {
+  /* margin-top: 10px; */
+  margin-bottom: 15px;
+}
+.car-slate-header-wrapper {
+  margin-bottom: 15px;
+}
+.car-slate-header-wrapper > h2 {
+  font-size: 2em;
+}
+.car-slate-header-wrapper > p {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+@media (min-width: 1024px) {
+  .car-card-outer-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+  }
+}

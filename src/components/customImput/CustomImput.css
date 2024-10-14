@@ -2,10 +2,32 @@
   color: red;
   font-size: 15px;
   margin-top: 5px;
-  /* margin-top: 50px; */
   padding-left: 5px;
   text-align: left;
 }
 .input-main-container {
   width: 100%;
+  position: relative;
+}
+.custom-input-icon {
+  position: absolute;
+  bottom: 22%;
+  left: 14px;
+}
+.custom-right-input-icon {
+  position: absolute;
+  bottom: 20%;
+  right: 14px;
+}
+.custom-main-text-input {
+  background-color: #fff;
+  height: 50px;
+  width: 100%;
+  margin-top: 18px;
+  border-radius: 15px;
+  font-size: 1em;
+  font-weight: 400;
+  padding: 0 42px;
+  border: solid 0.5px rgb(218, 206, 206);
+  outline: none;
 }

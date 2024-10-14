@@ -1,0 +1,9 @@
+.custom-text-area-wrapper {
+  text-align: left;
+  /* margin-top: 20px; */
+}
+.custom-text-area-wrapper p {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

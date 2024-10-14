@@ -1,0 +1,38 @@
+/* ===================PhoneInputInput================================ */
+.PhoneInputInput {
+  background-color: #fff;
+  height: 48px;
+  width: 100%;
+  border-radius: 15px;
+  font-size: 1em;
+  font-weight: 400;
+  padding: 0 42px;
+  outline: none;
+  padding: 4% 0;
+  position: relative;
+}
+.PhoneInput {
+  background-color: #fff;
+  height: 50px;
+  width: 100%;
+  margin-top: 18px;
+  border-radius: 15px;
+  font-size: 1em;
+  font-weight: 400;
+  padding: 0 5%;
+  border: solid 0.5px rgb(218, 206, 206);
+  outline: none;
+  padding: 4% 0;
+  position: relative;
+}
+.PhoneInputCountry {
+  padding-left: 15px;
+}
+.PhoneInputCountryIconImg {
+  margin-right: 5px;
+}
+.register-phone-number-error-style {
+  color: red;
+  margin-top: 5px;
+}
+/* ===================PhoneInputInput================================ */

@@ -3,10 +3,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: rgb(247, 248, 248);
 }
 .mission-wrapper {
   background-color: #ff9a57;
-  color: #fff;
+  color: #000;
 }
 .mission-wrapper h1 {
   margin-bottom: 10px;
@@ -35,10 +36,10 @@
   /* text-align: center; */
 }
 .mission-icon {
-  width: 100%;
+  width: 60%;
 }
 .vision-icon {
-  width: 100%;
+  width: 60%;
   /* margin-right: auto;
   float: right; */
 }
@@ -65,16 +66,30 @@
 @media (min-width: 1024px) {
   .misson-main-container {
     flex-direction: row;
+    margin-top: -25px;
   }
   .mission-wrapper,
   .vision-wrapper {
     width: 48%;
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .mission-wrapper h1,
+  .vision-wrapper h1 {
+    font-size: 2.35em;
+  }
+  .mission-wrapper p,
+  .vision-wrapper p {
+    font-size: 1.85em;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
   .mission-icon {
-    width: 50%;
+    width: 40%;
   }
   .vision-icon {
-    width: 50%;
+    width: 40%;
     /* margin-right: auto; */
     float: right;
   }
@@ -84,4 +99,10 @@
 }
 
 @media (min-width: 1536px) {
+  .misson-main-container {
+    flex-direction: row;
+    margin-top: -45px;
+    padding-top: 2.5%;
+    padding-bottom: 3%;
+  }
 }

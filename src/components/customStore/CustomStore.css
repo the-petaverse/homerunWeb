@@ -1,25 +1,35 @@
 .gifts-container {
-  padding: 2% 0;
+  padding: 2% 5%;
   justify-content: space-between;
   display: flex;
+  align-items: flex-start;
+  position: relative;
+  background-color: #f5f2f2;
+  padding-top: 20px;
 }
 .gift-left-side-navigation {
-  background-color: rgb(236, 233, 233);
-  border-radius: 10px;
-  width: 18%;
-  padding: 2.5%;
+  background-color: #fff;
+  border-radius: 15px;
+  width: 16%;
+  padding: 2%;
+  border: solid 0.1px rgb(218, 216, 216);
 }
 .gift-right-container {
   width: 78%;
 }
+.header-image-wrapper {
+  width: 85%;
+}
 .store-header-wrapper {
   display: flex;
+  justify-content: space-between;
 }
 .request-personalized-store-card {
-  background-color: rgb(246, 244, 244);
+  background-color: #fff;
   padding: 3% 2.5%;
   text-align: center;
   border-radius: 15px;
+  height: 70%;
 }
 .request-personalized-store-card h3 {
   margin-top: 20px;
@@ -32,44 +42,41 @@
   color: #fff;
   margin-top: 15px;
 }
+.gift-items-product-header-wrapper {
+  margin-top: 15px;
+}
+.surprise-gift-product-list-wrapper {
+  cursor: pointer;
+}
+
 .person-header-image {
-  width: 94%;
+  width: 90%;
+  height: 70%;
 }
 .product-list-wrapper {
+  width: 96%;
   margin-top: 25px;
   display: grid;
-  grid-template-columns: 17% 17% 17% 17%;
-  gap: 30px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+
+  /* padding: 0 3%; */
 }
-.product-list-card {
-  /* width: 17%; */
-  border: 0.35px solid rgb(159, 157, 157);
+.proceed-to-checkout-outer-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 24.5%;
+  width: 70%;
+  bottom: 2%;
+  background-color: #fff;
+  padding: 1.5% 0;
   border-radius: 15px;
-  position: relative;
-}
-.product-list-card > input[type="checkbox"] {
-  position: absolute;
-  right: 5%;
-  top: 2.5%;
-  width: 30px;
-  height: 25px;
-}
-.list-content-wrapper {
-  padding: 5px 15px;
-}
-.list-price-wrapper {
-  display: flex;
-  justify-content: space-between;
-  /* padding: 10px 0; */
-}
-.list-price-wrapper > span {
-  font-size: 1.1em;
 }
 .gift-left-side-navigation ul {
   padding-left: 1px;
 }
 .gift-left-side-navigation ul li {
   list-style-type: none;
-  margin-top: 18px;
-  font-size: 1.1em;
+  margin-top: 25px;
+  font-size: 1em;
 }

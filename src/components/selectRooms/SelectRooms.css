@@ -1,0 +1,19 @@
+.select-room-container {
+}
+.select-room-title-wrapper {
+  text-align: left;
+}
+.select-room-add-btn-main-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.select-room-add-btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+.select-room-add-btn-wrapper > p {
+  font-weight: bold;
+}

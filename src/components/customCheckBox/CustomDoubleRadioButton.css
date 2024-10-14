@@ -4,31 +4,39 @@
   align-items: center;
   width: 100%;
   display: flex;
-  border: solid 1px rgb(218, 206, 206);
+  border: solid 0.5px rgb(218, 206, 206);
   margin-top: 18px;
   border-radius: 10px;
-  font-size: 1.3em;
   font-weight: lighter;
 }
 .check-boxes-main-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 20%;
-
-  /* background-color: yellow; */
+  width: 25%;
+}
+.chaeck-boxes-detail-wrapper p {
+  font-weight: 600;
+  font-size: 1.2em;
 }
 .check-boxes-option {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(206, 203, 203);
+  background-color: rgb(238, 235, 235);
   width: 48%;
-  padding: 5px 5.5%;
+  padding: 5px 16px;
   border-radius: 10px;
+  font-size: 1.2em;
+}
+
+.check-boxes-option p {
+  font-weight: 510;
+  font-size: 1em;
+  width: 120%;
 }
 input[type="radio"] {
   border: 0px;
-  width: 90%;
+  width: 60%;
   height: 2em;
 }

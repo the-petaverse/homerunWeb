@@ -1,5 +1,5 @@
 .sustainability-container {
-  padding: 10px 5%;
+  padding: 10px 1.5%;
 }
 .inner-container {
   background-image: url("../../assets/sus-bg.png");
@@ -7,9 +7,11 @@
   background-size: cover;
   margin-left: auto;
   margin-right: auto;
+  /* width: 96%; */
   /* height: 45dvh; */
   display: flex;
   border-radius: 60px;
+  height: auto;
   /* border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px; */
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./SubServiceCard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import SubTranscriptIcon from "../../assets/sub-transcript.png";
 import PropagateLoader from "react-spinners/PropagateLoader";
@@ -9,35 +9,22 @@ import {
   useGetRequestCategoriesQuery,
   useGetRequestSubCategoryQuery,
 } from "../../services/requestsCategory/requestApi";
+import { subServiceData } from "../../data/subCategoryData";
+import { Image, Transformation } from "cloudinary-react";
+import { filteredServiceCategory } from "../../helpers/filterServiceCategories";
+import { filterSubCategory } from "../../helpers/filterSubServices";
 
-const subServiceData = [
-  {
-    id: "1",
-    name: "Transcripts processing and collection",
-    icons: "/images/sub-transcript.png",
-  },
-  {
-    id: "1",
-    name: "Higher education certificates processing and collection",
-    icons: "/images/sub-transcript.png",
-  },
-  {
-    id: "1",
-    name: "Birth certificates",
-    icons: "/images/sub-transcript.png",
-  },
-  {
-    id: "1",
-    name: "Sworn Affidavits",
-    icons: "/images/sub-transcript.png",
-  },
-];
 const SubServiceCard = ({ category }) => {
+  const navigate = useNavigate();
   const [categoryList, setCategoryList] = useState([]);
   const [subCategoryList, setSubCategoryList] = useState([]);
   const [categoryId, setCategoryId] = useState();
-  const { data, isLoading, isFetching, error, isSuccess } =
-    useGetRequestCategoriesQuery();
+  const {
+    data: serviceCategories,
+    isLoading,
+    isSuccess,
+    error,
+  } = useGetRequestCategoriesQuery();
   const {
     data: subData,
     isLoading: subLoading,
@@ -46,107 +33,109 @@ const SubServiceCard = ({ category }) => {
     isLoading: subSuccess,
   } = useGetRequestSubCategoryQuery();
 
-  // if (isLoading) {
-  //   console.log("isLoading");
-  // }
+  const categoryData = {
+    category: category,
+  };
+  const handleNavigate = (servicesubCategory) => {
+    //User the serviceSub category to determin the navigation
 
-  // if (subError) {
-  //   console.log(data);
-  // }
-
-  // if (subLoading) {
-  //   console.log("subLoading.....");
-  // }
-  // if (subFetching) {
-  //   console.log("subFetching.....");
-  // }
-  // if (subSuccess) {
-  //   console.log(subData);
-  // }
-
-  const filterSubCategory = () => {
-    if (categoryId) {
-      let filteredSubCategory = subData?.subRequestsCategory?.filter(
-        (subCategoryData) => subCategoryData?.category_id === categoryId
-      );
-      setSubCategoryList(filteredSubCategory);
+    if (
+      // servicesubCategory === "car-booking" ||
+      servicesubCategory === "grocery_bundles" ||
+      servicesubCategory === "party-packs" ||
+      servicesubCategory === "hamper-items"
+      // servicesubCategory === "hotel-booking"
+    ) {
+      navigate(`/services-sub-category/${servicesubCategory}`, {
+        state: categoryData,
+      });
+    } else if (
+      servicesubCategory === "surprise-packages" ||
+      servicesubCategory === "gift-items" ||
+      servicesubCategory === "cake-items" ||
+      servicesubCategory === "custom_grocery"
+    ) {
+      navigate(`/surprise-sub-category/${servicesubCategory}`, {
+        state: categoryData,
+      });
+    } else if (servicesubCategory === "monthly-grocery-sub") {
+      navigate(`/grocery-sub-category/${servicesubCategory}`, {
+        state: categoryData,
+      });
+    } else {
+      navigate(`/sub-category/${servicesubCategory}`, { state: categoryData });
     }
   };
 
-  const filterCategoryList = () => {
-    if (isSuccess) {
-      let filteredCategory = data?.requestsCategory?.filter(
-        (categoryData) => categoryData.slug_name === category
-      );
+  //Filtering Serice Categories
+  const selectedServiceCategory = filteredServiceCategory(
+    serviceCategories,
+    category
+  );
 
-      setCategoryId(filteredCategory[0]?._id);
-    }
-  };
+  // Filtering sub services
+  const subServicesFiltered = filterSubCategory(subData, categoryId);
 
   useEffect(() => {
-    filterCategoryList();
-    filterSubCategory();
-    // console.log(subData);
-  }, [isSuccess, categoryId, subSuccess, subLoading, subLoading, subData]);
+    if (selectedServiceCategory) {
+      setCategoryId(selectedServiceCategory[0]?._id);
+    }
+  }, [
+    isSuccess,
+    category,
+    subSuccess,
+    subLoading,
+    subLoading,
+    subData,
+    categoryId,
+  ]);
   return (
     <div className="category-detail-main-container">
-      <div className="category-header-wrapper">
-        {/* <h1>{category}</h1> */}
-        <h1>Transcript, Certificates & Official Documents Requests</h1>
-      </div>
-      <div className="category-header-wrapper-para-wrapper">
-        <p>
-          Need important documents from institutions back home? We obtain
-          credentials and other necessary documents on your behalf, saving you
-          time and hassle.
-        </p>
-      </div>
-      {/* {subLoading || subFetching ? (
-        <div className="service-loader-holder">
-          <h2>Please wait........</h2>
-          <PropagateLoader color="#262262" size={30} />
-        </div>
-        
-      ) : (
-        <div className="cat-card-parent-wrapper">
-          {subCategoryList &&
-            subCategoryList?.map((ctegoryData, index) => {
-              return (
-                <Link
-                  to={"/sub-category/" + ctegoryData?.sub_category_slug}
-                  key={index}
-                >
-                  <div className="main-category-card-container">
-                    <img src={Logo} alt="category" className="category-image" />
-                    <div className="category-card-wrapper">
-                      <h4>{ctegoryData?.sub_category_title}</h4>
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit.
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-        </div>
-      )} */}
-
+      {selectedServiceCategory &&
+        selectedServiceCategory.map((mainServiceCategory, index) => (
+          <div key={index}>
+            <div className="category-header-wrapper">
+              <Image
+                className="card-image-wrapper"
+                cloudName="petaverse"
+                publicId={mainServiceCategory?.category_banner_url}
+              >
+                <Transformation crop="scale" />
+              </Image>
+              <h1 className="servie-category-header">
+                {`${mainServiceCategory?.category_name} Requests`}
+              </h1>
+            </div>
+            <div className="category-header-wrapper-para-wrapper">
+              <p>{mainServiceCategory?.category_details}</p>
+            </div>
+          </div>
+        ))}
       <div className="subservices-card-wrapper">
-        {subServiceData &&
-          subServiceData.map((subService, index) => {
+        {subServicesFiltered &&
+          subServicesFiltered.map((subService, index) => {
             return (
-              <div className="subservices-card">
-                <Link to={"/sub-category/" + subService.name}>
-                  <div className="subservice-icon-wrapper">
-                    <img
-                      src={subService.icons}
-                      alt="transcript icon"
-                      className="subservices-icons"
-                    />
-                  </div>
-                  <h2>{subService.name}</h2>
-                </Link>
+              <div
+                key={index}
+                className="subservices-card"
+                onClick={() => handleNavigate(subService.sub_service_slug)}
+              >
+                <div className="subservice-icon-wrapper">
+                  <Image
+                    className="subservices-icons"
+                    alt="transcript icon"
+                    cloudName="petaverse"
+                    publicId={subService?.sub_service_icon}
+                  >
+                    <Transformation crop="scale" />
+                  </Image>
+                </div>
+                <div className="card-tile-wrapper">
+                  <h2 className="font-bold text-12xl">
+                    {subService.sub_service_title}
+                  </h2>
+                  <p className="">{subService.sub_service_details}</p>
+                </div>
               </div>
             );
           })}

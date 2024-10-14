@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { useNavigate, Outlet, Navigate } from "react-router-dom";
-import Login from "../login/Login";
+import Login from "../../pages/auth/login/Login";
 import Cookies from "universal-cookie";
 
-const PrivateRoute = () => {
+const PrivateRoute = ({ children }) => {
   const cookies = new Cookies();
 
   let getCookies = cookies.get("auth_token");
-  let registeredCookies = cookies.get("resgitered");
+
+  // let registeredCookies = cookies.get("resgitered");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const PrivateRoute = () => {
     }
   }, [getCookies, navigate]);
 
-  return getCookies !== undefined ? <Outlet /> : <Navigate to="/login" />;
+  return getCookies !== undefined ? children : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;

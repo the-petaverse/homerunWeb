@@ -1,0 +1,147 @@
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  top: 5px;
+  background-color: rgba(200, 200, 200, 0.9);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalContainer {
+  width: 90%;
+  /* height: 90%; */
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.bundle-image-wrapper {
+  width: 100%;
+  border-radius: 20px;
+}
+.footer-btn-wrap {
+  width: 100%;
+  margin-left: auto;
+  margin-right: 0px;
+  margin-top: 0px;
+}
+.detail-checkout-btn {
+  width: 100%;
+  padding: 2%;
+  margin-top: 15px;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 1.12em;
+  background-color: #262262;
+  cursor: pointer;
+}
+.bundle-image-wrapper > img {
+  width: 75%;
+}
+.titleCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+.bundle-title-header {
+  font-size: 1.5em;
+  text-align: center;
+}
+.details-price-tag {
+  font-size: 1.2em;
+  text-align: center;
+}
+.main-content-grocy-title {
+  font-size: 1.35em;
+  text-align: center;
+}
+.list-detail-content {
+  font-size: 0.95em;
+}
+.titleCloseBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.modalContainer .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.modalContainer .footer {
+  /* flex: 20%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.modalContainer .footer button {
+  width: 50%;
+  margin: 10px;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#cancelBtn {
+  background-color: crimson;
+}
+
+@media (min-width: 1024px) {
+  .modalContainer .footer {
+    flex: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .modalContainer {
+    width: 50%;
+    height: 60%;
+  }
+  .modalContainer .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .bundle-image-wrapper {
+    width: 50%;
+    border-radius: 20px;
+  }
+  .bundle-title-header {
+    font-size: 2.25em;
+    text-align: left;
+  }
+  .details-price-tag {
+    font-size: 1.55em;
+    text-align: left;
+    margin-top: 5px;
+  }
+  .main-content-grocy-title {
+    font-size: 1.5em;
+    text-align: left;
+  }
+  .list-detail-content {
+    font-size: 1em;
+  }
+  .footer-btn-wrap {
+    width: 40%;
+    margin-left: auto;
+    margin-right: 60px;
+    margin-top: 25px;
+  }
+}

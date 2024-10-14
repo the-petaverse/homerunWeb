@@ -4,15 +4,42 @@
 }
 .custom-upload-header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  /* padding: 1.55% 2%; */
+  align-items: center;
   border-radius: 10px;
 }
 .custom-header-btn {
-  background-color: #3cbce3;
-  border: dotted 0.56px #fff;
-  width: 10%;
+  background-color: #c2e8f4;
+  border: dashed 1.2px #636161;
+  width: 30%;
   display: flex;
   justify-content: space-between;
-  padding: 10px 2%;
+  padding: 8px 2.5%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.custom-header-btn span {
+  font-size: 1.35em;
+  font-weight: 500;
+}
+
+@media (min-width: 1024px) {
+  .custom-upload-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 1.55% 2%; */
+    border-radius: 10px;
+  }
+  .custom-header-btn {
+    background-color: #c2e8f4;
+    border: dashed 1.2px #636161;
+    width: 12.5%;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 2.5%;
+    border-radius: 10px;
+  }
 }

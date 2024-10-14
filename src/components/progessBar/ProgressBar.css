@@ -1,0 +1,22 @@
+.progress-bar-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 5px;
+}
+.progress-bar-wrapper {
+  width: 95%;
+  height: 10px;
+  border-radius: 10px;
+  background-color: gray;
+}
+.progress-bar-fill {
+  height: 100%;
+  background-color: #23a45a;
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+}
+.progress-bar-label-wrapper > p {
+  font-weight: bold;
+}
