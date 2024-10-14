@@ -51,7 +51,7 @@ const Services = () => {
       description:
         "Enjoy the convenience of having groceries and food items delivered to your door, both locally and internationally. Freshness and quality are guaranteed with every delivery.",
       imageSrc: GrocyImage,
-      link: "/request-category/grocery",
+      // link: "/request-category/grocery",
     },
     {
       id: 3,
@@ -60,7 +60,7 @@ const Services = () => {
       description:
         "Add a touch of joy to your day with our surprise packages. Whether it's a gift for a loved one or a treat for yourself, we deliver delightful surprises that brighten your day.",
       imageSrc: SurpriseImage,
-      link: "/request-category/surprise",
+      // link: "/request-category/surprise",
     },
     {
       id: 4,
@@ -69,7 +69,7 @@ const Services = () => {
       description:
         "Secure hotel accommodations and recreation centers effortlessly. Whether for business or leisure, we ensure your stay is comfortable and enjoyable.",
       imageSrc: HotelImage,
-      link: "/request-category/hotel",
+      // link: "/request-category/hotel",
     },
     {
       id: 5,
@@ -119,9 +119,9 @@ const Services = () => {
                   <h1>{service.category_name}</h1>
                   <p>{service.category_details}</p>
                   <div className="service-btn">
-                    <Link to={`/request-category/${service.slug_name}`}>
+                    <button to={`/request-category/${service.slug_name}`}>
                       Post this request
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
