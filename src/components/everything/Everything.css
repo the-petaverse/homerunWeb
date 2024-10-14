@@ -24,10 +24,11 @@
 }
 .video-main-container {
   width: 100%;
-  padding-bottom: 20px;
+  height: auto;
 }
 .vedio-player-wrapper {
   width: 100%;
+  height: auto;
   margin-bottom: 50px;
 }
 .everything-icons-wrapper {
@@ -62,27 +63,25 @@
 
 @media (min-width: 1024px) {
   .everything-header-wrapper {
-    padding: 50px 10%;
-    width: 55%;
+    padding: 20px 10%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
   }
-  .everything-header-wrapper > h2 {
-    font-size: 3.5em;
+  .everything-header-wrapper h2 {
+    font-size: 2em;
     line-height: 1em;
-    font-weight: bold;
   }
 }
 
 @media (min-width: 1280px) {
   .everything-header-wrapper h2 {
-    font-size: 2.5em;
-    line-height: 1.25em;
+    font-size: 2em;
+    line-height: 1.8em;
   }
   .vedio-player-wrapper {
     width: 65%;
-    margin-right: auto;
-    margin-left: auto;
+    height: auto;
   }
 }
 

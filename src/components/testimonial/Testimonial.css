@@ -62,7 +62,7 @@
   display: flex;
   align-items: center; /* Vertically center the icons */
   padding: 10px;
-  gap: 10px;
+  gap: 10px; 
 }
 
 .happy-detail-wrapper {
@@ -118,11 +118,9 @@
   }
   .happy-detail-wrapper h2 {
     font-size: 1.25em;
-    margin-left: 5px;
   }
   .happy-detail-wrapper p {
     font-size: 1.1em;
-    margin-left: 5px;
   }
   .users-rate-wrapper h3 {
     font-size: 1.5em;

@@ -1,17 +1,28 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-
-import { apiHeader } from "../constant/apiHeader";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import Cookies from "universal-cookie";
 
 // Define a service using a base URL and expected endpoints
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: apiHeader,
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://homerun-backend.onrender.com/api/v1/",
+    prepareHeaders: (headers, { getState }) => {
+      const cookies = new Cookies();
+      const token = cookies.get("auth_token");
+
+      //If the token is available
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
   endpoints: (builder) => ({
     getUsers: builder.query({
       query: () => "auth/users",
     }),
     getUser: builder.query({
-      query: () => "/auth/user/me",
+      query: () => "auth/user",
     }),
     loginUser: builder.mutation({
       query: (data) => ({
@@ -21,41 +32,15 @@ export const authApi = createApi({
       }),
     }),
     registerUser: builder.mutation({
-      query: (data) => (
-        console.log(data),
-        {
-          url: "auth/user",
-          method: "POST",
-          body: data,
-        }
-      ),
+      query: (data) => ({
+        url: "auth/user",
+        method: "POST",
+        body: data,
+      }),
     }),
     verifyUser: builder.mutation({
-      query: (otp) => ({
+      query: (data) => ({
         url: "auth/verify_otp",
-        method: "POST",
-        body: { otp: otp },
-      }),
-    }),
-    resetUserOtp: builder.mutation({
-      query: (data) => ({
-        url: "/auth/reset_otp",
-        method: "POST",
-        body: data,
-      }),
-    }),
-    // User provide email to get authenticated
-    // Before allowed to reset password
-    forgotUserPassword: builder.mutation({
-      query: (data) => ({
-        url: "/auth/forgot_password",
-        method: "POST",
-        body: data,
-      }),
-    }),
-    resetUserPassword: builder.mutation({
-      query: (data) => ({
-        url: "/auth/reset_password",
         method: "POST",
         body: data,
       }),
@@ -69,7 +54,4 @@ export const {
   useGetUserQuery,
   useRegisterUserMutation,
   useVerifyUserMutation,
-  useResetUserOtpMutation,
-  useForgotUserPasswordMutation,
-  useResetUserPasswordMutation,
 } = authApi;

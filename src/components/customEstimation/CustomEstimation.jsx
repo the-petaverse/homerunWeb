@@ -1,34 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./CustomEstimation.css";
-import ProcessDownload from "/images/document-download.png";
 
-const currencyFlip = [
-  { id: "1", title: "USD", synbol: "$", flag: "" },
-  { id: "2", title: "NGN", cost: "N", flag: "" },
-];
-const CustomEstimation = ({ serviceData }) => {
-  console.log(serviceData[0]?.sub_service_estimated_cost);
-  useEffect(() => {}, [serviceData]);
+const CustomEstimation = () => {
   return (
     <div className="estimated-main-container">
-      <div className="estimated-header">
-        <h4 className="font-bold">Estimated Payment</h4>
-        <h4 className="font-semibold">flag</h4>
-      </div>
-
-      {serviceData &&
-        serviceData[0]?.sub_service_estimated_cost.map((pay, index) => {
-          return (
-            <ul className="payment-list">
-              <li className="text-lg">{pay.title}</li>
-              <li className="text-lg">N {pay.cost}</li>
-            </ul>
-          );
-        })}
-      <div className="download-section">
-        <img src={ProcessDownload} alt="process" />
-        <h4>Download the errand process and requirement</h4>
-      </div>
+      <h4>PLEASE NOTE</h4>
+      <p>
+        Homerun does not work or have any affiliation with any institution.
+        Processing times and costs may vary based on the institution and
+        location. We'll provide a detailed cost breakdown and timeline once your
+        request is verified.
+      </p>
+      <p>All funds paid are nonrefundable.</p>
     </div>
   );
 };

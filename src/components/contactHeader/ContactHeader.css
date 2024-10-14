@@ -26,11 +26,10 @@
 }
 @media (min-width: 640px) {
   .header-left-wrapper p {
-    font-size: 1.5em;
-    line-height: 32px;
+    font-size: 1.25em;
   }
   .header-left-wrapper h1 {
-    font-size: 2em;
+    font-size: 1.35;
   }
 }
 
@@ -42,14 +41,11 @@
     flex-direction: row;
   }
   .header-left-wrapper {
-    width: 40%;
+    width: 42%;
   }
   .header-right-wrapper {
     width: 50%;
     margin-top: 15px;
-  }
-  .header-left-wrapper h1 {
-    font-size: 2.35em;
   }
 }
 

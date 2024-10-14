@@ -1,41 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Requirement.css";
-import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 
-const Requirement = ({ serviceData }) => {
-  const [showRequirement, setShowRequirement] = useState(false);
-
-  const handleOpenRequirement = () => {
-    setShowRequirement((prev) => !prev);
-  };
-  useEffect(() => {}, [serviceData]);
+const Requirement = () => {
   return (
     <div className="requirement-container">
-      <div className="requirement-main-header-wrapper">
-        <div className="requirement-header" onClick={handleOpenRequirement}>
-          <h2 className="font-bold text-2xl">Requirements</h2>
-          {showRequirement ? (
-            <FaChevronDown size={25} />
-          ) : (
-            <FaChevronRight size={25} />
-          )}
-        </div>
-        <p className="text-lg">
-          Please see a list of what is required from you
-        </p>
+      <div className="requirement-header">
+        <h2>Requirements</h2>
+        <img src="/images/chevron-forw.png" alt="" />
       </div>
-      {showRequirement && (
-        <div className="requirement-content">
-          <ul>
-            {serviceData &&
-              serviceData[0]?.sub_service_requirement.map((require, index) => (
-                <li key={index} className="list-disc">
-                  {require}
-                </li>
-              ))}
-          </ul>
-        </div>
-      )}
+      <div className="requirement-content">
+        <p>Please see a list of what is required from you</p>
+        <ul>
+          <li>Letter of attestation (Done by a Lawyer)</li>
+          <li>Affidavit for WAEC (Done at Court)</li>
+          <li>Copy of WAEC result</li>
+          <li>A non-refundable fee of 98 dollars (Diaspora)</li>
+          <li>A non-refundable fee of 45,000 naira (Local)</li>
+          <li>Courier Fees</li>
+          <li>2 passport photographs</li>
+          <li>3 Tubers of yam and red oil</li>
+        </ul>
+      </div>
     </div>
   );
 };

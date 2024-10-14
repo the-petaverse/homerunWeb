@@ -3,17 +3,16 @@
   /* justify-content: space-between;
   width: 70%; */
   /* width: 50dvw; */
-  width: 100%;
+  /* width: 90  %; */
 }
 .testimonial-card {
   background-color: #fff;
-  /* border: solid 0.5px gray; */
-  width: 100%;
-  padding: 6%;
+  border: solid 0.5px gray;
+  width: 95% !important;
+  padding: 8%;
   gap: 30px;
   border-radius: 15px;
-  font-size: 1.35em;
-  font-style: italic;
+  font-size: 1.3em;
 }
 
 @media (min-width: 475px) {

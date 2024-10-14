@@ -1,16 +1,11 @@
 import React from "react";
 import "./CustomButton.css";
 
-const CustomButton = ({ title, btnStyles, btnOnClick, btnDisabled }) => {
+const CustomButton = () => {
   return (
-    <button
-      onClick={btnOnClick}
-      className={btnStyles ? btnStyles : "customBtnStyle"}
-      disabled={btnDisabled}
-      style={{ backgroundColor: btnDisabled ? "gray" : "" }}
-    >
-      {title}
-    </button>
+    <div className="custom-btn-wrapper">
+      <button className="custom-btn-main">CustomButton</button>
+    </div>
   );
 };
 

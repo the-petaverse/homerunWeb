@@ -7,7 +7,6 @@
   width: 60%;
   background-color: #f9f9f9;
   padding: 10%;
-  margin-top: 200px;
   margin-right: auto;
   margin-left: auto;
   text-align: center;
@@ -23,17 +22,7 @@
   background-color: #262262;
   color: #fff;
   font-size: 1.25em;
-  cursor: pointer;
 }
 .success-image {
   margin: 5%;
-}
-
-@media (min-width: 1280px) {
-  .success-inner-container {
-    margin-top: 50px;
-  }
-}
-
-@media (min-width: 1536px) {
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./FaqCard.css";
-// Icon for open state
-import { ArrowDown2, ArrowRight2 } from "iconsax-react";
+import RightIcon from "../../assets/right.png";
+import ChevronIcon from "../../assets/chevron-down.png";
+import ChevronUpIcon from "../../assets/chevron-up.webp"; // Icon for open state
 // import { IoChevronForwardSharp } from "react-icons/io5";
 
 const accordionData = [
@@ -46,12 +46,11 @@ const FaqCard = () => {
                 onClick={() => handleOpenAccordion(accordion.id)}
               >
                 <h4>{accordion.title}</h4>
-
-                {accordionId === accordion.id ? (
-                  <ArrowDown2 color="#000" size={28} />
-                ) : (
-                  <ArrowRight2 color="#000" size={28} />
-                )}
+                <img
+                  src={accordionId === accordion.id ? ChevronUpIcon : RightIcon}
+                  className="accordion-icon"
+                  alt="icon"
+                />
               </div>
               {accordionId === accordion.id && (
                 <div className="accordion-body">

@@ -2,12 +2,6 @@
 
 .client-test-container {
   padding: 45px 5%;
-  background-color: #fff;
-  border-radius: 50px;
-  width: 96%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
 }
 
 .inner-border-wrapper {
@@ -26,11 +20,10 @@
 
 .testimonial-header p {
   font-size: 1.2em;
-  font-weight: medium;
+  font-weight: lighter;
   /* font-family: "Josefin Slab", serif; */
   margin-top: 10px;
   margin-bottom: 25px;
-  color: #1f1f1f;
 }
 .accordion-main-wrapper {
   border-bottom: solid 0.5px #000;
@@ -41,8 +34,7 @@
 .accordion-body {
   font-size: 1.2em;
   margin-top: 15px;
-  font-weight: medium;
-  color: #1f1f1f;
+  font-weight: lighter;
 }
 .accordion-header-wrapper {
   display: flex;
@@ -52,8 +44,6 @@
 }
 .accordion-header-wrapper h4 {
   font-size: 1.35em;
-  color: #1f2323;
-  font-weight: 500;
 }
 
 .accordion-icon {
@@ -61,6 +51,7 @@
   height: 30px;
   transition: transform 0.1s ease;
 }
+
 
 .accordion-header-wrapper:hover .accordion-icon {
   transform: rotate(90deg); /* Rotate the icon 90 degrees to point downwards */
