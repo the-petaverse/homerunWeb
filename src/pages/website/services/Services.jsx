@@ -36,7 +36,15 @@ const Services = () => {
   };
 
   const handleNavigate = (serviceName) => {
-    navigate(`/request-category/${serviceName}`);
+    if (
+      serviceName === "grocery_food" ||
+      serviceName === "hotel_car_booking" ||
+      serviceName === "surprise_gifts"
+    ) {
+      return;
+    } else {
+      navigate(`/request-category/${serviceName}`);
+    }
   };
   const serviceData = [
     {
