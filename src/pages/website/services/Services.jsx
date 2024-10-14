@@ -11,10 +11,11 @@ import CustomButton from "../../../components/customButton/CustomButton";
 // import Hq from "../../components/hq/Hq";
 
 import { useGetRequestCategoriesQuery } from "../../../services/requestsCategory/requestApi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Image, Transformation } from "cloudinary-react";
 
 const Services = () => {
+  const navigate = useNavigate();
   const {
     data: serviceCategories,
     isLoading,
@@ -34,6 +35,9 @@ const Services = () => {
     setOpenSideBar(false);
   };
 
+  const handleNavigate = (serviceName) => {
+    navigate(`/request-category/${serviceName}`);
+  };
   const serviceData = [
     {
       id: 1,
@@ -119,7 +123,7 @@ const Services = () => {
                   <h1>{service.category_name}</h1>
                   <p>{service.category_details}</p>
                   <div className="service-btn">
-                    <button to={`/request-category/${service.slug_name}`}>
+                    <button onClick={() => handleNavigate(service.slug_name)}>
                       Post this request
                     </button>
                   </div>
