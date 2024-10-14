@@ -184,7 +184,9 @@ const OtpComponent = ({ email }) => {
               </div>
             </div>
             <div>
-              <p onClick={handleServerResetOtp}>Resend OTP</p>
+              <p onClick={handleServerResetOtp} className="reset-otp-btn">
+                Resend OTP
+              </p>
             </div>
           </div>
           <CustomButton

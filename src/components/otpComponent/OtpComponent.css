@@ -20,6 +20,9 @@
   font-size: 1.2em;
   margin: 10px 0;
 }
+.reset-otp-btn {
+  cursor: pointer;
+}
 .otp-text-input {
   height: 45px;
   width: 12%;
