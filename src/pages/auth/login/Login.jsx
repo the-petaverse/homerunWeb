@@ -50,6 +50,7 @@ const Login = () => {
         position: "top-right",
       });
     }
+    navigate("/dashboard", { replace: true });
     dispatch(addUserAuth(loginData.data));
     cookies.set("auth_token", loginData?.data);
   }
@@ -69,7 +70,7 @@ const Login = () => {
     if (receivedCookies) {
       navigate("/dashboard", { replace: true });
     }
-  }, [receivedCookies]);
+  }, [receivedCookies, isSuccess, navigate]);
 
   return (
     <div>
