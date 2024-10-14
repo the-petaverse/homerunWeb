@@ -138,6 +138,9 @@
 
 @media (min-width: 475px) {
   .login-iamge-wrapper {
+    background-image: url("../../../assets/login.png");
+    background-size: contain;
+
     width: 80%;
   }
   .inner-form-wrapper {

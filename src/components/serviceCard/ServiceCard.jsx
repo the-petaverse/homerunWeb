@@ -3,11 +3,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./ServiceCard.css";
-import TransImage from "../../assets/trans.png";
-import GrocyImage from "../../assets/grocy.png";
-import SurpriseImage from "../../assets/surprise.png";
-import HotelImage from "../../assets/hotel.png";
-import PropertyImage from "../../assets/property.png";
 import { useNavigate } from "react-router-dom";
 import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
 import { Image, Transformation } from "cloudinary-react";
@@ -23,7 +18,15 @@ const ServiceCard = () => {
   } = useGetRequestCategoriesQuery();
 
   const handleServiceClick = (serviceName) => {
-    navigate(`/request-category/${serviceName}`);
+    if (
+      serviceName === "surprise_gifts" ||
+      serviceName === "grocery_food" ||
+      serviceName === "hotel_car_booking"
+    ) {
+      return;
+    } else {
+      navigate(`/request-category/${serviceName}`);
+    }
   };
 
   const settings = {

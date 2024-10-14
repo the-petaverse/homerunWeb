@@ -57,6 +57,7 @@ const Register = () => {
   const watchPhoneNumber = watch("phone_number");
 
   const onSubmit = async (data) => {
+    console.log(data, "object");
     // setFormSumitted(true);
     await registerUser(data);
   };
@@ -86,11 +87,7 @@ const Register = () => {
     } else if (formStep === 1) {
       return (
         <input
-          disabled={
-            !isValid ||
-            isLoading ||
-            isValidPhoneNumber(watchPhoneNumber ? watchPhoneNumber : "")
-          }
+          disabled={!isValid || isLoading}
           type="submit"
           className={
             !isValid
@@ -121,7 +118,7 @@ const Register = () => {
       );
     }
   };
-  const handleShowPassword = () => {
+  const handleShowPassword = (name) => {
     setRevealPassword((prev) => !prev);
   };
   useEffect(() => {
@@ -336,6 +333,7 @@ const Register = () => {
                   />
                 </>
               )}
+              {/* <input type="submit" /> */}
               {renderButton()}
             </form>
             <div className="last-text-wrapper">

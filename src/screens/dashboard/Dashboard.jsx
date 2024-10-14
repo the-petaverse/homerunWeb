@@ -101,9 +101,6 @@ const Dashboard = () => {
   const [sidePaneSelected, setSidePaneSelected] = useState("1");
   const [sidePaneTitleSelected, setSidePaneTitleSelected] = useState();
   const [userSingleOrderToDisplay, setUserSingleOrderToDisplay] = useState();
-  const [requesActiveCounter, setRequestActiveCounter] = useState();
-  const [requesCompletedCounter, setRequestCompletedCounter] = useState();
-  const [requesCancelledCounter, setRequestCancelledCounter] = useState();
   const [userAllOrdersToDisplay, setUserAllOrdersToDisplay] = useState();
   const [showIconsOnly, setShowIconsOnly] = useState(false);
   const [progressBarSteps, setProgressBarSteps] = useState();
@@ -121,9 +118,18 @@ const Dashboard = () => {
     error: userOrderError,
   } = useGetAUserErrandsQuery();
 
-  if (error) {
-    console.log(error);
-  }
+  const activeCount =
+    userOrderData &&
+    userOrderData.userOrders.filter((item) => item.order_status === "On-going")
+      .length;
+  const completedCount =
+    userOrderData &&
+    userOrderData.userOrders.filter((item) => item.order_status === "Completed")
+      .length;
+  const cancelledCount =
+    userOrderData &&
+    userOrderData.userOrders.filter((item) => item.order_status === "Pending")
+      .length;
   // const reference = query.get("reference");
   console.log(serviceCategories);
   const [
@@ -192,7 +198,6 @@ const Dashboard = () => {
     return progressBarSteps;
   };
 
-  console.log(sidePaneSelected);
   useEffect(() => {
     if (userOrderSuccess) {
       setUserSingleOrderToDisplay([
@@ -225,9 +230,6 @@ const Dashboard = () => {
     innerNavMenuClicked,
     requestStages,
     progressBarSteps,
-    requesActiveCounter,
-    requesCompletedCounter,
-    requesCancelledCounter,
   ]);
 
   return (
@@ -322,7 +324,7 @@ const Dashboard = () => {
                             />
                           ))}
                       </div>
-                      <div className="dashboard-quick-action-section">
+                      {/* <div className="dashboard-quick-action-section">
                         <p>Quick Actions</p>
                         <div className="dashboard-quick-action-card-wrapper">
                           {serviceCategory &&
@@ -333,7 +335,7 @@ const Dashboard = () => {
                               />
                             ))}
                         </div>
-                      </div>
+                      </div> */}
                       <div className="dashboard-quick-action-section">
                         <p>Recent Activities</p>
                       </div>
@@ -341,9 +343,9 @@ const Dashboard = () => {
                     <div className="dashboard-chart-details-wrapper">
                       <RewardCard UserData={UserData} />
                       <DashbaordRequestCard
-                        requesActiveCounter={requesActiveCounter}
-                        requesCompletedCounter={requesCompletedCounter}
-                        requesCancelledCounter={requesCancelledCounter}
+                        activeCount={activeCount}
+                        completedCount={completedCount}
+                        cancelledCount={cancelledCount}
                       />
                     </div>
                   </div>
@@ -367,6 +369,9 @@ const Dashboard = () => {
                         innerNavMenuClicked={innerNavMenuClicked}
                         progressBarSteps={progressBarSteps}
                         requestStages={requestStages}
+                        activeCount={activeCount}
+                        completedCount={completedCount}
+                        cancelledCount={cancelledCount}
                       />
                     </div>
                     <div className="dashboard-request-main-status-wrapper">

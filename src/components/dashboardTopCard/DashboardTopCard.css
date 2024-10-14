@@ -55,12 +55,12 @@
   color: #262262;
 }
 .dashboard-card-main-title {
-  font-size: 1.55em;
+  font-size: 1em;
   font-weight: bold;
   margin-top: 10px;
 }
 .dashboard-card-main-sub-title {
-  font-size: 1.25em;
+  font-size: 0.85em;
   margin-top: 5px;
 }
 .dashboard-progress-bar-main-wrapper {
@@ -100,4 +100,14 @@
 .dashbaord-card-total-amount,
 .dashbaord-card-paid-amount {
   font-size: 1.25em;
+}
+
+@media (min-width: 1024px) {
+  .dashboard-card-main-title {
+    font-size: 1.55em;
+  }
+  .dashboard-card-main-sub-title {
+    font-size: 1.25em;
+    margin-top: 5px;
+  }
 }

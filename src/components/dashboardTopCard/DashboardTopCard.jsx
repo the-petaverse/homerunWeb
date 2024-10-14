@@ -30,10 +30,10 @@ const DashboardTopCard = ({
             : "dashboard-top-card-left-pane"
         }
       >
-        <p className="">
+        <p className="max-sm:text-xs lg:text-lg">
           Request ID: <span className="font-bold">{data.request_id}</span>
         </p>
-        <div className="dashboard-card-request-inner-wrapper">
+        <div className="dashboard-card-request-inner-wrapper max-sm:text-xs lg:text-lg">
           <p>Request: Jul. 24, 2024</p>
           <p>Delivery: Jul. 24, 2024</p>
           <CustomButton

@@ -2,20 +2,20 @@ import React from "react";
 import { Image, Transformation } from "cloudinary-react";
 import CustomButton from "../customButton/CustomButton";
 import { useNavigate } from "react-router-dom";
+import { useLoaderContext } from "../../customHooks/useLoaderContext";
 
 const CustomServiceCard = ({ service }) => {
   const navigate = useNavigate();
+  const loader = useLoaderContext();
 
   const handleNavigate = (serviceName) => {
+    // loader.start();
     navigate(`/request-category/${serviceName}`);
   };
   return (
     <div
       className="w-[100%] pb-2 rounded-bl-3xl rounded-br-3xl bg-white rounded-tl-2xl rounded-tr-2xl"
       key={service.id}
-      onClick={() => {
-        handleServiceClick(service.slug_name);
-      }}
     >
       <Image
         className="w-[100%] rounded-tl-2xl rounded-tr-2xl"

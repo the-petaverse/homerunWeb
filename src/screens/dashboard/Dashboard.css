@@ -14,9 +14,6 @@
   display: flex;
   flex-direction: column;
   transition: width 0.5s ease-in-out;
-  /* align-items: flex-start; */
-  /* justify-content: space-between; */
-  /* height: 100dvh; */
   padding-bottom: 150px;
 }
 .dashboard-right-panel-wrapper-with-icons-only {
@@ -47,11 +44,12 @@
 }
 .dashboard-right-bottom-panel-wrapper {
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: space-between;
 }
 .dashbaord-top-card-holder-wrapper {
-  width: 64%;
+  width: 100%;
 }
 .dashboard-center-details-wrapper {
   width: 100%;
@@ -62,7 +60,7 @@
 
 .dashboard-chart-details-wrapper {
   border: solid gray 0.5px;
-  width: 34%;
+  width: 100%;
   align-self: flex-start;
   padding: 2%;
   border-radius: 15px;
@@ -76,6 +74,7 @@
 }
 .dashboard-quick-action-card-wrapper {
   display: flex;
+  flex-direction: column;
   gap: 15px;
   margin-top: 15px;
 }
@@ -114,7 +113,7 @@
 .dashboard-left-panel-wrapper-icons-only {
   /* border-right: solid gray 0.5px; */
   width: 8dvw;
-  padding-left: 3.5%;
+  padding-left: 7.5%;
   height: 86dvh;
   transition: width 0.5s ease-in-out;
 }
@@ -194,7 +193,7 @@
   cursor: pointer;
 }
 .switch-icon {
-  margin-left: 20px;
+  /* margin-left: -20px; */
 }
 
 .dashboard-left-pane-header {
@@ -216,6 +215,23 @@
 }
 
 @media (min-width: 1024px) {
+  .dashbaord-top-card-holder-wrapper {
+    width: 64%;
+  }
+  .dashboard-right-bottom-panel-wrapper {
+    flex-direction: row;
+  }
+  .dashboard-chart-details-wrapper {
+    width: 34%;
+  }
+  .dashboard-quick-action-card-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  .dashboard-left-panel-wrapper-icons-only {
+    padding-left: 5.5%;
+    width: 5dvw;
+  }
 }
 
 @media (min-width: 1280px) {

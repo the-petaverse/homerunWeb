@@ -6,9 +6,18 @@ const DashboardInnerRequestNav = ({
   innerNavMenuClicked,
   progressBarSteps,
   requestStages,
+  activeCount,
+  completedCount,
+  cancelledCount,
 }) => {
-  console.log(innerNavMenuClicked, "innerNavMenuClicked");
-  useEffect(() => {}, [innerNavMenuClicked, progressBarSteps, requestStages]);
+  useEffect(() => {}, [
+    innerNavMenuClicked,
+    progressBarSteps,
+    requestStages,
+    activeCount,
+    completedCount,
+    cancelledCount,
+  ]);
   return (
     <div className="dashboard-inner-request-inner-nav-container">
       {myRequestInnerNavData &&
@@ -27,9 +36,15 @@ const DashboardInnerRequestNav = ({
             <p className="dash-inner-request-counter-label">
               {innerNaveMenu.title} Request
             </p>
-            <p className="dash-inner-request-counter">
-              {innerNaveMenu.counter}
-            </p>
+            {innerNaveMenu.title === "Active" && (
+              <p className="dash-inner-request-counter">{activeCount}</p>
+            )}
+            {innerNaveMenu.title === "Completed" && (
+              <p className="dash-inner-request-counter">{completedCount}</p>
+            )}
+            {innerNaveMenu.title === "Cancelled" && (
+              <p className="dash-inner-request-counter">{cancelledCount}</p>
+            )}
           </div>
         ))}
     </div>

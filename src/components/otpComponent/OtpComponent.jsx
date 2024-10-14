@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCurrentUser } from "../../services/slices/userSlice";
 
-const OtpComponent = ({ email, setPassworsResetSuccess }) => {
+const OtpComponent = ({ email }) => {
   const { currentUser } = useSelector((state) => state.currentUser);
   const cookies = new Cookies();
   const requestedMailSent = cookies.get("request-service");
@@ -38,6 +38,9 @@ const OtpComponent = ({ email, setPassworsResetSuccess }) => {
   const registeredCookies = cookies.get("resgitered");
   const navigate = useNavigate();
 
+  if (error) {
+    console.log(error);
+  }
   const {
     register,
     handleSubmit,
@@ -84,7 +87,7 @@ const OtpComponent = ({ email, setPassworsResetSuccess }) => {
       cookies.remove("resgitered");
       cookies.remove("request-service");
       dispatch(updateCurrentUser());
-      setPassworsResetSuccess(true);
+      // (true);
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success(verifyData?.message, {
           position: "top-right",
@@ -127,14 +130,15 @@ const OtpComponent = ({ email, setPassworsResetSuccess }) => {
     otpRequestError,
     otpResetIsSuccess,
     requestedMailSent,
+    error,
   ]);
   return (
     <>
       <div className="otp-main-inner-form-wrapper">
         <img src={HomerunIcon} alt="homerun icon" className="homerun-icon" />
-        <div>
+        {/* <div>
           <CustomBackButton title="Back" />
-        </div>
+        </div> */}
         <div className="sent-otp-sent-wrapper">
           <h3>OTP Sent To Mail</h3>
           <img
