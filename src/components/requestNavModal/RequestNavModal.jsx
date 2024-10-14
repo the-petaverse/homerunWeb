@@ -26,7 +26,7 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
             </div>
             <div className="top-request-nav-content">
               <Link
-                to={`/request-category/${serviceCate.slug_name}`}
+                // to={`/request-category/${serviceCate.slug_name}`}
                 onClick={handleOpenRequestNav}
               >
                 <h1 className="font-bold">{serviceCate.category_name}</h1>
