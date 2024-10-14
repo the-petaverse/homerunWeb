@@ -145,13 +145,7 @@ const ContactUs = () => {
                       }}
                       register={register}
                     />
-                    <p className="phone-number-error-style">
-                      {isValidPhoneNumber(
-                        watchPhoneNumber ? watchPhoneNumber : ""
-                      )
-                        ? undefined
-                        : "Invalid phone number"}
-                    </p>
+
                     <label className="lable-wrapper">
                       <textarea
                         type="text"
