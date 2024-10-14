@@ -1,21 +1,12 @@
 import React from "react";
-import { IoArrowBack } from "react-icons/io5";
+import BackIcon from "../../assets/back-arrow.png";
 import "./CustomBackButton.css";
-import { useNavigate } from "react-router-dom";
 
-const CustomBackButton = ({ title, backBtnClick }) => {
-  const navigate = useNavigate();
+const CustomBackButton = () => {
   return (
-    <div
-      className="back-arrow-wrapper"
-      onClick={() => {
-        backBtnClick ? backBtnClick() : navigate(-1);
-      }}
-    >
-      <IoArrowBack size={25} />
-      <button>
-        <span>{title}</span>
-      </button>
+    <div className="back-arrow-wrapper">
+      <img src={BackIcon} alt="back button" />
+      <span>Back</span>
     </div>
   );
 };

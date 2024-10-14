@@ -1,19 +1,13 @@
 import React from "react";
 import "./TermsAndConditionCheckBox.css";
 
-const TermsAndConditionCheckBox = ({ name, register, ...rest }) => {
+const TermsAndConditionCheckBox = () => {
   return (
     <div className="term-check-container">
-      <input
-        type="checkbox"
-        name={name}
-        {...register(name, {
-          required: "Please accept the terms & Condition",
-        })}
-      />
-      <p>
+      <input type="checkbox" />
+      <label>
         Acept Homerun’s <span>Terms & Privacy Policy.</span>
-      </p>
+      </label>
     </div>
   );
 };

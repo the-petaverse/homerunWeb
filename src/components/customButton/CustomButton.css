@@ -1,11 +1,9 @@
-.customBtnStyle {
-  width: 100%;
-  background-color: rgb(16, 4, 91);
-  height: 55px;
-  border-radius: 25px;
-  border: solid 0.5px rgb(18, 2, 86);
+.custom-btn-wrapper {
+}
+.custom-btn-main {
+  background-color: rgb(25, 3, 103);
+  width: 35%;
   color: #fff;
-  font-size: 1.35em;
-  cursor: pointer;
-  margin-bottom: 30px;
+  padding: 10px 10px;
+  font-size: 1.2em;
 }

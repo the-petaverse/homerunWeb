@@ -1,16 +1,13 @@
 import React from "react";
 import "./CustomUpload.css";
-import PlusIcon from "/images/plus.png";
 
-const CustomUpload = ({ title, titleStyle, handleIncreaseFileUploader }) => {
+const CustomUpload = () => {
   return (
     <div className="custom-upload-container">
       <div className="custom-upload-header">
-        <h2 className={titleStyle ? titleStyle : ""}>
-          {title ? title : "Upload Document"}
-        </h2>
-        <div className="custom-header-btn" onClick={handleIncreaseFileUploader}>
-          <img src={PlusIcon} /> <span>Add</span>
+        <h2>Upload Document</h2>
+        <div className="custom-header-btn">
+          <span>+</span> <span>Add</span>
         </div>
       </div>
     </div>

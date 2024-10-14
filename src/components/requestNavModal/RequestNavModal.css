@@ -1,9 +1,6 @@
 .request-nav-modal-container {
   display: none;
 }
-a:link {
-  text-decoration: none;
-}
 
 @media (max-width: 475px) {
 }
@@ -23,11 +20,10 @@ a:link {
     width: 50%;
     position: absolute;
     right: 2%;
-    top: 10%;
+    top: 8%;
     padding: 1.5%;
     padding-top: 5.85%;
     border-radius: 15px;
-    position: fixed;
     z-index: 999;
   }
   .top-request-nav-content a {
@@ -44,7 +40,7 @@ a:link {
   .request-nav-image {
     margin-right: 10px;
   }
-  .top-request-nav-content > h1 {
+  .top-request-nav-content h1 {
     font-size: 1.35em;
   }
 }

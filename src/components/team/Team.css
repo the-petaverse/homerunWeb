@@ -1,8 +1,8 @@
 .team-main-container {
-  padding: 3% 5%;
+  padding: 25px 5%;
   margin: 2%;
-  background-color: #fff;
-  border-radius: 1px;
+  background-color: aliceblue;
+  border-radius: 25px;
 }
 
 .team-header-wrapper {
@@ -56,19 +56,19 @@
 }
 
 .twitter-icon {
-  background-color: #1da1f2;
+  background-color: #1DA1F2;
 }
 
 .facebook-icon {
-  background-color: #1877f2;
+  background-color: #1877F2;
 }
 
 .linkedin-icon {
-  background-color: #0a66c2;
+  background-color: #0A66C2;
 }
 
 .instagram-icon {
-  background-color: #e4405f;
+  background-color: #E4405F;
 }
 
 .team-image-wrapper:hover .social-icons {
@@ -85,24 +85,6 @@
   .team-card-main-wrapper {
     flex-direction: row;
     flex-wrap: wrap;
-  }
-  .team-main-container {
-    padding: 3% 5%;
-    margin: 2%;
-    background-color: #fff;
-    border-radius: 25px;
-    border-radius: 96px;
-  }
-  .team-header-wrapper {
-    width: 50%;
-  }
-  .team-header-wrapper h1 {
-    font-size: 2em;
-  }
-  .team-header-wrapper p {
-    font-size: 1.25em;
-    line-height: 25px;
-    margin: 15px 0;
   }
   .team-card-inner-wrapper {
     width: 48%;

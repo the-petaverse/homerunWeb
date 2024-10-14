@@ -1,15 +1,7 @@
-.errand-process-main-header-wrapper {
-  text-align: left;
-  margin-top: 15px;
-}
-.errand-process-main-header-wrapper > p {
-  margin-top: 10px;
-}
 .errand-process-header {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  cursor: pointer;
 }
 .errand-process-content-wrapper {
   margin-top: 5px;

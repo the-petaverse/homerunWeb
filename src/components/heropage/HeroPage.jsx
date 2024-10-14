@@ -1,42 +1,34 @@
 import React from "react";
 import "./HeroPage.css";
 import HeroImage from "../../assets/person.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ServiceCard from "../serviceCard/ServiceCard";
-import CustomButton from "../customButton/CustomButton";
 
 const HeroPage = () => {
-  const navigate = useNavigate();
-
-  const handleNavigate = () => {
-    navigate("/register");
-  };
   return (
     <>
       <div className="hero-container">
-        <div className="outer-hero-container">
-          <div className="header-wrapper">
-            <div className="header-content-wrapper">
-              <h3 className="heading-txt-one">Relax and Enjoy Life While</h3>
-              <h3 className="heading-txt-two">We Handle Your Errands</h3>
-              <p className="heading-para">
-                Whether you're abroad or at home, Homerun is here to take care
-                of your errands, so you can focus on what matters most.
-              </p>
-            </div>
-            <CustomButton
-              btnOnClick={handleNavigate}
-              title=" Get Started For Free"
-              btnStyles="hero-get-stated-btn"
-            />
+        <div className="header-wrapper">
+          <div className="header-content-wrapper">
+            <h3 className="heading-txt-one">Relax and Enjoy Life While</h3>
+            <h3 className="heading-txt-two">Handle Your Errands</h3>
+            <p className="heading-para">
+              Whether you're abroad or at home, Homerun is here to take care of
+              your errands, so you can focus on what matters most.
+            </p>
           </div>
-          <div className="banner-container">
-            <img src={HeroImage} alt="hero-image" className="hero-img" />
+          <div className="howitworks-wrapper">
+            <Link to="/register" className="get-stated-btn">
+              Get Started For Free
+            </Link>
           </div>
         </div>
-        <div className="card-display-container">
-          <ServiceCard />
+        <div className="banner-container">
+          <img src={HeroImage} alt="hero-image" className="hero-img" />
         </div>
+      </div>
+      <div className="card-display-container">
+        <ServiceCard />;
       </div>
     </>
   );
