@@ -2,8 +2,8 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import Cookies from "universal-cookie";
 
 export const apiHeader = fetchBaseQuery({
-  baseUrl: "https://homerun-backend.onrender.com/api/v1/",
-  // baseUrl: "http://localhost:4200/api/v1/",
+  // baseUrl: "https://homerun-backend.onrender.com/api/v1/",
+  baseUrl: "http://localhost:4200/api/v1/",
 
   prepareHeaders: (headers, { getState }) => {
     const cookies = new Cookies();
@@ -26,4 +26,5 @@ export const apiHeader = fetchBaseQuery({
 
     return headers;
   },
+  credentials: "include", // include credentials
 });
