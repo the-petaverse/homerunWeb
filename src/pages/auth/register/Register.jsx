@@ -257,7 +257,7 @@ const Register = () => {
                     style={{
                       borderColor: errors.resident_state ? "red" : "blue",
                     }}
-                    className="main-text-input"
+                    // className="main-text-input"
                     register={register}
                     require="State is required"
                     placeholder="State name"

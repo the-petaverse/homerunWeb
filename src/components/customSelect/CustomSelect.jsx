@@ -29,7 +29,10 @@ const CustomSelect = ({
           required: required,
         })}
       >
-        <option value="0">{`Select ${placeholder}`}</option>
+        <option
+          value="0"
+          className="option-style"
+        >{`Select ${placeholder}`}</option>
         {data && data !== undefined
           ? data.map((myData, index) => {
               return (
