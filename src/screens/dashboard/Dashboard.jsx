@@ -131,7 +131,7 @@ const Dashboard = () => {
     userOrderData.userOrders.filter((item) => item.order_status === "Pending")
       .length;
   // const reference = query.get("reference");
-  console.log(serviceCategories);
+
   const [
     createPayment,
     {

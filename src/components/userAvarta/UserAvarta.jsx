@@ -6,11 +6,18 @@ import { RxAvatar } from "react-icons/rx";
 import { MdOutlineSettings } from "react-icons/md";
 import { TbLogout2 } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
+import { useGetUserQuery } from "../../services/auth/authApi";
 
 const UserAvarta = () => {
   const [openAvatarMenu, setOpenAvatarMenu] = useState(false);
   const navigate = useNavigate();
+  const {
+    data: userData,
+    isLoading: userLoading,
+    error: userError,
+  } = useGetUserQuery();
 
+  console.log(userData);
   const handleOpenAvartarMenuModal = () => {
     setOpenAvatarMenu((prev) => !prev);
   };
@@ -23,7 +30,11 @@ const UserAvarta = () => {
     <div className="user-avatar-main-container">
       <div className="user-avatar-header" onClick={handleOpenAvartarMenuModal}>
         <RxAvatar size={20} />
-        <p className="lg:text-sm max-sm:text-xs sm:text-xs">Michael Oladele</p>
+        {userData && (
+          <p className="lg:text-sm max-sm:text-xs sm:text-xs">
+            {`${userData.user.first_name} ${userData.user.last_name}`}
+          </p>
+        )}
         <FaChevronDown size={20} color="gray" className="" />
       </div>
       {openAvatarMenu && (
