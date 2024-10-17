@@ -3,6 +3,7 @@ import "./DashboardTopCard.css";
 import CustomButton from "../customButton/CustomButton";
 import ProgressBar from "../progessBar/ProgressBar";
 import { useGetAUserErrandsQuery } from "../../services/officialDocument/officialDocumentApi";
+import { convertIsoDate } from "../../helpers/dateConverter";
 
 const DashboardTopCard = ({
   showIconsOnly,
@@ -12,8 +13,13 @@ const DashboardTopCard = ({
   requestStages,
   setProgressBarStatus,
 }) => {
-  console.log(requestStages);
+  const [createdDate, setCreatedDate] = useState();
+
   useEffect(() => {
+    let convertedDate = convertIsoDate(data && data.createdAt);
+    if (convertedDate) {
+      setCreatedDate(convertedDate);
+    }
     setProgressBarStatus(data);
   }, [
     requestStages,
@@ -34,7 +40,7 @@ const DashboardTopCard = ({
           Request ID: <span className="font-bold">{data.request_id}</span>
         </p>
         <div className="dashboard-card-request-inner-wrapper max-sm:text-xs lg:text-lg">
-          <p>Request: Jul. 24, 2024</p>
+          <p>Request: {createdDate}</p>
           <p>Delivery: Jul. 24, 2024</p>
           <CustomButton
             title="View Details"
