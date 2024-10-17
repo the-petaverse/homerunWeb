@@ -13,7 +13,9 @@ const CustomEstimation = ({ serviceData }) => {
     <div className="estimated-main-container">
       <div className="estimated-header">
         <h4 className="font-bold">Estimated Payment</h4>
-        <h4 className="font-semibold">flag</h4>
+        <div className="w-10 pt-2">
+          <img src="/images/nig_flag.png" alt="flag" />
+        </div>
       </div>
 
       {serviceData &&

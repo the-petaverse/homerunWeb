@@ -105,6 +105,7 @@ const Dashboard = () => {
   const [showIconsOnly, setShowIconsOnly] = useState(false);
   const [progressBarSteps, setProgressBarSteps] = useState();
   const [requestStages, setRequestStages] = useState();
+  const [buttonClick, setButtonClick] = useState(false);
   const {
     data: serviceCategories,
     isLoading: serviceCategoryLoading,
@@ -158,6 +159,7 @@ const Dashboard = () => {
   }
 
   const handlePaymentCreations = async () => {
+    setButtonClick(true);
     const data = {
       ordered_service_id: userOrder.data?.ordered_service_id,
       ordered_service_title: userOrder.data?.ordered_service_title,
@@ -404,7 +406,10 @@ const Dashboard = () => {
             </>
           )}
           {userOrder !== undefined && (
-            <PaymentComponent handlePaymentCreations={handlePaymentCreations} />
+            <PaymentComponent
+              handlePaymentCreations={handlePaymentCreations}
+              buttonClick={buttonClick}
+            />
           )}
         </div>
       </div>

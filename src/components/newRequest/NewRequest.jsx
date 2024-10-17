@@ -69,6 +69,7 @@ const NewRequest = ({
   requestId,
   subRequestId,
   serviceData,
+  receivedCookies,
 }) => {
   const [myState, setMyState] = useState([]);
   const [addUploadInput, setAddUploadInput] = useState(new Array(1).fill(""));
@@ -78,8 +79,7 @@ const NewRequest = ({
   const { subcategory } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const cookies = new Cookies();
-  const receivedCookies = cookies.get("auth_token");
+
   // const {
   //   data: subData,
   //   isLoading,
@@ -574,9 +574,9 @@ const NewRequest = ({
                 register={register}
               />
               <CustomButton
-                title="Make Request"
+                title={!receivedCookies ? "Login to Continue" : "Make Request"}
                 btnStyles="doc-button-wrapper"
-                btnDisabled={!isValid && "true"}
+                btnDisabled={(!isValid || !receivedCookies) && "true"}
               />
             </div>
           </div>

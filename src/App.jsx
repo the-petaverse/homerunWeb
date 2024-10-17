@@ -9,7 +9,7 @@ import PrivateRoute from "./screens/private/PrivateRoutes";
 
 const App = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Preloader />}>
       <Routes>
         <Route path="/" element={<WebsiteLayout />}>
           {websiteRoutes.map(({ path, component: Component }, index) => (

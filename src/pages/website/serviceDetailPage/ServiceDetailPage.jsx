@@ -9,25 +9,20 @@ import {
 } from "../../../services/requestsCategory/requestApi";
 import CustomNote from "../../../components/customNote/CustomNote";
 import CustomEstimation from "../../../components/customEstimation/CustomEstimation";
-import ClientTestimonials from "../../../components/clientTestimonials/ClientTestimonials";
 import PropertErrand from "../../../components/propertErrand/PropertErrand";
 import CustomBackButton from "../../../components/customBackButton/CustomBackButton";
-import { subServiceData } from "../../../data/subCategoryData";
-import { filterSubCategory } from "../../../util/filterSubCategories";
-import { customScrollSidebar } from "../../../util/stickyFunction";
+// import { customScrollSidebar } from "../../../util/stickyFunction";
 import OrderWithTopBanner from "../../../components/orderWithTopBanner/OrderWithTopBanner";
-import carImage from "/images/big-car.png";
-import ServiceHeader from "../../../components/serviceHeader/ServiceHeader";
 import SurpriseOrderGroup from "../../../components/surpriseOrderGroup/SurpriseOrderGroup";
 import GroceryOrderGroup from "../../../components/groceryOrderGroup/GroceryOrderGroup";
 import useScreenSize from "../../../helpers/useScreenSize";
-import PayButton from "../../../components/payButton/PayButton";
-import PaymentComponent from "../../../components/paymentComponent/PaymentComponent";
 import { useSelector } from "react-redux";
+import Cookies from "universal-cookie";
 
 const ServiceDetailPage = () => {
   const screenSize = useScreenSize();
   const navigate = useNavigate();
+  const cookies = new Cookies();
   const location = useLocation();
   const [serviceData, setServiceData] = useState([]);
   const [orderCreated, setOrderCreated] = useState(false);
@@ -36,6 +31,7 @@ const ServiceDetailPage = () => {
   const [subRequestId, setSubRequestId] = useState();
   const [formStage, setFormStage] = useState(0);
   const { subcategory } = useParams();
+  const receivedCookies = cookies.get("auth_token");
   console.log(subcategory);
   const {
     data: subData,
@@ -70,14 +66,14 @@ const ServiceDetailPage = () => {
 
   useEffect(() => {
     filterRequestedServcie();
-    if (screenSize.width >= 1024) {
-      customScrollSidebar();
-    }
+    // if (screenSize.width >= 1024) {
+    //   customScrollSidebar();
+    // }
     if (userOrder !== undefined) {
       // console.log(userOrder);
       navigate("/dashboard", { replace: true });
     }
-  }, [isSuccess, userOrder]);
+  }, [isSuccess, userOrder, receivedCookies]);
   return (
     <div className="main-order-page-container">
       <div className="main-order-page-header">
@@ -103,6 +99,7 @@ const ServiceDetailPage = () => {
               subRequestId={subRequestId}
               serviceData={serviceData}
               setOrderCreated={setOrderCreated}
+              receivedCookies={receivedCookies}
             />
           )}
           {(serviceCategory === "surprise_gifts" ||
@@ -131,6 +128,7 @@ const ServiceDetailPage = () => {
               subRequestId={subRequestId}
               serviceCategory={serviceCategory}
               serviceData={serviceData}
+              receivedCookies={receivedCookies}
             />
           )}
           {serviceCategory && serviceCategory === "grocery_food" && (

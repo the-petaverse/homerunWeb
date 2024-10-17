@@ -35,6 +35,7 @@ const PropertErrand = (props) => {
     requestId,
     subRequestId,
     serviceData,
+    receivedCookies,
   } = props;
 
   const userOrder = useSelector((state) => state.userOrder);
@@ -67,7 +68,7 @@ const PropertErrand = (props) => {
     },
     mode: "all",
   });
-  console.log(subRequestId);
+
   const watchPhoneNumber = watch("phone_number");
   const watchedFields = watch(); // Watch all form fields
   const onSubmitData = async (data) => {
@@ -118,7 +119,7 @@ const PropertErrand = (props) => {
 
   useEffect(() => {
     // reset(watchedFields);
-  }, [serviceData, requestId, subRequestId, isValid, reset]);
+  }, [serviceData, requestId, subRequestId, isValid, receivedCookies, reset]);
 
   return (
     <div className="property-new-request-from-main-container">
@@ -290,9 +291,9 @@ const PropertErrand = (props) => {
                 name="terms_conditions"
               />
               <CustomButton
-                title="Make Request"
+                title={!receivedCookies ? "Login to Continue" : "Make Request"}
                 btnStyles="property-button-wrapper"
-                btnDisabled={!isValid && "true"}
+                btnDisabled={(!isValid || !receivedCookies) && "true"}
               />
             </div>
           </div>
