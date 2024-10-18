@@ -3,7 +3,7 @@ import React from "react";
 
 function Preloader() {
   return (
-    <div className="h-[100dvh] bg-white flex justify-center align-middle">
+    <div className="h-[100dvh]   bg-opacity-0 flex justify-center align-middle">
       {/* <span className="text-slate-900">Loading</span> */}
       <div className="custom-bouncing-circle"></div>
       <div className="custom-bouncing-circle"></div>

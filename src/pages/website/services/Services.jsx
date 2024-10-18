@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Services.css";
 import Service from "../../../assets/service.png";
 import TranscriptImage from "../../../assets/service-trans.png";
@@ -13,6 +13,7 @@ import CustomButton from "../../../components/customButton/CustomButton";
 import { useGetRequestCategoriesQuery } from "../../../services/requestsCategory/requestApi";
 import { Link, useNavigate } from "react-router-dom";
 import { Image, Transformation } from "cloudinary-react";
+import Preloader from "../../../components/preloader/Preloader";
 
 const Services = () => {
   const navigate = useNavigate();
@@ -93,59 +94,62 @@ const Services = () => {
       link: "/request-category/property",
     },
   ];
+
+  useEffect(() => {}, [isSuccess]);
   return (
     <div className="services-overall-container">
-      {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
-      <div className="services-main-container">
-        <h1>What We Do</h1>
-        <div className="serices-header-wrapper">
-          <div className="header-image-wrapper">
-            <img src={Service} alt="service-image" className="service-image" />
+      {isSuccess ? (
+        <div className="services-main-container">
+          <h1>What We Do</h1>
+          <div className="serices-header-wrapper">
+            <div className="header-image-wrapper">
+              <img
+                src={Service}
+                alt="service-image"
+                className="service-image"
+              />
+            </div>
+            <div className="service-image-container">
+              <p>
+                At Homerun, we offer a comprehensive range of services designed
+                to make your life easier, whether you're abroad or at home.
+                Discover the convenience and efficiency of having your errands
+                handled by a team you can trust.
+              </p>
+            </div>
           </div>
-          <div className="service-image-container">
-            <p>
-              At Homerun, we offer a comprehensive range of services designed to
-              make your life easier, whether you're abroad or at home. Discover
-              the convenience and efficiency of having your errands handled by a
-              team you can trust.
-            </p>
-          </div>
-        </div>
-        <div className="service-cards-wrapper">
-          {serviceCategories &&
-            serviceCategories?.serviceCategory?.map((service) => (
-              <div className="services-card" key={service.id}>
-                {/* <img
+          <div className="service-cards-wrapper">
+            {serviceCategories &&
+              serviceCategories?.serviceCategory?.map((service) => (
+                <div className="services-card" key={service.id}>
+                  {/* <img
                   src={service.imageSrc}
                   alt={service.title}
                   className="service-images"
                 /> */}
-                <Image
-                  className="service-images"
-                  cloudName="petaverse"
-                  publicId={service.category_image_url}
-                >
-                  <Transformation crop="scale" width="320" />
-                </Image>
-                <div className="card-right-holder">
-                  <h1>{service.category_name}</h1>
-                  <p>{service.category_details}</p>
-                  <div className="service-btn">
-                    <button onClick={() => handleNavigate(service.slug_name)}>
-                      Post this request
-                    </button>
+                  <Image
+                    className="service-images"
+                    cloudName="petaverse"
+                    publicId={service.category_image_url}
+                  >
+                    <Transformation crop="scale" width="320" />
+                  </Image>
+                  <div className="card-right-holder">
+                    <h1>{service.category_name}</h1>
+                    <p>{service.category_details}</p>
+                    <div className="service-btn">
+                      <button onClick={() => handleNavigate(service.slug_name)}>
+                        Post this request
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+          </div>
         </div>
-      </div>
-      {/* <Footer /> */}
-      {/* <MainSideBar
-        handleOpenSideBar={handleOpenSideBar}
-        handleCloseSideBar={handleCloseSideBar}
-        openSideBar={openSideBar}
-      /> */}
+      ) : (
+        <Preloader />
+      )}
     </div>
   );
 };
