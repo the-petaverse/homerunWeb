@@ -27,7 +27,15 @@ const Navbar = () => {
     cookies.remove("auth_token");
   };
 
-  useEffect(() => {}, [receivedCookies, openRequestNav, openSideBar]);
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setOpenRequestNav(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [receivedCookies, openRequestNav, openSideBar]);
 
   return (
     <>
