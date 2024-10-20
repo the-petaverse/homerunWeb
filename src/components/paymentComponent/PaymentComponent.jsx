@@ -4,7 +4,7 @@ import CustomButton from "../customButton/CustomButton";
 const PaymentComponent = ({ handlePaymentCreations, buttonClick }) => {
   useEffect(() => {}, [buttonClick]);
   return (
-    <div className="bg-full sm: h-[80dvh]">
+    <div className="bg-full sm: h-[80dvh] pt-5">
       <div className="sm:w-[100%] lg:w-[65%] bg-white mr-auto ml-auto h-[85%] sm:mt-0 lg:mt-10 rounded-2xl p-5 text-center flex flex-col justify-between">
         <div className="border-b-[0.1em] pb-6">
           <h1 className="text-black text-xl font-semibold">
