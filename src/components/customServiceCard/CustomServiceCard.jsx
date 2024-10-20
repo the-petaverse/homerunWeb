@@ -14,11 +14,11 @@ const CustomServiceCard = ({ service }) => {
   };
   return (
     <div
-      className="w-[100%] pb-2 rounded-bl-3xl rounded-br-3xl bg-white rounded-tl-2xl rounded-tr-2xl"
+      className="w-[100%] h-[80%] pb-2 rounded-bl-3xl rounded-br-3xl bg-white rounded-tl-2xl rounded-tr-2xl flex flex-col justify-between"
       key={service.id}
     >
       <Image
-        className="w-[100%] rounded-tl-2xl rounded-tr-2xl"
+        className="w-[100%] h-[40%] rounded-tl-2xl rounded-tr-2xl"
         cloudName="petaverse"
         publicId={service.category_image_url}
       >
@@ -28,7 +28,7 @@ const CustomServiceCard = ({ service }) => {
         <p className="text-2xl font-bold">{service.category_name}</p>
         <p className=" mt-2">{service.category_details}</p>
       </div>
-      <div className="px-4 ">
+      <div className="px-4">
         <CustomButton
           title="Post this request"
           btnOnClick={() => handleNavigate(service.slug_name)}

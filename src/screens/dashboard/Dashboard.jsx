@@ -354,7 +354,7 @@ const Dashboard = () => {
                 </>
               )}
               {sidePaneSelected === "2" && (
-                <div className="grid gap-10 grid-cols-3 grid-rows-3 pt-10">
+                <div className="grid gap-10 grid-cols-4 grid-rows-3 pt-10">
                   {serviceCategories &&
                     serviceCategories?.serviceCategory.map((service) => (
                       <CustomServiceCard service={service} />
