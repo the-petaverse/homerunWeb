@@ -7,7 +7,7 @@ const PaymentComponent = ({
   buyingServiceTitle,
   buyingServiceCost,
 }) => {
-  useEffect(() => {}, [buttonClick]);
+  useEffect(() => {}, [buttonClick, buyingServiceTitle, buyingServiceCost]);
   return (
     <div className="bg-full sm: h-[100dvh] pt-5">
       <div className="w-[65%] bg-white mr-auto ml-auto h-[85%] sm:mt-0 lg:mt-10 rounded-2xl p-5 text-center flex flex-col justify-between">
@@ -22,7 +22,9 @@ const PaymentComponent = ({
           <div className="mt-3 mx-16">
             <p className="text-lg">
               Please pay the sum of{" "}
-              <span className="font-bold">{`N ${buyingServiceCost}`}</span>
+              <span className="font-bold">{`N ${
+                buyingServiceCost ? buyingServiceCost : 0
+              }`}</span>
               {` to carry out ${buyingServiceTitle} request`}
             </p>
           </div>

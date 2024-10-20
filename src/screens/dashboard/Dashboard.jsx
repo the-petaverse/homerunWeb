@@ -235,6 +235,8 @@ const Dashboard = () => {
     innerNavMenuClicked,
     requestStages,
     progressBarSteps,
+    buyingServiceTitle,
+    buyingServiceCost,
   ]);
 
   return (
