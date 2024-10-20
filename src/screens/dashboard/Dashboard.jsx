@@ -100,6 +100,8 @@ const Dashboard = () => {
   const [innerNavMenuClicked, setInerMenuClicked] = useState("Active");
   const [sidePaneSelected, setSidePaneSelected] = useState("1");
   const [sidePaneTitleSelected, setSidePaneTitleSelected] = useState();
+  const [buyingServiceTitle, setBuyingServiceTitle] = useState();
+  const [buyingServiceCost, setBuyingServiceCost] = useState();
   const [userSingleOrderToDisplay, setUserSingleOrderToDisplay] = useState();
   const [userAllOrdersToDisplay, setUserAllOrdersToDisplay] = useState();
   const [showIconsOnly, setShowIconsOnly] = useState(false);
@@ -144,9 +146,6 @@ const Dashboard = () => {
     },
   ] = useCreatePaymentMutation();
 
-  if (userOrder !== undefined) {
-    console.log(userOrder.data);
-  }
   if (isSuccess) {
     console.log(UserData, "Dashboard");
   }
@@ -199,8 +198,12 @@ const Dashboard = () => {
     }
     return progressBarSteps;
   };
-
   useEffect(() => {
+    if (userOrder !== undefined) {
+      console.log(userOrder.data);
+      setBuyingServiceTitle(userOrder.data?.ordered_service_title);
+      setBuyingServiceCost(userOrder.data?.total_amount);
+    }
     if (userOrderSuccess) {
       setUserSingleOrderToDisplay([
         userOrderData.userOrders[userOrderData.userOrders.length - 1],
@@ -409,6 +412,8 @@ const Dashboard = () => {
             <PaymentComponent
               handlePaymentCreations={handlePaymentCreations}
               buttonClick={buttonClick}
+              buyingServiceTitle={buyingServiceTitle}
+              buyingServiceCost={buyingServiceCost}
             />
           )}
         </div>
