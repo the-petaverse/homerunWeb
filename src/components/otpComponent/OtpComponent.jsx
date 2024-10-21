@@ -16,7 +16,13 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCurrentUser } from "../../services/slices/userSlice";
 
-const OtpComponent = ({ email }) => {
+const OtpComponent = ({
+  email,
+  setPassworsResetSuccess,
+  setOtpSent,
+  setFormSteps,
+  formSteps,
+}) => {
   const { currentUser } = useSelector((state) => state.currentUser);
   const cookies = new Cookies();
   const requestedMailSent = cookies.get("request-service");
@@ -39,7 +45,7 @@ const OtpComponent = ({ email }) => {
   const navigate = useNavigate();
 
   if (error) {
-    console.log(error);
+    console.log(error.data.data);
   }
   const {
     register,
@@ -81,31 +87,37 @@ const OtpComponent = ({ email }) => {
       elemt.target.previousSibling.focus();
     }
   };
-
+  console.log(formSteps);
   useEffect(() => {
     if (isSuccess) {
       cookies.remove("resgitered");
       cookies.remove("request-service");
+      setFormSteps(3);
       dispatch(updateCurrentUser());
-      // (true);
+      setPassworsResetSuccess(true);
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success(verifyData?.message, {
           position: "top-right",
         });
       }
-      if (requestedMailSent !== undefined) {
-        navigate("/forgot-password", { replace: true });
-      } else {
-        navigate("/login", { replace: true });
-      }
+      // if (formSteps === 3) {
+      //   setOtpSent(false);
+      //   navigate("/forgot-password", { replace: true });
+      // }
+      // else {
+      //   navigate("/login", { replace: true });
+      // }
     }
 
     if (error) {
       console.error(error);
       if (!toast.isActive(toastId.current)) {
-        toastId.current = toast.error(error?.data?.message, {
-          position: "top-right",
-        });
+        toastId.current = toast.error(
+          error?.data.message ? error?.data?.message : error?.data.data,
+          {
+            position: "top-right",
+          }
+        );
       }
     }
     if (otpRequestError) {
@@ -118,6 +130,7 @@ const OtpComponent = ({ email }) => {
     }
     if (otpResetIsSuccess) {
       console.log(otpResetData);
+
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success(otpResetData?.message, {
           position: "top-right",
@@ -131,6 +144,7 @@ const OtpComponent = ({ email }) => {
     otpResetIsSuccess,
     requestedMailSent,
     error,
+    formSteps,
   ]);
   return (
     <>

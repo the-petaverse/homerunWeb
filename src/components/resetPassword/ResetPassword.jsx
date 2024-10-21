@@ -14,6 +14,7 @@ const ResetPassword = ({
   setShowDashboard,
   setPassworsResetSuccess,
   setPassworsResetComplete,
+  setFormSteps,
 }) => {
   //   const [showDashboard, setShowDashboard] = useState(1);
   const [revealPassword, setRevealPassword] = useState(false);
@@ -44,6 +45,7 @@ const ResetPassword = ({
 
   useEffect(() => {
     if (isSuccess) {
+      setFormSteps(4);
       dispatch(updateCurrentUser());
       setPassworsResetComplete(true);
       cookies.remove("request");

@@ -25,9 +25,11 @@ const ForgotPassword = () => {
   const dispatch = useDispatch();
   const toastId = React.useRef(null);
   const [otpSent, setOtpSent] = useState(false);
+  const [formSteps, setFormSteps] = useState(1);
   const [passworsResetSuccess, setPassworsResetSuccess] = useState(false);
   const [passworsResetComplete, setPassworsResetComplete] = useState(false);
   const requestedMailSent = cookies.get("request-service");
+  const requestedMailConfirmed = cookies.get("request");
   const [forgotUserPassword, { data, isError, isSuccess, error }] =
     useForgotUserPasswordMutation();
   const {
@@ -44,6 +46,7 @@ const ForgotPassword = () => {
 
   useEffect(() => {
     if (isSuccess) {
+      setFormSteps(2);
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success(data?.message, {
           position: "top-right",
@@ -64,8 +67,7 @@ const ForgotPassword = () => {
     if (requestedMailSent) {
       console.log(requestedMailSent, "Forgot");
     }
-  }, [isSuccess, isError, error]);
-
+  }, [isSuccess, isError, error, passworsResetSuccess, formSteps]);
   return (
     <div>
       <div className="authentication-header">
@@ -79,61 +81,60 @@ const ForgotPassword = () => {
         </div>
         {/* {!passworsResetSuccess && (
           <> */}
-        {requestedMailSent === undefined && (
+        {formSteps === 1 && (
           <>
-            {!emailSent && (
-              <div className="inner-form-wrapper">
-                <div className="back-arrow-wrapper">
-                  <img src={BackIcon} alt="" />
-                  <span>Back</span>
-                </div>
-                <div className="forgot-passwrd-reset-header">
-                  <h1>Reset Password</h1>
-                  <p>Please enter your email address</p>
-                </div>
-                <form
-                  onSubmit={handleSubmit(onPassSubmit)}
-                  className="form-wrapper"
-                >
-                  <CustomImput
-                    name="email"
-                    required="Email is required"
-                    placeholder="Email"
-                    type="email"
-                    error={errors?.email?.message}
-                    register={register}
-                    style={{ borderColor: errors.email ? "red" : "blue" }}
-                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
-                  />
-
-                  <input
-                    type="submit"
-                    value="Send OTP"
-                    className={
-                      !isValid ? "main-form-btn-disabled" : "main-form-btn"
-                    }
-                    disabled={!isValid}
-                  />
-                </form>
+            <div className="inner-form-wrapper">
+              <div className="back-arrow-wrapper">
+                <img src={BackIcon} alt="" />
+                <span>Back</span>
               </div>
-            )}
+              <div className="forgot-passwrd-reset-header">
+                <h1>Reset Password</h1>
+                <p>Please enter your email address</p>
+              </div>
+              <form
+                onSubmit={handleSubmit(onPassSubmit)}
+                className="form-wrapper"
+              >
+                <CustomImput
+                  name="email"
+                  required="Email is required"
+                  placeholder="Email"
+                  type="email"
+                  error={errors?.email?.message}
+                  register={register}
+                  style={{ borderColor: errors.email ? "red" : "blue" }}
+                  iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
+                />
+
+                <input
+                  type="submit"
+                  value="Send OTP"
+                  className={
+                    !isValid ? "main-form-btn-disabled" : "main-form-btn"
+                  }
+                  disabled={!isValid}
+                />
+              </form>
+            </div>
           </>
         )}
-        {requestedMailSent !== undefined && (
-          <OtpComponent setPassworsResetSuccess={setPassworsResetSuccess} />
+        {formSteps === 2 && (
+          <OtpComponent
+            setPassworsResetSuccess={setPassworsResetSuccess}
+            passworsResetSuccess={passworsResetSuccess}
+            setOtpSent={setOtpSent}
+            setFormSteps={setFormSteps}
+            formSteps={formSteps}
+          />
         )}
-        {passworsResetSuccess && (
-          <>
-            {!passworsResetComplete && (
-              <ResetPassword
-                setPassworsResetComplete={setPassworsResetComplete}
-              />
-            )}
-            {/* </>
-        )} */}
-            {passworsResetComplete && <CustomSuccessPage />}
-          </>
+        {formSteps === 3 && (
+          <ResetPassword
+            setPassworsResetComplete={setPassworsResetComplete}
+            setFormSteps={setFormSteps}
+          />
         )}
+        {formSteps === 4 && <CustomSuccessPage />}
       </div>
     </div>
   );
