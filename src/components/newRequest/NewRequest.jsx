@@ -14,11 +14,14 @@ import Cookies from "universal-cookie";
 import { useGetUserQuery } from "../../services/auth/authApi";
 import PayButton from "../payButton/PayButton";
 import CustomBackButton from "../customBackButton/CustomBackButton";
+import { MdOutlinePerson2 } from "react-icons/md";
+import { FaSchool } from "react-icons/fa";
 import CustomImput from "../customImput/CustomImput";
 import CustomSelect from "../customSelect/CustomSelect";
 import CustomDoubleRadioButton from "../customCheckBox/CustomDoubleRadioButton";
 import CustomUpload from "../customUpload/CustomUpload";
 import CustomInputUpload from "../customInputUpload/CustomInputUpload";
+import { FaEnvelopeOpenText } from "react-icons/fa";
 import Requirement from "../requirement/Requirement";
 import ErrandProcesses from "../errandProcesses/ErrandProcesses";
 import CustomNote from "../customNote/CustomNote";
@@ -194,6 +197,7 @@ const NewRequest = ({
       dispatch(addUserOrder(errandData));
       console.log(errandData);
     }
+
     handleState();
     handleCities();
   }, [
@@ -225,6 +229,7 @@ const NewRequest = ({
                 name="firstName"
                 required="First name is required"
                 placeholder="First name"
+                iconLeft={<MdOutlinePerson2 color="gray" size={20} />}
                 type="text"
                 error={errors?.firstName?.message}
                 register={register}
@@ -234,6 +239,7 @@ const NewRequest = ({
                 name="lastName"
                 required="Last name is required"
                 placeholder="Last name"
+                iconLeft={<MdOutlinePerson2 color="gray" size={20} />}
                 type="text"
                 error={errors?.lastName?.message}
                 register={register}
@@ -243,6 +249,7 @@ const NewRequest = ({
                 name="middleName"
                 required="Middle name is required"
                 placeholder="Middle name"
+                iconLeft={<MdOutlinePerson2 color="gray" size={20} />}
                 type="text"
                 error={errors?.middleName?.message}
                 register={register}
@@ -255,28 +262,27 @@ const NewRequest = ({
                     required="Profession is required"
                     placeholder="Applicant’s Profession"
                     type="text"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     error={errors?.profession?.message}
                     register={register}
                     style={{ borderColor: errors.profession ? "red" : "black" }}
                   />
-                  <CustomSelect
+                  <CustomImput
                     name="maritalStatus"
-                    type="text"
-                    className="main-text-input"
-                    register={register}
                     require="State is required"
                     placeholder="Marital Status"
-                    error={errors.stateOfBirth?.message}
-                    //   data={stateOfBirth}
-                    style={{
-                      borderColor: errors.stateOfBirth ? "red" : "black",
-                    }}
+                    type="text"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
+                    error={errors?.profession?.message}
+                    register={register}
+                    style={{ borderColor: errors.profession ? "red" : "black" }}
                   />
 
                   <CustomImput
                     name="applicatnState"
                     required="State is required"
                     placeholder="State 0f Applicant’s Birth"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     type="text"
                     error={errors?.applicatnState?.message}
                     register={register}
@@ -288,6 +294,7 @@ const NewRequest = ({
                     name="localGovt"
                     required="local Govt name is required"
                     placeholder="local Goverment"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     type="text"
                     error={errors?.localGovt?.message}
                     register={register}
@@ -302,6 +309,7 @@ const NewRequest = ({
                 <CustomSelect
                   name="meansOfIdentification"
                   type="text"
+                  iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                   register={register}
                   require="Identification is required"
                   placeholder="Means of identification"
@@ -318,6 +326,7 @@ const NewRequest = ({
                     name="sex"
                     required="Sex is required"
                     placeholder="Sex"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     type="text"
                     error={errors?.sex?.message}
                     register={register}
@@ -328,6 +337,7 @@ const NewRequest = ({
                     required="State name is required"
                     placeholder="State of birth"
                     type="text"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     error={errors?.stateOfBirth?.message}
                     register={register}
                     style={{
@@ -339,6 +349,7 @@ const NewRequest = ({
                     required="Mother's Full Name is required"
                     placeholder="Mother's Full Name"
                     type="text"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     error={errors?.matherFullName?.message}
                     register={register}
                     style={{
@@ -351,6 +362,7 @@ const NewRequest = ({
                     required="local Govt name is required"
                     placeholder="local Goverment"
                     type="text"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     error={errors?.localGovt?.message}
                     register={register}
                     style={{
@@ -362,6 +374,7 @@ const NewRequest = ({
                     required="Father's Full Name is required"
                     placeholder="Father's Full Name"
                     type="text"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     error={errors?.fatherFullName?.message}
                     register={register}
                     style={{
@@ -378,6 +391,7 @@ const NewRequest = ({
                     required="Matric Number is required"
                     placeholder="Matric Number"
                     type="text"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     error={errors?.matricNumber?.message}
                     register={register}
                     style={{
@@ -389,6 +403,7 @@ const NewRequest = ({
                     required="Institution is required"
                     placeholder="Institution name"
                     type="text"
+                    iconLeft={<FaSchool color="gray" size={20} />}
                     error={errors?.institution?.message}
                     register={register}
                     style={{
@@ -400,6 +415,7 @@ const NewRequest = ({
                     required="Year of Graduation is required"
                     placeholder="Year of Graduation"
                     type="text"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     error={errors?.yearOfGraduation?.message}
                     register={register}
                     style={{
@@ -411,6 +427,7 @@ const NewRequest = ({
                     required="Graduated Degree is required"
                     placeholder="Graduated Degree/Course of Study"
                     type="text"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     error={errors?.graduatedDegree?.message}
                     register={register}
                     style={{
@@ -422,6 +439,7 @@ const NewRequest = ({
                     required="Year of Entry is required"
                     placeholder="Year of Entry"
                     type="text"
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                     error={errors?.yearOfEntry?.message}
                     register={register}
                     style={{
