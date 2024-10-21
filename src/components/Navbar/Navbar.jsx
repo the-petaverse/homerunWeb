@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+
 import "./Navbar.css";
 import logo from "../../assets/logomark.png";
 import MenuIcon from "../../assets/menu.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Cookies from "universal-cookie";
 import RequestNavModal from "../requestNavModal/RequestNavModal";
 import MainSideBar from "../mainSideBar/MainSideBar";
@@ -11,7 +12,9 @@ import { FaRegBell } from "react-icons/fa";
 import UserAvarta from "../userAvarta/UserAvarta";
 
 const Navbar = () => {
+  const location = useLocation();
   const [openRequestNav, setOpenRequestNav] = useState(false);
+  const [onDashboard, setOnDashboard] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
 
   const cookies = new Cookies();
@@ -28,6 +31,9 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    if (location.pathname === "/dashboard") {
+      setOnDashboard(true);
+    }
     const handleClickOutside = () => {
       setOpenRequestNav(false);
     };
@@ -35,7 +41,7 @@ const Navbar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [receivedCookies, openRequestNav, openSideBar]);
+  }, [receivedCookies, openRequestNav, openSideBar, onDashboard]);
 
   return (
     <>

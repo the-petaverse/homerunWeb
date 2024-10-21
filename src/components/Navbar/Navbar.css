@@ -96,7 +96,7 @@
   .menu-list-sec-wrapper {
     display: flex;
     align-items: center;
-    width: 60dvw;
+    width: 68dvw;
   }
   .menu-list-wrapper li {
     font-size: 1.2rem;
@@ -113,7 +113,7 @@
     background-color: rgb(25, 3, 103);
     padding: 12px 12px;
     border-radius: 8px;
-    width: 150px;
+    width: 180px;
     margin-right: 10px;
     text-align: center;
   }
@@ -172,6 +172,11 @@
   }
   .nav-container {
     padding: 3% 5%;
+  }
+  .menu-list-sec-wrapper {
+    display: flex;
+    align-items: center;
+    width: 60dvw;
   }
 }
 
