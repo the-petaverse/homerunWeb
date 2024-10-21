@@ -34,6 +34,8 @@
 }
 .footer-logo {
   width: 180px;
+  margin-right: auto;
+  margin-left: auto;
 }
 .footer-icon-container {
   display: flex;
