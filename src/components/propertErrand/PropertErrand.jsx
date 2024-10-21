@@ -35,10 +35,10 @@ const PropertErrand = (props) => {
     requestId,
     subRequestId,
     serviceData,
-    receivedCookies,
   } = props;
 
   const userOrder = useSelector((state) => state.userOrder);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [date, setDate] = React.useState(new Date(Date.now()));
   const [fileUplodComponent, setFileUplodComponent] = useState([
@@ -119,7 +119,7 @@ const PropertErrand = (props) => {
 
   useEffect(() => {
     // reset(watchedFields);
-  }, [serviceData, requestId, subRequestId, isValid, receivedCookies, reset]);
+  }, [serviceData, requestId, subRequestId, isValid, reset]);
 
   return (
     <div className="property-new-request-from-main-container">
@@ -291,9 +291,9 @@ const PropertErrand = (props) => {
                 name="terms_conditions"
               />
               <CustomButton
-                title={!receivedCookies ? "Login to Continue" : "Make Request"}
+                title={!auth.user ? "Login to Continue" : "Make Request"}
                 btnStyles="property-button-wrapper"
-                btnDisabled={(!isValid || !receivedCookies) && "true"}
+                btnDisabled={(!isValid || !auth.user) && "true"}
               />
             </div>
           </div>

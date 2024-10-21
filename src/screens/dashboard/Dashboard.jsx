@@ -22,12 +22,13 @@ import {
   useCreatePaymentMutation,
   useVerifyPaymentQuery,
 } from "../../services/payment/paystack";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetUserPropertyOrdersQuery } from "../../services/propertyErrands/propertyErrand";
 import { useGetAUserErrandsQuery } from "../../services/officialDocument/officialDocumentApi";
 import ServiceCard from "../../components/serviceCard/ServiceCard";
 import CustomServiceCard from "../../components/customServiceCard/CustomServiceCard";
 import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
+import { logout } from "../../services/slices/authSlice";
 
 const paneMenuList = [
   {
@@ -92,10 +93,11 @@ const myRequestInnerNavData = [
   { id: "3", title: "Cancelled", counter: "2" },
 ];
 const Dashboard = () => {
-  const cookies = new Cookies();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const location = useLocation();
   const { userOrder } = useSelector((state) => state.userOrder);
+  const auth = useSelector((state) => state.auth);
   const [orderCreated, setOrderCreated] = useState(true);
   const [innerNavMenuClicked, setInerMenuClicked] = useState("Active");
   const [sidePaneSelected, setSidePaneSelected] = useState("1");
@@ -165,7 +167,6 @@ const Dashboard = () => {
       request_id: userOrder.data?.request_id,
     };
     const result = await createPayment(data);
-    console.log(result);
     window.location.href = result.data.authorization_url;
   };
   const greetings = periodOfTheDay();
@@ -178,7 +179,7 @@ const Dashboard = () => {
   };
 
   const handleLogOut = () => {
-    cookies.remove("auth_token");
+    dispatch(logout());
     navigate("/login", { replace: true });
   };
   const handleShowOnlyIcons = () => {
@@ -226,6 +227,7 @@ const Dashboard = () => {
         setUserAllOrdersToDisplay(filterUserOrder);
       }
     }
+
     // filterServiceCount();
   }, [
     paymenyLoading,
@@ -306,9 +308,7 @@ const Dashboard = () => {
                     <p>
                       {greetings} {UserData && UserData?.user?.first_name}
                     </p>
-                    <div>
-                      <p>This month</p>
-                    </div>
+                    <div>{/* <p>This month</p> */}</div>
                   </div>
                   <div className="dashboard-right-bottom-panel-wrapper">
                     <div className="dashbaord-top-card-holder-wrapper">

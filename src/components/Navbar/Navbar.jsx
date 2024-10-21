@@ -10,15 +10,14 @@ import MainSideBar from "../mainSideBar/MainSideBar";
 import { FiShoppingCart } from "react-icons/fi";
 import { FaRegBell } from "react-icons/fa";
 import UserAvarta from "../userAvarta/UserAvarta";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const location = useLocation();
   const [openRequestNav, setOpenRequestNav] = useState(false);
   const [onDashboard, setOnDashboard] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
-
-  const cookies = new Cookies();
-  const receivedCookies = cookies.get("auth_token");
+  const auth = useSelector((state) => state.auth);
 
   const handleOpenSideBar = () => {
     setOpenSideBar((prev) => !prev);
@@ -26,14 +25,8 @@ const Navbar = () => {
   const handleOpenRequestNav = () => {
     setOpenRequestNav((prev) => !prev);
   };
-  const handleLogout = () => {
-    cookies.remove("auth_token");
-  };
 
   useEffect(() => {
-    if (location.pathname === "/dashboard") {
-      setOnDashboard(true);
-    }
     const handleClickOutside = () => {
       setOpenRequestNav(false);
     };
@@ -41,7 +34,7 @@ const Navbar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [receivedCookies, openRequestNav, openSideBar, onDashboard]);
+  }, [openRequestNav, openSideBar, onDashboard]);
 
   return (
     <>
@@ -62,7 +55,7 @@ const Navbar = () => {
             </Link>
           </ul>
 
-          {!receivedCookies && (
+          {!auth.user && (
             <ul className="list-wrapper">
               <div
                 // to=""
@@ -79,7 +72,7 @@ const Navbar = () => {
           )}
 
           {/* Menu to show when the user is authenticated */}
-          {receivedCookies && (
+          {auth.user !== null && (
             <ul className="list-wrapper ml-5">
               <div
                 // to=""

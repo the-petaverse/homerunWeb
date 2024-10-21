@@ -31,8 +31,7 @@ const ServiceDetailPage = () => {
   const [subRequestId, setSubRequestId] = useState();
   const [formStage, setFormStage] = useState(0);
   const { subcategory } = useParams();
-  const receivedCookies = cookies.get("auth_token");
-  console.log(subcategory);
+
   const {
     data: subData,
     isLoading,
@@ -73,7 +72,7 @@ const ServiceDetailPage = () => {
       // console.log(userOrder);
       navigate("/dashboard", { replace: true });
     }
-  }, [isSuccess, userOrder, receivedCookies]);
+  }, [isSuccess, userOrder]);
   return (
     <div className="main-order-page-container">
       <div className="main-order-page-header">
@@ -99,7 +98,6 @@ const ServiceDetailPage = () => {
               subRequestId={subRequestId}
               serviceData={serviceData}
               setOrderCreated={setOrderCreated}
-              receivedCookies={receivedCookies}
             />
           )}
           {(serviceCategory === "surprise_gifts" ||
@@ -128,7 +126,6 @@ const ServiceDetailPage = () => {
               subRequestId={subRequestId}
               serviceCategory={serviceCategory}
               serviceData={serviceData}
-              receivedCookies={receivedCookies}
             />
           )}
           {serviceCategory && serviceCategory === "grocery_food" && (

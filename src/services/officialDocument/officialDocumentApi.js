@@ -6,11 +6,14 @@ export const officialDocumentApi = createApi({
   baseQuery: apiHeader,
   endpoints: (builder) => ({
     createOfficialDocumentErrand: builder.mutation({
-      query: (data) => ({
-        url: "request/official-document-order",
-        method: "POST",
-        body: data,
-      }),
+      query: (data) => (
+        console.log(data, "object created"),
+        {
+          url: "request/official-document-order",
+          method: "POST",
+          body: data,
+        }
+      ),
     }),
     getAUserErrands: builder.query({
       query: () => "request/my-official-document-orders/",

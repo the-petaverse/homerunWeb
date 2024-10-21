@@ -14,11 +14,15 @@ import { useLoginUserMutation } from "../../../services/auth/authApi";
 import CustomImput from "../../../components/customImput/CustomImput";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { addUserAuth } from "../../../services/slices/authSlice";
-import { useDispatch } from "react-redux";
+import {
+  addUserAuth,
+  setAccessToken,
+} from "../../../services/slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const [revealPassword, setRevealPassword] = useState(false);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const toastId = React.useRef(null);
   const cookies = new Cookies();
@@ -43,16 +47,16 @@ const Login = () => {
   const handleShowPassword = () => {
     setRevealPassword((prev) => !prev);
   };
-
   if (isSuccess) {
     if (!toast.isActive(toastId.current)) {
       toastId.current = toast.success(loginData?.message, {
         position: "top-right",
       });
     }
-    navigate("/dashboard", { replace: true });
-    dispatch(addUserAuth(loginData.data));
-    cookies.set("auth_token", loginData?.data);
+
+    dispatch(addUserAuth(loginData?.data?.accessToken));
+    dispatch(setAccessToken(loginData?.data?.accessToken));
+    // cookies.set("auth_token", loginData?.data?.accessToken);
   }
   if (error) {
     console.log(error.error);
@@ -65,10 +69,12 @@ const Login = () => {
       );
     }
   }
-
+  console.log();
   useEffect(() => {
-    if (receivedCookies) {
+    if (auth.user !== null) {
       navigate("/dashboard", { replace: true });
+    } else {
+      navigate("/login", { replace: true });
     }
   }, [receivedCookies, isSuccess, navigate]);
 

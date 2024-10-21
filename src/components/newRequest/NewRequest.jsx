@@ -32,7 +32,7 @@ import CustomImageUpload from "../customImageUpload /CustomImageUpload";
 import AvartaIcon from "/images/avatar-icon.png";
 import { useCreateOfficialDocumentErrandMutation } from "../../services/officialDocument/officialDocumentApi";
 import { addUserOrder } from "../../services/slices/userOrder";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const countries = [
   { id: "1", title: "Nigeria" },
@@ -72,9 +72,9 @@ const NewRequest = ({
   requestId,
   subRequestId,
   serviceData,
-  receivedCookies,
 }) => {
   const [myState, setMyState] = useState([]);
+  const auth = useSelector((state) => state.auth);
   const [addUploadInput, setAddUploadInput] = useState(new Array(1).fill(""));
   const [citiesList, setCitiesList] = useState([]);
   // const [serviceData, setServiceData] = useState([]);
@@ -592,9 +592,9 @@ const NewRequest = ({
                 register={register}
               />
               <CustomButton
-                title={!receivedCookies ? "Login to Continue" : "Make Request"}
+                title={!auth.user ? "Login to Continue" : "Make Request"}
                 btnStyles="doc-button-wrapper"
-                btnDisabled={(!isValid || !receivedCookies) && "true"}
+                btnDisabled={(!isValid || !auth.user) && "true"}
               />
             </div>
           </div>
