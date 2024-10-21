@@ -10,7 +10,7 @@
   padding-top: 85px;
 }
 .contact-main-outer-wrapper {
-  width: 65%;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -36,7 +36,7 @@
 }
 .contact-inner-main-container {
   background-color: #fff;
-  width: 80%;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
   margin-top: 25px;
@@ -63,7 +63,7 @@
   background-color: #262262;
   color: #fff;
   width: 60%;
-  padding: 1%;
+  padding: 2%;
   border-radius: 10px;
   font-size: 0.85em;
   cursor: pointer;
@@ -230,6 +230,12 @@
     /* border: solid 0.5px rgb(209, 205, 205); */
     padding: 5%;
     border-radius: 10px;
+  }
+  .contact-main-outer-wrapper {
+    width: 65%;
+  }
+  .contact-inner-main-container {
+    width: 80%;
   }
 }
 
