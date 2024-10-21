@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Cookies from "universal-cookie";
 import { apiHeader } from "../constant/apiHeader";
+import { baseQueryWithReauth } from "../baseQuery/authBaseQuery";
 
 export const paystackApi = createApi({
   reducerPath: "paystackApi",
-  baseQuery: apiHeader,
+  baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
     createPayment: builder.mutation({
       query: (data) => ({

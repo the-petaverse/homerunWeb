@@ -1,9 +1,10 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { apiHeader } from "../constant/apiHeader";
+import { baseQueryWithReauth } from "../baseQuery/authBaseQuery";
 
 export const errandApi = createApi({
   reducerPath: "errandApi",
-  baseQuery: apiHeader,
+  baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
     createErrand: builder.mutation({
       query: (data) => ({

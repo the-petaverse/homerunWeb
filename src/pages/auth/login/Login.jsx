@@ -59,17 +59,17 @@ const Login = () => {
     // cookies.set("auth_token", loginData?.data?.accessToken);
   }
   if (error) {
-    console.log(error.error);
+    console.log(error.data.data);
     if (!toast.isActive(toastId.current)) {
       toastId.current = toast.error(
-        error ? error?.data?.message : error?.error,
+        error.data.message ? error?.data?.message : error.data.data,
         {
           position: "top-right",
         }
       );
     }
   }
-  console.log();
+
   useEffect(() => {
     if (auth.user !== null) {
       navigate("/dashboard", { replace: true });

@@ -1,9 +1,10 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { apiHeader } from "../constant/apiHeader";
+import { baseQueryWithReauth } from "../baseQuery/authBaseQuery";
 
 export const requestsApi = createApi({
   reducerPath: "requestsApi",
-  baseQuery: apiHeader,
+  baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
     getRequestCategories: builder.query({
       query: () => "request/categories",
