@@ -32,14 +32,14 @@
 
 .heading-txt-one,
 .heading-txt-two {
-  font-size: 2em;
+  font-size: 1.55em;
   margin-bottom: 10px;
   font-weight: bold;
   /* margin-top: 25px; */
   line-height: 1.2em;
 }
 .heading-para {
-  font-size: 1.2em;
+  font-size: 1em;
   /* font-family: "Josefin Slab", serif; */
   font-optical-sizing: auto;
   font-style: normal;
@@ -48,7 +48,7 @@
   width: 100%;
   color: #fff;
   background-color: #ff6600;
-  padding: 20px 20px;
+  padding: 15px 20px;
   border-radius: 30px;
   font-size: 1.15em;
   font-weight: 500;
@@ -175,10 +175,10 @@
 @media (min-width: 1280px) {
   .heading-txt-one,
   .heading-txt-two {
-    font-size: 3.2em;
+    font-size: 3em;
   }
   .header-content-wrapper > h3 {
-    font-size: 3.55em;
+    font-size: 3em;
   }
   .header-content-wrapper > p {
     font-size: 2em;
