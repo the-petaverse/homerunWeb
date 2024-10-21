@@ -9,6 +9,8 @@
 .dashboard-right-panel-wrapper {
   background-color: #f5f4f7;
   width: 80dvw;
+  height: 100dvh;
+  overflow: scroll;
   padding: 0 2%;
   border-left: solid gray 1px;
   display: flex;
@@ -19,6 +21,8 @@
 .dashboard-right-panel-wrapper-with-icons-only {
   background-color: #f5f4f7;
   width: 92dvw;
+  height: 100dvh;
+  overflow: scroll;
   padding: 0 2%;
   border-left: solid gray 1px;
   display: flex;
