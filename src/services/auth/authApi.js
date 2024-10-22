@@ -6,14 +6,13 @@ import { baseQueryWithReauth } from "../baseQuery/authBaseQuery";
 // Define a service using a base URL and expected endpoints
 export const authApi = createApi({
   reducerPath: "authApi",
-  // baseQuery: apiHeader,
   baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
     getUsers: builder.query({
       query: () => "auth/users",
     }),
     getUser: builder.query({
-      query: () => "/auth/user/me",
+      query: () => "auth/user/me",
     }),
     loginUser: builder.mutation({
       query: (data) => ({
@@ -41,7 +40,7 @@ export const authApi = createApi({
     }),
     resetUserOtp: builder.mutation({
       query: (data) => ({
-        url: "/auth/reset_otp",
+        url: "auth/reset_otp",
         method: "POST",
         body: data,
       }),
@@ -50,15 +49,22 @@ export const authApi = createApi({
     // Before allowed to reset password
     forgotUserPassword: builder.mutation({
       query: (data) => ({
-        url: "/auth/forgot_password",
+        url: "auth/forgot_password",
         method: "POST",
         body: data,
       }),
     }),
     resetUserPassword: builder.mutation({
       query: (data) => ({
-        url: "/auth/reset_password",
+        url: "auth/reset_password",
         method: "POST",
+        body: data,
+      }),
+    }),
+    refreshToken: builder.mutation({
+      query: (data) => ({
+        url: "auth/user/refresh-token",
+        method: "GET",
         body: data,
       }),
     }),
@@ -74,4 +80,5 @@ export const {
   useResetUserOtpMutation,
   useForgotUserPasswordMutation,
   useResetUserPasswordMutation,
+  useRefreshTokenMutation,
 } = authApi;

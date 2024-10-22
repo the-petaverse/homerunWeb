@@ -7,11 +7,13 @@ import { useSelector } from "react-redux";
 const PrivateRoute = ({ children }) => {
   const auth = useSelector((state) => state.auth);
 
+  console.log(auth);
+
   // let registeredCookies = cookies.get("resgitered");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (auth.user === null) {
+    if (auth.accessToken === null) {
       navigate("/login", { replace: true });
     }
   }, [navigate]);

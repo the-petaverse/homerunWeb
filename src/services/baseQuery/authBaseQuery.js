@@ -1,13 +1,20 @@
 import { apiHeader } from "../constant/apiHeader";
-import { addUserAuth, logout, setAccessToken } from "../slices/authSlice";
+import {
+  addUserAuth,
+  logout,
+  setAccessToken,
+  setLogoutMessage,
+} from "../slices/authSlice";
 
-export const baseQueryWithReauth = async (args, api, extraOptions) => {
+export const baseQueryWithReauth = async (
+  args,
+  api,
+  extraOptions,
+  navigate
+) => {
   let result = await apiHeader(args, api, extraOptions);
-
-  console.log(result);
-  // If access token expired (e.g. 401 response), refresh token
+  console.log("Initial calling", result);
   if (result?.error?.status === 401) {
-    // Attempt to refresh the token
     const refreshResult = await apiHeader(
       "auth/user/refresh-token",
       api,
@@ -22,8 +29,19 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
       // Retry the original query with the new token
       result = await apiHeader(args, api, extraOptions);
     } else {
-      // Logout if refresh failed
-      api.dispatch(logout());
+      if (refreshResult?.error?.status === 403) {
+        // refreshResult.error.data.message = "Your login has expired.";
+        api.dispatch(
+          setLogoutMessage("Your login has expired. Please login again.")
+        );
+        api.dispatch(logout());
+
+        navigate("/login", {
+          state: { errorMessage: refreshResult.error.data.message },
+        });
+        return;
+      }
+      return refreshResult;
     }
   }
 

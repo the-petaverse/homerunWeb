@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, Outlet, Link } from "react-router-dom";
+import { useNavigate, Outlet, Link, useLocation } from "react-router-dom";
 import "./Login.css";
 import LoginImage from "../../../assets/login.png";
 import LogoMark from "../../../assets/logomark.png";
@@ -25,6 +25,7 @@ const Login = () => {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const toastId = React.useRef(null);
+  const location = useLocation();
   const cookies = new Cookies();
   const [loginUser, { data: loginData, isLoading, isSuccess, error }] =
     useLoginUserMutation();
@@ -39,7 +40,7 @@ const Login = () => {
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
   // const notify = () => toast("Wow so easy!");
-
+  console.log(auth.logoutMessage);
   const onSubmit = async (data) => {
     // console.log(data);
     await loginUser(data);
@@ -47,36 +48,49 @@ const Login = () => {
   const handleShowPassword = () => {
     setRevealPassword((prev) => !prev);
   };
-  if (isSuccess) {
-    if (!toast.isActive(toastId.current)) {
-      toastId.current = toast.success(loginData?.message, {
-        position: "top-right",
-      });
-    }
-
-    dispatch(addUserAuth(loginData?.data?.accessToken));
-    dispatch(setAccessToken(loginData?.data?.accessToken));
-    // cookies.set("auth_token", loginData?.data?.accessToken);
-  }
-  if (error) {
-    console.log(error.data.data);
-    if (!toast.isActive(toastId.current)) {
-      toastId.current = toast.error(
-        error.data.message ? error?.data?.message : error.data.data,
-        {
-          position: "top-right",
-        }
-      );
-    }
-  }
 
   useEffect(() => {
-    if (auth.user !== null) {
+    if (error) {
+      console.log(error.data.data);
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.error(
+          error?.data?.message ? error?.data?.message : error.data.data,
+          {
+            position: "top-right",
+          }
+        );
+      }
+    }
+    if (isSuccess) {
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.success(loginData?.message, {
+          position: "top-right",
+        });
+      }
+      dispatch(addUserAuth(loginData?.data?.accessToken));
+      dispatch(setAccessToken(loginData?.data?.accessToken));
+      // cookies.set("auth_token", loginData?.data?.accessToken);
+    }
+    if (auth.logoutMessage) {
+      if (!toast.isActive(toastId.current)) {
+        toastId.current = toast.error(auth.logoutMessage, {
+          position: "top-right",
+        });
+      }
+    }
+    if (auth.accessToken !== null) {
       navigate("/dashboard", { replace: true });
     } else {
       navigate("/login", { replace: true });
     }
-  }, [receivedCookies, isSuccess, navigate]);
+  }, [
+    receivedCookies,
+    isSuccess,
+    auth.accessToken,
+    navigate,
+    error,
+    auth.logoutMessage,
+  ]);
 
   return (
     <div>

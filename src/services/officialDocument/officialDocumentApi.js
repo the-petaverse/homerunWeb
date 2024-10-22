@@ -1,5 +1,4 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { apiHeader } from "../constant/apiHeader";
 import { baseQueryWithReauth } from "../baseQuery/authBaseQuery";
 
 export const officialDocumentApi = createApi({

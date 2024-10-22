@@ -13,6 +13,7 @@ import authReducer from "./services/slices/authSlice";
 import { paystackApi } from "./services/payment/paystack";
 import userOrderReducer from "./services/slices/userOrder";
 import { officialDocumentApi } from "./services/officialDocument/officialDocumentApi";
+// import tokenRefreshMiddleware from "./services/middleWare/tokenRefreshMiddleware";
 
 export const store = configureStore({
   reducer: {
@@ -40,6 +41,7 @@ export const store = configureStore({
       propertyErrandApi.middleware,
       referrerSystemApi.middleware,
       officialDocumentApi.middleware
+      // tokenRefreshMiddleware
     ),
 });
 
