@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
   addUserAuth,
+  removeLogoutMessage,
   setAccessToken,
 } from "../../../services/slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,6 +68,7 @@ const Login = () => {
           position: "top-right",
         });
       }
+      dispatch(removeLogoutMessage());
       dispatch(addUserAuth(loginData?.data?.accessToken));
       dispatch(setAccessToken(loginData?.data?.accessToken));
       // cookies.set("auth_token", loginData?.data?.accessToken);

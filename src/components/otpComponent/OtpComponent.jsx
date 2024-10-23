@@ -87,37 +87,24 @@ const OtpComponent = ({
       elemt.target.previousSibling.focus();
     }
   };
-  console.log(formSteps);
   useEffect(() => {
     if (isSuccess) {
-      cookies.remove("resgitered");
-      cookies.remove("request-service");
+      console.log("before set", formSteps);
       setFormSteps(3);
-      dispatch(updateCurrentUser());
-      setPassworsResetSuccess(true);
+      console.log("after set", formSteps);
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success(verifyData?.message, {
           position: "top-right",
         });
       }
-      // if (formSteps === 3) {
-      //   setOtpSent(false);
-      //   navigate("/forgot-password", { replace: true });
-      // }
-      // else {
-      //   navigate("/login", { replace: true });
-      // }
     }
 
     if (error) {
       console.error(error);
       if (!toast.isActive(toastId.current)) {
-        toastId.current = toast.error(
-          error?.data.message ? error?.data?.message : error?.data.data,
-          {
-            position: "top-right",
-          }
-        );
+        toastId.current = toast.error(error?.data.error, {
+          position: "top-right",
+        });
       }
     }
     if (otpRequestError) {
@@ -144,7 +131,6 @@ const OtpComponent = ({
     otpResetIsSuccess,
     requestedMailSent,
     error,
-    formSteps,
   ]);
   return (
     <>

@@ -10,6 +10,11 @@ import { toast } from "react-toastify";
 import { updateCurrentUser } from "../../services/slices/userSlice";
 import { useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
+import {
+  clearAccessToken,
+  clearPasswordResetToken,
+} from "../../services/slices/authSlice";
+import { useNavigate } from "react-router-dom";
 const ResetPassword = ({
   setShowDashboard,
   setPassworsResetSuccess,
@@ -19,7 +24,7 @@ const ResetPassword = ({
   //   const [showDashboard, setShowDashboard] = useState(1);
   const [revealPassword, setRevealPassword] = useState(false);
   const dispatch = useDispatch();
-  const cookies = new Cookies();
+  const navigate = useNavigate();
   const toastId = React.useRef(null);
   const [
     resetUserPassword,
@@ -42,18 +47,17 @@ const ResetPassword = ({
     // setShowDashboard(5);
     await resetUserPassword(data);
   };
+  console.log("object is saved");
 
   useEffect(() => {
     if (isSuccess) {
-      setFormSteps(4);
-      dispatch(updateCurrentUser());
-      setPassworsResetComplete(true);
-      cookies.remove("request");
+      dispatch(clearPasswordResetToken());
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success(resetPasswordData?.message, {
           position: "top-right",
         });
       }
+      navigate("/login", { replace: true });
     }
     if (error) {
       console.log(error);

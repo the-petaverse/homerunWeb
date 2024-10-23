@@ -48,7 +48,7 @@
 // // optional, but required for refetchOnFocus/refetchOnReconnect behaviors
 // // see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
 // // setupListeners(store.dispatch)
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import { authApi } from "./services/auth/authApi";
@@ -69,11 +69,11 @@ import { officialDocumentApi } from "./services/officialDocument/officialDocumen
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "cart", "userOrder"],
+  whitelist: ["auth", "cart", "userOrder"], // Only persist these reducers
 };
 
-// Create a persisted reducer
-const persistedReducer = persistReducer(persistConfig, {
+// Combine all reducers
+const rootReducer = combineReducers({
   currentUser: currentUser,
   cart: cartReducer,
   auth: authReducer,
@@ -87,6 +87,9 @@ const persistedReducer = persistReducer(persistConfig, {
   [paymentApi.reducerPath]: paymentApi.reducer,
   [officialDocumentApi.reducerPath]: officialDocumentApi.reducer,
 });
+
+// Create a persisted reducer
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // Configure the store
 export const store = configureStore({

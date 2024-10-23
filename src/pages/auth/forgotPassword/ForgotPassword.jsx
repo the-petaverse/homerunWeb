@@ -16,6 +16,10 @@ import { useForgotUserPasswordMutation } from "../../../services/auth/authApi";
 import { addCurrentUser } from "../../../services/slices/userSlice";
 import { toast } from "react-toastify";
 import Cookies from "universal-cookie";
+import {
+  setAccessToken,
+  setPasswordResetToken,
+} from "../../../services/slices/authSlice";
 
 const ForgotPassword = () => {
   const cookies = new Cookies();
@@ -40,6 +44,7 @@ const ForgotPassword = () => {
   } = useForm({ mode: "all" });
   const watchEmail = watch("email");
 
+  console.log(formSteps);
   const onPassSubmit = async (data) => {
     await forgotUserPassword(data);
   };
@@ -47,6 +52,7 @@ const ForgotPassword = () => {
   useEffect(() => {
     if (isSuccess) {
       setFormSteps(2);
+      dispatch(setPasswordResetToken(data?.data));
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success(data?.message, {
           position: "top-right",
@@ -67,7 +73,7 @@ const ForgotPassword = () => {
     if (requestedMailSent) {
       console.log(requestedMailSent, "Forgot");
     }
-  }, [isSuccess, isError, error, passworsResetSuccess, formSteps]);
+  }, [isSuccess, isError, error]);
   return (
     <div>
       <div className="authentication-header">
@@ -120,21 +126,9 @@ const ForgotPassword = () => {
           </>
         )}
         {formSteps === 2 && (
-          <OtpComponent
-            setPassworsResetSuccess={setPassworsResetSuccess}
-            passworsResetSuccess={passworsResetSuccess}
-            setOtpSent={setOtpSent}
-            setFormSteps={setFormSteps}
-            formSteps={formSteps}
-          />
+          <OtpComponent setFormSteps={setFormSteps} formSteps={formSteps} />
         )}
-        {formSteps === 3 && (
-          <ResetPassword
-            setPassworsResetComplete={setPassworsResetComplete}
-            setFormSteps={setFormSteps}
-          />
-        )}
-        {formSteps === 4 && <CustomSuccessPage />}
+        {formSteps === 3 && <ResetPassword setFormSteps={setFormSteps} />}
       </div>
     </div>
   );

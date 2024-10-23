@@ -3,6 +3,7 @@ import { Image, Transformation } from "cloudinary-react";
 import CustomButton from "../customButton/CustomButton";
 import { useNavigate } from "react-router-dom";
 import { useLoaderContext } from "../../customHooks/useLoaderContext";
+import DashboardServiceBtn from "../dasboardServiceBtn/DashboardServiceBtn";
 
 const CustomServiceCard = ({ service }) => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const CustomServiceCard = ({ service }) => {
   };
   return (
     <div
-      className="w-[100%] h-[80%] pb-2 rounded-bl-3xl rounded-br-3xl bg-white rounded-tl-2xl rounded-tr-2xl flex flex-col justify-between"
+      className="w-[100%] h-[80%] rounded-bl-3xl rounded-br-3xl bg-white rounded-tl-2xl rounded-tr-2xl flex flex-col justify-between pb-3"
       key={service.id}
     >
       <Image
@@ -29,7 +30,7 @@ const CustomServiceCard = ({ service }) => {
         <p className=" mt-2">{service.category_details}</p>
       </div>
       <div className="px-4">
-        <CustomButton
+        <DashboardServiceBtn
           title="Post this request"
           btnOnClick={() => handleNavigate(service.slug_name)}
         />
