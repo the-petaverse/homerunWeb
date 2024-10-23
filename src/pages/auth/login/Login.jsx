@@ -52,14 +52,10 @@ const Login = () => {
 
   useEffect(() => {
     if (error) {
-      console.log(error.data.data);
       if (!toast.isActive(toastId.current)) {
-        toastId.current = toast.error(
-          error?.data?.message ? error?.data?.message : error.data.data,
-          {
-            position: "top-right",
-          }
-        );
+        toastId.current = toast.error(error.data.data, {
+          position: "top-right",
+        });
       }
     }
     if (isSuccess) {

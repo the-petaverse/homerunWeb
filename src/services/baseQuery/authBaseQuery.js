@@ -34,11 +34,13 @@ export const baseQueryWithReauth = async (
         api.dispatch(
           setLogoutMessage("Your login has expired. Please login again.")
         );
+
         api.dispatch(logout());
 
         navigate("/login", {
           state: { errorMessage: refreshResult.error.data.message },
         });
+
         return;
       }
       return refreshResult;
