@@ -13,6 +13,7 @@ import { subServiceData } from "../../data/subCategoryData";
 import { Image, Transformation } from "cloudinary-react";
 import { filteredServiceCategory } from "../../helpers/filterServiceCategories";
 import { filterSubCategory } from "../../helpers/filterSubServices";
+import Preloader from "../preloader/Preloader";
 
 const SubServiceCard = ({ category }) => {
   const navigate = useNavigate();
@@ -91,7 +92,7 @@ const SubServiceCard = ({ category }) => {
   ]);
   return (
     <div className="category-detail-main-container">
-      {selectedServiceCategory &&
+      {selectedServiceCategory ? (
         selectedServiceCategory.map((mainServiceCategory, index) => (
           <div key={index}>
             <div className="category-header-wrapper">
@@ -110,7 +111,10 @@ const SubServiceCard = ({ category }) => {
               <p>{mainServiceCategory?.category_details}</p>
             </div>
           </div>
-        ))}
+        ))
+      ) : (
+        <Preloader />
+      )}
       <div className="subservices-card-wrapper">
         {subServicesFiltered &&
           subServicesFiltered.map((subService, index) => {

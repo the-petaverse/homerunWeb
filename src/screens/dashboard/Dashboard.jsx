@@ -8,21 +8,7 @@ const DashBoard = () => {
   useEffect(() => {}, [isAdmin]);
   return (
     <>
-      {isAdmin && (
-        <>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-        </>
-      )}
-      {!isAdmin && <UserDashboard />}
+      <UserDashboard />
     </>
   );
 };

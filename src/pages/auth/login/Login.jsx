@@ -53,7 +53,7 @@ const Login = () => {
   useEffect(() => {
     if (error) {
       if (!toast.isActive(toastId.current)) {
-        toastId.current = toast.error(error.data.data, {
+        toastId.current = toast.error(error.data.error, {
           position: "top-right",
         });
       }

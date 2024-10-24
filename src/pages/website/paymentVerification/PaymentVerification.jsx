@@ -50,7 +50,7 @@ const PaymentVerification = () => {
           Once again, thank you for trusting us with your errand
         </p>
       </div>
-      <div className="w-[100%] mr-auto ml-auto mt-12">
+      <div className="w-[94%] tablet:w-[50%] laptop:w-[30%] mr-auto ml-auto mt-12">
         <CustomButton
           title="Back to Dashboard"
           btnOnClick={handleBackToDashboard}
