@@ -28,7 +28,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = () => {
-      setOpenRequestNav(false);
+      // setOpenRequestNav(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => {

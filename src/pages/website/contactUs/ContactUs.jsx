@@ -47,7 +47,6 @@ const ContactUs = () => {
   };
   return (
     <div className="contact-overall-container">
-      {/* <Navbar handleOpenSideBar={handleOpenSideBar} /> */}
       <div className="contact-main-container">
         <ContactHeader />
         <div className="contact-main-wrapper">
@@ -187,13 +186,6 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-      <MainSideBar
-        handleOpenSideBar={handleOpenSideBar}
-        handleCloseSideBar={handleCloseSideBar}
-        openSideBar={openSideBar}
-      />
-      {/* <Hq /> */}
-      {/* <Footer /> */}
     </div>
   );
 };

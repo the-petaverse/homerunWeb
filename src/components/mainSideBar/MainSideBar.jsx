@@ -8,26 +8,32 @@ import GrocyIcon from "../../assets/grocy-icon.png";
 import SurpriseIcon from "../../assets/surprise-icon.png";
 import HotelIcon from "../../assets/hotel-icon.png";
 import PropertyIcon from "../../assets/property-icon.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./MainSideBar.css";
 import Cookies from "universal-cookie";
+import { useSelector } from "react-redux";
 
 const MainSideBar = ({ handleOpenSideBar }) => {
-  const cookies = new Cookies();
-  const receivedCookies = cookies.get("auth_token");
+  const auth = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
-  const handleLogout = () => {
-    cookies.remove("auth_token");
+  const handleNavigate = () => {
+    navigate("/contact");
   };
+
   return (
     <div className="side-bar-container">
       <div className="inner-side-bar">
         <div className="side-bar-menu-list-wrapper">
           <ul className="side-bar-right-main-list main-side-wrapper">
             <section className="auth-wrapper">
-              {!receivedCookies && (
-                <Link to="/login" className="inner-menu-list">
+              {auth.accessToken === null && (
+                <Link
+                  to="/login"
+                  className="inner-menu-list"
+                  onClick={handleOpenSideBar}
+                >
                   <li>
                     <img
                       src={LoginIcon}
@@ -39,17 +45,22 @@ const MainSideBar = ({ handleOpenSideBar }) => {
                 </Link>
               )}
 
-              {receivedCookies && (
+              {auth.accessToken !== null && (
                 <Link
                   to="/login"
                   className="inner-menu-list"
-                  onClick={handleLogout}
+                  onClick={handleOpenSideBar}
+                  // onClick={handleLogout}
                 >
                   <li> Logout</li>
                 </Link>
               )}
             </section>
-            <Link to="/our-services" className="inner-menu-list">
+            <Link
+              to="/our-services"
+              className="inner-menu-list"
+              onClick={handleOpenSideBar}
+            >
               <li>
                 <img
                   src={VerifyIcon}
@@ -62,6 +73,7 @@ const MainSideBar = ({ handleOpenSideBar }) => {
             <Link
               to="/about"
               className="inner-menu-list"
+              onClick={handleOpenSideBar}
               // onClick={handleCloseSideBar}
             >
               <li>
@@ -146,7 +158,9 @@ const MainSideBar = ({ handleOpenSideBar }) => {
               </Link>
             </div>
           </div>
-          <button className="side-menu-bar-btn">Contact Us</button>
+          <button className="side-menu-bar-btn" onClick={handleNavigate}>
+            Contact Us
+          </button>
         </div>
       </div>
     </div>
