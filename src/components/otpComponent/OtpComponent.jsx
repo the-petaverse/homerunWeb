@@ -15,6 +15,10 @@ import CustomButton from "../customButton/CustomButton";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCurrentUser } from "../../services/slices/userSlice";
+import {
+  clearAccessToken,
+  clearPasswordResetToken,
+} from "../../services/slices/authSlice";
 
 const OtpComponent = ({
   email,
@@ -89,9 +93,14 @@ const OtpComponent = ({
   };
   useEffect(() => {
     if (isSuccess) {
-      console.log("before set", formSteps);
-      setFormSteps(3);
-      console.log("after set", formSteps);
+      dispatch(clearPasswordResetToken());
+      dispatch(clearAccessToken());
+      if (setFormSteps) {
+        setFormSteps(3);
+      } else {
+        navigate("/login", { replace: true });
+      }
+
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success(verifyData?.message, {
           position: "top-right",

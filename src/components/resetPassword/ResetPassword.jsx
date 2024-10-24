@@ -52,6 +52,7 @@ const ResetPassword = ({
   useEffect(() => {
     if (isSuccess) {
       dispatch(clearPasswordResetToken());
+      dispatch(clearAccessToken());
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success(resetPasswordData?.message, {
           position: "top-right",

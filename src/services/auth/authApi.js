@@ -22,14 +22,11 @@ export const authApi = createApi({
       }),
     }),
     registerUser: builder.mutation({
-      query: (data) => (
-        console.log(data),
-        {
-          url: "auth/user",
-          method: "POST",
-          body: data,
-        }
-      ),
+      query: (data) => ({
+        url: "auth/user",
+        method: "POST",
+        body: data,
+      }),
     }),
     verifyUser: builder.mutation({
       query: (otp) => ({

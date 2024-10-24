@@ -16,12 +16,11 @@
   border-radius: 36px;
 }
 .service-card-image-wrapper {
-  /* border: solid 10.5px rgb(77, 76, 123); */
   width: 100%;
-  /* height: 50dvh; */
   border-top-left-radius: 26px;
   border-top-right-radius: 26px;
 }
+
 .service-card-image-header {
   background-color: #fff;
   height: 100px;

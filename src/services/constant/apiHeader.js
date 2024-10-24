@@ -6,10 +6,15 @@ export const apiHeader = fetchBaseQuery({
   credentials: "include",
 
   prepareHeaders: (headers, { getState }) => {
-    const token = getState().auth.accessToken
-      ? getState().auth.accessToken
-      : getState().auth.passwordResetToken;
-    console.log(token);
+    let token;
+    if (getState().auth.accessToken) {
+      token = getState().auth.accessToken;
+    } else if (getState().auth.passwordResetToken) {
+      token = getState().auth.passwordResetToken;
+    } else {
+      token = getState().auth.registrationToken;
+    }
+
     if (token) {
       headers.set("Authorization", `Bearer ${token}`);
     }

@@ -16,7 +16,7 @@ const DashboardTopCard = ({
   const [createdDate, setCreatedDate] = useState();
 
   useEffect(() => {
-    let convertedDate = convertIsoDate(data && data.createdAt);
+    let convertedDate = convertIsoDate(data && data?.createdAt);
     if (convertedDate) {
       setCreatedDate(convertedDate);
     }
@@ -37,11 +37,14 @@ const DashboardTopCard = ({
         }
       >
         <p className="max-sm:text-xs lg:text-lg">
-          Request ID: <span className="font-bold">{data.request_id}</span>
+          Request ID:
+          <span className="font-bold">
+            {data ? data?.request_id : "No Request"}
+          </span>
         </p>
         <div className="dashboard-card-request-inner-wrapper max-sm:text-xs lg:text-lg">
-          <p>Request: {createdDate}</p>
-          <p>Delivery: Jul. 24, 2024</p>
+          <p>Request: {createdDate ? createdDate : "No Date"}</p>
+          <p>Delivery: {createdDate ? createdDate : "No Date"}</p>
           <CustomButton
             title="View Details"
             btnStyles="dashboard-top-btn-card-style"
@@ -62,14 +65,22 @@ const DashboardTopCard = ({
               : "dashboard-card-header-container"
           }
         >
-          <p>Transcript</p>
+          {/* <p>Transcript</p> */}
           <div className="dashboard-card-detail-title-wrapper">
             <p className="dashboard-card-main-title">
-              {data?.ordered_service_title}
+              {data?.ordered_service_title
+                ? data?.ordered_service_title
+                : "No Request at the moment by you"}
             </p>
-            <p className="dashboard-card-main-sub-title">
-              {`${data?.ordered_service_title} retrieval ${data?.order_status}`}
-            </p>
+            {data ? (
+              <p className="dashboard-card-main-sub-title">
+                {`${data?.ordered_service_title} retrieval ${data?.order_status}`}
+              </p>
+            ) : (
+              <p className="dashboard-card-main-sub-title">
+                Please create a new request
+              </p>
+            )}
           </div>
           <div className="dashboard-progress-bar-main-wrapper">
             <div className="dashboard-progress-bar-left-pane">
@@ -86,11 +97,15 @@ const DashboardTopCard = ({
           <div className="dashboard-card-amount-main-wrapper">
             <div className="dashbaord-card-total-amount-wrapper">
               <p className="dashbaord-card-total-amount-label">Total Amount:</p>
-              <p className="dashbaord-card-total-amount">N120, 000.00</p>
+              <p className="dashbaord-card-total-amount">
+                {data ? "N120, 000.00" : "No data yet"}
+              </p>
             </div>
             <div className="dashbaord-card-paid-amount-wrapper">
               <p className="dashbaord-card-paid-amount-label">Total Amount:</p>
-              <p className="dashbaord-card-paid-amount">N120, 000.00</p>
+              <p className="dashbaord-card-paid-amount">
+                {data ? "N120, 000.00" : "No data yet"}
+              </p>
             </div>
           </div>
         </div>

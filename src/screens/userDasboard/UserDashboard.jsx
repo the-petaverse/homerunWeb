@@ -123,6 +123,7 @@ const UserDashboard = () => {
     error: userOrderError,
   } = useGetAUserErrandsQuery();
 
+  console.log("Dashboard Error: ", userOrderError);
   const activeCount =
     userOrderData &&
     userOrderData.userOrders.filter((item) => item.order_status === "On-going")

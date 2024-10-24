@@ -24,6 +24,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addCurrentUser } from "../../../services/slices/userSlice";
 import { isValidPhoneNumber } from "react-phone-number-input";
+import { setRegistrationToken } from "../../../services/slices/authSlice";
 
 const Register = () => {
   const cookies = new Cookies();
@@ -135,9 +136,10 @@ const Register = () => {
           position: "top-right",
         });
       }
+      dispatch(setRegistrationToken(registerData.data));
       dispatch(addCurrentUser(watchEmail));
       setFormSumitted(true);
-      cookies.set("resgitered", registerData.data);
+      // cookies.set("resgitered", registerData.data);
     }
     if (registeredCookies !== undefined) {
       setFormSumitted(false);

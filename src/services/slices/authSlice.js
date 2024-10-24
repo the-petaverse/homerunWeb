@@ -5,6 +5,7 @@ const initialState = {
   user: null,
   logoutMessage: null,
   passwordResetToken: null,
+  registrationToken: null,
 };
 const authSlice = createSlice({
   name: "auth",
@@ -18,6 +19,12 @@ const authSlice = createSlice({
     },
     clearPasswordResetToken: (state, action) => {
       state.passwordResetToken = null;
+    },
+    setRegistrationToken: (state, action) => {
+      state.registrationToken = action.payload;
+    },
+    clearRegistrationToken: (state, action) => {
+      state.registrationToken = null;
     },
     addUserAuth(state, action) {
       state.user = { accessToken: action.payload, isLoggedIn: true };
@@ -44,6 +51,8 @@ export const {
   clearAccessToken,
   setPasswordResetToken,
   clearPasswordResetToken,
+  setRegistrationToken,
+  clearRegistrationToken,
 } = authSlice.actions;
 export default authSlice.reducer;
 export const selectAccessToken = (state) => state.auth.accessToken;
