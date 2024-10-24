@@ -88,6 +88,8 @@ const Register = () => {
     } else if (formStep === 1) {
       return (
         <input
+          value={isLoading ? "Loading..." : "Complete"}
+          style={{ backgroundColor: isLoading ? "#686868" : "" }}
           disabled={!isValid || isLoading}
           type="submit"
           className={

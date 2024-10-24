@@ -147,6 +147,8 @@ const Login = () => {
               type="submit"
               className={!isValid ? "main-form-btn-disabled" : "main-form-btn"}
               disabled={!isValid || isLoading}
+              value={isLoading ? "Logging in..." : "Log in"}
+              style={{ backgroundColor: isLoading ? "#686868" : "" }}
             />
             <div className="already-sign-n-wrapper">
               <p className="already-sign-in">You don’t have an account?</p>
