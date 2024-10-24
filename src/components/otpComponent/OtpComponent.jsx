@@ -136,9 +136,6 @@ const OtpComponent = ({
     <>
       <div className="otp-main-inner-form-wrapper">
         <img src={HomerunIcon} alt="homerun icon" className="homerun-icon" />
-        {/* <div>
-          <CustomBackButton title="Back" />
-        </div> */}
         <div className="sent-otp-sent-wrapper">
           <h3>OTP Sent To Mail</h3>
           <img

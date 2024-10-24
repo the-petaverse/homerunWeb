@@ -17,8 +17,12 @@ const HeroPage = () => {
         <div className="outer-hero-container">
           <div className="header-wrapper">
             <div className="header-content-wrapper">
-              <h3 className="heading-txt-one">Relax and Enjoy Life While</h3>
-              <h3 className="heading-txt-two">We Handle Your Errands</h3>
+              <h3 className="text-2xl phone:text-4xl  tablet:text-5xl laptop:text-9xl font-bold mb-3">
+                Relax and Enjoy Life While
+              </h3>
+              <h3 className="text-2xl phone:text-4xl  tablet:text-5xl laptop:text-9xl font-semibold mb-5">
+                We Handle Your Errands
+              </h3>
               <p className="heading-para">
                 Whether you're abroad or at home, Homerun is here to take care
                 of your errands, so you can focus on what matters most.

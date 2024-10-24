@@ -69,8 +69,8 @@ const ResetPassword = ({
       <div className="inner-form-wrapper">
         <div>
           <div className="back-arrow-wrapper">
-            <img src={BackIcon} alt="back button" />
-            <span>Back</span>
+            {/* <img src={BackIcon} alt="back button" />
+            <span>Back</span> */}
           </div>
         </div>
         <div>

@@ -90,10 +90,6 @@ const ForgotPassword = () => {
         {formSteps === 1 && (
           <>
             <div className="inner-form-wrapper">
-              <div className="back-arrow-wrapper">
-                <img src={BackIcon} alt="" />
-                <span>Back</span>
-              </div>
               <div className="forgot-passwrd-reset-header">
                 <h1>Reset Password</h1>
                 <p>Please enter your email address</p>

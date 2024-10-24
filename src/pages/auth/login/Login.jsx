@@ -138,8 +138,8 @@ const Login = () => {
             />
 
             <div className="keep-loggin-wrapper">
-              <p>Keep me logged in</p>
-              <Link to="/forgot-password">
+              {/* <p>Keep me logged in</p> */}
+              <Link to="/forgot-password" className="w-full text-right">
                 <p className="reset-para">Reset Password</p>
               </Link>
             </div>
