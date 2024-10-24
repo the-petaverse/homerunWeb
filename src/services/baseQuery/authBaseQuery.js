@@ -13,7 +13,7 @@ export const baseQueryWithReauth = async (
   navigate
 ) => {
   let result = await apiHeader(args, api, extraOptions);
-  console.log("Initial calling", result);
+
   if (result?.error?.status === 401) {
     const refreshResult = await apiHeader(
       "auth/user/refresh-token",

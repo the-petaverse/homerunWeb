@@ -23,7 +23,6 @@ const Services = () => {
     isSuccess,
     error,
   } = useGetRequestCategoriesQuery();
-  console.log(serviceCategories);
   const [openSideBar, setOpenSideBar] = useState(false);
   const handleOpenSideBar = () => {
     setOpenSideBar(true);
