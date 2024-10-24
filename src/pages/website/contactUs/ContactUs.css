@@ -7,7 +7,7 @@
 .contact-main-container {
   background-color: rgb(248, 247, 247);
   padding: 20px 5%;
-  padding-top: 85px;
+  /* padding-top: 85px; */
 }
 .contact-main-outer-wrapper {
   width: 100%;
@@ -240,9 +240,6 @@
 }
 
 @media (min-width: 1280px) {
-  .contact-main-container {
-    padding-top: 45px;
-  }
 }
 
 @media (min-width: 1536px) {

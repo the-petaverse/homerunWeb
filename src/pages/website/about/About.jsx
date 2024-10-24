@@ -17,7 +17,7 @@ const About = () => {
       <div className="about-us-container">
         <div className="about-header-wrapper">
           <div className="about-details-wrapper">
-            <h1>Who We Are</h1>
+            <h1 className="phone:text-5xl text-7xl font-bold">Who We Are</h1>
             <div className="about-details-wrapper">
               <img
                 src={AboutUsImage}

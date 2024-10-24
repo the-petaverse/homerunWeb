@@ -99,7 +99,7 @@ const Services = () => {
     <div className="services-overall-container">
       {isSuccess ? (
         <div className="services-main-container">
-          <h1>What We Do</h1>
+          <h1 className="text-5xl font-bold mb-3">What We Do</h1>
           <div className="serices-header-wrapper">
             <div className="header-image-wrapper">
               <img

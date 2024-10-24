@@ -8,7 +8,7 @@
 .about-us-container {
   padding: 15px 5%;
   /* position: relative; */
-  padding-top: 85px;
+  /* padding-top: 85px; */
   /* margin-top: 25px; */
   background-color: rgb(247, 248, 248);
   /* padding-bottom: 100%; */
@@ -55,10 +55,7 @@
   /* position: relative; */
   margin-top: 25px;
 }
-.about-details-wrapper h1 {
-  font-size: 2em;
-  margin-top: 5px;
-}
+
 .about-btn {
   background-color: rgb(25, 3, 103);
   color: #fff;
@@ -144,7 +141,7 @@
 
 @media (min-width: 1024px) {
   .about-us-container {
-    padding-top: 80px;
+    padding-top: 50px;
   }
   .who-we-are-image {
     width: 84%;
@@ -155,10 +152,7 @@
     background-color: rgb(247, 248, 248);
     padding: 0 1%;
   }
-  .about-details-wrapper h1 {
-    font-size: 2.65em;
-    margin-top: 20px;
-  }
+
   .detail-wrapper {
     width: 55%;
     margin-left: auto;

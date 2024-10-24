@@ -6,7 +6,7 @@ const ContactHeader = () => {
   return (
     <div className="contact-header-container">
       <div className="header-left-wrapper">
-        <h1>Talk To Us</h1>
+        <h1 className="phone:text-5xl text-7xl font-bold">Talk To Us</h1>
 
         <p>
           We’re here to help! Whether you have a question, need assistance, or

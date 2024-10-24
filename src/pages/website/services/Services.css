@@ -7,7 +7,7 @@
 
 .services-main-container {
   padding: 15px 5%;
-  padding-top: 65px;
+  /* padding-top: 65px; */
   background-color: rgb(247, 248, 248);
   display: flex;
   flex-direction: column;
@@ -183,10 +183,7 @@
     width: 45%;
     padding: 3%;
   }
-  .services-main-container h1 {
-    font-size: 3.2em;
-    margin: 25px 0;
-  }
+
   .card-right-holder h1 {
     font-size: 2.85em;
   }
