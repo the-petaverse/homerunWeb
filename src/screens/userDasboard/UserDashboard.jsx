@@ -37,12 +37,12 @@ const paneMenuList = [
     titleHeader: "",
     icon: <RiHome7Fill size={30} />,
   },
-  {
-    id: "2",
-    title: "Errands",
-    titleHeader: "",
-    icon: <MdOutlineSendTimeExtension size={30} />,
-  },
+  // {
+  //   id: "2",
+  //   title: "Errands",
+  //   titleHeader: "",
+  //   icon: <MdOutlineSendTimeExtension size={30} />,
+  // },
   {
     id: "3",
     title: "Manage Request",
