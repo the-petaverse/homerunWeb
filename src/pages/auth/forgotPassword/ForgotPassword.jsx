@@ -44,11 +44,10 @@ const ForgotPassword = () => {
   } = useForm({ mode: "all" });
   const watchEmail = watch("email");
 
-  console.log(formSteps);
   const onPassSubmit = async (data) => {
     await forgotUserPassword(data);
   };
-
+  console.log(data);
   useEffect(() => {
     if (isSuccess) {
       setFormSteps(2);
@@ -65,7 +64,7 @@ const ForgotPassword = () => {
     }
     if (error) {
       if (!toast.isActive(toastId.current)) {
-        toastId.current = toast.error(error?.data?.message, {
+        toastId.current = toast.error(error?.error, {
           position: "top-right",
         });
       }

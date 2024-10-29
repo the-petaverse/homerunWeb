@@ -247,7 +247,7 @@ const NewRequest = ({
               />
               <CustomImput
                 name="middleName"
-                required="Middle name is required"
+                // required="Middle name is required"
                 placeholder="Middle name"
                 iconLeft={<MdOutlinePerson2 color="gray" size={20} />}
                 type="text"
