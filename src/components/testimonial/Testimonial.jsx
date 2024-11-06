@@ -54,8 +54,8 @@ const Testimonial = () => {
         <img src={HappyUsers} alt="Happy Users" className="happy-user-image" />
       </div>
       <div className="users-rate-wrapper">
-        <h3>500+ Happy users spread</h3>
-        <h3>Across Africa continent</h3>
+        <h3 className="font-bold text-2xl">500+ Happy users spread</h3>
+        <h3 className="font-bold text-2xl">Across Africa continent</h3>
         <div>
           {userSteps.map((step) => (
             <div key={step.id} className="happy-detail-wrapper">
@@ -69,7 +69,7 @@ const Testimonial = () => {
             </div>
           ))}
         </div>
-        <div className="playstore-icons-wrapper">
+        {/* <div className="playstore-icons-wrapper">
           {storeLinks.map((store) => (
             <Link
               key={store.id}
@@ -82,7 +82,7 @@ const Testimonial = () => {
               />
             </Link>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
