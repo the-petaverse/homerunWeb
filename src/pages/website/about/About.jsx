@@ -20,7 +20,7 @@ const About = () => {
             <h1 className="phone:text-5xl text-7xl font-bold">Who We Are</h1>
             <div className="about-details-wrapper">
               <img
-                src={AboutUsImage}
+                src="/animations/about.gif"
                 alt="who we are"
                 className="who-we-are-image"
               />
