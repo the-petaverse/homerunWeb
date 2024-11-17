@@ -72,12 +72,7 @@ const paneMenuList = [
   //   titleHeader: "My account",
   //   icon: <FiShoppingCart size={30} />,
   // },
-  // {
-  //   id: "8",
-  //   title: "Settings",
-  //   titleHeader: "",
-  //   icon: <MdOutlinePayments size={30} />,
-  // },
+
   {
     id: "9",
     title: "Logout",
