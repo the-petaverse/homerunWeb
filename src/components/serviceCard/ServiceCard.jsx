@@ -24,7 +24,7 @@ const ServiceCard = () => {
       serviceName === "grocery_food" ||
       serviceName === "hotel_car_booking"
     ) {
-      return;
+      navigate(`/`);
     } else {
       navigate(`/request-category/${serviceName}`);
     }
@@ -92,16 +92,20 @@ const ServiceCard = () => {
               <div className="service-card-image-header">
                 <p>{service.category_name}</p>
               </div>
-              <div
-                className={`absolute w-[100%] h-[100%] bg-black top-0 right-0 left-0 rounded-3xl bg-opacity-45 text-center ${
-                  comingSoon
-                    ? "flex align-middle justify-center flex-col"
-                    : "hidden"
-                }`}
-              >
-                <h1 className="font-bold text-3xl">Coming Soon</h1>
-                {/* <button>Coming Soon</button> */}
-              </div>
+              {(service.slug_name === "surprise_gifts" ||
+                service.slug_name === "grocery_food" ||
+                service.slug_name === "hotel_car_booking") && (
+                <div
+                  className={`absolute w-[100%] h-[100%] bg-black top-0 right-0 left-0 rounded-3xl bg-opacity-45 text-center ${
+                    comingSoon
+                      ? "flex align-middle justify-center flex-col"
+                      : "hidden"
+                  }`}
+                >
+                  <h1 className="font-bold text-3xl">Coming Soon</h1>
+                  {/* <button>Coming Soon</button> */}
+                </div>
+              )}
             </div>
           ))}
       </Slider>
