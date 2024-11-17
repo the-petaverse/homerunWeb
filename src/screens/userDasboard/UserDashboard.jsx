@@ -2,9 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import "./UserDashboard.css";
 import Navbar from "../../components/Navbar/Navbar";
 import { SiNintendoswitch } from "react-icons/si";
-import { MdOutlineSendTimeExtension } from "react-icons/md";
 import { RiHome7Fill } from "react-icons/ri";
-import { FiShoppingCart } from "react-icons/fi";
+import { MdManageHistory, MdLogout } from "react-icons/md";
 import { MdOutlinePayments } from "react-icons/md";
 import Cookies from "universal-cookie";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -47,7 +46,7 @@ const paneMenuList = [
     id: "3",
     title: "Manage Request",
     titleHeader: "Product Management",
-    icon: <MdOutlineSendTimeExtension size={30} />,
+    icon: <MdManageHistory size={30} />,
   },
   // {
   //   id: "4",
@@ -83,7 +82,7 @@ const paneMenuList = [
     id: "9",
     title: "Logout",
     titleHeader: "",
-    icon: <MdOutlinePayments size={30} />,
+    icon: <MdLogout size={30} />,
   },
 ];
 
