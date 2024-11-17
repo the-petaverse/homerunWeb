@@ -14,6 +14,7 @@ import { useGetRequestCategoriesQuery } from "../../../services/requestsCategory
 import { Link, useNavigate } from "react-router-dom";
 import { Image, Transformation } from "cloudinary-react";
 import Preloader from "../../../components/preloader/Preloader";
+import ComigSoonOverlay from "../../../components/ComigSoonOverlay";
 
 const Services = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const Services = () => {
       serviceName === "hotel_car_booking" ||
       serviceName === "surprise_gifts"
     ) {
-      return;
+      navigate(`/our-services`);
     } else {
       navigate(`/request-category/${serviceName}`);
     }
@@ -95,6 +96,7 @@ const Services = () => {
   ];
 
   useEffect(() => {}, [isSuccess]);
+
   return (
     <div className="services-overall-container">
       {isSuccess ? (
@@ -121,11 +123,6 @@ const Services = () => {
             {serviceCategories &&
               serviceCategories?.serviceCategory?.map((service) => (
                 <div className="services-card" key={service.id}>
-                  {/* <img
-                  src={service.imageSrc}
-                  alt={service.title}
-                  className="service-images"
-                /> */}
                   <Image
                     className="service-images"
                     cloudName="petaverse"

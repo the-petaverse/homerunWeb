@@ -6,6 +6,7 @@ import "./ServiceCard.css";
 import { useNavigate } from "react-router-dom";
 import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
 import { Image, Transformation } from "cloudinary-react";
+import ComigSoonOverlay from "../ComigSoonOverlay";
 
 const ServiceCard = () => {
   const [comingSoon, setComintSoon] = useState(true);
@@ -95,16 +96,7 @@ const ServiceCard = () => {
               {(service.slug_name === "surprise_gifts" ||
                 service.slug_name === "grocery_food" ||
                 service.slug_name === "hotel_car_booking") && (
-                <div
-                  className={`absolute w-[100%] h-[100%] bg-black top-0 right-0 left-0 rounded-3xl bg-opacity-45 text-center ${
-                    comingSoon
-                      ? "flex align-middle justify-center flex-col"
-                      : "hidden"
-                  }`}
-                >
-                  <h1 className="font-bold text-3xl">Coming Soon</h1>
-                  {/* <button>Coming Soon</button> */}
-                </div>
+                <ComigSoonOverlay />
               )}
             </div>
           ))}
