@@ -26,15 +26,7 @@ const Navbar = () => {
     setOpenRequestNav((prev) => !prev);
   };
 
-  useEffect(() => {
-    const handleClickOutside = () => {
-      // setOpenRequestNav(false);
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [openRequestNav, openSideBar, onDashboard]);
+  useEffect(() => {}, [openRequestNav, openSideBar, onDashboard]);
 
   return (
     <>
