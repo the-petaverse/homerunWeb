@@ -8,6 +8,7 @@ import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/re
 import { Image, Transformation } from "cloudinary-react";
 
 const ServiceCard = () => {
+  const [comingSoon, setComintSoon] = useState(true);
   const navigate = useNavigate();
 
   const {
@@ -68,14 +69,14 @@ const ServiceCard = () => {
     ],
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {}, [comingSoon]);
   return (
     <>
       <Slider {...settings}>
         {serviceCategories &&
           serviceCategories?.serviceCategory?.map((service) => (
             <div
-              className="serviceCard-main-wrapper"
+              className="serviceCard-main-wrapper relative"
               key={service.id}
               onClick={() => {
                 handleServiceClick(service.slug_name);
@@ -90,6 +91,16 @@ const ServiceCard = () => {
               </Image>
               <div className="service-card-image-header">
                 <p>{service.category_name}</p>
+              </div>
+              <div
+                className={`absolute w-[100%] h-[100%] bg-black top-0 right-0 left-0 rounded-3xl bg-opacity-45 text-center ${
+                  comingSoon
+                    ? "flex align-middle justify-center flex-col"
+                    : "hidden"
+                }`}
+              >
+                <h1 className="font-bold text-3xl">Coming Soon</h1>
+                {/* <button>Coming Soon</button> */}
               </div>
             </div>
           ))}
