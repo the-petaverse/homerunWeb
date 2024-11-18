@@ -15,6 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Image, Transformation } from "cloudinary-react";
 import Preloader from "../../../components/preloader/Preloader";
 import ComigSoonOverlay from "../../../components/ComigSoonOverlay";
+import MainServiceCard from "../../../components/MainServiceCard";
 
 const Services = () => {
   const navigate = useNavigate();
@@ -122,24 +123,10 @@ const Services = () => {
           <div className="service-cards-wrapper">
             {serviceCategories &&
               serviceCategories?.serviceCategory?.map((service) => (
-                <div className="services-card" key={service.id}>
-                  <Image
-                    className="service-images"
-                    cloudName="petaverse"
-                    publicId={service.category_image_url}
-                  >
-                    <Transformation crop="scale" width="320" />
-                  </Image>
-                  <div className="card-right-holder">
-                    <h1>{service.category_name}</h1>
-                    <p>{service.category_details}</p>
-                    <div className="service-btn">
-                      <button onClick={() => handleNavigate(service.slug_name)}>
-                        Post this request
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                <MainServiceCard
+                  service={service}
+                  handleNavigate={handleNavigate}
+                />
               ))}
           </div>
         </div>
