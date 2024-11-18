@@ -16,10 +16,11 @@ const MainServiceCard = ({ service, handleNavigate }) => {
         >
           <Transformation crop="scale" width="320" />
         </Image>
-        <ComigSoonOverlay />
+        {(service.slug_name === "surprise_gifts" ||
+          service.slug_name === "grocery_food" ||
+          service.slug_name === "hotel_car_booking") && <ComigSoonOverlay />}
       </div>
       <div className="w-[100%] laptop:w-[100%]  p-5 flex flex-col justify-between  laptop:rounded-r-3xl rounded-b-3xl">
-        {/* <div className="card-right-holder"> */}
         <h1 className="font-sans text-3xl tablet:text-4xl font-bold">
           {service.category_name}
         </h1>

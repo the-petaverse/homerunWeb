@@ -48,53 +48,6 @@ const Services = () => {
       navigate(`/request-category/${serviceName}`);
     }
   };
-  const serviceData = [
-    {
-      id: 1,
-      title: "Transcript And Document Retrieval",
-      slug: "transcript",
-      description:
-        "Need important documents from institutions back home? We obtain credentials and other necessary documents on your behalf, saving you time and hassle.",
-      imageSrc: TranscriptImage,
-      link: "/request-category/transcript",
-    },
-    {
-      id: 2,
-      title: "Grocery and Food Delivery",
-      slug: "grocery",
-      description:
-        "Enjoy the convenience of having groceries and food items delivered to your door, both locally and internationally. Freshness and quality are guaranteed with every delivery.",
-      imageSrc: GrocyImage,
-      // link: "/request-category/grocery",
-    },
-    {
-      id: 3,
-      title: "Surprise Packages",
-      slug: "surprise",
-      description:
-        "Add a touch of joy to your day with our surprise packages. Whether it's a gift for a loved one or a treat for yourself, we deliver delightful surprises that brighten your day.",
-      imageSrc: SurpriseImage,
-      // link: "/request-category/surprise",
-    },
-    {
-      id: 4,
-      title: "Hotel and Car Booking",
-      slug: "surprise",
-      description:
-        "Secure hotel accommodations and recreation centers effortlessly. Whether for business or leisure, we ensure your stay is comfortable and enjoyable.",
-      imageSrc: HotelImage,
-      // link: "/request-category/hotel",
-    },
-    {
-      id: 5,
-      slug: "property",
-      title: "Property Inspection",
-      description:
-        "Seamlessly acquire property in your home country while you’re abroad. Our expert team will handle every detail, ensuring a smooth and stress-free process.",
-      imageSrc: PropertyImage,
-      link: "/request-category/property",
-    },
-  ];
 
   useEffect(() => {}, [isSuccess]);
 
