@@ -36,7 +36,9 @@ const About = () => {
             </p>
           </div>
           <div className="about-bottom-detail">
-            <h3> Our Commitment to Sustainability</h3>
+            <h3 className="font-bold text-2xl">
+              Our Commitment to Sustainability
+            </h3>
             <p>
               We’re not just about convenience; we’re about making a positive
               impact. Homerun is dedicated to promoting sustainability and

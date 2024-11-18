@@ -5,7 +5,7 @@ import ComigSoonOverlay from "./ComigSoonOverlay";
 const MainServiceCard = ({ service, handleNavigate }) => {
   return (
     <div
-      className="w-[56dvw] flex flex-col laptop:flex-row mt-10 border rounded-3xl"
+      className="w-[80dvw] phone:w-[80dvw] laptop:w-[80dvw] desktop:w-[55dvw] flex flex-col laptop:flex-row mt-10 border rounded-3xl"
       key={service.id}
     >
       <div className="relative h-[100%] w-[100%] laptop:w-[40%] ">

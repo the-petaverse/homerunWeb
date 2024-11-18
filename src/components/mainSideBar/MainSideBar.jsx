@@ -13,8 +13,9 @@ import { Link, useNavigate } from "react-router-dom";
 import "./MainSideBar.css";
 import Cookies from "universal-cookie";
 import { useSelector } from "react-redux";
+import { handleServiceClick } from "../../util/handleServiceClick";
 
-const MainSideBar = ({ handleOpenSideBar }) => {
+const MainSideBar = ({ handleOpenSideBar, serviceCategories }) => {
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
@@ -89,21 +90,34 @@ const MainSideBar = ({ handleOpenSideBar }) => {
         </div>
         <div className="post-request-nav-modal-container">
           <h3 className="post-errand-sidebar">Post Errand</h3>
-          <div className="post-request-nav-card">
-            <div className="request-nav-image">
-              <img src={TransIcon} alt="transcript icon" />
-            </div>
-            <div className="request-nav-content">
-              <Link
-                to={"/request-category/transcript"}
-                onClick={handleOpenSideBar}
-              >
-                <h1>Transcript & Doc...</h1>
-                <p>Obtain credentials and other necessary documents on...</p>
-              </Link>
-            </div>
-          </div>
-          <div className="post-request-nav-card">
+          {serviceCategories &&
+            serviceCategories?.serviceCategory.map((serviceCate, index) => (
+              <div className="post-request-nav-card" key={index}>
+                <div className="request-nav-image">
+                  <img src={TransIcon} alt="transcript icon" />
+                </div>
+                <div
+                  className="request-nav-content"
+                  onClick={() => {
+                    handleServiceClick(serviceCate.slug_name, navigate);
+                    handleOpenSideBar();
+                  }}
+                >
+                  {/* <Link
+                    to={"/request-category/transcript"}
+                    onClick={handleOpenSideBar}
+                  > */}
+                  <h1>{serviceCate.category_name}</h1>
+                  <p>
+                    {serviceCate.category_details.length > 30
+                      ? `${serviceCate.category_details.substring(0, 30)}...`
+                      : serviceCate.category_details}
+                  </p>
+                  {/* </Link> */}
+                </div>
+              </div>
+            ))}
+          {/* <div className="post-request-nav-card">
             <div className="request-nav-image">
               <img src={GrocyIcon} alt="transcript icon" />
             </div>
@@ -157,7 +171,7 @@ const MainSideBar = ({ handleOpenSideBar }) => {
                 </p>
               </Link>
             </div>
-          </div>
+          </div> */}
           <button className="side-menu-bar-btn" onClick={handleNavigate}>
             Contact Us
           </button>

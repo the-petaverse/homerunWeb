@@ -7,27 +7,18 @@ import HotelIcon from "../../assets/hotel-icon.png";
 import PropertyIcon from "../../assets/property-icon.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
+import { handleServiceClick } from "../../util/handleServiceClick";
 
-const RequestNavModal = ({ handleOpenRequestNav }) => {
+const RequestNavModal = ({ handleOpenRequestNav, serviceCategories }) => {
   const navigate = useNavigate();
-  const {
-    data: serviceCategories,
-    isLoading,
-    isSuccess,
-    error,
-  } = useGetRequestCategoriesQuery();
-  console.log(serviceCategories);
-  const handleServiceClick = (serviceName) => {
-    if (
-      serviceName === "surprise_gifts" ||
-      serviceName === "grocery_food" ||
-      serviceName === "hotel_car_booking"
-    ) {
-      navigate(`/`);
-    } else {
-      navigate(`/request-category/${serviceName}`);
-    }
-  };
+  // const {
+  //   data: serviceCategories,
+  //   isLoading,
+  //   isSuccess,
+  //   error,
+  // } = useGetRequestCategoriesQuery();
+  // console.log(serviceCategories);
+
   return (
     <div className="request-nav-modal-container">
       {serviceCategories &&
@@ -39,7 +30,7 @@ const RequestNavModal = ({ handleOpenRequestNav }) => {
             <div
               className="top-request-nav-content"
               onClick={() => {
-                handleServiceClick(serviceCate.slug_name);
+                handleServiceClick(serviceCate.slug_name, navigate);
                 handleOpenRequestNav();
               }}
             >

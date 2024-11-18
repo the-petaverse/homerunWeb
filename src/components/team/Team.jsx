@@ -13,10 +13,26 @@ const teamList = [
     title: "Tech Lead / Co-founder",
     image: MikeImage,
     socialLinks: [
-      { icon: TwitterIcon, url: "https://twitter.com/michael", platform: "twitter" },
-      { icon: FacebookIcon, url: "https://facebook.com/michael", platform: "facebook" },
-      { icon: InstaIcon, url: "https://instagram.com/michael", platform: "instagram" },
-      { icon: LinkedinIcon, url: "https://linkedin.com/in/michael", platform: "linkedin" },
+      {
+        icon: TwitterIcon,
+        url: "https://twitter.com/michael",
+        platform: "twitter",
+      },
+      {
+        icon: FacebookIcon,
+        url: "https://facebook.com/michael",
+        platform: "facebook",
+      },
+      {
+        icon: InstaIcon,
+        url: "https://instagram.com/michael",
+        platform: "instagram",
+      },
+      {
+        icon: LinkedinIcon,
+        url: "https://linkedin.com/in/michael",
+        platform: "linkedin",
+      },
     ],
   },
   {
@@ -25,10 +41,26 @@ const teamList = [
     title: "Tech Lead / Co-founder",
     image: MikeImage,
     socialLinks: [
-      { icon: TwitterIcon, url: "https://twitter.com/michael", platform: "twitter" },
-      { icon: FacebookIcon, url: "https://facebook.com/michael", platform: "facebook" },
-      { icon: InstaIcon, url: "https://instagram.com/michael", platform: "instagram" },
-      { icon: LinkedinIcon, url: "https://linkedin.com/in/michael", platform: "linkedin" },
+      {
+        icon: TwitterIcon,
+        url: "https://twitter.com/michael",
+        platform: "twitter",
+      },
+      {
+        icon: FacebookIcon,
+        url: "https://facebook.com/michael",
+        platform: "facebook",
+      },
+      {
+        icon: InstaIcon,
+        url: "https://instagram.com/michael",
+        platform: "instagram",
+      },
+      {
+        icon: LinkedinIcon,
+        url: "https://linkedin.com/in/michael",
+        platform: "linkedin",
+      },
     ],
   },
   {
@@ -37,10 +69,26 @@ const teamList = [
     title: "Tech Lead / Co-founder",
     image: MikeImage,
     socialLinks: [
-      { icon: TwitterIcon, url: "https://twitter.com/michael", platform: "twitter" },
-      { icon: FacebookIcon, url: "https://facebook.com/michael", platform: "facebook" },
-      { icon: InstaIcon, url: "https://instagram.com/michael", platform: "instagram" },
-      { icon: LinkedinIcon, url: "https://linkedin.com/in/michael", platform: "linkedin" },
+      {
+        icon: TwitterIcon,
+        url: "https://twitter.com/michael",
+        platform: "twitter",
+      },
+      {
+        icon: FacebookIcon,
+        url: "https://facebook.com/michael",
+        platform: "facebook",
+      },
+      {
+        icon: InstaIcon,
+        url: "https://instagram.com/michael",
+        platform: "instagram",
+      },
+      {
+        icon: LinkedinIcon,
+        url: "https://linkedin.com/in/michael",
+        platform: "linkedin",
+      },
     ],
   },
   {
@@ -49,10 +97,26 @@ const teamList = [
     title: "Tech Lead / Co-founder",
     image: MikeImage,
     socialLinks: [
-      { icon: TwitterIcon, url: "https://twitter.com/michael", platform: "twitter" },
-      { icon: FacebookIcon, url: "https://facebook.com/michael", platform: "facebook" },
-      { icon: InstaIcon, url: "https://instagram.com/michael", platform: "instagram" },
-      { icon: LinkedinIcon, url: "https://linkedin.com/in/michael", platform: "linkedin" },
+      {
+        icon: TwitterIcon,
+        url: "https://twitter.com/michael",
+        platform: "twitter",
+      },
+      {
+        icon: FacebookIcon,
+        url: "https://facebook.com/michael",
+        platform: "facebook",
+      },
+      {
+        icon: InstaIcon,
+        url: "https://instagram.com/michael",
+        platform: "instagram",
+      },
+      {
+        icon: LinkedinIcon,
+        url: "https://linkedin.com/in/michael",
+        platform: "linkedin",
+      },
     ],
   },
 ];
@@ -61,7 +125,7 @@ const Team = () => {
   return (
     <div className="team-main-container">
       <div className="team-header-wrapper">
-        <h1>Our Team</h1>
+        <h1 className="font-bold text-2xl">Our Team</h1>
         <p>
           Our team at Homerun is a diverse group of dedicated professionals with
           expertise in technology, logistics, and customer service, all working
@@ -76,7 +140,12 @@ const Team = () => {
               <img src={teamMember.image} alt="team" className="team-image" />
               <div className="social-icons">
                 {teamMember.socialLinks.map((link, index) => (
-                  <a href={link.url} key={index} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={link.url}
+                    key={index}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <div className={`social-icon ${link.platform}-icon`}>
                       <img src={link.icon} alt={`${link.platform} icon`} />
                     </div>
@@ -85,7 +154,7 @@ const Team = () => {
               </div>
             </div>
             <div className="title-wrapper">
-              <h3>{teamMember.name}</h3>
+              <h3 className="font-bold">{teamMember.name}</h3>
               <p>{teamMember.title}</p>
             </div>
           </div>

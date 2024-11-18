@@ -11,6 +11,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { FaRegBell } from "react-icons/fa";
 import UserAvarta from "../userAvarta/UserAvarta";
 import { useSelector } from "react-redux";
+import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
 
 const Navbar = () => {
   const location = useLocation();
@@ -18,6 +19,13 @@ const Navbar = () => {
   const [onDashboard, setOnDashboard] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
   const auth = useSelector((state) => state.auth);
+
+  const {
+    data: serviceCategories,
+    isLoading,
+    isSuccess,
+    error,
+  } = useGetRequestCategoriesQuery();
 
   const handleOpenSideBar = () => {
     setOpenSideBar((prev) => !prev);
@@ -92,9 +100,17 @@ const Navbar = () => {
         />
       </div>
       {openRequestNav && (
-        <RequestNavModal handleOpenRequestNav={handleOpenRequestNav} />
+        <RequestNavModal
+          serviceCategories={serviceCategories}
+          handleOpenRequestNav={handleOpenRequestNav}
+        />
       )}
-      {openSideBar && <MainSideBar handleOpenSideBar={handleOpenSideBar} />}
+      {openSideBar && (
+        <MainSideBar
+          handleOpenSideBar={handleOpenSideBar}
+          serviceCategories={serviceCategories}
+        />
+      )}
     </>
   );
 };
