@@ -143,17 +143,6 @@ const UserDashboard = () => {
     },
   ] = useCreatePaymentMutation();
 
-  if (isSuccess) {
-    console.log(UserData, "Dashboard");
-  }
-  console.log(userSingleOrderToDisplay);
-  if (paymentSuccess) {
-    console.log(paymentData);
-  }
-  if (paymentError) {
-    console.log(paymentError);
-  }
-
   const handlePaymentCreations = async () => {
     setButtonClick(true);
     const data = {
