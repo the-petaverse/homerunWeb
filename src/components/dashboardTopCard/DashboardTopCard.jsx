@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./DashboardTopCard.css";
 import CustomButton from "../customButton/CustomButton";
 import ProgressBar from "../progessBar/ProgressBar";
-import { useGetAUserErrandsQuery } from "../../services/officialDocument/officialDocumentApi";
+
 import { convertIsoDate } from "../../helpers/dateConverter";
+import { useGetAmountPaidMutation } from "../../services/payment/paystack";
 
 const DashboardTopCard = ({
   showIconsOnly,
@@ -14,13 +15,17 @@ const DashboardTopCard = ({
   setProgressBarStatus,
 }) => {
   const [createdDate, setCreatedDate] = useState();
-
+  const [getAmountPaid, { data: amoutnPaidData, error: amoutPaidError }] =
+    useGetAmountPaidMutation();
+  console.log(amoutPaidError, "from card");
   useEffect(() => {
     let convertedDate = convertIsoDate(data && data?.createdAt);
     if (convertedDate) {
       setCreatedDate(convertedDate);
     }
+
     setProgressBarStatus(data);
+    getAmountPaid("B2C960CKHE");
   }, [
     requestStages,
     progressBarSteps,

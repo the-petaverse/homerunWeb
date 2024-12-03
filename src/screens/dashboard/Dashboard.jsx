@@ -4,7 +4,6 @@ import UserDashboard from "../userDasboard/UserDashboard";
 const DashBoard = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
-  console.log(isAdmin);
   useEffect(() => {}, [isAdmin]);
   return (
     <>

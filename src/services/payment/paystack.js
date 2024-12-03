@@ -14,6 +14,13 @@ export const paystackApi = createApi({
         body: data,
       }),
     }),
+    getAmountPaid: builder.mutation({
+      query: (data) => ({
+        url: "transaction/get-amount-payment",
+        method: "POST",
+        body: "B2C960CKHE",
+      }),
+    }),
     verifyPayment: builder.query({
       query: (reference) => `transaction/verify-payment?reference=${reference}`,
     }),
@@ -28,4 +35,5 @@ export const {
   useCreatePaymentMutation,
   useVerifyPaymentQuery,
   useGetPaymentStatusQuery,
+  useGetAmountPaidMutation,
 } = paystackApi;

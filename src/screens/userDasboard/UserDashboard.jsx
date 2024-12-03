@@ -5,11 +5,8 @@ import { SiNintendoswitch } from "react-icons/si";
 import { RiHome7Fill } from "react-icons/ri";
 import { MdManageHistory, MdLogout } from "react-icons/md";
 import { MdOutlinePayments } from "react-icons/md";
-import Cookies from "universal-cookie";
 import { useLocation, useNavigate } from "react-router-dom";
 import DashboardTopCard from "../../components/dashboardTopCard/DashboardTopCard";
-import QuickActionCard from "../../components/quickActionCard/QuickActionCard";
-import { serviceCategory } from "../../data/categoryData";
 import RewardCard from "../../components/rewardCard/RewardCard";
 import DashbaordRequestCard from "../../components/dahsboardRequestCard/DashbaordRequestCard";
 import DashboardInnerRequestNav from "../../components/dashboardInnerRequestNav/DashboardInnerRequestNav";
@@ -17,14 +14,9 @@ import ReferEarn from "../../components/referEarn/ReferEarn";
 import { useGetUserQuery } from "../../services/auth/authApi";
 import { periodOfTheDay } from "../../helpers/getPeriodOfTheDay";
 import PaymentComponent from "../../components/paymentComponent/PaymentComponent";
-import {
-  useCreatePaymentMutation,
-  useVerifyPaymentQuery,
-} from "../../services/payment/paystack";
+import { useCreatePaymentMutation } from "../../services/payment/paystack";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetUserPropertyOrdersQuery } from "../../services/propertyErrands/propertyErrand";
 import { useGetAUserErrandsQuery } from "../../services/officialDocument/officialDocumentApi";
-import ServiceCard from "../../components/serviceCard/ServiceCard";
 import CustomServiceCard from "../../components/customServiceCard/CustomServiceCard";
 import { useGetRequestCategoriesQuery } from "../../services/requestsCategory/requestApi";
 import { logout } from "../../services/slices/authSlice";
@@ -110,6 +102,7 @@ const UserDashboard = () => {
     isSuccess: serviceCategorySuccess,
     error: serviceCategoryError,
   } = useGetRequestCategoriesQuery();
+
   const { data: UserData, isLoading, isSuccess, error } = useGetUserQuery();
   const {
     data: userOrderData,
@@ -117,7 +110,7 @@ const UserDashboard = () => {
     error: userOrderError,
   } = useGetAUserErrandsQuery();
 
-  console.log("Dashboard Error: ", userOrderError);
+  console.log("Dashboard Error: ", userOrderData);
   const activeCount =
     userOrderData &&
     userOrderData.userOrders.filter((item) => item.order_status === "On-going")
