@@ -15,17 +15,30 @@ const DashboardTopCard = ({
   setProgressBarStatus,
 }) => {
   const [createdDate, setCreatedDate] = useState();
-  const [getAmountPaid, { data: amoutnPaidData, error: amoutPaidError }] =
-    useGetAmountPaidMutation();
-  console.log(amoutPaidError, "from card");
+  let amoutnPaid;
+  const [
+    getAmountPaid,
+    { data: amoutnPaidData, error: amoutPaidError, isSuccess },
+  ] = useGetAmountPaidMutation();
+
+  if (isSuccess) {
+    console.log(amoutnPaidData);
+  }
+  const handleSubmit = async () => {
+    const response = await getAmountPaid({ requestId: "B2C960CKHE" }).unwrap();
+    amoutnPaid = await response;
+    console.log(amoutnPaid);
+  };
+  console.log(amoutnPaidData, "from card");
+
   useEffect(() => {
     let convertedDate = convertIsoDate(data && data?.createdAt);
     if (convertedDate) {
       setCreatedDate(convertedDate);
     }
 
+    handleSubmit();
     setProgressBarStatus(data);
-    getAmountPaid("B2C960CKHE");
   }, [
     requestStages,
     progressBarSteps,
@@ -103,13 +116,13 @@ const DashboardTopCard = ({
             <div className="dashbaord-card-total-amount-wrapper">
               <p className="dashbaord-card-total-amount-label">Total Amount:</p>
               <p className="dashbaord-card-total-amount">
-                {data ? "N120, 000.00" : "No data yet"}
+                {amoutnPaid ? amoutnPaid.amoutnPaid : "No data yet"}
               </p>
             </div>
             <div className="dashbaord-card-paid-amount-wrapper">
               <p className="dashbaord-card-paid-amount-label">Total Amount:</p>
               <p className="dashbaord-card-paid-amount">
-                {data ? "N120, 000.00" : "No data yet"}
+                {amoutnPaid ? amoutnPaid.total_amount : "No data yet"}
               </p>
             </div>
           </div>

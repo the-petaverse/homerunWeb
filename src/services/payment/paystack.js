@@ -18,7 +18,7 @@ export const paystackApi = createApi({
       query: (data) => ({
         url: "transaction/get-amount-payment",
         method: "POST",
-        body: "B2C960CKHE",
+        body: data,
       }),
     }),
     verifyPayment: builder.query({
