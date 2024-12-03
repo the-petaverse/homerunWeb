@@ -96,6 +96,7 @@ const UserDashboard = () => {
   const [progressBarSteps, setProgressBarSteps] = useState();
   const [requestStages, setRequestStages] = useState();
   const [buttonClick, setButtonClick] = useState(false);
+
   const {
     data: serviceCategories,
     isLoading: serviceCategoryLoading,
@@ -301,6 +302,7 @@ const UserDashboard = () => {
                             <DashboardTopCard
                               showIconsOnly={showIconsOnly}
                               data={userSingle}
+                              // handleAmountPaid={handleAmountPaid}
                               innerNavMenuClicked={innerNavMenuClicked}
                               progressBarSteps={progressBarSteps}
                               requestStages={requestStages}
