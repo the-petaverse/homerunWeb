@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const PrivateRoute = ({ children }) => {
   const auth = useSelector((state) => state.auth);
-  console.log(auth);
+
   // persistor.purge();
   // let registeredCookies = cookies.get("resgitered");
   const navigate = useNavigate();

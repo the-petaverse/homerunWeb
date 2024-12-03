@@ -34,10 +34,7 @@ const ReferEarn = () => {
   const { data, isLoading, error, isSuccess } = useGetUserReferrerCodeQuery();
   const [copiedValue, setCopiedValue] = useState();
   const conReceived = useAuthContext();
-  console.log(conReceived);
-  if (error) {
-    console.log(error);
-  }
+
   const handleCopyCode = async () => {
     await navigator.clipboard.writeText(refererCode);
     const copiedText = await navigator.clipboard.readText();
@@ -50,7 +47,6 @@ const ReferEarn = () => {
     if (isSuccess) {
       setRefereCode(data?.referrerSystem?.referrer_code);
     }
-    console.log(copiedValue);
   }, [isSuccess, copiedValue]);
   return (
     <div className="dashboard-refer-earn-main-container">

@@ -111,7 +111,7 @@ const UserDashboard = () => {
     error: userOrderError,
   } = useGetAUserErrandsQuery();
 
-  console.log("Dashboard Error: ", userOrderData);
+  // console.log("Dashboard Error: ", userOrderData);
   const activeCount =
     userOrderData &&
     userOrderData.userOrders.filter((item) => item.order_status === "On-going")
@@ -179,7 +179,7 @@ const UserDashboard = () => {
   };
   useEffect(() => {
     if (userOrder !== undefined) {
-      console.log(userOrder.data);
+      // console.log(userOrder.data);
       setBuyingServiceTitle(userOrder.data?.ordered_service_title);
       setBuyingServiceCost(userOrder.data?.total_amount);
     }

@@ -17,7 +17,6 @@ const UserAvarta = () => {
     error: userError,
   } = useGetUserQuery();
 
-  console.log(userData);
   const handleOpenAvartarMenuModal = () => {
     setOpenAvatarMenu((prev) => !prev);
   };
