@@ -327,7 +327,7 @@ const UserDashboard = () => {
                       </div>
                     </div>
                     <div className="dashboard-chart-details-wrapper">
-                      <RewardCard UserData={UserData} />
+                      <RewardCard />
                       <DashbaordRequestCard
                         activeCount={activeCount}
                         completedCount={completedCount}

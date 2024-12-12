@@ -3,10 +3,10 @@ import "./RewardCard.css";
 
 import { FaMedal } from "react-icons/fa";
 import { FaArrowTrendUp } from "react-icons/fa6";
+import { useReferAndWin } from "../../customHooks/useReferAndWin";
 
-const RewardCard = (props) => {
-  const { UserData } = props;
-
+const RewardCard = () => {
+  const { data } = useReferAndWin();
   return (
     <div className="reward-card-main-container">
       <div className="reward-card-header-wrapper">
@@ -14,8 +14,8 @@ const RewardCard = (props) => {
         <p>Rewards</p>
       </div>
       <div className="reward-card-points-holder-wrapper">
-        <p className="reward-card-points-holder">
-          {UserData && UserData?.user?.total_reward_points}
+        <p className="reward-card-points-holder text-sm">
+          N{data && data?.referrerSystem?.rewardAmount.toFixed(2)}
         </p>
         <div className="reward-card-points-wrapper">
           <FaArrowTrendUp size={30} />

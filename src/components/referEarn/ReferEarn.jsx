@@ -6,10 +6,11 @@ import { FiCheckSquare } from "react-icons/fi";
 import { useGetUserReferrerCodeQuery } from "../../services/referrerSystem/referrerSystem";
 import { useAuthContext } from "../../customHooks/useAuthContext";
 import { inviteData } from "../../data/referAndWin";
+import { useReferAndWin } from "../../customHooks/useReferAndWin";
 
 const ReferEarn = () => {
   const [refererCode, setRefereCode] = useState("");
-  const { data, isLoading, error, isSuccess } = useGetUserReferrerCodeQuery();
+  const { isSuccess, data } = useReferAndWin();
   const [copiedValue, setCopiedValue] = useState();
   const conReceived = useAuthContext();
 

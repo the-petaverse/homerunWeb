@@ -20,7 +20,7 @@ import CustomPhoneInput from "../../../components/customPhoneInput/CustomPhoneIn
 import { TbWorldPin, TbBuildingEstate } from "react-icons/tb";
 import { FaCity } from "react-icons/fa";
 import { cities, countries, states } from "../../../data/location";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addCurrentUser } from "../../../services/slices/userSlice";
 import { isValidPhoneNumber } from "react-phone-number-input";
@@ -58,7 +58,6 @@ const Register = () => {
   const watchPhoneNumber = watch("phone_number");
 
   const onSubmit = async (data) => {
-    console.log(data, "object");
     // setFormSumitted(true);
     await registerUser(data);
   };
@@ -127,7 +126,7 @@ const Register = () => {
   useEffect(() => {
     if (error) {
       if (!toast.isActive(toastId.current)) {
-        toastId.current = toast.error(error?.data?.message, {
+        toastId.current = toast.error(error?.data?.error.message, {
           position: "top-right",
         });
       }
@@ -163,6 +162,7 @@ const Register = () => {
           <img src={LogoMark} alt="homerun icon" className="homerun-icon" />
         </Link>
       </div>
+      <ToastContainer />
       <div className="register-main-container">
         <div className="register-iamge-wrapper">
           <img src={LoginImage} alt="" className="register-image" />
@@ -221,11 +221,19 @@ const Register = () => {
                     name="email"
                     required="Email is required"
                     placeholder="Email"
-                    // className="main-text-input"
                     type="email"
                     error={errors?.email?.message}
                     register={register}
                     style={{ borderColor: errors.email ? "red" : "blue" }}
+                    iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
+                  />
+                  <CustomImput
+                    name="referredBy"
+                    placeholder="DBG25HYB (Leave empty if you have no refer)"
+                    type="text"
+                    error={errors?.refererCode?.message}
+                    register={register}
+                    style={{ borderColor: errors.refererCode ? "red" : "blue" }}
                     iconLeft={<FaEnvelopeOpenText color="gray" size={20} />}
                   />
                   <CustomPhoneInput

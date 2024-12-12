@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCurrentUser } from "../../services/slices/userSlice";
 import {
-  clearAccessToken,
+  clearRegistrationToken,
   clearPasswordResetToken,
 } from "../../services/slices/authSlice";
 
@@ -94,7 +94,7 @@ const OtpComponent = ({
   useEffect(() => {
     if (isSuccess) {
       dispatch(clearPasswordResetToken());
-      dispatch(clearAccessToken());
+      dispatch(clearRegistrationToken());
       if (setFormSteps) {
         setFormSteps(3);
       } else {
