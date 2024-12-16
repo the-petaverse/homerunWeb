@@ -310,18 +310,6 @@ const UserDashboard = () => {
                             />
                           ))}
                       </div>
-                      {/* <div className="dashboard-quick-action-section">
-                        <p>Quick Actions</p>
-                        <div className="dashboard-quick-action-card-wrapper">
-                          {serviceCategory &&
-                            serviceCategory.map((serviceData, index) => (
-                              <QuickActionCard
-                                serviceData={serviceData}
-                                index={index}
-                              />
-                            ))}
-                        </div>
-                      </div> */}
                       <div className="dashboard-quick-action-section">
                         <p>Recent Activities</p>
                       </div>

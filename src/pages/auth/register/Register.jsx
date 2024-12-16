@@ -229,7 +229,7 @@ const Register = () => {
                   />
                   <CustomImput
                     name="referredBy"
-                    placeholder="DBG25HYB (Leave empty if you have no refer)"
+                    placeholder="Referrer code (Leave empty if NONE)"
                     type="text"
                     error={errors?.refererCode?.message}
                     register={register}

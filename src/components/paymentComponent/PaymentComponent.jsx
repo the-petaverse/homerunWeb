@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CustomButton from "../customButton/CustomButton";
+import { useReferAndWin } from "../../customHooks/useReferAndWin";
 
 const PaymentComponent = ({
   handlePaymentCreations,
@@ -7,7 +8,11 @@ const PaymentComponent = ({
   buyingServiceTitle,
   buyingServiceCost,
 }) => {
+  const { data } = useReferAndWin();
+  let discounterAmount;
   useEffect(() => {}, [buttonClick, buyingServiceTitle, buyingServiceCost]);
+
+  console.log(data?.referrerSystem?.rewardAmount, "Payment");
   return (
     <div className="bg-full sm: h-[100dvh] pt-5">
       <div className="w-[65%] bg-white mr-auto ml-auto h-[85%] sm:mt-0 lg:mt-10 rounded-2xl p-5 text-center flex flex-col justify-between">
@@ -16,14 +21,16 @@ const PaymentComponent = ({
             Payment Fee For Errand
           </h1>
           <div className="flex justify-between align-middle border sm:w-[100%] lg:w-[38%] mr-auto ml-auto mt-3 py-2 rounded-xl px-3">
-            <p className="text-sm">Apply point Discount</p>
-            <p>N500</p>
+            <p className="text-sm">Referer reward</p>
+            <p>N{data ? data?.referrerSystem?.rewardAmount : 0}</p>
           </div>
           <div className="mt-3 mx-16">
             <p className="text-lg">
               Please pay the sum of{" "}
               <span className="font-bold">{`N ${
-                buyingServiceCost ? buyingServiceCost : 0
+                buyingServiceCost - data?.referrerSystem?.rewardAmount
+                  ? buyingServiceCost - data?.referrerSystem?.rewardAmount
+                  : 0
               }`}</span>
               {` to carry out ${buyingServiceTitle} request`}
             </p>
